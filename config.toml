@@ -1,6 +1,6 @@
 baseURL = "https://dprep.hannesdatta.com/"
 languageCode = "en-us"
-title = "Data Preparation and Workflow Management (dPrep)"
+title = "Data Preparation and Workflow Management"
 theme = 'book'
 
 # Book configuration
