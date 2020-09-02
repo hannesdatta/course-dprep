@@ -4,7 +4,7 @@ This is the course page for "Data Preparation and Workflow Management (dPrep)", 
 
 ## Using the course website and glossary
 
-This is the source code of the website, and not the website itself. If you're looking for the actual website, please point your browser to [https://datacollection.hannesdatta.com](https://dprep.hannesdatta.com).
+This is the source code of the website, and not the website itself. If you're looking for the actual website, please point your browser to [https://dprep.hannesdatta.com](https://dprep.hannesdatta.com).
 
 ## Using this repository
 
