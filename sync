@@ -1,0 +1,4 @@
+git checkout master
+git checkout dev content/_index.md
+git commit -m 'use dev version of syllabus'
+git checkout dev
