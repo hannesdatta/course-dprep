@@ -1,10 +1,10 @@
-# Course page for "Online Data Collection and Management (oDCM)"
+# Course page for "Data Preparation and Workflow Management" (dPrep)
 
-This is the course page for "Online Data Collection and Management (oDCM)", a new course taught in the Marketing Analytics Curriculum at [Tilburg University](https://tilburguniversity.edu) by [dr. Hannes Datta](https://hannesdatta.com) in Block 3 (January-March) 2021.
+This is the course page for "Data Preparation and Workflow Management (dPrep)", a new course taught in the Marketing Analytics Curriculum at [Tilburg University](https://tilburguniversity.edu) by [dr. Hannes Datta](https://hannesdatta.com) in Block 3 (February-April) 2021.
 
 ## Using the course website and glossary
 
-This is the source code of the website, and not the website itself. If you're looking for the actual website, please point your browser to [https://datacollection.hannesdatta.com](https://datacollections.hannesdatta.com).
+This is the source code of the website, and not the website itself. If you're looking for the actual website, please point your browser to [https://datacollection.hannesdatta.com](https://dprep.hannesdatta.com).
 
 ## Using this repository
 

@@ -1,6 +1,6 @@
-baseURL = "https://datacollections.hannesdatta.com/"
+baseURL = "https://dprep.hannesdatta.com/"
 languageCode = "en-us"
-title = "Online Data Collections (oDCM)"
+title = "Data Preparation and Workflow Management (dPrep)"
 theme = 'book'
 
 # Book configuration
