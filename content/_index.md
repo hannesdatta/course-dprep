@@ -7,7 +7,7 @@ type: docs
 
 **Prepare data sets for empirical analysis and manage research projects efficiently**
 
-_Tilburg University, Block 3, 2020/2021 (January - March 2021)_
+_Tilburg University, Block 3, 2020/2021 (February - April 2021)_
 
 _Instructor: [dr. Hannes Datta](https://hannesdatta.com)_
 
@@ -124,7 +124,7 @@ Students pass this course if the final course grade (i.e., the weighted average 
 
 ## Enrollment and Obtaining Course Credits
 
-- The course (3 ECTS) will be taught in the Marketing Analytics Program at Tilburg University (please check Osiris for the specifics).
+- The course (3 ECTS) will be taught in the Marketing Analytics Program at Tilburg University (please check Osiris for the specifics). The course code is 328059-M-3.
 - Interested Research Master or PhD students who seek to advance their data collection skills can audit this course upon the approval of [the instructor](mailto:h.datta@tilburguniversity.edu) and their coordinator.
 
 ## License
