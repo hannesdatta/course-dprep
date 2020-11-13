@@ -5,6 +5,13 @@ title: "Syllabus"
 bookHidden: false
 ---
 
+
+<!--
+
+take this course a little more easy
+
+-->
+
 # Syllabus
 
 Activities
@@ -16,44 +23,71 @@ Activities
 
 session chair, presentations, pitches, discussions
 
-
-## Preparation before the course starts
-
-## During the course
-
-- Module 0: Course overview + getting started
-
-- Module 1a: Research and Business Opportunities From Online Data Collections
-  - Design principles
-  - Prep: Business
-  - Prep: Research
-  - Prep: Legality
-  - "What I think is hot right now"
-
-- Module 1b: Legality and Terms of Use (--> paper? advice?)
-
-- Module 3: Web scraping
-- Module 4: APIs
-
-- Module 5: Data Management and Deployment in Production
-  - Software Stack
-  - Computing Infrastructure
-  - Dockers
-  - Structured and Unstructured databases
-  - "Polishing" Code
-
-- Module 6: Data sharing
-
-- Presentation of research / business projects
-
-## Meetings
+- Need something like a watch list before, and then practice inbetween
+- WHY is it important - how to use these concepts inbetween?
 
 
 ## Preparation before the course starts
 
 - Software environment setup
-- Introduction to Python and Jupyter Notebook using Anaconda
+- Introduction to R and RStudio
 - Overview about this course
+
+## During the course
+
+- Module 1: Data engineering for marketing research
+  - Kick-off
+    - Overview about data types (Wedel & Kannan)
+    - Data providers/sources
+    - Conceptual framework of course: pipelines / modules + workflow design;  input/transformation/output; management of code + designing a workflow from scratch
+  - Self-study
+    - Mela: pitching for data from a business
+
+
+<!--Prepare data sets for empirical analysis and manage research projects efficiently-->
+
+- Module 2: Data formats and data principles
+  - Unit of analysis
+  - Data types and file formats: databases versus files
+  - Raw data versus derived data sets in a workflow
+
+  - Tutorial: Reading in data & inspecting data / basic SQL
+    - Data formats: file-based versus data-bases
+      - Files:
+        - Flat versus program + reading in
+      - Databases [focus, similar to SQL]
+        - Structured versus unstructured + reading in
+    - Unit of analysis and primary keys
+
+
+<!--Use R to read in various data formats for further processing
+-->
+
+- Module 3: Common data operations and cleaning data
+  - Apply common data operations in R to transform and clean your data (e.g., aggregation, merging, de-duplication, reshaping, date conversions, regular expressions)
+
+    - Tutorial / exercises:   - Common data operations
+  Common data operations
+
+  - Use basic programming concepts to increase speed and minimize errors (e.g., looping, vectorization, writing functions, handling errors/debugging)
+
+- Module 4: Feature engineering
+  - Operationalize variables/engineer features from numerical, textual, and visual raw data
+
+- Module 5: Store and manage data using file-based systems and databases
+
+- Module 6: Workflow management
+  - Use workflow management techniques to create and audit automated and reproducible data pipelines
+  - Version code and manage and contribute to GitHub repositories
+
+- Module 7: Document and archive final data sets, and learn how to make them available for public (re)use
+
+
+
+----
+
+## Meetings
+
 
 
 ## Online Tutorials (prerecorded) / "labs"
