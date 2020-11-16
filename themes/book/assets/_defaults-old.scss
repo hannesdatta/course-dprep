@@ -24,16 +24,17 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-$header-color: #036 !default;
-$color-link: #036 !default;
-$color-visited-link: #036 !default;
+$header-color: black !default;
+$color-link: #05b !default;
+$color-visited-link: #05b !default;
+
 $body-background: white !default;
 $body-font-color: $black !default;
 $body-font-weight: normal !default;
-$menu-background: #f4ecdb !default;
+$menu-background: white !default;
 
 $body-min-width: 20rem !default;
-$container-max-width: 100% !default;
+$container-max-width: 80rem !default;
 
 $header-height: 3.5rem !default;
 $menu-width: 16rem !default;
