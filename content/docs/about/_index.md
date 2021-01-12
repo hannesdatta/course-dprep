@@ -7,9 +7,9 @@ weight: 100
 
 # About
 
-Web scraping and APIs have become one of the most important data collection methods in academic (marketing) research. While you can find tons of resources online on *how to scrape*, or *how to access data from APIs*, none of these tutorials will actually teach you how the way you scrape affects your research. This is the void we will.
+...
 
-We've used web scraping and APIs in our research for more than 10 years. And we're (finally) ready to pass on the knowledge to you. Even if you're not enrolled in our class, you can make use of our material.
+We've used advanced workflow management techniques for years. And we're (finally) ready to pass on the knowledge to you. Even if you're not enrolled in our class, you can make use of our material.
 
 Feedback is appreciated always.
 
@@ -21,10 +21,9 @@ Feedback is appreciated always.
 ## Acknowledgements
 
 This course is inspired by a variety of online resources:
-* Adam Williamson. (2020). [Python coding - How to access the Reddit API tutorial](https://www.youtube.com/watch?v=Mw-dsY8UKVs).
-* Brian C. Keegan. (2019). [Web Data Scraping S2019](https://github.com/CU-ITSS/Web-Data-Scraping-S2019).
-* Colt Steele. (2020). [The Modern Python 3 Bootcamp](https://www.udemy.com/course/the-modern-python3-bootcamp/).
-* Hannah Cushman Garland. (2020). [Web scraping with Python](https://github.com/hancush/web-scraping-with-python/blob/master/session/web-scraping-with-python.ipynb#HTML-basics).
+* XXX. (XXXX). [XXX](https://www.google.nl).
+* XXX. (XXXX). [XXX](https://www.google.nl).
+* XXX. (XXXX). [XXX](https://www.google.nl).
 
 
 

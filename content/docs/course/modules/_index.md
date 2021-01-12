@@ -7,7 +7,7 @@ description: " "
 
 # Modules
 
-The course consists of weekly modules, structured along the workflow of collecting online web data.
+The course consists of the following seven weekly modules:
 
 <!--
 ## Course structure

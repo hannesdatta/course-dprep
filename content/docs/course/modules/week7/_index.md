@@ -1,23 +1,22 @@
 ---
 weight: 60
-title: Week 7) Project
-description: Work on your projects, with a focus on preprocessing, validating, and documenting your data.
+title: Week 7) Deployment & Reporting
+description: Build your own Shiny apps and dashboards
 bookCollapseSection: true
 ---
 
-# Week 7: Lab week
+# Week 7: Deployment & Reporting
 
 ## Meetup
-- Live coding / feedback sessions for teams
+- ...
 
 ## Self-study
-- Exam preparation *prerecorded*
+- [Deployment & Reporting (Tutorial)](docs/tutorials/deployment-reporting)
 - ...
 
 ## Exercises and activities
-- Prepare group presentation on data collection
+- Data Challenge 7
 
 
 <br>
 {{< button relref="week6" >}}Previous week{{< /button >}}
-{{< button relref="week8" >}}Next week{{< /button >}}
