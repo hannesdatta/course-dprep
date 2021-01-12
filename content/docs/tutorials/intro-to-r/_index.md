@@ -6,7 +6,7 @@ bookCollapseSection: true
 draft: false
 ---
 
-# Tutorial: Web data retrieval for dummies
+# Tutorial: Intro to R
 
 ## Prerequisites
 * [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
@@ -25,5 +25,5 @@ draft: false
 * Apply basic programming concepts (if-else statements, for-loop, functions )
 
 ## Data Challenge
-- View the [Intro to R - Data Challenge](intro-to-r.html) 
+- View the [Intro to R - Data Challenge](intro-to-r.html)
 - Download the answer skeleton [file](intro-to-r-skeleton.R) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!

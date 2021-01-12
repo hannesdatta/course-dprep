@@ -25,5 +25,5 @@ draft: false
 * Apply basic programming concepts (if-else statements, for-loop, functions )
 
 ## Data Challenge
-- View the [Intro to R - Data Challenge](intro-to-r.html) 
-- Download the answer skeleton [file](intro-to-r-skeleton.R) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!
+- View the [Data Preparation - Data Challenge](data-preparation.html)
+- Download the answer skeleton [file](data-preparation-skeleton.R) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!

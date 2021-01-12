@@ -9,21 +9,15 @@ draft: false
 # Tutorial: Using the Cloud for Storage and Computation
 
 ## Prerequisites
-* [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
-* [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) (chapter 1, 2, 3, 4, 5)
-* [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2, 3)
+* ...
 
 
 ## Learning goals
 
-* Set-up R and R Studio
-* Read text files into data frames
-* Create various data types (variable, vector, matrix, dataframe)
-* Manipulate data frames (create, drop, and rename columns)
-* Filter data frames (by index, logical expression, missing records)
-* Analyze data (summary statistics, mathematical operations, sort data, plots)
-* Apply basic programming concepts (if-else statements, for-loop, functions )
+* Create an AWS account and set-up CLI
+* Gain a high level overview of cloud services (compute (VMs), storage (SQL, NoSQL))
+* Launch a relational database (RDS), EC2 instance, and S3 bucket.
 
 ## Data Challenge
-- View the [Intro to R - Data Challenge](intro-to-r.html) 
-- Download the answer skeleton [file](intro-to-r-skeleton.R) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!
+- View the [Cloud Storage & Computation - Data Challenge](cloud-storage-computation.html)
+- Download the answer skeleton [file](cloud-storage-computation-skeleton.R) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!
