@@ -1,3 +1,5 @@
 .DS_Store
 resources/*
 public/*
+.ipynb_checkpoints/
+*.csv
