@@ -1,11 +1,11 @@
 ---
 weight: 2
-title: Week 1) Intro to R
+title: Week 1) Getting started!
 description: Learn the basics of the programming language R.
 bookCollapseSection: true
 ---
 
-# Week 1: Learn the basics of the programming language R.
+# Week 1: Getting started!
 
 ## Meetup
 - Introduction to the course *live* <!-- add zoom link-->

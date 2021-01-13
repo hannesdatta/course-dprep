@@ -3,7 +3,7 @@ weight: 30
 title: Intro to SQL
 description: Get your data from a relational database!
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Tutorial: Intro to SQL

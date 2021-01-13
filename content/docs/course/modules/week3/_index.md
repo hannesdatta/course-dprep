@@ -1,11 +1,11 @@
 ---
 weight: 3
-title: Week 3) Introduction to SQL
-description: Get your data from a relational database!
+title: Week 3) Skill-building
+description: Learn the basics concepts of XXX
 bookCollapseSection: true
 ---
 
-# Week 3: Introduction to SQL
+# Week 3: Skill-building
 
 
 ## Meetup
@@ -13,7 +13,7 @@ bookCollapseSection: true
 This week, there is no live contact moment. Instead, you are required to work through a set of tutorials to build your scraping and API skills.
 
 ## Self-study
-- [Introduction to SQL (Tutorial)](docs/tutorials/introduction-to-sql)
+- ...
 
 ## Activities (individual exercises or team project)
 - Data Challenge 3

@@ -1,12 +1,12 @@
 ---
 weight: 20
-title: Data Preparation
+title: Data preparation
 description: Apply data wrangling techniques in tidyverse and dplyr
 bookCollapseSection: true
 draft: false
 ---
 
-# Tutorial: Data Preparation
+# Tutorial: Data preparation
 
 ## Prerequisites
 * [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)

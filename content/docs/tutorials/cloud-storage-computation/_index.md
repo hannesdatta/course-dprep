@@ -1,9 +1,9 @@
 ---
 weight: 60
-title: Using the Cloud for Storage and Computation
+title: Using the cloud for storage and computation
 description: Learn the fundamentals of cloud computing
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Tutorial: Using the Cloud for Storage and Computation

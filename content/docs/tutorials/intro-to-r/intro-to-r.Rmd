@@ -8,7 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-*In this tutorial we're going to explore some of the data sets underlying the paper that estimates the COVID-19 impact on music consumption ([Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085)). Along the way, you'll practice the skills you have been equipped with in the DataCamp tutorials.*
+*In this tutorial, we're going to explore one of the data sets underlying the paper that estimates the COVID-19 impact on music consumption ([Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085)). Along the way, you'll practice the skills you have been equipped with in the DataCamp tutorials.*
 
 
 --- 
@@ -59,18 +59,18 @@ With the help of the `read.csv()` function, we have imported the mobility data f
 Inspect the `mobility` data frame and describe the structure of the dataset in your own words.
 
 **Solution**  
-The dataset shows the mobility changes in a national, regional, and city level in the Netherlands for multiple categories of place. The records are sorted by date and are grouped by location (starting with country stats). Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain empty data.
+The dataset shows the mobility changes at a national, regional, and city level in the Netherlands for multiple categories of place. The records are sorted by date and are grouped by location (starting with country stats). Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain empty data.
 
 \
 
 **Exercise 2**  
-The data shows the percentage changes in visits to categorized places compared to a normal value for that day of the week (i.e., baseline). The baseline day is the median value between January 3rd and February 6th 2020. In other words, all reported numerical values are relative to the first few weeks in 2020. 
+The data shows the percentage changes in visits to categorized places compared to a normal value for that day of the week (i.e., baseline). The baseline day is the median value between January 3rd and February 6th, 2020. In other words, all reported numerical values are relative to the first few weeks in 2020. 
 
 Think of one or more problems that can arise as a result of this methodology (even better if you come up with concrete examples that illustrate this)! 
 
 **Solution**  
 - It doesn't account for seasonality (e.g., park visits increases as the weather improves)  
-- In the Netherlands we experienced a relatively mild winter period throughout 2020 (e.g., the average temperature in January 2020 was the 3rd highest ever). As a result, the time distribution of certain categories (e.g., parks, residence) may not be representative for a typical year. 
+- In the Netherlands, we experienced a relatively mild winter period throughout 2020 (e.g., the average temperature in January 2020 was the 3rd highest ever). As a result, the time distribution of certain categories (e.g., parks, residence) may not be representative for a typical year. 
 
 \
 
@@ -178,7 +178,7 @@ for(counter in 1:nrow(mobility)){
 
 #### Selecting a Subset of Data
 
-For analysis purposes, we prefer to split up the data frame into country, province, and city level records. We know that the values in the `province` and `city` columns are empty for the country level stats. In the same way, the city level records are blank for the data aggregated on province level. This is shown in the table below where each `X` denotes the availability of data in a respective column.
+For analysis purposes, we prefer to split up the data frame into country, province, and city-level records. We know that the values in the `province` and `city` columns are empty for the country level stats. In the same way, the city level records are blank for the data aggregated on the province level. This is shown in the table below where each `X` denotes the availability of data in a respective column.
 
 
 | Aggregation Level | country_region | province | city | 
@@ -275,12 +275,12 @@ lines(country$date, country$workplaces, col="blue") # add a second line chart
 legend("bottomleft", c("residential", "workplace"), fill=c("red", "blue")) # legend (location, names, colors)
 ```
 
-The aim of this assignment is to further explore the data on your own. Spot interesting patterns, visualize the relationships, and provide a brief write-up of your analysis. Here are a couple of ideas you may want to look into, but feel more than welcome to add your own ones!
+The aim of this assignment is to further explore the data on your own. Spot interesting patterns, visualize the relationships and provide a brief write-up of your analysis. Here are a couple of ideas you may want to look into, but feel more than welcome to add your own ones!
 
-- The southern provinces of the Netherlands initially suffered the most from COVID-19 in terms of the number of positive cases (possibly due to [carnival](https://dutchreview.com/news/first-man-to-get-coronavirus-covid-19-in-the-netherlands-celebrated-carnival/)). As such, stricter policies were imposed by the government than in other parts in the country. Can you find patterns in the data that illustrate the (in)effectiveness of these measures? 
+- The southern provinces of the Netherlands initially suffered the most from COVID-19 in terms of the number of positive cases (possibly due to [carnival](https://dutchreview.com/news/first-man-to-get-coronavirus-covid-19-in-the-netherlands-celebrated-carnival/)). As such, stricter policies were imposed by the government than in other parts of the country. Can you find patterns in the data that illustrate the (in)effectiveness of these measures? 
 
 - Comparison of mobility patterns in the first and second COVID-19 wave. Did our behavior change throughout time? And how about the summer break? 
 
-- How does your own place of residence relate to other he rest of the Netherlands? (e.g., create a ranking!)
+- How does your own place of residence relate to the rest of the Netherlands? (e.g., create a ranking!)
 
 - Your own suggestions!

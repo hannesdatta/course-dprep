@@ -1,11 +1,11 @@
 ---
 weight: 3
-title: Week 2) Data Preparation
+title: Week 2) Data preparation
 description: Apply data wrangling techniques in tidyverse and dplyr
 bookCollapseSection: true
 ---
 
-# Week 2: Data Preparation
+# Week 2: Data preparation
 
 ## Meetup
 
