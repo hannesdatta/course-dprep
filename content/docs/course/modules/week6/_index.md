@@ -1,11 +1,11 @@
 ---
 weight: 50
-title: Week 6-8) Project Phase
+title: Week 6-8) Project phase
 description: Apply your learnings in a team project!
 bookCollapseSection: true
 ---
 
-# Week 6-8: Project Phase
+# Week 6-8: Project phase
 
 ## Meetup
 - ...

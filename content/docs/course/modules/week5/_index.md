@@ -1,11 +1,11 @@
 ---
 weight: 5
-title: Week 5) Version Control
+title: Week 5) Version control
 description: Keep track of file changes and apply the end-to-end Git workflow!
 bookCollapseSection: true
 ---
 
-# Week 5: Version Control <!--+ feedback-->
+# Week 5: Version control <!--+ feedback-->
 
 ## Meetup
 - ...
