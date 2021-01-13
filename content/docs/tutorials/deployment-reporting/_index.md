@@ -3,7 +3,7 @@ weight: 80
 title: Deployment & Reporting
 description: Build your own Shiny apps and dashboards
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Tutorial: Deployment & Reporting

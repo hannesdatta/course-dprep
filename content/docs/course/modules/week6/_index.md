@@ -1,22 +1,24 @@
 ---
 weight: 50
-title: Week 6) Using Cloud for Storage & Computation
-description: Learn the fundamentals of cloud computing
+title: Week 6-8) Project Phase
+description: Apply your learnings in a team project!
 bookCollapseSection: true
 ---
 
-# Week 6: Using Cloud for Storage & Computation
+# Week 6-8: Project Phase
 
 ## Meetup
 - ...
 
 ## Self-study
+Building Blocks:
 - [Using Cloud for Storage & Computation (Tutorial)](docs/tutorials/cloud-storage-computation)
+- [Deployment & Reporting](docs/tutorials/deployment-reporting)
+
 
 ## Exercises and activities
-- Data Challenge 6
+- ...
 - ...
 
 <br>
 {{< button relref="week5" >}}Previous week{{< /button >}}
-{{< button relref="week7" >}}Next week{{< /button >}}
