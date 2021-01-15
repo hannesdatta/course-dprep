@@ -9,20 +9,18 @@ draft: false
 # Tutorial: Data preparation
 
 ## Prerequisites
-* [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
-* [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) (chapter 1, 2, 3, 4, 5)
-* [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2, 3)
+* [DataCamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
+* [DataCamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+* [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
 
 
 ## Learning goals
 
-* Set-up R and R Studio
-* Read text files into data frames
-* Create various data types (variable, vector, matrix, dataframe)
-* Manipulate data frames (create, drop, and rename columns)
-* Filter data frames (by index, logical expression, missing records)
-* Analyze data (summary statistics, mathematical operations, sort data, plots)
-* Apply basic programming concepts (if-else statements, for-loop, functions )
+* Merge data sets on one or more indices and understand the different types of joins (inner, left, right join)
+* Handle and preprocess string data (remove characters, splitting)
+* Apply a variety of feature engineering techniques (grouping, rank, counter)
+* Document code and analyses with an R Markdown
+
 
 ## Data Challenge
 - View the [Data Preparation - Data Challenge](data-preparation.html)
