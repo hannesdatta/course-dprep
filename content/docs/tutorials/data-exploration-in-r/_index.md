@@ -1,6 +1,6 @@
 ---
 weight: 10
-title: Data Exploration in R
+title: Data exploration in R
 description: Learn the basics of the programming language R, familiarize yourself with RStudio, and use your skills to explore new datasets.
 bookCollapseSection: true
 draft: false
