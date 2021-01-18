@@ -1,7 +1,7 @@
 ---
 weight: 10
-title: Intro to R
-description: Learn the basics of the programming language R.
+title: Data Exploration in R
+description: Learn the basics of the programming language R, familiarize yourself with RStudio, and use your skills to explore new datasets.
 bookCollapseSection: true
 draft: false
 ---

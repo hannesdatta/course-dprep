@@ -7,16 +7,11 @@ bookCollapseSection: true
 
 # Week 5: Version control <!--+ feedback-->
 
-## Meetup
-- ...
-<!--*live; same "smaller" groups like before*-->
+## Self-study and activities
+- [Version Control (Tutorial & Data Challenge 4)](docs/tutorials/version-control)
 
-## Self-study
-- [Version Control (Tutorial)](docs/tutorials/version-control)
-
-
-## Activities (individual exercises or team project)
-  - Data Challenge 5
+## Live stream 5
+- Q&A on Data Challenge 4
 
 <br>
 {{< button relref="week4" >}}Previous week{{< /button >}}

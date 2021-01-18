@@ -1,22 +1,19 @@
 ---
 weight: 3
 title: Week 3) Skill-building
-description: Learn the basics concepts of XXX
+description: Further build your skills with our tutorials.
 bookCollapseSection: true
 ---
 
 # Week 3: Skill-building
 
+This week, there is no live contact moment. Instead, we encourage you to work on tutorials and data challenges from previous or subsequent weeks.
 
-## Meetup
+## Self-study and activities
+- Work on tutorials from previous or subsequent weeks
+- Explore [Tilburg Science Hub](https://tilburgsciencehub.com)
 
-This week, there is no live contact moment. Instead, you are required to work through a set of tutorials to build your scraping and API skills.
 
-## Self-study
-- ...
-
-## Activities (individual exercises or team project)
-- Data Challenge 3
 
 <br>
 {{< button relref="week2" >}}Previous week{{< /button >}}

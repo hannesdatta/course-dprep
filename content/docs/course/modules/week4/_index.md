@@ -1,20 +1,18 @@
 ---
 weight: 4
 title: Week 4) Pipeline building and automation
-description: Automate workflows and make them reproducible
+description: Automate your project's pipeline and make your work reproducible.
 bookCollapseSection: true
 ---
 
 # Week 4: Pipeline Building and Automation
 
-## Meetup
+## Self-study and activities
+- [Pipeline Building and Automation (Tutorial & Data Challenge 3)](docs/tutorials/pipeline-building-automation)
 
+## Live stream 4
+- Q&A on Data Challenge 3
 
-## Self-study
-- [Pipline Building & Automation (Tutorial)](docs/tutorials/pipeline-building-automation)
-
-## Activities (individual exercises or team project)
-- Data Challenge 4
 
 <br>
 {{< button relref="week3" >}}Previous week{{< /button >}}

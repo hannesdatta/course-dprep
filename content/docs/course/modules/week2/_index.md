@@ -1,21 +1,17 @@
 ---
 weight: 3
-title: Week 2) Data preparation
-description: Apply data wrangling techniques in tidyverse and dplyr
+title: Week 2) Data preparation in R
+description: Use tidyverse and dplyr to structure your data for analysis, and generate data reports using R Markdown.
 bookCollapseSection: true
 ---
 
-# Week 2: Data preparation
+# Week 2: Data preparation in R
 
-## Meetup
+## Self-study and activities
+- [Data Preparation in R (Tutorial and Data Challenge 2)](docs/tutorials/data-preparation)
 
-
-## Self-study
-- [Data Preparation (Tutorial)](docs/tutorials/data-preparation)
-
-## Activities (individual exercises or team project)
-- Data Challenge 2
-
+## Live stream 3
+- Q&A on Data Challenge 2
 
 <!--- Ethics in scraping and APIs *live*
 -->

@@ -7,18 +7,13 @@ bookCollapseSection: true
 
 # Week 6-8: Project phase
 
-## Meetup
-- ...
+## Self-study and activities
+- Building Blocks
+  - Using the cloud for storage & computation <!--[Using Cloud for Storage & Computation (Tutorial)](docs/tutorials/cloud-storage-computation)-->
+  - Deployment and reporting <!--[Deployment & Reporting](docs/tutorials/deployment-reporting)-->
 
-## Self-study
-Building Blocks:
-- [Using Cloud for Storage & Computation (Tutorial)](docs/tutorials/cloud-storage-computation)
-- [Deployment & Reporting](docs/tutorials/deployment-reporting)
-
-
-## Exercises and activities
-- ...
-- ...
+## Individual meetings
+- You can schedule appointments with your coach to discuss your progress on the team project.
 
 <br>
 {{< button relref="week5" >}}Previous week{{< /button >}}

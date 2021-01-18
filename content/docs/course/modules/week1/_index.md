@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: Week 1) Data exploration with R
+title: Week 1) Data exploration in R
 description: Learn the basics of R and RStudio, and use your skills to explore datasets.
 bookCollapseSection: true
 ---
@@ -10,12 +10,12 @@ bookCollapseSection: true
 ## Live stream 1
 - Introduction to the course
 
-## Self-study
-- [Intro to R (Tutorial)](docs/tutorials/data-exploration-in-r)
+## Self-study and activities
+- [Data exploration in R (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
 
-## Activities
-- Data Challenge 1 (see tutorial)
-- XXX
+## Live stream 2
+- Q&A on Data Challenge 1
+
 
 <br>
 {{< button relref="week2" >}}Next week{{< /button >}}
