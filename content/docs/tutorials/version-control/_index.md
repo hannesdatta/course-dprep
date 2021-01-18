@@ -3,7 +3,7 @@ weight: 50
 title: Version control
 description: Keep track of file changes and apply the end-to-end Git workflow.
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Tutorial: Version control

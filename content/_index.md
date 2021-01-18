@@ -18,11 +18,11 @@ Welcome to the course website of dPrep. This course teaches you how to engineer 
 
 ## This website
 
-This website is the backbone of the course, and features the following main sections.
+This website is the backbone of the course, and features the following main sections. __We're still actively working on preparing the course - which means the course content hasn't been entirely finalized yet.__
 
 - The [__course__](docs/course) section holds a list of weekly [modules](docs/course/modules), consisting of live streams, readings, and prerecorded clips. Even if you're not enrolled in this course, you can watch these clips, but interaction with the course instructor is reserved for enrolled students only.
 
-- The [__tutorial__](docs/tutorials) section offers self-guided tutorials that teach the *principles* of data preparation and workflow management. Use these to start your own empirical research projects! <!--a workflow for collecting online data, and -->
+- The [__tutorial and data challenge__](docs/tutorials) section offers self-guided tutorials that teach the *principles* of data preparation and workflow management. It also holds a (weekly) data challenge in which you can put your skills into practice! <!--Use these to start your own empirical research projects! <!--a workflow for collecting online data, and -->
 
 - Finally, this course uses building blocks and examples from [Tilburg Science Hub](https://tilburgsciencehub.com), a platform to help students, researchers and data scientists to work together efficiently.
 

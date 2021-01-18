@@ -1,3 +1,8 @@
+---
+draft: true
+title: workflow
+---
+
 # Workflow for a local setup [...] / setting up project on own computer
 
 - Assess project requirements / these are requirements which are needed
