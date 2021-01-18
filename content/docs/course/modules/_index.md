@@ -7,7 +7,7 @@ description: " "
 
 # Modules
 
-The course consists of the following seven weekly modules:
+The course consists of weekly modules. The first five weeks (including one self-study week) equip you with the skills to work on data-intensive research projects efficiently. The remaining three weeks are dedicated to working on a team project.
 
 <!--
 ## Course structure

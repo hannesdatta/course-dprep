@@ -1,29 +1,33 @@
 ---
 weight: 2
-title: Week 1) Getting started!
-description: Learn the basics of the programming language R.
+title: Week 1) Data exploration with R
+description: Learn the basics of R and RStudio, and use your skills to explore datasets.
 bookCollapseSection: true
 ---
 
-# Week 1: Getting started!
+# Week 1: Data exploration with R
 
-## Meetup
-- Introduction to the course *live* <!-- add zoom link-->
-  - Course objectives and practical arrangements <!-- to do -->
-  - Workflow overview
-  - Relevance of workflow management
+## Live stream 1
+- Introduction to the course
 
 ## Self-study
-- [Intro to R (Tutorial)](docs/tutorials/intro-to-r)
+- [Intro to R (Tutorial)](docs/tutorials/data-exploration-in-r)
 
-## Activities (individual exercises or team project)
-- Data Challenge 1
+## Activities
+- Data Challenge 1 (see tutorial)
 - XXX
 
 <br>
 {{< button relref="week2" >}}Next week{{< /button >}}
 
+<!--
 
+Meetup
+- Introduction to the course *live*
+  - Course objectives and practical arrangements
+  - Workflow overview
+  - Relevance of workflow management
+-->
 <!--  - Any remaining questions, please post them by DEADLINE on XXXX-->
 
 <!--
