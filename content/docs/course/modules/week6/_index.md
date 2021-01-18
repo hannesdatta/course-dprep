@@ -15,5 +15,8 @@ bookCollapseSection: true
 ## Individual meetings
 - You can schedule appointments with your coach to discuss your progress on the team project.
 
+## Live stream 6
+- Course summary and exam preparation (in week 8)
+
 <br>
 {{< button relref="week5" >}}Previous week{{< /button >}}

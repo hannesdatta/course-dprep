@@ -5,7 +5,7 @@ description: Learn the basics of R and RStudio, and use your skills to explore d
 bookCollapseSection: true
 ---
 
-# Week 1: Data exploration with R
+# Week 1: Data exploration in R
 
 ## Live stream 1
 - Introduction to the course
