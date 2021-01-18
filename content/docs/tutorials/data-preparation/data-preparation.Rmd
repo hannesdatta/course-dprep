@@ -8,22 +8,24 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-*In this tutorial we're going to explore some of the data sets underlying the paper that estimates the COVID-19 impact on music consumption ([Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085)). Along the way, you'll practice the skills you have been equipped with in the DataCamp tutorials.*
+*In this tutorial, we'll take data preparation to the next level by considering a variety of common data issues in the Spotify Top 200 rankings. We'll start off with multiple raw big data sets and end up with a single data frame ready for analysis!*
 
 
 --- 
 
 ### Prerequisites
 * [DataCamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
-* [DataCamp Cleaning Data in R](https://www.datacamp.com/courses/free-introduction-to-r) (chapter 1, 2)
+* [DataCamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+* [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
 
 
 --- 
 
 ### Learning Objectives
-* Apply data wrangling in tidyverse and dplyr (filter, sort, group, summarize)
-* Conduct cleaning operations (convert data type, trim string, remove duplicates)
-* Write Markdown documentation
+* Merge data sets on one or more indices and understand the different types of joins (inner, left, right join)
+* Handle and preprocess string data (remove characters, splitting)
+* Apply a variety of feature engineering techniques (grouping, rank, counter)
+* Document code and analyses with an R Markdown 
 
 --- 
 
@@ -40,70 +42,263 @@ For technical issues outside of scheduled classes, please check the [support sec
 
 ---
 
-### 1. Merging Data
-...
+### 1. Loading the Data 
 
-```{r load_data}
- #mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
+#### 1.1 Merging Data
+[Spotify Charts](https://spotifycharts.com/regional) has listed the daily top 200 most streamed songs by country since 2017. As you can see below, you can use the dropdown menus to change your selection, and clicking in the top right corner returns the data in CSV-format. 
+
+![](./images/spotify-top-200.gif){width=50%}
+
+For this exercise we have collected the rankings for 2020 which have been split up into 3 separate files: 
+
+#### Streams
+
+| Attribute | Definition | Example | 
+| :---- | :---- | :---- | 
+| song_id | An identifier associated with each song | `22403119` |
+| date | The date on which the ranking was composed | `2020-01-01 00:00:00+00:00` | 
+| popularity | A popularity score between 0 and 100 on a given date | `95` |
+| streams | The total number of streams on Spotify in a country on a given date | `544851` | 
+| country | Country abbreviation | `US` | 
+
+
+#### Songs
+
+| Attribute | Definition | Example | 
+| :---- | :---- | :---- | 
+| song_id | An identifier associated with each song | `22403119` |
+| song_name | The name of the song | `WAP (feat. Megan Thee Stallion)` |
+| artists |  A list of comma-separated artists of the song | `Cardi B,Megan Thee Stallion` | 
+| genres | A list of comma-separated genres of the song | `pop,rap,houston rap,pop,trap queen` |
+
+#### Country Codes 
+
+| Attribute | Definition | Example | 
+| :---- | :---- | :---- | 
+| continent | The continent associated with the country | `North America` |
+| country | The name of the country | `United States of America` | 
+| country_code_2_letter | The two-letter country code | `US` | 
+| country_code_3_letter | The three-letter country code | `USA` | 
+| country_number | The official ISO country code | `840` |
+
+
+
+**Exercise 1**  
+Merge all three files into a single data frame `df`. Keep in mind the following instructions:
+
+* Use the merge functions of `dplyr` and aim for concise code (tip: look up the DataCamp tutorials for the syntax!).
+* Note that CSV-files are separated by commas (hence the name comma-separated-value!) but they can also be separated by other delimiters (e.g., `;`). You need to explicitly tell the `read.csv()` function which one to use!
+* Examine the effect of picking a left, right, and inner join, and how that affects the completeness of your data. Strive for a final data frame that captures as much of the original data as possible.
+* To avoid confusion between overlapping column names (e.g., country appears in both `streams.csv` and `country_codes.csv`), you may consider adding suffixes. 
+
+
+**Solution**  
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# install.packages("dplyr") - run this command if you have never used the package before
+library(dplyr)
+
+streams <- read.csv("streams.csv", sep=",")
+songs <- read.csv("songs.csv", sep=",")
+country_codes <- read.csv("country_codes.csv", sep=";")
+
+df <- streams %>% 
+  inner_join(songs, by = "song_id") %>%
+  left_join(country_codes, by = c("country" = "country_code_2_letter"), suffix = c("_streams", "_cc"))
+
+# Since countries in Oceania are missing in country_codes.csv we use a left join here (otherwise you'd miss out on +/- 139K records)
 ```
 \
-**Exercise 1**     
-...
+
+#### 1.2 Duplicates
+A track can appear in multiple top 200 lists across countries (e.g., both in the Netherlands and in Belgium) for sustained periods of time (e.g., yesterday and today). For that reason, a `song_id` may occur repeatedly within the dataframe. Yet it can also happen that exactly the same record appears more than once. For example, the scraper that collected the data in the first place might have run twice which duplicated some of the records, or we accidentally made a copy-paste mistake ourselves. Check whether such       duplicates are present in `df` and if so remove them. 
 
 **Solution**  
-...
+```{r eval=FALSE}
+df <- df %>% filter(!duplicated(df))
+```
 
 \
 
-**Exercise 2**  
-... 
+#### 1.3 Data Imputation 
+In roughly half of the cases, the `popularity` column is missing which turns out to be troublesome once you move towards a model building phase. Therefore, we ask you to impute these missing values by the median popularity score of the country on a given date. Here's a simple example to illustrate: 
+
+| song_name | country | date | popularity | popularity_filled | 
+| :---- | :---- | :---- | :----- | :---- |
+| A | United Kingdom | 01-01-2020 | 91 | 91 |
+| B | United Kingdom | 01-01-2020 | 66 | 66 |
+| C | United Kingdom | 01-01-2020 | `NA` |  **66** |
+| D | United Kingdom | 01-01-2020 | 62 | 62 | 
+| E | United Kingdom | 02-01-2020 | 79 | 79 | 
+| A | Netherlands | 01-01-2020 | 80 | 80 |
+
+The `popularity_filled` column has been added which takes on the value of the `popularity` column if present and otherwise missing data (`NA`) are replaced with their imputed values. In this example, the popularity of song `C` in the United Kingdom has been computed as the median of `{62, 66, 91} = 66`. Note that it does not take into account song `E` in the United Kingdom (different date) and song `A` in the Netherlands (different country).   
+
+
+**Exercise 3**  
+Implement this data imputation strategy using the `filter`, `groupby`, and `summarise` functions from the `dplyr` package. We recommend first computing the imputation values (for each country across the days), and then replacing missing values in the `popularity` column with their matching counterparts. Evaluate your results in terms of the pros and cons of this approach and try to come up with an alternative imputation strategy (incl. arguments why you prefer that approach).
 
 **Solution**  
-...
-\
+```{r eval=FALSE}
+imputation_values <- df %>% filter(!is.na(popularity)) %>% 
+  group_by(country, date) %>% 
+  summarise(popularity_filled = median(popularity))
+
+df_joined <- df %>% left_join(imputation_values, by = c("country" = "country", "date" = "date"))
+
+df <- df_joined %>% mutate(popularity_filled = ifelse(is.na(popularity), popularity_filled, popularity))
+
+# The main disadvantage is that missing records will always be assigned a median popularity score (so never abnormally low or high). Given the sheer amount of missing records, this would highly distort the distribution of the scores.
+# Since the popularity score is country independent and it is either present for all records or not available for any country (or time period), we should find a way to group songs together. For example, if the artist has other songs for which the popularity score is known we could take the median of those scores, or we could look for songs with similar genre tag words.
+```
 
 ---
 
 ### 2. Feature Engineering
 
 \
-**Exercise 3**     
-...
 
-**Solution**  
-...
+#### 2.1 Trend Variable
+More likely than not, you have come across the `lm()` (i.e., linear model) function once before during your studies. Then, you also know that a regression model can only interpret numeric data. Categorical fields are typically converted into so-called dummy variables that take on either the value `0` or `1`. In a similar vein, dates are often converted into trend variables as input for a time-series model. For example, in our dataset January the 1st, of 2020 becomes 1 and the 15th of December 2020 (the last entry of `df`) becomes 350. Follow the steps below to create this trend variable for the `date` column of `df`: 
 
 \
 
 **Exercise 4**  
-... 
+1. Study the [documentation](https://stat.ethz.ch/R-manual/R-devel/library/base/html/seq.Date.html) of the `seq` function to create a sequence of dates (see examples at the bottom of the page).
+2. Create a data frame `dates` with two columns: `date` (i.e., the sequence of dates) and `counter` (i.e., a numeric value between 1 and 350). Tip: you may first need to convert the `dates` column into character format (`as.charcter(date)`).
+3. Merge `df` and `dates` and inspect your results (which type of join do you use?)
+
 
 **Solution**  
-...
+```r{eval=FALSE}
+# Step 1
+date <- seq(min(as.Date(df$date)), max(as.Date(df$date)), by = "day")
+
+# Step 2
+counter <- 1:length(date)
+dates <- data.frame(cbind(counter=counter, date=as.character(date)))
+
+# Step 3
+df <- df %>% inner_join(dates, by = "date")
+```
+
 \
 
+#### 2.2 Ranks
+Even though the data frame represents the Spotify top 200 charts, none of the columns indicates the rank of a given track. We can easily derive it from the number of streams, the `date`, and the `country` column. The built-in R function `ranks` returns a vector of ranks for a given input. By default, the lowest digit gets the highest rank (e.g., 1 becomes rank 1), you can reverse the order by adding a minus sign (`-`) in front of the input vector:
 
-### 3. Model Building
+```{r}
+rank_example = c(4, 9, 3, 2, 1)
+# regular 
+print(rank(rank_example))
+# reversed
+print(rank(-rank_example)) 
+```
 
 \
-**Exercise 3**     
-...
+
+**Exercise 5**  
+Add a `ranking` column to `df` using the `dplyr` package. Although it is unlikely that some tracks have exactly the same number of streams, think about how you will deal with these edge cases (tip: run `?rank` to look up the documentation). Does your ranking always run from 1 to 200? Why is that? Investigate the root cause and fix it! 
+
+```{r eval=FALSE}
+df <- df %>% group_by(country, date) %>%
+  mutate(ranking = rank(-streams, ties.method = "random"))
+
+# The maximum ranking is 400 (rather than 200)
+# Once we inspect one of the listings of df[df$ranking >= 200, ] we find that these records typically have redundant data somewhere hidden in between. For example, for df[(df$date == "2020-05-17") & (df$country == "HK"),] we discover that ranking 59 appears 17 times (!) which can be attributed to missing values `song_id` 
+
+# remove rows without song_id (if you then recreate the ranking column you'll come to the conclusion the maximum ranking has become 200!)
+df <- df[!is.na(df$song_id),]
+```
+
+\
+
+#### 2.3 Reshape 
+
+The lion share of tracks are assigned to more than one genre. For example, the famous song "Señorita" by Shawn Mendes and Camilo Cabello is categorized as `pop`, but also as `canadian pop`, `post-teen pop`, `viral pop`, and `dance pop`. The data frame stores these records as a list of comma-separated genres. On a high level, we like to move from this state: 
+
+| song_name | genres | 
+| :----- | :---- | 
+| Señorita | `pop, canadian pop, post-teen pop, viral pop, dance pop` | 
+
+\
+
+To a format in which the columns represent genre tag words and the table values indicate which genre(s) belong to which `song_name`: 
+
+| song_name | k-pop | pop | canadian pop | post-teen pop | viral pop | dance pop | 
+| :----- | :---- | :---- | :---- | :---- | :---- | :---- | 
+| Señorita | 0 | 1 | 1 | 1 | 1 | 1 | 1 |
+| Memories | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| Psycho | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+\
+
+To this end, we first need to separate the `genres` column of `df` into individual genres. We can use the built-in R function `strsplit` for that in the following way (note the double brackets `[[]]` around `1`!): 
+
+\
+
+```{r}
+genres_example <- c("pop", "canadian pop", "post-teen pop", "viral pop", "dance pop")
+genres_example_split <- split(genres_example, ",")
+genres_example_split[[1]]
+
+```
+
+After some data wrangling we can transform the data into the following format: 
+
+| song_id | song_genre | 
+| :----- | :---- | 
+| 13594414 | pop | 
+| 13594414 | canadian pop | 
+| 13594414 | post-teen pop | 
+| 13594414 | viral pop | 
+| 13594414 | dance pop | 
+| 13977556 | pop` | 
+
+\
+
+**Exercise 6**   
+As a last step, we call the `dcast()` function of the `reshape2` package to transform the data frame into the desired format (see the documentation for details!). Following these steps, it's your turn to create a function `reshape_songs()` that takes a data frame and a `country` as input and lists the genres (as columns) for all song ids (key; first column) in the respective country according to the specified format above. Note that the genres column may contain duplicates, that is: the same genre appears twice for the same song!
+
+\
 
 **Solution**  
-...
+```{r eval=FALSE}
+library(reshape2)
+
+reshape_songs <- function(df, country){
+  song_ids = c()
+  song_genres = c()
+  
+  df <- df[df$country_cc == country, ]
+  genres <- strsplit(df$genres, split=",")
+  
+  for(counter in 1:nrow(df)){
+    for(genre in unique(genres[[counter]])){
+      song_ids = c(song_ids, df[counter,]$song_id)
+      song_genres = c(song_genres, genre)
+    }
+  }
+
+  song_ids_genres <- data.frame(song_ids, song_genres)
+  song_ids_genres <- song_ids_genres %>% filter(!duplicated(song_ids_genres))
+  songs_reshaped <- song_ids_genres %>% dcast(formula=song_ids~song_genres, fun.aggregate = length, value.var = "song_genres")
+  return(songs_reshaped)
+}
+
+songs_genres <- reshape_songs(df, "Netherlands")
+```
 
 \
 
-**Exercise 4**  
-... 
-
-**Solution**  
-...
-\
+### 3. Exploratory Analysis
 
 
+Last but not least, it's time to exploit our data wrangling efforts and seek interesting patterns in the data! Even though this is meant as more of an open-ended question, here are a couple of questions for your inspiration and get your started (feel free to come up other ones yourself!): 
 
+* What are the most common genre tag words? Do they differ between countries? And continents? Which artist has appeared most frequently in the top 200? 
+* Did our music preferences change since the start of the corona pandemic? (tip: make a time-series plot!)
+* Can you find a general trend in how track rankings fluctuate over time? For how many weeks do most songs remain in the top 200 on average? How often did songs lose their top 200 ranking and climb up to the top 10 again? Is there a relationship between the ranking and the popularity score? 
+* What are non-obvious predictors of the number of streams for a song? (tip: use a linear model: `lm(streams ~ ... + ... + ..., data=df)`)
 
-### 4. Writing Markdown Documentation
+Write up your analysis in R Markdown, illustrate your analysis with plots, and comment on the practical implications as well as the limitations of your findings. 
 
-...
