@@ -5,9 +5,6 @@ date: "DATE"
 output: html_document
 ---
 
-This time, we're going to run our analysis in a R Markdown file which is somewhat similar to a Jupyter Notebook. Both tools allow you to combine inline code snippets with text in markdown. Either watch this video [tutorial](https://www.youtube.com/watch?v=tKUufzpoHDE) or study this [cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) to learn the basics. It is important to realize that your notebook only runs if there are no errors. Hence, if there is an error in one of the R blocks, you can add `eval=FALSE` to `{r}` so that it skips that block and still renders your file.
-
-
 #### Exercise 1
 
 ```{r}

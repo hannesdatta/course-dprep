@@ -81,9 +81,19 @@ For this exercise we have collected the rankings for 2020 which have been split 
 | country_code_3_letter | The three-letter country code | `USA` | 
 | country_number | The official ISO country code | `840` |
 
-
+\
 
 **Exercise 1**  
+Inspect the data sets and describe the structure of the dataset in your own words. What is the target unit of analysis? Do columns seem complete? Are there any values that do not make sense? Are “strings” properly encoded? What are common columns across the three files? Please keep in mind that opening the data into a spreadsheet programme such as Excel only shows you the first 1.05 million records or so (R, however, can load in all the data!).
+
+\
+
+**Solution**  
+The streams data set contains the top 200 songs on given date in a country. The popularity and song id columns have missing values, the ranks are all between 1 and 200, and the number of streams seems is at least 1000. The `country` column can be joined on the `country_code_2_letter` from the country_codes file. Similarly, the `song_id` can be joined on the `song_id` from songs.csv. The `song_name` column has some non-ASCII characters (e.g., `Ë™™Â•Ω‰∏çÂì≠`) here and there. Roughly one sixth of all songs is not associated with any genre tags, 17 songs don't have any song id, and for 9 songs the artist is missing. 
+
+\
+
+**Exercise 2**  
 Merge all three files into a single data frame `df`. Keep in mind the following instructions:
 
 * Use the merge functions of `dplyr` and aim for concise code (tip: look up the DataCamp tutorials for the syntax!).
@@ -110,7 +120,11 @@ df <- streams %>%
 \
 
 #### 1.2 Duplicates
-A track can appear in multiple top 200 lists across countries (e.g., both in the Netherlands and in Belgium) for sustained periods of time (e.g., yesterday and today). For that reason, a `song_id` may occur repeatedly within the dataframe. Yet it can also happen that exactly the same record appears more than once. For example, the scraper that collected the data in the first place might have run twice which duplicated some of the records, or we accidentally made a copy-paste mistake ourselves. Check whether such       duplicates are present in `df` and if so remove them. 
+
+\
+
+**Exercise 3**  
+A track can appear in multiple top 200 lists across countries (e.g., both in the Netherlands and in Belgium) for sustained periods of time (e.g., yesterday and today). For that reason, a `song_id` may occur repeatedly within the dataframe. Yet it can also happen that exactly the same record appears more than once. For example, the scraper that collected the data in the first place might have run twice which duplicated some of the records, or we accidentally made a copy-paste mistake ourselves. Check whether such duplicates are present in `df` and if so remove them. 
 
 **Solution**  
 ```{r eval=FALSE}
@@ -134,7 +148,7 @@ In roughly half of the cases, the `popularity` column is missing which turns out
 The `popularity_filled` column has been added which takes on the value of the `popularity` column if present and otherwise missing data (`NA`) are replaced with their imputed values. In this example, the popularity of song `C` in the United Kingdom has been computed as the median of `{62, 66, 91} = 66`. Note that it does not take into account song `E` in the United Kingdom (different date) and song `A` in the Netherlands (different country).   
 
 
-**Exercise 3**  
+**Exercise 4**  
 Implement this data imputation strategy using the `filter`, `groupby`, and `summarise` functions from the `dplyr` package. We recommend first computing the imputation values (for each country across the days), and then replacing missing values in the `popularity` column with their matching counterparts. Evaluate your results in terms of the pros and cons of this approach and try to come up with an alternative imputation strategy (incl. arguments why you prefer that approach).
 
 **Solution**  
@@ -162,7 +176,7 @@ More likely than not, you have come across the `lm()` (i.e., linear model) funct
 
 \
 
-**Exercise 4**  
+**Exercise 5**  
 1. Study the [documentation](https://stat.ethz.ch/R-manual/R-devel/library/base/html/seq.Date.html) of the `seq` function to create a sequence of dates (see examples at the bottom of the page).
 2. Create a data frame `dates` with two columns: `date` (i.e., the sequence of dates) and `counter` (i.e., a numeric value between 1 and 350). Tip: you may first need to convert the `dates` column into character format (`as.charcter(date)`).
 3. Merge `df` and `dates` and inspect your results (which type of join do you use?)
@@ -196,7 +210,7 @@ print(rank(-rank_example))
 
 \
 
-**Exercise 5**  
+**Exercise 6**  
 Add a `ranking` column to `df` using the `dplyr` package. Although it is unlikely that some tracks have exactly the same number of streams, think about how you will deal with these edge cases (tip: run `?rank` to look up the documentation). Does your ranking always run from 1 to 200? Why is that? Investigate the root cause and fix it! 
 
 ```{r eval=FALSE}
@@ -256,7 +270,7 @@ After some data wrangling we can transform the data into the following format:
 
 \
 
-**Exercise 6**   
+**Exercise 7**   
 As a last step, we call the `dcast()` function of the `reshape2` package to transform the data frame into the desired format (see the documentation for details!). Following these steps, it's your turn to create a function `reshape_songs()` that takes a data frame and a `country` as input and lists the genres (as columns) for all song ids (key; first column) in the respective country according to the specified format above. Note that the genres column may contain duplicates, that is: the same genre appears twice for the same song!
 
 \
