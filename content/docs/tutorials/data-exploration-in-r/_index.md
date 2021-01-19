@@ -26,4 +26,7 @@ draft: false
 
 ## Data Challenge
 - View the [Intro to R - Data Challenge](intro-to-r.html)
-- Download the answer skeleton [file](intro-to-r-skeleton.R) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!
+- Download the answer skeleton [file](intro-to-r-skeleton.Rmd) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!
+
+
+<form method="get" action="intro-to-r.html"> <button type="​submit">Download!</button> </form>

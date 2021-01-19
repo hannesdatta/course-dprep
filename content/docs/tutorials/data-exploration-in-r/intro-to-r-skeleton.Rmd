@@ -1,0 +1,94 @@
+---
+title: "Data Challenge 1"
+author: "YOUR NAME"
+date: "DATE"
+output: html_document
+---
+
+We're going to run our analysis in a R Markdown file which is somewhat similar to a Jupyter Notebook often used for Python scripts. Both tools allow you to combine inline code snippets (the part between ```{r}```) with text in markdown (e.g., `#### Exercise 1`). For now, it's important to realize that once you click on the "Knit" button, this `.Rmd` file is rendered into a HTML page. As you'll see, this creates headers, separates markdown cells from code blocks, makes links clickable, and many other things. Have a watch at this video [tutorial](https://www.youtube.com/watch?v=tKUufzpoHDE) or play round with this [cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) to learn the basics. 
+
+Please keep in mind that your notebook only runs if there are no errors. In case you suspect there might be an error somewhere, you may want to add `eval=FALSE` to `{r}` so that it skips that block and still renders your file.
+
+\
+
+#### Exercise 1
+
+```{r}
+mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
+```
+
+\ 
+
+#### Exercise 2
+
+```{r}
+# your answer
+```
+
+\ 
+
+#### Exercise 3
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 4
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 5
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 6
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 7
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 8
+
+```{r}
+# your answer
+```
+
+\
+
+#### Analysis & write-up of open assignment
+
+```{r}
+# your answer
+```
+
+
+
+
+
+
+
+
+
+
+
+
