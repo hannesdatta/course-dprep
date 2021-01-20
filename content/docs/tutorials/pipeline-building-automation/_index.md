@@ -1,15 +1,13 @@
 ---
-weight: 40
+weight: 30
 title: Pipeline building and automation
 description: Automate workflows and make them reproducible.
 bookCollapseSection: true
-draft: true
+draft: false
 ---
 
 # Tutorial: Pipeline building and automation
 
-## Prerequisites
-* ...
 
 ## Learning goals
 
@@ -20,4 +18,4 @@ draft: true
 
 ## Data Challenge
 - View the [Pipeline Building & Automation - Data Challenge](pipeline-building-automation.html)
-- Download the answer skeleton [file](pipeline-building-automation-skeleton.R) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!
+- Download the zip [file](pipeline-building-automation-skeleton.zip). Then, open the skeleton file in RStudio, fill out your answers, and submit your work!

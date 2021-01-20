@@ -9,8 +9,9 @@ bookCollapseSection: true
 
 ## Self-study and activities
 - Building Blocks
-  - Using the cloud for storage & computation <!--[Using Cloud for Storage & Computation (Tutorial)](docs/tutorials/cloud-storage-computation)-->
-  - Deployment and reporting <!--[Deployment & Reporting](docs/tutorials/deployment-reporting)-->
+  - B1: [Infrastructure: Computation & Storage](docs/tutorials/cloud-storage-computation)
+  - B2: [Regression Analysis](docs/tutorials/regression-analysis)
+  - B3: [Deployment and Reporting](docs/tutorials/deployment-reporting) <!--[Deployment & Reporting](docs/tutorials/deployment-reporting)-->
 
 ## Individual meetings
 - You can schedule appointments with your coach to discuss your progress on the team project.

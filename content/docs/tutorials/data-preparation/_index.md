@@ -23,4 +23,4 @@ draft: false
 
 ## Data Challenge
 - View the [Data Preparation - Data Challenge](data-preparation.html)
-- Download the answer skeleton [file](data-preparation-skeleton.Rmd) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!
+- Download the zip [file](https://drive.google.com/file/d/1dHG-AJj5TSC6jZkcFxXk29-LfpZo13X_/view?usp=sharing). Then, open the skeleton file in RStudio, fill out your answers, and submit your work!

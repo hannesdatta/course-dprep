@@ -19,8 +19,8 @@ This course has been created by [Hannes Datta](https://hannesdatta.com) and [Roy
 
 ## Acknowledgements
 
-This is the first edition of a new course, and it borrows substantial external content. We're grateful to excellent (beginner) tutorials, which students will access through [Datacamp](https://datacamp.com). Furthermore, we rely on the following list of resources: 
-* The Turing Way. (2021). [A How To Guide for Reproducible Data Science](https://the-turing-way.netlify.app/welcome.
+This is the first edition of a new course, and it borrows substantial external content. We're grateful to excellent (beginner) tutorials, which students will access through [Datacamp](https://datacamp.com). Furthermore, we rely on the following list of resources:
+* The Turing Way. (2021). [A How To Guide for Reproducible Data Science](https://the-turing-way.netlify.app/welcome)
 
 ## License
 

@@ -15,6 +15,7 @@ Please keep in mind that your notebook only runs if there are no errors. In case
 
 ```{r}
 mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
+# your answer
 ```
 
 \ 

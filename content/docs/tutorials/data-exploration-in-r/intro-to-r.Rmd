@@ -61,8 +61,6 @@ Inspect the `mobility` data frame and describe the structure of the data set in 
 **Solution**  
 The dataset shows the mobility changes at a national, regional, and city level in the Netherlands for multiple categories of place. The records are sorted by date and are grouped by location (starting with country stats). Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain only empty data, and two other columns (`sub_region_1`, `sub_region_2`) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level)
 
-)
-
 \
 
 **Exercise 2**  
