@@ -1,6 +1,6 @@
 ---
 bookFlatSection: true
-title: "Tutorials and Data Challenges"
+title: "Tutorials & Data Challenges"
 bookHidden: false
 weight: 30
 bookCollapseSection: true

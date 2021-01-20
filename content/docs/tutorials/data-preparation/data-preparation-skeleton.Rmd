@@ -5,6 +5,8 @@ date: "DATE"
 output: html_document
 ---
 
+\
+
 #### Exercise 1
 
 ```{r}
@@ -13,11 +15,15 @@ output: html_document
 # your answer
 ```
 
+\
+
 #### Exercise 2
 
 ```{r}
 # your answer
 ```
+
+\
 
 #### Exercise 3
 
@@ -25,11 +31,15 @@ output: html_document
 # your answer
 ```
 
+\
+
 #### Exercise 4
 
 ```{r}
 # your answer
 ```
+
+\
 
 #### Exercise 5
 
@@ -37,11 +47,15 @@ output: html_document
 # your answer
 ```
 
+\
+
 #### Exercise 6
 
 ```{r}
 # your answer
 ```
+
+\
 
 #### Exploratory Analysis
 

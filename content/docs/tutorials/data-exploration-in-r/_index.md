@@ -6,7 +6,7 @@ bookCollapseSection: true
 draft: false
 ---
 
-# Tutorial: Intro to R
+# Tutorial: Data exploration in R
 
 ## Prerequisites
 * [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
@@ -26,7 +26,4 @@ draft: false
 
 ## Data Challenge
 - View the [Intro to R - Data Challenge](intro-to-r.html)
-- Download the answer skeleton [file](intro-to-r-skeleton.Rmd) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!
-
-
-<form method="get" action="intro-to-r.html"> <button type="​submit">Download!</button> </form>
+- Download the zip [file](intro-to-r-skeleton.zip). Then, open the skeleton file in RStudio, fill out your answers, and submit your work!
