@@ -419,9 +419,10 @@ summary {
 <pre class="r"><code> mobility &lt;- read.csv(&quot;2020_NL_Region_Mobility_Report.csv&quot;, sep=&quot;,&quot;)</code></pre>
 <p><br />
 <strong>Exercise 1</strong><br />
-Inspect the <code>mobility</code> data frame and describe the structure of the dataset in your own words.</p>
+Inspect the <code>mobility</code> data frame and describe the structure of the data set in your own words. What is the target unit of analysis? How are the measures grouped? How are variables operationalized? Do columns seem complete? Are there any values that do not make sense? Are “strings” properly encoded?</p>
 <p><strong>Solution</strong><br />
-The dataset shows the mobility changes at a national, regional, and city level in the Netherlands for multiple categories of place. The records are sorted by date and are grouped by location (starting with country stats). Moreover, three of the columns (<code>metro_area</code>, <code>iso_3166_2_code</code>, <code>census_flips_code</code>) contain empty data.</p>
+The dataset shows the mobility changes at a national, regional, and city level in the Netherlands for multiple categories of place. The records are sorted by date and are grouped by location (starting with country stats). Moreover, three of the columns (<code>metro_area</code>, <code>iso_3166_2_code</code>, <code>census_flips_code</code>) contain only empty data, and two other columns (<code>sub_region_1</code>, <code>sub_region_2</code>) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level)</p>
+<p>)</p>
 <p><br />
 </p>
 <p><strong>Exercise 2</strong><br />
