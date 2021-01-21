@@ -1,5 +1,5 @@
 ---
-title: "Data Challenge 1"
+title: "Data Exploration - Data Challenge"
 author: "YOUR NAME"
 date: "DATE"
 output: html_document
@@ -81,15 +81,3 @@ mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
 ```{r}
 # your answer
 ```
-
-
-
-
-
-
-
-
-
-
-
-

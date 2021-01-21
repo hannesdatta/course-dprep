@@ -543,7 +543,7 @@ While you can add a variety of files to your Github repository, Git is a tool fo
 \
 
 #### 2.7 Wrap-Up
-Throughout this section, you have learned a variety of Git commands and workflows. If you put them into practise, you never have to worry about losing or overwriting your work. All your changes are captured and you go always back to a previous state. And now that you have an understanding of forking and pull requests, we highly encourage you to take a look at some [popular Gitub](https://github.com/trending) repositories and maybe even make some contributions yourself!
+Throughout this section, you have learned a variety of Git commands and workflows. If you put them into practice, you never have to worry about losing or overwriting your work. All your changes are captured, and you can always go back to a previous state. And now that you have an understanding of forking and pull requests, we highly encourage you to take a look at some [popular Gitub](https://github.com/trending) repositories and maybe even make some contributions yourself!
 
 \
 
