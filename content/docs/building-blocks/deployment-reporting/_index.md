@@ -16,6 +16,9 @@ draft: false
 * ...
 
 
+
+<!--
 ## Data Challenge
 - View the [Deployment & Reporting - Data Challenge](deployment-reporting.html)
 - Download the zip [file](deployment-reporting-skeleton.zip). Then, open the skeleton file in RStudio, fill out your answers, and submit your work!
+-->

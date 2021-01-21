@@ -18,6 +18,8 @@ draft: false
 * Quantify uncertainty with confidence intervals
 * Examine the impact of categorical data and interactions
 
+<!--
 ## Data Challenge
 - View the [Regression Analysis - Data Challenge](regression-analysis.html)
 - Download the zip [file](regression-analysis-skeleton.zip). Then, open the skeleton file in RStudio, fill out your answers, and submit your work!!
+-->
