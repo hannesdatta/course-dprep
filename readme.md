@@ -1,6 +1,6 @@
 # Course page for "Data Preparation and Workflow Management" (dPrep)
 
-This is the course page for "Data Preparation and Workflow Management (dPrep)", a new course taught in the Marketing Analytics Curriculum at [Tilburg University](https://tilburguniversity.edu) by [dr. Hannes Datta](https://hannesdatta.com) in Block 3 (February-April) 2021.
+This is the course page for "Data Preparation and Workflow Management (dPrep)", a new course taught in the Marketing Analytics curriculum at [Tilburg University](https://tilburguniversity.edu) by [dr. Hannes Datta](https://hannesdatta.com) in Block 3 (February-April) 2021.
 
 ## Using the course website and glossary
 
@@ -12,7 +12,7 @@ This is the source code of the website, and not the website itself. If you're lo
 
 This repository hosts the source code of the website, which you are invited to contribute to.
 
-New to Git and Markdown? Then please see our sister site at http://tilburgsciencehub.com to learn how to contribute.
+New to Git and Markdown? Then please see our sister site at http://tilburgsciencehub.com to learn how to contribute, or take a look at the [version control](https://github.com/setina5353/course-dprep/tree/dev/content/docs/tutorials/version-control) tutorial in this repository.
 
 ### Contribute to the site!
 
