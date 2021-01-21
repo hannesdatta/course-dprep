@@ -1,6 +1,6 @@
 ---
 title: "Support"
-bookHidden: false
+bookCollapseSection: true
 weight: 6
 description: " "
 ---
@@ -16,8 +16,8 @@ For quick questions, please use *WhatsApp* to get in touch with us (+31 13 466 8
 - Informal language is perfectly fine.
 - Be prepared that we call you back.
 
-**WhatsApp**  
+**WhatsApp**
 +31 13 466 8938
 
-**Email**  
+**Email**
 odcm@uvt.nl
