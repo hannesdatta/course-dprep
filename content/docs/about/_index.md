@@ -21,6 +21,9 @@ This course has been created by [Hannes Datta](https://hannesdatta.com) and [Roy
 
 This is the first edition of a new course, and it borrows substantial external content. We're grateful to excellent (beginner) tutorials, which students will access through [Datacamp](https://datacamp.com). Furthermore, we rely on the following list of resources:
 * The Turing Way. (2021). [A How To Guide for Reproducible Data Science](https://the-turing-way.netlify.app/welcome)
+* Colt Steele. (2020). [Introduction to Git](https://www.notion.so/Introduction-to-Git-ac396a0697704709a12b6a0e545db049)
+* Colt Steele. (2020). [Introduction to Github](https://www.notion.so/Introduction-to-GitHub-202af6f64bbd4299b15f238dcd09d2a7)
+* Data School. (2014). [Version Control with Git & Github](https://www.youtube.com/watch?v=xKVlZ3wFVKA&list=PL5-da3qGB5IBLMp7LtN8Nc3Efd4hJq0kD)
 
 ## License
 
