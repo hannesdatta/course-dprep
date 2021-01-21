@@ -1,11 +1,13 @@
 ---
 weight: 2
-title: Week 1) Data exploration in R
+title: Week 1) Data preparation I
 description: Learn the basics of R and RStudio, and use your skills to explore datasets.
 bookCollapseSection: true
 ---
 
-# Week 1: Data exploration in R
+# Week 1: Data preparation I
+
+__Exploration in R & principles of workflow management__
 
 ## Live stream 1
 - Introduction to the course
