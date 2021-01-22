@@ -2,7 +2,7 @@
 resources/*
 public/*
 .ipynb_checkpoints/
-*.csv
+
 content/docs/tutorials/data-exploration-in-r/.Rhistory
 content/docs/tutorials/data-exploration-in-r/.Rhistory
 content/docs/tutorials/data-preparation/.Rhistory

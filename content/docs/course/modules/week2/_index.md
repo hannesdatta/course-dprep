@@ -5,7 +5,7 @@ description: Use tidyverse and dplyr to structure your data for analysis, and ge
 bookCollapseSection: true
 ---
 
-# Week 2: Data preparation II
+# Week 2: Data preparation
 
 __Engineer data sets for analysis__
 
