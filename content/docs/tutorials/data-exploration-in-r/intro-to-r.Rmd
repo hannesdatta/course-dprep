@@ -329,5 +329,7 @@ The aim of this assignment is to further explore the data on your own. Spot inte
 
 - How does your own place of residence relate to the rest of the Netherlands? (e.g., create a ranking!)
 
+- Extract the Google Mobility statistics for *a different country*, and re-process your RMarkdown. Compare the Covid stats for these two countries.
+
 - Of course, you can come up with your own suggestions!
 
