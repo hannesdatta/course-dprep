@@ -13,6 +13,7 @@ __Obtain business and data understanding, explore data in R, and familiarize you
 - Introduction to the course
 
 ## Self-study and activities
+- Starting your week
 - Business and Data Understanding
   - Overview of data used in Marketing Analytics (Wedel and Kannan 2016)
   - Data quality checks (theory: Mela 2011, checklist)
