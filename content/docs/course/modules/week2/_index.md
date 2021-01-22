@@ -1,6 +1,6 @@
 ---
 weight: 3
-title: Week 2) Data preparation II
+title: Week 2) Data preparation
 description: Use tidyverse and dplyr to structure your data for analysis, and generate data reports using R Markdown.
 bookCollapseSection: true
 ---

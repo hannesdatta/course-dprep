@@ -1,11 +1,11 @@
 ---
 weight: 2
-title: Week 1) Data preparation I
+title: Week 1) Business & Data Understanding
 description: Learn the basics of R and RStudio, and use your skills to explore datasets.
 bookCollapseSection: true
 ---
 
-# Week 1: Data preparation I
+# Week 1: Business and Data Understanding
 
 __Exploration in R & principles of workflow management__
 
