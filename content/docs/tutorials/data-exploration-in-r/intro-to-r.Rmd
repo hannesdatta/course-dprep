@@ -1,14 +1,21 @@
 ---
-title: "Intro to R (dPrep)"
+title: "Data exploration in R (dPrep)"
 author: "Data Challenge 1"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyverse)
+
 ```
 
-*In this tutorial, we're going to explore one of the data sets underlying the paper that estimates the COVID-19 impact on music consumption ([Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085)). Along the way, you'll practice the skills you have been equipped with in the DataCamp tutorials.*
+*In this data challenge, we'll walk you through the steps of exploring a data set and obtaining an understanding about the setting in which data was collected.*
+
+*We've chosen a data set used by [Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085), in which the authors estimate the effect that COVID-19 had on music consumption on Spotify!*
+
+*Along the way, you'll practice the skills you have been equipped with in the DataCamp tutorials.*
 
 
 --- 
@@ -21,13 +28,17 @@ knitr::opts_chunk$set(echo = TRUE)
 --- 
 
 ### Learning Objectives
-* Set-up R and R Studio
-* Read text files into data frames
-* Create various data types (variable, vector, matrix, dataframe)
-* Manipulate data frames (create, drop, and rename columns)
-* Filter data frames (by index, logical expression, missing records)
-* Analyze data (summary statistics, mathematical operations, sort data, plots)
-* Apply basic programming concepts (if-else statements, for-loop, functions )
+- Setup R and R Studio
+- Familiarize yourself with the basics in R
+  - Read data from text files into data frames in R
+  - Create and handle various data types in R (e.g., vector, matrix, dataframe)
+  - Change the content of data frames (e.g., create, drop, or rename columns)
+  - Filter data in data frames (e.g., by index, logical expressions, missing records, etc.)
+  - Apply basic programming concepts (if-else statements, for-loop, functions )
+- Assess data quality and obtain data understanding
+  - Calculate with data (e.g., summing up numbers)
+  - Generate summary statistics
+  - Generate plots
 
 --- 
 
@@ -44,34 +55,43 @@ For technical issues outside of scheduled classes, please check the [support sec
 
 ---
 
-### 1. Loading the Data
-[Google’s COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) provide information on
-daily percentage changes in the number of visits by place category compared with the
-corresponding day of the week during the 5-week period between January 3 and February 6 in 2020. The data consists of 112K rows that cover six categories of place: retail & recreation, grocery & pharmacy, parks, transit stations, workplaces, and residence. 
+### 1. Loading and inspecting the Data
+[Google’s COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) are used extensively by governments and researchers to get an understanding about the pandemic's effect on social life and the economy. In the data, Google provides information on
+*daily percentage changes* in the number of visits by place category, compared with the
+corresponding day of the week during the 5-week (pre-Covid) period between January 3 and February 6, 2020. The data consists of 112,000 rows that cover six categories of places: retail & recreation, grocery & pharmacy, parks, transit stations, workplaces, and residence. 
 
-With the help of the `read.csv()` function, we have imported the mobility data for the Netherlands into R. Download this [data set](https://dprep.hannesdatta.com/docs/course/support), create a new R script in the same directory, and read in the data. 
+With the help of the `read.csv()` function, we can now import the mobility data for the Netherlands into R. Download this [data set from Google](https://www.google.com/covid19/mobility/) (you have to unzip it first!), create a *new R script* in the same directory, and read in the data. 
 
 ```{r load_data}
- mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
+mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
 ```
 \
 **Exercise 1**     
-Inspect the `mobility` data frame and describe the structure of the data set in your own words. What is the target unit of analysis? How are the measures grouped? How are variables operationalized? Do columns seem complete? Are there any values that do not make sense? Are “strings” properly encoded?
+Inspect the `mobility` data frame, and describe the *structure of the data set* in your own words. What is the unit of analysis at which the data is provided ("what's the grouping variable?"). How is the data sorted (if at all)? How are variables/metrics operationalized? Are the values contained in each column complete? Do these values all make sense? Are “strings” properly encoded (i.e., do they contain any weird characters, or do they seem appropriately rendered so you can read them)?
 
 **Solution**  
-The dataset shows the mobility changes at a national, regional, and city level in the Netherlands for multiple categories of place. The records are sorted by date and are grouped by location (starting with country stats). Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain only empty data, and two other columns (`sub_region_1`, `sub_region_2`) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level)
+The dataset shows the mobility changes at a *national, regional, and city level* in the Netherlands, for multiple categories of places. The records are sorted by date, and are grouped by location (starting with country stats). Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain only empty data, and two other columns (`sub_region_1`, `sub_region_2`) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level).
 
 \
 
-**Exercise 2**  
-The data shows the percentage changes in visits to categorized places compared to a normal value for that day of the week (i.e., baseline). The baseline day is the median value between January 3rd and February 6th, 2020. In other words, all reported numerical values are relative to the first few weeks in 2020. 
+**Exercise 2**     
+Suppose you'd like to extract data for the Netherlands as a whole (i.e., NOT at the regional or city level), how would you have to filter for it?
+
+**Solution**  
+```{r, echo = TRUE, results = 'hide'}
+mobility[mobility$sub_region_1==''&mobility$sub_region_2=='',]
+```
+
+\
+**Exercise 3**  
+The data shows the percentage changes in visits to categorized places, compared to a normal value for that day of the week (i.e., baseline). The baseline day is the median value between January 3 and February 6, 2020. In other words, all reported numerical values are *relative to the first few weeks of 2020*. 
 
 Think of one or more problems that can arise as a result of this methodology (even better if you come up with concrete examples that illustrate this)! 
 
 **Solution**  
-- It doesn't account for seasonality (e.g., park visits increases as the weather improves)  
+- It doesn't account for seasonality (e.g., park visits increase as the weather improves)  
 - In the Netherlands, we experienced a relatively mild winter period throughout 2020 (e.g., the average temperature in January 2020 was the 3rd highest ever). As a result, the time distribution of certain categories (e.g., parks, residence) may not be representative for a typical year. 
-
+- Probably a lot of other reasons! Try to think about more!
 \
 
 ---
@@ -81,21 +101,30 @@ Think of one or more problems that can arise as a result of this methodology (ev
 \
 
 #### Drop Columns
-To make working with the data frame more manageable, we only concentrate on the columns that matter. Therefore, we drop the columns we don't need. More specifically, we overwrite the dataframe with a selection of necessary columns (e.g., `df = df[,c("col_1", "col3", "col"4", "col5", ...)])`).
+To make working with the data frame more manageable, we drop columns we don't need. More specifically, we overwrite the dataframe with a selection of necessary columns (e.g., `df = df[,c("col_1", "col3", "col"4", "col5", ...)])`).
 
 \
-**Exercise 3**  
-Drop the columns `country_region_code`, `metro_area`, `iso_3166_2_code` and `census_flips_code` from the `mobility` dataframe. How many columns do you end up with?
+**Exercise 4**  
+Drop the columns `country_region_code`, `metro_area`, `iso_3166_2_code` and `census_fips_code` from the `mobility` dataframe. How many columns do you end up with?
 
-```{r}
- # solution
- mobility = mobility[, c(2:4, 8:14)]
+
+**Solution**
+```{r, echo = TRUE, results = 'hide'}
+# bad solution - think about WHY?
+mobility[, c(2:4, 8:14)]
+
+# good solution
+cols_to_drop = c('country_region_code', 'metro_area', 'iso_3166_2_code', 'census_fips_code')
+mobility = mobility[, which(!colnames(mobility)%in%cols_to_drop)]
+head(mobility)
 ```
 
 \
 
 #### Rename Columns
-As you can see below, some of the remainingcolumn names of `mobility` are rather long (or can be described more precisely). 
+We continue with the data frame `mobility`.
+
+As you can see below, some of the remaining column names of `mobility` are rather long (or can be described more precisely). 
 
 ```{r column_names}
  # current column names
@@ -106,11 +135,11 @@ You can rename a column of a data frame (`df`) by overwriting the current column
 
 \
 
-**Exercise 4**  
+**Exercise 5**  
 Trim the long column names (e.g., `retail_and_recreation_percent_change_from_baseline` becomes `retail_and_recreation`) and replace `sub_region_1` and `sub_region_2` by `province` and `city`, respectively. 
 
+**Solution**
 ```{r}
-# solution
 colnames(mobility) = c("country_region", 
                        "province",
                        "city", 
@@ -121,6 +150,7 @@ colnames(mobility) = c("country_region",
                        "transit_stations", 
                        "workplaces", 
                        "residential")
+
 ```
 
 \
@@ -135,12 +165,11 @@ mobility$date = as.Date(mobility$date)
 
 \
 
-**Exercise 5**  
+**Exercise 6**  
 What's the first and last date in our data frame? Tip: you can use `min()` and `max()` now that the date column has been converted into date format!
 
-**Solution**  
+**Solution**
 The data runs from  February 15 2020 (`min(mobility$date)`) to January 5 2021 (`max(mobility$date)`).
-
 
 \
 
@@ -149,18 +178,23 @@ The data runs from  February 15 2020 (`min(mobility$date)`) to January 5 2021 (`
 To get a proxy for overall movement trends, we create another column named `avg_mobility` which is the row mean of `retail_and recreation`, `grocery_and_pharmacy`, `parks`, `transit_stations`, `workplaces`, and `residential`. 
 
 
-**Exercise 6**  
+**Exercise 7**  
 Add the `avg_mobility` column to your dataset (keep in mind that the data frame may contain one or more missing values). You may want to look up the documentation of the `na.rm` parameter. 
 
 
 **Solution**  
 ```{r}
-# solution 1 (most elegant)
+# solution (elegant, but not sustainable)
 mobility$avg_mobility = rowMeans(mobility[,5:ncol(mobility)], na.rm = TRUE)
+
+# solution (most elegant and sustainable)
+selected_columns = grep('retail|grocery|park|transit|work|resident', colnames(mobility), value=T)
+mobility$avg_mobility = rowMeans(mobility[,selected_columns], na.rm = TRUE)
+
 ```
 
 ```{r eval=FALSE}
-# solution 2 (less elegant - and far less efficient) - do you notice the difference in running time?  
+# solution (least elegant - and far less efficient) - do you notice the difference in running time?  
 
 for(counter in 1:nrow(mobility)){
   row = mobility[counter, ]
@@ -172,6 +206,7 @@ for(counter in 1:nrow(mobility)){
                                              row$residential), 
                                            na.rm=TRUE)
 }
+
 ```
 
 \
@@ -189,12 +224,12 @@ For analysis purposes, we prefer to split up the data frame into country, provin
 
 \
 
-**Exercise 7**  
+**Exercise 8**  
 Create three subsets (`country`, `province`, `city`) of `mobility` according to the descriptions above. To filter for empty strings (`""`) you can use the boolean expression `df$column == ""`.
 
 
+**Solution**
 ```{r}
-# solution
 country = mobility[(mobility$city == "") & (mobility$province == ""),]
 province = mobility[(mobility$city == "") & (mobility$province != ""),]
 city = mobility[mobility$city != "",]
@@ -202,7 +237,7 @@ city = mobility[mobility$city != "",]
 
 \
 
-**Exercise 8**  
+**Exercise 9**  
 Write a function `missing_values()` that takes in a dataframe (`df`) and a vector of columns (`cols`) and calculates the percentage of missing values for each column. Using this function, fill in the table below and comment on your findings. 
 
 | subset | retail_and_recreation | grocery_and_pharmacy | parks | transit_stations | workplaces | residential | 
@@ -211,9 +246,9 @@ Write a function `missing_values()` that takes in a dataframe (`df`) and a vecto
 | `province` | | | | | | | 
 | `city` | |  | | | | |
 
+**Solution**
 ```{r eval=FALSE}
-# solution 
-
+# less elegant solution
 missing_values <- function(df, cols){
   perc = NULL
   for(column in cols){
@@ -222,9 +257,20 @@ missing_values <- function(df, cols){
   return(perc)
 }
 
-missing_values(country, 5:ncol(country))
-missing_values(province, 5:ncol(province))
-missing_values(city, 5:ncol(city))
+# obtain column indexes
+cols = grep('retail|grocery|park|transit|work|resident', colnames(mobility), value = T)
+
+missing_values(country, cols)
+missing_values(province, cols)
+missing_values(city, cols)
+
+# more elegant solution
+missing_values <- function(df, cols) {
+  sapply(cols, function(x) 100*length(which(is.na(df[,x])))/nrow(df))
+}
+missing_values(country, cols)
+missing_values(province, cols)
+missing_values(city, cols)
 
 ```
 
@@ -283,4 +329,5 @@ The aim of this assignment is to further explore the data on your own. Spot inte
 
 - How does your own place of residence relate to the rest of the Netherlands? (e.g., create a ranking!)
 
-- Your own suggestions!
+- Of course, you can come up with your own suggestions!
+
