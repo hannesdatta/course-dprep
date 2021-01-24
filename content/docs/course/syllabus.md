@@ -79,24 +79,37 @@ Work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own compute
 
 ## Grading
 
-- Group project (4-5 team members) with self- and peer assessment [^2] (40%)
+- Group project (4-5 team members) with self- and peer assessment (see below) (40%)
 <!-- submitted as a GitHub repository (during the course); building a dataset-->
 - Computer exam (60%)
+
+
+Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5).
+
+### Team project
+
+Students will submit a final team project at the end of the course.
+
+Students' individual grades will be corrected upwards or downwards, depending on
+- their individual contribution to the overall team effort (measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions),
+- whether they have provided written feedback to team members at least once during the course, and
+- students' individual investment in developing the technical skills required to contribute meaningfully to the project (measured by means of students' individual submissions of answers to the tutorials/data challenges).
+
+<!--
+*, i.e., students' grades will be corrected upwards or downwards, depending on their own contribution to the overall team effort. Students provide written feedback to each other once during the course, and score themselves and their team members on, among others, the quantity and quality of their contributions.
+-->
+
+<!-- submitted as a GitHub repository (during the course); building a dataset-->
 <!--[or, take-home exam?] (can do 40%?) with a passing threshold?-->
 <!--
 - Share progress and learnings (e.g., open science contributions in the form of course-relevant contributions in the form of pull requests to GitHub, maintaining a public FAQ/blog, sharing one's progress with the group) (20%) [[[???]]]
 -->
 
-Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5).
-
-[^2]: The team project is subject to *self- and peer assessment*, i.e., students' grades will be corrected upwards or downwards, depending on their own contribution to the overall team effort. Students provide written feedback to each other once during the course, and score themselves and their team members on, among others, the quantity and quality of their contributions.
-
-
 ## Format
 
-- Hybrid format: Jupyter notebooks or pre-recorded web clips for preparation and self-paced lab sessions; live streams on Zoom for feedback and joint coding sessions (recordings will be made available)
+- Hybrid format: R notebooks or lessons on Datacamp.com for preparation and self-paced lab sessions; live streams for feedback and joint coding sessions (recordings will be made available)
 - Modern content: copy-paste code snippets and demos from the course page, access code on GitHub, start projects with workflow templates
-- Interactive, immersive and student-centred: live coding, hackathon, debates, working with real data sets
+- Interactive, immersive and student-centred: live coding, hackathon, working with real data sets <!--debates, -->
 
 <!--, simulations, hackathon-->
 <!-- work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own computer--; Coding Dojo student-=led analysis; while sharing screens-->
