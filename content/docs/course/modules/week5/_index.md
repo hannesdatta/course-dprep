@@ -8,6 +8,9 @@ draft: true
 
 # Week 5: Version control <!--+ feedback-->
 
+## Kick-starting your week
+- We'll post a clip to get you started for the week.
+
 ## Self-study and activities
 - [Version Control (Tutorial & Data Challenge 4)](docs/tutorials/version-control)
 

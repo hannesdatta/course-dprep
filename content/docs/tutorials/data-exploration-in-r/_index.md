@@ -29,7 +29,7 @@ draft: false
 ## Getting started
 
 ### 1) Develop your R skills
-* [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r) (chapters 1-4; 5 is optional)
+* [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r) (about 4-6 hours)
 
 ### 2) Work on Data Challenge #1
 - View the [Data exploration in R - Data Challenge](intro-to-r.html)
