@@ -3,7 +3,7 @@ weight: 70
 title: Regression Analysis
 description: Build linear models to draw inferences from your datasets
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Tutorial: Regression Analysis

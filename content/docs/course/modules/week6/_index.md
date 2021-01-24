@@ -3,6 +3,7 @@ weight: 50
 title: Week 6-8) Project phase
 description: Apply your learnings in a team project!
 bookCollapseSection: true
+draft: true
 ---
 
 # Week 6-8: Project phase
@@ -19,5 +20,7 @@ bookCollapseSection: true
 ## Live stream 6
 - Course summary and exam preparation (in week 8)
 
+<!--
 <br>
 {{< button relref="week5" >}}Previous week{{< /button >}}
+-->

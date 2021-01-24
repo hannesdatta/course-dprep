@@ -16,6 +16,3 @@ Are you a complete novice to using R? Then please allot sufficient time *before 
 <!-- ## Register for *Pulse*
 
 -->
-
-<br>
-{{< button relref="week1" >}}Next week{{< /button >}}

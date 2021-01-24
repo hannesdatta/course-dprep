@@ -3,7 +3,7 @@ weight: 20
 title: Data preparation in R
 description: Apply data wrangling techniques in tidyverse and dplyr, and prepare your data set for analysis.
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Tutorial: Data preparation in R
@@ -23,4 +23,4 @@ draft: false
 
 ## Data Challenge
 - View the [Data Preparation - Data Challenge](data-preparation.html)
-- Download the zip [file](https://drive.google.com/file/d/1dHG-AJj5TSC6jZkcFxXk29-LfpZo13X_/view?usp=sharing). Then, open the skeleton file in RStudio, fill out your answers, and submit your work!
+- Download the answer skeleton [file](data-preparation-skeleton.Rmd) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work!

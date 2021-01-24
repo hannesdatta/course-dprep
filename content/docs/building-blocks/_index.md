@@ -3,12 +3,13 @@ bookFlatSection: true
 title: "Building Blocks"
 bookHidden: false
 weight: 40
-bookCollapseSection: true
+bookCollapseSection: false
+draft: false
 
 ---
 
 # Building Blocks
 
-A selection of materials you may want to incorporate into your team project:
+Building blocks are code snippets that we will make available throughout the course, and that you can use for your team projects.
 
 {{<section>}}

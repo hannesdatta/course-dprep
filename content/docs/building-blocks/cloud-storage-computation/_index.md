@@ -3,7 +3,7 @@ weight: 60
 title: Infrastructure - Cloud & Storage
 description: Learn the fundamentals of cloud computing
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Building Block: Infrastructure - Cloud & Storage

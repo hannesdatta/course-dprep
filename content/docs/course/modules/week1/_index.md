@@ -3,6 +3,7 @@ weight: 2
 title: Week 1) Data Understanding & Workflow Principles
 description: Learn the basics of R and RStudio, and use your skills to explore datasets.
 bookCollapseSection: true
+draft: true
 ---
 
 # Week 1: Data Understanding & Workflow Principles
@@ -27,8 +28,7 @@ __Obtain business and data understanding, explore data in R, and familiarize you
 ## Live stream 2
 - Q&A on Data Challenge 1
 
-<br>
-{{< button relref="week2" >}}Next week{{< /button >}}
+
 
 <!--
 

@@ -1,15 +1,13 @@
 ---
 weight: 3
-title: "Team Project"
+title: "Team Project Description"
 bookCollapseSection: true
 description: " "
+draft: true
 ---
 
 # Team Project
 
-In weeks 6-8, you will work on a team project. Details will be made available during the course.
-
-<!--
 ## Motivation
 
 Plan and execute a data preparation workflow. This is where things get together.
@@ -44,4 +42,3 @@ They can either
 
 
 ## Tasks
--->

@@ -8,9 +8,12 @@ description: " "
 
 # Final exam
 
-## Structure
+<!--## Structure
+-->
+The exam covers both a theoretical and practical component.
+Details will be made available soon.
 
-The exam covers both a theoretical and practical component. The former involves a set of multiple choice questions to be completed on TestVision. The latter tests students' ability to ...
+<!-- The former involves a set of multiple choice questions to be completed on TestVision. The latter tests students' ability to ...
 
 #### 1. Theory (50%)
 - Mix of multiple choice and open questions
