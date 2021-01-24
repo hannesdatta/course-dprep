@@ -12,10 +12,9 @@ The course runs for a duration of eight weeks, which consists of
 - five weeks dedicated to skill-building, and
 - three weeks dedicated to working on a team project.
 
-Login credentials for the live streams will be made available on the *Canvas page of this course for students from Tilburg University*, and via email to remaining students.
+Login credentials for the live streams will be made available on the *Canvas page of this course for students from Tilburg University*.
 
-Click on the course week to find out what is expected from you for each module.
-
+Click on the course week to find out what is expected from you for each module. Note that links for which content has not been published yet will not work.
 
 Course week|Live stream|Date|Time
 |:-:|---------|-------------|--------------------|
