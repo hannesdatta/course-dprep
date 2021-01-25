@@ -1,9 +1,10 @@
 .DS_Store
 resources/*
 public/*
-.ipynb_checkpoints/
-
+**/.ipynb_checkpoints
+**/reveal.js
 content/docs/tutorials/data-exploration-in-r/.Rhistory
 content/docs/tutorials/data-exploration-in-r/.Rhistory
 content/docs/tutorials/data-preparation/.Rhistory
 content/docs/tutorials/version-control/version-control.html
+~$**
