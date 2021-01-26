@@ -3,7 +3,7 @@ bookFlatSection: true
 title: "Building Blocks"
 bookHidden: false
 weight: 40
-bookCollapseSection: false
+bookCollapseSection: true
 draft: false
 
 ---
