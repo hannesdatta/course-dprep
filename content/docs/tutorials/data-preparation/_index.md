@@ -3,7 +3,7 @@ weight: 20
 title: Data preparation in R
 description: Apply data wrangling techniques in tidyverse and dplyr, and prepare your data set for analysis.
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Tutorial: Data preparation in R
