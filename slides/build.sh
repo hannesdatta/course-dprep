@@ -5,8 +5,8 @@ mkdir gen
 #cp -R reveal-old gen/reveal-old
 
 # Declare an array of string with type
-declare -a FileNames=("coursesetup" "theory" "practice" )
-declare -a OutputNames=("01_coursesetup" "02_workflows" "03_exercises" )
+declare -a FileNames=("dprep" "coursesetup" "theory" "practice" )
+declare -a OutputNames=("00_dprep" "01_coursesetup" "02_workflows" "03_exercises" )
 
 # Iterate the string array using for loop
 for i in "${!FileNames[@]}"; do
@@ -21,6 +21,9 @@ for i in "${!FileNames[@]}"; do
    #mv ${OutputNames[i]}.html gen/${OutputNames[i])}.html
 
 done
+
+cp -r reveal.js gen/reveal.js
+cp *.png gen
 
 #pandoc -t revealjs -s -o 01_course.html coursesetup.md -V revealjs-url=./reveal-old -V theme=white-tsh
 #pandoc -t revealjs -s -o 02_theory.html theory.md -V revealjs-url=./reveal-old -V theme=white-tsh
