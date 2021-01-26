@@ -1,5 +1,5 @@
 ---
-title: "Data Challenge 1 (Data Exploration)"
+title: "Data Exploration - Practice"
 author: "YOUR NAME"
 date: "DATE"
 output: html_document
@@ -90,20 +90,10 @@ mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
 # your answer
 ```
 
-\
-
-#### Analysis & write-up of open part of the challenge
-
-Some text here.
+#### Exercise 11
 
 ```{r}
 # your answer
 ```
 
-Some in-line text here: The result of `1+1` is (`r 1+1`).
 
-```{r}
-# your answer
-```
-
-[...]
