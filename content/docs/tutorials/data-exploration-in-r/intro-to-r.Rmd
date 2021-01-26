@@ -11,7 +11,7 @@ library(tidyverse)
 
 ```
 
-*In this data challenge, we'll walk you through the steps of exploring a data set and obtaining an understanding about the setting in which data was collected.*
+*In this data challenge, we'll walk you through the steps of exploring a data set and obtaining an understanding about the setting in which data was collected. After completion of the challenge, you'll be able to produce an RMarkdown document, which you can render as a PDF or HTML document (e.g., to show others, initiate a discussion about data, etc.).*
 
 *We've chosen a data set used by [Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085), in which the authors estimate the effect that COVID-19 had on music consumption on Spotify!*
 
@@ -22,8 +22,8 @@ library(tidyverse)
 
 ### Prerequisites
 * [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
-* [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) (chapter 1, 2, 3, 4, 5)
-* [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2, 3)
+* [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r)
+* [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r)
 
 --- 
 
@@ -35,17 +35,17 @@ library(tidyverse)
   - Change the content of data frames (e.g., create, drop, or rename columns)
   - Filter data in data frames (e.g., by index, logical expressions, missing records, etc.)
   - Apply basic programming concepts (if-else statements, for-loop, functions )
-- Assess data quality and obtain data understanding
+- Assess data quality and obtain an understanding for the data and business setting
   - Calculate with data (e.g., summing up numbers)
   - Generate summary statistics
   - Generate plots
+  - Produce an RMarkdown document (HTML, PDF)
 
 --- 
 
 
 ### Submission 
-Students are expected to hand in a digital copy of their answers and code according to the [submission guidelines](https://dprep.hannesdatta.com/#submission-guidelines). 
-
+Students can submit their answers and code on Canvas as one component of the self- and peer assessment ("proof of individual investment in developing technical skills"). [More details on self- and peer assessment is available in the course syllabus](https://dprep.hannesdatta.com/docs/course/syllabus#team-project).
 
 --- 
 
@@ -55,41 +55,88 @@ For technical issues outside of scheduled classes, please check the [support sec
 
 ---
 
-### 1. Loading and inspecting the Data
+### 1. Loading and Inspecting the Data
+
 [Google’s COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) are used extensively by governments and researchers to get an understanding about the pandemic's effect on social life and the economy. In the data, Google provides information on
 *daily percentage changes* in the number of visits by place category, compared with the
 corresponding day of the week during the 5-week (pre-Covid) period between January 3 and February 6, 2020. The data consists of 112,000 rows that cover six categories of places: retail & recreation, grocery & pharmacy, parks, transit stations, workplaces, and residence. 
 
 With the help of the `read.csv()` function, we can now import the mobility data for the Netherlands into R. Download this [data set from Google](https://www.google.com/covid19/mobility/) (you have to unzip it first!), create a *new R script* in the same directory, and read in the data. 
 
+Tip: If R doesn't find your data, set your working directory properly (we typically click on SESSION --> SET WORKING DIRECTORY --> TO SOURCE FILE LOCATION). Hardcoding directories in your code (e.g., with `setwd()`) is not good practice.
+
 ```{r load_data}
 mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
+
+# Alternatively, you can use the data set stored on the course website.
+# mobility <- read.csv('https://media.githubusercontent.com/media/hannesdatta/course-dprep/master/content/docs/tutorials/data-exploration-in-r/2020_NL_Region_Mobility_Report.csv', sep = ',')
 ```
 \
 **Exercise 1**     
-Inspect the `mobility` data frame, and describe the *structure of the data set* in your own words. What is the unit of analysis at which the data is provided ("what's the grouping variable?"). How is the data sorted (if at all)? How are variables/metrics operationalized? Are the values contained in each column complete? Do these values all make sense? Are “strings” properly encoded (i.e., do they contain any weird characters, or do they seem appropriately rendered so you can read them)?
+Inspect the `mobility` data frame, and describe the *structure of the data set* in your own words. 
+- Which column names does the data have?
+- How are variables/metrics operationalized? 
+- What is the unit of analysis at which the data is provided ("what's the grouping variable?"). 
+- How is the data sorted (if at all)?
+- Are the values contained in each column complete? Do these values all make sense? 
+- Are “strings” properly encoded (i.e., do they contain any weird characters, or do they seem appropriately rendered so you can read them)?
+
+Tips: 
+- Take a __look__ at the data using the function `head(mobility)`, or `View(mobility)`. If you'd like to view more rows with `head`, use `head(mobility, 100)` (for, e.g., the first 100 rows). (`tail()` gives you the last rows of the data).
+- The command `summary(mobility)` generates descriptive statistics for all variables in the data. You can also use this command on individual columns (e.g., `summary(mobility$retail_and_recreation_percent_change_from_baseline)`).
+- Character or factor columns are best inspected using the `table()` command.
 
 **Solution**  
-The dataset shows the mobility changes at a *national, regional, and city level* in the Netherlands, for multiple categories of places. The records are sorted by date, and are grouped by location (starting with country stats). Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain only empty data, and two other columns (`sub_region_1`, `sub_region_2`) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level).
+```{r}
+head(mobility)
+```
+
+The dataset shows the mobility changes at a *national, regional, and city level* in the Netherlands, for multiple categories of places. The records are sorted by date, and are grouped by location (starting with country stats). 
+
+```{r}
+summary(mobility)
+```
+
+```{r}
+table(mobility$sub_region_1)
+```
+
+Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain only empty data, and two other columns (`sub_region_1`, `sub_region_2`) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level).
+
 
 \
 
 **Exercise 2**     
-Suppose you'd like to extract data for the Netherlands as a whole (i.e., NOT at the regional or city level), how would you have to filter for it?
+Suppose you'd like to extract data for the Netherlands as a whole (i.e., NOT at the regional or city level), how would you have to filter for it? Re-generate a data summary (`summary()`) on this new table, and inspect missing values.
 
 **Solution**  
-```{r, echo = TRUE, results = 'hide'}
-mobility[mobility$sub_region_1==''&mobility$sub_region_2=='',]
+```{r, echo = TRUE} 
+filtered_df = mobility[mobility$sub_region_1==''&mobility$sub_region_2=='',]
+summary(filtered_df)
 ```
+
+The number of missing values on most variables as drastically decreased. That's good news! It seems like the data is most "complete" at the national level.
 
 \
 **Exercise 3**  
-The data shows the percentage changes in visits to categorized places, compared to a normal value for that day of the week (i.e., baseline). The baseline day is the median value between January 3 and February 6, 2020. In other words, all reported numerical values are *relative to the first few weeks of 2020*. 
+Let's now start zooming in on some of the metrics in the data to check what they really mean.
 
-Think of one or more problems that can arise as a result of this methodology (even better if you come up with concrete examples that illustrate this)! 
+The data generally shows the percentage changes in visits to categorized places, compared to a normal value for that day of the week (i.e., baseline). The baseline day is the median value between January 3 and February 6, 2020. In other words, all reported numerical values are *relative to the first few weeks of 2020*. 
+
+First, try to understand the "range" of the values. For example, percentages are commonly scaled between 0 and 1 (e.g., such that .50 means +50%), but sometimes also between 0 and 100 (e.g., such that 50 means 50%). What applies here?
+
+Second, think of one or more problems that can arise as a result of how percentage changes were calculated (i.e., the choice for the baseline between January 3 and February 6, 2020). Come up with specific examples that illustrate problems!
 
 **Solution**  
-- It doesn't account for seasonality (e.g., park visits increase as the weather improves)  
+```{r}
+# Exploring the range
+summary(mobility$retail_and_recreation_percent_change_from_baseline)
+# --> the range seems to be measured on a scale on which 100 means 100%.
+```
+
+__Problems that could arise from the baseline choice__
+
+- The data does not account for seasonality (e.g., park visits increase as the weather improves)  
 - In the Netherlands, we experienced a relatively mild winter period throughout 2020 (e.g., the average temperature in January 2020 was the 3rd highest ever). As a result, the time distribution of certain categories (e.g., parks, residence) may not be representative for a typical year. 
 - Probably a lot of other reasons! Try to think about more!
 \
@@ -97,6 +144,8 @@ Think of one or more problems that can arise as a result of this methodology (ev
 ---
 
 ### 2. Data Cleaning & Transformation
+
+Next, let's narrow down the data to a smaller set of data that we would like to concentrate on. For example, the raw data may contain columns we don't need or want, or specific subsets that we want to get rid of.
 
 \
 
@@ -117,12 +166,15 @@ mobility[, c(2:4, 8:14)]
 cols_to_drop = c('country_region_code', 'metro_area', 'iso_3166_2_code', 'census_fips_code')
 mobility = mobility[, which(!colnames(mobility)%in%cols_to_drop)]
 head(mobility)
+
+# how many columns do we retain?
+ncol(mobility)
 ```
 
 \
 
 #### Rename Columns
-We continue with the data frame `mobility`.
+We continue with the (updated) data frame `mobility`.
 
 As you can see below, some of the remaining column names of `mobility` are rather long (or can be described more precisely). 
 
@@ -140,6 +192,8 @@ Trim the long column names (e.g., `retail_and_recreation_percent_change_from_bas
 
 **Solution**
 ```{r}
+
+# ok-ish solution
 colnames(mobility) = c("country_region", 
                        "province",
                        "city", 
@@ -151,13 +205,25 @@ colnames(mobility) = c("country_region",
                        "workplaces", 
                        "residential")
 
+
+# more durable (but complex) solution 
+# 1) hard-code which variable will be replaced
+colnames(mobility)[which(colnames(mobility)=='sub_region_1')] <- 'province'
+colnames(mobility)[which(colnames(mobility)=='sub_region_2')] <- 'city'
+
+# 2) loop through remaining values, search for them using regular expressions, and replace them
+for (var in c("retail_and_recreation", "grocery_and_pharmacy", "parks", "transit_stations", "workplaces", 
+                       "residential")) colnames(mobility)[grepl(var, colnames(mobility))] <- var
+
 ```
 
 \
 
 #### Convert into Date
 
-Although the dates may look like "regular" dates (e.g., `2020-02-15`) R treats them like a character string (try running `class(mobility$date)` for yourself!). Since we want the data to be ordinal so that `2020-02-16` is placed right before `2020-02-15`, we need to convert the `date` column into date format as follows:
+Although the dates may look like "regular" dates (e.g., `2020-02-15`), R treats them like a character string (try running `class(mobility$date)` for yourself!). Since we want the data to be ordinal so that `2020-02-16` is placed right before `2020-02-15`, we need to convert the `date` column into date format. Date conversion can cause you a mild headache, and it even gets more complex with varying date formats across different geographic regions. 
+
+This is how to convert a character-encoded date to a "real date":
 
 ```{r}
 mobility$date = as.Date(mobility$date)
@@ -166,25 +232,29 @@ mobility$date = as.Date(mobility$date)
 \
 
 **Exercise 6**  
-What's the first and last date in our data frame? Tip: you can use `min()` and `max()` now that the date column has been converted into date format!
+Now let's start calculating with our dates.
+
+What's the first and last date in our data frame? Tip: you can use `min()` and `max()` now that the date column has been converted into date format! 
 
 **Solution**
 The data runs from  February 15 2020 (`min(mobility$date)`) to January 5 2021 (`max(mobility$date)`).
+
+Observe above that you can not only use R code in code cells, but also in text by enclosing it in special characters: `r min(mobility$date)`.
 
 \
 
 #### Adding a New Column
 
-To get a proxy for overall movement trends, we create another column named `avg_mobility` which is the row mean of `retail_and recreation`, `grocery_and_pharmacy`, `parks`, `transit_stations`, `workplaces`, and `residential`. 
+Let's start generating some "derived metrics" - i.e., metrics that are based on the raw data, but that were not part of the actual raw data. Think of this as a first attempt to operationalize some variables that you're interested in.
 
+For example, to get a proxy for overall movement trends, we could add `avg_mobility` to the data, which we define as the (row) mean of `retail_and recreation`, `grocery_and_pharmacy`, `parks`, `transit_stations`, `workplaces`, and `residential`. 
 
 **Exercise 7**  
 Add the `avg_mobility` column to your dataset (keep in mind that the data frame may contain one or more missing values). You may want to look up the documentation of the `na.rm` parameter. 
 
-
 **Solution**  
 ```{r}
-# solution (elegant, but not sustainable)
+# solution (elegant, but not sustainable as column names could change)
 mobility$avg_mobility = rowMeans(mobility[,5:ncol(mobility)], na.rm = TRUE)
 
 # solution (most elegant and sustainable)
@@ -213,7 +283,11 @@ for(counter in 1:nrow(mobility)){
 
 #### Selecting a Subset of Data
 
-For analysis purposes, we prefer to split up the data frame into country, province, and city-level records. We know that the values in the `province` and `city` columns are empty for the country level stats. In the same way, the city level records are blank for the data aggregated on the province level. This is shown in the table below where each `X` denotes the availability of data in a respective column.
+At this point, we've realized the data contains information at the country, province and city level. We'd ideally like to split these data in three separate data sets. 
+
+For this, we need to select a subset of the data, and store it in new data frames. 
+
+We know that the values in the `province` and `city` columns are empty for the country level stats. In the same way, the city level records are blank for the data aggregated on the province level. This is shown in the table below where each `X` denotes the availability of data in a respective column.
 
 
 | Aggregation Level | country_region | province | city | 
@@ -225,7 +299,7 @@ For analysis purposes, we prefer to split up the data frame into country, provin
 \
 
 **Exercise 8**  
-Create three subsets (`country`, `province`, `city`) of `mobility` according to the descriptions above. To filter for empty strings (`""`) you can use the boolean expression `df$column == ""`.
+Create three subsets (`country`, `province`, `city`) of `mobility` according to the descriptions above. To filter for empty strings (`""`) you can use the boolean expression `df$column == ""`. This essentially checks whether the column contains the characters listed in `""`.
 
 
 **Solution**
@@ -238,43 +312,61 @@ city = mobility[mobility$city != "",]
 \
 
 **Exercise 9**  
-Write a function `missing_values()` that takes in a dataframe (`df`) and a vector of columns (`cols`) and calculates the percentage of missing values for each column. Using this function, fill in the table below and comment on your findings. 
+Write a function `inspect_data()` that takes in a dataframe (`df`), and produces descriptive stats (`summary`), reports on the number of observations (`nrow()`) and columns (`ncol()`), and the range of dates in the data.
 
-| subset | retail_and_recreation | grocery_and_pharmacy | parks | transit_stations | workplaces | residential | 
-| :--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| `country` | | | | | | | 
-| `province` | | | | | | | 
-| `city` | |  | | | | |
+Start from the code snippet below:
+
+```
+inspect_data <- function(df) {
+  cat('Generating some descriptive statistics...\n\n')
+  cat('Data: ') # using cat, you can write text to the console/screen; "\n" is a new line.
+  cat(deparse(substitute(df))) # this one prints the NAME of the input data set
+  cat('\n\n')
+  
+  print(summary(df))
+  # more here...
+}
+```
 
 **Solution**
-```{r eval=FALSE}
-# less elegant solution
-missing_values <- function(df, cols){
-  perc = NULL
-  for(column in cols){
-    perc[length(perc) + 1] = round(mean(is.na(df[,column])) * 100, 2)
-  }
-  return(perc)
+```{r eval=TRUE}
+# inspect_data
+inspect_data <- function(df){
+  cat('Generating some descriptive statistics...\n\n')
+  cat('Data: ')
+  cat(deparse(substitute(df)))
+  cat('\n\n')
+  
+  cat('Summary statistics\n')
+  print(summary(df))
+  cat('\n\n')
+  
+  cat('Number of columns: ')
+  cat(ncol(df))
+  cat('\n\n')
+  
+  
+  cat('Number of observations: ')
+  cat(nrow(df))
+  cat('\n\n')
+  
+  cat('Range of the data:\n')
+  summary(df$date)
+  cat('\n\n')
+
 }
 
-# obtain column indexes
-cols = grep('retail|grocery|park|transit|work|resident', colnames(mobility), value = T)
-
-missing_values(country, cols)
-missing_values(province, cols)
-missing_values(city, cols)
-
-# more elegant solution
-missing_values <- function(df, cols) {
-  sapply(cols, function(x) 100*length(which(is.na(df[,x])))/nrow(df))
-}
-missing_values(country, cols)
-missing_values(province, cols)
-missing_values(city, cols)
+inspect_data(country)
+inspect_data(province)
+inspect_data(city)
 
 ```
 
-The lower the aggregation level, the higher the percentage of missing records (especially parks). Further inspection of the [documentation](https://support.google.com/covid19-mobility/answer/9825414?hl=en&ref_topic=9822927) tells us that these data gaps are intentional because the data doesn't meet the quality and privacy threshold. 
+Observe the high occurence of missing levels at lower aggregation level (e.g., cities; especially parks). Further inspection of the [documentation](https://support.google.com/covid19-mobility/answer/9825414?hl=en&ref_topic=9822927) tells us that these data gaps are intentional because the data doesn't meet the quality and privacy threshold. 
+
+**Exercise 10**
+
+Let's zoom in on these missing observations, and create a table that shows the percentage missings, per data set and each of the columns below.
 
 | subset | retail_and_recreation | grocery_and_pharmacy | parks | transit_stations | workplaces | residential | 
 | :--- |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -282,13 +374,41 @@ The lower the aggregation level, the higher the percentage of missing records (e
 | `province` | 0.49 | 0.08 | 7.34 | 1.02 | 0.23 | 0 | 
 | `city` | 44.32 | 37.65| 82.40 | 45.11 | 6.43 | 45.39 |
 
+Specifically, run the code below, and make it "run" on all data sets (country, province, city).
+
+
+```{r}
+# Code snippet
+missings <- function(df, cols) {
+  sapply(cols, function(x) length(which(is.na(df[, x])))/nrow(df))
+}
+
+columns = grep('retail|grocery|park|transit|workplace|residential', colnames(mobility),value=T)
+missings(country, columns)
+```
+
+**Solution**
+
+```{r}
+columns = grep('retail|grocery|park|transit|workplace|residential', colnames(mobility),value=T)
+result = lapply(list(country, province, city), missings, cols = columns)
+
+# we can also nicely "bind" them together
+do.call('rbind', result)
+
+#... and add data set names
+data.frame(dataset = c('country','province','city'), do.call('rbind', result))
+```
+
 \
 
 ### 3. Data Exploration
 
 \
 
-Now that the data is in the right shape, it's finally time to analyze it! You can easily visualize the data with the built-in `plot()` function. It takes the following input parameters:   
+Now that the data is in the right shape, it's finally time to visualize it, e.g., by using the built-in `plot()` function. If you're really into plotting, also check out the amazing package [`ggplot2`](http://ggplot2.tidyverse.org).
+
+The basic `plot()` function takes the following input parameters:   
 
 - `x` = the horizontal values  
 - `y` = vertical values  
@@ -321,15 +441,19 @@ lines(country$date, country$workplaces, col="blue") # add a second line chart
 legend("bottomleft", c("residential", "workplace"), fill=c("red", "blue")) # legend (location, names, colors)
 ```
 
-The aim of this assignment is to further explore the data on your own. Spot interesting patterns, visualize the relationships and provide a brief write-up of your analysis. Here are a couple of ideas you may want to look into, but feel more than welcome to add your own ones!
+Further explore the data on your own. Spot interesting patterns, visualize the relationships and provide a brief write-up of your exploration.
 
-- The southern provinces of the Netherlands initially suffered the most from COVID-19 in terms of the number of positive cases (possibly due to [carnival](https://dutchreview.com/news/first-man-to-get-coronavirus-covid-19-in-the-netherlands-celebrated-carnival/)). As such, stricter policies were imposed by the government than in other parts of the country. Can you find patterns in the data that illustrate the (in)effectiveness of these measures? 
+Here are a couple of ideas you may want to look into, but feel more than welcome to add your own ones!
+
 
 - Comparison of mobility patterns in the first and second COVID-19 wave. Did our behavior change throughout time? And how about the summer break? 
 
 - How does your own place of residence relate to the rest of the Netherlands? (e.g., create a ranking!)
 
+- The southern provinces of the Netherlands initially suffered the most from COVID-19 in terms of the number of positive cases (possibly due to [carnival](https://dutchreview.com/news/first-man-to-get-coronavirus-covid-19-in-the-netherlands-celebrated-carnival/)). As such, stricter policies were imposed by the government than in other parts of the country. Can you find patterns in the data that illustrate the (in)effectiveness of these measures? 
+
 - Extract the Google Mobility statistics for *a different country*, and re-process your RMarkdown. Compare the Covid stats for these two countries.
 
-- Of course, you can come up with your own suggestions!
+- Of course, you can come up with your own ideas here!
 
+Start with the RMarkdown skeleton on the course website.
