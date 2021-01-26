@@ -1,12 +1,12 @@
 ---
 weight: 10
-title: Data exploration in R
+title: Data exploration with R and RMarkdown
 description: Learn the basics of the programming language R, familiarize yourself with RStudio, and use your skills to explore new datasets.
 bookCollapseSection: true
 draft: false
 ---
 
-# Tutorial: Data exploration in R
+# Tutorial: Data exploration with R and RMarkdown
 
 ## Learning goals
 
@@ -23,17 +23,20 @@ draft: false
   - Generate plots (e.g., using `plot()`)
   - Produce an RMarkdown document (HTML, PDF)
 
-## Make a plan
-- Plan a full day to work through this tutorial.
-
 <!--* Analyze data (summary statistics, mathematical operations, sort data, plots)-->
 
 ## Getting started
 
-### 1) Develop your R skills
-* [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r) (about 4-6 hours)
+### Plan
+- Plan a full day to work through this tutorial.
 
-### 2) Work on Data Challenge #1
-- View or download Data exploration in R - Data Challenge ([View](intro-to-r.html), [Download (right click - download file as)](https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/tutorials/data-exploration-in-r/intro-to-r.Rmd))
+### Learn
+- Develop your R skills by completing the course [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (about 4-6 hours)
 
-- [Download the answer skeleton file](intro-to-r-skeleton.Rmd) (right-click, download linked file as...). Then, open the file in RStudio, fill out your answers and submit your work on Canvas.
+### Practice
+- Practice some more by exploring a new dataset with R and RMarkdown ([View](intro-to-r.html), [Download; right click - download file as](intro-to-r.Rmd))
+- If you like, you can submit your exercises as a "proof for investing in your skills" (self- and peer assessment). Work on the exercises in the answer skeleton file ([Download](intro-to-r-skeleton.Rmd); right-click, download linked file as...). Then, open the file in RStudio.
+
+### Create (Data Challenge #1)
+- Create an RMarkdown report in which you explore open-ended questions! Start from the answer skeleton ([View](data-report.html), [Download; right click - download file as](data-report.Rmd))
+- If you like, you can submit your data challenge as a "proof for investing in your skills" (self- and peer assessment).
