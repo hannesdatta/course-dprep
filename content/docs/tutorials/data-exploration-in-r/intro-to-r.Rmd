@@ -454,6 +454,8 @@ Here are a couple of ideas you may want to look into, but feel more than welcome
 
 - Extract the Google Mobility statistics for *a different country*, and re-process your RMarkdown. Compare the Covid stats for these two countries.
 
+- Incorporate the ideas on Data Delivery and Data Checking, expressed in Mela's (2011) paper on [Data Selection and Procurement](https://pubsonline.informs.org/doi/abs/10.1287/mksc.1110.0650).
+
 - Of course, you can come up with your own ideas here!
 
 Start with the RMarkdown skeleton on the course website.
