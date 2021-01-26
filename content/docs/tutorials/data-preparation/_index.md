@@ -26,7 +26,7 @@ draft: false
 - Develop your R skills by completing the DataCamp courses [DataCamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3), [DataCamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2), and [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2).
 
 ### Practice
-- Practice some more by preparing a new dataset with R for futher analysis ([View](data-preparation.html), [Download; right click - download file as](data-preparation-skeleton.Rmd))
+- Practice some more by preparing a dataset with R for further analysis ([View](data-preparation.html), [Download; right click - download file as](data-preparation-skeleton.Rmd))
 - If you like, you can submit your exercises as a "proof for investing in your skills" (self- and peer assessment). Work on the exercises in the answer skeleton file ([Download](data-preparation-skeleton.Rmd); right-click, download linked file as...). Then, open the file in RStudio.
 
 ### Create (Data Challenge #2)
