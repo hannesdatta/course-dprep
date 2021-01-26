@@ -1,6 +1,6 @@
 ---
 title: "Data Preparation"
-author: "Data Challenge 2"
+author: "Practise"
 output: html_document
 ---
 
@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ### Submission 
-Students are expected to hand in a digital copy of their answers and code according to the [submission guidelines](https://dprep.hannesdatta.com/#submission-guidelines). 
+Students can submit their answers and code on Canvas as one component of the self- and peer assessment ("proof of individual investment in developing technical skills"). [More details on self- and peer assessment is available in the course syllabus](https://dprep.hannesdatta.com/docs/course/syllabus#team-project).. 
 
 
 --- 
@@ -42,7 +42,7 @@ For technical issues outside of scheduled classes, please check the [support sec
 
 ---
 
-### 1. Loading the Data 
+### 1. Loading and Inspecting the Data
 
 #### 1.1 Merging Data
 [Spotify Charts](https://spotifycharts.com/regional) has listed the daily top 200 most streamed songs by country since 2017. As you can see below, you can use the dropdown menus to change your selection, and clicking in the top right corner returns the data in CSV-format. 
@@ -86,15 +86,13 @@ For this exercise we have collected the rankings for 2020 which have been split 
 **Exercise 1**  
 Inspect the data sets and describe the structure of the dataset in your own words. What is the target unit of analysis? Do columns seem complete? Are there any values that do not make sense? Are “strings” properly encoded? What are common columns across the three files? Please keep in mind that opening the data into a spreadsheet programme such as Excel only shows you the first 1.05 million records or so (R, however, can load in all the data!).
 
-\
-
 **Solution**  
 The streams data set contains the top 200 songs on given date in a country. The popularity and song id columns have missing values, the ranks are all between 1 and 200, and the number of streams seems is at least 1000. The `country` column can be joined on the `country_code_2_letter` from the country_codes file. Similarly, the `song_id` can be joined on the `song_id` from songs.csv. The `song_name` column has some non-ASCII characters (e.g., `Ë™™Â•Ω‰∏çÂì≠`) here and there. Roughly one sixth of all songs is not associated with any genre tags, 17 songs don't have any song id, and for 9 songs the artist is missing. 
 
 \
 
 **Exercise 2**  
-Merge all three files into a single data frame `df`. Keep in mind the following instructions:
+Merge all three files into a single data frame `df` and export the result as `merged_df.csv`. Keep in mind the following instructions:
 
 * Use the merge functions of `dplyr` and aim for concise code (tip: look up the DataCamp tutorials for the syntax!).
 * Note that CSV-files are separated by commas (hence the name comma-separated-value!) but they can also be separated by other delimiters (e.g., `;`). You need to explicitly tell the `read.csv()` function which one to use!
@@ -107,16 +105,23 @@ Merge all three files into a single data frame `df`. Keep in mind the following 
 # install.packages("dplyr") - run this command if you have never used the package before
 library(dplyr)
 
+# input
 streams <- read.csv("streams.csv", sep=",")
 songs <- read.csv("songs.csv", sep=",")
 country_codes <- read.csv("country_codes.csv", sep=";")
 
+# transformation
 df <- streams %>% 
   inner_join(songs, by = "song_id") %>%
   left_join(country_codes, by = c("country" = "country_code_2_letter"), suffix = c("_streams", "_cc"))
 
 # Since countries in Oceania are missing in country_codes.csv we use a left join here (otherwise you'd miss out on +/- 139K records)
+
+# output
+write.csv(df, "merged_df.csv")
 ```
+
+
 \
 
 #### 1.2 Duplicates
@@ -124,11 +129,20 @@ df <- streams %>%
 \
 
 **Exercise 3**  
-A track can appear in multiple top 200 lists across countries (e.g., both in the Netherlands and in Belgium) for sustained periods of time (e.g., yesterday and today). For that reason, a `song_id` may occur repeatedly within the dataframe. Yet it can also happen that exactly the same record appears more than once. For example, the scraper that collected the data in the first place might have run twice which duplicated some of the records, or we accidentally made a copy-paste mistake ourselves. Check whether such duplicates are present in `df` and if so remove them. 
+A track can appear in multiple top 200 lists across countries (e.g., both in the Netherlands and in Belgium) for sustained periods of time (e.g., yesterday and today). For that reason, a `song_id` may occur repeatedly within the data frame. Yet it can also happen that exactly the same record appears more than once. For example, the scraper that collected the data in the first place might have run twice which duplicated some of the records, or we accidentally made a copy-paste mistake ourselves. Check whether such duplicates are present in `df` and if so remove them. Export the result as `df_no_duplicates.csv`.
+
+\
 
 **Solution**  
 ```{r eval=FALSE}
+#input
+df <- read.csv("merged_df.csv", sep=",")
+
+# transformation
 df <- df %>% filter(!duplicated(df))
+
+# output
+write.csv(df, "df_no_duplicates.csv")
 ```
 
 \
@@ -149,10 +163,14 @@ The `popularity_filled` column has been added which takes on the value of the `p
 
 
 **Exercise 4**  
-Implement this data imputation strategy using the `filter`, `groupby`, and `summarise` functions from the `dplyr` package. We recommend first computing the imputation values (for each country across the days), and then replacing missing values in the `popularity` column with their matching counterparts. Evaluate your results in terms of the pros and cons of this approach and try to come up with an alternative imputation strategy (incl. arguments why you prefer that approach).
+Implement this data imputation strategy using the `filter`, `groupby`, and `summarise` functions from the `dplyr` package and the result as `df_imputed.csv`. We recommend first computing the imputation values (for each country across the days), and then replacing missing values in the `popularity` column with their matching counterparts. Evaluate your results in terms of the pros and cons of this approach and try to come up with an alternative imputation strategy (incl. arguments why you prefer that approach).
 
 **Solution**  
 ```{r eval=FALSE}
+# input
+df <- read.csv("df_no_duplicates.csv", sep=",")
+
+# transformation
 imputation_values <- df %>% filter(!is.na(popularity)) %>% 
   group_by(country, date) %>% 
   summarise(popularity_filled = median(popularity))
@@ -163,6 +181,9 @@ df <- df_joined %>% mutate(popularity_filled = ifelse(is.na(popularity), popular
 
 # The main disadvantage is that missing records will always be assigned a median popularity score (so never abnormally low or high). Given the sheer amount of missing records, this would highly distort the distribution of the scores.
 # Since the popularity score is country independent and it is either present for all records or not available for any country (or time period), we should find a way to group songs together. For example, if the artist has other songs for which the popularity score is known we could take the median of those scores, or we could look for songs with similar genre tag words.
+
+# output
+write.csv(df, "df_imputed.csv")
 ```
 
 ---
@@ -211,9 +232,13 @@ print(rank(-rank_example))
 \
 
 **Exercise 6**  
-Add a `ranking` column to `df` using the `dplyr` package. Although it is unlikely that some tracks have exactly the same number of streams, think about how you will deal with these edge cases (tip: run `?rank` to look up the documentation). Does your ranking always run from 1 to 200? Why is that? Investigate the root cause and fix it! 
+Add a `ranking` column to `df` using the `dplyr` package and export the result as `df_ranking.csv`. Although it is unlikely that some tracks have exactly the same number of streams, think about how you will deal with these edge cases (tip: run `?rank` to look up the documentation). Does your ranking always run from 1 to 200? Why is that? Investigate the root cause and fix it! 
 
 ```{r eval=FALSE}
+# input
+df <- read.csv("df_imputed.csv", sep=",")
+
+# transformation
 df <- df %>% group_by(country, date) %>%
   mutate(ranking = rank(-streams, ties.method = "random"))
 
@@ -222,6 +247,9 @@ df <- df %>% group_by(country, date) %>%
 
 # remove rows without song_id (if you then recreate the ranking column you'll come to the conclusion the maximum ranking has become 200!)
 df <- df[!is.na(df$song_id),]
+
+# output
+write.csv(df, "df_ranking.csv")
 ```
 
 \
@@ -271,7 +299,7 @@ After some data wrangling we can transform the data into the following format:
 \
 
 **Exercise 7**   
-As a last step, we call the `dcast()` function of the `reshape2` package to transform the data frame into the desired format (see the documentation for details!). Following these steps, it's your turn to create a function `reshape_songs()` that takes a data frame and a `country` as input and lists the genres (as columns) for all song ids (key; first column) in the respective country according to the specified format above. Note that the genres column may contain duplicates, that is: the same genre appears twice for the same song!
+As a last step, we call the `dcast()` function of the `reshape2` package to transform the data frame into the desired format (see the documentation for details!) and export the results as `df_reshaped.csv`. Following these steps, it's your turn to create a function `reshape_songs()` that takes a data frame and a `country` as input and lists the genres (as columns) for all song ids (key; first column) in the respective country according to the specified format above. Note that the genres column may contain duplicates, that is: the same genre appears twice for the same song!
 
 \
 
@@ -299,20 +327,15 @@ reshape_songs <- function(df, country){
   return(songs_reshaped)
 }
 
+# input
+df <- read.csv("df_ranking.csv", sep=",")
+
+# transformation
 songs_genres <- reshape_songs(df, "Netherlands")
+
+# output
+write.csv(df, "df_reshaped.csv")
 ```
 
 \
-
-### 3. Exploratory Analysis
-
-
-Last but not least, it's time to exploit our data wrangling efforts and seek interesting patterns in the data! Even though this is meant as more of an open-ended question, here are a couple of questions for your inspiration and get your started (feel free to come up other ones yourself!): 
-
-* What are the most common genre tag words? Do they differ between countries? And continents? Which artist has appeared most frequently in the top 200? 
-* Did our music preferences change since the start of the corona pandemic? (tip: make a time-series plot!)
-* Can you find a general trend in how track rankings fluctuate over time? For how many weeks do most songs remain in the top 200 on average? How often did songs lose their top 200 ranking and climb up to the top 10 again? Is there a relationship between the ranking and the popularity score? 
-* What are non-obvious predictors of the number of streams for a song? (tip: use a linear model: `lm(streams ~ ... + ... + ..., data=df)`)
-
-Write up your analysis in R Markdown, illustrate your analysis with plots, and comment on the practical implications as well as the limitations of your findings. 
 

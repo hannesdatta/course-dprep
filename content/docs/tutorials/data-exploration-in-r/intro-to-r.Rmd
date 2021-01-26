@@ -1,6 +1,6 @@
 ---
 title: "Data exploration in R (dPrep)"
-author: "Data Challenge 1"
+author: "Practice"
 output: html_document
 ---
 
@@ -40,6 +40,7 @@ library(tidyverse)
   - Generate summary statistics (e.g., using `summary()` and `table()`)
   - Generate plots (e.g., using `plot()`)
   - Produce an RMarkdown document (HTML, PDF)
+
 --- 
 
 
@@ -84,6 +85,16 @@ Tips:
 - Take a __look__ at the data using the function `head(mobility)`, or `View(mobility)`. If you'd like to view more rows with `head`, use `head(mobility, 100)` (for, e.g., the first 100 rows). (`tail()` gives you the last rows of the data).
 - The command `summary(mobility)` generates descriptive statistics for all variables in the data. You can also use this command on individual columns (e.g., `summary(mobility$retail_and_recreation_percent_change_from_baseline)`).
 - Character or factor columns are best inspected using the `table()` command.
+
+\
+
+**Your Answer**  
+```{r}
+# your answer goes here!
+```
+
+\
+
 
 **Solution**  
 ```{r}
@@ -361,7 +372,7 @@ inspect_data(city)
 
 ```
 
-Observe the high occurence of missing levels at lower aggregation level (e.g., cities; especially parks). Further inspection of the [documentation](https://support.google.com/covid19-mobility/answer/9825414?hl=en&ref_topic=9822927) tells us that these data gaps are intentional because the data doesn't meet the quality and privacy threshold. 
+Observe the high occurrence of missing levels at lower aggregation level (e.g., cities; especially parks). Further inspection of the [documentation](https://support.google.com/covid19-mobility/answer/9825414?hl=en&ref_topic=9822927) tells us that these data gaps are intentional because the data doesn't meet the quality and privacy threshold. 
 
 **Exercise 10**
 
@@ -440,3 +451,30 @@ lines(country$date, country$workplaces, col="blue") # add a second line chart
 legend("bottomleft", c("residential", "workplace"), fill=c("red", "blue")) # legend (location, names, colors)
 ```
 
+**Exercise 11**
+
+Replicate the the following plot with R code (consider the labels, axes, colors, etc.):
+
+```{r echo=FALSE}
+plot(x = country[country$date > "2020-09-01", "date"], 
+     y = country[country$date > "2020-09-01", "transit_stations"], 
+     col = "black", 
+     type = "l",  
+     ylim = c(-85, 0), # range of vertical axis
+     ylab = "% change from baseline (January 2020)", 
+     xlab = "", 
+     main = "Transits to stations are down 75%") 
+```
+\
+
+**Solution**  
+```{r}
+plot(x = country[country$date > "2020-09-01", "date"], 
+     y = country[country$date > "2020-09-01", "transit_stations"], 
+     col = "black", 
+     type = "l",  
+     ylim = c(-85, 0), # range of vertical axis
+     ylab = "% change from baseline (January 2020)", 
+     xlab = "", 
+     main = "Transits to stations are down 75%") 
+```
