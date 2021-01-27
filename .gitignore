@@ -10,3 +10,6 @@ content/docs/tutorials/version-control/version-control.html
 ~$**
 content/docs/tutorials/data-preparation/songs.csv
 *.csv
+
+# Local Netlify folder
+.netlify
