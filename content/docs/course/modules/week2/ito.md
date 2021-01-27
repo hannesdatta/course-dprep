@@ -10,7 +10,7 @@ You may wonder why it's actually necessary to prepare a data set for analysis. I
 Well, the question isn't that hard to answer if you think about how raw data - unchanged data, stored as is - looks.
 
 - Raw data can be super messy. For example, when you use data scraped from the internet to count the number of words in customer reviews, you may realize your counter may be off because you've counted HTML tags as words. So, you have to clean out irrelevant text before running your counting algorithm.
-- Raw data can also be stored at various places (e.g., databases, on network drives, or somewhere in the cloud. In order to use them, you have to gather them from these places, and stitch them together)
+- Raw data can also be stored at various places (e.g., databases, on network drives, or somewhere in the cloud), or in various files - sometimes hundreds of them. In order to use them, you have to gather them from these places, and stitch them together).
 - Raw data can also be quite unstructured. Think of incorporating image data, such as collected from Instagram, in your study. You'd first have to run some kind of preprocessing algorithm to translate what is on the picture into data that you can work with, such as lists of objects that are detected on a picture.
 - Finally, the raw data may just not be in the format suitable for analysis. For example, a linear regression expects each observation to be in a row, and corresponding variables to be stored in columns.
 
@@ -37,3 +37,8 @@ Let's consider the data preparation in a recent paper of mine.
 Input, transformation, and output.
 
 Each
+
+Comments Samuel:
+
+- think about which data structure you need, and work towards that goal
+- break it down
