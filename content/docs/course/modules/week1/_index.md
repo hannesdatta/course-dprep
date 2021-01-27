@@ -13,10 +13,13 @@ __Obtain business and data understanding, and explore data in R__
 ## Live stream 1
 - Introduction to the course
 
+## Kick-starting your week
+- We'll post a clip to get you started for the week.
+
 ## Self-study and activities
-- [Data exploration in R (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
+- [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
 - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
-<!--- Demo clips <!-- (2-minute clips); or podcasts-->
+<!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
 ## Live stream 2
 - Q&A on Data Challenge 1

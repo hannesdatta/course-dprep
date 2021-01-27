@@ -7,7 +7,11 @@ description: " "
 
 # Modules
 
-The course consists of weekly modules. The first five weeks (including one self-study week) equip you with the skills to work on data-intensive research projects efficiently. The remaining three weeks are dedicated to working on a team project.
+The course consists of weekly modules. The first five weeks (including one self-study week) equip you with the skills to work on data-intensive research projects efficiently. The modules are structured along the different stages of an empirical research project.
+
+The remaining three weeks are dedicated to working on a team project, in which you put your skills into practice.
+
+![dprep_framework.png](dprep_framework.png)
 
 <!--
 ## Course structure
