@@ -4,6 +4,7 @@ title: "Project Ideas"
 bookCollapseSection: true
 description: " "
 draft: true
+date: 2050-01-01
 ---
 
 
