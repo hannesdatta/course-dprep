@@ -3,7 +3,7 @@ weight: 5
 title: "Project Ideas"
 bookCollapseSection: true
 description: " "
-draft: false
+draft: true
 ---
 
 

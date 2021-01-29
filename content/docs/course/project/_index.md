@@ -1,35 +1,42 @@
 ---
 weight: 3
 title: "Team Project"
-bookCollapseSection: true
+bookCollapseSection: false
 description: " "
 draft: false
 ---
 
-## Goal
+# Team Project
 
-Throughout the course we have touched upon various phases of the data preparation and workflow management pipeline. In the team project, we bring together everything we have learned in a more practical setting. Together with your team members, you build a data preparation and analyis pipeline from scratch and submit your entire end-to-end workflow. This is not only a great refresher on everything you learned, but also gives you a better sense of the added value of Git and Github in a collaborative environment and experience the power of `make` when working with a multitude of files. In addition, the building blocks provide code snippets for more advanced functionalities you may want to incorporate into your team project.
+## Motivation
 
-After completion of the project, students and researchers need to be equipped with the practical skills to manage the data preparation for a complex project themselves.
+Throughout the course, we have touched upon various phases of the data preparation and workflow management pipeline. In the team project, we bring together all that you have learnt.
 
-Students work in groups. PhD or RM students who take the course can work on their actual research project, if the data is available.
+Together with your team members, you will
+- build a data preparation and analyis pipeline from scratch, and
+- submit your entire end-to-end workflow via a GitHub repository.
 
+Working on your team project is not only a great refresher on the course content, but *especially* gives you a better sense of the added value of
+- using Git/GitHub when collaborating with one another, and
+- automation with `make` with a many source code files.
 
-## Sample Project
+In addition, the building blocks provide code snippets for more advanced functionalities you may want to incorporate in your team project.
 
-As the focus lies on completing the end-to-end workflow while the tutorials mostly center around a single component, we have developed a [sample project](sample_project.md) that puts everything together and gives you an idea of what we expect in terms of deliverables for the team project. In fact, we have made available the original R Markdown files and encourage you to use it as a starting point for your own project.
+## Learning Goals
 
+After completion of the project, students and researchers need to be equipped with the practical skills to manage the data preparation for a complex, data-intensive research project independently.
 
-## Team Composition
+## Teams
 
-- Between four to five students per team.
-- You need to subscribe to a team yourself (be present in the live streams for that!).
-- We recommend teams to have agreed upon the project idea prior to the start of the project in week 6 so that you can start right away.
-
+- Students work in groups
+  - 4-5 students per team
+  - Allocation during class hours
+  - We recommend teams to have agreed upon the overall project idea prior to the start of the project in week 6, so that you can start right away.
+- (External) PhD and research master students auditing this course can work on their own research projects.
 
 ## Planning
 
-In weeks 6-8, you will work on a team project. Since the timeline is relatively short, we recommend you to stick to the schedule below. Each of the Input, Transformation, Output (ITO) phases corresponds with the template file of the [sample project](sample_project).
+The team project runs in weeks 6-8. <!-- In weeks 6-8, you will work on a team project. Since the timeline is relatively short, we recommend you to stick to the schedule below. Each of the Input, Transformation, Output (ITO) phases corresponds with the template file of the [sample project](sample_project).-->
 
 | Week | Stage | Phase |
 |:---- | :---- | :---- |
@@ -37,20 +44,16 @@ In weeks 6-8, you will work on a team project. Since the timeline is relatively 
 | 7 |  Automation & Data Exploration | Input & Transformation |
 | 8 |  Deployment & Reporting  | Output  |
 
-You can sign up for an optional team meeting with the course instructor in week 7 to gather feedback on your project. Details on how to register for a timeslot will be provided to you in a timely manner.
-
+You can sign up for an optional team meeting with the course instructor in weeks 6-8 to gather feedback on your project. Details on how to register for a timeslot will be provided to you at a later stage.
 
 ## Deadline & Submission
-26 March 2021, 6pm
+- 26 March 2021, 6pm
+- One email per team, to h.datta@tilburguniversity.edu, indicating your *team number in the subject line*, and containing a *link* to the (public) GitHub repository of your work.
+
+<!--
 
 
+## Sample Project
 
-
-They can either
-
-
-*DATA CHALLENGES ARE INDEPENDENT FROM EACH OTHER.*
-
-
-## Tasks
+As the focus lies on completing the end-to-end workflow while the tutorials mostly center around a single component, we have developed a [sample project](sample_project.md) that puts everything together and gives you an idea of what we expect in terms of deliverables for the team project. In fact, we have made available the original R Markdown files and encourage you to use it as a starting point for your own project.
 -->

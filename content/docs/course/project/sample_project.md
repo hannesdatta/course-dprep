@@ -3,8 +3,10 @@ weight: 4
 title: "Sample Project"
 bookCollapseSection: true
 description: " "
-draft: false
+draft: true
 ---
+
+<!-- @Roy: work on this in a "hidden" state; it should be the instructions that we make available eventually to students-->
 
 # Sample Project
 
