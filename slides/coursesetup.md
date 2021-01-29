@@ -47,12 +47,12 @@ happy to share that vision
 
 ## Key areas of expertise
 
-- substantive
+- Substantive
     - marketing-mix modeling and optimization
     - branding
     - subscription-based business models
 
-- method
+- Method
     - causality in observational data
     - data management of structured and unstructured data
 
@@ -60,15 +60,16 @@ happy to share that vision
 
 - MSc Marketing Analytics and Management
     - Research in Social Media
-    - Data preparation and workflow management (*new*)
-    - Managing large-scale online data collections (scraping and APIs, *new*)
+    - Data preparation and workflow management - dPrep (*new*)
+    - Online Data Collection & Management - oDCM (scraping and APIs, *new*)
 
-- This class (at various levels; academic, exec)
+- This class (at various levels: academic, executive)
 
 ::: notes
 
-what i love about this class is that I use it for prototyping;
-you're much closer to practice than my regular students, so it's great to incorporate your experience
+* what i love about this class is that I use it for prototyping;
+* you're much closer to practice than my regular students, so it's great to incorporate your experience
+* talk about how dPrep and oDCM differ (and how students may benefit from taking both courses). Why R and Python (rather than just one of them)?
 
 :::
 
@@ -78,7 +79,7 @@ __Impact of digitization on consumers, producers__
 
 - How did [online streaming](https://tiu.nu/spotify) (Spotify, Netflix) change behavior?
 - Bunch of follow-ups
-    - "Who runs Spotify?" The power of content owners versus the platform
+    - ["Who runs Spotify?"](https://www.youtube.com/watch?v=EbmCVRkmCAc) The power of content owners versus the platform
     - [Music "filter" bubbles](https://research.tilburguniversity.edu/en/publications/streaming-services-and-the-homogenization-of-music-consumption)
     - platform incentives & production of music
 - More: see [website](https://hannesdatta.com)
@@ -97,6 +98,8 @@ Getting to know you through your projects
 - Modeling
 
 ::: notes
+
+Consider using polling software for these questions (to increase response rate)
 
 - What stage are you in?
 - What are you working on right now?
@@ -119,16 +122,20 @@ Look at the XLS sheet, talk about some projects
 
 ## Mr. Chaos
 
-- did my PhD in quant marketing
-- coded a lot (data prep, modeling), but didn't *learn how to structure my workflows*
-- created a complete chaos (but still got published); [see here](http://tilburgsciencehub.com/workflow/structure_phd_2013.html)
+- Did my PhD in quant marketing
+- Coded a lot (data prep, modeling), but didn't *learn how to structure my workflows*
+- Created a complete chaos (but still got published)
 
-::: notes
 
 ## Can't find stuff...
 
 - Cannot find code that prepped the dataset
 - Cannot find code of the econometric model that eventually got published
+
+::: notes
+
+ADD SCREENSHOT OF MESSY DIRECTORY OF PHD PAPER
+PROVIDE EXAMPLES OF CONFUSING FILE_NAMES (e.g., report, final_report, final_final_report)
 
 Ask students what's bad about it?
 
@@ -192,6 +199,14 @@ Work __efficiently__ on __data- and computation-intensive__ projects
 
 &#8594; CPU-intensive
 
+
+::: notes
+
+Running this analysis for my paper would take X days on my local machine (and forces me to keep my computer running 24/7). Thanks to AWS I do the same in X hours -> quickly log in to EC2 and show that you can open a "computer in a computer"
+
+:::
+
+
 ## What about *your* projects?
 
 - What do *you* feel has been __efficient__ or __unefficient__ in the way you've run your projects?
@@ -236,7 +251,6 @@ data prep, modeling, evaluation, deployment, data
 ## Disclaimer
 
 > - I planned to do this in English, but...
-- I assume you have viewed the [course page at tiu.nu/dep](https://hannesdatta.github.io/course-jads2020/)
 - If I’m going too fast (and I will), slow me down!
 - I may deviate from the announced timing
 - I'm a marketer, *not* data scientist, *not* IT

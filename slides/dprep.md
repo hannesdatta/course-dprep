@@ -52,12 +52,12 @@ If you haven't done so, navigate to the course page at [https://dprep.hannesdatt
 
 ## Key areas of expertise
 
-- substantive
+- Substantive
     - subscription-based business models
     - marketing-mix modeling and optimization
     - branding
 
-- method
+- Method
     - data management of structured and unstructured data
     - online data collection via APIs and web scraping
     - causality in observational data
@@ -71,7 +71,9 @@ If you haven't done so, navigate to the course page at [https://dprep.hannesdatt
 
 ::: notes
 
-prototyped some content with managers, but now... release to students
+* prototyped some content with managers, but now... release to students
+* talk about how dPrep and oDCM differ (and how students may benefit from taking both courses). Why R and Python (rather than just one of them)?
+
 
 :::
 
@@ -102,6 +104,8 @@ __Impact of digitization on consumers, producers__
 -->
 
 ::: notes
+
+Consider using polling software for these questions (to increase response rate)
 
 - What stage are you in?
 - What are you working on right now?
@@ -145,15 +149,16 @@ __Impact of digitization on consumers, producers__
 - coded a lot (data prep, modeling), but didn't *learn how to structure my workflows*
 - created a complete chaos (but still got published); [see here](http://tilburgsciencehub.com/workflow/structure_phd_2013.html)
 
-::: notes
-
 ## Can't find stuff...
 
 - Cannot find code that prepped the dataset
 - Cannot find code of the econometric model that eventually got published
 
-Ask students what's bad about it?
+::: notes
 
+Ask students what's bad about it?
+ADD SCREENSHOT OF MESSY DIRECTORY OF PHD PAPER
+PROVIDE EXAMPLES OF CONFUSING FILE_NAMES (e.g., report, final_report, final_final_report)
 :::
 
 ## What was so bad about it?
@@ -178,7 +183,7 @@ Ask students what's bad about it?
 
 ## Course objective
 
-- familiarize yourself with data structures in (data-intensive) empirical marketing research, and
+- familiarize yourself with data structures in (data-intensive) empirical marketing research
 - learn how to efficiently engineer data sets from complex raw data and document them for (re)use
 
 ## What's efficient?
@@ -221,10 +226,12 @@ Ask students what's bad about it?
 
 - To what extent do your projects fit the criteria of __data- and computation-intensiveness__?
 
+::: notes
+Running this analysis for my paper would take X days on my local machine (and forces me to keep my computer running 24/7). Thanks to AWS I do the same in X hours -> quickly log in to EC2 and show that you can open a "computer in a computer"
 
-## Course framework mimics a research pipeline
 
-<img width="1000" alt="Course framework" src="dprep_framework.png">
+:::
+
 
 ## Course structure
 
@@ -241,10 +248,16 @@ Ask students what's bad about it?
 
 <img width="1000" alt="Course framework" src="dprep_framework_detail.png">
 
+
+## Course framework mimics a research pipeline
+
+<img width="1000" alt="Course framework" src="dprep_framework.png">
+
 ## Canvas versus the web
 
 - Canvas is only used for
   - posting important announcements,
+  - sign up for teams,
   - submitting data challenges/projects, and
   - discussion board.
 
@@ -264,6 +277,20 @@ Ask students what's bad about it?
   - "proof of investment in skills" (submitted tutorials/data challenges)
   - written feedback to team members (tba)
   - assessment of own performance and that of team members
+
+## Grading
+
+  - Team project (50%)
+  - Share individual progress and learnings (10%)
+  - Computer exam (40%)
+
+::: notes
+* 50% team project = (40% + 10% individual assessment on the basis of self- and peer assessment)
+* What do you mean with "Share individual progress and learnings "
+* Both multiple choice and open questions (you can't pass this course if you don't learn programming -> make sure you actively participate in the team project so that you can replicate it individually)
+
+:::
+
 
 ## My commitment
 
@@ -293,6 +320,35 @@ Ask students what's bad about it?
 - You will learn from your mistakes
 - Take breaks! Stop coding. Go for a run. Start again.
 - Use cheat sheets. See course site.
+- [Support section](https://odcm.hannesdatta.com/docs/course/support/)
+
+
+::: notes
+
+Mention how we aim to remedy this initial hurdle? (quick feedback loops especially in the first few weeks)
+
+:::
+
+
+## Help
+
+Make computer throws an error. What now?
+1. Google
+2. Ask a friend/classmate
+3. Google
+4. Ask a friend/classmate
+5. Ask course instructor
+
+
+::: notes
+
+* Google/Stackoverflow are your best friends
+* Live demonstration of how to search on Google and Stackoverflow
+* Comment on experiment with live coding sessions (start a call - talk to fellow classmates who're facing the same struggles)
+
+
+
+:::
 
 ## What's in for you?
 
@@ -336,7 +392,10 @@ Please tell me __what would make this course a success__ for you
 
 ::: notes
 
-can use the break for installation problems
+* can use the break for installation problems
+* show on the website where they can find the information they need
+* how to download the files (right click)
+* manage expectations: DataCamp courses are simplistic (copy-paste etc.) and should not take too long, the data challenges are more challenging and will likely take more time, and are more representative of the level we expect in this course. 
 
 :::
 
