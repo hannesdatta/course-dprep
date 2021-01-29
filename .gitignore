@@ -13,3 +13,9 @@ content/docs/tutorials/data-preparation/songs.csv
 
 # Local Netlify folder
 .netlify
+content/docs/tutorials/workflow/airbnb-workflow copy/.RData
+content/docs/tutorials/workflow/airbnb-workflow copy/src/data-preparation/.RData
+content/docs/tutorials/workflow/airbnb-workflow copy/src/data-preparation/.Rhistory
+content/docs/tutorials/workflow/airbnb-workflow/.RData
+content/docs/tutorials/workflow/airbnb-workflow/src/data-preparation/.RData
+content/docs/tutorials/workflow/airbnb-workflow/src/data-preparation/.Rhistory
