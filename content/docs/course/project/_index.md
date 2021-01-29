@@ -38,11 +38,11 @@ After completion of the project, students and researchers need to be equipped wi
 
 The team project runs in weeks 6-8. <!-- In weeks 6-8, you will work on a team project. Since the timeline is relatively short, we recommend you to stick to the schedule below. Each of the Input, Transformation, Output (ITO) phases corresponds with the template file of the [sample project](sample_project).-->
 
-| Week | Stage | Phase |
+| Week | Pipeline Stage | Feedback on
 |:---- | :---- | :---- |
-| 6 | Data Preparation & Version Control | Input & Transformation |
-| 7 |  Automation & Data Exploration | Input & Transformation |
-| 8 |  Deployment & Reporting  | Output  |
+| 6 | Data preparation  | Data exploration, version control with Git |
+| 7 | Analysis | Data preparation & analysis, automation with `make` |
+| 8 | Deployment | Analysis, reporting |
 
 You can sign up for an optional team meeting with the course instructor in weeks 6-8 to gather feedback on your project. Details on how to register for a timeslot will be provided to you at a later stage.
 
