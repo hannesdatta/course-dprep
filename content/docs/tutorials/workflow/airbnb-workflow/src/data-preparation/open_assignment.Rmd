@@ -85,7 +85,7 @@ download.file(url = url, destfile = filename)
 R < download.R --save
 ```
 
-![](./images/download_data.gif){width=60%}
+![](./images/download_data.gif)
 
 \
 
