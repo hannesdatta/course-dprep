@@ -1,5 +1,6 @@
 ---
 draft: true
+date: 2050-01-01
 ---
 
 Teamwork
@@ -9,16 +10,10 @@ Note that it is your responsibility to get in touch with team members and make p
 
 
 
-Evaluation and grading
-Assignments (40%)
-Objective: Learn the methodological skills needed to conduct social media research
-Form: Individual + Team (mixed)
-Time frame: throughout the course
-Weight of your final grade: 40%
-Peer assessment: yes, for team assignments. If a student does not submit his/her peer assessment on time, two full grade points will be subtracted from the team grade for that particular student, for all team assignments.
-Passing norm: Not applicable
-If failed: no resit
+
+
 Exam (60%)
+
 Objective: Evaluate your research skills and your understanding of the current literature
 Form: individual (computer exam on-site); should the shutdown at Tilburg University still be active, we will host this exam online
 Time frame: After the course
