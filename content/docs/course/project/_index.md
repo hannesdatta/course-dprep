@@ -47,13 +47,4 @@ The team project runs in weeks 6-8. <!-- In weeks 6-8, you will work on a team p
 You can sign up for an optional team meeting with the course instructor in weeks 6-8 to gather feedback on your project. Details on how to register for a timeslot will be provided to you at a later stage.
 
 ## Deadline & Submission
-- 26 March 2021, 6pm
-- One email per team, to h.datta@tilburguniversity.edu, indicating your *team number in the subject line*, and containing a *link* to the (public) GitHub repository of your work.
-
-<!--
-
-
-## Sample Project
-
-As the focus lies on completing the end-to-end workflow while the tutorials mostly center around a single component, we have developed a [sample project](sample_project.md) that puts everything together and gives you an idea of what we expect in terms of deliverables for the team project. In fact, we have made available the original R Markdown files and encourage you to use it as a starting point for your own project.
--->
+26 March 2021, 6pm

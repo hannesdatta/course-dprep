@@ -20,6 +20,10 @@ This project draws on datasets from Inside Airbnb which is an independent open-s
 
 <!-- revise-->
 
+<<<<<<< HEAD
+=======
+## Input <!-- Change terminology -->
+>>>>>>> f4e03e4bac6076bdbde2e8122e8b64307d4a9f37
 - Set-up directory structure (`data`, `gen`, `src`)
 - Define research question and scope
 - Create a data report and conduct exploratory analysis (summary statistics, report on missingness, number of observations)
@@ -29,7 +33,7 @@ This project draws on datasets from Inside Airbnb which is an independent open-s
 ### Week 7: Automate workflow and explore data
 
 
-#### Transformation
+## Transformation <!-- Change terminology -->
 - Import data from `data` folder
 - Convert the date column into date/time format
 - Merge datasets on a comon column
@@ -38,7 +42,7 @@ This project draws on datasets from Inside Airbnb which is an independent open-s
 - Export output to generated files
 
 
-#### Output
+## Output <!-- Change terminology -->
 - Import data from `gen` folder
 - Plot timeseries chart and export as pdf file
 - Automate workflow with make
