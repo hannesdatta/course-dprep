@@ -18,7 +18,7 @@ The overarching research question that we aim to investigate is:
 You can [view](XXX) the report over here and dowload the project directory (including all R files) from [here](XXX). In the report, 3 sections can be distinguished: Input, Transformation, and Output of which we'll mention the contents below.
 
 
-## Input
+## Input <!-- Change terminology -->
 - Set-up directory structure (`data`, `gen`, `src`)
 - Define research question and scope
 - Create a data report and conduct exploratory analysis (summary statistics, report on missingness, number of observations)
@@ -26,7 +26,7 @@ You can [view](XXX) the report over here and dowload the project directory (incl
 - Run R files from the command line
 
 
-## Transformation
+## Transformation <!-- Change terminology -->
 - Import data from `data` folder
 - Convert the date column into date/time format
 - Merge datasets on a comon column
@@ -35,7 +35,7 @@ You can [view](XXX) the report over here and dowload the project directory (incl
 - Export output to generated files
 
 
-## Output
+## Output <!-- Change terminology -->
 - Import data from `gen` folder
 - Plot timeseries chart and export as pdf file
 - Automate workflow with make

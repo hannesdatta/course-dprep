@@ -42,15 +42,3 @@ You can sign up for an optional team meeting with the course instructor in week 
 
 ## Deadline & Submission
 26 March 2021, 6pm
-
-
-
-
-They can either
-
-
-*DATA CHALLENGES ARE INDEPENDENT FROM EACH OTHER.*
-
-
-## Tasks
--->
