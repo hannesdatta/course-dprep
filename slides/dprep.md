@@ -16,8 +16,9 @@ If you haven't done so, navigate to the course page at [https://dprep.hannesdatt
 
 - drafted this course for a long time
 - finally got the chance to teaching it now
-- what is it about: radical change to how you look at data-intensive projects.
-- happy to share that vision
+- what is it about: radical change in the way to work on data-intensive projects
+- anything you've learnt so far is about stats, or substantive areas, not about HOW to work on projects
+- happy to share that vision, and share practical tips
 
 :::
 
@@ -30,6 +31,16 @@ If you haven't done so, navigate to the course page at [https://dprep.hannesdatt
 - Course framework and learning goals
 - Agenda and practical arrangements
 
+## Disclaimer
+
+> - Slow me down & use the chat
+- Streams are complements, not substitutes for self-study & course website
+- Minimal use of slides; will post
+- Course runs for the first time (buggy!)
+- Mix of students at various levels; public (but streams are not)
+- I'm a marketer, not a data or computer scientist
+- Consider me your coach, not your *distant professor*
+
 # About myself
 
 ## Background
@@ -38,8 +49,9 @@ If you haven't done so, navigate to the course page at [https://dprep.hannesdatt
 - moved to NL 12 years ago
 - married, 2 kids (2 and 5 years old)
 - streaming from 'de zolderkamer' in 's-Hertogenbosch
-- geek at heart (got a 3D printer for Christmas), love listening & playing music, start new hobbies every few months...
+- geek at heart (got a 3D printer for Christmas), love listening & playing music, starting new hobbies every few months...
 - now Associate Prof at Tilburg University
+
 <!--
 ## Professional background
 
@@ -60,23 +72,27 @@ If you haven't done so, navigate to the course page at [https://dprep.hannesdatt
 - Method
     - data management of structured and unstructured data
     - online data collection via APIs and web scraping
-    - causality in observational data
+    - causal effects with observational data
 
 ## Teaching activities
 
 - MSc Marketing Analytics and Management
+    - Data preparation and workflow management (*new*, dprep.hannesdatta.com)
+    - Online data collection and management (*new*, odcm.hannesdatta.com)
+    - MSc Thesis supervision (thesis.hannesdatta.com)
     - Research in Social Media (*legacy*)
-    - Data preparation and workflow management (*new*)
-    - Online data collection and management (*new*)
+- Tilburg Science Hub (http://tilburgsciencehub.com)
 
 ::: notes
 
 * prototyped some content with managers, but now... release to students
-* talk about how dPrep and oDCM differ (and how students may benefit from taking both courses). Why R and Python (rather than just one of them)?
-
+* foreshadow that I'll talk about how dprep differs from ODCM (and vice versa)
+  - talk about how dPrep and oDCM differ (and how students may benefit from taking both courses).
+  - Why R and Python (rather than just one of them)?
 
 :::
 
+<!--
 ## Current research interest
 
 __Impact of digitization on consumers, producers__
@@ -88,12 +104,13 @@ __Impact of digitization on consumers, producers__
     - Covid-19 & music consumption
     - Platform incentives & production of music
 - More: see [website](https://hannesdatta.com)
-
+-->
 
 # About you
 
 ## Getting to know you
 
+<!--
 > - Where are you located? (city, country)
 > - Why are you interested in Marketing *Analytics*?
 > - Where do you see yourself in a few years from now (professionally)?
@@ -107,47 +124,25 @@ __Impact of digitization on consumers, producers__
 
 Consider using polling software for these questions (to increase response rate)
 
-- What stage are you in?
-- What are you working on right now?
+- What stage of your education are you in?
+- What are you working on right now? (put it in the chat)
 - What's your ambition with your study program?
 
 ## Covid-19
 - Where are you at right now?
-- Home office, on a scale from 1 to 10...?
-- Wanna have the last half-an-hour of this with a borrel? ;)
+- How much do you like your home office, on a scale from 1 to 10...?
+- How lonely are you?
+- Wanna have the last half-an-hour of this with a borrel (eventually) - we can plan it? ;)
 
 :::
 
 # Motivation for course
 
-## Disclaimer
-
-> - Course runs for the first time (buggy!)
-- Course is public, live streams are not
-- Streams are complements, not substitutes for working through self-study material
-- Mix of students at various levels
-- Consider me your coach, not your professor
-- Slow me down
-- Know the course website inside-out
-- I'm a marketer, not a data or computer scientist
-
-::: notes
-
-
-- I'm a marketer
-    - I do marketing analytics
-    - It’s close to data science in terms of data acquisition, but...
-    - rather distant in terms of methods (e.g., ML methods only enter the field gradually; we’re mostly applied econometricians)
-
-- In the (spontaneous) exercises, I may not know all the answers all the time – but will deliver later if required
-
-:::
-
 ## Mr. Chaos
 
 - did my PhD in quant marketing
 - coded a lot (data prep, modeling), but didn't *learn how to structure my workflows*
-- created a complete chaos (but still got published); [see here](http://tilburgsciencehub.com/workflow/structure_phd_2013.html)
+- created a complete chaos (but still got published) <!--; [see here](http://tilburgsciencehub.com/workflow/structure_phd_2013.html)-->
 
 ## Can't find stuff...
 
@@ -156,28 +151,33 @@ Consider using polling software for these questions (to increase response rate)
 
 ::: notes
 
-Ask students what's bad about it?
+- Show directory structure (e.g., on Dropbox), or ask them to replicate
+- Ask students what's bad about it?
+
 ADD SCREENSHOT OF MESSY DIRECTORY OF PHD PAPER
 PROVIDE EXAMPLES OF CONFUSING FILE_NAMES (e.g., report, final_report, final_final_report)
+
 :::
 
 ## What was so bad about it?
 
-- Replicability
+- Reproducibility
     - I couldn't reproduce results whenever I wanted to
+- Replicability
+    - My community doesn't really see how I did things
 - Efficiency
     - when making changes to data, I had to go the the beginning, repeating all steps
     - a colleague asked me for the data years after; it wasn't properly documented!
 
 ## Why should *you* care?
 
-- You will soon work on data-intensive projects - whether in academia or in business
-- You will change code *continuously* before the project is final
-- Team members or future colleagues will look at your code or use it
+- You will soon work on data-intensive projects - whether in academia (e.g., theses) or in business
+- You will change code *continuously* before a project is final
+- Team members or colleagues will look at and use your code
     - to help you
     - to continue your work
+- Costly investment in terms of time and effort, but...
 - __Small efficiency gains will pay off soon!__
-- It's a costly investment in terms of time and effort though
 
 # This course
 
@@ -185,6 +185,11 @@ PROVIDE EXAMPLES OF CONFUSING FILE_NAMES (e.g., report, final_report, final_fina
 
 - familiarize yourself with data structures in (data-intensive) empirical marketing research
 - learn how to efficiently engineer data sets from complex raw data and document them for (re)use
+- manage the research workflow with state-of-the-art tools used in industry: `make` and Git/GitHub
+
+## Course positioning
+
+<img width="1000" alt="Course framework" src="dprep_positioning.png">
 
 ## What's efficient?
 
@@ -200,8 +205,7 @@ PROVIDE EXAMPLES OF CONFUSING FILE_NAMES (e.g., report, final_report, final_fina
 
 > - Waiting (e.g., for results, for estimation)
 - Getting distracted while waiting
-- Forgetting how things *are* done
-- Forgetting how things *were* done
+- Forgetting how things *are* or *were* done
 - Losing data
 - Using code which isn't properly documented ("don't know how to use it")
 - Becoming frustrated, feeling lost
@@ -222,7 +226,7 @@ PROVIDE EXAMPLES OF CONFUSING FILE_NAMES (e.g., report, final_report, final_fina
 
 ## What about *your* projects (e.g., projects, theses, PhD dissertations)?
 
-- What do *you* feel has been __efficient__ or __unefficient__ in the way you've run your projects?
+- What do *you* feel has been __efficient__ or __inefficient__ in the way you've run your projects?
 
 - To what extent do your projects fit the criteria of __data- and computation-intensiveness__?
 
@@ -238,90 +242,96 @@ Running this analysis for my paper would take X days on my local machine (and fo
 - Part 1: Skill building (modules in weeks 1-5)
   - Self-study (readings, activities)
   - Self-guided tutorials to practice skills (plan, learn, apply, create)
-  - Live stream for feedback
+  - Live stream for feedback & immersive activities
 
 - Part 2: Project phase (weeks 6-8)
-  - Apply all of your learnt skills in a team project
+  - Apply skills in a team project
   - Building blocks / code snippets used to customize projects
 
-## Course framework (with details)
+## Course framework
 
 <img width="1000" alt="Course framework" src="dprep_framework_detail.png">
 
+## Course website
 
-## Course framework mimics a research pipeline
+dprep.hannesdatta.com
 
-<img width="1000" alt="Course framework" src="dprep_framework.png">
+::: notes
+
+- Will show you the course website now
+* show on the website where they can find the information they need
+* how to download the files (right click)
+
+:::
 
 ## Canvas versus the web
 
-- Canvas is only used for
+- The course website is your #1 resource
+
+- Canvas only used for
   - posting important announcements,
   - sign up for teams,
   - submitting data challenges/projects, and
   - discussion board.
 
-- The course website shows the syllabus and grading details
+::: notes
+
+all students have Canvas access?
+
+:::
 
 ## Live streams
 
-- use the public chat (tell me if I don't see it! who can take that role?)
-- maybe share screen (install [TeamViewer](http://tilburgsciencehub.com/setup/teamviewer))
-- if you have, use two screens (one to program, one to view slides/others)
-
+- use the public chat
+- use it like on Twitch or YT (massively); question to me: prefix with `???`
+- help me as a moderator if I miss questions
+- maybe share screen (install [TeamViewer](http://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/teamviewer/))
+- if you have, use two screens (one to code, one to view colleagues/slides)
 
 ## Project
 
-- specifics to be made available on the course website
+- based on public data from AirBnb
+- build a research pipeline; specifics on the course site
 - self- and peer assessment
-  - "proof of investment in skills" (submitted tutorials/data challenges)
-  - written feedback to team members (tba)
+  - "proof of investment in skills" (submitted tutorials/data challenges on Canvas)
+  - written feedback to team members
   - assessment of own performance and that of team members
+
+## Tutorials
+
+- consist of three parts: learn, practice, apply
+- make use of (simplistic) Datacamp courses (e.g., "copy-paste") - should not take too long
+- Data Challenges are more challenging, take more time, and are representative of the level we expect in this course
 
 ## Grading
 
-  - Team project (50%)
-  - Share individual progress and learnings (10%)
-  - Computer exam (40%)
+  - Team project, with self- and peer assessment (40%)
+  - (Online) computer exam (60%)
 
 ::: notes
-* 50% team project = (40% + 10% individual assessment on the basis of self- and peer assessment)
-* What do you mean with "Share individual progress and learnings "
-* Both multiple choice and open questions (you can't pass this course if you don't learn programming -> make sure you actively participate in the team project so that you can replicate it individually)
+
+* Exam: Both multiple choice and open questions (you can't pass this course if you don't learn programming -> make sure you actively participate in the team project so that you can replicate it individually)
+- more specs on exam later
 
 :::
-
 
 ## My commitment
 
-- Boost your own efficiency
-    - ...by making your work reproducible & transparent
-- Boost the efficiency of others
-    - ...by being able to share your work and collaborate on other projects
+- Boost your own efficiency by making your work reproducible & transparent
+- Help you boost the efficiency of others by being able to share work and collaborate on projects
 - Learn R, __but__, becoming an expert requires years of practice
-- Discuss own work and ideas
-- __But__: requires interaction, talking to me, working hard
+- Open software only (usable right away, no admin)
+- Discuss own work and ideas, __but__ requires interaction & working hard
 
-
-::: notes
-
-- Other's efficiency
-    - Not recollect what has been collected
-    - Not reprogram what has been programmed
-    - Learn from one's code, etc.
-    - Share ideas
-- Light-weight structure: no commercial tools, readily implementable, do not need admin rights [...]
-
-:::
-
-## Comments on coding
+## Brain-dead by coding
 
 - Coding can be extremely frustrating if you're starting out
-- You will learn from your mistakes
+- I tend to become semi-"brain-dead" after a day of coding
 - Take breaks! Stop coding. Go for a run. Start again.
-- Use cheat sheets. See course site.
-- [Support section](https://odcm.hannesdatta.com/docs/course/support/)
+- You will learn from your mistakes
+- Use cheat sheets and our support section.
 
+&#8594; quick feedback loops in first few weeks
 
 ::: notes
 
@@ -329,16 +339,14 @@ Mention how we aim to remedy this initial hurdle? (quick feedback loops especial
 
 :::
 
+## Steps of escalation & getting in touch
 
-## Help
+When you run into trouble, this is your way out!
 
-Make computer throws an error. What now?
-1. Google
-2. Ask a friend/classmate
-3. Google
-4. Ask a friend/classmate
-5. Ask course instructor
-
+1. Ask Google and Stackoverflow
+2. Ask friend/classmate (form groups!)
+3. Can it wait? Defer to live streams.
+4. If it can't wait: be in touch with me
 
 ::: notes
 
@@ -347,8 +355,14 @@ Make computer throws an error. What now?
 * Comment on experiment with live coding sessions (start a call - talk to fellow classmates who're facing the same struggles)
 
 
-
 :::
+
+## Use of WhatsApp
+
+- Please use WhatsApp for short questions: +31 13 466 8938.
+- Send me your names (first and last names) now (so I can create contacts on my phone and know whom I'm talking to)
+- More info on the support section of the course website
+- Email is not so optimal
 
 ## What's in for you?
 
@@ -359,7 +373,7 @@ Make computer throws an error. What now?
 - Essential to show expertise
   - potential for follow-ups here in Tilburg and beyond
 
-- Exiting area
+- Exciting area
   - new business models
   - new methods
   - new technologies
@@ -374,132 +388,20 @@ Please tell me __what would make this course a success__ for you
 
 :::
 
-## Being in touch
-
-- WhatsApp
-  - Please use WhatsApp for short questions: +31 13 466 8938
-  - Submit your name and telephone number on Canvas (so I can create contacts on my phone and know whom I'm talking to)
-- More info on the support section of the course website
-
-
 ## Getting started
 
 - Watch the "week kickoff" on YouTube (link on course page) - explains all of the material you need to cover this week
 
 - Any questions?! If not -- I'll see you in the live stream on Friday! (--> course schedule).
 
-- Installation issues: stay on Zoom.
-
-::: notes
-
-* can use the break for installation problems
-* show on the website where they can find the information they need
-* how to download the files (right click)
-* manage expectations: DataCamp courses are simplistic (copy-paste etc.) and should not take too long, the data challenges are more challenging and will likely take more time, and are more representative of the level we expect in this course. 
-
-:::
+- (Installation) issues from "prep week": stay on Zoom.
 
 ## Any questions?
 
-# Preview of efficient workflows
+Stick around now if you have questions.
 
-## Reproducibility & transparency
+Thanks a lot, and have fun with the course!
 
-- Running [text mining tutorial](http://tilburgsciencehub.com/tutorial) on TSH
-
-- Why is it useful?
-    - Runs with one command (`make`)
-    - Template to kickstart your projects
-    - Endless possibilities to extend
-
-__What "standard workflow" templates would be useful in your area?__
-
-## A bird eye's view
-
-- What is it about?
-    - Build entire pipeline first
-    - Then refine steps
-
-- Good for
-    - quick prototype
-    - swapping/upgrading modules
-    - focus on the "big" picture
-
-
-::: notes
-
-how i Use what I teach
-
-:::
-
-## Portability across computers, operating systems
-
-- What is it about?
-    - Prototype on Mac and Windows
-    - Move to Linux Cloud
-
-- Good for
-    - performance issues
-    - collaboration
-
-## Branching out
-
-- What is it about?
-    - Take a "copy" of your project
-    - Do changes there, test those without breaking the main project
-
-- Good for
-    - Testing
-    - Robustness checks
-    - Going back in time
-
-## Time capsule
-
-- What is it about?
-    - Use version history on Git to view code (from the past)
-
-- Good for
-    - Because you *can*, you delete code and keep your project clean
-    - Finding code that you want to use again
-    - Search code *across* projects
-
-## Software agility
-
-- What is it about?
-    - Use automation to connect different programs (e.g., R, Python, ...)
-    - Use outputs of one as inputs of another
-
-- Good for
-    - Use a program what it's best for (e.g., R for data preparation, Python for ML)
-    - Extreme flexibility
-
-::: notes
-
-show EC2
-
-:::
-
-# Wrap-up
-
-## Summary
-
-What are __your__ takeaways?
-
-## Met the objective?
-
-Work __efficiently__ on __data- and computation-intensive__ projects
-
-## Your feedback
-
-- About this course
-    - About me
-    - The format of this course
-    - Communication
-- About Tilburg Science Hub
-    - About the text mining tutorial
-    - About the installation instructions
-    - About the overall workflows
-- ...anything else
 
 ## Contact
 
