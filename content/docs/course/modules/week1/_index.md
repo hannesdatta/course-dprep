@@ -14,7 +14,7 @@ __Obtain business and data understanding, and explore data in R__
 - Introduction to the course
 
 ## Kick-starting your week
-- We'll post a clip to get you started for the week.
+- Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
 
 ## Self-study and activities
 - [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
