@@ -8,7 +8,9 @@
 
 Please turn on your camera :)
 
-If you haven't done so, navigate to the course page at [https://dprep.hannesdatta.com](https://dprep.hannesdatta.com)
+The chat is open - use it like on Twitch/YouTube to also talk to each other; use prefix `???` to ask a question to me, or `!!!` to shout something to me ("hey, slow down!")
+
+If you haven't done so, navigate to the course page at [dprep.hannesdatta.com](https://dprep.hannesdatta.com)
 
 
 
@@ -257,6 +259,8 @@ Running this analysis for my paper would take X days on my local machine (and fo
 
 dprep.hannesdatta.com
 
+TiU Open Education, spread the word
+
 ::: notes
 
 - Will show you the course website now
@@ -344,10 +348,11 @@ Mention how we aim to remedy this initial hurdle? (quick feedback loops especial
 
 When you run into trouble, this is your way out!
 
-1. Ask Google and Stackoverflow
-2. Ask friend/classmate (form groups!)
-3. Can it wait? Defer to live streams.
-4. If it can't wait: be in touch with me
+1. Try to find the info on the course website (+ updates!)
+2. Ask Google and Stackoverflow
+3. Ask friend/classmate (form learning groups, e.g., coordinate via discussion board)
+4. Can it wait? Defer to live streams.
+5. If it can't wait: be in touch with me
 
 ::: notes
 
@@ -360,10 +365,14 @@ When you run into trouble, this is your way out!
 
 ## Use of WhatsApp
 
-- Please use WhatsApp for short questions: +31 13 466 8938.
-- Send me your names (first and last names) now (so I can create contacts on my phone and know whom I'm talking to)
-- More info on the support section of the course website
+- Please use WhatsApp: +31 13 466 8938.
+
+<img width="200" alt="Course framework" src="wa_qr.png">
+
+- Onboarding (names needed!)
 - Email is not so optimal
+- Check out the course's support section
+
 
 ## What's in for you?
 

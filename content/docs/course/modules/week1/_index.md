@@ -11,7 +11,7 @@ draft: false
 __Obtain business and data understanding, and explore data in R__
 
 ## Live stream 1
-- Introduction to the course
+- Introduction to the course ([re-watch](https://youtu.be/iq88xsSGyTg)))
 
 ## Kick-starting your week
 - Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
