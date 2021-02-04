@@ -240,6 +240,7 @@ Running this analysis for my paper would take X days on my local machine (and fo
 ## Course structure
 
 - Part 1: Skill building (modules in weeks 1-5)
+  - Week starter (video)
   - Self-study (readings, activities)
   - Self-guided tutorials to practice skills (plan, learn, apply, create)
   - Live stream for feedback & immersive activities
@@ -305,8 +306,8 @@ all students have Canvas access?
 
 ## Grading
 
-  - Team project, with self- and peer assessment (40%)
-  - (Online) computer exam (60%)
+- Team project, with self- and peer assessment (40%)
+- (Online) computer exam (60%)
 
 ::: notes
 
