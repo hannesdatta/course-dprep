@@ -3,7 +3,7 @@ weight: 3
 title: Week 2) Data preparation
 description: Use tidyverse and dplyr to structure your data for analysis, and generate data reports using R Markdown.
 bookCollapseSection: true
-draft: true
+draft: false
 ---
 
 # Week 2: Data preparation
@@ -22,6 +22,7 @@ __Engineer data sets for analysis__
 -->
 
 ## Live stream 3
+- Develop understanding for common data operations and the "input-transformation-output" process
 - Q&A on Data Challenge 2
 
 
