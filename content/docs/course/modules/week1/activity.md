@@ -60,8 +60,66 @@ df <-
     header = T,
     encoding = 'UTF-8'
   )
+
+# view the data in the console
+head(df)
+
+# view the data in a new tab in RStudio
+View(df)
+
 ```
 
+### Data set 2: Publicly available data: Spotifycharts.com
+
+This data shows insights into the streaming behavior on Spotify, by country and date.
+
+The data is available at https://spotifycharts.com.
+
+
+```r
+
+
+# generate a list of dates
+dates <-
+  seq(
+    from = as.Date('2021-01-01'),
+    to = as.Date('2021-01-07'),
+    by = '1 day'
+  )
+
+# assemble download URLs from dates
+urls <-
+  paste0('https://spotifycharts.com/regional/nl/daily/',
+         dates,
+         '/download')
+
+# download files in batch
+content <- lapply(urls, function(x) {
+  # download raw data
+  file = read.table(
+    x,
+    sep = ',',
+    header = T,
+    quote = '"',
+    skip = 1
+  )
+  # attach date and country
+  file$download_url = x
+  return(file)
+})
+
+# bind everything together in one table
+df <- do.call('rbind', content)
+
+# view the data in the console
+head(df)
+
+# view the data in a new tab in RStudio
+View(df)
+
+```
+
+<!--
 ### Data set 2: Publicly available data: Community Mobility Reports
 
 This data shows insights on movement trends over time and geography, across different categories of retail and recreation, groceries and pharmacies, etc.
@@ -83,6 +141,8 @@ df <-
   )
 ```
 
+-->
+
 ### Data set 3: Commercially available market research data
 
 This data is an (anonymized) data set, capturing sales data as it is available via commercial data providers such as GfK, IRI, or Nielsen. While the data structure resembles what you would receive from such parties, the data itself is "simulated" (the NDA keeps me from sharing the *actual* data).
@@ -94,4 +154,11 @@ df <-
     sep = ',',
     header = T
   )
+
+# view the data in the console
+head(df)
+
+# view the data in a new tab in RStudio
+View(df)
+
 ```
