@@ -3,7 +3,7 @@ weight: 3
 title: Week 3) Workflow management
 description: Familiarize yourself with the principles of workflow management to efficiently work on data-intensive research projects.
 bookCollapseSection: true
-draft: true
+draft: false
 ---
 
 # Week 3: Workflow management
@@ -27,7 +27,7 @@ We have prepared some reading material that will help you to understand the "big
 
 _Optional_:
 - [Modified principles for Code and Data (optional)](https://www.shirokuriwaki.com/programming/project-organization.html)
-- [Principles of Workflow Management (optional)](https://tsh-website.netlify.app/tutorials/project-setup/principles-of-project-setup-and-workflow-management/)
+- [Principles of Workflow Management (optional)](http://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/overview/)
 
 ### Catching up with tutorials
 If you haven't been able to work through all tutorials yet, it's also wise to keep on investing in your skills.
