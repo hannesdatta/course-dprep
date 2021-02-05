@@ -29,8 +29,12 @@ See below a collection of amazing cheat sheets that we recommend you to download
 - https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 - http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf
 
+### Interactive apps
+
+- [Interactive Shiny apps](https://shiny.rstudio.com/images/shiny-cheatsheet.pdf)
 
 ## Version control
+
 - [Git](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ## Make and automation
