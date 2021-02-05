@@ -8,8 +8,7 @@ draft: true
 
 # Deployment & Reporting
 
-In this building block, we create the [following](https://royklaassebos.shinyapps.io/dPrep_Demo_Google_Mobility/) Shiny app. This allows us to interactively explore Google’s [COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) of the Netherlands through an intuitive visual interface. This allows us to easily communicate our insights to non-technical stakeholders and give them the tools to conduct their own analysis!
-
+In this building block, we create the [following](https://royklaassebos.shinyapps.io/dPrep_Demo_Google_Mobility/) Shiny app which allows us to interactively explore Google’s [COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) of the Netherlands through an intuitive visual interface. Being able to create Shiny apps is a great skill to have because it enables you to communicate your insights to non-technical stakeholders and give them the tools to conduct their own analysis!
 
 ![demo-app](./images/demo_app.png)
 
