@@ -66,6 +66,13 @@ Send ID number and password via WhatsApp if requested
 
 <img width="1000" alt="Course framework" src="dprep_framework_detail.png">
 
+## "Proof of skill investment"
+
+- Upload HTML-versions of Markdown documents to Canvas, before 14.15 on the day of the tutorial
+
+- Affects "peer assessment" component of team grade
+
+
 # Part 1: Exploring new data
 
 ## Motivation
