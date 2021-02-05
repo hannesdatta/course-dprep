@@ -22,7 +22,8 @@ __Obtain business and data understanding, and explore data in R__
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
 ## Live stream 2
-- Q&A on Data Challenge 1
+- [Activity to explore new data](activity.md)
+- Q&A on Data Challenge #1
 
 [^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)
 

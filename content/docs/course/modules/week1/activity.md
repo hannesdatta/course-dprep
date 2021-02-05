@@ -44,7 +44,7 @@ Recall - it's a challenge, so things may not always run smoothly! Ask Hannes for
 
 ## Data sets
 
-### Data set 1: Firm's proprietary data: New releases at Spotify
+### Data set 1: Firm's proprietary data (New releases at Spotify)
 
 The data set captures new music albums that have been released to Spotify.
 
@@ -69,7 +69,7 @@ View(df)
 
 ```
 
-### Data set 2: Publicly available data: Spotifycharts.com
+### Data set 2: Publicly available data (Spotifycharts.com)
 
 This data shows insights into the streaming behavior on Spotify, by country and date.
 
@@ -143,7 +143,7 @@ df <-
 
 -->
 
-### Data set 3: Commercially available market research data
+### Data set 3: Commercially available market research data (Retail panel)
 
 This data is an (anonymized) data set, capturing sales data as it is available via commercial data providers such as GfK, IRI, or Nielsen. While the data structure resembles what you would receive from such parties, the data itself is "simulated" (the NDA keeps me from sharing the *actual* data).
 
