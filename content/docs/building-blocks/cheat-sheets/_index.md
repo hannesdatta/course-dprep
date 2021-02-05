@@ -29,6 +29,9 @@ See below a collection of amazing cheat sheets that we recommend you to download
 - https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 - http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf
 
+### Date and Times
+- [Lubridate package cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/lubridate.pdf)
+
 ### Interactive apps
 
 - [Interactive Shiny apps](https://shiny.rstudio.com/images/shiny-cheatsheet.pdf)
@@ -40,3 +43,6 @@ See below a collection of amazing cheat sheets that we recommend you to download
 ## Make and automation
 - [Basic syntax](https://makefiletutorial.com)
 - [More complex workflows](https://devhints.io/makefile) (admittedly very complex...)
+
+###
+
