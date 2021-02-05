@@ -15,13 +15,15 @@ __Engineer data sets for analysis__
 
 ## Self-study and activities
 - [Marketing Analytics for Data-Rich Environments (pp. 97-108)](http://dx.doi.org/10.1509/jm.15.0413)
-- The ITO (input-transformation-output) process
-- Zooming in on "transformation": common data operations (and how they're related to different data set types)
+<!--- The ITO (input-transformation-output) process
+- Zooming in on "transformation": common data operations (and how they're related to different data set types)-->
 - [Data Preparation in R (Tutorial and Data Challenge 2)](docs/tutorials/data-preparation)
-- Video: data set engineering (Hannes)
+<!--- Video: data set engineering (Hannes)
+-->
 
 ## Live stream 3
 - Q&A on Data Challenge 2
+
 
 <!--- Ethics in scraping and APIs *live*
 -->
