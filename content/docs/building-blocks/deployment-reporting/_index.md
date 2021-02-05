@@ -111,7 +111,7 @@ server <- function(input, output) {
 --- 
 
 ## 4. Source Code
-As the last step, we put everything together in a single code snippet that you can re-use for your own projects (just 65 lines of code!). A couple of additional changes we have made include: importing the required packages and the [mobility dataset](/mobility_data.csv), converting the data type of the date end province columns, and adding some white space here and there.
+As the last step, we put everything together in a single code snippet that you can re-use for your own projects (just 65 lines of code!). A couple of additional changes we have made include: importing the required packages and the [mobility dataset](./mobility_data.zip), converting the data type of the date end province columns, and adding some white space here and there.
 
 To publish your app online, you can simply hit the "Publish" button in the R preview window and follow the steps in the wizard. 
 
