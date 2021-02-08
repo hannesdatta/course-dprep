@@ -16,8 +16,8 @@ Distribute your data across multiple tabs (alternative to a sidebar layout).
 ```R
 tabsetPanel(
 	tabPanel(title = "tab 1", 
-    "Content goes here")
-	tabPanel(title = "tab 2", "The content of the second tab")
+    "Content goes here"),
+	tabPanel(title = "tab 2", "The content of the second tab"),
 	tabPanel(title = "tab 3", "The content of the third tab")
 )
 ```
