@@ -34,6 +34,7 @@ See below a collection of amazing cheat sheets that we recommend you to download
 - [Lubridate package cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/lubridate.pdf)
 
 ### R Markdown
+
 - [R markdown cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 - [R markdown reference sheet](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 
@@ -46,8 +47,6 @@ See below a collection of amazing cheat sheets that we recommend you to download
 - [Git](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ## Make and automation
+
 - [Basic syntax](https://makefiletutorial.com)
 - [More complex workflows](https://devhints.io/makefile) (admittedly very complex...)
-
-###
-

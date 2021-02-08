@@ -3,7 +3,7 @@ weight: 90
 title: Deployment & Reporting
 description: Build your own interactive Shiny app!
 bookCollapseSection: true
-draft: true
+draft: false
 ---
 
 # Deployment & Reporting
@@ -12,31 +12,31 @@ In this building block, we create the [following](https://royklaassebos.shinyapp
 
 ![demo-app](./images/demo_app.png)
 
---- 
+---
 
 ## 1. Code Structure
 
 The Shiny library helps you turn your analyses into interactive web applications without requiring HTML, CSS, or Javascript knowledge, and provides a powerful web framework for building web applications using R. The skeleton of any Shiny app consists of a user interface (UI) and a server. The UI is where the visual elements are placed such as a scatter plot or dropdown menu. The server is where the logic of the app is implemented, for example, what happens once you click on the download button. And this exactly where Shiny shines: combining inputs with outputs. In the next two sections, we're going to define the inside contents of the `ui` and `server` parts of our app.
 
- 
+
  ```
-  library(shiny) 
-  ui <- fluidPage() 
-  server <- function(input, output){} 
+  library(shiny)
+  ui <- fluidPage()
+  server <- function(input, output){}
   shinyApp(ui = ui, server = server)
  ```
- 
- 
- 
+
+
+
  ---
- 
+
  ## 2. User Interface
- 
+
  In our app, we have a left `sidebarPanel()` with a header, category, province, date range selector, and download button. Shiny apps support a variety of [control widgets](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/) such as dropdown menus, radio buttons, text fields, number selectors, and sliders. Each of these controls has an `inputId` which is an identifier that the `server` part of our app recognizes. The `label` is the text you see above each control. Depending on the widget, you may need to specify additional parameters such as `choices` (list of selections in dropdown), `selected` (the default choice), `multiple` (whether only one or more selections are allowed), or the `start` and `end` values of the date picker.
- 
- On the right, there is a `mainPanel()` that shows the plot, figure description, and table. The `plotlyOutput` turns a static plot into an interactive one in which you can select data points, zoom in and out, view tooltips, and download a chart image. Similarly, the `DT::dataTableOutput()` makes the data table interactive so that you can sort by column, search for values, and show a selection of the data. 
- 
- 
+
+ On the right, there is a `mainPanel()` that shows the plot, figure description, and table. The `plotlyOutput` turns a static plot into an interactive one in which you can select data points, zoom in and out, view tooltips, and download a chart image. Similarly, the `DT::dataTableOutput()` makes the data table interactive so that you can sort by column, search for values, and show a selection of the data.
+
+
  ```
  ui <- fluidPage(
     sidebarLayout(
@@ -55,7 +55,7 @@ The Shiny library helps you turn your analyses into interactive web applications
           downloadButton(outputId = "download_data", label = "Download"),
           ),
         mainPanel(
-          plotlyOutput(outputId = "plot"), 
+          plotlyOutput(outputId = "plot"),
           em("Postive and negative percentages indicate an increase and decrease from the baseline period (median value between January 3 and February 6, 2020) respectively."),
           DT::dataTableOutput(outputId = "table")
         )
@@ -63,13 +63,13 @@ The Shiny library helps you turn your analyses into interactive web applications
 )
 ```
 
---- 
+---
 
 ## 3. Server
 
 The `server` function requires the `input` and `output` parameters where `input` refers to the `inputIds` of the `ui`, for example, `input$provinces` denotes the current selection of provinces. In the same way, `input$date[1]` and `input$date[2]` represent the selected start and end date in the date picker.
 
-First, we create a `reactive` variable `filtered_data`. Any time the user manipulates the province selection or date picker, this variable is re-evaluated. To access the data, you can call the variable name followed by parentheses: `filtered_data()`. 
+First, we create a `reactive` variable `filtered_data`. Any time the user manipulates the province selection or date picker, this variable is re-evaluated. To access the data, you can call the variable name followed by parentheses: `filtered_data()`.
 
 Second, we build up the plot with the [`ggplot`](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) library by defining the dataset, horizontal and vertical axes, and color categories. Next, we add a scatter plot with reduced transparency, remove the default legend, and change the vertical axis label. Note that `output$plot` refers the `outputId` of the `plotlyOutput()` function.
 
@@ -81,19 +81,19 @@ server <- function(input, output) {
         subset(mobility,
                Province %in% input$provinces &
                Date >= input$date[1] & Date <= input$date[2])})
-    
+
     output$plot <- renderPlotly({
         ggplotly({
                 p <- ggplot(filtered_data(), aes_string(x = "Date", y = input$dv, color = "Province")) +
-                geom_point(alpha = 0.5) + theme(legend.position = "none") + ylab("% change from baseline") 
+                geom_point(alpha = 0.5) + theme(legend.position = "none") + ylab("% change from baseline")
             p
         })
     })
-    
+
     output$table <- DT::renderDataTable({
         filtered_data()
     })
-    
+
     output$download_data <- downloadHandler(
         filename = "download_data.csv",
         content = function(file) {
@@ -101,18 +101,18 @@ server <- function(input, output) {
             write.csv(data, file, row.names = FALSE)
         }
     )
-    
+
 }
 
 ```
 
 
---- 
+---
 
 ## 4. Source Code
 As the last step, we put everything together in a single code snippet that you can re-use for your own projects (just 65 lines of code!). A couple of additional changes we have made include: importing the required packages and the [mobility dataset](./mobility_data.zip), converting the data type of the date end province columns, and adding some white space here and there.
 
-To publish your app online, you can simply hit the "Publish" button in the R preview window and follow the steps in the wizard. 
+To publish your app online, you can simply hit the "Publish" button in the R preview window and follow the steps in the wizard.
 
 ```
 library(shiny)
@@ -154,21 +154,21 @@ server <- function(input, output) {
         subset(mobility,
                Province %in% input$provinces &
                Date >= input$date[1] & Date <= input$date[2])})
-    
+
     output$plot <- renderPlotly({
         ggplotly({
                 p <- ggplot(filtered_data(), aes_string(x="Date", y=input$dv, color="Province")) +
-                geom_point(alpha=0.5) + theme(legend.position = "none") + 
-                    ylab("% change from baseline") 
-            
+                geom_point(alpha=0.5) + theme(legend.position = "none") +
+                    ylab("% change from baseline")
+
             p
         })
     })
-    
+
     output$table <- DT::renderDataTable({
         filtered_data()
     })
-    
+
     output$download_data <- downloadHandler(
         filename = "download_data.csv",
         content = function(file) {
@@ -176,7 +176,7 @@ server <- function(input, output) {
             write.csv(data, file, row.names = FALSE)
         }
     )
-    
+
 }
 
 shinyApp(ui = ui, server = server)
@@ -198,20 +198,20 @@ https://bookdown.org/paulcbauer/idv2/8-3-example-for-starters.html
 
 # [DataCamp](https://campus.datacamp.com/courses/case-studies-building-web-applications-with-shiny-in-r/shiny-review?ex=2)
  The UI is where the visual elements are placed—it controls the layout and appearance of your app. The server is where the logic of the app is implemented—for example, where calculations are performed and plots are generated.
- 
+
  In reactive programming, an expression gets re-evaluated whenever any of its dependencies are modified. In Shiny, all inputs are reactive variables. This means that any time the user manipulates an input control to change its value, any code block that depends on that variable (such as a render function) reacts to the input variable's new value by re-evaluating.
- 
+
  Reactive values are special constructs in Shiny; they are not seen anywhere else in R programming. As such, they cannot be used in just any R code, reactive values can only be accessed within a reactive context.
 
  This is the reason why any variable that depends on a reactive value must be created using the reactive() function, otherwise you will get an error. The shiny server itself is not a reactive context, but the reactive() function, the observe() function, and all render*() functions are.
- 
+
  The real benefit of using Shiny comes when inputs are combined with outputs. The table created in the last exercise is static—it cannot be changed—but for exploration, it would be better if the user could decide what subset of the data to see.
 
 This can be achieved by adding an input that lets the user select a value to filter the data. This way, the table we created in the previous exercise can be made dynamic.
- 
- 
+
+
  Mogelijk de COVID dataset
- Wat er echt in moet komen: 
+ Wat er echt in moet komen:
  * Continents (meerdere selecteren)
  * Slider (voor de jaren)
  * Plotly plots
@@ -227,16 +227,16 @@ This can be achieved by adding an input that lets the user select a value to fil
    - `colourInput` (bijv. kleur plots wijzigen)
 
 
-* COVID-datset van week 1 
+* COVID-datset van week 1
   - Selecteren van een provincie (nadeel: niet ingebouwd; maar wel bij iedereen bekend)
   - Selecteren van datum range
   - Selecteren van een of meerdere provincies (als losse datapunten) + all optie
   - Dropdown voor de DV (of mogelijk toch meerdere zodat je ze makkelijk kunt vergelijken)
-  - Trendlijn alleen doen als het zin heeft 
- 
- 
- 
-Customized Shiny app 
+  - Trendlijn alleen doen als het zin heeft
+
+
+
+Customized Shiny app
 * Filter by region
 * Add trend line
 * Plotly functionality
@@ -277,12 +277,12 @@ Customized Shiny app
        data <- subset(gapminder,
                       continent %in% input$continents &
                         year >= input$years[1] & year <= input$years[2])
-       
+
        p <- ggplot(data, aes(gdpPercap, lifeExp)) +
          geom_point(size = input$size, col = input$color) +
          scale_x_log10() +
          ggtitle(input$title)
-       
+
        if (input$fit) {
          p <- p + geom_smooth(method = "lm")
        }
@@ -292,13 +292,13 @@ Customized Shiny app
  }
 
  shinyApp(ui = ui, server = server)
- 
- 
- ```
- 
- 
 
- 
+
+ ```
+
+
+
+
  # table + download button
  ```
  ui <- fluidPage(
@@ -330,7 +330,7 @@ Customized Shiny app
      }
      data
    })
-   
+
    output$table <- renderTable({
      # Use the filtered_data variable to render the table output
      data <- filtered_data()
@@ -358,10 +358,10 @@ Customized Shiny app
  }
 
  shinyApp(ui, server)
- 
+
  ```
- 
- 
+
+
  # interactive table + beter table
  ```
  ui <- fluidPage(
@@ -406,7 +406,7 @@ server <- function(input, output) {
     }
     data
   })
-  
+
   output$table <- DT::renderDataTable({
     data <- filtered_data()
     data
@@ -429,9 +429,9 @@ server <- function(input, output) {
 }
 
 shinyApp(ui, server)
- 
+
  ```
- 
+
 
 
 https://www.youtube.com/watch?v=IgHHXcSfM7c
