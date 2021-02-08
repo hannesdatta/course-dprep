@@ -32,6 +32,7 @@ Develop your R skills by completing the DataCamp courses
 
 ### Practice
 - Practice some more by preparing a dataset with R for further analysis ([View](data-preparation.html), [Download; right click - download file as](data-preparation-skeleton.Rmd))
+- Download the data from [here](https://drive.google.com/file/d/1WiPmhClawJRSfGEaMKmIX3o2nk7dInUN/view?usp=sharing) and store it in the same directory as your Markdown file.
 
 ### Create (Data Challenge #2)
 - Create an RMarkdown report in which you explore open-ended questions! Start from the answer skeleton ([View](data-report.html), [Download; right click - download file as](data-report.Rmd))
