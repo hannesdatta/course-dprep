@@ -11,7 +11,7 @@ draft: false
 __Engineer data sets for analysis__
 
 ## Kick-starting your week
-- We'll post a clip to get you started for the week.
+- Watch [the energizer for the week](https://youtu.be/tctr4GgrD4w) on YouTube!
 
 ## Self-study and activities
 - [Marketing Analytics for Data-Rich Environments (pp. 97-108)](http://dx.doi.org/10.1509/jm.15.0413)
