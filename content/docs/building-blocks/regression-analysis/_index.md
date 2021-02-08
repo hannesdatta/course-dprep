@@ -8,7 +8,7 @@ draft: false
 
 # Regression Analysis
 
-*In this building block, we analyze the relationship between a car's speed and the stop distance. First, we check the model assumptions and screen for potential outliers. Second, we export our regression results into a format that you can easily copy into word processing software. Third, we build a scatter plot with the trend line on top of it. Fourth and last, we make predictions for unseen data points.*
+*This page serves as an example of how to combine "Regression Analysis" building blocks to run, evaluate and export linear regression model results. In particular, we analyze the relationship between a car's speed and the stop distance. First, we check the model assumptions and screen for potential outliers. Second, we export our regression results into a format that you can easily copy into word processing software. Third, we build a scatter plot with the trend line on top of it. Fourth and last, we make predictions for unseen data points.*
 
 ## 1. Evaluate Model Assumptions
 We use the built-in `cars` dataset which includes 50 data points of a car's stop distance at a given speed. Since the dimensions are in miles per hour and foot, we first convert it into kilometer per hour and meter, respectively.

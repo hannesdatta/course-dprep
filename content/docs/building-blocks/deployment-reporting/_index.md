@@ -8,7 +8,7 @@ draft: false
 
 # Deployment & Reporting
 
-In this building block, we create the [following](https://royklaassebos.shinyapps.io/dPrep_Demo_Google_Mobility/) Shiny app which allows us to interactively explore Google’s [COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) of the Netherlands through an intuitive visual interface. Being able to create Shiny apps is a great skill to have because it enables you to communicate your insights to non-technical stakeholders and give them the tools to conduct their own analysis!
+*Here we provide an illustrative example of how to mix and match building blocks to develop a Shiny app from scratch. More specifically, we create the [following](https://royklaassebos.shinyapps.io/dPrep_Demo_Google_Mobility/) Shiny app which allows us to interactively explore Google’s [COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) of the Netherlands through an intuitive visual interface. Being able to create Shiny apps is a great skill to have because it enables you to communicate your insights to non-technical stakeholders and give them the tools to conduct their own analysis!*
 
 ![demo-app](./images/demo_app.png)
 
@@ -110,7 +110,7 @@ server <- function(input, output) {
 ---
 
 ## 4. Source Code
-As the last step, we put everything together in a single code snippet that you can re-use for your own projects (just 65 lines of code!). A couple of additional changes we have made include: importing the required packages and the [mobility dataset](./mobility_data.zip), converting the data type of the date end province columns, and adding some white space here and there.
+As the last step, we put everything together in a single [code snippet](app.R) that you can re-use for your own projects (just 65 lines of code!). A couple of additional changes we have made include: importing the required packages and the [mobility dataset](./mobility_data.zip), converting the data type of the date end province columns, and adding some white space here and there.
 
 To publish your app online, you can simply hit the "Publish" button in the R preview window and follow the steps in the wizard.
 
