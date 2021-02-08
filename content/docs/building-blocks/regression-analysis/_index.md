@@ -21,7 +21,7 @@ The second requirement is that the residuals are approximately normally distribu
 Finally, the right chart shows the standardized residuals for all fitted values. The homoskedasticity assumption states that the error term should be the same across all values of the independent variables. Hence, we should check here if there is any pattern that stands out. In our case, this happens to be the case as the blue line stays rather flat. It would, however, be troublesome if the error value increases for higher speed values.
 
 *Code snippet*
-```
+```R
 library(ggplot2)
 library(ggfortify)
 library(broom)
@@ -56,7 +56,7 @@ We use the `augment` function from the `broom` package to obtain model fit stati
 
 *Code snippet*
 
-```
+```R
 leverage_influence <- mdl_cars %>%
     augment() %>%
     select(speed_kmh, dist_m, leverage = .hat, cooks_dist = .cooksd) %>%
@@ -83,7 +83,7 @@ Although the model output from the `summary()` command suffices for your own ana
 
 *Code snippet*
 
-```
+```R
 library(stargazer)
 
 stargazer(mdl_cars, mdl_cars_cleaned,
@@ -111,7 +111,7 @@ The `ggplot` library is based on the notion of visual layers. For example, we fi
 
 *Code snippet*
 
-```
+```R
 library(ggplot2)
 
 ggplot(cars, aes(speed_kmh, dist_m)) +
@@ -134,7 +134,7 @@ Although we should be careful to extrapolate outside the ranges of our data, we 
 
 *Code snippet*
 
-```
+```R
 library(dplyr)
 explanatory_data <- data.frame(speed_kmh=c(45, 50, 60))
 

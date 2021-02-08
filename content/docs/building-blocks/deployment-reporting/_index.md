@@ -19,7 +19,7 @@ In this building block, we create the [following](https://royklaassebos.shinyapp
 The Shiny library helps you turn your analyses into interactive web applications without requiring HTML, CSS, or Javascript knowledge, and provides a powerful web framework for building web applications using R. The skeleton of any Shiny app consists of a user interface (UI) and a server. The UI is where the visual elements are placed such as a scatter plot or dropdown menu. The server is where the logic of the app is implemented, for example, what happens once you click on the download button. And this exactly where Shiny shines: combining inputs with outputs. In the next two sections, we're going to define the inside contents of the `ui` and `server` parts of our app.
 
 
- ```
+ ```R
   library(shiny)
   ui <- fluidPage()
   server <- function(input, output){}
@@ -37,7 +37,7 @@ The Shiny library helps you turn your analyses into interactive web applications
  On the right, there is a `mainPanel()` that shows the plot, figure description, and table. The `plotlyOutput` turns a static plot into an interactive one in which you can select data points, zoom in and out, view tooltips, and download a chart image. Similarly, the `DT::dataTableOutput()` makes the data table interactive so that you can sort by column, search for values, and show a selection of the data.
 
 
- ```
+ ```R
  ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(
@@ -75,7 +75,7 @@ Second, we build up the plot with the [`ggplot`](https://rstudio.com/wp-content/
 
 Third, we make sure that the current selection of data is shown in a table and that the download button  becomes functionable by writing `filtered_data()` to a csv-file.
 
-```
+```R
 server <- function(input, output) {
     filtered_data <- reactive({
         subset(mobility,
@@ -114,7 +114,7 @@ As the last step, we put everything together in a single code snippet that you c
 
 To publish your app online, you can simply hit the "Publish" button in the R preview window and follow the steps in the wizard.
 
-```
+```R
 library(shiny)
 library(plotly)
 library(DT)
@@ -181,7 +181,6 @@ server <- function(input, output) {
 
 shinyApp(ui = ui, server = server)
 ```
-
 
 
 <!--
