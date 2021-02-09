@@ -8,7 +8,7 @@ draft: false
 
 # Deployment & Reporting
 
-In this building block, we create the [following](https://royklaassebos.shinyapps.io/dPrep_Demo_Google_Mobility/) Shiny app which allows us to interactively explore Google’s [COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) of the Netherlands through an intuitive visual interface. Being able to create Shiny apps is a great skill to have because it enables you to communicate your insights to non-technical stakeholders and give them the tools to conduct their own analysis!
+*Here we provide an illustrative example of how to mix and match building blocks to develop a Shiny app from scratch. More specifically, we create the [following](https://royklaassebos.shinyapps.io/dPrep_Demo_Google_Mobility/) Shiny app which allows us to interactively explore Google’s [COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) of the Netherlands through an intuitive visual interface. Being able to create Shiny apps is a great skill to have because it enables you to communicate your insights to non-technical stakeholders and give them the tools to conduct their own analysis!*
 
 ![demo-app](./images/demo_app.png)
 
@@ -19,7 +19,7 @@ In this building block, we create the [following](https://royklaassebos.shinyapp
 The Shiny library helps you turn your analyses into interactive web applications without requiring HTML, CSS, or Javascript knowledge, and provides a powerful web framework for building web applications using R. The skeleton of any Shiny app consists of a user interface (UI) and a server. The UI is where the visual elements are placed such as a scatter plot or dropdown menu. The server is where the logic of the app is implemented, for example, what happens once you click on the download button. And this exactly where Shiny shines: combining inputs with outputs. In the next two sections, we're going to define the inside contents of the `ui` and `server` parts of our app.
 
 
- ```
+ ```R
   library(shiny)
   ui <- fluidPage()
   server <- function(input, output){}
@@ -37,7 +37,7 @@ The Shiny library helps you turn your analyses into interactive web applications
  On the right, there is a `mainPanel()` that shows the plot, figure description, and table. The `plotlyOutput` turns a static plot into an interactive one in which you can select data points, zoom in and out, view tooltips, and download a chart image. Similarly, the `DT::dataTableOutput()` makes the data table interactive so that you can sort by column, search for values, and show a selection of the data.
 
 
- ```
+ ```R
  ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(
@@ -75,7 +75,7 @@ Second, we build up the plot with the [`ggplot`](https://rstudio.com/wp-content/
 
 Third, we make sure that the current selection of data is shown in a table and that the download button  becomes functionable by writing `filtered_data()` to a csv-file.
 
-```
+```R
 server <- function(input, output) {
     filtered_data <- reactive({
         subset(mobility,
@@ -110,11 +110,11 @@ server <- function(input, output) {
 ---
 
 ## 4. Source Code
-As the last step, we put everything together in a single code snippet that you can re-use for your own projects (just 65 lines of code!). A couple of additional changes we have made include: importing the required packages and the [mobility dataset](./mobility_data.zip), converting the data type of the date end province columns, and adding some white space here and there.
+As the last step, we put everything together in a single [code snippet](app.R) that you can re-use for your own projects (just 65 lines of code!). A couple of additional changes we have made include: importing the required packages and the [mobility dataset](./mobility_data.zip), converting the data type of the date end province columns, and adding some white space here and there.
 
 To publish your app online, you can simply hit the "Publish" button in the R preview window and follow the steps in the wizard.
 
-```
+```R
 library(shiny)
 library(plotly)
 library(DT)
@@ -181,7 +181,6 @@ server <- function(input, output) {
 
 shinyApp(ui = ui, server = server)
 ```
-
 
 
 <!--

@@ -8,7 +8,7 @@ draft: false
 
 # Regression Analysis
 
-*In this building block, we analyze the relationship between a car's speed and the stop distance. First, we check the model assumptions and screen for potential outliers. Second, we export our regression results into a format that you can easily copy into word processing software. Third, we build a scatter plot with the trend line on top of it. Fourth and last, we make predictions for unseen data points.*
+*This page serves as an example of how to combine "Regression Analysis" building blocks to run, evaluate and export linear regression model results. In particular, we analyze the relationship between a car's speed and the stop distance. First, we check the model assumptions and screen for potential outliers. Second, we export our regression results into a format that you can easily copy into word processing software. Third, we build a scatter plot with the trend line on top of it. Fourth and last, we make predictions for unseen data points.*
 
 ## 1. Evaluate Model Assumptions
 We use the built-in `cars` dataset which includes 50 data points of a car's stop distance at a given speed. Since the dimensions are in miles per hour and foot, we first convert it into kilometer per hour and meter, respectively.
@@ -21,7 +21,7 @@ The second requirement is that the residuals are approximately normally distribu
 Finally, the right chart shows the standardized residuals for all fitted values. The homoskedasticity assumption states that the error term should be the same across all values of the independent variables. Hence, we should check here if there is any pattern that stands out. In our case, this happens to be the case as the blue line stays rather flat. It would, however, be troublesome if the error value increases for higher speed values.
 
 *Code snippet*
-```
+```R
 library(ggplot2)
 library(ggfortify)
 library(broom)
@@ -56,7 +56,7 @@ We use the `augment` function from the `broom` package to obtain model fit stati
 
 *Code snippet*
 
-```
+```R
 leverage_influence <- mdl_cars %>%
     augment() %>%
     select(speed_kmh, dist_m, leverage = .hat, cooks_dist = .cooksd) %>%
@@ -83,7 +83,7 @@ Although the model output from the `summary()` command suffices for your own ana
 
 *Code snippet*
 
-```
+```R
 library(stargazer)
 
 stargazer(mdl_cars, mdl_cars_cleaned,
@@ -111,7 +111,7 @@ The `ggplot` library is based on the notion of visual layers. For example, we fi
 
 *Code snippet*
 
-```
+```R
 library(ggplot2)
 
 ggplot(cars, aes(speed_kmh, dist_m)) +
@@ -134,7 +134,7 @@ Although we should be careful to extrapolate outside the ranges of our data, we 
 
 *Code snippet*
 
-```
+```R
 library(dplyr)
 explanatory_data <- data.frame(speed_kmh=c(45, 50, 60))
 
