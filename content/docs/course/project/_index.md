@@ -39,6 +39,7 @@ After completion of the project, students and researchers need to be equipped wi
           - your data collection, the raw data, and its documentation (focus of oDCM), and
           - the entire project pipeline (focus of dPrep, consisting of data exploration, data preparation, automation and deployment).
       - Start your workflow from the data package template.
+      - Make sure that you have collected (at least) some raw data by week 5/6 in oDCM, so that you can start your team project here in dPrep.
   - __(3) (External) PhD and research master students__ auditing this course can work on their own research projects.
 
 ## Planning
