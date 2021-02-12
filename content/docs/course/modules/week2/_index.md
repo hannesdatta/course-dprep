@@ -22,7 +22,8 @@ __Engineer data sets for analysis__
 -->
 
 ## Live stream 3
-- Develop understanding for common data operations and the "input-transformation-output" process
+- Develop understanding for [why it's necessary to prepare data sets for analysis](https://youtu.be/z_Hh1jlL1Ac)
+- [Work on an activity to perform common data transformations](activity.md)
 - Q&A on Data Challenge 2
 
 

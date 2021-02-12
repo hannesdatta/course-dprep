@@ -20,9 +20,9 @@ See below a collection of amazing cheat sheets that we recommend you to download
 
 ### Data wrangling
 
-- [Data wrangling with dplyr](https://rstudio.com/wp-content/)
-- [Data wrangling with data.table](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/datatable_Cheat_Sheet_R.pdf)
-- [Data transformation with dplyr](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+- [Data wrangling with dplyr and tidyr - 1 page with reshaping](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+- [Data transformation with dplyr -  2 pages](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+- [Data wrangling with data.table - incredibly fast for large datasets](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/datatable_Cheat_Sheet_R.pdf)
 
 ### Plotting
 
