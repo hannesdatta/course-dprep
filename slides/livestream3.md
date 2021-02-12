@@ -41,24 +41,26 @@ Questions for Poll:
 - I'll share some learnings from your questions
 - I'll share my screen/show you how I code, so you can learn from it (truth to be told: I don't use dplyr)
 
+- "Proof of skill investment"
+  - Upload HTML-versions of Markdown documents to Canvas, before 14.15 on the day of the tutorial
+  - Affects "peer assessment" component of team grade
+  - Late submissions accepted up to a week later
+
 :::
 
 
 ## Comment on teaching style
 
-- I don't give "traditional lectures"
+> - I don't give "traditional lectures"
 - Instead, I put most effort in the *tutorials* and other relevant study resources - these are all online
 - Live streams are way to help you see the bigger picture, but they are *absolutely insufficient* in replacing all of the study material
-- Use feedback via WhatsApp, livestreams, be active & get the most of this course
+- Use feedback via WhatsApp, livestreams, be active & get the most of this course (can still adapt)
 - Really enjoy it so far - hope you do, too!
 
-## "Proof of skill investment"
+## Disclaimer
 
-- Upload HTML-versions of Markdown documents to Canvas, before 14.15 on the day of the tutorial
-
-- Affects "peer assessment" component of team grade
-
-- Late submissions accepted up to a week later
+- We use `dplyr` today - but I don't use that for my research (instead, I use `data.table`)
+- I'm starting out, too - so you can observe me learning
 
 # Part 1: Data preparation
 
@@ -105,9 +107,16 @@ https://www.youtube.com/watch?v=z_Hh1jlL1Ac
 
 ## Implementation
 
-- Breakout: "challenge groups"
-- Guided groups: stay here
-- Task: see activity for this module, online
+- Two groups
+  - "Breakout challenge" <- advanced users
+  - One guided group: stays here
+
+- Task: see activity for this module, online: https://dprep.hannesdatta.com/docs/course/modules/week2/activity/
+  - Can choose between several tasks (1 is easiest, 3 hardest)
+
+## Work on challenge now
+
+## Sharing experiences from breakout groups
 
 ## Zooming in on inputs and outputs
 
@@ -128,32 +137,40 @@ Start with Kannan: Characterizing big data
 - Can consist of multiple "ITO" blocks
 - We learn to stitch those together in module 3
 
-## Example project: Spotify (tiu.nu/spotify)
+## Example project: Spotify (I)
 
-- API: users - timestamp consumption
-- Scraper: username - timestamp - platform
-- Stitch together with approximate merge
-- Merge artist meta characteristics
-- Tag "new" artists
-- Filter: only users that used iTunes at the beginning
+- Paper: tiu.nu/spotify
+
+- Get data
+  - API: users - timestamp consumption
+  - Scraper: username - timestamp - platform
+- Data preparation
+  - Stitch together with approximate merge
+  - Merge artist meta characteristics
+  - Tag "new" artists
+  - Filter: only users that used iTunes at the beginning
+
+## Example project: Spotify (II)
+
 - Feature-engineering & aggregation per week
   - Total consumption
   - New consumption/artists
   - Concentration metrics
+- Analyze (diff-in-diff)
 
 ## Wrap up of part 1
 
-- Need for preparing data for analysis
+>- Need for preparing data for analysis
 - Think in input-transformation-output blocks
 - Stitch them together in a pipeline
 
-# Part 2: Zooming in on transformation / tutorial
+# Part 2: Zooming in on transformation
 
-## Cheat sheet for dplyr
+## Cheat sheet for `dplyr`
 
 https://dprep.hannesdatta.com/docs/building-blocks/cheat-sheets/
 
-
+## Tutorial Q&A
 
 ## Key idea 1: Limit data size
 
@@ -168,7 +185,7 @@ https://dprep.hannesdatta.com/docs/building-blocks/cheat-sheets/
 
 ## Next week: Self-study
 
-<img width="1000" alt="Course framework" src="dprep_framework_detail.png">
+<img width="800" alt="Course framework" src="dprep_framework_detail.png">
 
 - Reading on "workflow" management
 - Catching up with tutorials & becoming proficient

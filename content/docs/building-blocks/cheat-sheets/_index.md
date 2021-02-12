@@ -50,3 +50,7 @@ See below a collection of amazing cheat sheets that we recommend you to download
 
 - [Basic syntax](https://makefiletutorial.com)
 - [More complex workflows](https://devhints.io/makefile) (admittedly very complex...)
+
+## Slide design & more
+
+- [Ex-McKinsey employee on management slides](https://www.youtube.com/watch?v=B2t2a7IzJMU&list=PLO9mZ8x4h8C7F_UdQvKW685Nvz4OYN6qs&index=2)
