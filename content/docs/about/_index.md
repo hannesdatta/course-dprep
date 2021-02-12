@@ -25,6 +25,12 @@ This is the first edition of a new course, and it borrows substantial external c
 * Colt Steele. (2020). [Introduction to Github](https://www.notion.so/Introduction-to-GitHub-202af6f64bbd4299b15f238dcd09d2a7)
 * Data School. (2014). [Version Control with Git & Github](https://www.youtube.com/watch?v=xKVlZ3wFVKA&list=PL5-da3qGB5IBLMp7LtN8Nc3Efd4hJq0kD)
 
+
+## Open Science
+This course adheres to the principles of the [Open Science Community](https://www.tilburguniversity.edu/research/open-science-community) of Tilburg University. This initiative advocates for transparency and accessibility in research and teaching to all levels of society and thus creating more accountability and impact.
+
+[![](open-science-logo.png)](https://www.tilburguniversity.edu/research/open-science-community)
+
 ## License
 
 This content on this course website is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/). In other words, you're invited to contribute to it, or even copy and modify it to suit your needs.
