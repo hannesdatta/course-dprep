@@ -15,7 +15,7 @@ This week, there is no live contact moment ("self-study week").
 -->
 
 ## Kick-starting your self-study week
-- We'll post a clip to get you started for the week.
+- Watch [the energizer for the week](https://youtu.be/vueCS4ukBjU) on YouTube!
 
 ## Self-study and activities
 
