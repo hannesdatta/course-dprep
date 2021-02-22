@@ -40,7 +40,7 @@ draft: false
 
 ### Practice
 
-- Practice `make` commands by working on the tutorial ["Practicing pipeline automation using `make`"](http://tilburgsciencehub.com/tutorials/more-tutorials/implement-an-efficient-and-reproducible-workflow/implement-an-efficient-and-reproducible-workflow-overview/)
+- Practice `make` commands by working on the tutorial ["Practicing pipeline automation using `make`"](https://tilburgsciencehub.com/tutorials/reproducible-research/practicing-pipeline-automation-make/overview/)
 
 {{< hint warning >}}
 
