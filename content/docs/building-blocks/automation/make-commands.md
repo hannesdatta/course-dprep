@@ -1,8 +1,8 @@
 ---
 weight: 10
 title: What are makefiles?
-description: Understand the basic structure of makefiles
-keywords: "make, makefile, automation, target, prerequisite"
+description: "Understand the basic structure of makefiles to to specify instructions and recipes for your computer."
+keywords: "make, makefile, automation, target, prerequisite, recipes"
 date: 2021-02-08
 bookCollapseSection: true
 draft: false

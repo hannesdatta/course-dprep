@@ -1,8 +1,8 @@
 ---
 weight: 12
 title: The most important Git commands you should know
-description: A quick recap of the most important Git commands + links to amazing cheatsheets
-keywords: "download, import data, download datasets internet"
+description: "A quick recap of the essential Git commands you will be using everyday."
+keywords: "git, commands, important, essential, cheat"
 date: 2021-02-08
 bookCollapseSection: true
 draft: false
