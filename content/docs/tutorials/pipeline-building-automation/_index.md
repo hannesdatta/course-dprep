@@ -29,6 +29,7 @@ draft: false
 - Watch (in this order...)
   - [This is why you should automate the pipeline of your empirical research project](https://youtu.be/9aivqe-phL0)
   - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)
+  - The content of the slides shown in the videos is [available here](pipelineautomation.pdf)
 
 - Read the building block ["What are makefiles"](../../building-blocks/automation/make-commands)
 
