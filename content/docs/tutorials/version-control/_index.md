@@ -33,6 +33,15 @@ draft: true
 
 
 ### Create
-- T.B.D.
+In the tutorial above, you already practised forking a repository. In this section, we ask you to put all your Git skills to the test by following an end-to-end workflow. The idea is that we ask you to contribute the [course website](https://dprep.hannesdatta.com) (which can be as little as fixing a typo) through a pull request. Below are some instructions to help you get started: 
+
+1. Install [hugo](https://gohugo.io/getting-started/installing/) (if you didn't do that already)
+2. Fork [course repository](https://github.com/hannesdatta/course-dprep)
+3. Clone your own fork to the disk
+4. Run `hugo server` and see the site as is
+5. Branch out (`git branch newfeature`)
+6. Work on a new feature, e.g., correction of typo, content, etc.)
+7. Push changes locally
+8. When happy, issue a pull request from the website (please give a brief description of your changes)
 
 
