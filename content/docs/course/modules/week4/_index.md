@@ -9,7 +9,7 @@ draft: false
 # Week 4: Pipeline Building and Automation
 
 ## Kick-starting your week
-- We'll post a clip to get you started for the week.
+- Watch [the energizer for the week](https://youtu.be/PdWZ1s8XXiU) on YouTube!
 
 ## Self-study and activities
 - [Pipeline Building and Automation (Tutorial & Data Challenge 3)](docs/tutorials/pipeline-building-automation)
