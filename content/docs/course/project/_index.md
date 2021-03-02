@@ -42,16 +42,18 @@ After completion of the project, students and researchers need to be equipped wi
       - Make sure that you have collected (at least) some raw data by week 5/6 in oDCM, so that you can start your team project here in dPrep.
   - __(3) (External) PhD and research master students__ auditing this course can work on their own research projects.
 
-## Planning
-
-The coaching for your team project takes place in weeks 6-8. You are free to form teams before that (teams will be finalized in week 5).
-
-More details in your [workplan](workplan.md).
-
-<!--
-You can sign up for optional team meetings with the course instructor in weeks 6-8 to gather feedback on your project. Details on how to register for a time slot will be provided to you at a later stage.
--->
 
 ## Deadline & Submission
 - 26 March 2021, 6pm
 - Please submit links to your GitHub repository with the necessary source code (one link per team).
+
+## Getting started
+
+The coaching for your team project takes place in weeks 6-8. You are free to form teams before that (teams will be finalized in week 5).
+
+{{<section>}}
+
+
+<!--
+You can sign up for optional team meetings with the course instructor in weeks 6-8 to gather feedback on your project. Details on how to register for a time slot will be provided to you at a later stage.
+-->

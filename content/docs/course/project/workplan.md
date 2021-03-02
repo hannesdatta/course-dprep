@@ -1,8 +1,8 @@
 ---
-weight: 5
+weight: 10
 title: "Workplan"
 bookCollapseSection: true
-description: " "
+description: "What to do, when? Check out the workplan!"
 draft: false
 ---
 
@@ -15,6 +15,8 @@ The deliverable of the team project is an *end-to-end, fully automized workflow*
 - explore the raw data files with RMarkdown documents rendered as PDF or HTML files,
 - transform and reshape the data into the right format, and
 - address a research question and/or business problem using some of the building blocks (e.g., regression, apps, "deployment").
+
+Check out [the detailed grading guidelines here](grading_details.md).
 
 ## Milestones
 

@@ -1,8 +1,8 @@
 ---
-weight: 4
+weight: 20
 title: "AirBnB data"
 bookCollapseSection: true
-description: " "
+description: "Kickstart your team project with this data set"
 draft: false
 ---
 
