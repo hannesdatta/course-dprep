@@ -16,3 +16,7 @@ draft: false
 
 ## Live stream 4
 - Q&A on "Pipeline Building and Automation" (Tutorial & Data Challenge 3)
+  - Re-watch the [opening/introduction of the Q&A](https://youtu.be/YlaprvGiIA0)
+  - Re-watch [the primer on automating data workflows](https://youtu.be/xyoMOO842EU)
+  - Re-watch [practicing with `make` (Tilburg Science Hub)](https://youtu.be/_1BDJsDVYoA)
+  - Re-watch [the Q&A session, last 45 minutes of the class](https://youtu.be/YlaprvGiIA0)
