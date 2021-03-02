@@ -47,6 +47,15 @@ After completion of the project, students and researchers need to be equipped wi
 - 26 March 2021, 6pm
 - Please submit links to your GitHub repository with the necessary source code (one link per team).
 
+{{< hint info>}}
+__Where do I submit my report?__
+
+Gotcha! There is no report! The project should self-document itself (e.g., comments in code, `makefile`), plus you'll have an amazing README that ties everything together and motivates your project. Make this one shine! :)
+
+Note that we will check out the state of the repository __at the deadline date and time__, so any changes you make to the repository *afterwards* are not considered for grading.
+
+{{< /hint >}}
+
 ## Getting started
 
 The coaching for your team project takes place in weeks 6-8. You are free to form teams before that (teams will be finalized in week 5).

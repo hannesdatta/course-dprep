@@ -108,3 +108,14 @@ The source code is clearly readable (e.g., variable names that are meaningful), 
 
 #### Degree of automation (10%)
 Code chunks follow the input-transformation-output (“modular”) structure, and are “stitched” together in a makefile that runs the entire project pipeline automatically after issuing the `make` command in the root of the repository. All file paths are specified relative to the current script, no absolute paths are used. The repository only tracks the version of files that need to be tracked (i.e., source code), and not others (e.g., generated files).
+
+{{< hint info>}}
+__Conduct these "housekeeping" checks before the deadline!__
+
+Ever considered your project may work exclusively on your computer, but not on somebody else's? It could just be you forgot to tell your users to install a particular package!
+
+To avoid such common "replication traps", please check out your repository on somebody else's computer, go through the installation instructions, and try to run the entire project.
+
+More valuable tips and tricks for submitting a clean & working repository are [documented in our checklist for "housekeeping"](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/checklist/).
+
+{{< /hint >}}
