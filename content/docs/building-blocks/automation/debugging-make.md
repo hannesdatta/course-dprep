@@ -20,29 +20,25 @@ Here are a few pointers to debug your makefiles.
 1. Is `make` properly installed?
 
 
-To run makefiles, you have to have `make` installed on your system. So if you see a message like this...
+  To run makefiles, you have to have `make` installed on your system. So if you see a message like this: `'make' is not recognized as an internal or external command, operable program or batch file.`.
 
-```
-'make' is not recognized as an internal or external command, operable program or batch file.
-```
-
-...head over to Tilburg Science Hub [to see how to install `make`](https://tilburgsciencehub.com/get/make).
+  So... head over to Tilburg Science Hub [to see how to install `make`](https://tilburgsciencehub.com/get/make).
 
 2. Does your code run without make?
 
-There are two things that can go wrong when working with makefiles. Either there's a problem with the `makefile` itself, or there's a problem with the code that the `makefile` executes.
+  There are two things that can go wrong when working with makefiles. Either there's a problem with the `makefile` itself, or there's a problem with the code that the `makefile` executes.
 
-So, a first check is to copy-paste the commands to build (e.g., `python script.py` or `RScript myscript.R`) into the console, and see whether the Python or R code runs as expected.
+  So, a first check is to copy-paste the commands to build (e.g., `python script.py` or `RScript myscript.R`) into the console, and see whether the Python or R code runs as expected.
 
-Does the script run? Then you need to debug your makefile (see next). If it doesn't run, first try to debug your source code in R/Python etc.
+  Does the script run? Then you need to debug your makefile (see next). If it doesn't run, first try to debug your source code in R/Python etc.
 
 3. Is your `makefile` structured properly?
 
-One of the most common mistakes in a `makefile` is to not adhere to the syntax:
+  One of the most common mistakes in a `makefile` is to not adhere to the syntax:
 
-```
-source: prerequisites [separated by spaces]
-   COMMANDS TO RUN
-```
+  ```
+  source: prerequisites [separated by spaces]
+     COMMANDS TO RUN
+  ```
 
-The commands need to be separated by a tab character. Try to open the makefile in another editor, and verify that you have correctly made use of the tab. Note that some editors replace tabs by spaces (and you don't want that here!).
+  The commands need to be separated by a tab character. Try to open the makefile in another editor, and verify that you have correctly made use of the tab. Note that some editors replace tabs by spaces (and you don't want that here!).
