@@ -22,9 +22,9 @@ Before we dive right into the nitty gritty details, here are a couple of things 
 
 If you do, using a version control system like Git is a must-have, as you need to be able to work on a project simultaneously, without running the risk of overwriting each other's work.
 
-  * *Joint collaboration*
-    - How many people will be involved in your project? With more than a few collaborators a version control system like Git is a must because you want to be able to work on the project simultaneously without running the risk of overwriting each other's work.
+* What's the technical proficiency of your team members?
 
+It's not uncommon that your team members may be unfamiliar with tools like Git, make, or the terminal. First, that's not a problem at all. You can stay in charge of the main workflow, and integrate others' work as it is being updated (e.g., on Dropbox). However, it's way better to help team members develop the skills to use Git and automation, just to name a few.
 
   * *Technical proficiency*
     - Are you co-workers familiar with tools like Git, make, and the terminal? In other words, can they independently set-up their machine and install required dependencies? And what high-level programming languages do they know (Python / R)?
