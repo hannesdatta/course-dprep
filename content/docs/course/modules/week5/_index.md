@@ -9,7 +9,7 @@ draft: false
 # Week 5: Version control <!--+ feedback-->
 
 ## Kick-starting your week
-- We'll post a clip to get you started for the week.
+- Watch [the energizer for the week](https://youtu.be/kL-s7XHWiWI) on YouTube!
 
 ## Self-study and activities
 - [Version Control (Tutorial & Data Challenge 4)](docs/tutorials/version-control)
