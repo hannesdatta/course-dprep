@@ -26,4 +26,5 @@ This pages provides a list of research and data workflows, R packages, and recom
 ## Recommend Readings
 * [Requested information for data and code replication packages](https://social-science-data-editors.github.io/guidance/Requested_information.html)
 * [Verification Guidance](https://social-science-data-editors.github.io/guidance/Verification_guidance.html)
+* [Data and Code Policy of the American Economic Association](https://www.aeaweb.org/journals/data/data-code-policy)
 * [Guide for collaboration at The Turing Way](https://the-turing-way.netlify.app/collaboration/collaboration.html)
