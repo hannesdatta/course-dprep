@@ -1,5 +1,5 @@
 ---
-weight: 11
+weight: 30
 title: Download data programmatically
 description: Download your data right from its (online) source and store it locally
 keywords: "download, import data, download datasets internet"

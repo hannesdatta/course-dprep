@@ -1,5 +1,5 @@
 ---
-weight: 12
+weight: 40
 title: The most important Git commands you should know
 description: "A quick recap of the essential Git commands you will be using everyday."
 keywords: "git, commands, important, essential, cheat"
