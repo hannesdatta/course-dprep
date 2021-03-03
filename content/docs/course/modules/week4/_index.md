@@ -19,4 +19,4 @@ draft: false
   - Re-watch the [opening/introduction of the Q&A](https://youtu.be/YlaprvGiIA0)
   - Re-watch [the primer on automating data workflows](https://youtu.be/xyoMOO842EU)
   - Re-watch [practicing with `make` (Tilburg Science Hub)](https://youtu.be/_1BDJsDVYoA)
-  - Re-watch [the Q&A session, last 45 minutes of the class](https://youtu.be/YlaprvGiIA0)
+  - Re-watch [the Q&A session, last 45 minutes of the class](https://youtu.be/56yARyR1p1E)
