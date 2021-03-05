@@ -28,6 +28,9 @@ If you find a good example, add it via a pull request, please! Curious how? Foll
 - [SnakeMake](https://github.com/hannesdatta/snakemake-econ-r)
 - [Simple setup with R, Make and Latex](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/)
 
+## Websites and platforms
+- [Website of this course](https://dprep.hannesdatta.com)
+
 ## Data Workflows
 * [Playlist Promotions and New Releases at Spotify](https://github.com/hannesdatta/data-spotify-promotions-releases)
 * [Spotify Releases (2015-2018)](https://github.com/hannesdatta/data-spotify-releases-2015-2018)
@@ -37,6 +40,5 @@ If you find a good example, add it via a pull request, please! Curious how? Foll
 * [musicMetadata](https://github.com/hannesdatta/musicMetadata)
 
 ## Creative ways to disseminate research findings
-
 - https://pudding.cool/ - visual essays and digital culture
 - [ShinyApps & advertising effects](http://advertising-effects.chicagobooth.edu)
