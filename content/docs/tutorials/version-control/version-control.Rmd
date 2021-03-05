@@ -590,8 +590,4 @@ To learn more about Git, make sure to check the following resources:
 * [Free Git Pro book](https://git-scm.com/book/en/v2)
 
 * [Learn Git Branching](https://learngitbranching.js.org)
-<<<<<<< HEAD
-=======
 
-
->>>>>>> Alantjee/master
