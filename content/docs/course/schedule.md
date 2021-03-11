@@ -27,7 +27,7 @@ Course week|Live stream|Date|Time
 |[Week 6](./modules/week6_8)|Team meetings
 |[Week 7](./modules/week6_8)|Team meetings
 |[Week 8](./modules/week6_8)|Team meetings
-|     |Course summary and exam preparation (#6) |Tuesday, 23 March, 2021|10.45-12.30|
+|     |Course summary and exam preparation (#6) |Friday, 26 March, 2021|14.45-16.30|
 
 
 

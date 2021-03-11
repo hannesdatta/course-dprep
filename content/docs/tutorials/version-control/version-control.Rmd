@@ -529,7 +529,7 @@ Thus, a *fork* is your personal copy of a repository owned by someone else. So, 
 **Exercise 7**  
 The code of the [course website](https://dprep.hannesdatta.com) is also hosted on [Github](https://github.com/hannesdatta/course-dprep), this means it's open to the public and you can download a copy to your own machine (and track the changes we have made along the way!). To generate the website, we use a framework called [Hugo](https://gohugo.io) that turns plain markdown files into web pages. If you run Hugo locally (i.e., on your own computer), you can test and see changes before you push them to the repository and they become visible on the website. 
 
-In this exercise, we ask you to i) fork the course website from [Github](https://github.com/hannesdatta/course-dprep), ii) clone it to your local machine, iii) install Hugo (follow the instructions on [this]((https://gohugo.io/getting-started/installing/)) page), for windows users, [this]((https://www.youtube.com/watch?v=G7umPCU-8xc&feature=emb_logo)) video is very helpful in how to install hugo and get it up and running on your computer. iv) navigate to to the course-dprep directory, and  v) power up the site in your browser by running `hugo server` in the terminal (this may take a couple of seconds). You can then launch the website in your browser through the web address printed in the terminal (e.g., `localhost:1313`).
+In this exercise, we ask you to i) fork the course website from [Github](https://github.com/hannesdatta/course-dprep), ii) clone it to your local machine, iii) install Hugo (follow the instructions on [this](https://gohugo.io/getting-started/installing/) page), for windows users, [this](https://www.youtube.com/watch?v=G7umPCU-8xc&feature=emb_logo) video is very helpful in how to install hugo and get it up and running on your computer. iv) navigate to to the course-dprep directory, and  v) power up the site in your browser by running `hugo server` in the terminal (this may take a couple of seconds). You can then launch the website in your browser through the web address printed in the terminal (e.g., `localhost:1313`).
 
 ![](./images/hugo_server.gif){width=70%}
 \
@@ -590,8 +590,4 @@ To learn more about Git, make sure to check the following resources:
 * [Free Git Pro book](https://git-scm.com/book/en/v2)
 
 * [Learn Git Branching](https://learngitbranching.js.org)
-<<<<<<< HEAD
-=======
 
-
->>>>>>> Alantjee/master

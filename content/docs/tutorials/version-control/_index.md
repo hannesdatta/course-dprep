@@ -39,7 +39,7 @@ If you like, you can submit your exercises as a "proof for investing in your ski
 
 ### Create
 
-__Forking is *the* way to contribute to somebody else's open source project.__ So... in this section, you can put your Git skills into practice - to the benefit of anybody on the web interested in data preparation and workflow management. Specificallym, you can __make contributions to the [course website](https://dprep.hannesdatta.com)__, or [Tilburg Science Hub](https://tilburgsciencehub.com).
+__Forking is *the* way to contribute to somebody else's open source project.__ So... in this section, you can put your Git skills into practice - to the benefit of anybody on the web interested in data preparation and workflow management. Specifically, you can __make contributions to the [course website](https://dprep.hannesdatta.com)__, or [Tilburg Science Hub](https://tilburgsciencehub.com).
 
 Yes, you've read it. You can actually change these websites yourselves. How? From fixing a typo to rewriting parts of the tutorials or building blocks. By the way - many data science and marketing analytics students put their GitHub profiles and contributions on their CV - check out [Roy's work, for example](http://royklaassebos.nl/)!)
 
@@ -65,6 +65,6 @@ __Making own contributions__
 2. Create a new branch (`git branch name-of-a-new-feature`) (e.g., call it `fix-typo-tutorial`, or `buildingblock-new`).
 6. Work on your new feature. Throughout, apply the Git workflow (`git status`, `git add`, `git commit -m "commit message"`)
 7. When you're done with all of your changes, push your changes to your GitHub repository `git push -u origin name-of-a-new-feature`
-8. Fully done & happy? Issue a pull request from the website. Write a little description fo what you did when sending your PR.
+8. Fully done & happy? Issue a pull request from the website. Write a little description for what you did when sending your PR.
 
 Proud about your own work? Show off your work with a screenshot via WhatsApp, and we'll show it in class!
