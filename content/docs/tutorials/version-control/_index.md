@@ -19,7 +19,7 @@ draft: false
 
 ### Plan
 
-- Plan a full day to work through this tutorial.
+- Plan 2/3 days to work through this tutorial.
 
 ### Learn
 - Develop your command line (Windows) / terminal (Mac) skills
