@@ -18,6 +18,15 @@ draft: false
 - Some of the meetings may be recorded and shared with other students.
 - We will make use of [TeamViewer](https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/teamviewer/) - please install it and be prepared to share your ID and temporary password.
 
+{{< hint info >}}
+__Links to recordings__
+
+- Three sessions with student teams during the first project week: https://youtu.be/CLpBwDTL5Xg
+- Background information on why not to version your data, and how to efficiently collaborate using GitHub Issues and the project board: https://youtu.be/pe-Zzu8s0So
+
+
+{{< /hint >}}
+
 ## Live stream 6
 - Course summary and exam preparation (in week 8)
 
