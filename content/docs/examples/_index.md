@@ -25,7 +25,7 @@ If you find a good example, add it via a pull request, please! Curious how? Foll
 * Sales-based brand equity ([Paper](https://doi.org/10.1509/jm.15.0340), [Code](https://github.com/hannesdatta/brand-equity-journal-of-marketing))
 
 ## Research templates
-- [SnakeMake](https://github.com/hannesdatta/snakemake-econ-r)
+- [SnakeMake](https://github.com/lachlandeer/snakemake-econ-r)
 - [Simple setup with R, Make and Latex](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/)
 
 ## Websites and platforms

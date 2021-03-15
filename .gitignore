@@ -9,7 +9,7 @@ content/docs/tutorials/data-preparation/.Rhistory
 ~$**
 content/docs/tutorials/data-preparation/songs.csv
 *.csv
-
+.RHistory
 # Local Netlify folder
 .netlify
 content/docs/tutorials/workflow/airbnb-workflow copy/.RData
