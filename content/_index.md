@@ -7,7 +7,8 @@ type: docs
 
 **Engineer data sets from complex raw data and manage research projects efficiently**
 
-_Tilburg University, Block 3, 2020/2021 (February - April 2021)_
+_Tilburg University, Block 3, Course 328059-M-3, 2020/2021 (February - April 2021)_
+
 
 _Instructor: [dr. Hannes Datta](https://hannesdatta.com)_
 
