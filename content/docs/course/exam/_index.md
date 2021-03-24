@@ -1,0 +1,100 @@
+---
+title: "Exam"
+weight: 5
+description: " "
+bookCollapseSection: true
+description: " "
+---
+
+# Final exam
+
+The course content will be tested in the form of a __take-home exam__, to be completed __within one working day__.
+
+## Date & time
+
+- Date: __Friday, 9 April 2021__
+- Time: __8am - 10pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+
+## Technicalities & support
+
+- Receiving your exam: via E-mail or Canvas (see announcement), at 8am on the day of the exam
+- Working on your exam: on your own computer
+- Submitting your exam: all questions (including file uploads) will be submitted via *Canvas*
+- Registration: not necessary; enrollment to the Canvas course page is sufficient
+- Support during the exam: preferably WhatsApp [see support section of this website](support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or make, installing packages, running Python code in an automated workflow, etc.)
+
+## Form
+
+- Open book take-home exam (i.e., you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
+- 4-6 open questions (both in written, or by means of code/file uploads)
+- Some questions will be personalized (i.e., there is only one correct answer per student)
+
+{{< hint warning >}}
+__Communication with anybody about the content of the exam, during *and after* the take-home exam, is strictly prohibited.__
+
+{{< /hint >}}
+
+## Content
+
+### Topics
+
+In line with the course's learning goals, the exam covers five broad topic areas:
+
+1. Data exploration & business understanding (about 15%)
+2. Data preparation (about 25%)
+3. Workflow automation using `make` (about 20%)
+4. Project Management with GitHub (about 20%)
+5. Deployment (about 15%)
+
+Each topic area carries a specific weight (i.e., "importance"). For example, questions on "Data exploration & business understanding" (about 15%) are less prominent on the exam than questions about data preparation (about 25%).
+
+### Question types
+
+Questions will be relatively broad, consisting of interdependent subquestions (e.g., a, b, c) that can span multiple topic areas (see five topics above), and test different levels of complexity (see also [Bloom's Taxonomy](https://mygrowthmindsethome.files.wordpress.com/2019/03/blooms-taxonomy.pdf)):
+- Knowledge (about 10%): Recall facts
+- Comprehension: (about 15%): Show understanding in finding information
+- Application (about 20%): To use in a new situation
+- Analysis (about 20%): To examine in detail
+- Synthesis (about 20%): To change or create into something new
+- Evaluation (about 15%): To justify
+
+
+{{< hint info >}}
+__Work on the example questions__
+
+Please [view the list of example questions here](examplequestions).
+
+{{< /hint >}}
+
+## Preparing for the exam
+
+### Ideas for developing your proficiency
+
+- Please work through the tutorials, and try to solve the "Data Challenges" independently. Whereas this has been difficult in the past, can you do it on your own now?
+- Share with each other the (public) links to your GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
+  - Can you run the workflows of others?
+  - Work on the project of others (e.g., by creating a new feature branch, improving code, committing to your fork, and making a PR) - "receiving teams": revise the work of others and integrate the PRs.
+  - Add "deployment" steps in your forks, e.g., by adding an app to somebody's regression, or adding a regression to somebody's app
+- Create your own, end-to-end GitHub workflow using the publicly available AirBnB data that teams could use for their projects. Fork that repository and collaboratively work on it with everyone!
+- Familiarize yourself with [Tilburg Science Hub](https://tilburgsciencehub.com)
+  - Work through tutorials
+  - Integrate new building blocks into your projects
+  - Clone the examples and extend them
+
+Above all, see this exam preparation *not* as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.
+
+### Technical tips & beyond
+
+- Verify your software setup (you should be able to produce RMarkdown documents as PDF documents, run `make`, and even run existing Python code on your computer).
+- Know how to zip and unzip files
+- Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)
+- Take breaks! While the exam questions will be difficult, you do not need the entire day to solve them!
+- Revise your code before submission, so that you ensure it runs from top to bottom without problems.
+
+
+{{< hint info >}}
+__Stay up-to-date__
+
+As we develop the exam questions, please keep an eye on the content of this page for important updates (e.g., with regard to the questions asked, any new tips & tricks that will help you to work on the questions, any example questions, etc.)
+
+{{< /hint >}}
