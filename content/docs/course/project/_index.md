@@ -44,7 +44,7 @@ After completion of the project, students and researchers need to be equipped wi
 
 
 ## Deadline & Submission
-- 26 March 2021, 6pm
+- Originally 26 March 2021, 6pm; extended to 2 April 2021, 6pm.
 - Please submit links to your GitHub repository with the necessary source code (one link per team).
 
 {{< hint info>}}
