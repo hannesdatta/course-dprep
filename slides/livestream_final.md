@@ -191,7 +191,7 @@ My recommendation: take time to let it sink in. And trust in my choice of teachi
 - quality of internet website?
 - open education good or bad?
 - like the presence of external students (or not)?
-- quality of Jupyter Notebooks
+- quality of R Notebooks, videos, etc.
 - "innovativeness of material", etc.
 
 
