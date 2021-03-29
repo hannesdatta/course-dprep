@@ -2,7 +2,7 @@
 bookFlatSection: true
 title: "Testimonials"
 bookHidden: true
-weight: 1
+weight: 7
 description: " "
 draft: true
 ---
