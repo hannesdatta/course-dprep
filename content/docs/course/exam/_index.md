@@ -17,11 +17,11 @@ The course content will be tested in the form of a __take-home exam__, to be com
 
 ## Technicalities & support
 
-- Receiving your exam: via E-mail or Canvas (see announcement), at 8am on the day of the exam
+- Receiving your exam: via [TestVision](https://TilburgU.testvision.nl/online/kandidaten) on the day of the exam
 - Working on your exam: on your own computer
-- Submitting your exam: all questions (including file uploads) will be submitted via *Canvas*
+- Submitting your exam: all questions (including file uploads) will be submitted via TestVision
 - Registration: not necessary; enrollment to the Canvas course page is sufficient
-- Support during the exam: preferably WhatsApp [see support section of this website](support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or make, installing packages, running Python code in an automated workflow, etc.)
+- Support during the exam: preferably WhatsApp [see support section of this website](support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
 
 ## Form
 
@@ -82,6 +82,11 @@ Please [view the list of example questions here](examplequestions).
   - Clone the examples and extend them
 
 Above all, see this exam preparation *not* as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.
+
+### Familiarize yourself with TestVision
+
+- [Take a practice test](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2) to familiarize yourself with TestVision!
+- Learn [more about TestVision](https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision)
 
 ### Technical tips & beyond
 
