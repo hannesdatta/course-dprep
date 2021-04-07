@@ -26,7 +26,7 @@ The course content will be tested in the form of a __take-home exam__, to be com
 ## Form
 
 - Open book take-home exam (i.e., you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
-- 4-6 open questions (both in written, or by means of code/file uploads)
+- 4 sections with subquestions (all open questions; both in written, or by means of code/file uploads)
 - Some questions will be personalized (i.e., there is only one correct answer per student)
 
 {{< hint warning >}}
