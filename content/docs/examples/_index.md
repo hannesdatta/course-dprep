@@ -42,3 +42,9 @@ If you find a good example, add it via a pull request, please! Curious how? Foll
 ## Creative ways to disseminate research findings
 - https://pudding.cool/ - visual essays and digital culture
 - [ShinyApps & advertising effects](http://advertising-effects.chicagobooth.edu)
+
+## Error handling
+When you start programming Google will be your best friend! There are several websites whereby other programmers help each other out.
+Stackoverflow is a very useful forum for error handling, you should check it out! Also Geeksforgeeks is a very useful website.
+* [Stackoverflow](https://stackoverflow.com/)
+* [Geeksforgeeks](https://www.geeksforgeeks.org/)
