@@ -12,15 +12,24 @@ The course content will be tested in the form of a __take-home exam__, to be com
 
 ## Date & time
 
+### Main sit
+
 - Date: __Friday, 9 April 2021__
 - Time: __8am - 10pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+- Exam registration: not necessary; enrollment to the Canvas course page is sufficient
+- Inspection: Friday, 30 April 2021 (signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)
+
+### Resit
+
+- Date: __Monday, 21 June 2021__
+- Time: __8am - 10pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+- Registration: by 7 June 2021 at the latest, via https://forms.gle/KXQBjtTvY9saQQhS8.
 
 ## Technicalities & support
 
 - Receiving your exam: via [TestVision](https://TilburgU.testvision.nl/online/kandidaten) on the day of the exam
 - Working on your exam: on your own computer
 - Submitting your exam: all questions (including file uploads) will be submitted via TestVision
-- Registration: not necessary; enrollment to the Canvas course page is sufficient
 - Support during the exam: preferably WhatsApp [see support section of this website](support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
 
 ## Form
