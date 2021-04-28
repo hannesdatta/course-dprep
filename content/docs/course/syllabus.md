@@ -110,7 +110,7 @@ Students pass this course if the final course grade (i.e., the weighted average 
 Students will submit a final team project at the end of the course.
 
 Students' individual grades will be corrected upwards or downwards, depending on
-- their individual contribution to the overall team effort, and the extend to which they have provided feedback to team members (measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions), and
+- their individual contribution to the overall team effort, and the extent to which they have provided feedback to team members (measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions), and
 - students' individual investment in developing the technical skills required to contribute meaningfully to the project (measured by means of students' individual submissions of answers to the tutorials/data challenges).
 
 {{< hint info >}}
