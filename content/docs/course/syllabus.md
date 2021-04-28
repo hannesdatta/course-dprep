@@ -105,6 +105,8 @@ Work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own compute
 
 Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5). Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
 
+Grades are made available on Canvas.
+
 ### Team project
 
 Students will submit a final team project at the end of the course.
