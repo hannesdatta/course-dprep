@@ -42,6 +42,7 @@ To be announced:
 - course evaluation: link online
 - team projects due a week later - will have feedback sessions after this session
 - add me to linkedIn: https://www.linkedin.com/in/hannes-datta/ [crucial to stay in touch]
+-  https://www.youtube.com/c/hannesdatta
 
 :::
 
@@ -118,7 +119,7 @@ __Versioning and Project Management with GitHub__
   - e.g., issues, project board
 - Learn the tools used in business
 
-# Reflection
+## Reflection
 
 - what a tough learning experience!
 - many started from scratch
@@ -212,7 +213,8 @@ Stick around now if you have questions.
 ## Stay in touch!
 
 Add me! https://www.linkedin.com/in/hannes-datta/
-App me! +31134668938
+Subscribe to my channel! https://www.youtube.com/c/hannesdatta
+App me! +31 13 4668938
 Contribute! https://tilburgsciencehub.com and https://dprep.hannesdatta.com
 
 And, finally... let's show to the world how awesome your new skills are!

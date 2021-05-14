@@ -12,21 +12,30 @@ The course content will be tested in the form of a __take-home exam__, to be com
 
 ## Date & time
 
+### Main sit
+
 - Date: __Friday, 9 April 2021__
 - Time: __8am - 10pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+- Exam registration: not necessary; enrollment to the Canvas course page is sufficient
+- Inspection: Friday, 30 April 2021, 9.00-09.30 (signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)
+
+### Resit
+
+- Date: __Monday, 21 June 2021__
+- Time: __8am - 10pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+- Registration: by 7 June 2021 at the latest, via https://forms.gle/KXQBjtTvY9saQQhS8.
 
 ## Technicalities & support
 
-- Receiving your exam: via E-mail or Canvas (see announcement), at 8am on the day of the exam
+- Receiving your exam: via [TestVision](https://TilburgU.testvision.nl/online/kandidaten) on the day of the exam
 - Working on your exam: on your own computer
-- Submitting your exam: all questions (including file uploads) will be submitted via *Canvas*
-- Registration: not necessary; enrollment to the Canvas course page is sufficient
-- Support during the exam: preferably WhatsApp [see support section of this website](support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or make, installing packages, running Python code in an automated workflow, etc.)
+- Submitting your exam: all questions (including file uploads) will be submitted via TestVision
+- Support during the exam: preferably WhatsApp [see support section of this website](support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
 
 ## Form
 
 - Open book take-home exam (i.e., you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
-- 4-6 open questions (both in written, or by means of code/file uploads)
+- 4 sections with subquestions (all open questions; both in written, or by means of code/file uploads)
 - Some questions will be personalized (i.e., there is only one correct answer per student)
 
 {{< hint warning >}}
@@ -83,6 +92,11 @@ Please [view the list of example questions here](examplequestions).
 
 Above all, see this exam preparation *not* as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.
 
+### Familiarize yourself with TestVision
+
+- [Take a practice test](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2) to familiarize yourself with TestVision!
+- Learn [more about TestVision](https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision)
+
 ### Technical tips & beyond
 
 - Verify your software setup (you should be able to produce RMarkdown documents as PDF documents, run `make`, and even run existing Python code on your computer).
@@ -91,10 +105,11 @@ Above all, see this exam preparation *not* as a way to merely study for the exam
 - Take breaks! While the exam questions will be difficult, you do not need the entire day to solve them!
 - Revise your code before submission, so that you ensure it runs from top to bottom without problems.
 
-
+<!--
 {{< hint info >}}
 __Stay up-to-date__
 
 As we develop the exam questions, please keep an eye on the content of this page for important updates (e.g., with regard to the questions asked, any new tips & tricks that will help you to work on the questions, any example questions, etc.)
 
 {{< /hint >}}
+-->
