@@ -1,0 +1,363 @@
+---
+title: "Pipeline Building & Automation"
+author: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*When working on large-scale data intensive projects, it's important to define a project pipeline and automate it end to end so that you don't have to manually produce your research results but you can just sit back and relax and have the computer do the the job for you. In this tutorial, you learn how to organize your files and directories and set-up a makefile that executes your whole project with just a single command!*
+
+---
+
+### Prerequisites
+
+* Download and install the latest version of [Make](https://tsh-website.netlify.app/building-blocks/configure-your-computer/automation-and-workflows/make/) 
+* Get familiar with the shell/terminal/command line
+  * [DataCamp Introduction to Shell](https://learn.datacamp.com/courses/introduction-to-shell) (chapter 1; Mac &amp; Windows) 
+  * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
+
+
+--- 
+
+### Learning Objectives
+* Learn how to organize your project with a coherent directory structure
+* Conceive your project as a pipeline
+* Separate your code into smaller chunks (each one with inputs, transformations and outputs)
+* Automate workflows and make them reproducible using make
+
+\
+
+### 1. Files & Directory Structure
+
+#### 1.1 Modularizing Code
+In this tutorial, we're going to create a make file that downloads, loads, transforms, and exports data from [Inside Airbnb](http://insideairbnb.com/index.html). The website provides a visual overview of the amount, availability, and spread of rooms listed on Airbnb across a city, as well as an approximation of the number of bookings and occupancy rate, and the number of listings per host. Moreover, the website publicly shares listings, calendar, neighbourhood and reviews data of various popular Airbnb destinations.  
+
+**Exercise 1**  
+As as starting point for this tutorial, we use [source code](https://gist.github.com/RoyKlaasseBos/5e75ac40753b039f15b583e84b837b96) of an empirical project on the Airbnb housing market in Antwerp.  
+1. Download the R script, run it. and try to figure it out what it does.
+2. Review the code and think of logical ways to modularize the script.  
+
+Indeed, the sections indicated by comments (e.g., ### CLEAN DATA) serve as potential split-off points. In the figure below we impose a flow diagram structure in which the code has been split up in five separate R scripts: 
+
+* `download.R` = downloads the raw listings and review data from Inside Airbnb.
+* `clean.R` = merges, preprocesses, and aggregates the data into a dataframe and writes it to `aggregated_df.csv`.
+* `pivot_table.R` = generates a pivot table in which the columns are the city neighborhoods.
+* `plot_all.R` = aggregate the number of reviews across all neighborhoods and create a plot.
+* `plot_Antwerp.R` = create a line chart for three neighborhoods in Antwerp (Universiteitsbuurt, Sint Andries, Centraal Station).
+
+![](./images/dependencies_Antwerp.png){width=50%}
+  
+**Exercise 2**    
+1. Split up the full R script into the 5 separate scripts according to the diagram and definitions above.  
+2. Check if all scripts run without issues. If not, make the necessary changes (tip: check if the libraries are imported at the top of each file).  
+
+\
+
+#### 1.2 Directory Structure
+Part of building a proper data pipeline is having a directory structure in place. To start, let’s assume we’re working on a project, called `my_project`. Let us create that directory somewhere on our computer, preferably not in the cloud (i.e., not in a Dropbox or Google Drive folder). Inside this folder you find the following subdirectories: 
+
+**`data`**  
+Raw data gets downloaded into the data folder of your project (`my_project/data`) from either a network drive, or a remote file storage that is securely backed up.
+
+**`src`**  
+Source code is made available in the `src` folder of your main project: `my_project/src/`. Create subdirectories for each stage of your pipeline: 
+  * `data-preparation`: clean a dataset
+  * `analysis`: analyze the data cleaned in the previous step
+  * `paper`: produce tables and figures for the final paper. 
+  
+The directory structure for the `src` directory thus becomes: 
+```
+/src/data-preparation/
+/src/analysis/
+/src/paper/
+
+```
+
+**`gen`**  
+Generated files are stored in the gen folder of your main project: `my_project/gen/`. You can use subdirectories that match your pipeline stages to further bring structure to your project:
+
+  * `input`: This subdirectory contains any required input files to run this step of the pipeline. Think of this as a directory that holds files from preceding modules (e.g., the analysis uses the file exchange to pull in the dataset from its preceding stage in the pipeline, /data-preparation).
+
+  * `temp`: These are temporary files, like an Excel dataset that needed to be converted to a CSV data set before reading it in your statistical software package.
+
+  * `output`: This subdirectory stores the final result of the module. For example, in the case of a data preparation module, you would expect this subdirectory to hold the final dataset. In the case of the analysis module, you would expect this directory to contain a document with the results of your analysis (e.g., some tables or figures).
+
+\
+
+**Exercise 3**  
+1. Add a `src` folder in which you create two subdirectories: `data-preparation` and `analysis`. Note that you don't need to create a `data` and `gen` folder as the makefile will take care of that later.  
+2. Store the five R scripts you created earlier in the correct subdirectory: 
+```
+/src/data-preparation/
+  - download.R
+  - clean.R
+/src/analysis/
+  - pivot_table.R
+  - plot_all.R
+  - plot_Antwerp.R
+```
+3. In the original R script all files were loaded and exported in the working directory (i.e., folder in which the full script was located). Since we set-up a new directory structure, we need to update the file paths. Make sure your R files satisfy the criteria below: 
+  * `download.R` should store the data inside the `data` folder (even though it's been not been created yet).
+  * `clean.R` should load the review and listings data from the `data` folder and store the output in `gen/temp`.
+  * `pivot_table.R` should load `aggreagated_df.csv` from `gen/temp` and export the pivot table in `gen/temp`. 
+  * `plot_all.R` should load `aggreagated_df.csv` from `gen/temp` and export the plot into `gen/output`.
+  * `plot_Antwerp.R` should load `pivot_table.csv` from `gen/temp` and export the plot into `gen/output`.
+  
+Tip: keep in mind that all file paths are relative to the current storage location. For example, from `download.R` inside `src/data-preparation` to the `data` folder requires two steps back and one change of directories (i.e., `../../data`).
+  
+\
+  
+### 2. Make-files
+
+
+#### 2.1 What are makefiles?
+Makefiles are instructions (“rules”) for a computer on how to build “stuff”. Think of makefiles as a recipe you may know from cooking (“Baking a cake: First, take some flour, then add milk […]") - but then for computers.
+
+Makefiles originate in software development, where they have been used to convert source code into software programs that can then be distributed to users.
+
+Researchers can use makefiles to define rules how individual components (e.g., cleaning the data, running an analysis, producing tables) are run. When dependencies (e.g., to run the analysis, the data set first has to be cleaned) are well-defined, researchers can completely automate the project. When making changes to code, researchers can then easily “re-run” the entire project, and see how final results (potentially) change.
+
+\
+
+#### 2.2 Rules 
+
+A rule in a makefile generally looks like this:
+
+```
+targets: prerequisites
+   commands to build
+```
+
+* The __targets__ are things that you want to build - for example, data sets, outputs of analyses, a PDF file, etc. You can define multiple targets for one rule (separate targets by spaces!). Typically, though, there is only one per rule.
+  * Example: `aggregated_df.csv`
+
+* The __prerequisites__ are the things that you *need* before you can build the target. It's also a list of file names, separated by spaces. These files need to exist before the commands for the target are run. They are also called dependencies. The cool thing is that `make` automatically checks whether any of the dependencies has changed (e.g., a change in the source code) - so it can figure out which rules to be run, and which ones not (saving you a lot of computation time!).
+  * Example: `listings.csv reviews.csv clean.R` (before building `aggregated_df`, the listings and review data and a specific script to clean the raw data need to exist)
+
+* The __commands__ are a series of steps to go through to *build* the target(s). These need to be indented with a tab ("start with a tab"), *not* spaces.
+  * Example: the command `R --vanilla < clean.R` opens R, and runs the script `clean.R`.
+  
+  
+Taken together, after adding the file paths, our makefile could be structured as follows: 
+```
+../../gen/temp/aggregated_df.csv: ../../data/listings.csv ../../data/reviews.csv  clean.R
+    R --vanilla < clean.R
+```
+\
+
+**Exercise 4**  
+1. Create a new makefile inside `src/data-preparation` and copy the contents from the code snippet above. That is, create a new file named `makefile` (tip: use `touch makefile` in your terminal) and then open the file in your text editor, add the two lines above, and save the changes.  
+2. Navigate towards `src/data-preparation` in your terminal and run `make`. What happens? Why is that?  
+3. Indeed, make doesn't know how to generate the `listings.csv` and `reviews.csv` files (we didn't add a rule for that after all!). Extend your makefile so that it runs `download.R` if either of these files are missing. Add `mkdir -p ../../data` as a command above `download.R` so that it first creates the data folder before it tries to store the downloaded data there. If you forget to do this and you didn't create the folder manually, it will throw an error once it attempts to save a file in the unknown folder. 
+
+**Exercise 5**  
+`cd` into `src/data-preparation` and run `make`. What happens? Now run `make` again, what happens this time? Remove `listings.csv` from the `data` folder and run `make`. Then, do the same for `reviews.csv`, can you spot the difference? Indeed, make only runs the first target by default; later we show you how to use phony targets so that it executes all commands!
+
+\
+
+#### 2.3 Variables
+Writing long file paths, such as `../../gen/temp/aggregated_df.csv` is cumbersome and prone to errors. Therefore, you can clean up your makefiles using variables like this: 
+```
+TEMP = ../../gen/temp
+DATA = ../../data
+
+$(TEMP)/aggregated_df.csv: $(DATA)/listings.csv $(DATA)/reviews.csv  clean.R
+    R --vanilla < clean.R
+```
+In other words, you specify the file path as a variable at the top (e.g., `TEMP = ...`) after which you can reference it with `$(VARIABLE)`. 
+
+\
+
+**Exercise 6**  
+Adapt your makefile from exercise 4 such that repetitive paths are replaced by variables.
+
+\
+
+#### 2.4 Phony targets
+The targets we have seen so far refer to output files (e.g., `aggregated_df.csv`). Sometimes, it’s not practical to generate outputs. We call these targets "phony targets". Let's consider the following makefile: 
+
+```
+all: one two
+
+one:
+	touch one.txt
+
+two:
+	touch two.txt
+```
+
+Neither `one` and `two` are output files; they are phony targets that create two text files. The phony target `all` at the top calls both targets. Think of it as a “meta rule” to build it all!
+
+\
+
+**Exercise 7**  
+Create another directory and add a makefile with the same contents as above. Run `make` and see what happens. Then remove all text files and run `make one`, what happens this time? 
+
+
+We can apply the same principle to add the following `all` target to our makefile:
+```
+all: $(DATA)/listings.csv $(DATA)/reviews.csv $(TEMP)/aggregated_df.csv
+```
+
+\
+
+**Exercise 8**  
+Switch back to the other directory, add the `all` phony target to your makefile (and the `DATA` and `TEMP` variables for the file paths if necessary), and run `make`. What happens? Does it create all targets this time? Would it make a difference if we leave out `$(DATA)/listings.csv` and `$(DATA)/reviews.csv`, why is that? 
+
+\
+
+**Exercise 9**  
+Running `make` in the examples above should take only a couple of seconds, though in some cases it may trigger a process that takes a while to run (e.g., downloading big data files). In these cases, you may first want to check which files will be executed before running `make`. `make --just-print` does exactly that and returns the filenames in the order in which they would be executed if you were to run `make`. Remove the `data` folder but keep the `gen` folder and check with the `--just-print` flag how make handles this situation. Does it regenerate `aggregated_df.csv`, why is that? 
+
+\
+
+#### 2.5 Multiple makefiles
+
+Up to now, we have created a single makefile stored in `src/data-preparation` but we're not done yet. After all, three other R scripts in the `src/analysis` folder need to be executed. Therefore, create another `makefile` there so that you end up with the following file structure: 
+```
+/src/data-preparation/
+  - download.R
+  - clean.R
+  - makefile
+/src/analysis/
+  - pivot_table.R
+  - plot_all.R
+  - plot_Antwerp.R
+  - makefile
+```
+
+**Exercise 10**   
+Take a look at the figure at the top that and create a makefile in `src/analysis` that defines how `pivot_table.csv`, `plot_all.pdf`, and `plot_Antwerp.pdf` are created and which input files they require. Also, make sure to store the generated files in the right directory and you create the `gen/output` subfolder programmatically.
+
+**Exercise 11**  
+Run `make` in `src/analysis` and see whether it works as expected. Then, manually remove the `data` and `gen` folders and try to regenerate all files. How many times do you have to run `make`? 
+
+While having multiple makefiles creates structure and clarity, you don't want to run `make` in each and every folder (especially if the number of subfolders grows). Fortunately, you can have a makefile in your root directory that triggers other makefiles. Here's how the syntax looks like in our case: 
+
+```
+all: analysis data-preparation
+
+data-preparation:
+	make -C src/data-preparation
+
+analysis: data-preparation
+	make -C src/analysis
+```
+
+There are two phony targets (`data-preparation` and `analysis`), each with the `make -C` command and a reference to the folder in which the makefile is stored.
+
+**Exercise 12**  
+Create another makefile in the root directory, copy the contents from above, and run `make` again. Does it work as expected? How many times do you have to run `make` this time?
+
+\
+
+#### 2.6 Cleaning data
+Like the `all` phony target generates all files, another convention is to have a `clean` target that removes all generated folders and files. This way you can easily clean up your directory and run `make` again to build up all files from scratch. The code snippet below removes the `data` and `gen` folders as well as their contents.
+
+```
+clean:
+	-rm -r data
+	-rm -r gen
+```
+
+**Exercise 13**  
+Add the `clean` phony target to the makefile located in the root directory. Then, run `make clean` to trigger it. Does it work as expected? Finally, run `make` again to generate the temporary files and plots again.
+
+\
+
+### 3. Makefiles Solutions
+
+If you've worked through the entire set of exercises, this is how the makefiles should look like:
+
+*root folder*
+```
+all: analysis data-preparation
+
+data-preparation:
+	make -C src/data-preparation
+
+analysis: data-preparation
+	make -C src/analysis
+
+clean:
+	-rm -r data
+	-rm -r gen
+```
+
+*src/data-preparation*
+```
+DATA = ../../data
+TEMP = ../../gen/temp
+
+all: $(DATA)/listings.csv $(DATA)/reviews.csv $(TEMP)/aggregated_df.csv
+
+../../data/reviews.csv: download.R
+	R --vanilla < download.R
+
+../../data/listings.csv: download.R
+	mkdir -p ../../data
+	R --vanilla < download.R
+
+../../gen/temp/aggregated_df.csv: ../../data/listings.csv ../../data/reviews.csv  clean.R
+	mkdir -p ../../gen/temp
+	R --vanilla < clean.R
+```
+
+*src/analysis*
+```
+DATA = ../../data
+TEMP = ../../gen/temp
+OUTPUT = = ../../gen/output
+
+all: $(TEMP)/pivot_table.csv $(OUTPUT)/plot_Antwerp.pdf $(OUTPUT)/plot_all.pdf
+
+$(TEMP)/pivot_table.csv: $(TEMP)/aggregated_df.csv pivot_table.R
+	mkdir -p ../../gen/output
+	R --vanilla < pivot_table.R
+
+$(OUTPUT)/plot_Antwerp.pdf: $(TEMP)/pivot_table.csv plot_antwerp.R
+	R --vanilla < plot_antwerp.R
+
+$(OUTPUT)/plot_all.pdf: $(TEMP)/aggregated_df.csv plot_all.R
+	R --vanilla < plot_all.R
+```
+\
+
+### 4. FAQ
+
+Creating a make workflow that runs from start to finish is an iterative process of trial and error. Here are a few pointers to debug your makefiles.
+
+*1. Is `make` properly installed?*
+
+  To run makefiles, you have to have `make` installed on your system. So if you see a message like this... `'make' is not recognized as an internal or external command, operable program or batch file.`.
+
+  ...head over to Tilburg Science Hub [to see how to install `make`](https://tilburgsciencehub.com/get/make).
+
+\
+
+*2. Does your code run without make?*
+
+  There are two things that can go wrong when working with makefiles. Either there's a problem with the `makefile` itself, or there's a problem with the code that the `makefile` executes.
+
+  So, a first check is to copy-paste the commands to build (e.g., `python script.py` or `R --vanilla < script.R`) into the console, and see whether the Python or R code runs as expected. 
+
+
+  Does the script run? Then you need to debug your makefile (see next). If it doesn't run, first try to debug your source code in R/Python etc. 
+  
+  For example, it may happen that you get the following error: `dyld: Library not loaded: @rpath/libreadline.6.2.dylib` which means that make could not find the R installation. Using `Rscript` as opposed to `R --vanilla <` may solve the issue. Alternatively, specify the full path to your R installation to make sure it looks for the R library in the right place (e.g., define `Rscript = /Library/Frameworks/R.framework/Versions/4.0/Resources/bin/Rscript` at the top and use `$(Rscript) script.R` to execute the code thereafter). 
+
+\
+
+*3. Is your `makefile` structured properly?*
+
+  One of the most common mistakes in a `makefile` is to not adhere to the syntax:
+
+  ```
+  source: prerequisites [separated by spaces]
+     COMMANDS TO RUN
+  ```
+
+  The commands need to be separated by a tab character. Try to open the makefile in another editor, and verify that you have correctly made use of the tab. Note that some editors replace tabs by spaces (and you don't want that here or it will raise an error: ` *** missing separator.`!).
