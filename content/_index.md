@@ -24,11 +24,13 @@ The course offers seats to Research Master and PhD students from outside of Tilb
 
 {{< button relref="./docs/course/syllabus.md" >}}Check out the course syllabus & learning objectives {{< /button >}}
 {{< button relref="./docs/course/schedule.md" >}}View the schedule{{< /button >}}
-{{< button relref="./docs/course/enroll.md" >}}Enroll{{< /button >}}
+{{< button relref="./docs/course/enroll.md" >}}Enroll now!{{< /button >}}
 
 ## This website
 
 This website is the backbone of the course, and features the following main sections.
+
+- The [__course__](docs/course) section features the syllabus, schedule, and grading details.
 
 - The __[weekly modules](docs/modules)__ consist of live streams, readings, and prerecorded clips. Even if you're not enrolled in this course, you can watch these clips, but interaction with the course instructor is reserved for enrolled students only.
 
