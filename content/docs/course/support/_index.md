@@ -1,7 +1,7 @@
 ---
 title: "Support"
 bookCollapseSection: true
-weight: 6
+weight: 20
 description: " "
 ---
 
@@ -9,6 +9,10 @@ description: " "
 # Support
 
 Are you experiencing technical difficulties, e.g., when working through the tutorials?
+
+Contact the course coordinator via email, please: h.datta@tilburguniversity.edu.
+
+<!--
 
 For quick questions, please use *WhatsApp* to get in touch with us (+31 13 466 8938).
 

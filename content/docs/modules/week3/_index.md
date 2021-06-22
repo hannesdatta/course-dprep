@@ -3,7 +3,7 @@ weight: 3
 title: Week 3) Workflow management
 description: Familiarize yourself with the principles of workflow management to efficiently work on data-intensive research projects.
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Week 3: Workflow management

@@ -1,9 +1,9 @@
 ---
-weight: 3
+weight: 10
 title: "Team Project"
 bookCollapseSection: true
 description: " "
-draft: false
+draft: true
 ---
 
 # Team Project

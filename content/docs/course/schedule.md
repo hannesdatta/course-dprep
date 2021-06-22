@@ -8,12 +8,14 @@ description: " "
 
 # Schedule
 
-The course runs for a duration of eight weeks, which consists of
+The course runs for a duration of seven weeks.
+ <!--, which consists of
 - five weeks dedicated to skill-building, and
-- three weeks dedicated to working on a team project.
+- three weeks dedicated to working on a team project.-->
 
 Login credentials for the live streams will be made available on the *Canvas page of this course for students from Tilburg University*.
 
+<!--
 Click on the course week to find out what is expected from you for each module. Note that links for which content has not been published yet will not work.
 
 Course week|Live stream|Date|Time
@@ -30,22 +32,25 @@ Course week|Live stream|Date|Time
 |     |Course summary and exam preparation (#6) |Friday, 26 March, 2021|14.45-16.30|
 
 
+-->
 
-
-<!--
 
 Course week|Unit|Mon|Tue|Wed|Thu|Fri|Sat|Sun|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|*February 2021*
-Week 1|3.1|1|2|3|4|5|6|7|
-Week 2|3.2|8|9|10|11|12|13|14
-Week 3|Self-study|15|16|17|18|19|20|21
-Week 4|3.3|22|23|24|25|26|27|28
-|*March 2021*
-Week 5|3.4|1|2|3|4|5|6|7
-Week 6|3.5|8|9|10|11|12|13|14
-Week 7|3.6|15|16|17|18|19|20|21
-Week 8|3.7|22|23|24|25|26|27|28
+|*August 2021*
+Week 1|1.1|30|31||||||
+|*September 2021*
+Week 1|1.1|||1|2|3|4|5|
+Week 2|1.2|6|7|8|9|10|11|12
+Week 3|1.3|13|14|15|16|17|18|19
+Week 4|1.4|20|21|22|23|24|25|26
+Week 5|1.5|27|28|29|30|||
+|*October 2021*
+Week 5|1.5|||||1|2|3
+Week 6|1.6|4|5|6|7|8|9|10
+Week 7|1.7|11|12|13|14|15|16|17
+
+<!--Week 8|3.7|22|23|24|25|26|27|28
  ||Exams|29|30|31
 |*April 2021*
         |  |  |  |  ||1|2|3|4

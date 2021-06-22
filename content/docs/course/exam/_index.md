@@ -1,6 +1,6 @@
 ---
 title: "Exam"
-weight: 5
+weight: 8
 description: " "
 bookCollapseSection: true
 description: " "
@@ -14,16 +14,16 @@ The course content will be tested in the form of a __take-home exam__, to be com
 
 ### Main sit
 
-- Date: __Friday, 9 April 2021__
+- Date: __tba__
 - Time: __8am - 10pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
 - Exam registration: not necessary; enrollment to the Canvas course page is sufficient
-- Inspection: Friday, 30 April 2021, 9.00-09.30 (signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)
+- Inspection: tba <!-- (signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)-->
 
 ### Resit
 
-- Date: __Monday, 21 June 2021__
-- Time: __8am - 10pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
-- Registration: by 7 June 2021 at the latest, via https://forms.gle/KXQBjtTvY9saQQhS8.
+- Date: __tba__
+- Time: __tba__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+- Registration: tba <!--by 7 June 2021 at the latest, via https://forms.gle/KXQBjtTvY9saQQhS8.-->
 
 ## Technicalities & support
 
@@ -35,7 +35,7 @@ The course content will be tested in the form of a __take-home exam__, to be com
 ## Form
 
 - Open book take-home exam (i.e., you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
-- 4 sections with subquestions (all open questions; both in written, or by means of code/file uploads)
+- several sections with subquestions (all open questions; both in written, or by means of code/file uploads)
 - Some questions will be personalized (i.e., there is only one correct answer per student)
 
 {{< hint warning >}}
@@ -43,6 +43,7 @@ __Communication with anybody about the content of the exam, during *and after* t
 
 {{< /hint >}}
 
+<!--
 ## Content
 
 ### Topics
@@ -104,12 +105,11 @@ Above all, see this exam preparation *not* as a way to merely study for the exam
 - Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)
 - Take breaks! While the exam questions will be difficult, you do not need the entire day to solve them!
 - Revise your code before submission, so that you ensure it runs from top to bottom without problems.
+-->
 
-<!--
 {{< hint info >}}
 __Stay up-to-date__
 
 As we develop the exam questions, please keep an eye on the content of this page for important updates (e.g., with regard to the questions asked, any new tips & tricks that will help you to work on the questions, any example questions, etc.)
 
 {{< /hint >}}
--->

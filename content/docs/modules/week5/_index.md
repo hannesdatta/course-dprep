@@ -3,7 +3,7 @@ weight: 5
 title: Week 5) Version control and project management
 description: Keep track of file changes and apply the end-to-end Git workflow!
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Week 5: Version control <!--+ feedback-->

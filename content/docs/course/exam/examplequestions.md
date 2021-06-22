@@ -3,7 +3,7 @@ title: "Example questions"
 bookFlatSection: true
 bookHidden: false
 weight: 5
-draft: false
+draft: true
 ---
 
 # Example questions

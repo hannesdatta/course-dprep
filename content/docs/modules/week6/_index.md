@@ -3,7 +3,7 @@ weight: 50
 title: Week 6-8) Project phase
 description: Apply your learnings in a team project!
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Week 6-8: Project phase

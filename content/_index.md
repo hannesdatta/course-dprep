@@ -30,7 +30,7 @@ The course offers seats to Research Master and PhD students from outside of Tilb
 
 This website is the backbone of the course, and features the following main sections.
 
-- The [__course__](docs/course) section holds a list of weekly [modules](docs/course/modules), consisting of live streams, readings, and prerecorded clips. Even if you're not enrolled in this course, you can watch these clips, but interaction with the course instructor is reserved for enrolled students only.
+- The __[weekly modules](docs/modules)__ consist of live streams, readings, and prerecorded clips. Even if you're not enrolled in this course, you can watch these clips, but interaction with the course instructor is reserved for enrolled students only.
 
 - The [__tutorial and data challenge__](docs/tutorials) section offers self-guided tutorials that teach the *principles* of data preparation and workflow management. It also holds a (weekly) data challenge in which you can put your skills into practice. <!--Use these to start your own empirical research projects! <!--a workflow for collecting online data, and -->
 

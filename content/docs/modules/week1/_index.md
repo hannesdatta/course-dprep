@@ -3,7 +3,7 @@ weight: 2
 title: Week 1) Business and Data Understanding
 description: Learn the basics of R and RStudio, and explore datasets.
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Week 1: Business and Data Understanding

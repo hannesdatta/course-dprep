@@ -8,11 +8,14 @@ bookCollapseSection: true
 
 # Modules
 
-The course consists of weekly modules. The first five weeks (including one self-study week) equip you with the skills to work on data-intensive research projects efficiently. The modules are structured along the different stages of an empirical research project.
+The course consists of weekly modules covering the three principles of the *new way of working* (i.e., code, collaborate, automate). In the team assignment, students apply these principles on each stage of an empirical research project.
+
+<!--The first five weeks (including one self-study week) equip you with the skills to work on data-intensive research projects efficiently.
 
 The remaining three weeks are dedicated to working on a team project, in which you put your skills into practice.
-
-![dprep_framework.png](dprep_framework.png)
+-->
+<br>
+<img style="width:75%" src="dprep_framework.png" />
 
 <!--
 ## Course structure
@@ -33,5 +36,6 @@ The remaining three weeks are dedicated to working on a team project, in which y
 
 ...-->
 
+## Published modules
 
 {{<section>}}

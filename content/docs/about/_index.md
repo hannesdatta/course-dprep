@@ -13,18 +13,19 @@ We've built up expertise in data preparation and workflow management. And we're 
 
 Feedback is appreciated always.
 
-## Contributors
+## Instructors and Creators
 
-This course has been created by [Hannes Datta](https://hannesdatta.com) and [Roy Klaasse Bos](http://royklaassebos.nl/) from Tilburg University.
+The course is coordinated and instructed by [Hannes Datta](https://hannesdatta.com). Course material, if not indicated otherwise, has been developed by [Hannes Datta](https://hannesdatta.com) and [Roy Klaasse Bos](http://royklaassebos.nl/) from Tilburg University.
 
 ## Acknowledgements
 
-This is the first edition of a new course, and it borrows substantial external content. We're grateful to excellent (beginner) tutorials, which students will access through [Datacamp](https://datacamp.com). Furthermore, we rely on the following list of resources:
+In developing this course, we have borrowed from some of the finest (open) content on the web, among others:
 * The Turing Way. (2021). [A How To Guide for Reproducible Data Science](https://the-turing-way.netlify.app/welcome)
 * Colt Steele. (2020). [Introduction to Git](https://www.notion.so/Introduction-to-Git-ac396a0697704709a12b6a0e545db049)
 * Colt Steele. (2020). [Introduction to Github](https://www.notion.so/Introduction-to-GitHub-202af6f64bbd4299b15f238dcd09d2a7)
 * Data School. (2014). [Version Control with Git & Github](https://www.youtube.com/watch?v=xKVlZ3wFVKA&list=PL5-da3qGB5IBLMp7LtN8Nc3Efd4hJq0kD)
 
+We also rely on access to Datacamp.com.
 
 ## Open Science
 This course adheres to the principles of the [Open Science Community](https://www.tilburguniversity.edu/research/open-science-community) of Tilburg University. This initiative advocates for transparency and accessibility in research and teaching to all levels of society and thus creating more accountability and impact.
@@ -33,7 +34,7 @@ This course adheres to the principles of the [Open Science Community](https://ww
 
 ## License
 
-This content on this course website is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/). In other words, you're invited to contribute to it, or even copy and modify it to suit your needs.
+The content on this website and the associated GitHub repository is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/). In other words, you're invited to contribute to it, or even copy and modify it to suit your needs.
 
 Spread the word about this open education initiative!
 

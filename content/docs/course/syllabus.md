@@ -56,7 +56,62 @@ After successful completion of this course, you will be able to:
 - The course welcomes novices, of whom __extra preparation prior to the start of the course is expected.__ Preparation material will be shared with students in advance in the form of R Notebooks or course recommendations at Datacamp. Novices may further benefit from following other courses at Tilburg University in which R is used.
 - Students are recommended to use their own computer for this course (Windows, Mac or Linux). Android/Chromebook/iOS devices are not supported. Moreover, we highly recommend a computer with at least 8 GBs of RAM memory as we'll work with large data sets that require significant preprocessing.
 
+## Grading
 
+- Team project (4-5 team members) with self- and peer assessment (see below) (40%)
+- Computer exam (60%)
+
+Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5). Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
+
+Grades are made available on Canvas.
+
+### Team project
+
+Students will work on a team project throughout the course.
+
+Students' individual grades will be corrected upwards or downwards, depending on their individual contribution to the overall team effort (e.g., measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions)
+
+
+
+<!--
+- their individual contribution to the overall team effort (measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions), and
+- students' individual investment in developing the technical skills required to contribute meaningfully to the project (measured by means of students' individual submissions of answers to the tutorials/data challenges).
+
+-->
+
+
+
+<!--
+{{< hint info >}}
+__Calculation of individual grades from team grades__
+
+1. Students score themselves and other team members on the following questions (answered on a scale between 1 = lowest, and 5 = highest)
+  - How was the pro-active attitude of the student?
+  - How was the student as a team player?
+  - How was the quantity of the contribution (e.g., time, energy) of the student?
+  - How was the quality of the contribution of the student?
+  - How was the quality of feedback to team members given by the student?
+
+2. Compute average score from (1) for each student within a team, across all questions. ("How did team members rate the focal student?")
+
+3. Compute average team effort score, by averaging (within each team) the scores obtained in (2). ("What was the overall team effort?")
+
+4. Compute students' self- and peer assessment score (`SPAscore`), by dividing each student's score by the team average. ("How did the student perform, relative to the overall team effort?"
+
+5. Multiply the `SPAscore` by 1.05 if the focal student has provided proof of skill investment (at least three submissions on Canvas).
+
+6. Correct team grades using the following formula:
+
+      {{< katex display >}}
+      finalgrade = w * teamgrade + (1-w) * SPAscore * teamgrade
+      {{< /katex >}}
+
+  where w is set to .8, weighting individual performance against a team's overall performance.
+
+
+{{< /hint >}}
+
+-->
 
 <!--  - Project management on GitHub (versioning, issue management, collaboration)
 <!-- plugin R for using Git -->
@@ -106,58 +161,3 @@ Work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own compute
 --><!--, work on virtual machines on AWS EC2, and write basic code in SQL-->
 
 <!--, MySQL, MongoDB and Amazon Web Services (AWS) EC2 and S3-->
-
-## Grading
-
-- Group project (4-5 team members) with self- and peer assessment (see below) (40%)
-- Computer exam (60%)
-
-Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5). Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
-
-Grades are made available on Canvas.
-
-### Team project
-
-Students will work on a team project throughout the course.
-
-Students' individual grades will be corrected upwards or downwards, depending on their individual contribution to the overall team effort (e.g., measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions)
-
-<!--
-- their individual contribution to the overall team effort (measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions), and
-- students' individual investment in developing the technical skills required to contribute meaningfully to the project (measured by means of students' individual submissions of answers to the tutorials/data challenges).
-
--->
-
-
-
-<!--
-{{< hint info >}}
-__Calculation of individual grades from team grades__
-
-1. Students score themselves and other team members on the following questions (answered on a scale between 1 = lowest, and 5 = highest)
-  - How was the pro-active attitude of the student?
-  - How was the student as a team player?
-  - How was the quantity of the contribution (e.g., time, energy) of the student?
-  - How was the quality of the contribution of the student?
-  - How was the quality of feedback to team members given by the student?
-
-2. Compute average score from (1) for each student within a team, across all questions. ("How did team members rate the focal student?")
-
-3. Compute average team effort score, by averaging (within each team) the scores obtained in (2). ("What was the overall team effort?")
-
-4. Compute students' self- and peer assessment score (`SPAscore`), by dividing each student's score by the team average. ("How did the student perform, relative to the overall team effort?"
-
-5. Multiply the `SPAscore` by 1.05 if the focal student has provided proof of skill investment (at least three submissions on Canvas).
-
-6. Correct team grades using the following formula:
-
-      {{< katex display >}}
-      finalgrade = w * teamgrade + (1-w) * SPAscore * teamgrade
-      {{< /katex >}}
-
-  where w is set to .8, weighting individual performance against a team's overall performance.
-
-
-{{< /hint >}}
-
--->

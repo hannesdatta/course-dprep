@@ -3,7 +3,7 @@ weight: 4
 title: Week 4) Pipeline building and automation
 description: Automate your project's pipeline and make your work reproducible.
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Week 4: Pipeline Building and Automation
