@@ -1,8 +1,9 @@
 ---
-weight: 3
-title: Modules
+bookFlatSection: true
+title: "Modules"
+bookHidden: false
+weight: 15
 bookCollapseSection: true
-description: " "
 ---
 
 # Modules
