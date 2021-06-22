@@ -18,7 +18,7 @@ _Next edition: August - October 2021_
 
 Welcome to the course website of dPrep!
 
-This course teaches you how to __efficiently manage empirical research projects__. Many students and researchers perceive the process of doing research as rather simplistic: a bit of data cleaning here and analysis there, and you're done. In this course, you will __professionalize your way-of-working__. In particular, this course zooms in on __highly complex, reproducible data preparation workflows__ (think of complex structured and unstructured raw data, derived from multiple sources, provided in multiple delivery batches, with lots of missing data, etc.). Throughout the course, you'll be using workflow principles of __reproducible science__ that are documented at [Tilburg Science Hub](https://tilburgsciencehub.com).
+This course teaches you how to __efficiently manage empirical (marketing) research projects__. Many students and researchers perceive the process of doing research as rather simplistic: a bit of data cleaning here and analysis there, and you're done. In this course, you will __professionalize your way-of-working__. In particular, this course zooms in on __highly complex, reproducible data preparation workflows__ (think of complex structured and unstructured raw data, derived from multiple sources, provided in multiple delivery batches, with lots of missing data, etc.). Throughout the course, you'll be using workflow principles of __reproducible science__ that are documented at [Tilburg Science Hub](https://tilburgsciencehub.com).
 
 The course offers seats to Research Master and PhD students from outside of Tilburg University.
 
