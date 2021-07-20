@@ -1,6 +1,6 @@
 ---
 weight: 60
-title: Pipeline building and automation OLD
+title: Pipeline building and automation NEW
 description: Automate workflows and make them reproducible.
 bookCollapseSection: true
 draft: false

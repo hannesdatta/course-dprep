@@ -1,7 +1,7 @@
 ---
 weight: 1
 title: Preparation before the course starts
-description: Setup your computer and learn the basics of Python before the course starts.
+description: Setup your computer and learn the basics of R before the course starts.
 bookCollapseSection: true
 ---
 

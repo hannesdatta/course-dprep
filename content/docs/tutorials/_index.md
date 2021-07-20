@@ -1,6 +1,6 @@
 ---
 bookFlatSection: true
-title: "Tutorials & Data Challenges"
+title: "Tutorials"
 bookHidden: false
 weight: 30
 bookCollapseSection: true
@@ -18,7 +18,7 @@ The tutorials shown below are from the spring 2021 edition of this course, and w
 
 {{< /hint >}}
 
-{{< button relref="docs/course/datacamp.md" >}}Obtain access to Datacamp.com{{< /button >}}
+{{< button relref="docs/course/support/datacamp.md" >}}Obtain access to Datacamp.com{{< /button >}}
 
 ## Available tutorials
 

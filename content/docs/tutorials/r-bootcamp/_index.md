@@ -1,5 +1,5 @@
 ---
-weight: 1
+weight: 10
 title: R Bootcamp
 description: Learn the basics of using R
 bookCollapseSection: true
@@ -30,4 +30,4 @@ The best thing about R is that it's open source. It's freely usuable by anyone. 
 * Please install R and RStudio, by following the [setup instructions](http://tilburgsciencehub.com/setup/r/).
 
 ### 2) Obtain a basic skill level in R
-* Please complete the Datacamp course ["Introduction to R"](https://www.datacamp.com/courses/free-introduction-to-r). Students with an email address from `@tilburguniversity.edu` can log on through Google (choose "Google" when logging in to Datacamp, then give your Tilburg email address).
+* Please complete the Datacamp course ["Introduction to R"](https://www.datacamp.com/courses/free-introduction-to-r). Check out how to obtain [access to Premium content of Datacamp here](../../../docs/course/support/datacamp).

@@ -1,5 +1,5 @@
 ---
-weight: 10
+weight: 30
 title: Data exploration with R and RMarkdown
 description: Learn the basics of the programming language R, familiarize yourself with RStudio, and use your skills to explore new datasets.
 bookCollapseSection: true

@@ -1,12 +1,12 @@
 ---
-weight: 50
-title: Version control with Git and GitHub
-description: Keep track of file changes and apply the end-to-end Git workflow.
+weight: 20
+title: Project Management and Version Control with Git and GitHub
+description: Manage your project professionally, keep track of file changes and apply the end-to-end Git workflow.
 bookCollapseSection: true
 draft: false
 ---
 
-# Tutorial: Version control
+# Tutorial: Project Management and Version Control with Git/GitHub
 
 ## Learning goals
 
