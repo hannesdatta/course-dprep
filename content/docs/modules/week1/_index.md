@@ -1,22 +1,28 @@
 ---
 weight: 2
-title: Week 1) Business and Data Understanding
-description: Learn the basics of R and RStudio, and explore datasets.
+title: Week 1) Getting started with R
+description: Familiarize yourself with R and RStudio, and explore datasets.
 bookCollapseSection: true
 draft: true
 ---
 
-# Week 1: Business and Data Understanding
+# Week 1: Getting started with R
 
-__Obtain business and data understanding, and explore data in R__
+<!--__Obtain business and data understanding, and explore data in R__-->
 
 ## Live stream 1
-- Introduction to the course ([re-watch](https://youtu.be/iq88xsSGyTg)))
+- Introduction to the course <!--([re-watch](https://youtu.be/iq88xsSGyTg)))-->
 
-## Kick-starting your week
+<!--## Kick-starting your week
 - Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
+00->
+-->
 
 ## Self-study and activities
+- If you haven't done so, please complete the software installation.
+- [R Bootcamp](docs/tutorials/r-bootcamp)
+
+
 - [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
 - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
