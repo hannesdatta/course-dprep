@@ -1,41 +1,75 @@
 ---
 weight: 3
-title: Week 3) Workflow management
-description: Familiarize yourself with the principles of workflow management to efficiently work on data-intensive research projects.
+title: Week 3) Exploring and auditing new data with RMarkdown
+description: Explore datasets.
 bookCollapseSection: true
-draft: true
+draft: false
 ---
 
-# Week 3: Workflow management
+# Week 3: Exploring and auditing new data with RMarkdown
 
-This week, there is no live contact moment ("self-study week").
+<!--__Obtain business and data understanding, and explore data in R__-->
+
+## Kick-starting your week
+- Watch the energizer for the week (to be made available)<!--[the energizer for the week](https://youtu.be/tctr4GgrD4w) on YouTube!-->
 
 <!--## Kick-starting your week
-- In this short clip, we'll explain about the learning goals of this week, and point you to relevant material
+- Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
+00->
 -->
 
-## Kick-starting your self-study week
-- Watch [the energizer for the week](https://youtu.be/vueCS4ukBjU) on YouTube!
-
 ## Self-study and activities
+- [Data exploration with R and RMarkdown (Tutorial)](docs/tutorials/data-exploration-in-r)
+- [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
+<!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
-### Start to see the bigger picture
+## Live stream 4
+- Q&A/walk-through of this week’s tutorial
+- [Activity to explore new data](activity.md)
 
-We have prepared some reading material that will help you to understand the "bigger picture" of what you'll accomplish in the remaining weeks.
-
-- [Code and Data for the Social Sciences: A Practitioner’s Guide](https://www.brown.edu/Research/Shapiro/pdfs/CodeAndData.pdf)
-
-_Optional_:
-- [Modified principles for Code and Data (optional)](https://www.shirokuriwaki.com/programming/project-organization.html)
-- [Principles of Workflow Management (optional)](http://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/overview/)
-
-### Catching up with tutorials
-If you haven't been able to work through all tutorials yet, it's also wise to keep on investing in your skills.
-
-If you're done, start working through the tutorials of subsequent weeks to help you balance the course workload with demands from other courses.
+[^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)
 
 <!--
 
-- Work on tutorials from previous or subsequent weeks
-<!--- Explore [Tilburg Science Hub](https://tilburgsciencehub.com) (e.g., )
+Meetup
+- Introduction to the course *live*
+  - Course objectives and practical arrangements
+  - Workflow overview
+  - Relevance of workflow management
 -->
+<!--  - Any remaining questions, please post them by DEADLINE on XXXX-->
+
+<!--
+- Reading: Web scraping workflow
+
+- Self-study
+  - Readings
+    - Web scraping article Hannes/Johannes/Abhi/Andrew
+    - Ethics in scraping and APIs
+
+  - Video: Assessing research fit of web scraping and APIs [recorded]
+
+
+- Self study
+  - sdasd
+    - data enrichment (e.g., ML APIs)
+    - data collection and intelligence (e.g., search; chartmetric)
+    - market research (e.g., pricewatch)
+
+-->
+
+
+
+
+<!-- Hybrid teams
+-->
+
+<!--(Module 1b: Legality and Terms of Use
+paper? advice?))-->
+
+<br>
+
+---
+<br>
+{{< button relref="week2" >}}Previous week{{< /button >}}
+{{< button relref="week4" >}}Next week{{< /button >}}

@@ -6,7 +6,7 @@ bookCollapseSection: true
 draft: false
 ---
 
-# Tutorial: Starting up a new empirical research project on your local computer
+# Starting up a new empirical research project on your local computer
 
 ## Getting started
 

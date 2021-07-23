@@ -1,7 +1,7 @@
 ---
 weight: 10
 title: R Bootcamp
-description: Learn the basics of R and RStudio
+description: Learn the basics of R and RStudio.
 bookCollapseSection: true
 ---
 

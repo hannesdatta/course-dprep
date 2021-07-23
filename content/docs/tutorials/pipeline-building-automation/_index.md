@@ -3,7 +3,7 @@ weight: 60
 title: Pipeline building and automation OLD
 description: Automate workflows and make them reproducible.
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Tutorial: Pipeline building and automation
@@ -33,10 +33,11 @@ draft: false
 
 - Read the building block ["What are makefiles"](../../building-blocks/automation/make-commands)
 
-- Review the notes on [Automating Your Pipeline](http://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/automation/)
+<!--- Review the notes on [Automating Your Pipeline](http://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/automation/)-->
 
 <!--
 - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/tree/master/automation01_slides)
+
 -->
 
 ### Practice

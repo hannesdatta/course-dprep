@@ -11,6 +11,7 @@ bookCollapseSection: true
 
 Learn the technical skills required to work on data-intensive research projects. Most tutorials start with existing content (e.g., from [Datacamp](https://datacamp.com), [TheTuringWay](https://the-turing-way.netlify.app/), or [Tilburg Science Hub](https://tilburgsciencehub.com)). Each tutorial also consists of a Data Challenge, which apply the learnt concepts in the domain of marketing analytics.
 
+<!--
 {{< hint info >}}
 __Stay up-to-date__
 
@@ -19,6 +20,7 @@ The tutorials shown below are from the spring 2021 edition of this course, and w
 {{< /hint >}}
 
 {{< button relref="docs/course/support/datacamp.md" >}}Obtain access to Datacamp.com{{< /button >}}
+-->
 
 ## Available tutorials
 

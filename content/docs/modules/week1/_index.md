@@ -3,7 +3,7 @@ weight: 2
 title: Week 1) Getting started with R
 description: Familiarize yourself with R and RStudio, and explore datasets.
 bookCollapseSection: true
-draft: true
+draft: false
 ---
 
 # Week 1: Getting started with R
@@ -12,6 +12,8 @@ draft: true
 
 ## Live stream 1
 - Introduction to the course <!--([re-watch](https://youtu.be/iq88xsSGyTg)))-->
+- Preview of a reproducible workflow (think of it as the "final product" you will build in this class)
+- Introduction to the datasets used in class
 
 <!--## Kick-starting your week
 - Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
@@ -19,15 +21,18 @@ draft: true
 -->
 
 ## Self-study and activities
-- If you haven't done so, please complete the software installation.
-- [R Bootcamp](docs/tutorials/r-bootcamp)
+- If you haven't done so, please [complete the software installation](../../../docs/tutorials/software-installation/_index.md)
+- [R Bootcamp (Tutorial)](docs/tutorials/r-bootcamp)
 
-
+<!--
 - [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
 - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
 ## Live stream 2
+- Q&A/walk-through of this week’s tutorial
+
+<!--
 - [Activity to explore new data](activity.md)
 - Q&A on Data Challenge #1
 
@@ -70,3 +75,10 @@ Meetup
 
 <!--(Module 1b: Legality and Terms of Use
 paper? advice?))-->
+
+<br>
+
+---
+<br>
+{{< button relref="prep" >}}Previous week{{< /button >}}
+{{< button relref="week2" >}}Next week{{< /button >}}

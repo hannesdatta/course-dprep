@@ -1,22 +1,37 @@
 ---
 weight: 4
-title: Week 4) Pipeline building and automation
-description: Automate your project's pipeline and make your work reproducible.
+title: Week 4) Engineering data sets
+description: Use tidyverse and dplyr to structure your data for analysis.
 bookCollapseSection: true
-draft: true
+draft: false
 ---
 
-# Week 4: Pipeline Building and Automation
+# Week 4: Engineering data sets
 
 ## Kick-starting your week
-- Watch [the energizer for the week](https://youtu.be/PdWZ1s8XXiU) on YouTube!
+- Watch the energizer for the week (to be made available)<!--[the energizer for the week](https://youtu.be/tctr4GgrD4w) on YouTube!-->
 
 ## Self-study and activities
-- [Pipeline Building and Automation (Tutorial & Data Challenge 3)](docs/tutorials/pipeline-building-automation)
+<!--
+- [Marketing Analytics for Data-Rich Environments (pp. 97-108)](http://dx.doi.org/10.1509/jm.15.0413)-->
+<!--- The ITO (input-transformation-output) process
+- Zooming in on "transformation": common data operations (and how they're related to different data set types)-->
+- Develop understanding for [why it's necessary to prepare data sets for analysis](https://youtu.be/z_Hh1jlL1Ac)
+- [Data Preparation in R (Tutorial)](docs/tutorials/data-preparation)
+<!--- Video: data set engineering (Hannes)
+-->
 
-## Live stream 4
-- Q&A on "Pipeline Building and Automation" (Tutorial & Data Challenge 3)
-  - Re-watch the [opening/introduction of the Q&A](https://youtu.be/YlaprvGiIA0)
-  - Re-watch [the primer on automating data workflows](https://youtu.be/xyoMOO842EU)
-  - Re-watch [practicing with `make` (Tilburg Science Hub)](https://youtu.be/_1BDJsDVYoA)
-  - Re-watch [the Q&A session, last 45 minutes of the class](https://youtu.be/56yARyR1p1E)
+## Live stream 5
+- Q&A/walk-through of this week's tutorial
+- [Work on an activity to perform common data transformations](activity.md)
+
+
+<!--- Ethics in scraping and APIs *live*
+-->
+
+<br>
+
+---
+<br>
+{{< button relref="week3" >}}Previous week{{< /button >}}
+{{< button relref="week5" >}}Next week{{< /button >}}

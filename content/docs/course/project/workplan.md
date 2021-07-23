@@ -20,14 +20,19 @@ Check out [the detailed grading guidelines here](grading_details.md).
 
 ## Milestones
 
-To help you structure the assignment and make sure you finish in time, we have introduced a set of milestones and guidelines. Each week there is an optional feedback session that you can use to gather feedback on your preliminary work.
+To help you structure the assignment and make sure you finish in time, we have introduced a set of milestones and guidelines. There are frequent (optional) feedback sessions that you can use to gather feedback on your preliminary work.
 
-| Week | Pipeline Stage | Feedback on
-|:---- | :---- | :---- |
-| 6 | Data preparation  | Data exploration, storing data remotely & retrieving it, version control with Git |
-| 7 | Analysis | Data preparation & analysis, automation with `make` |
-| 8 | Deployment | Analysis, reporting |
+| Week | Project Stage | Working on | Feedback on |
+|:---- | :---- | :---- | :---- |
+| 1 | Getting started | Allocate teams & get idea about data context; think about research motivation | |
+| 2 | GitHub | Set up *public* repository on Git, submit team's repository URL on Canvas | Coaching #1 - [Grading details](grading_details.md#1-github-repository) &#8594; 1.1 and 1.2 (Research Motivation and Repository Structure)|
+| 3 | Data exploration | Explore and audit data, refine research motivation |
+| 4 | Data preparation | Prepare data for analysis | Coaching #2 - [Grading details](grading_details.md#2-data-preparation--analysis) &#8594; 2.1 and 2.2 (Data exploration and Data Preparation)
+| 5 | Automation  | Start automating your pipeline and refine source code | Coaching #3 - [Grading details](grading_details.md#3-source-code-and-automation) &#8594; 3.1 and 3.2 (Source code quality and degree of automation)
+| 6 | Analysis and Deployment | Refine source code and analysis | Coaching #4 - [Grading details](grading_details.md#23-analysis-and-deployment-15) &#8594; 2.3 (Analysis and deployment)
+| 7 | Wrap-up | Conduct final housekeeping checks  | Optional feedback meetings
 
+<!--
 ### Weeks 2-4
 
 - Reach out one another to form teams
@@ -55,7 +60,7 @@ To help you structure the assignment and make sure you finish in time, we have i
   - Filter for rows that satisfy selection criteria
   - Group records on a categorical or date field and reshape data
   - Export output to generated files
--->
+
 - Test make file
 - Point of discussion with coach: does your project reproduce when deleting temp files?
 
@@ -63,7 +68,7 @@ To help you structure the assignment and make sure you finish in time, we have i
 
 - Choose how to deploy your insights, e.g., by means of regression analysis, or even by writing an app.
 - Necessary components (e.g., for inspiration on how to write an app) are available in the building blocks section of the course site.
-
+-->
 <!--- Import data from `gen` folder
 - Plot timeseries chart and export as pdf file
 - Automate workflow with make

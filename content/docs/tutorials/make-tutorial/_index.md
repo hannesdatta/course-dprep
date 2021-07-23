@@ -1,6 +1,6 @@
 ---
 weight: 60
-title: Pipeline building and automation NEW
+title: Pipeline building and automation
 description: Automate workflows and make them reproducible.
 bookCollapseSection: true
 draft: false
@@ -18,49 +18,44 @@ draft: false
 * Describe raw data using a template
 -->
 
-## Getting Started
+## Planning
 
-### Plan
+- Please plan a full day to work through this tutorial.
 
-- Plan a full day to work through this tutorial.
+## Getting started
 
-### Learn
+1. Watch (in this order...)
+    - [This is why you should automate the pipeline of your empirical research project](https://youtu.be/9aivqe-phL0)
+    - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)
+    - The content of the slides shown in the videos is [available here](pipelineautomation.pdf).
 
-- Watch (in this order...)
-  - [This is why you should automate the pipeline of your empirical research project](https://youtu.be/9aivqe-phL0)
-  - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)
-  - The content of the slides shown in the videos is [available here](pipelineautomation.pdf)
+2. Read the building block ["What are makefiles"](../../building-blocks/automation/make-commands)
 
-- Read the building block ["What are makefiles"](../../building-blocks/automation/make-commands)
+3. Start learning `make`! ([View](make-tutorial.html), [Download; right click - download file as](make-tutorial.Rmd))
 
-- Review the notes on [Automating Your Pipeline](http://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/automation/)
+{{< hint info >}}
+__Optional readings__
+
+- Notes on [Automating Your Pipeline](http://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/automation/)
+- Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
+
+{{< /hint >}}
+
+{{< hint info >}}
 
 <!--
-- Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/tree/master/automation01_slides)
+
 -->
 
-### Practice
+__Practice `make` commands on a real pipeline__
 
-- Practice `make` commands by working on the tutorial ["Practicing pipeline automation using `make`"](https://tilburgsciencehub.com/tutorials/reproducible-research/practicing-pipeline-automation-make/overview/)
+- Check out the tutorial ["Practicing pipeline automation using `make`"](https://tilburgsciencehub.com/tutorials/reproducible-research/practicing-pipeline-automation-make/overview/) at Tilburg Science Hub.
 
 {{< hint warning >}}
 
 The tutorial involves a blend of R __and__ Python code. You may be unfamiliar with Python - but that's not a bad thing. The purpose is __not__ to turn you into a Python wizard, but rather to __illustrate the value of `make`__ in a data pipeline. The fact that you can run both R and Python scripts makes it very powerful!
 
 {{< /hint >}}
-
-### Create
-
-- Download the code of the "Example of a reproducible research workflow", available at https://github.com/rgreminger/example-make-workflow
-- Unzip the code, open a terminal/command prompt in the folder, and run the workflow by typing `make`
-- If everything works ("Nothing to be done for `make`"), start extending the workflow with the [building blocks on automation](../../building-blocks/automation/)
-  - write a script that downloads datasets [for your team project](../../course/project). Use the [AirBnB data](http://insideairbnb.com/get-the-data.html), in particular `listings.csv` and `reviews.csv`
-  - add the script to the `makefile`, and run `make`
-  - add a RMarkdown document, which (roughly) inspects the CSV files. Don't spend much time on the exploration code here - the purpose is for you to get starting using `make`!
-  - Throughout, keep on running `make` to verify your project is (still) working as expected.
-
-If you like, you can submit your workflow as a "proof of investing in your skills" (self- and peer assessment). Please compress it before uploading!
-
 
 <!--
 In the live session of this week, we'll see how we can quickly make changes to the workflow (e.g., swapping around files and directories) without breaking the pipeline.

@@ -1,16 +1,13 @@
 ---
-title: Activity
-draft: true
+title: Live Stream Activity
+draft: false
 ---
 
 # Live Stream Activity
 
-You will work on this activity during the live stream.
-
-<!--
 ## Overview
 
-- Type: Breakout activity with 4-6 students, *or* guided "look over the shoulders of Hannes" session
+- Type: Breakout activity with 4-6 students<!--, *or* guided "look over the shoulders of Hannes" session-->
 - Duration 15 minutes
 - Goals
   - Understand the process of input-transformation-output
@@ -72,7 +69,7 @@ Work on *one or many* of the transformation steps below.
 
 Write the resulting data sets to *Excel*, using [the `xlsx` package](http://www.sthda.com/english/wiki/r-xlsx-package-a-quick-start-guide-to-manipulate-excel-files-in-r#write-data-to-an-excel-file).
 
-
+<!--
 ## Code written in class
 
 ```
@@ -161,5 +158,4 @@ write.table(df, 'spotify_output.csv')
 # explore workspace
 
 ```
-
 -->

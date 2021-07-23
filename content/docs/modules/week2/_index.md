@@ -1,31 +1,31 @@
 ---
 weight: 3
-title: Week 2) Data preparation
-description: Use tidyverse and dplyr to structure your data for analysis, and generate data reports using R Markdown.
+title: Week 2) Version control and project management
+description: Keep track of file changes and apply the end-to-end Git workflow!
 bookCollapseSection: true
-draft: true
+draft: false
 ---
 
-# Week 2: Data preparation
-
-__Engineer data sets for analysis__
+# Week 2: Version control and project management <!--+ feedback-->
 
 ## Kick-starting your week
-- Watch [the energizer for the week](https://youtu.be/tctr4GgrD4w) on YouTube!
+- Watch the energizer for the week (to be made available) <!--[the energizer for the week](https://youtu.be/kL-s7XHWiWI) on YouTube!-->
 
 ## Self-study and activities
-- [Marketing Analytics for Data-Rich Environments (pp. 97-108)](http://dx.doi.org/10.1509/jm.15.0413)
-<!--- The ITO (input-transformation-output) process
-- Zooming in on "transformation": common data operations (and how they're related to different data set types)-->
-- [Data Preparation in R (Tutorial and Data Challenge 2)](docs/tutorials/data-preparation)
-<!--- Video: data set engineering (Hannes)
--->
+- Tutorial
+  - [Version Control and Project Management with Git/GitHub](docs/tutorials/version-control)
+- Readings on *why* it's important to properly manage your workflow
+  - [Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup)
+- Optional readings
+  - [Code and Data for the Social Sciences: A Practitioner’s Guide](https://www.brown.edu/Research/Shapiro/pdfs/CodeAndData.pdf)
+  - [Modified principles for Code and Data](https://www.shirokuriwaki.com/programming/project-organization.html)
 
 ## Live stream 3
-- Develop understanding for [why it's necessary to prepare data sets for analysis](https://youtu.be/z_Hh1jlL1Ac)
-- [Work on an activity to perform common data transformations](activity.md)
-- Q&A on Data Challenge 2
+- Q&A/walk-through of this week's tutorial
 
+<br>
 
-<!--- Ethics in scraping and APIs *live*
--->
+---
+<br>
+{{< button relref="week1" >}}Previous week{{< /button >}}
+{{< button relref="week3" >}}Next week{{< /button >}}
