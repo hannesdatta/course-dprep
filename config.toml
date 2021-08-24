@@ -1,3 +1,5 @@
+googleAnalytics = "G-0WBBR1F5X9"
+
 baseURL = "https://dprep.hannesdatta.com/"
 languageCode = "en-us"
 title = "Data Preparation and Workflow Management"
