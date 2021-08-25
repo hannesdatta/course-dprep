@@ -25,9 +25,11 @@ draft: false
     - Follow the [DataCamp Introduction to Shell](https://learn.datacamp.com/courses/introduction-to-shell) (chapter 1).
     - We recommend Mac users to [also take a look at this tutorial](https://generalassembly.github.io/prework/cl) (optional).
 
-2. Learn to use Git from the command line
-    - Get started with applying the end-to-end Git workflow ([View tutorial](version-control.html))
-    - Curious how to use Git directly from within R? [Check out this helpful material (optional)](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/)
+2. Learn to use Git
+    - Get started with applying the end-to-end Git workflow using Git Bash (i.e., through the command line) ([View tutorial](version-control.html))
+    - Curious how to use Git with a graphical user interface? (optional, but highly useful)
+      - [Sourcetreeapp](https://www.sourcetreeapp.com) is a free Git client for Windows, Mac and Linux!
+      - Git also [smoothly integrates with R - find out how!](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/)
 
 3. Put your skills into practice
     - Git really becomes powerful when collaborating with others - sometimes even with people you've never met before! In fact, you can easily contribute to open source projects, simply by "forking" a public GitHub repository (= taking a copy of the repository), making changes to the source code, and proposing to the owner of the project to integrate your changes in the "head revision"/"main branch" (= the code that runs the project).
