@@ -11,9 +11,13 @@ draft: false
 <!--__Obtain business and data understanding, and explore data in R__-->
 
 ## Live stream 1
+
 - Introduction to the course <!--([re-watch](https://youtu.be/iq88xsSGyTg)))-->
 - Preview of a reproducible workflow (think of it as the "final product" you will build in this class)
 - Introduction to the datasets used in class
+
+See [slides](slides.html).
+
 
 <!--## Kick-starting your week
 - Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
