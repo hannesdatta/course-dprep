@@ -56,6 +56,7 @@ After successful completion of this course, you will be able to:
 - The course welcomes novices, of whom __extra preparation prior to the start of the course is expected.__ Preparation material will be shared with students in advance in the form of R Notebooks or course recommendations at Datacamp. Novices may further benefit from following other courses at Tilburg University in which R is used.
 - Students are recommended to use their own computer for this course (Windows, Mac or Linux). Android/Chromebook/iOS devices are not supported. Moreover, we highly recommend a computer with at least 8 GBs of RAM memory as we'll work with large data sets that require significant preprocessing.
 
+
 ## Grading
 
 - Team project (4-5 team members) with self- and peer assessment (see below) (40%)
