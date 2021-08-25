@@ -5,8 +5,8 @@ mkdir gen
 #cp -R reveal-old gen/reveal-old
 
 # Declare an array of string with type
-declare -a FileNames=("dprep" "livestream2" "livestream3" "pipeline_automation" "livestream_final")
-declare -a OutputNames=("00_dprep" "02_livestream" "03_livestream" "04_pipelineautomation" "05_finallecture")
+declare -a FileNames=("dprep") # "livestream2" "livestream3" "pipeline_automation" "livestream_final")
+declare -a OutputNames=("00_dprep")# "02_livestream" "03_livestream" "04_pipelineautomation" "05_finallecture")
 
 # Iterate the string array using for loop
 for i in "${!FileNames[@]}"; do
