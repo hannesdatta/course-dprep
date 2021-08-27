@@ -38,7 +38,7 @@ After successful completion of this course, you will be able to:
 ## Format
 
 - Online-only
-- Combination of self-paced tutorials (e.g., using R Notebooks), and interactive live streams for feedback and coaching
+- Combination of self-paced tutorials (e.g., using R Notebooks), and interactive live streams for feedback and coaching (recordings are shared with students)
 - Learn state-of-the-art tools popular among scientists, marketing analysts and data scientists (e.g., R, GitHub)
 - Open education & open science (all material is open; publicly accessible course page that stays with you, even after the end of the course)
 
