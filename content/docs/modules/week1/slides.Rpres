@@ -38,7 +38,11 @@ Agenda
   - Schedule
   - Practical arrangements
   - Datasets 
-    
+
+*Will skip those parts that I have covered earlier in oDCM. Read the slides or watch the introduction to dPrep.*
+
+--> continue with course motivation
+
 Disclaimer
 ========================================================
 incremental: true
@@ -164,48 +168,57 @@ incremental: true
 - Using code which isn't properly documented ("don't know how to use it")
 - Becoming frustrated, feeling lost
 
-Course objectives
+Course objectives (I): Develop your coding skills
 ========================================================
 
-1. Develop your coding skills in R (“code”)
-2. Collaborate on research projects using GitHub ("collaborate")
-3. Automate your research pipeline end-to-end (“automate”). 
-4. Apply in a **data- and/or computation-intensive project**
+*a few examples*
+
+- Produce good-looking documents in [RMarkdown](https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html) rather than ugly, non-readable docs
+- Program [apps to showcast research results](https://tilburgsciencehub.com/try/shiny-app)
+- Engineer complex data sets using [tidyverse/dplyr](https://dprep.hannesdatta.com/docs/tutorials/data-preparation/)
+
+Course objectives (II): Collaborate on research projects using GitHub
+========================================================
+
+*a few examples*
+
+1. view, run, learn from, and extend the work of others
+  - e.g., https://github.com/hannesdatta/brand-equity-journal-of-marketing
+  - e.g., https://github.com/hannesdatta/spotify-playlist-clustering
+  - e.g., even this class: https://github.com/hannesdatta/course-dprep
+  
+2. document your own code, and use unlimited version history
+  - e.g., check out how a project looked like a while ago
+  - e.g., clean up stuff (because you can roll back anyways!)
+
+3. collaborate with others on projects
+  - e.g., check the issue page at https://github.com/tilburgsciencehub/tsh-website
+
+Course objectives (III): Automate your research pipeline
+========================================================
+
+*a few examples*
+
+- automated text mining workflow
+  - https://tilburgsciencehub.com/practice/pipeline-automation
+- start new projects from templates
+    - https://tilburgsciencehub.com/examples/reproducible-workflow-airbnb/
+    - https://github.com/rgreminger/example-make-workflow
+    - https://tilburgsciencehub.com/try/simple-workflow
+    
+
+Course objectives (IV)
+==================================
+
+
+Apply coding, collaboration and automation in a **data- and/or computation-intensive project**
+
   - Data intensity
       - big data: volume, variety, veracity, velocity
       - "Where prototyping on small data makes sense"
   - Computation intensity
       - small data, but long computation time
       - potential for running things in parallel
-
-Workflow preview
-========================================================
-
-(to be done)
-<!--
-
-Imagine you're starting a new project, where do you start?
-
-
-GitHub
-Coding
-
-
-
-
-A new way of working
-
-Tutorials
-Building Blocks
-
-- What do you feel has been __efficient__ or __inefficient__ in the way you've run your projects?
-
-- To what extent do your projects fit the criteria of __data- and computation-intensiveness__?
-
-Running this analysis for my paper would take X days on my local machine (and forces me to keep my computer running 24/7). Thanks to AWS I do the same in X hours quickly log in to EC2 and show that you can open a "computer in a computer"
-
-
--->
 
 
 Course structure
@@ -389,7 +402,7 @@ Getting started
 
 - Watch the "week kickoff" on YouTube (link on course page) - explains all of the material you need to cover this week
 
-- Any questions?! If not -- I'll see you in the live stream on Thursday! (--> course schedule).
+- Any questions?! If not -- I'll see you soon! (--> course schedule).
 
 - (Installation) issues from "prep week"? Stay on Zoom.
 
