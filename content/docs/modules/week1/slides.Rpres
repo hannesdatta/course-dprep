@@ -19,7 +19,7 @@ We're about to start with the first livestream of this class.
 - If you haven't done so, please **explore the course page** at [dprep.hannesdatta.com](https://dprep.hannesdatta.com).
 
 <!--
---- drafted this course for a very long time
+- drafted this course for a very long time
 - finally got the chance to teaching it now
 - what is it about: radical change in the way to work on data-intensive projects
 - anything you've learnt so far is about stats, or substantive areas, not about HOW to work on projects
@@ -30,7 +30,12 @@ We're about to start with the first livestream of this class.
 Agenda
 ========================================================
 
+*Will skip those parts that I have covered earlier in oDCM. Read the slides or watch the introduction to dPrep. Will shorten this stream a bit.*
+
+
 - Getting to know each other
+<br>
+<br>
 - Motivation for the course
   - Why reproducible science?
   - Preview of a reproducible workflow ("final product" you will build)
@@ -39,9 +44,9 @@ Agenda
   - Practical arrangements
   - Datasets 
 
-*Will skip those parts that I have covered earlier in oDCM. Read the slides or watch the introduction to dPrep.*
-
---> continue with course motivation
+<!--
+continue with course motivation
+-->
 
 Disclaimer
 ========================================================
