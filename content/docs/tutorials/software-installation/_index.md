@@ -11,7 +11,7 @@ bookCollapseSection: true
 
 Throughout the course, we'll use R - a comprehensive toolbox to handle and analyze large data sets. The best thing about R is that it's open source. It's freely usable by anyone. Plus there's a vibrant community that keeps on developing R. Or extend it with your own packages.
 
-- Please install R and RStudio, by following these [setup instructions](http://tilburgsciencehub.com/setup/r/).
+- Please install R and RStudio, by following these [setup instructions](http://tilburgsciencehub.com/get/r/).
 
 - If you'd like, you can also already start working on the [R Bootcamp Tutorial](docs/tutorials/r-bootcamp) which we will cover in the first course week.
 
