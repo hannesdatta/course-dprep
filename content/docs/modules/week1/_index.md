@@ -13,11 +13,15 @@ draft: false
 ## Live stream 1
 
 - Introduction to the course <!--([re-watch](https://youtu.be/iq88xsSGyTg)))-->
-- Preview of a reproducible workflow (think of it as the "final product" you will build in this class)
-- Introduction to the datasets used in class
+  - [Slides](slides.html)
+  - Recordings
+    - [1 | getting started](https://youtu.be/NhkGSFVHPOE)
+    - [2 | why should you take this class (preview of what you'll learn!) + course setup](https://youtu.be/rM4ZVtmuvUw)
 
-See [slides](slides.html).
+{{< hint info >}}
+Recordings of the livestreams are published on Hannes' YouTube channel, so ensure you [subscribe to it](http://www.youtube.com/c/hannesdatta?sub_confirmation=1) to stay up-to-date!
 
+{{< /hint >}}
 
 <!--## Kick-starting your week
 - Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
