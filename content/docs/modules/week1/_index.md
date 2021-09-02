@@ -39,6 +39,7 @@ Recordings of the livestreams are published on Hannes' YouTube channel, so ensur
 
 ## Live stream 2
 - Q&A/walk-through of this week’s tutorial
+  - [Recording](https://youtu.be/MZr32CgOzjY)
 
 <!--
 - [Activity to explore new data](activity.md)
