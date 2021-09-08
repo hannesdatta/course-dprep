@@ -32,6 +32,13 @@ The data is available per city (e.g., Amsterdam) and entity (e.g., listings, cal
 
 - Visit [the data section at InsideAirbnb now](http://insideairbnb.com/get-the-data.html)
 
+{{< hint info >}}
+__Pick the city that you find interesting!__
+
+Inside AirBnB offers datasets for various cities around the world. Feel free to explore the city/cities that spark your interest!
+{{< /hint >}}
+
+
 <!--
 You can [view](XXX) the report over here and dowload the project directory (including all R files) from [here](XXX). In the report, 3 sections can be distinguished: X, Y, and Z of which we'll mention the contents below. -->
 
