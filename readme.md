@@ -1,4 +1,4 @@
-# Data Preparation and Workflow Management (dPrep) haha
+# Data Preparation and Workflow Management (dPrep)
 
 [![DOI](https://zenodo.org/badge/292224306.svg)](https://zenodo.org/badge/latestdoi/292224306)
 

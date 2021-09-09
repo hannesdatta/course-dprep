@@ -14,7 +14,7 @@ _This edition: August - October 2021 | Next edition: February - April 2022_
 
 -------
 
-## Learn How to Engineer data sets and manage research projects efficiently
+## Engineer data sets and manage research projects efficiently
 
 Welcome to the course website of dPrep, where you learn how to __efficiently manage empirical (marketing) research projects__.
 
