@@ -7,4 +7,4 @@ title: Blog
 
 ---
 
-zoom session
+Zoom session of today.
