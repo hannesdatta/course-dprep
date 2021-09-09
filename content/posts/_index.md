@@ -6,3 +6,5 @@
 title: Blog
 
 ---
+
+Zoom session of today.
