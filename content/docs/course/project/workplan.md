@@ -25,8 +25,8 @@ To help you structure the assignment and make sure you finish in time, we have i
 | Week | Project Stage | Working on | Feedback on |
 |:---- | :---- | :---- | :---- |
 | 1 | Getting started | Allocate teams & get idea about data context; think about research motivation | |
-| 2 | GitHub | Set up *public* repository on Git, submit team's repository URL on Canvas; have initial readme with a preliminary research question | Coaching #1 - [Grading details](grading_details.md#1-github-repository) &#8594; 1.1 and 1.2 (Research Motivation and Repository Structure)|
-| 3 | Data exploration | Explore and audit data, refine research motivation |
+| 2 | GitHub | Set up *public* repository on Git, submit team's repository URL on Canvas; have initial readme with a preliminary research question and initialize directories | Coaching #1 - [Grading details](grading_details.md#1-github-repository) &#8594; 1.1 and 1.2 (Research Motivation and Repository Structure)|
+| 3 | Data exploration | Explore and audit data, refine research motivation, work with [GitHub Issues and project board](https://tilburgsciencehub.com/learn/scrum) (columns "backlog", and the current sprint's "to do's", "in progress", and "done") |
 | 4 | Data preparation | Prepare data for analysis | Coaching #2 - [Grading details](grading_details.md#2-data-preparation--analysis) &#8594; 2.1 and 2.2 (Data exploration and Data Preparation)
 | 5 | Automation  | Start automating your pipeline and refine source code | Coaching #3 - [Grading details](grading_details.md#3-source-code-and-automation) &#8594; 3.1 and 3.2 (Source code quality and degree of automation)
 | 6 | Analysis and Deployment | Refine source code and analysis | Coaching #4 - [Grading details](grading_details.md#23-analysis-and-deployment-15) &#8594; 2.3 (Analysis and deployment)

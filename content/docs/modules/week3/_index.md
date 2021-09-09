@@ -21,11 +21,24 @@ draft: false
 ## Self-study and activities
 - [Data exploration with R and RMarkdown (Tutorial)](docs/tutorials/data-exploration-in-r)
 - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
+- [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
+
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
 ## Live stream 4
 - Q&A/walk-through of this week’s tutorial
 - [Activity to explore new data](activity.md)
+
+{{< hint info >}}
+__Update/add repository URLs__
+
+Before the livestream, please submit (add, or update) your team's repository URL on Canvas!
+
+If you have an urgent/important issue you would like to see addressed during the livestream, please contact the instructor and mention your Team Number so your team receives priority during the stream.
+
+{{< /hint >}}
+
+
 
 [^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)
 

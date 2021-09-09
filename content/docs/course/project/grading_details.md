@@ -89,7 +89,7 @@ Explain who has contributed to the repository. You can say it has been part of a
 
 
 #### 1.3 Breadth of contributions and way-of-working (10%)
-Multiple team members have actively contributed (“committed”) to the repository, for the entire duration of the project (i.e., do not just version your files at the end, but from beginning to end). Commit messages are accompanied by concise and clear commit messages (`git log`). Students have made active use of the [issue feature on GitHub](https://guides.github.com/features/issues/), assigning tasks to one another, and integrating new features by means of pull requests from feature branches to the main branch.
+Multiple team members have actively contributed (“committed”) to the repository, for the entire duration of the project (i.e., do not just version your files at the end, but from beginning to end). Commit messages are accompanied by concise and clear commit messages (`git log`). Students have made active use of [GitHub Issues](https://guides.github.com/features/issues/) and the [GitHub Proiejct Board](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards) with the "scrum"-inspired columns "backlog", and the current srpint's "to do", "in progress", and "done". Students are assigning issues to one another, and integrating new features by means of pull requests from feature branches to the main branch.
 
 ### 2. Data preparation & analysis
 

@@ -32,7 +32,9 @@ draft: true
         - work in branches and with pull requests; work on individual features
         - meet up to discuss "your" branch, and put somebody in charge to merge PRs
         - SCRUM is a great way to organize yourselves! [SHOW SCRUM & PROJECT MANAGEMENT!!!!! tsh scrum stuff!!!]
-
+        - let's add examples: https://dprep.hannesdatta.com/docs/examples/
+        - let's work on the TSH agenda
+        
   - Second half: review your Git repositories
       - put one team in the scrum setup, and organize their board
       - give feedback to other groups
