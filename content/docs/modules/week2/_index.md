@@ -21,7 +21,8 @@ draft: false
   - [Modified principles for Code and Data](https://www.shirokuriwaki.com/programming/project-organization.html)
 
 ## Live stream 3
-- Q&A/walk-through of this week's tutorial
+- Q&A/walk-through of this week's tutorial ([Recording](https://youtu.be/iWpUpudiMLk))
+- Coaching session for team projects ([Recording](https://youtu.be/BUAiPRV1WR0))
 
 <br>
 
