@@ -61,7 +61,7 @@ For technical issues outside of scheduled classes, please check the [support sec
 *daily percentage changes* in the number of visits by place category, compared with the
 corresponding day of the week during the 5-week (pre-Covid) period between January 3 and February 6, 2020. The data consists of 112,000 rows that cover six categories of places: retail & recreation, grocery & pharmacy, parks, transit stations, workplaces, and residence. 
 
-With the help of the `read.csv()` function, we can now import the mobility data for the Netherlands into R. Download this [data set from Google](https://www.google.com/covid19/mobility/) (you have to unzip it first!), create a *new R script* in the same directory, and read in the data. 
+With the help of the `read.csv()` function, we can now import the (2020) mobility data for the Netherlands into R. Download this [data set from Google](https://www.google.com/covid19/mobility/) (you have to unzip it first!), create a *new R script* in the same directory, and read in the data. 
 
 Tip: If R doesn't find your data, set your working directory properly (we typically click on SESSION --> SET WORKING DIRECTORY --> TO SOURCE FILE LOCATION). Hardcoding directories in your code (e.g., with `setwd()`) is not good practice.
 
@@ -170,7 +170,7 @@ Drop the columns `country_region_code`, `metro_area`, `iso_3166_2_code` and `cen
 **Solution**
 ```{r, echo = TRUE, results = 'hide'}
 # bad solution - think about WHY?
-mobility[, c(2:4, 8:14)]
+mobility[, c(2:4, 8:15)]
 
 # good solution
 cols_to_drop = c('country_region_code', 'metro_area', 'iso_3166_2_code', 'census_fips_code')
@@ -207,6 +207,7 @@ Trim the long column names (e.g., `retail_and_recreation_percent_change_from_bas
 colnames(mobility) = c("country_region", 
                        "province",
                        "city", 
+                       "place_id",
                        "date", 
                        "retail_and_recreation",
                        "grocery_and_pharmacy", 
@@ -265,7 +266,7 @@ Add the `avg_mobility` column to your dataset (keep in mind that the data frame 
 **Solution**  
 ```{r}
 # solution (elegant, but not sustainable as column names could change)
-mobility$avg_mobility = rowMeans(mobility[,5:ncol(mobility)], na.rm = TRUE)
+mobility$avg_mobility = rowMeans(mobility[,6:ncol(mobility)], na.rm = TRUE)
 
 # solution (most elegant and sustainable)
 selected_columns = grep('retail|grocery|park|transit|work|resident', colnames(mobility), value=T)
