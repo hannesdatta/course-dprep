@@ -1,7 +1,7 @@
 ---
-weight: 1
+weight: 10
 title: R Bootcamp
-description: Learn the basics of using R
+description: Learn the basics of R and RStudio.
 bookCollapseSection: true
 ---
 
@@ -9,25 +9,28 @@ bookCollapseSection: true
 
 Datasets have become massive and demands for tools that can handle such data have increased. R provides you with a toolbox to handle and analyze large data sets. As such, it's not surprising R skills have become mandatory for any job  related to marketing analytics or data science.
 
-The best thing about R is that it's open source. It's freely usuable by anyone. Plus there's a vibrant community that keeps on developing R. Or extend it with your own packages.
-
 ## Learning goals
 
-* Setup R and R Studio
-* Familiarize yourself with the basics in R
-<!--  * Read data from text files into data frames in R
-  * Create and handle various data types in R (e.g., vector, matrix, dataframe)
-  * Change the content of data frames (e.g., create, drop, or rename columns)
-  * Filter data in data frames (e.g., by index, logical expressions, missing records, etc.)
-  * Apply basic programming concepts (if-else statements, for-loop, functions )
+* Finding your way around R and RStudio
+* Create and handle various data types in R (e.g., vector, matrix, dataframe)
+* Change the content of data frames (e.g., create, drop, or rename columns)
+* Read data from text files into data frames in R
+* Basic data wrangling with dplyr/tidyverse
+* Basic plotting with ggplot
+<!--Filter data in data frames (e.g., by index, logical expressions, missing records, etc.)
 -->
-## Make a plan
-- If you're an absolute novice to R, working through the setup instructions and obtaining a basic skill level in R entails a significant time investment. Plan about four to six hours to work on this.
+<!--  * Apply basic programming concepts (if-else statements, for-loop, functions )
+-->
+
+## Planning
+
+- Please allot about 4-6 hours to work through this material.
 
 ## Getting started
 
-### 1) Install R and R Studio
-* Please install R and RStudio, by following the [setup instructions](http://tilburgsciencehub.com/setup/r/).
+1. If you haven't done so, please install the required [software](../software-installation).
 
-### 2) Obtain a basic skill level in R
-* Please complete the Datacamp course ["Introduction to R"](https://www.datacamp.com/courses/free-introduction-to-r). Students with an email address from `@tilburguniversity.edu` can log on through Google (choose "Google" when logging in to Datacamp, then give your Tilburg email address).
+2. Please work through the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (sections 1-5)
+<!--
+2. Please complete the Datacamp course ["Introduction to R"](https://www.datacamp.com/courses/free-introduction-to-r). No access to premium content? See [here to obtain access](../../../docs/course/support/datacamp).
+-->

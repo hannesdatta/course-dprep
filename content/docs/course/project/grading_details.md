@@ -11,7 +11,8 @@ draft: false
 ## Overview
 The team project is submitted as a reproducible, end-to-end workflow on GitHub, featuring a well-structured and fully automated pipeline for data exploration & cleaning, analysis, and deployment.
 
-Please use the workflow templates available at [Tilburg Science Hub](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/) to kickstart your project. Students who wish to document data collected as part of [oDCM](https://odcm.hannesdatta.com) (Online Data Collection and Management) can extend the workflow template (e.g., by adding the documentation of the raw data, any screenshots, etc.)
+Please use the workflow templates available at [Tilburg Science Hub](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/) to kickstart your project.
+<!--Students who wish to document data collected as part of [oDCM](https://odcm.hannesdatta.com) (Online Data Collection and Management) can extend the workflow template (e.g., by adding the documentation of the raw data, any screenshots, etc.)-->
 
 1. Github repository (30% of the final grade)
 2. Data preparation and analysis (45% of the final grade)
@@ -39,10 +40,10 @@ Weights for each component of the grading rubric below are indicated in brackets
 
 ### 1. Github Repository
 
-#### Research motivation (10%)
+#### 1.1 Research motivation (10%)
 The research question/business problem is clearly articulated and important. The choice for the research method (e.g., regression analysis) is motivated well. The way of deployment (e.g., PDF report, dashboard, ...) is useful and accessible to potential knowledge users, and clearly communicates the conclusions of the analysis. The workflow is of potential use to other students and the larger scientific community.
 
-#### Repository structure and documentation (10%)  
+#### 1.2 Repository structure and documentation (10%)  
 The end-to-end workflow is made publicly available on GitHub. The repository contains a readme.md (markdown), which clearly explains the project’s goal, and provides instructions to potential contributors/replicators on how to run the project (see details and examples on the readme below). The project has a concise and accurate name, enticing the potential user to explore the workflow. An appropriate short name for the repository’s location is chosen (e.g., `github.com/yourusername/investigating-airbnb`). Additional metadata on GitHub is provided (e.g., a short project description), so that the repository feels and looks professional and complete.
 
 {{< hint info>}}
@@ -87,26 +88,26 @@ Explain who has contributed to the repository. You can say it has been part of a
 {{< /hint>}}
 
 
-#### Breadth of contributions and way-of-working (10%)
-Multiple team members have actively contributed (“committed”) to the repository, for the entire duration of the project (i.e., do not just version your files at the end, but from beginning to end). Commit messages are accompanied by concise and clear commit messages (`git log`). Students have made active use of the [issue feature on GitHub](https://guides.github.com/features/issues/), assigning tasks to one another, and integrating new features by means of pull requests from feature branches to the main branch.
+#### 1.3 Breadth of contributions and way-of-working (10%)
+Multiple team members have actively contributed (“committed”) to the repository, for the entire duration of the project (i.e., do not just version your files at the end, but from beginning to end). Commit messages are accompanied by concise and clear commit messages (`git log`). Students have made active use of [GitHub Issues](https://guides.github.com/features/issues/) and the [GitHub Proiejct Board](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards) with the "scrum"-inspired columns "backlog", and the current srpint's "to do", "in progress", and "done". Students are assigning issues to one another, and integrating new features by means of pull requests from feature branches to the main branch.
 
 ### 2. Data preparation & analysis
 
-#### Data exploration (10%)
+#### 2.1 Data exploration (10%)
 All raw data files are programmatically downloaded from the internet. Meaningful RMarkdown reports for (types of) raw data/input files are created, which allow potential users of your repository to understand the content of such files, and the definition of variables. The RMarkdown reports are properly formatted, rendered as HTML or PDF files, and feature information in a variety of modes (e.g., running text, tables, or figures). The rendered Markdown files are “publication-ready” - i.e., code that is not relevant to understanding the data or warning messages is hidden.
 
-#### Data preparation (20%)
+#### 2.2 Data preparation (20%)
 The raw data has been prepared and cleaned, using a variety of common data operations in R, involving `dplyr`, `tidyverse`, or `data.table`. Common operations are merging, aggregating, de-deduplication, reshaping, converting dates, or using regular expressions. Basic programming concepts are made use of appropriately to increase speed and minimize errors (e.g., looping, vectorization, writing functions, handling errors/debugging). Additional variables are created from the raw data (feature engineering).
 
-#### Analysis and deployment (15%)
+#### 2.3 Analysis and deployment (15%)
 The analysis constitutes a substantial enrichment to the raw data. By using building blocks from the course site, for example, students can conduct regression analysis on the data. Other ways of enriching the data (e.g., text analysis using `textblob`, or any other material from the web) can also be incorporated. Results of the analysis are deployed/unlocked, either in the form of a “publication-ready” PDF document (think of it as a manuscript), or in the form of other ways of knowledge dissemination (e.g., an R package with an algorithm, or a Shiny app, see building blocks on the course site). The way of deployment is well aligned with the goal of the project.
 
 ### 3. Source code and automation
 
-#### Source code quality (15%)
+#### 3.1 Source code quality (15%)
 The source code is clearly readable (e.g., variable names that are meaningful), self-documenting, and well-structured (e.g., headers, sections). The directory structure clearly reflects the pipeline stages (e.g., data-preparation, analysis, paper/app) of the project, and subdirectories for data components (e.g., `gen`, `src`, `data`, and `temp`, `input`, `audit`, `output`) have been used correctly. The code runs in a linear fashion (top to bottom execution, without errors), and adheres to the DRY principles (for-loops and functions).
 
-#### Degree of automation (10%)
+#### 3.2 Degree of automation (10%)
 Code chunks follow the input-transformation-output (“modular”) structure, and are “stitched” together in a makefile that runs the entire project pipeline automatically after issuing the `make` command in the root of the repository. All file paths are specified relative to the current script, no absolute paths are used. The repository only tracks the version of files that need to be tracked (i.e., source code), and not others (e.g., generated files).
 
 {{< hint info>}}
@@ -116,6 +117,6 @@ Ever considered your project may work exclusively on your computer, but not on s
 
 To avoid such common "replication traps", please check out your repository on somebody else's computer, go through the installation instructions, and try to run the entire project.
 
-More valuable tips and tricks for submitting a clean & working repository are [documented in our checklist for "housekeeping"](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/checklist/).
+More valuable tips and tricks for submitting a clean & working repository are [documented in our checklist for "housekeeping"](https://tilburgsciencehub.com/audit/workflow-checklist).
 
 {{< /hint >}}

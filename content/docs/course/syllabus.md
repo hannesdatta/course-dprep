@@ -10,23 +10,109 @@ description: " "
 
 ## Learning objectives
 
-Data sets (e.g., retrieved from a company's database, collected via surveys, or
-scraped from the Internet) need to undergo a careful cleaning and transformation
-procedure before they can be used in empirical research projects [^1]. Therefore, in this course, you familiarize yourself with data structures common in empirical marketing research, and learn how to efficiently engineer complex data sets and document
-them for reusability/reproducibility.
+The increasing complexity of data (e.g., scraped from the Internet)[^1] and analytics (e.g., requiring high-performance computing) require a novel way-of-working to efficiently manage empirical marketing research projects. Therefore, in this course, you (1) develop your coding skills in R ("code"), (2) collaborate on research projects using GitHub ("collaborate"), (3) automate your research pipeline end-to-end ("automate"). The three principles ("code-collaborate-automate") are applied along the typical research workflow (i.e., data exploration, preparation, analysis, and reporting), and particularly zoom in on engineering data sets from complex raw data, and disseminating research findings in a novel way (e.g., using apps).
 
 [^1]: For example, see the data sections in these papers: [Building a user panel of music consumption from Spotify](http://tiu.nu/spotify), [Preparing a panel data set on electronics sales and marketing mix activities across thousands of brands](https://research.tilburguniversity.edu/en/publications/universality-or-differences-in-marketing-elasticities-in-emerging).
 
 After successful completion of this course, you will be able to:
 
-- Use R to read in various data formats for further processing
-- Apply common data operations in R to transform and clean your data (e.g., aggregation, merging, de-duplication, reshaping, date conversions, regular expressions)
-- Use basic programming concepts to increase speed and minimize errors (e.g., looping, vectorization, writing functions, handling errors/debugging)
-- Operationalize variables/engineer features from numerical, textual, and visual raw data
-- Store and manage data using file-based systems and databases
-- Use workflow management techniques to create and audit automated and reproducible data pipelines
-- Version code and manage and contribute to GitHub repositories
-- Document and archive final data sets, and learn how to make them available for public (re)use
+- Use R to
+  - explore data (stored in various formats) using RMarkdown, and clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, date conversions, regular expressions)
+  - implement basic programming concepts to increase speed and minimize errors (e.g., looping, writing functions, handling errors/debugging)
+  - explore novel ways of disseminating research findings (e.g., apps)
+- Use Git/GitHub to
+  - version code and collaborate on privately shared and public (open science) GitHub repositories
+  - professionalize your team collaboration (e.g., using GitHub Issues)
+- Use Workflow Management Tools (`make`) to
+  - create and run portable, automated and reproducible data pipelines
+  - improve directory and file management in research projects
+
+<!--- Document and archive final data sets, and learn how to make them available for public (re)use
+- Professionalize your collaboration in teams using state-of-the-art frameworks (e.g., Scrum)
+- Automate
+  -
+- Scale up
+  - Familiarize yourself with cloud computing
+  - Store and manage data using file-based systems and databases-->
+
+## Format
+
+- Online-only
+- Combination of self-paced tutorials (e.g., using R Notebooks), and interactive live streams for feedback and coaching (recordings are shared with students)
+- Learn state-of-the-art tools popular among scientists, marketing analysts and data scientists (e.g., R, GitHub)
+- Open education & open science (all material is open; publicly accessible course page that stays with you, even after the end of the course)
+
+<!--- Prepare for life-long learning (Open education (publicly accessible course page, copy-pasting code snippets and examples, starting projects with workflow templates)
+- Life-long learning (course material will stay with you indefinitely
+-->
+<!--- Interactive, immersive and student-centred: live coding, working with real data sets <!--debates, -->
+<!--, simulations, hackathon-->
+<!-- work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own computer--; Coding Dojo student-=led analysis; while sharing screens-->
+
+## Student profile / prerequisites
+
+- The course is instructed to MSc students in the Marketing Analytics (TiSEM) program.
+- The course expects students to have acquired working knowledge in R (e.g., from introductory courses at Datacamp).
+- The course welcomes novices, of whom __extra preparation prior to the start of the course is expected.__ Preparation material will be shared with students in advance in the form of R Notebooks or course recommendations at Datacamp. Novices may further benefit from following other courses at Tilburg University in which R is used.
+- Students are recommended to use their own computer for this course (Windows, Mac or Linux). Android/Chromebook/iOS devices are not supported. Moreover, we highly recommend a computer with at least 8 GBs of RAM memory as we'll work with large data sets that require significant preprocessing.
+
+
+## Grading
+
+- Team project (4-5 team members) with self- and peer assessment (see below) (40%)
+- Computer exam (60%)
+
+Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5). Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
+
+Grades are made available on Canvas.
+
+### Team project
+
+Students will work on a team project throughout the course.
+
+Students' individual grades will be corrected upwards or downwards, depending on their individual contribution to the overall team effort (e.g., measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions)
+
+
+
+<!--
+- their individual contribution to the overall team effort (measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions), and
+- students' individual investment in developing the technical skills required to contribute meaningfully to the project (measured by means of students' individual submissions of answers to the tutorials/data challenges).
+
+-->
+
+
+
+<!--
+{{< hint info >}}
+__Calculation of individual grades from team grades__
+
+1. Students score themselves and other team members on the following questions (answered on a scale between 1 = lowest, and 5 = highest)
+  - How was the pro-active attitude of the student?
+  - How was the student as a team player?
+  - How was the quantity of the contribution (e.g., time, energy) of the student?
+  - How was the quality of the contribution of the student?
+  - How was the quality of feedback to team members given by the student?
+
+2. Compute average score from (1) for each student within a team, across all questions. ("How did team members rate the focal student?")
+
+3. Compute average team effort score, by averaging (within each team) the scores obtained in (2). ("What was the overall team effort?")
+
+4. Compute students' self- and peer assessment score (`SPAscore`), by dividing each student's score by the team average. ("How did the student perform, relative to the overall team effort?"
+
+5. Multiply the `SPAscore` by 1.05 if the focal student has provided proof of skill investment (at least three submissions on Canvas).
+
+6. Correct team grades using the following formula:
+
+      {{< katex display >}}
+      finalgrade = w * teamgrade + (1-w) * SPAscore * teamgrade
+      {{< /katex >}}
+
+  where w is set to .8, weighting individual performance against a team's overall performance.
+
+
+{{< /hint >}}
+
+-->
 
 <!--  - Project management on GitHub (versioning, issue management, collaboration)
 <!-- plugin R for using Git -->
@@ -76,55 +162,3 @@ Work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own compute
 --><!--, work on virtual machines on AWS EC2, and write basic code in SQL-->
 
 <!--, MySQL, MongoDB and Amazon Web Services (AWS) EC2 and S3-->
-
-## Grading
-
-- Group project (4-5 team members) with self- and peer assessment (see below) (40%)
-<!-- submitted as a GitHub repository (during the course); building a dataset-->
-- Computer exam (60%)
-
-
-Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5).
-
-### Team project
-
-Students will submit a final team project at the end of the course.
-
-Students' individual grades will be corrected upwards or downwards, depending on
-- their individual contribution to the overall team effort (measured by means of scoring themselves and their team members on, among others, the quantity and quality of their contributions),
-- whether they have provided written feedback to team members at least once during the course, and
-- students' individual investment in developing the technical skills required to contribute meaningfully to the project (measured by means of students' individual submissions of answers to the tutorials/data challenges).
-
-<!--
-*, i.e., students' grades will be corrected upwards or downwards, depending on their own contribution to the overall team effort. Students provide written feedback to each other once during the course, and score themselves and their team members on, among others, the quantity and quality of their contributions.
--->
-
-<!-- submitted as a GitHub repository (during the course); building a dataset-->
-<!--[or, take-home exam?] (can do 40%?) with a passing threshold?-->
-<!--
-- Share progress and learnings (e.g., open science contributions in the form of course-relevant contributions in the form of pull requests to GitHub, maintaining a public FAQ/blog, sharing one's progress with the group) (20%) [[[???]]]
--->
-
-## Format
-
-- Hybrid format: R notebooks or lessons on Datacamp.com for preparation and self-paced lab sessions; live streams for feedback and joint coding sessions (recordings will be made available)
-- Modern content: copy-paste code snippets and demos from the course page, access code on GitHub, start projects with workflow templates
-- Interactive, immersive and student-centred: live coding, hackathon, working with real data sets <!--debates, -->
-
-<!--, simulations, hackathon-->
-<!-- work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own computer--; Coding Dojo student-=led analysis; while sharing screens-->
-
-## Student profile / prerequisites
-
-- The course is instructed to MSc students in the Marketing Analytics (TiSEM) program.
-- The course expects students to have acquired working knowledge in R (e.g., from introductory courses at Datacamp).
-- The course welcomes novices, of whom extra preparation prior to the start of the course is expected. Preparation material will be shared with students in advance in the form of R Notebooks or course recommendations at Datacamp. Novices may further benefit from following other courses at Tilburg University in which R is used.
-- Students are recommended to use their own computer for this course (Windows, Mac or Linux). Android/Chromebook/iOS devices are not supported. Moreover, we highly recommend a computer with at least 8 GBs of RAM memory as we'll work with large data sets that require significant preprocessing. 
-
-
-## Enrollment and Obtaining Course Credits
-
-- The course (3 ECTS) will be taught in the Marketing Analytics Program at Tilburg University (please check Osiris for the specifics). The course code is 328059-M-3.
-- Interested Research Master or PhD students who seek to advance their data collection skills are encouraged to apply for a seat.
-  - Students from Tilburg University can enroll in this course upon the approval of [the instructor](mailto:h.datta@tilburguniversity.edu) and their coordinator (please notify the course coordinator by 15 December 2020).
-  - Students outside of Tilburg University are invited to audit this course. For admission, please [email](mailto:h.datta@tilburguniversity.edu) a brief research statement and motivation of why you want to join this class, and your CV by 15 December 2020. Eligible candidates will be notified via email by 22 December 2021.

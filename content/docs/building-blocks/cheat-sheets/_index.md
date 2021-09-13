@@ -14,7 +14,7 @@ See below a collection of amazing cheat sheets that we recommend you to download
 
 ### Base R
 
-- [Base R](https://rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
+- [Base R](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
 - [https://r4ds.had.co.nz/](https://r4ds.had.co.nz/)
 - https://rstudio.com/resources/cheatsheets/
 

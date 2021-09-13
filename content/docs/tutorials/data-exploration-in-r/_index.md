@@ -1,12 +1,12 @@
 ---
-weight: 10
-title: Data exploration with R and RMarkdown
+weight: 30
+title: Exploring and auditing data with RMarkdown
 description: Learn the basics of the programming language R, familiarize yourself with RStudio, and use your skills to explore new datasets.
 bookCollapseSection: true
 draft: false
 ---
 
-# Tutorial: Data exploration with R and RMarkdown
+# Tutorial: Exploring and auditing data with RMarkdown
 
 ## Learning goals
 
@@ -25,18 +25,19 @@ draft: false
 
 <!--* Analyze data (summary statistics, mathematical operations, sort data, plots)-->
 
+## Planning
+
+- Please plan a full day to work through this tutorial.
+
 ## Getting started
 
-### Plan
-- Plan a full day to work through this tutorial.
+1. Develop your R skills by completing the course [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (about 4-6 hours)
+2. Practice by exploring a new dataset with R and RMarkdown ([View](intro-to-r.html), [Download; right click - download file as](intro-to-r.Rmd))
 
-### Learn
-- Develop your R skills by completing the course [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (about 4-6 hours)
+<!--- If you like, you can submit your exercises as a "proof for investing in your skills" (self- and peer assessment). Work on the exercises in the answer skeleton file ([Download](intro-to-r-skeleton.Rmd); right-click, download linked file as...). Then, open the file in RStudio.
 
-### Practice
-- Practice some more by exploring a new dataset with R and RMarkdown ([View](intro-to-r.html), [Download; right click - download file as](intro-to-r.Rmd))
-- If you like, you can submit your exercises as a "proof for investing in your skills" (self- and peer assessment). Work on the exercises in the answer skeleton file ([Download](intro-to-r-skeleton.Rmd); right-click, download linked file as...). Then, open the file in RStudio.
 
 ### Create (Data Challenge #1)
 - Create an RMarkdown report in which you explore open-ended questions! Start from the answer skeleton ([View](data-report.html), [Download; right click - download file as](data-report.Rmd))
 - If you like, you can submit your data challenge as a "proof for investing in your skills" (self- and peer assessment).
+-->

@@ -11,17 +11,17 @@ knitr::opts_chunk$set(echo = TRUE)
 *In this tutorial we're going to explore some of the data sets underlying the paper that estimates the COVID-19 impact on music consumption ([Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085)). Along the way, you'll practice the skills you have been equipped with in the DataCamp tutorials.*
 
 
---- 
+---
 
 ### Prerequisites
 * [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
 * [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) (chapter 1, 2, 3, 4, 5)
 * [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2, 3)
 
---- 
+---
 
 ### Learning Objectives
-* Set-up R and R Studio
+* Setup R and R Studio
 * Read text files into data frames
 * Create various data types (variable, vector, matrix, dataframe)
 * Manipulate data frames (create, drop, and rename columns)
@@ -29,16 +29,16 @@ knitr::opts_chunk$set(echo = TRUE)
 * Analyze data (summary statistics, mathematical operations, sort data, plots)
 * Apply basic programming concepts (if-else statements, for-loop, functions )
 
---- 
+---
 
 
-### Submission 
-Students are expected to hand in a digital copy of their answers and code according to the [submission guidelines](https://dprep.hannesdatta.com/#submission-guidelines). 
+### Submission
+Students are expected to hand in a digital copy of their answers and code according to the [submission guidelines](https://dprep.hannesdatta.com/#submission-guidelines).
 
 
---- 
+---
 
-### Support Needed? 
+### Support Needed?
 For technical issues outside of scheduled classes, please check the [support section](https://dprep.hannesdatta.com/docs/course/support) on the course website.
 
 
@@ -47,9 +47,9 @@ For technical issues outside of scheduled classes, please check the [support sec
 ### 1. Loading the Data
 [Google’s COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) provide information on
 daily percentage changes in the number of visits by place category compared with the
-corresponding day of the week during the 5-week period between January 3 and February 6 in 2020. The data consists of 112K rows that cover six categories of place: retail & recreation, grocery & pharmacy, parks, transit stations, workplaces, and residence. 
+corresponding day of the week during the 5-week period between January 3 and February 6 in 2020. The data consists of 112K rows that cover six categories of place: retail & recreation, grocery & pharmacy, parks, transit stations, workplaces, and residence.
 
-With the help of the `read.csv()` function, we have imported the mobility data for the Netherlands into R. Download this [data set](https://dprep.hannesdatta.com/docs/course/support), create a new R script in the same directory, and read in the data. 
+With the help of the `read.csv()` function, we have imported the mobility data for the Netherlands into R. Download this [data set](https://dprep.hannesdatta.com/docs/course/support), create a new R script in the same directory, and read in the data.
 
 ```{r load_data}
  mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
@@ -64,13 +64,13 @@ The dataset shows the mobility changes in a national, regional, and city level i
 \
 
 **Exercise 2**  
-The data shows the percentage changes in visits to categorized places compared to a normal value for that day of the week (i.e., baseline). The baseline day is the median value between January 3rd and February 6th 2020. In other words, all reported numerical values are relative to the first few weeks in 2020. 
+The data shows the percentage changes in visits to categorized places compared to a normal value for that day of the week (i.e., baseline). The baseline day is the median value between January 3rd and February 6th 2020. In other words, all reported numerical values are relative to the first few weeks in 2020.
 
-Think of one or more problems that can arise as a result of this methodology (even better if you come up with concrete examples that illustrate this)! 
+Think of one or more problems that can arise as a result of this methodology (even better if you come up with concrete examples that illustrate this)!
 
 **Solution**  
 - It doesn't account for seasonality (e.g., park visits increases as the weather improves)  
-- In the Netherlands we experienced a relatively mild winter period throughout 2020 (e.g., the average temperature in January 2020 was the 3rd highest ever). As a result, the time distribution of certain categories (e.g., parks, residence) may not be representative for a typical year. 
+- In the Netherlands we experienced a relatively mild winter period throughout 2020 (e.g., the average temperature in January 2020 was the 3rd highest ever). As a result, the time distribution of certain categories (e.g., parks, residence) may not be representative for a typical year.
 
 \
 
@@ -95,31 +95,31 @@ Drop the columns `country_region_code`, `metro_area`, `iso_3166_2_code` and `cen
 \
 
 #### Rename Columns
-As you can see below, some of the remainingcolumn names of `mobility` are rather long (or can be described more precisely). 
+As you can see below, some of the remainingcolumn names of `mobility` are rather long (or can be described more precisely).
 
 ```{r column_names}
  # current column names
  colnames(mobility)
 ```
 
-You can rename a column of a data frame (`df`) by overwriting the current column names with a vector of new column names, like this: `colnames(df) = c("new_col_name_1", "new_col_name_2", "new_col_name_3", ...)` 
+You can rename a column of a data frame (`df`) by overwriting the current column names with a vector of new column names, like this: `colnames(df) = c("new_col_name_1", "new_col_name_2", "new_col_name_3", ...)`
 
 \
 
 **Exercise 4**  
-Trim the long column names (e.g., `retail_and_recreation_percent_change_from_baseline` becomes `retail_and_recreation`) and replace `sub_region_1` and `sub_region_2` by `province` and `city`, respectively. 
+Trim the long column names (e.g., `retail_and_recreation_percent_change_from_baseline` becomes `retail_and_recreation`) and replace `sub_region_1` and `sub_region_2` by `province` and `city`, respectively.
 
 ```{r}
 # solution
-colnames(mobility) = c("country_region", 
+colnames(mobility) = c("country_region",
                        "province",
-                       "city", 
-                       "date", 
+                       "city",
+                       "date",
                        "retail_and_recreation",
-                       "grocery_and_pharmacy", 
-                       "parks", 
-                       "transit_stations", 
-                       "workplaces", 
+                       "grocery_and_pharmacy",
+                       "parks",
+                       "transit_stations",
+                       "workplaces",
                        "residential")
 ```
 
@@ -146,11 +146,11 @@ The data runs from  February 15 2020 (`min(mobility$date)`) to January 5 2021 (`
 
 #### Adding a New Column
 
-To get a proxy for overall movement trends, we create another column named `avg_mobility` which is the row mean of `retail_and recreation`, `grocery_and_pharmacy`, `parks`, `transit_stations`, `workplaces`, and `residential`. 
+To get a proxy for overall movement trends, we create another column named `avg_mobility` which is the row mean of `retail_and recreation`, `grocery_and_pharmacy`, `parks`, `transit_stations`, `workplaces`, and `residential`.
 
 
 **Exercise 6**  
-Add the `avg_mobility` column to your dataset (keep in mind that the data frame may contain one or more missing values). You may want to look up the documentation of the `na.rm` parameter. 
+Add the `avg_mobility` column to your dataset (keep in mind that the data frame may contain one or more missing values). You may want to look up the documentation of the `na.rm` parameter.
 
 
 **Solution**  
@@ -165,11 +165,11 @@ mobility$avg_mobility = rowMeans(mobility[,5:ncol(mobility)], na.rm = TRUE)
 for(counter in 1:nrow(mobility)){
   row = mobility[counter, ]
   mobility[counter, 'avg_mobility'] = mean(c(row$retail_and_recreation,
-                                             row$grocery_and_pharmacy, 
-                                             row$parks, 
-                                             row$transit_stations, 
-                                             row$workplaces, 
-                                             row$residential), 
+                                             row$grocery_and_pharmacy,
+                                             row$parks,
+                                             row$transit_stations,
+                                             row$workplaces,
+                                             row$residential),
                                            na.rm=TRUE)
 }
 ```
@@ -181,11 +181,11 @@ for(counter in 1:nrow(mobility)){
 For analysis purposes, we prefer to split up the data frame into country, province, and city level records. We know that the values in the `province` and `city` columns are empty for the country level stats. In the same way, the city level records are blank for the data aggregated on province level. This is shown in the table below where each `X` denotes the availability of data in a respective column.
 
 
-| Aggregation Level | country_region | province | city | 
-| :----- | :----- | :----- | :----- | 
-| Country | X |  | | 
-| Province | X | X | | 
-| City | X | X | X | 
+| Aggregation Level | country_region | province | city |
+| :----- | :----- | :----- | :----- |
+| Country | X |  | |
+| Province | X | X | |
+| City | X | X | X |
 
 \
 
@@ -203,16 +203,16 @@ city = mobility[mobility$city != "",]
 \
 
 **Exercise 8**  
-Write a function `missing_values()` that takes in a dataframe (`df`) and a vector of columns (`cols`) and calculates the percentage of missing values for each column. Using this function, fill in the table below and comment on your findings. 
+Write a function `missing_values()` that takes in a dataframe (`df`) and a vector of columns (`cols`) and calculates the percentage of missing values for each column. Using this function, fill in the table below and comment on your findings.
 
-| subset | retail_and_recreation | grocery_and_pharmacy | parks | transit_stations | workplaces | residential | 
+| subset | retail_and_recreation | grocery_and_pharmacy | parks | transit_stations | workplaces | residential |
 | :--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| `country` | | | | | | | 
-| `province` | | | | | | | 
+| `country` | | | | | | |
+| `province` | | | | | | |
 | `city` | |  | | | | |
 
 ```{r eval=FALSE}
-# solution 
+# solution
 
 missing_values <- function(df, cols){
   perc = NULL
@@ -228,12 +228,12 @@ missing_values(city, 5:ncol(city))
 
 ```
 
-The lower the aggregation level, the higher the percentage of missing records (especially parks). Further inspection of the [documentation](https://support.google.com/covid19-mobility/answer/9825414?hl=en&ref_topic=9822927) tells us that these data gaps are intentional because the data doesn't meet the quality and privacy threshold. 
+The lower the aggregation level, the higher the percentage of missing records (especially parks). Further inspection of the [documentation](https://support.google.com/covid19-mobility/answer/9825414?hl=en&ref_topic=9822927) tells us that these data gaps are intentional because the data doesn't meet the quality and privacy threshold.
 
-| subset | retail_and_recreation | grocery_and_pharmacy | parks | transit_stations | workplaces | residential | 
+| subset | retail_and_recreation | grocery_and_pharmacy | parks | transit_stations | workplaces | residential |
 | :--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| `country` | 0 | 0 | 0 | 0 | 0 | 0 | 
-| `province` | 0.49 | 0.08 | 7.34 | 1.02 | 0.23 | 0 | 
+| `country` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `province` | 0.49 | 0.08 | 7.34 | 1.02 | 0.23 | 0 |
 | `city` | 44.32 | 37.65| 82.40 | 45.11 | 6.43 | 45.39 |
 
 \
@@ -249,13 +249,13 @@ Now that the data is in the right shape, it's finally time to analyze it! You ca
 - `col` = color of the fill  (optional)
 - `type` = `l` is a line chart, `p` is a scatter plot (optional)  
 
-Here's an example of a time-series plot of the number of visits to parks: 
+Here's an example of a time-series plot of the number of visits to parks:
 
 ```{r}
 plot(x = country$date, # horizontal
      y = country$parks, # vertical
      col = "green", # color
-     type = "l") # line chart 
+     type = "l") # line chart
 ```
 
 And here's another one that shows how to plot two lines in one graph:
@@ -277,9 +277,9 @@ legend("bottomleft", c("residential", "workplace"), fill=c("red", "blue")) # leg
 
 The aim of this assignment is to further explore the data on your own. Spot interesting patterns, visualize the relationships, and provide a brief write-up of your analysis. Here are a couple of ideas you may want to look into, but feel more than welcome to add your own ones!
 
-- The southern provinces of the Netherlands initially suffered the most from COVID-19 in terms of the number of positive cases (possibly due to [carnival](https://dutchreview.com/news/first-man-to-get-coronavirus-covid-19-in-the-netherlands-celebrated-carnival/)). As such, stricter policies were imposed by the government than in other parts in the country. Can you find patterns in the data that illustrate the (in)effectiveness of these measures? 
+- The southern provinces of the Netherlands initially suffered the most from COVID-19 in terms of the number of positive cases (possibly due to [carnival](https://dutchreview.com/news/first-man-to-get-coronavirus-covid-19-in-the-netherlands-celebrated-carnival/)). As such, stricter policies were imposed by the government than in other parts in the country. Can you find patterns in the data that illustrate the (in)effectiveness of these measures?
 
-- Comparison of mobility patterns in the first and second COVID-19 wave. Did our behavior change throughout time? And how about the summer break? 
+- Comparison of mobility patterns in the first and second COVID-19 wave. Did our behavior change throughout time? And how about the summer break?
 
 - How does your own place of residence relate to other he rest of the Netherlands? (e.g., create a ranking!)
 
