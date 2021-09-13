@@ -46,3 +46,10 @@ If you find a good example, add it via a pull request, please! Curious how? Foll
 ## Creative ways to disseminate research findings
 - https://pudding.cool/ - visual essays and digital culture
 - [ShinyApps & advertising effects](http://advertising-effects.chicagobooth.edu)
+
+## Error handling & starting to code
+
+*When you start programming, Google will be your best friend! Next to just searching on Google, there are several websites on which programmers help each other out.*
+
+* [Stackoverflow](https://stackoverflow.com/)
+* [Geeksforgeeks](https://www.geeksforgeeks.org/)
