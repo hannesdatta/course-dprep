@@ -11,7 +11,7 @@ draft: false
 <!--__Obtain business and data understanding, and explore data in R__-->
 
 ## Kick-starting your week
-- Watch the energizer for the week (to be made available)<!--[the energizer for the week](https://youtu.be/tctr4GgrD4w) on YouTube!-->
+- Watch the [energizer for the week](https://youtu.be/1SdXWc_tQgk)
 
 <!--## Kick-starting your week
 - Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
