@@ -45,6 +45,7 @@ See below a collection of amazing cheat sheets that we recommend you to download
 ## Version control
 
 - [Git](https://education.github.com/git-cheat-sheet-education.pdf)
+- [Command Line](https://appletree.or.kr/quick_reference_cards/Unix-Linux/CLI-Cheat-Sheet.pdf)
 
 ## Make and automation
 
