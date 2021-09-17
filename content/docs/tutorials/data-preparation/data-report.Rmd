@@ -5,7 +5,7 @@ date: "DATE"
 output: html_document
 ---
 
-# Introduction (remove this part when submitting)
+# Introduction (remove this part when using it as a template)
 
 We're going to produce a data report in RMarkdown. Think of RMarkdown as Microsoft Word, but then much cooler (automizable!).
 
@@ -17,7 +17,7 @@ Please keep in mind that your notebook only runs if there are no errors. In case
 
 ## Goals
 
-The goal of this data challenge is to create a data pipeline that imports the data, performs a series of transformation steps, and outputs the data so that you can share it with others (e.g., potential collaborators on a team project).
+The goal of this template is to create a data pipeline that imports the data, performs a series of transformation steps, and outputs the data so that you can share it with others (e.g., potential collaborators on a team project).
 
 It contains three stages:
 

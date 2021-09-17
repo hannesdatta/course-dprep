@@ -11,7 +11,7 @@ library(tidyverse)
 
 ```
 
-*In this data challenge, we'll walk you through the steps of exploring a data set and obtaining an understanding about the setting in which data was collected. After completion of the challenge, you'll be able to produce an RMarkdown document, which you can render as a PDF or HTML document (e.g., to show others, initiate a discussion about data, etc.).*
+*In this tutorial, we'll walk you through the steps of exploring a data set and obtaining an understanding about the setting in which data was collected. After completion of the tutorial, you'll be able to produce an RMarkdown document, which you can render as a PDF or HTML document (e.g., to show others, initiate a discussion about data, etc.).*
 
 *We've chosen a data set used by [Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085), in which the authors estimate the effect that COVID-19 had on music consumption on Spotify!*
 
@@ -40,12 +40,6 @@ library(tidyverse)
   - Generate summary statistics (e.g., using `summary()` and `table()`)
   - Generate plots (e.g., using `plot()`)
   - Produce an RMarkdown document (HTML, PDF)
-
---- 
-
-
-### Submission 
-Students can submit their answers and code on Canvas as one component of the self- and peer assessment ("proof of individual investment in developing technical skills"). [More details on self- and peer assessment is available in the course syllabus](https://dprep.hannesdatta.com/docs/course/syllabus#team-project).
 
 --- 
 

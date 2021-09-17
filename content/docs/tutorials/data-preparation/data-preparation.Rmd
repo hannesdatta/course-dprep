@@ -29,16 +29,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 --- 
 
-
-### Submission 
-Students can submit their answers and code on Canvas as one component of the self- and peer assessment ("proof of individual investment in developing technical skills"). [More details on self- and peer assessment is available in the course syllabus](https://dprep.hannesdatta.com/docs/course/syllabus#team-project).. 
-
-
---- 
-
 ### Support Needed? 
 For technical issues outside of scheduled classes, please check the [support section](https://dprep.hannesdatta.com/docs/course/support) on the course website.
-
 
 ---
 
