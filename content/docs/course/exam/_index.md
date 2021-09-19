@@ -8,16 +8,16 @@ description: " "
 
 # Final exam
 
-The course content will be tested in the form of a __take-home exam__, to be completed __within one working day__.
+The course content will be tested in the form of a __take-home exam__, to be completed __within three hours__.
 
 ## Date & time
 
 ### Main sit
 
-- Date: __tba__
-- Time: __8am - 10pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+- Date: __20 October, 2021__
+- Time: __1.30pm - 4.30pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
 - Exam registration: not necessary; enrollment to the Canvas course page is sufficient
-- Inspection: tba <!-- (signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)-->
+- Inspection: tba <!--(signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)-->
 
 ### Resit
 
