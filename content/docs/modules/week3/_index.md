@@ -26,8 +26,12 @@ draft: false
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
 ## Live stream 4
-- Q&A/walk-through of this week’s tutorial
-- [Activity to explore new data](activity.md)
+- [Recording of the livestream](https://youtu.be/HBVUBeU2I_4): Using Scrum for Research, Issue & Project Management with Git and GitHub, and Inspecting Data
+- Notes on using [Git and GitHub to work on team projects](git_notes.pdf)
+- Instead of the Q&A/walk-through of this week’s tutorial, there will be a simple Q&A session next week.
+
+<!--- [Activity to explore new data](activity.md)
+-->
 
 {{< hint info >}}
 __Update/add repository URLs__

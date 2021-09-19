@@ -25,7 +25,8 @@ Course week|Type|Content|Date|Time
 |[Week 2](../../modules/week2)     |Live stream #3 |Version Control and Project Management with Git and GitHub|Thursday, 9 September, 2021|10.45-12.30 (different time!)|
 |[Week 3](../../modules/week3)      |Coaching #1 | See [workplan for project](docs/course/project/workplan) |Tuesday, 14 September, 2021|12.45-14.30|
 |        |Live stream #4 |Exploring and auditing data with RMarkdown |Thursday, 16 September, 2021|12.45-14.30|
-|[Week 4](../../modules/week4)      |Live stream #5 | Engineering data sets |Thursday, 23 September, 2021|12.45-14.30|
+|[Week 4](../../modules/week4)      |Optional Q&A | Exploring and auditing data with RMarkdown |Tuesday, 21 September, 2021|12.45-13.30|
+|      |Live stream #5 | Engineering data sets |Thursday, 23 September, 2021|12.45-14.30|
 |[Week 5](../../modules/week5)      |Coaching #2 | See [workplan for project](docs/course/project/workplan) |Tuesday, 28 September, 2021|12.45-14.30|
 |      |Live stream #6 | Pipeline building and automation |Thursday, 30 September, 2021|12.45-14.30|
 |[Week 6](../../modules/week6)      |Coaching #3 | See [workplan for project](docs/course/project/workplan) |Tuesday, 5 October, 2021|12.45-14.30|
