@@ -73,7 +73,7 @@ Work on *one or many* of the transformation steps below.
 
 ### Output
 
-Write the resulting data sets to *Excel*, using [the `xlsx` package](http://www.sthda.com/english/wiki/r-xlsx-package-a-quick-start-guide-to-manipulate-excel-files-in-r#write-data-to-an-excel-file).
+Write the resulting data sets to *Excel*, using [the `writexl` package](https://www.rdocumentation.org/packages/writexl/versions/1.4.0/topics/write_xlsx.
 
 <!--
 ## Code written in class
