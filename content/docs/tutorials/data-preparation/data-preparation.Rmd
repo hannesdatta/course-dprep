@@ -110,7 +110,7 @@ df <- streams %>%
 # Since countries in Oceania are missing in country_codes.csv we use a left join here (otherwise you'd miss out on +/- 139K records)
 
 # output
-write.csv(df, "merged_df.csv")
+write.csv(df, "merged_df.csv", row.names=FALSE)
 ```
 
 
@@ -134,7 +134,7 @@ df <- read.csv("merged_df.csv", sep=",")
 df <- df %>% filter(!duplicated(df))
 
 # output
-write.csv(df, "df_no_duplicates.csv")
+write.csv(df, "df_no_duplicates.csv", row.names = FALSE)
 ```
 
 \
@@ -175,7 +175,7 @@ df <- df_joined %>% mutate(popularity_filled = ifelse(is.na(popularity), popular
 # Since the popularity score is country independent and it is either present for all records or not available for any country (or time period), we should find a way to group songs together. For example, if the artist has other songs for which the popularity score is known we could take the median of those scores, or we could look for songs with similar genre tag words.
 
 # output
-write.csv(df, "df_imputed.csv")
+write.csv(df, "df_imputed.csv", row.names = FALSE)
 ```
 
 ---
@@ -228,7 +228,7 @@ Add a `ranking` column to `df` using the `dplyr` package and export the result a
 
 ```{r eval=FALSE}
 # input
-df <- read.csv("df_imputed.csv", sep=",", stringsAsFactors=FALSE)
+df <- read.csv("df_imputed.csv", sep=",")
 
 # transformation
 df <- df %>% group_by(country, date) %>%
@@ -241,7 +241,7 @@ df <- df %>% group_by(country, date) %>%
 df <- df[!is.na(df$song_id),]
 
 # output
-write.csv(df, "df_ranking.csv")
+write.csv(df, "df_ranking.csv", row.names = FALSE)
 ```
 
 \
@@ -291,7 +291,9 @@ After some data wrangling we can transform the data into the following format:
 \
 
 **Exercise 7**   
-As a last step, we call the `dcast()` function of the `reshape2` package to transform the data frame into the desired format (see the documentation for details!) and export the results as `df_reshaped.csv`. Following these steps, it's your turn to create a function `reshape_songs()` that takes a data frame and a `country` as input and lists the genres (as columns) for all song ids (key; first column) in the respective country according to the specified format above. Note that the genres column may contain duplicates, that is: the same genre appears twice for the same song!
+As a last step, we call the `dcast()` function of the `reshape2` package to transform the data frame into the desired format (see the documentation of the package for details!), and export the results as `df_reshaped.csv`. 
+
+Following these steps, it's your turn to create a data set, with (a) rows being the dates, (b) columns being the song IDs, and (c) the cells indicating a song's total number of streams.
 
 \
 
@@ -299,34 +301,19 @@ As a last step, we call the `dcast()` function of the `reshape2` package to tran
 ```{r eval=FALSE}
 library(reshape2)
 
-reshape_songs <- function(df, country){
-  song_ids = c()
-  song_genres = c()
-  
-  df <- df[df$country == country, ]
-  genres <- strsplit(df$genres, split=",")
-  
-  for(counter in 1:nrow(df)){
-    for(genre in unique(genres[[counter]])){
-      song_ids = c(song_ids, df[counter,]$song_id)
-      song_genres = c(song_genres, genre)
-    }
-  }
-
-  song_ids_genres <- data.frame(song_ids, song_genres)
-  song_ids_genres <- song_ids_genres %>% filter(!duplicated(song_ids_genres))
-  songs_reshaped <- song_ids_genres %>% dcast(formula=song_ids~song_genres, fun.aggregate = length, value.var = "song_genres")
-  return(songs_reshaped)
-}
-
-# input
+# load input
 df <- read.csv("df_ranking.csv", sep=",", stringsAsFactors = FALSE)
 
-# transformation
-songs_genres <- reshape_songs(df, "NL")
+song_popularity = dcast(df, formula=date~song_id, fun.aggregate = sum, value.var = "streams")
+
+# let us look at the columns (--> these are song IDs!)
+colnames(song_popularity)
+
+# let us look at the rows (--> these are dates!)
+song_popularity$date[1:10]
 
 # output
-write.csv(df, "df_reshaped.csv")
+write.csv(song_popularity, "df_reshaped.csv")
 ```
 
 \
