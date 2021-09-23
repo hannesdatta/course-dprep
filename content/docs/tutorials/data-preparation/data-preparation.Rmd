@@ -196,7 +196,7 @@ More likely than not, you have come across the `lm()` (i.e., linear model) funct
 
 
 **Solution**  
-```r{eval=FALSE}
+```{r eval=FALSE}
 # Step 1
 date <- seq(min(as.Date(df$date)), max(as.Date(df$date)), by = "day")
 
@@ -228,7 +228,7 @@ Add a `ranking` column to `df` using the `dplyr` package and export the result a
 
 ```{r eval=FALSE}
 # input
-df <- read.csv("df_imputed.csv", sep=",")
+df <- read.csv("df_imputed.csv", sep=",", stringsAsFactors=FALSE)
 
 # transformation
 df <- df %>% group_by(country, date) %>%
@@ -303,7 +303,7 @@ reshape_songs <- function(df, country){
   song_ids = c()
   song_genres = c()
   
-  df <- df[df$country_cc == country, ]
+  df <- df[df$country == country, ]
   genres <- strsplit(df$genres, split=",")
   
   for(counter in 1:nrow(df)){
@@ -320,10 +320,10 @@ reshape_songs <- function(df, country){
 }
 
 # input
-df <- read.csv("df_ranking.csv", sep=",")
+df <- read.csv("df_ranking.csv", sep=",", stringsAsFactors = FALSE)
 
 # transformation
-songs_genres <- reshape_songs(df, "Netherlands")
+songs_genres <- reshape_songs(df, "NL")
 
 # output
 write.csv(df, "df_reshaped.csv")

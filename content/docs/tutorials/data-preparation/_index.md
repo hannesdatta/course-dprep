@@ -29,7 +29,7 @@ draft: false
     - [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2).
 
 2. Practice some more by preparing a dataset with R for further analysis ([View](data-preparation.html), [Download; right click - download file as](data-preparation.Rmd))
-    - Download the data from [here](https://drive.google.com/file/d/1WiPmhClawJRSfGEaMKmIX3o2nk7dInUN/view?usp=sharing) and store it in the same directory as your Markdown file.
+    - Download the data from [here](data.zip) and store it in the same directory as your Markdown file.
 
 <!--
 ### Create (Data Challenge #2)
