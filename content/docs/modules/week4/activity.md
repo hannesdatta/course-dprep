@@ -25,35 +25,41 @@ Actively make use of the [cheat sheets](../../../building-blocks/cheat-sheets) (
 Use this snippet to load the data, directly from [https://spotifycharts.com](https://spotifycharts.com).
 
 ```r
-# generate a list of dates
-urls <- c("https://spotifycharts.com/regional/nl/daily/2021-01-01/download", "https://spotifycharts.com/regional/nl/daily/2021-01-02/download", "https://spotifycharts.com/regional/nl/daily/2021-01-03/download", "https://spotifycharts.com/regional/nl/daily/2021-01-04/download", "https://spotifycharts.com/regional/nl/daily/2021-01-05/download", "https://spotifycharts.com/regional/nl/daily/2021-01-06/download", "https://spotifycharts.com/regional/nl/daily/2021-01-07/download")
+# Load packages
+library(dplyr)
+library(tidyverse)
+library(writexl)
 
-# download files in batch
-content <- lapply(urls, function(x) {
-  # download raw data
-  file = read.table(
-    x,
-    sep = ',',
-    header = T,
-    quote = '"',
-    skip = 1
-  )
-  # attach date and country
-  file$download_url = x
-  return(file)
-})
+#########
+# Input #
+#########
 
-# bind everything together in one table
-df <- do.call('rbind', content)
+## Open data
+df <- read_delim('https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/modules/week4/regional-global-daily-latest.csv', delim = ',', skip = 1)
 
 # view the data in the console
 head(df)
 
 # view the data in a new tab in RStudio
 View(df)
+
+##################
+# Transformation #
+##################
+
+#
+#
+#
+
+##########
+# Output #
+##########
+
+# use ?write_xlsx to view the help file of this function
+
 ```
 
-The script downloads data from the web, and that may take about 10-15 seconds.
+The script downloads data from the web, and that may take a few seconds.
 
 ### Transformation
 
