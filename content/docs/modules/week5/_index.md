@@ -9,7 +9,8 @@ draft: false
 # Week 5: Pipeline Building and Automation
 
 ## Kick-starting your week
-- Watch the energizer for the week <!--[the energizer for the week](https://youtu.be/tctr4GgrD4w) on YouTube!-->
+- Watch the [energizer for the week](https://youtu.be/_iUL_QgSBLE) on YouTube!
+
 <!--- Watch [the energizer for the week](https://youtu.be/PdWZ1s8XXiU) on YouTube!
 -->
 
