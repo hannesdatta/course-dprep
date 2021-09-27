@@ -29,14 +29,14 @@ draft: false
     - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)
     - The content of the slides shown in the videos is [available here](pipelineautomation.pdf).
 
-2. Read the building block ["What are makefiles"](../../building-blocks/automation/make-commands)
+2. Read the building block ["What are makefiles"](https://tilburgsciencehub.com/learn/makefiles)
 
 3. Start learning `make`! ([View](make-tutorial.html), [Download; right click - download file as](make-tutorial.Rmd))
 
 {{< hint info >}}
 __Optional readings__
 
-- Notes on [Automating Your Pipeline](http://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/automation/)
+- Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
 - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
 
 {{< /hint >}}
