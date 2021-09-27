@@ -170,6 +170,7 @@ pre code {
 
 
 <p><em>When working on large-scale data intensive projects, it’s important to define a project pipeline and automate it end to end so that you don’t have to manually produce your research results but you can just sit back and relax and have the computer do the the job for you. In this tutorial, you learn how to organize your files and directories and set-up a makefile that executes your whole project with just a single command!</em></p>
+<p><strong>The solutions to the exercises and an FAQ are at the end of this document.</strong></p>
 <hr />
 <div id="prerequisites" class="section level3">
 <h3>Prerequisites</h3>
@@ -197,7 +198,7 @@ pre code {
 <h3>1. Getting Started</h3>
 <div id="installation" class="section level4">
 <h4>1.1 Installation</h4>
-<p>We will use make to automate the execution of our projects with a “single click”, so that our entire work flow is reproducible. Before you proceed, make sure you have fulfilled the prerequisites and installed the required software: * Head over to <a href="https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/">Tilburg Science Hub</a> and follow the make installation procedure for either Windows, Mac or Linux. Verify whether you installed make successfully by typing <code>make</code> in the terminal. * Also, make sure you can call R from the command prompt. On Mac and Linux, R is available from the command line by default. Windows user can follow the steps at the bottom of <a href="https://tilburgsciencehub.com/building-blocks/configure-your-computer/statistics-and-computation/r/">this</a> page.</p>
+<p>We will use make to automate the execution of our projects with a “single click”, so that our entire work flow is reproducible. Before you proceed, make sure you have fulfilled the prerequisites and installed the required software: * Head over to Tilburg Science Hub and follow the <a href="https://tilburgsciencehub.com/get/make">make installation</a> for either Windows, Mac or Linux. Verify whether you installed make successfully by typing <code>make</code> in the terminal. * Also, make sure you can call R from the command prompt. On Mac and Linux, R is available from the command line by default. Windows user can follow the steps at the bottom of <a href="https://tilburgsciencehub.com/get/r">this</a> page.</p>
 <p><br />
 </p>
 </div>
@@ -205,7 +206,11 @@ pre code {
 <h4>1.2 Running files manually</h4>
 <p>In this tutorial, we’re going to create a make file that downloads, loads, transforms, and exports data from <a href="http://insideairbnb.com/index.html">Inside Airbnb</a>. The website provides a visual overview of the amount, availability, and spread of rooms listed on Airbnb across a city, as well as an approximation of the number of bookings and occupancy rate, and the number of listings per host. Moreover, the website publicly shares listings, calendar, neighbourhood and reviews data of various popular Airbnb destinations.</p>
 <p><strong>Exercise 1</strong><br />
-As as starting point for this tutorial, we use <a href="https://gist.github.com/RoyKlaasseBos/5e75ac40753b039f15b583e84b837b96">source code</a> of an empirical project on the Airbnb housing market in Antwerp. 1. Download the source code as <code>run_Antwerp.R</code>, open the file in RStudio, and run it. What output files does it return? 2. Makefiles trigger scripts (e.g., R files) from the terminal and therefore it is important to know how to do so. Open the terminal and navigate to the location where the R script is stored. Then, run <code>R --vanilla &lt; run_Antwerp.R</code> to execute the same file but this time from the terminal (depending on your installation you may need to run <code>Rscript run_Antwerp.R</code> instead).</p>
+As as starting point for this tutorial, we use <a href="https://gist.github.com/hannesdatta/1f764090ae3ebfaabe7a91ea4b971c3d">source code</a> of an empirical project on the Airbnb housing market in Antwerp.</p>
+<ol style="list-style-type: decimal">
+<li>Download the source code as <code>run_Antwerp.R</code>, open the file in RStudio, and run it. What output files does it return?</li>
+<li>Makefiles trigger scripts (e.g., R files) from the terminal and therefore it is important to know how to do so. Open the terminal and navigate to the location where the R script is stored. Then, run <code>R --vanilla &lt; run_Antwerp.R</code> to execute the same file but this time from the terminal (depending on your installation you may need to run <code>Rscript run_Antwerp.R</code> instead).</li>
+</ol>
 <p>The lesson learned here is that we cannot only run R scripts from within RStudio but also from the terminal. We’ll use this knowledge when creating our first make file.</p>
 <p><br />
 </p>
@@ -245,10 +250,14 @@ As as starting point for this tutorial, we use <a href="https://gist.github.com/
   R --vanilla &lt; run_Antwerp.R</code></pre>
 <p><br />
 </p>
-<p><strong>Exercise 2</strong><br />
-1. Create a new makefile (tip: use <code>touch makefile</code> in your terminal) and then open the file in a text editor. Add the two lines above and save the changes. Open your terminal and run <code>make</code>. What happens?<br />
-2. Type <code>make</code> again. What does it say, why is that?<br />
-3. On line 74 and 85 change the <code>Universiteitsbuurt</code> column to <code>Stadspark</code> and save the file. Run <code>make -n</code> (to preview the changes) and then type <code>make</code> to actually do it. Does it run this time, why?</p>
+<p><strong>Exercise 2</strong></p>
+<ol style="list-style-type: decimal">
+<li>Create a new makefile (tip: if you’re on a Mac or Linux machine, use <code>touch makefile</code> in your terminal; Windows users can open a new file in an editor and save it (without file extension!) as <code>makefile</code>). Open the <code>makefile</code> in a text editor. Add the two lines above and save the changes. Open your terminal and run <code>make</code>. What happens?<br />
+</li>
+<li>Type <code>make</code> again. What does it say, why is that?<br />
+</li>
+<li>On line 74 and 85 change the <code>Universiteitsbuurt</code> column to <code>Stadspark</code> and save the file. Run <code>make -n</code> (to preview the changes) and then type <code>make</code> to actually do it. Does it run this time, why?</li>
+</ol>
 <p><br />
 </p>
 </div>

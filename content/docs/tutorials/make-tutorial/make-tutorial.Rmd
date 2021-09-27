@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *When working on large-scale data intensive projects, it's important to define a project pipeline and automate it end to end so that you don't have to manually produce your research results but you can just sit back and relax and have the computer do the the job for you. In this tutorial, you learn how to organize your files and directories and set-up a makefile that executes your whole project with just a single command!*
 
+__The solutions to the exercises and an FAQ are at the end of this document.__
+
 ---
 
 ### Prerequisites
@@ -33,8 +35,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### 1.1 Installation
 We will use make to automate the execution of our projects with a "single click", so that our entire work flow is reproducible. Before you proceed, make sure you have fulfilled the prerequisites and installed the required software: 
-* Head over to [Tilburg Science Hub](https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/) and follow the make installation procedure for either Windows, Mac or Linux. Verify whether you installed make successfully by typing `make` in the terminal. 
-* Also, make sure you can call R from the command prompt. On Mac and Linux, R is available from the command line by default. Windows user can follow the steps at the bottom of [this](https://tilburgsciencehub.com/building-blocks/configure-your-computer/statistics-and-computation/r/) page.
+* Head over to Tilburg Science Hub and follow the [make installation](https://tilburgsciencehub.com/get/make) for either Windows, Mac or Linux. Verify whether you installed make successfully by typing `make` in the terminal. 
+* Also, make sure you can call R from the command prompt. On Mac and Linux, R is available from the command line by default. Windows user can follow the steps at the bottom of [this](https://tilburgsciencehub.com/get/r) page.
 
 \
 
@@ -42,7 +44,8 @@ We will use make to automate the execution of our projects with a "single click"
 In this tutorial, we're going to create a make file that downloads, loads, transforms, and exports data from [Inside Airbnb](http://insideairbnb.com/index.html). The website provides a visual overview of the amount, availability, and spread of rooms listed on Airbnb across a city, as well as an approximation of the number of bookings and occupancy rate, and the number of listings per host. Moreover, the website publicly shares listings, calendar, neighbourhood and reviews data of various popular Airbnb destinations.  
 
 **Exercise 1**  
-As as starting point for this tutorial, we use [source code](https://gist.github.com/RoyKlaasseBos/5e75ac40753b039f15b583e84b837b96) of an empirical project on the Airbnb housing market in Antwerp.
+As as starting point for this tutorial, we use [source code](https://gist.github.com/hannesdatta/1f764090ae3ebfaabe7a91ea4b971c3d) of an empirical project on the Airbnb housing market in Antwerp.
+
 1. Download the source code as `run_Antwerp.R`, open the file in RStudio, and run it. What output files does it return?
 2. Makefiles trigger scripts (e.g., R files) from the terminal and therefore it is important to know how to do so. Open the terminal and navigate to the location where the R script is stored. Then, run `R --vanilla < run_Antwerp.R` to execute the same file but this time from the terminal (depending on your installation you may need to run `Rscript run_Antwerp.R` instead). 
 
@@ -53,6 +56,7 @@ The lesson learned here is that we cannot only run R scripts from within RStudio
 ### 2. Make-files
 
 #### 2.1 What are makefiles?
+
 Makefiles are instructions (“rules”) for a computer on how to build “stuff”. Think of makefiles as a recipe you may know from cooking (“Baking a cake: First, take some flour, then add milk […]") - but then for computers.
 
 Makefiles originate in software development, where they have been used to convert source code into software programs that can then be distributed to users.
@@ -88,7 +92,8 @@ plot_all.pdf: run_Antwerp.R
 \
 
 **Exercise 2**  
-1. Create a new makefile (tip: use `touch makefile` in your terminal) and then open the file in a text editor. Add the two lines above and save the changes. Open your terminal and run `make`. What happens?  
+
+1. Create a new makefile (tip: if you're on a Mac or Linux machine, use `touch makefile` in your terminal; Windows users can open a new file in an editor and save it (without file extension!) as `makefile`). Open the `makefile` in a text editor. Add the two lines above and save the changes. Open your terminal and run `make`. What happens?  
 2. Type `make` again. What does it say, why is that?  
 3. On line 74 and 85 change the `Universiteitsbuurt` column to `Stadspark` and save the file. Run `make -n` (to preview the changes) and then type `make` to actually do it. Does it run this time, why?
 
