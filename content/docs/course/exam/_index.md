@@ -21,7 +21,7 @@ The course content will be tested in the form of a __take-home exam__, to be com
 
 ### Resit
 
-- Date: __Tuesday, 18 Jaunary 2022__
+- Date: __Tuesday, 18 January 2022__
 - Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
 - Registration: tba <!--by 7 June 2021 at the latest, via https://forms.gle/KXQBjtTvY9saQQhS8.-->
 
