@@ -14,15 +14,15 @@ The course content will be tested in the form of a __take-home exam__, to be com
 
 ### Main sit
 
-- Date: __20 October, 2021__
-- Time: __1.30pm - 4.30pm__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+- Date: __Wednesday, 20 October, 2021__
+- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
 - Exam registration: not necessary; enrollment to the Canvas course page is sufficient
 - Inspection: tba <!--(signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)-->
 
 ### Resit
 
-- Date: __tba__
-- Time: __tba__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
+- Date: __Tuesday, 18 Jaunary 2022__
+- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
 - Registration: tba <!--by 7 June 2021 at the latest, via https://forms.gle/KXQBjtTvY9saQQhS8.-->
 
 ## Technicalities & support
