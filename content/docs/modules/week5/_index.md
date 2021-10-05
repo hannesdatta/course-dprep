@@ -19,7 +19,8 @@ draft: false
 
 
 ## Live stream 6
-- Q&A/walk-through of this week’s tutorial
+- Q&A/walk-through of this week’s tutorial ([recording](https://youtu.be/bchs4JR3t2c))
+
 <!--
 - Q&A on "Pipeline Building and Automation" (Tutorial & Data Challenge 3)
   - Re-watch the [opening/introduction of the Q&A](https://youtu.be/YlaprvGiIA0)
