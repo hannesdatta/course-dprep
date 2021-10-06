@@ -64,7 +64,7 @@ __Links to recordings and more tips & tricks__
 
 
 ## Deadline & Submission
-- Deadline tba
+- Deadline: 18 October, 5 pm
 <!--Originally 26 March 2021, 6pm; extended to 2 April 2021, 6pm.-->
 - Please submit links to your GitHub repository with the necessary source code (one link per team).
 
