@@ -14,7 +14,8 @@ draft: false
 
 ## Live stream 7
 - Course summary and exam preparation
-
+  - [Slides](slides.html)
+  - Recording (tba)
 
 <br>
 

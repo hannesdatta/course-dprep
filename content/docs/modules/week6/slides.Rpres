@@ -1,0 +1,238 @@
+dPrep - Course Summary & Exam Preparation
+========================================================
+author: Hannes Datta
+date: 
+autosize: true
+
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+<!--#
+
+https://support.rstudio.com/hc/en-us/articles/200486468
+-->
+
+Welcome to the final live stream in dPrep!
+========================================================
+
+- Please **turn on** your camera; it helps us to interact better!
+- The **chat** is open
+- If you haven't done so, please **explore the exam page & example questions** at [https://odcm.hannesdatta.com/docs/course/exam]().
+
+<!--
+- Team project:
+
+It's going well so far
+Totally lost, but I know how to get on track
+I lack adequate support - heeeelp!
+
+- How did you like the course format?
+
+scale from 1-10
+
+- How did you like the course content?
+
+scale from 1-10
+
+To be announced:
+- course evaluation: will post link
+- team projects due - anybody still need feedback? sign up for dprep slots
+https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe97_U/edit#gid=0
+- add me to linkedIn: https://www.linkedin.com/in/hannes-datta/ [crucial to stay in touch]
+
+
+-->
+
+Agenda
+========================================================
+
+- Course summary
+- From here onwards
+  - During your studies
+  - After your studies
+- Course evaluation
+- Exam preparation
+
+
+Positioning in the study program
+========================================================
+
+![dprep](dprep_positioning.png)
+ 
+
+Course framework
+========================================================
+
+![dprep](dprep_framework.png)
+ 
+Lessons learnt #1: Versioning and Project Management with Git(Hub)
+========================================================
+incremental: true
+
+- Scrum & the project board as a way to collaborate with one another
+  - Writing issues is hard (!)
+  - Seems to put a lot of structure on stuff, did it work out?
+- Versioning can be powerful!
+  - Rolling back whenever you want
+  - delete stuff that isn't needed
+  - Oh no! Can't push!
+  - GUI (e.g., in R) are cool (and much easier to use!)
+- Collaborate on open source projects
+  - I know what PRs are!
+  - less risk of "destroying" one's work
+- Learn the tools used in business
+- Takes a lot of time to become good at
+
+Lessons learnt #2: Data Exploration
+========================================================
+incremental: true
+
+- RMarkdown! (mixing code with reporting)
+  - ability to quickly produce clean docs to share!
+- What *are* the components of a research project?
+  - ability to identify what's missing!
+- Doing data quality checks? 
+  - getting back to your data supplier if needed!
+
+Lessons learnt #3: Data Preparation
+========================================================
+incremental: true
+
+- Why do we actually *have* to clean up data?!
+  - re-watch it: https://youtu.be/z_Hh1jlL1Ac
+- Data prep code can be sooo complex
+  - so... use cheatsheets!
+- Make ITO blocks (input, transformation, output!)
+  - yeah, crucial for `make`, too!
+
+Lessons learnt #4: Pipeline building and automation
+========================================================
+incremental: true
+
+- Clarity about *where* to store stuff
+  - review! (components - `src`, `gen`, `data`; modules - e.g., `analysis`, `data-prep`, ...)
+- Run the work others have done
+  - my work, your work, somebody else's work (e.g., text mining stuff on tilburgsciencehub.com)
+- Discover mistakes in code
+  - e.g., packages that weren't loaded, order of cells/code
+- Save time!
+  - but, yeah, NOT at the beginning when you still learn
+- Continuously improve documentation & code
+
+Reflection
+========================================================
+incremental: true
+
+- it's amazing to see you learn & grow!
+- many started from scratch
+- others thought they could program, but were challenged, too!
+- saw so much: different projects, datasets, software programs, "way of doing things", videos, websites
+
+My recommendation: take time to let it sink in. And trust in my choice of teaching you this. __Your hard work will pay off.__
+
+Looking ahead: During your studies (I)
+========================================================
+incremental: true
+
+- Gradually implement across classes or projects
+  - e.g., some projects just benefit from better directory structure, while others may need "more"
+
+- Realize it takes time to learn
+  - it took me years to become proficient
+
+Looking ahead: During your studies (II)
+========================================================
+incremental: true
+
+- Use for thesis!
+  - but, be aware your skills are *so* fresh, your professor likely has never heard about it! --> use, teach, show how productive you are!
+
+- Build your job market profile
+  - e.g., have a Hugo website with your CV
+  - e.g., "pin" your best repositories (but don't call them `dprep-team-X`; remember, you're a marketer!)
+
+Looking ahead: During your studies (III)
+========================================================
+incremental: true
+
+- Become part of the open science community
+  - contribute to [Tilburg Science Hub](https://tilburgsciencehub.com)
+  - join our lab (https://tilburgsciencehub.com/onboarding)
+  - join https://www.linkedin.com/company/open-science-community-tilburg/
+
+Looking ahead: After your studies
+========================================================
+incremental: true
+
+- be confident!
+- become a data wizard like me ;)
+- automate stuff, save time for the things you love!
+- most importantly: seize opportunities
+  - as a researcher
+  - as an entrepreneur
+  - as a citizen who *knows* data & tech opportunities
+- "shake it up"/"mix it" with your unique skillset
+
+
+
+Next steps: Official course evaluation (11 - 18 October!)
+========================================================
+
+- Course evaluation has been immensely important to this course
+  - put Git(Hub) first in this course - it can be used on anything that you do afterwards
+  - reduced workload by wiping out weekly "data challenges" that needed to be submitted
+  
+- Course evaluation has been critical to my career
+  - Without my past evaluations, I wouldn't be teaching to you today
+  - I will look at all comments
+- Scores are most important to show importance of this course
+
+- You will be invited via Evalytics.
+
+<!--
+::: notes
+
+  - e.g., new (?) format (live streams rather than lectures)
+  - e.g., new content (e.g., Jupyter Notebooks rather than books)
+  - ...
+-->
+
+Informal feedback
+========================================================
+incremental: true
+
+- live streams versus offline lectures?
+- quality of internet website?
+- quality of R Notebooks?
+- "innovativeness of material", etc.
+
+<!--
+- open education good or bad?
+- like the presence of external students (or not)?
+-->
+
+Exam preparation
+========================================================
+
+- https://dprep.hannesdatta.com/docs/course/exam/
+- https://dprep.hannesdatta.com/docs/course/exam/examplequestions/
+
+Stay in touch!
+========================================================
+
+
+- Add me! https://www.linkedin.com/in/hannes-datta/
+- Subscribe to my channel! https://www.youtube.com/c/hannesdatta
+- App me! +31 13 466 8938
+- See me: K728, mostly Mondays (but send a text to make an appointment)
+
+<br><br><br>
+- Contribute! 
+  - https://tilburgsciencehub.com as a volunteer
+  - join my team as an RA (e.g., machine learning, data engineering); see also https://tilburgsciencehub.com/onboarding
+<br><br><br>
+- And, finally... let's show to the world how awesome your new skills are!
+
