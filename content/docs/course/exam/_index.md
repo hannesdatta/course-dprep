@@ -43,31 +43,57 @@ __Communication with anybody about the content of the exam, during *and after* t
 
 {{< /hint >}}
 
-<!--
 ## Content
 
+
+## Content
+
+### Part 1: Theory
+
+- This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__.
+- Students __*cannot* go back between questions__ (i.e., questions need to be answered in the order in which they appear).
+- Allocate approximately 45 minutes to work on this part.
+- Cognitive skills that will be tested are knowledge, comprehension, and analysis.
+
+### Part 2: Practical
+
+- This part of the exam consists of __personalized open questions__, shown in __random order__.
+- Students can go freely back and forth between questions in this part.
+- Allocate approximately 2:15 minutes to work on this part, which focuses on all learning goals of the course as practiced in the tutorials.
+- Expect two questions (potentially w/ smaller subquestions), mixing "mix" various learning goals. For example:
+  - Work on an issue posted at a publicly available GitHub repository, which focuses on data exploration and transformation (e.g., using RMarkdown, `dplyr`).
+  - Automate an existing workflow, and cast it into a repository structure that you share (privately) with the course coordinator for grading. Alternatively, add a module to an existing workflow (e.g., regression analysis), and integrate new module in automation pipeline.
+  - Cognitive skills that will be tested are application, evaluation, and synthesis/creation.
+
+<!--
 ### Topics
 
-In line with the course's learning goals, the exam covers five broad topic areas:
+In line with the course's learning goals, the exam covers four broad topic areas:
 
-1. Data exploration & business understanding (about 15%)
-2. Data preparation (about 25%)
-3. Workflow automation using `make` (about 20%)
-4. Project Management with GitHub (about 20%)
-5. Deployment (about 15%)
+  - Project Management and Versioning with Git and GitHub (about 35%)
+  - Data exploration using RMarkdowns (about 15%)
+  - Data preparation and deployment using R (about 30%)
+- Workflow automation using `make` (about 20%)
+-->
 
-Each topic area carries a specific weight (i.e., "importance"). For example, questions on "Data exploration & business understanding" (about 15%) are less prominent on the exam than questions about data preparation (about 25%).
+<!--
+### Structure
+
+
+
+Each topic area carries a specific weight (i.e., "importance"). For example, questions on "Data exploration using RMarkdowns" (about 15%) are less prominent on the exam than questions about project management and versioning (about 35%).
 
 ### Question types
 
-Questions will be relatively broad, consisting of interdependent subquestions (e.g., a, b, c) that can span multiple topic areas (see five topics above), and test different levels of complexity (see also [Bloom's Taxonomy](https://mygrowthmindsethome.files.wordpress.com/2019/03/blooms-taxonomy.pdf)):
+Questions will be relatively broad, consisting of interdependent subquestions (e.g., a, b, c) that can span multiple topic areas (see topics above), and test different levels of complexity (see also [Bloom's Taxonomy](https://mygrowthmindsethome.files.wordpress.com/2019/03/blooms-taxonomy.pdf)):
 - Knowledge (about 10%): Recall facts
 - Comprehension: (about 15%): Show understanding in finding information
 - Application (about 20%): To use in a new situation
 - Analysis (about 20%): To examine in detail
 - Synthesis (about 20%): To change or create into something new
 - Evaluation (about 15%): To justify
-
+-->
+<!--
 
 {{< hint info >}}
 __Work on the example questions__
@@ -75,6 +101,7 @@ __Work on the example questions__
 Please [view the list of example questions here](examplequestions).
 
 {{< /hint >}}
+-->
 
 ## Preparing for the exam
 
@@ -103,9 +130,9 @@ Above all, see this exam preparation *not* as a way to merely study for the exam
 - Verify your software setup (you should be able to produce RMarkdown documents as PDF documents, run `make`, and even run existing Python code on your computer).
 - Know how to zip and unzip files
 - Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)
-- Take breaks! While the exam questions will be difficult, you do not need the entire day to solve them!
 - Revise your code before submission, so that you ensure it runs from top to bottom without problems.
--->
+
+<!--
 
 {{< hint info >}}
 __Stay up-to-date__
@@ -113,3 +140,4 @@ __Stay up-to-date__
 As we develop the exam questions, please keep an eye on the content of this page for important updates (e.g., with regard to the questions asked, any new tips & tricks that will help you to work on the questions, any example questions, etc.)
 
 {{< /hint >}}
+-->
