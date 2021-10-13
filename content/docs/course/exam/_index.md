@@ -45,9 +45,6 @@ __Communication with anybody about the content of the exam, during *and after* t
 
 ## Content
 
-
-## Content
-
 ### Part 1: Theory
 
 - This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__.
@@ -61,54 +58,16 @@ __Communication with anybody about the content of the exam, during *and after* t
 - Students can go freely back and forth between questions in this part.
 - Allocate approximately 2:15 minutes to work on this part, which focuses on all learning goals of the course as practiced in the tutorials.
 - Expect two questions (potentially w/ smaller subquestions), mixing "mix" various learning goals. For example:
-  - Work on an issue posted at a publicly available GitHub repository, which focuses on data exploration and transformation (e.g., using RMarkdown, `dplyr`).
+  - Work on an issue posted at a publicly available GitHub repository, which focuses on data exploration and transformation (e.g., using RMarkdown, tidyverse).
   - Automate an existing workflow, and cast it into a repository structure that you share (privately) with the course coordinator for grading. Alternatively, add a module to an existing workflow (e.g., regression analysis), and integrate new module in automation pipeline.
   - Cognitive skills that will be tested are application, evaluation, and synthesis/creation.
-
-<!--
-### Topics
-
-In line with the course's learning goals, the exam covers four broad topic areas:
-
-  - Project Management and Versioning with Git and GitHub (about 35%)
-  - Data exploration using RMarkdowns (about 15%)
-  - Data preparation and deployment using R (about 30%)
-- Workflow automation using `make` (about 20%)
--->
-
-<!--
-### Structure
-
-
-
-Each topic area carries a specific weight (i.e., "importance"). For example, questions on "Data exploration using RMarkdowns" (about 15%) are less prominent on the exam than questions about project management and versioning (about 35%).
-
-### Question types
-
-Questions will be relatively broad, consisting of interdependent subquestions (e.g., a, b, c) that can span multiple topic areas (see topics above), and test different levels of complexity (see also [Bloom's Taxonomy](https://mygrowthmindsethome.files.wordpress.com/2019/03/blooms-taxonomy.pdf)):
-- Knowledge (about 10%): Recall facts
-- Comprehension: (about 15%): Show understanding in finding information
-- Application (about 20%): To use in a new situation
-- Analysis (about 20%): To examine in detail
-- Synthesis (about 20%): To change or create into something new
-- Evaluation (about 15%): To justify
--->
-<!--
-
-{{< hint info >}}
-__Work on the example questions__
-
-Please [view the list of example questions here](examplequestions).
-
-{{< /hint >}}
--->
 
 ## Preparing for the exam
 
 ### Ideas for developing your proficiency
 
-- Please work through the tutorials, and try to solve the "Data Challenges" independently. Whereas this has been difficult in the past, can you do it on your own now?
-- Share with each other the (public) links to your GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
+- Please work through the tutorials. While this has been difficult in when you did it for the first time, can you do it on your own now?
+- Share with each other the (public) links to your teams' GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
   - Can you run the workflows of others?
   - Work on the project of others (e.g., by creating a new feature branch, improving code, committing to your fork, and making a PR) - "receiving teams": revise the work of others and integrate the PRs.
   - Add "deployment" steps in your forks, e.g., by adding an app to somebody's regression, or adding a regression to somebody's app
@@ -119,6 +78,10 @@ Please [view the list of example questions here](examplequestions).
   - Clone the examples and extend them
 
 Above all, see this exam preparation *not* as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.
+
+### Work on the example questions
+
+Please [view the list of example questions here](examplequestions).
 
 ### Familiarize yourself with TestVision
 
