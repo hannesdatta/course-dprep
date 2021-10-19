@@ -10,6 +10,20 @@ description: " "
 
 The course content will be tested in the form of a __take-home exam__, to be completed __within three hours__.
 
+{{< hint warning >}}
+__The exam consists of two parts.__
+
+On the day of your exam, you find both parts in the exam list when logging into TestVision.
+
+- oDCM Main Sit Part 1/2
+- oDCM Main Sit Part 2/2.
+
+__Please work on part 1 first.__ The first part closes at 10am.
+
+__Only when finishing part 1, please proceed to part 2.__.
+
+{{< /hint >}}
+
 ## Date & time
 
 ### Main sit
@@ -28,6 +42,9 @@ The course content will be tested in the form of a __take-home exam__, to be com
 ## Technicalities & support
 
 - Receiving your exam: via [TestVision](https://TilburgU.testvision.nl/online/kandidaten) on the day of the exam
+- The exam consists of two parts, which you will have to work on in "separate" exams:
+  - Part 1 is open from 9am - 10am. I.e., it needs to be finished at the latest by 10am.
+  - Part 2 is open from 9am - 11.59am + 1 minute (noon). You should only start working on part 2 after finishing part 1.
 - Working on your exam: on your own computer
 - Submitting your exam: all questions (including file uploads) will be submitted via TestVision
 - Support during the exam: preferably WhatsApp [see support section of this website](../support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
