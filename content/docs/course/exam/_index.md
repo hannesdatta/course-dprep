@@ -15,8 +15,8 @@ __The exam consists of two parts.__
 
 On the day of your exam, you find both parts in the exam list when logging into TestVision.
 
-- oDCM Main Sit Part 1/2
-- oDCM Main Sit Part 2/2.
+- dPrep Main Sit Part 1/2
+- dPrep Main Sit Part 2/2.
 
 __Please work on part 1 first.__ The first part closes at 10am.
 
