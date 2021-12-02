@@ -14,7 +14,9 @@ This repository hosts the source code of the website and all educational materia
 
 New to Git and Markdown? Then view https://tilburgsciencehub.com to learn how.
 
-### Contribute to the site!
+### Contributing to the Course
+
+#### Getting Started
 
 - Please install Git
 - Please install Hugo
@@ -23,3 +25,6 @@ New to Git and Markdown? Then view https://tilburgsciencehub.com to learn how.
 - Not sure what to contribute? Head over to the issues page on GitHub to see what are good issues to address. Of course, you're welcome to suggest your own changes.
 - Make your changes in new branches, and issue a PR.
 
+#### Development Roadmap
+
+To contribute to the development of this course, please [view our product roadmap here](https://github.com/hannesdatta/course-dprep/milestones?direction=asc&sort=title&state=open)
