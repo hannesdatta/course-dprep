@@ -26,6 +26,7 @@ draft: false
     - We recommend Mac users to [also take a look at this tutorial](https://generalassembly.github.io/prework/cl) (optional).
 
 2. Learn to use Git
+    - To get an understanding of what issues, pull requests and commits are and how these work, follow [this short introduction](https://lab.github.com/githubtraining/introduction-to-github) on Github.  
     - Get started with applying the end-to-end Git workflow using Git Bash (i.e., through the command line) ([View tutorial](version-control.html))
     - Curious how to use Git with a graphical user interface? (optional, but highly useful)
       - [Sourcetreeapp](https://www.sourcetreeapp.com) is a free Git client for Windows, Mac and Linux!
