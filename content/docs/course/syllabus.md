@@ -5,6 +5,7 @@ bookHidden: false
 weight: 1
 description: " "
 ---
+
 # Syllabus
 
 
@@ -47,29 +48,12 @@ After successful completion of this course, you will be able to:
 
 ## Grading
 
-- Exam, taken on a computer (55%)
-- Team project (4-5 team members), with self- and peer assessment (see below) (40%)
-- Tracking, evaluating, and sharing one's progress on the course's learning goals
+- Team project (4-5 team members) with self- and peer assessment (see below) (40%)
+- Computer exam (60%)
 
-Students pass this course if
-- the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and
-- the exam grade is higher than or equal to 5.0 (≥ 5.0).
+Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5). Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
 
-Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
-
-<!--Grades are made available on Canvas.
--->
-
-## Resit policy
-
-Students can fail this course in three situations:
-
-1. If students do not pass the exam, they cannot pass this course.
-        Required action: Students will have to take the exam resit.
-    If students are not part of a team, they cannot obtain a grade for the team project, and hence cannot pass this course.
-        Required action: Re-enroll in this course’s next edition, and ensure you are part of a team.
-    If students pass the exam, but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.
-        Required action: Correct team project on the basis of the course coordinator’s grading report, and hand it in again within 2 weeks after publication of the final grades in this course (submission on Canvas). Only students who fail this course are eligible to have their team projects re-graded.
+Grades are made available on Canvas.
 
 ### Team project
 
@@ -167,3 +151,20 @@ Work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own compute
 --><!--, work on virtual machines on AWS EC2, and write basic code in SQL-->
 
 <!--, MySQL, MongoDB and Amazon Web Services (AWS) EC2 and S3-->
+
+
+
+
+
+
+
+## Resit policy
+
+Students can fail this course in three situations:
+
+1. If students do not pass the exam, they cannot pass this course.
+        Required action: Students will have to take the exam resit.
+    If students are not part of a team, they cannot obtain a grade for the team project, and hence cannot pass this course.
+        Required action: Re-enroll in this course’s next edition, and ensure you are part of a team.
+    If students pass the exam, but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.
+        Required action: Correct team project on the basis of the course coordinator’s grading report, and hand it in again within 2 weeks after publication of the final grades in this course (submission on Canvas). Only students who fail this course are eligible to have their team projects re-graded.
