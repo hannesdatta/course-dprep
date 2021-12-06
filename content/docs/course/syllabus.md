@@ -100,7 +100,7 @@ Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, et
 - Stay up-to-date, by checking this website, Canvas, and watch out for [updates/polls on LinkedIn](https://www.linkedin.com/in/hannes-datta/) and videos on [YouTube](https://youtube.com/c/hannesdatta).
 - Be on time, and start on time.
 - Feel invited to always provide informal feedback!
-- It's totally fine calling the instructor by his first name. Also add your instructor
+- It's totally fine calling the instructor by his first name.
 
 {{< hint info >}}
 __We value diversity and inclusion__
