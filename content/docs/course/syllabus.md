@@ -12,28 +12,16 @@ description: " "
 
 The increasing complexity of data (e.g., scraped from the Internet)[^1] and analytics (e.g., requiring high-performance computing) require a novel way-of-working to efficiently manage empirical marketing research projects. Therefore, in this course, you (1) develop your coding skills in R ("code"), (2) collaborate on research projects using GitHub ("collaborate"), (3) automate your research pipeline end-to-end ("automate"). The three principles ("code-collaborate-automate") are applied along the typical research workflow (i.e., data exploration, preparation, analysis, and reporting), and particularly zoom in on engineering data sets from complex raw data, and disseminating research findings in a novel way (e.g., using apps).
 
-[^1]: For example, see the data sections in these papers: [Building a user panel of music consumption from Spotify](http://tiu.nu/spotify), [Preparing a panel data set on electronics sales and marketing mix activities across thousands of brands](https://research.tilburguniversity.edu/en/publications/universality-or-differences-in-marketing-elasticities-in-emerging).
+[^1]: For example, see the data sections in these papers: [Building a user panel of music consumption from Spotify](http://tiu.nu/spotify), [Preparing a panel data set on electronics sales and marketing mix activities across thousands of brands](https://journals.sagepub.com/doi/10.1177/00222437211058102).
 
 After successful completion of this course, you will be able to:
 
-- Use R to
-  - explore data (stored in various formats) using RMarkdown, and clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, date conversions, regular expressions)
-  - implement basic programming concepts to increase speed and minimize errors (e.g., looping, writing functions, handling errors/debugging)
-  - explore novel ways of disseminating research findings (e.g., apps)
-- Use Git/GitHub to
-  - version code and collaborate on privately shared and public (open science) GitHub repositories
-  - professionalize your team collaboration (e.g., using GitHub Issues)
-- Use Workflow Management Tools (`make`) to
-  - create and run portable, automated and reproducible data pipelines
-  - improve directory and file management in research projects
-
-<!--- Document and archive final data sets, and learn how to make them available for public (re)use
-- Professionalize your collaboration in teams using state-of-the-art frameworks (e.g., Scrum)
-- Automate
-  -
-- Scale up
-  - Familiarize yourself with cloud computing
-  - Store and manage data using file-based systems and databases-->
+- Use GitHub for managing empirical research projects (e.g., GitHub Issues and Project Boards)
+- Use Git/GitHub for versioning files and collaborating on privately-shared and publicly-available (open science) GitHub repositories
+- Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)
+- Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper), and deploying research findings in novel ways (e.g., apps)
+- Use Workflow Management Tools to create and run portable, automated and reproducible data pipelines
+- Track, evaluate and share your progress on the course's learning goals
 
 ## Format
 
@@ -59,12 +47,29 @@ After successful completion of this course, you will be able to:
 
 ## Grading
 
-- Team project (4-5 team members) with self- and peer assessment (see below) (40%)
-- Computer exam (60%)
+- Exam, taken on a computer (55%)
+- Team project (4-5 team members), with self- and peer assessment (see below) (40%)
+- Tracking, evaluating, and sharing one's progress on the course's learning goals
 
-Students pass this course if the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and the exam is passed (≥ 5.5). Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
+Students pass this course if
+- the final course grade (i.e., the weighted average of the group project and exam; weights indicated above) is ≥ 5.5, and
+- the exam grade is higher than or equal to 5.0 (≥ 5.0).
 
-Grades are made available on Canvas.
+Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
+
+<!--Grades are made available on Canvas.
+-->
+
+## Resit policy
+
+Students can fail this course in three situations:
+
+1. If students do not pass the exam, they cannot pass this course.
+        Required action: Students will have to take the exam resit.
+    If students are not part of a team, they cannot obtain a grade for the team project, and hence cannot pass this course.
+        Required action: Re-enroll in this course’s next edition, and ensure you are part of a team.
+    If students pass the exam, but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.
+        Required action: Correct team project on the basis of the course coordinator’s grading report, and hand it in again within 2 weeks after publication of the final grades in this course (submission on Canvas). Only students who fail this course are eligible to have their team projects re-graded.
 
 ### Team project
 
