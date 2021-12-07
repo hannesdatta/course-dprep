@@ -28,10 +28,9 @@ After successful completion of this course, you will be able to:
 - Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)
 - Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper), and deploying research findings in novel ways (e.g., apps)
 - Use Workflow Management Tools to create and run portable, automated and reproducible data pipelines
+- Track, evaluate and share your progress on the course's learning goals[^2]
 
-<!--
-- Track, evaluate and share your progress on the course's learning goals
--->
+[^2]: Students use a web app to monitor their progress on the course's learning goals, by "ticking off" items from a to-do list (e.g., "I have installed R", "I have finished Tutorial X", etc.). The instructor can use the app to learn which topics to highlight during live streams. Students, in turn, can use the app to see how far others in the class have already proceeded, giving them direct feedback on their own performance.
 
 
 ### Positioning of the course in the study program
@@ -66,13 +65,10 @@ Students are recommended to follow this course before embarking on thesis projec
 ## Assessment
 
 - Team project (4-5 team members) with self- and peer assessment (see below) (40%)
-- Computer exam (60%)
+- Computer exam (55%)
+- Submitting one's progress on the course's learning goals  (5%)[^3]
 
-<!--- Tracking, evaluating, and sharing one's progress on the course's learning goals (10%)
--->
-<!--
-Grades are made available on Canvas.
--->
+[^3]: In particular, students regularly monitor their progress on the course's learning goals. At least one evaluation per course week is required to obtain points on this component of the course grade.
 
 ### Passing requirements
 
