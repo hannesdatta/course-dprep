@@ -73,7 +73,7 @@ Students are recommended to follow this course before embarking on thesis projec
 ### Passing requirements
 
 Students pass this course if
-- the final course grade (i.e., the weighted average of the group project, the exam); weights indicated above) is ≥ 5.5, and
+- the final course grade (i.e., the weighted average of the group project, the exam, and a pass/fail on submitting one's progress on the course's learning goals); weights indicated above) is ≥ 5.5, and
 - the exam grade is higher than or equal to 5.0 (≥ 5.0).
 
 Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
