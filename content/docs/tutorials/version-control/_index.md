@@ -51,7 +51,7 @@ __How to contribute to an open source project__
 
 *Step 2: Run the repository's code (= run the website)*
 
-1. Install [hugo](https://gohugo.io/getting-started/installing/) - that's the content management system we use for running these websites.
+1. Install [hugo](https://gohugo.io/getting-started/installing/) - that's the content management system we use for running these websites (Note: it may be required to install the extended version to run this course repository!).
 2. Fork one of the repositories (click on the fork button in the upper right corner on Git). This creates a copy of the code in your GitHub account.
 3. Clone your own fork to the disk, e.g., `git clone https://github.com/your-user-name/course-dprep`.
 4. Enter the directory of the cloned repository, and run `hugo server`.
