@@ -1,6 +1,6 @@
 ---
 weight: 3
-title: Week 2) Version control and project management
+title: Week 2) Project Management and Version Control
 description: Keep track of file changes and apply the end-to-end Git workflow!
 bookCollapseSection: true
 draft: false
@@ -13,7 +13,7 @@ draft: false
 
 ## Self-study and activities
 - Tutorial
-  - [Version Control and Project Management with Git/GitHub](docs/tutorials/version-control)
+  - [Project Management and Version Control with Git/GitHub](docs/tutorials/version-control)
 - Readings on *why* it's important to properly manage your workflow
   - [Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup)
 - Optional readings
