@@ -50,7 +50,7 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ## Teaching format
 
-- Online-only (on Zoom)
+- Online-only (on Zoom; first and last lecture may take place on Campus)
 - Combination of self-paced tutorials (e.g., using R Notebooks), and interactive live streams for feedback and coaching (recordings are shared with students)
 - Learn state-of-the-art tools popular among scientists, marketing analysts, and data scientists (e.g., R, GitHub)
 - Open education & open science (all material is open; publicly accessible course page that stays with you, even after the end of the course)
@@ -87,6 +87,7 @@ Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, et
 - If students have an exam grade higher or equal to 5.0 but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.
   - Required action: Correct team project based on the course coordinator's grading report, and hand it in again within two weeks after publication of the final grades in this course (submission on Canvas). Only students who fail the team project can have their projects re-graded.
 - Students who have passed the course, but wish to retake the exam, can take the exam resit. The highest exam grade counts. Grades for the team project are retained. In other words, the resit exam still counts for 60% of the final course grade.
+- Students who fail the exam, and wish to re-take the course in the subsequent semester can *retain* their assignment grades upon approval of the course coordinator (grades remain valid for the *next* edition of the course)
 
 ## Code of Conduct
 
