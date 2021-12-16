@@ -31,7 +31,7 @@ draft: false
 
 ## Getting started
 
-1. Develop your R skills by working on the DataCamp course [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3 - about 2-3 hours)
+1. Develop your R skills by working on the DataCamp course [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3)
 2. Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (section 6)
 3. Practice by exploring a new dataset with R and RMarkdown ([View](intro-to-r.html), [Download; right click - download file as](intro-to-r.Rmd))
 
