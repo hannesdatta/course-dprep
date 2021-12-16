@@ -15,8 +15,8 @@ draft: false
 - Introduction to the course <!--([re-watch](https://youtu.be/iq88xsSGyTg)))-->
   - [Slides](slides.html)
   - Recordings
-    - [1 | getting started](https://youtu.be/NhkGSFVHPOE)
-    - [2 | why should you take this class (preview of what you'll learn!) + course setup](https://youtu.be/rM4ZVtmuvUw)
+    - 1 | getting started - TBA!
+    - 2 | why should you take this class (preview of what you'll learn!) + course setup - TBA!
 
 {{< hint info >}}
 Recordings of the livestreams are published on Hannes' YouTube channel, so ensure you [subscribe to it](http://www.youtube.com/c/hannesdatta?sub_confirmation=1) to stay up-to-date!
@@ -31,6 +31,8 @@ Recordings of the livestreams are published on Hannes' YouTube channel, so ensur
 ## Self-study and activities
 - If you haven't done so, please [complete the software installation](../../../docs/tutorials/software-installation/_index.md)
 - [R Bootcamp (Tutorial)](docs/tutorials/r-bootcamp)
+- [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
+- [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
 
 <!--
 - [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
@@ -40,6 +42,10 @@ Recordings of the livestreams are published on Hannes' YouTube channel, so ensur
 ## Live stream 2
 - Q&A/walk-through of this week’s tutorial
   - [Recording](https://youtu.be/MZr32CgOzjY)
+
+
+
+[^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)
 
 <!--
 - [Activity to explore new data](activity.md)

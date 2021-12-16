@@ -16,7 +16,6 @@ Datasets have become massive and demands for tools that can handle such data hav
 * Change the content of data frames (e.g., create, drop, or rename columns)
 * Read data from text files into data frames in R
 * Basic data wrangling with dplyr/tidyverse
-* Basic plotting with ggplot
 <!--Filter data in data frames (e.g., by index, logical expressions, missing records, etc.)
 -->
 <!--  * Apply basic programming concepts (if-else statements, for-loop, functions )
@@ -24,13 +23,13 @@ Datasets have become massive and demands for tools that can handle such data hav
 
 ## Planning
 
-- Please allot about 4-6 hours to work through this material.
+- Please allot about 4-5 hours to work through this material.
 
 ## Getting started
 
 1. If you haven't done so, please install the required [software](../software-installation).
 
-2. Please work through the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (sections 1-5)
+2. Please work through the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (sections 1-4)
 <!--
 2. Please complete the Datacamp course ["Introduction to R"](https://www.datacamp.com/courses/free-introduction-to-r). No access to premium content? See [here to obtain access](../../../docs/course/support/datacamp).
 -->

@@ -11,7 +11,7 @@ draft: false
 <!--__Obtain business and data understanding, and explore data in R__-->
 
 ## Kick-starting your week
-- Watch the [energizer for the week](https://youtu.be/1SdXWc_tQgk)
+- Watch the energizer for the week - TBA!
 
 <!--## Kick-starting your week
 - Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
@@ -20,8 +20,6 @@ draft: false
 
 ## Self-study and activities
 - [Data exploration with R and RMarkdown (Tutorial)](docs/tutorials/data-exploration-in-r)
-- [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
-- [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
 
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
@@ -43,8 +41,6 @@ If you have an urgent/important issue you would like to see addressed during the
 {{< /hint >}}
 
 
-
-[^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)
 
 <!--
 
