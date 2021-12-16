@@ -15,9 +15,7 @@ We also use some premium content of Datacamp.com, so make sure to sign up using 
 
 - Get a [Datacamp.com account to access Premium content for free](../../../docs/course/support/datacamp)
 
-Finally, familiarize yourself with this course page, and visit [Tilburg Science Hub](https://tilburgsciencehub.com), a platform we'll use to learn and further develop our skills in building reproducible workflows.
 
-- Explore [Tilburg Science Hub](https://tilburgsciencehub.com)
 
 
 ---
