@@ -29,3 +29,4 @@ content/docs/tutorials/data-preparation/data.zip
 slides.md
 .Rproj.user
 *.Rproj
+.hugo_build.lock
