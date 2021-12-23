@@ -40,8 +40,8 @@ Recordings of the livestreams are published on Hannes' YouTube channel, so ensur
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
 ## Live stream 2
-- Q&A/walk-through of this week’s tutorial
-  - [Recording](https://youtu.be/MZr32CgOzjY)
+- Q&A/walk-through of this week’s tutorial TEST
+  - TBA!
 
 
 

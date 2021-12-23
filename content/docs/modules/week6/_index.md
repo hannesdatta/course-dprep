@@ -15,7 +15,7 @@ draft: false
 ## Live stream 7
 - Course summary and exam preparation
   - [Slides](slides.html)
-  - Recording ([Course summary](https://youtu.be/k9781SYsBiY), [Exam preparation](https://youtu.be/SVVFOaYM680))
+  - Recording Course summary - TBA, Exam preparation - TBA
 
 <br>
 

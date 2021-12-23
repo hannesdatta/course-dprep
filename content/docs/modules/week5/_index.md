@@ -19,7 +19,7 @@ draft: false
 
 
 ## Live stream 6
-- Q&A/walk-through of this week’s tutorial ([recording](https://youtu.be/bchs4JR3t2c))
+- Q&A/walk-through of this week’s tutorial - TBA!
 
 <!--
 - Q&A on "Pipeline Building and Automation" (Tutorial & Data Challenge 3)
@@ -28,3 +28,11 @@ draft: false
   - Re-watch [practicing with `make` (Tilburg Science Hub)](https://youtu.be/_1BDJsDVYoA)
   - Re-watch [the Q&A session, last 45 minutes of the class](https://youtu.be/56yARyR1p1E)
 -->
+
+
+<br>
+
+---
+<br>
+{{< button relref="week4" >}}Previous week{{< /button >}}
+{{< button relref="week6" >}}Next week{{< /button >}}
