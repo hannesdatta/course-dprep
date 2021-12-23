@@ -17,21 +17,6 @@ enableGitInfo = true
 [markup.tableOfContents]
   startLevel = 1
 
-# Multi-lingual mode config
-# There are different options to translate files
-# See https://gohugo.io/content-management/multilingual/#translation-by-filename
-# And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
-[languages]
-[languages.en]
-  languageName = 'oDCM'
-  contentDir = 'content'
-  weight = 1
-
-#[languages.dprep]
-#  languageName = 'dPrep'
-#  contentDir = 'content.dataprep'
-#  weight = 2
-
 [menu]
 # [[menu.before]]
 #[[menu.after]]
@@ -40,6 +25,12 @@ enableGitInfo = true
 #  weight = 10
 
 [params]
+
+  Course_Deadline_Project = "Monday, 18 October 2021, 5 pm"
+  Course_Exam_Mainsit = "Wednesday, 20 October 2021,"
+  Course_Exam_Resit = "Tuesday, 18 January 2022"
+
+
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.

@@ -10,32 +10,18 @@ description: " "
 
 The course content will be tested in the form of a __take-home exam__, to be completed __within three hours__.
 
-{{< hint warning >}}
-__The exam consists of two parts.__
-
-On the day of your exam, you find both parts in the exam list when logging into TestVision.
-
-- dPrep Main Sit Part 1/2
-- dPrep Main Sit Part 2/2.
-
-__Please work on part 1 first.__ The first part closes at 10am.
-
-__Only when finishing part 1, please proceed to part 2.__.
-
-{{< /hint >}}
-
 ## Date & time
 
 ### Main sit
 
-- Date: __Wednesday, 20 October, 2021__
+- Date: __{{< param "Course_Exam_Mainsit" >}}__
 - Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
 - Exam registration: not necessary; enrollment to the Canvas course page is sufficient
 - Inspection: tba <!--(signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)-->
 
 ### Resit
 
-- Date: __Tuesday, 18 January 2022__
+- Date: __{{< param "Course_Exam_Resit" >}}__
 - Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
 - Registration: tba <!--by 7 June 2021 at the latest, via https://forms.gle/KXQBjtTvY9saQQhS8.-->
 
