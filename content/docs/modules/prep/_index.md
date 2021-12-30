@@ -15,6 +15,10 @@ We also use some premium content of Datacamp.com, so make sure to sign up using 
 
 - Get a [Datacamp.com account to access Premium content for free](../../../docs/course/support/datacamp)
 
+Finally, we recommend using a text editor, as this greatly improves your user experience and allows you to easily change text and code. In combination with Hugo, you can see a preview of the changes that you made to a site instantly!
+
+- [Click here to install Atom as your text editor](https://tilburgsciencehub.com/building-blocks/configure-your-computer/statistics-and-computation/text-editor/)
+
 
 
 
