@@ -21,7 +21,7 @@ Working on your team project is not only a great refresher on the course content
 
 ## Grading
 
-Head over to the [grading details](grading_details) to understand what is expected from you,when, and in each part of this project. 
+Head over to the [grading details](grading_details) to understand what is expected from you in each part of this project.
 
 ## Teams
 

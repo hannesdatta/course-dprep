@@ -47,6 +47,8 @@ The research question is clearly articulated and important. The choice for the r
 
 The end-to-end workflow, kickstarted with one of the workflow templates available at [Tilburg Science Hub](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/), is made *publicly available* on GitHub. The repository contains a readme.md (markdown), which clearly explains the project’s goal, and provides instructions to potential contributors/replicators on how to run the project (see details and examples on the readme below). The project has a concise and accurate name, enticing the potential user to explore the workflow. An appropriate short name for the repository’s location is chosen (e.g., `github.com/yourusername/investigating-airbnb`). Additional metadata on GitHub is provided (e.g., a short project description), so that the repository feels and looks professional and complete.
 
+It should be noted, however, that the readme is not a copy of your deployment (e.g., pdf report or Shiny App), but links to it. Therefore, only summarize the main results in the results section and keep it short, rather than going over all results in depth. Keep this latter part for the RMarkdown file instead. [More information on what a proper readme should look like can be found here](https://tilburgsciencehub.com/building-blocks/store-and-document-your-data/document-data/readme-best-practices/)
+
 {{< hint info>}}
 
 ***Tip: Structure your `README.md`***
