@@ -514,7 +514,7 @@ Resolve the merge conflict by editing the file to manually merge the parts of th
 As a last remark, in section 1.5 you already learned to `push` and `pull` to `origin main`, but you can also push your changes to, for example, the `dev` branch (before merging both branches). Simply, swap `main` for `dev` and you're good to go!
 
 \
-
+**Recap question: What is the main reason we recommend using branches?**
 
 ```{r, echo = FALSE}
 opts_p <- c(
