@@ -45,48 +45,14 @@ The research question is clearly articulated and important. The choice for the r
 
 <!--Students who wish to document data collected as part of [oDCM](https://odcm.hannesdatta.com) (Online Data Collection and Management) can extend the workflow template (e.g., by adding the documentation of the raw data, any screenshots, etc.)-->
 
-The end-to-end workflow, kickstarted with one of the workflow templates available at [Tilburg Science Hub](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/), is made *publicly available* on GitHub. The repository contains a readme.md (markdown), which clearly explains the project’s goal, and provides instructions to potential contributors/replicators on how to run the project (see details and examples on the readme below). The project has a concise and accurate name, enticing the potential user to explore the workflow. An appropriate short name for the repository’s location is chosen (e.g., `github.com/yourusername/investigating-airbnb`). Additional metadata on GitHub is provided (e.g., a short project description), so that the repository feels and looks professional and complete.
-
-It should be noted, however, that the readme is not a copy of your deployment (e.g., pdf report or Shiny App), but links to it. Therefore, only summarize the main results in the results section and keep it short, rather than going over all results in depth. Keep this latter part for the RMarkdown file instead. [More information on what a proper readme should look like can be found here](https://tilburgsciencehub.com/building-blocks/store-and-document-your-data/document-data/readme-best-practices/)
+The end-to-end workflow, kickstarted with one of the workflow templates available at [Tilburg Science Hub](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/), is made *publicly available* on GitHub. The repository contains a readme.md (in markdown format, so that it renders well on GitHub), which clearly explains the project’s goal, and provides instructions to potential contributors/replicators on how to run the project. The project has a concise and accurate name, enticing the potential user to explore the workflow. An appropriate short name for the repository’s location is chosen (e.g., `github.com/yourusername/investigating-airbnb`). Additional metadata on GitHub is provided (e.g., a short project description), so that the repository feels and looks professional and complete.
 
 {{< hint info>}}
-
 ***Tip: Structure your `README.md`***
 
-The README file, written in markdown (`.md`) should consist (at least) of the following sections:
+The readme is not a copy of your way of deployment (e.g., your report), but *links* to it. Therefore, only summarize the main results in your readme (e.g., in bullet point format), or include screenshots (e.g., to your app, to your "best" figure).
 
-```
-# Short project title
-
-__Long project title, e.g., research question__
-
-## Motivation
-
-Motivate your research question or business problem. Clearly explain which problem is solved.
-
-## Method and results
-
-First, introduce and motivate your chosen method, and explain how it contributes to solving the research question/business problem.
-
-Second, summarize your results concisely. Make use of subheaders where appropriate.
-
-## Repository overview
-
-Provide an overview of the directory structure and files.
-
-## Running instructions
-
-Explain to potential users how to run/replicate your workflow. Touch upon, if necessary, the required input data, which (secret) credentials are required (and how to obtain them), which software tools are needed to run the workflow (including links to the installation instructions), and how to run the workflow. Make use of subheaders where appropriate.
-
-## More resources
-
-Point interested users to any related literature and/or documentation.
-
-## About
-
-Explain who has contributed to the repository. You can say it has been part of a class you've taken at Tilburg University.
-
-```
+More information on how a proper readme should look like can be found at [Tilburg Science Hub](https://tilburgsciencehub.com/write/readme)
 
 {{< /hint>}}
 
