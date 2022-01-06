@@ -1,11 +1,22 @@
 ---
 title: "Version Control"
 author: ""
-output: html_document
+output: webexercises::webexercises_default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+if (!requireNamespace("webexercises")) {
+  stop("You must have the 'webexercises' package installed to knit to HTML.\n   install.packages(\"webexercises\")")
+} else {
+  library(webexercises)
+}
+```
+
+```{css, echo=FALSE}
+.badCode {
+background-color: white;
+}
 ```
 
 *For your group projects, you have probably used a tool like Google Drive or Dropbox to share your work with others. Although you could theoretically share your R files using these tools, it has a few limitations  when it comes to version control. For example, how can you easily return to a previous version of your work? Or what happens once your friend and you are overwriting each others' code? In this tutorial, we'll introduce you to Git and GitHub and learn you to streamline your collaboration workflows!*
@@ -91,6 +102,16 @@ Create a [GitHub account](https://github.com/join?ref_cta=Sign+up&ref_loc=header
 6. What happens once you switch to another branch? (e.g., `dev`)
 7. Can you find a way to see how the first version (also known as "first commit") of the repository looked like? 
  
+`r hide("Click here to see the solutions")`
+1. Hannes Datta - You go to his personal page!
+2. The most recent update can be seen underneath "Go to file".
+3. These are the commit messages for the most recent change made in that folder or file.
+4. Content --> docs --> tutorials
+5. Starring a repository makes it viewable on your stars page, which makes it easier to find a repository again at a later time.
+6. You see the overview of the repository for that branch and the changes relative to the main branch.
+7. One way is to click on the total number of commits and browse all the way to the first commit. A more convenient alternative could be to go to insights --> network. Here, you can see an overview of all changes made to the repository, what was done and by who.
+`r unhide()`
+
 \
  
 #### 1.3 Create a New Repository
@@ -204,6 +225,16 @@ As it states, the first couple of lines will be ignored. Press `i` to change to 
 
 \
 
+**Short recap exercises**
+
+What command do we use to move files to the staging area? `r mcq(c(answer = "git add", "git commit", "git status"))`
+
+What command is used to see which files are not yet tracked `r mcq(c("git add", "git commit", answer = "git status"))`
+
+What command is used to save your changes? `r mcq(c("git add", answer = "git commit","git status"))`
+
+\
+
 #### 2.4 Pushing & Pulling Changes
 
 **Importance**  
@@ -284,8 +315,10 @@ Once you click on 11 commits here, it shows a chronologically ordered list of al
 
 ![](./images/commit_history.png){width=50%}
 
-**Let's try it out!**  
-When was the first commit on the `dev` branch? What did Hannes change? How many lines of code did it involve? 
+**Let's try it out! When was the first commit on the dev branch and what was done?**
+`r hide("Click here to see the solution")`
+The first commit was on 2 September 2020 and was called "Initialize dev"
+`r unhide()`
 
 We can access the same list of commits through our terminal. `cd` into the respective Git directory and run `git log` to view the log of the project's history. Every time, you press the space bar it moves down the list (so you see older commit messages).  Log entries are shown most recent first, and look like this:
 
@@ -479,6 +512,19 @@ Resolve the merge conflict by editing the file to manually merge the parts of th
 
 
 As a last remark, in section 1.5 you already learned to `push` and `pull` to `origin main`, but you can also push your changes to, for example, the `dev` branch (before merging both branches). Simply, swap `main` for `dev` and you're good to go!
+
+\
+
+
+```{r, echo = FALSE}
+opts_p <- c(
+  "To create a new copy of a repository that everyone can start working on.",
+  answer = "To make changes that do not conflict with the main branch and can be merged afterwards.",
+  "Because it is mandatory to work with branches when collaborating on a project with others."
+)
+```
+
+`r longmcq(opts_p)`
 
 \
 
