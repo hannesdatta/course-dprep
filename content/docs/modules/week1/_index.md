@@ -46,6 +46,8 @@ Recordings of the livestreams are published on Hannes' YouTube channel, so ensur
 - Q&A/walk-through of this week’s tutorial
   - TBA!
 
+## Exercises
+
 
 
 [^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)
