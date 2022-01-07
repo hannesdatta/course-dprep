@@ -15,7 +15,8 @@ draft: false
 -->
 
 ## Self-study and activities
-- [Pipeline Building and Automation (Tutorial)](docs/tutorials/make-tutorial)
+- Tutorial
+  - [Pipeline Building and Automation](docs/tutorials/make-tutorial)
 
 
 ## Live stream 6

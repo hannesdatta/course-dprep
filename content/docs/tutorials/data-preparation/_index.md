@@ -28,8 +28,12 @@ draft: false
     - [DataCamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2), and
     - [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2).
 
-2. During this week's lecture, we will go over this tutorial where you practice preparing a dataset with R for further analysis. You can already take a look at it here: ([View](data-preparation.html), [Download; right click - download file as](data-preparation.Rmd))
+2. This part includes additional explanation and exercises using dplyr and tidyr. This part is optional, but highly recommended if you found the Datacamp courses to be a bit difficult or if you simply want some extra material!
+    - [Data manipulation tutorial using dplyr and tidyr](https://cengel.github.io/R-data-wrangling/tidyr.html)
+
+3. During this week's lecture, we will go over this tutorial where you practice preparing a dataset with R for further analysis. You can already take a look at it here: ([View](data-preparation.html), [Download; right click - download file as](data-preparation.Rmd))
     - Download the data from [here](data.zip) and store it in the same directory as your Markdown file.
+
 
 <!--
 ### Create (Data Challenge #2)

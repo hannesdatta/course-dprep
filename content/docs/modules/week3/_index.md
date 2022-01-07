@@ -19,7 +19,8 @@ draft: false
 -->
 
 ## Self-study and activities
-- [Data exploration with R and RMarkdown (Tutorial)](docs/tutorials/data-exploration-in-r)
+- Tutorial
+  - [Data exploration with R and RMarkdown](docs/tutorials/data-exploration-in-r)
 
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 

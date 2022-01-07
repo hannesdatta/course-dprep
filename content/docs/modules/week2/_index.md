@@ -19,6 +19,8 @@ draft: false
 - Optional readings
   - [Code and Data for the Social Sciences: A Practitioner’s Guide](https://www.brown.edu/Research/Shapiro/pdfs/CodeAndData.pdf)
   - [Modified principles for Code and Data](https://www.shirokuriwaki.com/programming/project-organization.html)
+  - [Data analysis workflow](http://www.coordinationtoolkit.org/wp-content/uploads/130907-Data-flow.pdf)
+  - [Additional information on reproducing work, organizing files and version control](https://www.tse-fr.eu/sites/default/files/TSE/documents/doc/wp/2018/wp_tse_933.pdf)
 
 ## Live stream 3
 - Q&A/walk-through of this week's tutorial - TBA!

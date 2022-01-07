@@ -10,14 +10,18 @@ draft: false
 
 <!--## Kick-starting your week
 - Watch the energizer for the week (to be made available)<!--[the energizer for the week](https://youtu.be/tctr4GgrD4w) on YouTube!-->
+## Kick-starting your week
+- [Watch the kick-off for the week](https://youtu.be/z_Hh1jlL1Ac)!
 
 ## Self-study and activities
 <!--
 - [Marketing Analytics for Data-Rich Environments (pp. 97-108)](http://dx.doi.org/10.1509/jm.15.0413)-->
 <!--- The ITO (input-transformation-output) process
 - Zooming in on "transformation": common data operations (and how they're related to different data set types)-->
-- Develop understanding for [why it's necessary to prepare data sets for analysis](https://youtu.be/z_Hh1jlL1Ac)
-- [Data Preparation in R (Tutorial)](docs/tutorials/data-preparation)
+- Tutorial
+  - [Data Preparation in R](docs/tutorials/data-preparation)
+- Optional reading
+  - [Data preparation process and challenges](https://www.topbots.com/data-preparation-for-machine-learning/)
 <!--- Video: data set engineering (Hannes)
 -->
 
