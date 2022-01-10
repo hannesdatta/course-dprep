@@ -15,27 +15,26 @@ See below a collection of amazing cheat sheets that we recommend you to download
 ### Base R
 
 - [Base R](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
-- [https://r4ds.had.co.nz/](https://r4ds.had.co.nz/)
-- https://rstudio.com/resources/cheatsheets/
+- [R for Data Science book](https://r4ds.had.co.nz/)
+- [All sorts of cheatsheets for RStudio!](https://rstudio.com/resources/cheatsheets/)
 
 ### Data wrangling
 
-- [Data wrangling with dplyr and tidyr - 1 page with reshaping](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-- [Data transformation with dplyr -  2 pages](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+- [Data wrangling with dplyr and tidyr ](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+- [Data transformation with dplyr](https://github.com/rstudio/cheatsheets/raw/main/data-transformation.pdf)
 - [Data wrangling with data.table - incredibly fast for large datasets](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/datatable_Cheat_Sheet_R.pdf)
 
 ### Plotting
 
-- [plotting with ggplot2](https://ggplot2.tidyverse.org/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-- https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
-- http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf
+- [Data visualization with ggplot2](https://github.com/rstudio/cheatsheets/raw/main/data-visualization-2.1.pdf)
+- [R Base graphics cheatsheet](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf)
 
 ### Date and Times
-- [Lubridate package cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/lubridate.pdf)
+- [Lubridate package cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/lubridate.pdf)
 
 ### R Markdown
 
-- [R markdown cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+- [R markdown cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf)
 - [R markdown reference sheet](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 
 ### Interactive apps
