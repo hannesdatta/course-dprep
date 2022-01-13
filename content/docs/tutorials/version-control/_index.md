@@ -22,17 +22,19 @@ draft: false
 ## Getting Started
 
 1. Develop your command line (Windows) / terminal (Mac) skills
-    - Follow the [DataCamp Introduction to Shell](https://learn.datacamp.com/courses/introduction-to-shell) (chapter 1).
-    - We recommend Mac users to [also take a look at this tutorial](https://generalassembly.github.io/prework/cl) (optional).
+    - What is the [command line / terminal](https://generalassembly.github.io/prework/cl)?!
+    - Start practicing using the [DataCamp Introduction to Shell](https://learn.datacamp.com/courses/introduction-to-shell) (chapter 1).
 
-2. Learn to use Git
-    - To get an understanding of what issues, pull requests and commits are and how these work, follow [this short introduction](https://lab.github.com/githubtraining/introduction-to-github) on Github.  
-    - Get started with applying the end-to-end Git workflow using Git Bash (i.e., through the command line) ([View tutorial](version-control.html))
-    - Curious how to use Git with a graphical user interface? (optional, but highly useful)
-      - [Sourcetreeapp](https://www.sourcetreeapp.com) is a free Git client for Windows, Mac and Linux!
-      - Git also [smoothly integrates with R - find out how!](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/)
+2. [Familiarize yourself with GitHub](https://lab.github.com/githubtraining/introduction-to-github)
 
-3. Put your skills into practice by following [the exercises on this week's module!](docs/modules/week2)
+3. Apply the end-to-end Git workflow using Git Bash (i.e., through the command line) ([View tutorial](version-control.html))
 
-<!--Proud about your own work? Show off your work with a screenshot via WhatsApp, and we'll show it in class!
--->
+
+{{< hint info >}}
+__Curious how to use Git with a graphical user interface?__
+(optional, but highly useful)
+
+- [Sourcetreeapp](https://www.sourcetreeapp.com) is a free Git client for Windows, Mac and Linux!
+- Git also [smoothly integrates with R - find out how!](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/)
+
+{{< /hint >}}
