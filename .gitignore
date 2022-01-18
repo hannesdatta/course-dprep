@@ -27,3 +27,6 @@ content/docs/tutorials/workflow/airbnb-workflow/gen/plots/plot_Amsterdam.pdf
 content/docs/building-blocks/deployment-reporting/rsconnect/shinyapps.io/royklaassebos/dPrep_Demo_Google_Mobility.dcf
 content/docs/tutorials/data-preparation/data.zip
 slides.md
+.Rproj.user
+*.Rproj
+.hugo_build.lock

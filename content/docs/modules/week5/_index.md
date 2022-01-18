@@ -9,17 +9,33 @@ draft: false
 # Week 5: Pipeline Building and Automation
 
 ## Kick-starting your week
-- Watch the [energizer for the week](https://youtu.be/_iUL_QgSBLE) on YouTube!
+- Watch the energizer for the week on YouTube - TBA!
 
 <!--- Watch [the energizer for the week](https://youtu.be/PdWZ1s8XXiU) on YouTube!
 -->
 
 ## Self-study and activities
-- [Pipeline Building and Automation (Tutorial)](docs/tutorials/make-tutorial)
-
+- Tutorial
+  - [Pipeline Building and Automation](docs/tutorials/make-tutorial)
+- Optional readings
+  - Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
+  - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
 
 ## Live stream 6
-- Q&A/walk-through of this week’s tutorial ([recording](https://youtu.be/bchs4JR3t2c))
+- Q&A/walk-through of this week’s tutorial - TBA!
+
+## Exercises
+
+This exercise allows you to practice `make` commands on a real pipeline!
+
+- Check out the tutorial ["Practicing pipeline automation using make"](https://tilburgsciencehub.com/makefile/pipeline-automation) at Tilburg Science Hub.
+
+{{< hint info >}}
+
+The tutorial involves a blend of R __and__ Python code. You may be unfamiliar with Python - but that's not a bad thing. The purpose is __not__ to turn you into a Python wizard, but rather to __illustrate the value of `make`__ in a data pipeline. The fact that you can run both R and Python scripts makes it very powerful!
+{{< /hint >}}
+
+
 
 <!--
 - Q&A on "Pipeline Building and Automation" (Tutorial & Data Challenge 3)
@@ -28,3 +44,11 @@ draft: false
   - Re-watch [practicing with `make` (Tilburg Science Hub)](https://youtu.be/_1BDJsDVYoA)
   - Re-watch [the Q&A session, last 45 minutes of the class](https://youtu.be/56yARyR1p1E)
 -->
+
+
+<br>
+
+---
+<br>
+{{< button relref="week4" >}}Previous week{{< /button >}}
+{{< button relref="week6" >}}Next week{{< /button >}}

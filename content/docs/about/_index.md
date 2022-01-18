@@ -24,6 +24,7 @@ In developing this course, we have borrowed from some of the finest (open) conte
 * Colt Steele. (2020). [Introduction to Git](https://www.notion.so/Introduction-to-Git-ac396a0697704709a12b6a0e545db049)
 * Colt Steele. (2020). [Introduction to Github](https://www.notion.so/Introduction-to-GitHub-202af6f64bbd4299b15f238dcd09d2a7)
 * Data School. (2014). [Version Control with Git & Github](https://www.youtube.com/watch?v=xKVlZ3wFVKA&list=PL5-da3qGB5IBLMp7LtN8Nc3Efd4hJq0kD)
+* Dvorak et al. (2019). [Efficient empiricism: Streamlining teaching, research, and learning in empirical courses](https://doi-org.tilburguniversity.idm.oclc.org/10.1080/00220485.2019.1618765)[^1]
 
 We also rely on access to Datacamp.com.
 
@@ -42,3 +43,7 @@ Spread the word about this open education initiative!
 
 ## Disclaimer
 This website has been generated using the [Tilburg Science Hub Hugo template](https://github.com/tilburgsciencehub/hugo-tiu) for open science and education projects. The content of this website does not necessarily reflect the official policy or position of Tilburg University.
+
+
+
+[^1]: Tomas Dvorak, Simon D. Halliday, Michael O’Hara & Aaron Swoboda (2019) Efficient empiricism: Streamlining teaching, research, and learning in empirical courses, The Journal of Economic Education, 50:3, 242-257, DOI: 10.1080/00220485.2019.1618765

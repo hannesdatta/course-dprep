@@ -27,12 +27,16 @@ draft: false
 
 ## Planning
 
-- Please plan a full day to work through this tutorial.
+- Please plan a full day to work through these tutorials.
 
 ## Getting started
 
-1. Develop your R skills by completing the course [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (about 4-6 hours)
-2. Practice by exploring a new dataset with R and RMarkdown ([View](intro-to-r.html), [Download; right click - download file as](intro-to-r.Rmd))
+1. Develop your R skills by working on the this DataCamp course
+    - [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3)
+
+2. Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (section 6)
+
+3. Practice by exploring a new dataset with R and RMarkdown ([View](intro-to-r.html), [Download; right click - download file as](intro-to-r.Rmd))
 
 <!--- If you like, you can submit your exercises as a "proof for investing in your skills" (self- and peer assessment). Work on the exercises in the answer skeleton file ([Download](intro-to-r-skeleton.Rmd); right-click, download linked file as...). Then, open the file in RStudio.
 

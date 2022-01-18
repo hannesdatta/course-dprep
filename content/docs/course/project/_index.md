@@ -8,7 +8,7 @@ draft: false
 
 # Team Project
 
-## Motivation
+## Learning Goals
 
 Throughout the course, we have touched upon various phases of the data preparation and workflow management pipeline. In the team project, we bring together all that you have learnt.
 
@@ -19,11 +19,9 @@ Together with your team members, you will
 
 Working on your team project is not only a great refresher on the course content, but *especially* gives you a better sense of the added value of using Git/GitHub when collaborating with one another, and automation with `make` with a many source code files.
 
-In addition, the [building blocks on this site](docs/building-blocks) and [at Tilburg Science Hub](https://tilburgsciencehub.com) provide code snippets for more advanced functionalities you may want to incorporate in your team project.
+## Grading
 
-## Learning Goals
-
-After completion of the project, students and researchers need to be equipped with the practical skills to manage the data preparation for a complex, data-intensive research project independently.
+Head over to the [grading details](grading_details) to understand what is expected from you in each part of this project.
 
 ## Teams
 
@@ -47,8 +45,8 @@ After completion of the project, students and researchers need to be equipped wi
 Students can meet the course instructor for feedback during the scheduled coaching sessions (see [schedule](docs/course/schedule)).
 
 - Attendance is not mandatory but strongly encouraged.
-- Sign-up options will be shown on Canvas.
-- The meetings will be recorded, and shared with other students.
+- Sign-up may be necessary!
+<!--- The meetings will be recorded, and shared with other students.-->
 - We will make use of [TeamViewer](https://tilburgsciencehub.com/get/teamviewer). Please install it and be prepared to share your ID and temporary password.
 
 {{< hint info >}}
@@ -56,7 +54,7 @@ __Links to recordings and more tips & tricks__
 
 - [Open Science Boost - Hannes' playlist with videos on how to boost research efficiency](https://www.youtube.com/playlist?list=PLdDbyJQwReWgG0JCkRFmg4o-Wo8WvSB4r)
 - We're continuously adding new content to [Tilburg Science Hub](https://tilburgsciencehub.com), so bookmark the page and check for updates frequently!
-- Recorded sessions from previous editions
+- Recorded sessions from previous editions of the course
   - Three sessions with student teams during the first project week: https://youtu.be/CLpBwDTL5Xg
   - Background information on why not to version your data, and how to efficiently collaborate using GitHub Issues and the project board: https://youtu.be/pe-Zzu8s0So
 
@@ -64,7 +62,7 @@ __Links to recordings and more tips & tricks__
 
 
 ## Deadline & Submission
-- Deadline: 18 October, 5 pm
+- Deadline: {{< param "Course_Deadline_Project" >}}
 <!--Originally 26 March 2021, 6pm; extended to 2 April 2021, 6pm.-->
 - Please submit links to your GitHub repository with the necessary source code (one link per team).
 

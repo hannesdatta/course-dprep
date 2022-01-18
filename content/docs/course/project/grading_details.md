@@ -11,14 +11,12 @@ draft: false
 ## Overview
 The team project is submitted as a reproducible, end-to-end workflow on GitHub, featuring a well-structured and fully automated pipeline for data exploration & cleaning, analysis, and deployment.
 
-Please use the workflow templates available at [Tilburg Science Hub](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/) to kickstart your project.
-<!--Students who wish to document data collected as part of [oDCM](https://odcm.hannesdatta.com) (Online Data Collection and Management) can extend the workflow template (e.g., by adding the documentation of the raw data, any screenshots, etc.)-->
+Points can be obtained for three assessment criteria:
 
-1. Github repository (30% of the final grade)
+1. GitHub repository (30% of the final grade)
 2. Data preparation and analysis (45% of the final grade)
 3. Quality of the source code and degree of automation (25% of the final grade)
 
-## Calculation of team grades
 Weights for each component of the grading rubric below are indicated in brackets (e.g., 5%). In calculating your final grade, percentages are converted to grade points on a ten-point scale (e.g., 5% make up 0.5 grade points on a 10-point scale), weighted by the following percentages:
 
 * *High proficiency* and/or exceeds expectations (grade points x 100%)
@@ -41,55 +39,26 @@ Weights for each component of the grading rubric below are indicated in brackets
 ### 1. Github Repository
 
 #### 1.1 Research motivation (10%)
-The research question/business problem is clearly articulated and important. The choice for the research method (e.g., regression analysis) is motivated well. The way of deployment (e.g., PDF report, dashboard, ...) is useful and accessible to potential knowledge users, and clearly communicates the conclusions of the analysis. The workflow is of potential use to other students and the larger scientific community.
+The research question is clearly articulated and important. The choice for the research method (e.g., regression analysis) is motivated well. The way of deployment (e.g., PDF report, dashboard, ...) is useful and accessible to potential knowledge users, and clearly communicates the conclusions of the analysis. The automated and reproducible workflow is of potential use to other students and the larger scientific community.
 
 #### 1.2 Repository structure and documentation (10%)  
-The end-to-end workflow is made publicly available on GitHub. The repository contains a readme.md (markdown), which clearly explains the project’s goal, and provides instructions to potential contributors/replicators on how to run the project (see details and examples on the readme below). The project has a concise and accurate name, enticing the potential user to explore the workflow. An appropriate short name for the repository’s location is chosen (e.g., `github.com/yourusername/investigating-airbnb`). Additional metadata on GitHub is provided (e.g., a short project description), so that the repository feels and looks professional and complete.
+
+<!--Students who wish to document data collected as part of [oDCM](https://odcm.hannesdatta.com) (Online Data Collection and Management) can extend the workflow template (e.g., by adding the documentation of the raw data, any screenshots, etc.)-->
+
+The end-to-end workflow, kickstarted with one of the workflow templates available at [Tilburg Science Hub](https://tilburgsciencehub.com/examples/simple-reproducible-workflow/), is made *publicly available* on GitHub. The repository contains a readme.md (in markdown format, so that it renders well on GitHub), which clearly explains the project’s goal, and provides instructions to potential contributors/replicators on how to run the project. The project has a concise and accurate name, enticing the potential user to explore the workflow. An appropriate short name for the repository’s location is chosen (e.g., `github.com/yourusername/investigating-airbnb`). Additional metadata on GitHub is provided (e.g., a short project description), so that the repository feels and looks professional and complete.
 
 {{< hint info>}}
-
 ***Tip: Structure your `README.md`***
 
-The README file, written in markdown (`.md`) should consist (at least) of the following sections:
+The readme is not a copy of your way of deployment (e.g., your report), but *links* to it. Therefore, only summarize the main results in your readme (e.g., in bullet point format), or include screenshots (e.g., to your app, to your "best" figure).
 
-```
-# Short project title
-
-__Long project title, e.g., research question__
-
-## Motivation
-
-Motivate your research question or business problem. Clearly explain which problem is solved.
-
-## Method and results
-
-First, introduce and motivate your chosen method, and explain how it contributes to solving the research question/business problem.
-
-Second, summarize your results concisely. Make use of subheaders where appropriate.
-
-## Repository overview
-
-Provide an overview of the directory structure and files.
-
-## Running instructions
-
-Explain to potential users how to run/replicate your workflow. Touch upon, if necessary, the required input data, which (secret) credentials are required (and how to obtain them), which software tools are needed to run the workflow (including links to the installation instructions), and how to run the workflow. Make use of subheaders where appropriate.
-
-## More resources
-
-Point interested users to any related literature and/or documentation.
-
-## About
-
-Explain who has contributed to the repository. You can say it has been part of a class you've taken at Tilburg University.
-
-```
+More information on how a proper readme should look like can be found at [Tilburg Science Hub](https://tilburgsciencehub.com/write/readme)
 
 {{< /hint>}}
 
 
 #### 1.3 Breadth of contributions and way-of-working (10%)
-Multiple team members have actively contributed (“committed”) to the repository, for the entire duration of the project (i.e., do not just version your files at the end, but from beginning to end). Commit messages are accompanied by concise and clear commit messages (`git log`). Students have made active use of [GitHub Issues](https://guides.github.com/features/issues/) and the [GitHub Proiejct Board](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards) with the "scrum"-inspired columns "backlog", and the current srpint's "to do", "in progress", and "done". Students are assigning issues to one another, and integrating new features by means of pull requests from feature branches to the main branch.
+Multiple team members have actively contributed (“committed”) to the repository, for the entire duration of the project (i.e., do not just version your files at the end, but from beginning to end). Commit messages are accompanied by concise and clear commit messages (`git log`). Students have made active use of [GitHub Issues](https://guides.github.com/features/issues/) and the [GitHub Project Board](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards) with the "scrum"-inspired columns "backlog", and the current srpint's "to do", "in progress", and "done". Students are assigning issues to one another, and integrating new features by means of pull requests from feature branches to the main branch.
 
 ### 2. Data preparation & analysis
 

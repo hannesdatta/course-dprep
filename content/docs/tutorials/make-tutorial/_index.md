@@ -29,33 +29,12 @@ draft: false
     - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)
     - The content of the slides shown in the videos is [available here](pipelineautomation.pdf).
 
+
 2. Read the building block ["What are makefiles"](https://tilburgsciencehub.com/learn/makefiles)
 
 3. Start learning `make`! ([View](make-tutorial.html), [Download; right click - download file as](make-tutorial.Rmd))
 
-{{< hint info >}}
-__Optional readings__
 
-- Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
-- Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
-
-{{< /hint >}}
-
-{{< hint info >}}
-
-<!--
-
--->
-
-__Practice `make` commands on a real pipeline__
-
-- Check out the tutorial ["Practicing pipeline automation using `make`"](https://tilburgsciencehub.com/tutorials/reproducible-research/practicing-pipeline-automation-make/overview/) at Tilburg Science Hub.
-
-{{< hint warning >}}
-
-The tutorial involves a blend of R __and__ Python code. You may be unfamiliar with Python - but that's not a bad thing. The purpose is __not__ to turn you into a Python wizard, but rather to __illustrate the value of `make`__ in a data pipeline. The fact that you can run both R and Python scripts makes it very powerful!
-
-{{< /hint >}}
 
 <!--
 In the live session of this week, we'll see how we can quickly make changes to the workflow (e.g., swapping around files and directories) without breaking the pipeline.

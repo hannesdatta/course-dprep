@@ -24,6 +24,13 @@ https://tilburgsciencehub.com/get/git).
 
 - Looking for a more graphical user experience? Then you may find [GitHub Desktop](https://desktop.github.com) useful as well.
 
+## Hugo
+
+Hugo is a framework that enables you to turn markdown files into web pages. In this course, we use Hugo to launch the website of this course locally on your computer. Any changes that you make in the code are visible on your local server!
+
+- Please install Hugo by following the instructions on [this page](https://gohugo.io/getting-started/installing/)
+
+
 ## Make
 
 During this course, we'll be using Make - a tool used by software developers to automate workflows (e.g., to compile a new software program). Of course, we won't write entire software programs, but instead work on our project pipelines (that consist of preparing and analyzing data).
