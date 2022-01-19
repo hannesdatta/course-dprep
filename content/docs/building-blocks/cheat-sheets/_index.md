@@ -43,12 +43,13 @@ See below a collection of amazing cheat sheets that we recommend you to download
 
 ## Version control
 
-- [Git](https://education.github.com/git-cheat-sheet-education.pdf)
+- [Common Git commands](https://education.github.com/git-cheat-sheet-education.pdf)
+- [The full Git workflow](../../modules/week3/Git_cheatsheet.pdf)
 
 ## Make and automation
 
 - [Basic syntax](https://makefiletutorial.com)
-- [More complex workflows](https://devhints.io/makefile) (admittedly very complex...)
+
 
 ## Slide design & more
 

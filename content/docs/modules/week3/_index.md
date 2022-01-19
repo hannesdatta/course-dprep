@@ -26,7 +26,7 @@ draft: false
 
 ## Live stream 4
 - Livestream TBA: Using Scrum for Research, Issue & Project Management with Git and GitHub, and Inspecting Data
-- Notes on using [Git and GitHub to work on team projects](git_notes.pdf)
+- Look at the [cheatsheets](../../building-blocks/cheat-sheets) to refresh and improve your Git and programming skills!
 - Instead of the Q&A/walk-through of this week’s tutorial, there will be a simple Q&A session next week.
 
 <!--- [Activity to explore new data](activity.md)
