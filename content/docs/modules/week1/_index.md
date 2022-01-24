@@ -48,7 +48,7 @@ Recordings of the livestreams are published on Hannes' YouTube channel, so ensur
 - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
-## Live stream 2
+## Live stream 1
 - Q&A/walk-through of this week’s tutorial
   - TBA!
 
