@@ -12,7 +12,7 @@ draft: false
 - Continue to work on your [team projects](docs/course/project)
 <!--- Get inspired by the [building blocks](docs/building-blocks/)-->
 
-## Live stream 7
+## Live stream 6
 - Course summary and exam preparation
   - [Slides](slides.html)
   - Recording Course summary - TBA, Exam preparation - TBA

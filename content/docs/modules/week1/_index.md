@@ -10,14 +10,19 @@ draft: false
 
 <!--__Obtain business and data understanding, and explore data in R__-->
 
-## Live stream 1
+## Kick-starting your week
+- [Watch the kick-off for the week](https://youtu.be/XM2dkYN-Fbc)!
+
+## First lecture on campus
 
 - Introduction to the course <!--([re-watch](https://youtu.be/iq88xsSGyTg)))-->
   - [Slides](slides.html)
+
+<!--
   - Recordings
     - 1 | getting started - TBA!
     - 2 | why should you take this class (preview of what you'll learn!) + course setup - TBA!
-
+-->
 {{< hint info >}}
 Recordings of the livestreams are published on Hannes' YouTube channel, so ensure you [subscribe to it](http://www.youtube.com/c/hannesdatta?sub_confirmation=1) to stay up-to-date!
 

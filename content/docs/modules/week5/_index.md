@@ -21,7 +21,7 @@ draft: false
   - Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
   - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
 
-## Live stream 6
+## Live stream 5
 - Q&A/walk-through of this week’s tutorial - TBA!
 
 

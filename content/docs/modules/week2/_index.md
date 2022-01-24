@@ -22,7 +22,7 @@ draft: false
   - [Data analysis workflow](http://www.coordinationtoolkit.org/wp-content/uploads/130907-Data-flow.pdf)
   - [Additional information on reproducing work, organizing files and version control](https://www.tse-fr.eu/sites/default/files/TSE/documents/doc/wp/2018/wp_tse_933.pdf)
 
-## Live stream 3
+## Live stream 2
 - Check out the [Git / Github cheatsheet!](../week3/Git_cheatsheet.pdf)
 - Q&A/walk-through of this week's tutorial - TBA!
 - Coaching session for team projects - TBA!
