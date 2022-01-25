@@ -22,6 +22,7 @@ draft: false
   - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
 
 ## Live stream 5
+- Check out the [make cheatsheet!](../week5/make_cheatsheet.pdf)
 - Q&A/walk-through of this week’s tutorial - TBA!
 
 
