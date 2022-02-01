@@ -1,4 +1,4 @@
-dPrep - Live stream 1
+dPrep - Opening lecture 1
 ========================================================
 author: Hannes Datta
 date: 
@@ -12,10 +12,11 @@ https://support.rstudio.com/hc/en-us/articles/200486468
 Welcome to dPrep!
 ========================================================
 
-We're about to start with the first livestream of this class.
+We're about to start with the class!
 
-- Please **turn on** your camera; it helps us to interact better!
-- The **chat** is open - use it like on Twitch/YouTube to also talk to each other (or to me).
+- If you're joining on Zoom...
+    - Please **turn on** your camera; it helps us to interact better!
+    - The **chat** is open - use it like on Twitch/YouTube to also talk to each other (or to me).
 - If you haven't done so, please **explore the course page** at [dprep.hannesdatta.com](https://dprep.hannesdatta.com).
 
 <!--
@@ -29,8 +30,6 @@ We're about to start with the first livestream of this class.
 
 Agenda
 ========================================================
-
-*Will skip those parts that I have covered earlier in oDCM. Read the slides or watch the introduction to dPrep. Will shorten this stream a bit.*
 
 
 - Getting to know each other
@@ -52,10 +51,10 @@ Disclaimer
 ========================================================
 incremental: true
 
-- Slow me down & use the chat
+- Slow me down (& use the chat)
 - Live streams are *complements*, not substitutes for self-study & course website
 - Minimal use of slides; will post
-- This is not a class that merely teaches you R (but, if you invest time, you'll learn R on the way!)
+- This is not a class that merely teaches you __R__ (but, if you invest time, you'll learn R on the way!)
 - Mix of students at various levels (e.g., beginners, advanced R users)
 - I'm a marketer, not a data or computer scientist
 - Consider me your coach, not your *distant professor*
@@ -75,7 +74,7 @@ Key areas of expertise
 ========================================================
 
 - Substantive interests
-  - new business models (e.g., subscriptions)
+  - streaming business models (e.g., music, movies)
   - marketing-mix modeling and optimization
 
 - Methodological interests
@@ -90,7 +89,6 @@ Teaching activities (all openly available)
     - Data preparation and workflow management (*new*, https://dprep.hannesdatta.com)
     - Online data collection and management (*new*, https://odcm.hannesdatta.com)
     - MSc Thesis supervision (https://thesis.hannesdatta.com)
-    - Research in Social Media (*legacy*)
 - Other inititatives
   - Tilburg Science Hub (https://tilburgsciencehub.com)
   - YouTube channel (https://youtube.com/c/hannesdatta)
@@ -120,7 +118,7 @@ Motivation for course (I)
 
 - did my PhD in quant marketing
 - coded a lot (data prep, modeling), but didn't *learn how to structure my work*
-- created a complete chaos (but still got published, see [here](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/structure_phd_2013)
+- created a complete chaos (but still got published, see [here](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/structure_phd_2013))
 
 Motivation for course (II)
 ========================================================
@@ -285,6 +283,9 @@ Pulse
   - Possibility to ask questions and log where you're stuck.
 - Participating requirement (receive bonus points --> see grading)
 
+__...but__: still work in progress / may have to use Google Forms instead? ;)
+
+
 Project
 ========================================================
 
@@ -430,5 +431,5 @@ Getting started
 
 - Any questions?! If not -- I'll see you soon! (--> course schedule).
 
-- (Installation) issues from "prep week"? Stay on Zoom.
+- (Installation) issues from "prep week"? Let's discuss them now!
 
