@@ -25,14 +25,11 @@ draft: false
 <!--- Video: data set engineering (Hannes)
 -->
 
-## Live stream 5
+## Live stream 4
 - Q&A/walk-through of this week's tutorial
 - [Work on an activity to perform common data transformations](activity.md)
 
-## Exercises
-During this week's lecture, we will go over this tutorial where you practice preparing a dataset with R for further analysis. You can already take a look at it here: ([View](data-preparation.html), [Download; right click - download file as](data-preparation.Rmd))
 
-- Download the data from [here](data.zip) and store it in the same directory as your Markdown file.
 <!--- Ethics in scraping and APIs *live*
 -->
 

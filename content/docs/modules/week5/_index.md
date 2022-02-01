@@ -2,7 +2,7 @@
 weight: 5
 title: Week 5) Pipeline building and automation
 description: Automate your project's pipeline and make your work reproducible.
-bookCollapseSection: false
+bookCollapseSection: true
 draft: false
 ---
 
@@ -21,19 +21,10 @@ draft: false
   - Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
   - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
 
-## Live stream 6
+## Live stream 5
+- Check out the [make cheatsheet!](../week5/make_cheatsheet.pdf)
 - Q&A/walk-through of this week’s tutorial - TBA!
 
-## Exercises
-
-This exercise allows you to practice `make` commands on a real pipeline!
-
-- Check out the tutorial ["Practicing pipeline automation using make"](https://tilburgsciencehub.com/makefile/pipeline-automation) at Tilburg Science Hub.
-
-{{< hint info >}}
-
-The tutorial involves a blend of R __and__ Python code. You may be unfamiliar with Python - but that's not a bad thing. The purpose is __not__ to turn you into a Python wizard, but rather to __illustrate the value of `make`__ in a data pipeline. The fact that you can run both R and Python scripts makes it very powerful!
-{{< /hint >}}
 
 
 

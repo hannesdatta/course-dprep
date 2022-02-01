@@ -10,14 +10,19 @@ draft: false
 
 <!--__Obtain business and data understanding, and explore data in R__-->
 
-## Live stream 1
+## Kick-starting your week
+- [Watch the kick-off for the week](https://youtu.be/XM2dkYN-Fbc)!
+
+## First lecture on campus
 
 - Introduction to the course <!--([re-watch](https://youtu.be/iq88xsSGyTg)))-->
   - [Slides](slides.html)
+
+<!--
   - Recordings
     - 1 | getting started - TBA!
     - 2 | why should you take this class (preview of what you'll learn!) + course setup - TBA!
-
+-->
 {{< hint info >}}
 Recordings of the livestreams are published on Hannes' YouTube channel, so ensure you [subscribe to it](http://www.youtube.com/c/hannesdatta?sub_confirmation=1) to stay up-to-date!
 
@@ -31,23 +36,21 @@ Recordings of the livestreams are published on Hannes' YouTube channel, so ensur
 ## Self-study and activities
 - Preparation
   - If you haven't done so, please [complete the software installation](../../../docs/tutorials/software-installation/_index.md)
-- Tutorial
-  - [R Bootcamp](docs/tutorials/r-bootcamp)
 - Readings
   - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
   - [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
+- Tutorial
+  - [R Bootcamp](docs/tutorials/r-bootcamp)
+
 
 <!--
 - [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
 - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
-## Live stream 2
+## Live stream 1
 - Q&A/walk-through of this week’s tutorial
   - TBA!
-
-## Exercises
-
 
 
 [^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)

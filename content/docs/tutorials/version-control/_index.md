@@ -25,7 +25,7 @@ draft: false
     - What is the [command line / terminal](https://generalassembly.github.io/prework/cl)?!
     - Start practicing using the [DataCamp Introduction to Shell](https://learn.datacamp.com/courses/introduction-to-shell) (chapter 1).
 
-2. [Familiarize yourself with GitHub](https://lab.github.com/githubtraining/introduction-to-github)
+2. [Familiarize yourself with GitHub by working on this tutorial!](https://lab.github.com/githubtraining/introduction-to-github)
 
 3. Apply the end-to-end Git workflow using Git Bash (i.e., through the command line) ([View tutorial](version-control.html))
 

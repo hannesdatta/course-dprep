@@ -1,13 +1,19 @@
 ---
 title: Live Stream Activity
-draft: false
+draft: False
 ---
 
 # Live Stream Activity
 
+# Excercise 1
 ## Overview
 
-- Type: Breakout activity
+- Type: Breakout activity with 4-6 Students
+- Duration: 25 minutes
+- Goals
+  - Understand the process of input-transformation-output
+  - Apply the process in an R scripts
+
 <!--with 4-6 students<!--, *or* guided "look over the shoulders of Hannes" session-->
 <!--- Duration: 25 minutes
 <!--- Goals
@@ -28,3 +34,15 @@ If everything works ("Nothing to be done for `make`"), start extending the workf
 - add the script to the `makefile`, and run `make`
 - add a RMarkdown document, which (roughly) inspects the CSV files. Don't spend much time on the exploration code here - the purpose is for you to get starting using `make`!
 - Throughout, keep on running `make` to verify your project is (still) working as expected.
+
+
+
+# Exercise 2
+This exercise allows you to practice `make` commands on a real pipeline!
+
+- Check out the tutorial ["Practicing pipeline automation using make"](https://tilburgsciencehub.com/makefile/pipeline-automation) at Tilburg Science Hub.
+
+{{< hint info >}}
+
+The tutorial involves a blend of R __and__ Python code. You may be unfamiliar with Python - but that's not a bad thing. The purpose is __not__ to turn you into a Python wizard, but rather to __illustrate the value of `make`__ in a data pipeline. The fact that you can run both R and Python scripts makes it very powerful!
+{{< /hint >}}

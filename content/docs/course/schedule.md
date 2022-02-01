@@ -20,18 +20,18 @@ Login credentials for the live streams will be made available on the *Canvas pag
 Course week|Type|Content|Date|Time
 |:-:|---------|---------|-------------|--------------------|
 |[Week 0](../../modules/prep)      | | Preparation before the course starts   |No live streams
-|[Week 1](../../modules/week1)      |Livestream #1 |Course introduction  |Tuesday, 1 February, 2022|10.45-12.30|
-|      |Live stream #2 |R Bootcamp | Thursday, 3 February, 2022|14.45-16.30|
-|[Week 2](../../modules/week2)     |Live stream #3 |Version Control and Project Management with Git and GitHub|Thursday, 10 February, 2022|14.45-16.30|
+|[Week 1](../../modules/week1)      |College on campus - CZ 9 |Course introduction  |Tuesday, 1 February, 2022|10.45-12.30|
+|      |Live stream #1 |R Bootcamp | Thursday, 3 February, 2022|14.45-16.30|
+|[Week 2](../../modules/week2)     |Live stream #2 |Version Control and Project Management with Git and GitHub|Thursday, 10 February, 2022|14.45-16.30|
 |[Week 3](../../modules/week3)      |Coaching #1 | See [workplan for project](docs/course/project/workplan) |Monday, 14 February, 2022|14.45-16.30|
-|        |Live stream #4 |Exploring and auditing data with RMarkdown |Thursday, 17 February, 2022|14.45-16.30|
+|        |Live stream #3 |Exploring and auditing data with RMarkdown |Thursday, 17 February, 2022|14.45-16.30|
 |[Week 4](../../modules/week4)      |Coaching #2 | See [workplan for project](docs/course/project/workplan) |Tuesday, 22 February, 2022|14.45-16.30|
-|      |Live stream #5 | Engineering data sets |Friday, 25 February, 2022|12.45-14.30|
+|      |Live stream #4 | Engineering data sets |Friday, 25 February, 2022|12.45-14.30|
 |[Week 5](../../modules/week5)      |Coaching #3 | See [workplan for project](docs/course/project/workplan) |Monday, 7 March, 2022|14.45-16.30|
-|      |Live stream #6 | Pipeline building and automation |Thursday, 10 March, 2022|14.45-16.30|
+|      |Live stream #5 | Pipeline building and automation |Thursday, 10 March, 2022|14.45-16.30|
 |[Week 6](../../modules/week6)      |Coaching #4 | See [workplan for project](docs/course/project/workplan) |Monday, 14 March, 2022|14.45-16.30|
 |[Week 7](../../modules/week7)      |Optional Coaching | See [workplan for project](docs/course/project/workplan) |Thursday, 17 March, 2022|14.45-16.30|
-|      |Live stream #7 | Course summary and exam preparation  |Thursday, 24 March, 2022|14.45-16.30|
+|      |Live stream #6 | Course summary and exam preparation  |Thursday, 24 March, 2022|14.45-16.30|
 
 <!--
 Course week|Unit|Mon|Tue|Wed|Thu|Fri|Sat|Sun|
