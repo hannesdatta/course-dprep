@@ -8,8 +8,7 @@ draft: false
 
 # Week 4: Engineering data sets
 
-<!--## Kick-starting your week
-- Watch the energizer for the week (to be made available)<!--[the energizer for the week](https://youtu.be/tctr4GgrD4w) on YouTube!-->
+
 ## Kick-starting your week
 - [Watch the kick-off for the week](https://youtu.be/z_Hh1jlL1Ac)!
 
