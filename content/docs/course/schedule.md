@@ -17,7 +17,7 @@ Login credentials for the live streams will be made available on the *Canvas pag
 
 
 
-Course week|Type|Content|Breakout Activity|Date|Time
+Course week|Type|Content|Breakout Activity|Date|Time | check branch
 |:-:|---------|---------|--------------|------------------|---------------------|
 |[Week 0](../../modules/prep)      | | Preparation before the course starts   |No breakout activity|No live streams
 |[Week 1](../../modules/week1)      |College on campus - CZ 9 |Course introduction  |No breakout activity|Tuesday, 1 February, 2022|10.45-12.30|
