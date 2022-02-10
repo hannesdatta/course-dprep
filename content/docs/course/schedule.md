@@ -17,14 +17,14 @@ Login credentials for the live streams will be made available on the *Canvas pag
 
 
 
-Course week|Type|Content|Breakout Activity|Date|Time | check branch
+Course week|Type|Content|Breakout Activity|Date|Time |
 |:-:|---------|---------|--------------|------------------|---------------------|
 |[Week 0](../../modules/prep)      | | Preparation before the course starts   |No breakout activity|No live streams
 |[Week 1](../../modules/week1)      |College on campus - CZ 9 |Course introduction  |No breakout activity|Tuesday, 1 February, 2022|10.45-12.30|
 |      |Live stream #1 |R Bootcamp |No breakout activity|Thursday, 3 February, 2022|14.45-16.30|
 |[Week 2](../../modules/week2)     |Live stream #2 |Version Control and Project Management with Git and GitHub|See [breakout activity](docs/modules/week2/activity)|Thursday, 10 February, 2022|14.45-16.30|
 |[Week 3](../../modules/week3)      |Coaching #1 | See [workplan for project](docs/course/project/workplan) |No breakout activity|Monday, 14 February, 2022|14.45-16.30|
-|        |Live stream #3 |Exploring and auditing data with RMarkdown |No breakout activity|Thursday, 17 February, 2022|14.45-16.30|
+|        |Live stream #3 |Exploring and auditing data with RMarkdown |See [breakout activity](/docs/modules/week3/activity)|Thursday, 17 February, 2022|14.45-16.30|
 |[Week 4](../../modules/week4)      |Coaching #2 | See [workplan for project](docs/course/project/workplan) |No breakout activity|Tuesday, 22 February, 2022|14.45-16.30|
 |      |Live stream #4 | Engineering data sets |No breakout activity|Friday, 25 February, 2022|12.45-14.30|
 |[Week 5](../../modules/week5)      |Coaching #3 | See [workplan for project](docs/course/project/workplan) |No breakout activity|Monday, 7 March, 2022|14.45-16.30|
