@@ -1,6 +1,6 @@
 ---
 weight: 20
-title: "Data"
+title: "Test"
 bookCollapseSection: true
 description: "Kickstart your team project with this data set"
 draft: false
@@ -12,7 +12,7 @@ draft: false
 
 ## Kick-starting the team project with data from Airbnb
 
-You will use the *Airbnb data* described below to work on your project.
+At the moment I am working on a project for Data prep.
 
 ## Inside Airbnb
 
