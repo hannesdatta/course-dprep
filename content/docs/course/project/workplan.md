@@ -1,12 +1,12 @@
 ---
 weight: 10
-title: "Workplan"
+title: "Max"
 bookCollapseSection: true
 description: "What to do, when? Check out the workplan!"
 draft: false
 ---
 
-# Work plan
+# Max is amazing
 
 ## Deliverables
 
