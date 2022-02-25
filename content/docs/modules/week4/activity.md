@@ -8,7 +8,7 @@ draft: false
 ## Overview
 
 - Type: Breakout activity with 4-6 students<!--, *or* guided "look over the shoulders of Hannes" session-->
-- Duration 15 minutes
+- Duration 15-20 minutes
 - Goals
   - Understand the process of input-transformation-output
   - Apply process in an R script
@@ -22,7 +22,7 @@ Actively make use of the [cheat sheets](../../../building-blocks/cheat-sheets) (
 
 ### Input
 
-Use this snippet to load the data, directly from [https://spotifycharts.com](https://spotifycharts.com).
+Use this snippet to download and import the data, which originally was retrieved from [https://spotifycharts.com](https://spotifycharts.com).
 
 ```r
 # Load packages
@@ -73,7 +73,7 @@ Work on *one or many* of the transformation steps below.
 
 ### Output
 
-Write the resulting data sets to *Excel*, using [the `writexl` package](https://www.rdocumentation.org/packages/writexl/versions/1.4.0/topics/write_xlsx.
+Write the resulting data sets to *Excel*, using [the `writexl` package](https://www.rdocumentation.org/packages/writexl/versions/1.4.0/topics/write_xlsx).
 
 <!--
 ## Code written in class
