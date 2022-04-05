@@ -50,15 +50,15 @@ __Communication with anybody about the content of the exam, during *and after* t
 
 ### Part 1: Theory
 
-- This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__.
+- This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__ (i.e., not in order of difficulty or weight/points).
 - Students __*cannot* go back between questions__ (i.e., questions need to be answered in the order in which they appear).
 - Allocate approximately 45 minutes to work on this part.
 - Cognitive skills that will be tested are knowledge, comprehension, and analysis.
 
 ### Part 2: Practical
 
-- This part of the exam consists of __personalized open questions__, shown in __random order__.
-- Students can go freely back and forth between questions in this part.
+- This part of the exam consists of __personalized open questions__, shown in __random order__ (i.e., not in order of difficulty or weight/points).
+- Students can go __*freely back and forth between questions*__ in this part.
 - Allocate approximately 2:15 minutes to work on this part, which focuses on all learning goals of the course as practiced in the tutorials.
 - Expect two questions (potentially w/ smaller subquestions), mixing "mix" various learning goals. For example:
   - Work on an issue posted at a publicly available GitHub repository, which focuses on data exploration and transformation (e.g., using RMarkdown, tidyverse).
