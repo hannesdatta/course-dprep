@@ -6,7 +6,7 @@ type: docs
 # Data preparation and Workflow Management (dPrep)
 
 
-_Instructor: [dr. Hannes Datta](https://hannesdatta.com)_
+_Instructor: [dr. Hannes Datta](https://hannesdatta.com)_ <a class="github-button" href="https://github.com/hannesdatta" aria-label="Follow @hannesdatta on GitHub">Follow @hannesdatta</a>
 
 _Course codes: 328059-M3 (fall, block 1) and 328062-M3 (spring, block 3)_
 
