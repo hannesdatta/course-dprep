@@ -3,7 +3,7 @@ title: Introduction
 type: docs
 ---
 
-# Data preparation and Workflow Management (dPrep)
+# Data Preparation and Workflow Management (dPrep)
 
 
 _Instructor: [dr. Hannes Datta](https://hannesdatta.com)_ <a class="github-button" href="https://github.com/hannesdatta" aria-label="Follow @hannesdatta on GitHub">Follow @hannesdatta</a>
