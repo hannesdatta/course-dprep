@@ -52,13 +52,13 @@ The end-to-end workflow, kickstarted with one of the workflow templates availabl
 
 The readme is not a copy of your way of deployment (e.g., your report), but *links* to it. Therefore, only summarize the main results in your readme (e.g., in bullet point format), or include screenshots (e.g., to your app, to your "best" figure).
 
-More information on how a proper readme should look like can be found at [Tilburg Science Hub](https://tilburgsciencehub.com/write/readme)
+More information on how a proper readme should look like can be found at [Tilburg Science Hub](https://tilburgsciencehub.com/write/readme).
 
 {{< /hint>}}
 
 
 #### 1.3 Breadth of contributions and way-of-working (10%)
-Multiple team members have actively contributed (“committed”) to the repository, for the entire duration of the project (i.e., do not just version your files at the end, but from beginning to end). Commit messages are accompanied by concise and clear commit messages (`git log`). Students have made active use of [GitHub Issues](https://guides.github.com/features/issues/) and the [GitHub Project Board](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards) with the "scrum"-inspired columns "backlog", and the current srpint's "to do", "in progress", and "done". Students are assigning issues to one another, and integrating new features by means of pull requests from feature branches to the main branch.
+Multiple team members have actively contributed (“committed”) to the repository, for the entire duration of the project (i.e., do not just version your files at the end, but from beginning to end). Commit messages are accompanied by concise and clear commit messages (`git log`). Students have made active use of [GitHub Issues](https://guides.github.com/features/issues/) and the [GitHub Project Board](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards) with the "scrum"-inspired columns "backlog", and the current sprint's "to do", "in progress", and "done". Students are assigning issues to one another, and integrating new features by means of pull requests from feature branches to the main branch.
 
 ### 2. Data preparation & analysis
 
