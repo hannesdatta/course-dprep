@@ -28,7 +28,7 @@ enableGitInfo = true
 
   Course_Deadline_Project = "Sunday, 27 March 2022, 5 pm"
   Course_Exam_Mainsit = "Tuesday, 5 April 2022"
-  Course_Exam_Resit = "Tuesday, 28 June 2022"
+  Course_Exam_Resit = "Thursday, 30 June 2022"
 
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
