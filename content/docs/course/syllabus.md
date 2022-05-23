@@ -30,6 +30,8 @@ After successful completion of this course, you will be able to:
 - Use Workflow Management Tools to create and run portable, automated, and reproducible data pipelines
 - Track, evaluate and share your progress on the course's learning goals[^2]
 
+The specification matrix for this course can be [downloaded here](../specification_tables_dprep.pdf). This matrix gives an overview of all the learning goals and their weights in each graded component of the course (i.e., in the final exam, team project and Pulse).
+
 [^2]: Students use a web app to monitor their progress on the course's learning goals by "ticking off" items from a to-do list (e.g., "I have installed R," "I have finished Tutorial X," etc.). The instructor can use the app to learn which topics to highlight during live streams. Students, in turn, can use the app to see how far others in the class have already proceeded, giving them direct feedback on their performance.
 
 
