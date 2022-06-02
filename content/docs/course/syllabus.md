@@ -17,7 +17,7 @@ This course is instructed by [dr. Hannes Datta](https://tiu.nu/datta), Associate
 
 ### Learning goals
 
-The increasing complexity of data (e.g., scraped from the Internet)[^1] and analytics (e.g., requiring high-performance computing) need a novel way of working to efficiently manage empirical marketing research projects. Therefore, in this course, you (1) develop your coding skills in R ("code"), (2) collaborate on research projects using GitHub ("collaborate"), (3) automate your research pipeline end-to-end ("automate"). The three principles ("code-collaborate-automate") are applied along the typical research workflow (i.e., data exploration, preparation, analysis, and reporting). They specifically zoom in on engineering data sets from complex raw data and disseminate research findings in a novel way (e.g., using apps).
+The increasing complexity of data (e.g., scraped from the Internet)[^1] and analytics (e.g., requiring high-performance computing) need a novel way of working to efficiently manage empirical marketing research projects. Therefore, in this course, you (1) develop your coding skills in R ("code"), (2) collaborate on research projects using GitHub ("collaborate"), and (3) automate your research pipeline end-to-end ("automate"). The three principles ("code-collaborate-automate") are applied along the typical research workflow (i.e., data exploration, preparation, analysis, and reporting). They specifically zoom in on engineering data sets from complex raw data and disseminate research findings in a novel way (e.g., using apps).
 
 [^1]: For example, see the data sections in these papers: [Building a user panel of music consumption from Spotify](http://tiu.nu/spotify), [Preparing a panel data set on electronics sales and marketing mix activities across thousands of brands](https://journals.sagepub.com/doi/10.1177/00222437211058102).
 
@@ -52,7 +52,7 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ## Teaching format
 
-- Online-only (on Zoom; first and last lecture may take place on Campus)
+- Blended (a mix of online lectures and tutorials, and online/offline coaching sessions)
 - Combination of self-paced tutorials (e.g., using R Notebooks), and interactive live streams for feedback and coaching (recordings are shared with students)
 - Learn state-of-the-art tools popular among scientists, marketing analysts, and data scientists (e.g., R, GitHub)
 - Open education & open science (all material is open; publicly accessible course page that stays with you, even after the end of the course)
