@@ -1,9 +1,9 @@
 ---
-weight: 10
+bookFlatSection: true
 title: "Team Project"
+bookHidden: false
+weight: 35
 bookCollapseSection: true
-description: " "
-draft: false
 ---
 
 # Team Project

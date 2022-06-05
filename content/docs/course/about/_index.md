@@ -1,8 +1,8 @@
 ---
-bookFlatSection: true
 title: "About"
-bookHidden: false
-weight: 100
+bookCollapseSection: false
+weight: 1
+description: " "
 ---
 
 # About

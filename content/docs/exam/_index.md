@@ -1,9 +1,9 @@
 ---
+bookFlatSection: true
 title: "Exam"
-weight: 8
-description: " "
+bookHidden: false
+weight: 38
 bookCollapseSection: true
-description: " "
 ---
 
 # Final exam
@@ -16,7 +16,7 @@ The course content will be tested in the form of a __take-home exam__, to be com
 
 - Date: __{{< param "Course_Exam_Mainsit" >}}__
 - Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
-- Exam registration: at the latest one week prior to the exam via [this form](https://docs.google.com/forms/d/e/1FAIpQLSeJg09VehRpZxkVitKp22hGqvoTLdFT3-CMVZXDpISc0447bg/viewform?usp=sf_link) 
+- Exam registration: at the latest one week prior to the exam via [this form](https://docs.google.com/forms/d/e/1FAIpQLSeJg09VehRpZxkVitKp22hGqvoTLdFT3-CMVZXDpISc0447bg/viewform?usp=sf_link)
 - Inspection: tba <!--(signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)-->
 
 ### Resit
