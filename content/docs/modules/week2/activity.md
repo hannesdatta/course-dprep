@@ -42,7 +42,7 @@ __Step 2: Run the repository's code (= run the website)__
 4. Enter the directory of the cloned repository using `cd course-dprep`, and run `hugo server`.
 5. You can now open the website *locally in your browser*. Check the terminal for the exact address, but likely you just have to enter `https://127.0.0.1:1313` in your browser!
 6. Check out the code in `\docs` - the websites are written in Markdown, and you can easily add/change. Observe how the site actually changes in your browser!
-7. Open the course in a text editor such as [Atom](https://tilburgsciencehub.com/choose/text-editor) and put it side-to-side with the local Hugo server. You will see that any changes you make and save in Atom are visible on the server!
+7. Open the course in a text editor such as [Visual Studio](https://code.visualstudio.com/) and put it side-to-side with the local Hugo server. You will see that any changes you make and save in Visual Studio are visible on the server!
 
 __Step 3: Make changes__
 
