@@ -50,7 +50,7 @@ __Directory Structure__
 __Makefile__
 ```
 data/dataset.csv: load.R
-      R - vanilla < load.R
+      R --vanilla < load.R
 ```
 
 ## Part 2:
