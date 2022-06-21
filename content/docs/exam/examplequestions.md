@@ -29,6 +29,29 @@ This part of the exam consists of __personalized open and closed (multiple-choic
 
 4. What are the benefits from automating pipelines, compared to manually executing source code files? (*comprehension*)
 
+5. Please view the code snippet below.
+
+```
+library(dplyr)
+df <- read.csv('data.csv')
+df <- df %>% filter(age >= 18)
+```
+Please assess the completeness of the script with regard to the ITO components of a source code file. Can you identify any missing piece in the code? (*analysis*)
+
+6. Please assess whether the makefile below will run when you type "make". (*analysis*)
+
+__Directory Structure__
+```
+\readme.md
+\code\makefile
+\code\load.R
+\data\dataset.csv
+```
+__Makefile__
+```
+data/dataset.csv: load.R
+      R - vanilla < load.R
+```
 
 ## Part 2:
 
