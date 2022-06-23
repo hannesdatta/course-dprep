@@ -28,6 +28,7 @@ Head over to the [grading details](grading_details) to understand what is expect
 - Students work in groups
   - 4-5 students per team
   - Allocation in the first course week
+  - Register via GitHub classroom (link will be disclosed soon)
 <!--
 - Three types of teams
   - __(1) Regular teams__ (by default) work with data from [AirBnB](airbnb.md)
@@ -62,9 +63,11 @@ __Links to recordings and more tips & tricks__
 
 
 ## Deadline & Submission
+- The submitted repository on Github classroom is the team project that will be graded.
+
 - Deadline: {{< param "Course_Deadline_Project" >}}
 <!--Originally 26 March 2021, 6pm; extended to 2 April 2021, 6pm.-->
-- Please submit links to your GitHub repository with the necessary source code (one link per team).
+
 
 {{< hint info>}}
 __Where do I submit my report?__

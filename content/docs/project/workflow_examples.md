@@ -1,13 +1,15 @@
 ---
 weight: 40
-title: "Examples & readings"
+title: "Project ideas"
 bookCollapseSection: true
 description: "More information to take your project to the next level"
 draft: false
 ---
 
+# 1. Projects from previous editions
+To give you an idea of what a good project could look like, some of the repositories of previous course editions are shared through the [dprep course organization](https://github.com/course-dprep) on GitHub! Feel free to check these out and get inspired by them for your own team project!
 
-# Recommended Readings
+# 2. Recommended Readings
 
 * [Information for data and code replication packages](https://social-science-data-editors.github.io/guidance/Requested_information.html)
 * [Verification Guidance](https://social-science-data-editors.github.io/guidance/Verification_guidance.html)
@@ -16,7 +18,7 @@ draft: false
 
 Also check out the [example workflows on our site!](docs/examples)
 
-# Examples
+# 3. Examples
 
 Curious to see what you can build after following this course? Or looking for some ideas how to structure the directory structure of your team project?
 
