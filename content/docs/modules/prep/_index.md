@@ -15,8 +15,9 @@ We also use some premium content of Datacamp.com, so make sure to sign up using 
 
 - Get a [Datacamp.com account to access Premium content for free](../../../docs/course/support/datacamp)
 
+Finally, we recommend using a text editor, as this greatly improves your user experience and allows you to easily change text and code.
 
-
+- [Click here to install Visual Studio as your text editor](https://code.visualstudio.com)
 
 ---
 <br>
