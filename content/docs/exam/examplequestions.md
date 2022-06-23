@@ -20,6 +20,9 @@ Below, you can find a few example questions, which will be discussed with studen
 This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__.
 
 {{< /hint >}}
+![](../dprep_part1.png)
+
+*Note: the number of questions depends on the points awarded to each question. The instructions during the final exam may slightly vary, so make sure to still read it accordingly.*
 
 1. Please name a tool that can be used to automate workflows. (*knowledge*)
 
@@ -53,6 +56,8 @@ data/dataset.csv: load.R
       R --vanilla < load.R
 ```
 
+![](../dprep_overview.png)
+
 ## Part 2:
 
 {{< hint warning >}}
@@ -60,6 +65,10 @@ data/dataset.csv: load.R
 This part of the exam consists of __personalized open questions__, shown in __random order__. You can freely go back and forth between these questions.
 
 {{< /hint >}}
+
+![](../dprep_part2.png)
+
+*Note: the instructions during the final exam may slightly vary, so make sure to still read it accordingly.*
 
 ### Question 1
 
