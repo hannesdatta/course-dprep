@@ -44,7 +44,7 @@ All sorts of cheatsheets for RStudio can be found [here!](https://rstudio.com/re
 
 - [Make workflow cheatsheet](../../modules/week5/tsh_make_cheatsheet.pdf)
 - [Basic syntax](https://makefiletutorial.com)
-
+- [Rendering R markdown docs in make](https://monashbioinformaticsplatform.github.io/2017-11-16-open-science-training/topics/automation.html)
 
 ## 4. Slide design & more
 

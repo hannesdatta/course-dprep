@@ -16,7 +16,7 @@ To give you an idea of what a good project could look like, some of the reposito
 * [Data and Code Policy of the American Economic Association](https://www.aeaweb.org/journals/data/data-code-policy)
 * [Guide for collaboration at The Turing Way](https://the-turing-way.netlify.app/collaboration/collaboration.html)
 
-Also check out the [example workflows on our site!](docs/examples)
+Also check out the [cheatsheets](../../building-blocks/cheat-sheets) for relevant information to use in your team project (e.g., rendering rmd files in make, using Shiny apps, Git commans and more!)
 
 # 3. Examples
 
