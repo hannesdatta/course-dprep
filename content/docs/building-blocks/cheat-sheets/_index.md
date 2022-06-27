@@ -42,7 +42,7 @@ All sorts of cheatsheets for RStudio can be found [here!](https://rstudio.com/re
 
 ## 3. Make and automation
 
-- [Make workflow cheatsheet](../../modules/week5/make_cheatsheet.pdf)
+- [Make workflow cheatsheet](../../modules/week5/tsh_make_cheatsheet.pdf)
 - [Basic syntax](https://makefiletutorial.com)
 
 
