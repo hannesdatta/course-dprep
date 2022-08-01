@@ -1,46 +1,21 @@
 ---
-<<<<<<< HEAD
-weight: 40
-title: "Recommended readings"
-bookCollapseSection: true
-description: "More information to take your project to the next level"
-draft: false
----
-
-# Recommended Readings
-=======
-<<<<<<<< HEAD:content/docs/project/examples/_index.md
-bookFlatSection: false
-title: "Examples"
-bookHidden: false
-weight: 50
-bookCollapseSection: true
-draft: false
-description: Curious to see what you can build after following this course? Or looking for some ideas how to structure the directory structure of your team project?
-
-========
 weight: 40
 title: "Project ideas"
 bookCollapseSection: true
 description: "More information to take your project to the next level"
-draft: false
->>>>>>>> d42576799d2b1a6e7c00af7d17ea80000fd8ef09:content/docs/project/workflow_examples.md
+draft: true
+
 ---
 
 # 1. Projects from previous editions
 To give you an idea of what a good project could look like, some of the repositories of previous course editions are shared through the [dprep course organization](https://github.com/course-dprep) on GitHub! Feel free to check these out and get inspired by them for your own team project!
 
 # 2. Recommended Readings
->>>>>>> d42576799d2b1a6e7c00af7d17ea80000fd8ef09
-
 * [Information for data and code replication packages](https://social-science-data-editors.github.io/guidance/Requested_information.html)
 * [Verification Guidance](https://social-science-data-editors.github.io/guidance/Verification_guidance.html)
 * [Data and Code Policy of the American Economic Association](https://www.aeaweb.org/journals/data/data-code-policy)
 * [Guide for collaboration at The Turing Way](https://the-turing-way.netlify.app/collaboration/collaboration.html)
 
-<<<<<<< HEAD
-Also check out the [example workflows on our site!](docs/examples)
-=======
 Also check out the [cheatsheets](../../building-blocks/cheat-sheets) for relevant information to use in your team project (e.g., rendering rmd files in make, using Shiny apps, Git commans and more!)
 
 # 3. Examples
@@ -90,4 +65,3 @@ If you find a good example, add it via a pull request, please! Curious how? Foll
 
 * [Stackoverflow](https://stackoverflow.com/)
 * [Geeksforgeeks](https://www.geeksforgeeks.org/)
->>>>>>> d42576799d2b1a6e7c00af7d17ea80000fd8ef09

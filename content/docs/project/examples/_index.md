@@ -1,20 +1,9 @@
 ---
-<<<<<<<< HEAD:content/docs/project/examples/_index.md
-bookFlatSection: false
-title: "Examples"
-bookHidden: false
-weight: 50
-bookCollapseSection: true
-draft: false
-description: Curious to see what you can build after following this course? Or looking for some ideas how to structure the directory structure of your team project?
-
-========
 weight: 40
 title: "Project ideas"
 bookCollapseSection: true
 description: "More information to take your project to the next level"
 draft: false
->>>>>>>> d42576799d2b1a6e7c00af7d17ea80000fd8ef09:content/docs/project/workflow_examples.md
 ---
 
 # 1. Projects from previous editions
