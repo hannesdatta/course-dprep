@@ -15,5 +15,6 @@ It's important to spend some time *before the beginning of the class* to install
 
 {{< datacamp >}}
 
+---
 <br>
 <div style="text-align: right">{{< button relref="week1" >}}Next week{{< /button >}}</div>

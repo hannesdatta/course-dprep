@@ -2,9 +2,8 @@
 bookFlatSection: true
 title: "About"
 bookHidden: false
-weight: 100
+weight: 70
 ---
-
 # About
 
 When we worked on our first empirical research project about a decade ago, we honestly didn't have a clue on how to manage data-intensive research projects. Over the years, we found out how cumbersome it could be to be good at stats, but bad at automizing and documenting our work.

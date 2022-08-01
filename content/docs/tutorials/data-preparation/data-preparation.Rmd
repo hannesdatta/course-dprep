@@ -1,11 +1,12 @@
 ---
 title: "Data Preparation"
 author: "Practise"
-output: html_document
+output: webexercises::webexercises_default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(webexercises)
 ```
 
 *In this tutorial, we'll take data preparation to the next level by considering a variety of common data issues in the Spotify Top 200 rankings. We'll start off with multiple raw big data sets and end up with a single data frame ready for analysis!*
@@ -78,8 +79,9 @@ For this exercise we have collected the rankings for 2020 which have been split 
 **Exercise 1**  
 Download the [data sets](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/data-preparation/data.zip) and describe the structure of the data sets in your own words. What is the target unit of analysis? Do columns seem complete? Are there any values that do not make sense? Are “strings” properly encoded? What are common columns across the three files? Please keep in mind that opening the data into a spreadsheet programme such as Excel only shows you the first 1.05 million records or so (R, however, can load in all the data!).
 
-**Solution**  
+`r hide("Solution Exercise 1")`
 The streams data set contains the top 200 songs on given date in a country. The popularity and song id columns have missing values, the ranks are all between 1 and 200, and the number of streams seems is at least 1000. The `country` column can be joined on the `country_code_2_letter` from the country_codes file. Similarly, the `song_id` can be joined on the `song_id` from songs.csv. The `song_name` column has some non-ASCII characters (e.g., `Ë™™Â•Ω‰∏çÂì≠`) here and there. Roughly one sixth of all songs is not associated with any genre tags, 17 songs don't have any song id, and for 9 songs the artist is missing. 
+`r unhide()`
 
 \
 
@@ -92,8 +94,7 @@ Merge all three files into a single data frame `df` and export the result as `me
 * To avoid confusion between overlapping column names (e.g., country appears in both `streams.csv` and `country_codes.csv`), you may consider adding suffixes. 
 
 
-**Solution**  
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE, webex.hide = 'Solution Exercise 2'}
 # install.packages("dplyr") - run this command if you have never used the package before
 library(dplyr)
 
@@ -125,8 +126,7 @@ A track can appear in multiple top 200 lists across countries (e.g., both in the
 
 \
 
-**Solution**  
-```{r eval=FALSE}
+```{r eval=FALSE, webex.hide = 'Solution Exercise 3'}
 #input
 df <- read.csv("merged_df.csv", sep=",")
 
@@ -157,8 +157,7 @@ The `popularity_filled` column has been added which takes on the value of the `p
 **Exercise 4**  
 Implement this data imputation strategy using the `filter`, `groupby`, and `summarise` functions from the `dplyr` package and the result as `df_imputed.csv`. We recommend first computing the imputation values (for each country across the days), and then replacing missing values in the `popularity` column with their matching counterparts. Evaluate your results in terms of the pros and cons of this approach and try to come up with an alternative imputation strategy (incl. arguments why you prefer that approach).
 
-**Solution**  
-```{r eval=FALSE}
+```{r eval=FALSE, webex.hide = 'Solution Exercise 4'}
 # input
 df <- read.csv("df_no_duplicates.csv", sep=",")
 
@@ -195,8 +194,7 @@ More likely than not, you have come across the `lm()` (i.e., linear model) funct
 3. Merge `df` and `dates` and inspect your results (which type of join do you use?)
 
 
-**Solution**  
-```{r eval=FALSE}
+```{r eval=FALSE, webex.hide = 'Solution Exercise 5'}
 # Step 1
 date <- seq(min(as.Date(df$date)), max(as.Date(df$date)), by = "day")
 
@@ -226,7 +224,7 @@ print(rank(-rank_example))
 **Exercise 6**  
 Add a `ranking` column to `df` using the `dplyr` package and export the result as `df_ranking.csv`. Although it is unlikely that some tracks have exactly the same number of streams, think about how you will deal with these edge cases (tip: run `?rank` to look up the documentation). Does your ranking always run from 1 to 200? Why is that? Investigate the root cause and fix it! 
 
-```{r eval=FALSE}
+```{r eval=FALSE, webex.hide = 'Solution Exercise 6'}
 # input
 df <- read.csv("df_imputed.csv", sep=",")
 
@@ -238,7 +236,7 @@ df <- df %>% group_by(country, date) %>%
 # Once we inspect one of the listings of df[df$ranking >= 200, ] we find that these records typically have redundant data somewhere hidden in between. For example, for df[(df$date == "2020-05-17") & (df$country == "HK"),] we discover that ranking 59 appears 17 times (!) which can be attributed to missing values `song_id` 
 
 # remove rows without song_id (if you then recreate the ranking column you'll come to the conclusion the maximum ranking has become 200!)
-df <- df[!is.na(df$song_id),]
+df <- df %>% filter(!is.na(song_id))
 
 # output
 write.csv(df, "df_ranking.csv", row.names = FALSE)
@@ -297,8 +295,7 @@ Following these steps, it's your turn to create a data set, with (a) rows being 
 
 \
 
-**Solution**  
-```{r eval=FALSE}
+```{r eval=FALSE, webex.hide = 'Solution Exercise 7'}
 library(reshape2)
 
 # load input

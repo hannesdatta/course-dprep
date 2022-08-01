@@ -20,6 +20,9 @@ Below, you can find a few example questions, which will be discussed with studen
 This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__.
 
 {{< /hint >}}
+![](../dprep_part1.png)
+
+*Note: the number of questions depends on the points awarded to each question. The instructions during the final exam may slightly vary, so make sure to still read it accordingly.*
 
 1. Please name a tool that can be used to automate workflows. (*knowledge*)
 
@@ -29,6 +32,31 @@ This part of the exam consists of __personalized open and closed (multiple-choic
 
 4. What are the benefits from automating pipelines, compared to manually executing source code files? (*comprehension*)
 
+5. Please view the code snippet below.
+
+```
+library(dplyr)
+df <- read.csv('data.csv')
+df <- df %>% filter(age >= 18)
+```
+Please assess the completeness of the script with regard to the ITO components of a source code file. Can you identify any missing piece in the code? (*analysis*)
+
+6. Please assess whether the makefile below will run when you type "make". (*analysis*)
+
+__Directory Structure__
+```
+\readme.md
+\code\makefile
+\code\load.R
+\data\dataset.csv
+```
+__Makefile__
+```
+data/dataset.csv: load.R
+      R --vanilla < load.R
+```
+
+![](../dprep_overview.png)
 
 ## Part 2:
 
@@ -37,6 +65,10 @@ This part of the exam consists of __personalized open and closed (multiple-choic
 This part of the exam consists of __personalized open questions__, shown in __random order__. You can freely go back and forth between these questions.
 
 {{< /hint >}}
+
+![](../dprep_part2.png)
+
+*Note: the instructions during the final exam may slightly vary, so make sure to still read it accordingly.*
 
 ### Question 1
 

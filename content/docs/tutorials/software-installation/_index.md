@@ -32,12 +32,18 @@ During this course, we'll be using Make - a tool used by software developers to 
 
 - You can find a tutorial for installing make [here](https://tilburgsciencehub.com/get/make).
 
-## 4) Get premium access to Datacamp.com
+## 4) Get a good text editor
+
+We recommend using a text editor, as this greatly improves your user experience and allows you to easily change text and code.
+
+- [Click here to install Visual Studio as your text editor](https://code.visualstudio.com)
+
+## 5) Get premium access to Datacamp.com
 
 Finally, we're borrowing some tutorials from [Datacamp.com](https://datacamp.com) throughout this course.
 
 - Please follow these steps to [obtain access to premium content of Datacamp](docs/course/support/datacamp.md).
 
-## 5) Follow Datacamp.com tutorials for learning R
+## 6) Follow Datacamp.com tutorials for learning R
 
 Please follow [this Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) at Datacamp.com.

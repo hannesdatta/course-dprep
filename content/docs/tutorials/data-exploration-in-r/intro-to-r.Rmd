@@ -1,14 +1,14 @@
 ---
 title: "Data exploration in R (dPrep)"
 author: "Practice"
-output: html_document
+output: webexercises::webexercises_default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(tidyverse)
-
+library(webexercises)
 ```
 
 *In this tutorial, we'll walk you through the steps of exploring a data set and obtaining an understanding about the setting in which data was collected. After completion of the tutorial, you'll be able to produce an RMarkdown document, which you can render as a PDF or HTML document (e.g., to show others, initiate a discussion about data, etc.).*
@@ -76,50 +76,40 @@ Inspect the `mobility` data frame, and describe the *structure of the data set* 
 - Are “strings” properly encoded (i.e., do they contain any weird characters, or do they seem appropriately rendered so you can read them)?
 
 Tips: 
+
 - Take a __look__ at the data using the function `head(mobility)`, or `View(mobility)`. If you'd like to view more rows with `head`, use `head(mobility, 100)` (for, e.g., the first 100 rows). (`tail()` gives you the last rows of the data).
+
 - The command `summary(mobility)` generates descriptive statistics for all variables in the data. You can also use this command on individual columns (e.g., `summary(mobility$retail_and_recreation_percent_change_from_baseline)`).
+
 - Character or factor columns are best inspected using the `table()` command.
 
 \
 
-**Your Answer**  
-```{r}
-# your answer goes here!
-```
 
-\
-
-
-**Solution**  
-```{r}
+```{r, webex.hide = 'Solution Exercise 1'}
 head(mobility)
-```
 
-The dataset shows the mobility changes at a *national, regional, and city level* in the Netherlands, for multiple categories of places. The records are sorted by date, and are grouped by location (starting with country stats). 
-
-```{r}
 summary(mobility)
-```
 
-```{r}
 table(mobility$sub_region_1)
+
+# The dataset shows the mobility changes at a national, regional, and city level in the Netherlands, for multiple categories of places. The records are sorted by date, and are grouped by location (starting with country stats).
+
+# Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain only empty data, and two other columns (`sub_region_1`, `sub_region_2`) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level).
 ```
-
-Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain only empty data, and two other columns (`sub_region_1`, `sub_region_2`) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level).
-
 
 \
 
 **Exercise 2**     
 Suppose you'd like to extract data for the Netherlands as a whole (i.e., NOT at the regional or city level), how would you have to filter for it? Re-generate a data summary (`summary()`) on this new table, and inspect missing values.
 
-**Solution**  
-```{r, echo = TRUE} 
-filtered_df = mobility[mobility$sub_region_1==''&mobility$sub_region_2=='',]
+```{r, echo = TRUE, webex.hide = 'Solution Exercise 2'}
+filtered_df <- mobility %>% filter(sub_region_1 == '',
+                                  sub_region_2 == '')
 summary(filtered_df)
 ```
 
-The number of missing values on most variables as drastically decreased. That's good news! It seems like the data is most "complete" at the national level.
+The number of missing values on most variables has drastically decreased. That's good news! It seems like the data is most "complete" at the national level.
 
 \
 **Exercise 3**  
@@ -131,18 +121,24 @@ First, try to understand the "range" of the values. For example, percentages are
 
 Second, think of one or more problems that can arise as a result of how percentage changes were calculated (i.e., the choice for the baseline between January 3 and February 6, 2020). Come up with specific examples that illustrate problems!
 
-**Solution**  
-```{r}
+```{r, webex.hide = 'Solution Exercise 3'}
+### Part 1 ###
+
 # Exploring the range
 summary(mobility$retail_and_recreation_percent_change_from_baseline)
 # --> the range seems to be measured on a scale on which 100 means 100%.
+
+
+### Part 2 ###
+# Problems that could arise from the baseline choice:
+
+# - The data does not account for seasonality (e.g., park visits increase as the weather improves)  
+
+# - In the Netherlands, we experienced a relatively mild winter period throughout 2020 (e.g., the average temperature in January 2020 was the 3rd highest ever). As a result, the time distribution of certain categories (e.g., parks, residence) may not be representative for a typical year. 
+
+# - Probably a lot of other reasons! Try to think about more!
 ```
 
-__Problems that could arise from the baseline choice__
-
-- The data does not account for seasonality (e.g., park visits increase as the weather improves)  
-- In the Netherlands, we experienced a relatively mild winter period throughout 2020 (e.g., the average temperature in January 2020 was the 3rd highest ever). As a result, the time distribution of certain categories (e.g., parks, residence) may not be representative for a typical year. 
-- Probably a lot of other reasons! Try to think about more!
 \
 
 ---
@@ -161,14 +157,16 @@ To make working with the data frame more manageable, we drop columns we don't ne
 Drop the columns `country_region_code`, `metro_area`, `iso_3166_2_code` and `census_fips_code` from the `mobility` dataframe. How many columns do you end up with?
 
 
-**Solution**
-```{r, echo = TRUE, results = 'hide'}
+```{r, echo = TRUE, webex.hide = 'Bad solution', results = 'hide', warning = FALSE}
 # bad solution - think about WHY?
 mobility[, c(2:4, 8:15)]
+```
 
+```{r, echo = TRUE, webex.hide = 'Good Solution Exercise 4', message = FALSE}
 # good solution
-cols_to_drop = c('country_region_code', 'metro_area', 'iso_3166_2_code', 'census_fips_code')
-mobility = mobility[, which(!colnames(mobility)%in%cols_to_drop)]
+cols_to_drop <- c('country_region_code', 'metro_area', 'iso_3166_2_code', 'census_fips_code')
+mobility <- mobility %>% select(-cols_to_drop)
+
 head(mobility)
 
 # how many columns do we retain?
@@ -183,8 +181,8 @@ We continue with the (updated) data frame `mobility`.
 As you can see below, some of the remaining column names of `mobility` are rather long (or can be described more precisely). 
 
 ```{r column_names}
- # current column names
- colnames(mobility)
+# current column names
+colnames(mobility)
 ```
 
 You can rename a column of a data frame (`df`) by overwriting the current column names with a vector of new column names, like this: `colnames(df) = c("new_col_name_1", "new_col_name_2", "new_col_name_3", ...)` 
@@ -194,32 +192,26 @@ You can rename a column of a data frame (`df`) by overwriting the current column
 **Exercise 5**  
 Trim the long column names (e.g., `retail_and_recreation_percent_change_from_baseline` becomes `retail_and_recreation`) and replace `sub_region_1` and `sub_region_2` by `province` and `city`, respectively. 
 
-**Solution**
-```{r}
-
-# ok-ish solution
+```{r, webex.hide = 'OK-ish solution', eval = FALSE}
 colnames(mobility) = c("country_region", 
-                       "province",
-                       "city", 
-                       "place_id",
-                       "date", 
-                       "retail_and_recreation",
-                       "grocery_and_pharmacy", 
-                       "parks", 
-                       "transit_stations", 
-                       "workplaces", 
-                       "residential")
+                      "province",
+                      "city", 
+                      "place_id",
+                      "date", 
+                      "retail_and_recreation",
+                      "grocery_and_pharmacy", 
+                      "parks", 
+                      "transit_stations", 
+                      "workplaces", 
+                      "residential")
 
+```
 
-# more durable (but complex) solution 
-# 1) hard-code which variable will be replaced
-colnames(mobility)[which(colnames(mobility)=='sub_region_1')] <- 'province'
-colnames(mobility)[which(colnames(mobility)=='sub_region_2')] <- 'city'
-
-# 2) loop through remaining values, search for them using regular expressions, and replace them
-for (var in c("retail_and_recreation", "grocery_and_pharmacy", "parks", "transit_stations", "workplaces", 
-                       "residential")) colnames(mobility)[grepl(var, colnames(mobility))] <- var
-
+```{r, webex.hide = 'Better solution Exercise 5'}
+# First use the rename function to rename sub_region_1 & sub_region_2. After that, use the rename_with function to remove all the suffixes with "_percent_change_from_baseline'
+mobility <- mobility %>% rename(province = sub_region_1,
+                                city = sub_region_2) %>%
+                         rename_with(~str_remove(., '_percent_change_from_baseline'))
 ```
 
 \
@@ -231,7 +223,7 @@ Although the dates may look like "regular" dates (e.g., `2020-02-15`), R treats 
 This is how to convert a character-encoded date to a "real date":
 
 ```{r}
-mobility$date = as.Date(mobility$date)
+mobility$date <- as.Date(mobility$date)
 ```
 
 \
@@ -241,10 +233,11 @@ Now let's start calculating with our dates.
 
 What's the first and last date in our data frame? Tip: you can use `min()` and `max()` now that the date column has been converted into date format! 
 
-**Solution**
+`r hide("Solution Exercise 6")`
 The data runs from  February 15 2020 (`min(mobility$date)`) to January 5 2021 (`max(mobility$date)`).
 
 Observe above that you can not only use R code in code cells, but also in text by enclosing it in special characters: `r min(mobility$date)`.
+`r unhide()`
 
 \
 
@@ -257,18 +250,19 @@ For example, to get a proxy for overall movement trends, we could add `avg_mobil
 **Exercise 7**  
 Add the `avg_mobility` column to your dataset (keep in mind that the data frame may contain one or more missing values). You may want to look up the documentation of the `na.rm` parameter. 
 
-**Solution**  
-```{r}
-# solution (elegant, but not sustainable as column names could change)
-mobility$avg_mobility = rowMeans(mobility[,6:ncol(mobility)], na.rm = TRUE)
-
+```{r, webex.hide = 'Solution Exercise 7', eval = FALSE}
 # solution (most elegant and sustainable)
-selected_columns = grep('retail|grocery|park|transit|work|resident', colnames(mobility), value=T)
-mobility$avg_mobility = rowMeans(mobility[,selected_columns], na.rm = TRUE)
+
+columns <- c('retail_and_recreation', 'grocery_and_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential')
+mobility <- mobility %>% mutate(avg_mobility2 = rowMeans(select(., columns), na.rm =TRUE))
+
 
 ```
 
-```{r eval=FALSE}
+```{r eval=FALSE, webex.hide = 'Inefficient solutions'}
+# solution (elegant, but not sustainable as column names could change)
+mobility$avg_mobility <- rowMeans(mobility[,6:ncol(mobility)], na.rm = TRUE)
+
 # solution (least elegant - and far less efficient) - do you notice the difference in running time?  
 
 for(counter in 1:nrow(mobility)){
@@ -307,11 +301,10 @@ We know that the values in the `province` and `city` columns are empty for the c
 Create three subsets (`country`, `province`, `city`) of `mobility` according to the descriptions above. To filter for empty strings (`""`) you can use the boolean expression `df$column == ""`. This essentially checks whether the column contains the characters listed in `""`.
 
 
-**Solution**
-```{r}
-country = mobility[(mobility$city == "") & (mobility$province == ""),]
-province = mobility[(mobility$city == "") & (mobility$province != ""),]
-city = mobility[mobility$city != "",]
+```{r, webex.hide = 'Solution Exercise 8'}
+country <- mobility %>% filter(city == "" & province == "")
+province <- mobility %>% filter(city == "" & province != "")
+city <- mobility %>% filter(city != "")
 ```
 
 \
@@ -333,8 +326,7 @@ inspect_data <- function(df) {
 }
 ```
 
-**Solution**
-```{r eval=TRUE}
+```{r eval=TRUE, webex.hide = 'Solution Exercise 9'}
 # inspect_data
 inspect_data <- function(df){
   cat('Generating some descriptive statistics...\n\n')
@@ -388,15 +380,17 @@ missings <- function(df, cols) {
   sapply(cols, function(x) length(which(is.na(df[, x])))/nrow(df))
 }
 
-columns = grep('retail|grocery|park|transit|workplace|residential', colnames(mobility),value=T)
+columns <- c('retail_and_recreation', 'grocery_and_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential')
+
+# Another way to define columns is as follows using the 'grep' function:
+# columns <- grep('retail|grocery|park|transit|workplace|residential', colnames(mobility),value=T)
+
 missings(country, columns)
 ```
 
-**Solution**
 
-```{r}
-columns = grep('retail|grocery|park|transit|workplace|residential', colnames(mobility),value=T)
-result = lapply(list(country, province, city), missings, cols = columns)
+```{r, webex.hide = 'Solution Exercise 10'}
+result <- lapply(list(country, province, city), missings, cols = columns)
 
 # we can also nicely "bind" them together
 do.call('rbind', result)
@@ -462,8 +456,7 @@ plot(x = country[country$date > "2020-09-01", "date"],
 ```
 \
 
-**Solution**  
-```{r}
+```{r, webex.hide = 'Solution Exercise 11'}
 plot(x = country[country$date > "2020-09-01", "date"], 
      y = country[country$date > "2020-09-01", "transit_stations"], 
      col = "black", 
