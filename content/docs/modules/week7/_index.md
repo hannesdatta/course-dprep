@@ -1,12 +1,12 @@
 ---
 weight: 50
-title: Week 6) Final project phase
-description: Finalize your team projects!
+title: Weeks 7) Course summary and exam preparation
+description: Finalize your team projects and prepare for the exam
 bookCollapseSection: true
 draft: false
 ---
 
-# Week 6: Project phase
+# Week 7: Project phase and final course week
 
 ## Kick-starting your week
 - Watch the energizer for the week on YouTube (tba)
@@ -18,24 +18,18 @@ draft: false
 ## Online coaching session (optional)
 - Feedback on team project ([activity #4](../../project/workplan/activity4)) 
 
-## On-campus coaching session (optional) 
-{{% laptop %}}
-- Feedback on team project ([activity #4](../../project/workplan/activity4))
+## Final lecture
 
+- Course summary and exam preparation ([slides](slides.html))
 
-
+<br>
 <div style="text-align: right">
-{{< button relref="week5" >}}Previous week{{< /button >}}
-{{< button relref="week7" >}}Next week{{< /button >}}
-
+{{< button relref="week6" >}}Previous week{{< /button >}}
 </div>
 
 
 <!--
 
 ## Live stream 6
-- Course summary and exam preparation
-  - [Slides](slides.html)
-  - Recording Course summary - TBA, Exam preparation - TBA
 
 <br>-->

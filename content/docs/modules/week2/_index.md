@@ -12,27 +12,28 @@ draft: false
 - [Watch the kick-off for the week!](https://youtu.be/kL-s7XHWiWI) 
 
 ## Self-study and activities
-- Readings on *why* it's important to properly manage your workflow
-  - [Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup)
-- Tutorial
-  - [Project Management and Version Control with Git/GitHub](docs/tutorials/version-control)
+- [Reading: Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup) (30 minutes)
+- [Get to know GitHub](https://lab.github.com/githubtraining/introduction-to-github) (60 minutes)
+
+<!--
 - Optional readings
   - [Code and Data for the Social Sciences: A Practitioner’s Guide](https://www.brown.edu/Research/Shapiro/pdfs/CodeAndData.pdf)
   - [Modified principles for Code and Data](https://www.shirokuriwaki.com/programming/project-organization.html)
   - [Data analysis workflow](http://www.coordinationtoolkit.org/wp-content/uploads/130907-Data-flow.pdf)
   - [Additional information on reproducing work, organizing files and version control](https://www.tse-fr.eu/sites/default/files/TSE/documents/doc/wp/2018/wp_tse_933.pdf)
+-->
 
-## Live stream 2
-- Check out the [Git / Github cheatsheet!](../week3/Git_cheatsheet.pdf)
-- Q&A/walk-through of this week's tutorial - TBA!
-- Coaching session for team projects - TBA!
+## Tutorial
+{{% laptop %}}
 
+- [In-class tutorial: Project Management and Version Control with Git/GitHub](docs/tutorials/version-control) and [after-class exercises](activity)
+- [Git & Github cheatsheet](git_cheatsheet.pdf)
 
 
 
 <br>
 
----
-<br>
+<div style="text-align: right">
 {{< button relref="week1" >}}Previous week{{< /button >}}
 {{< button relref="week3" >}}Next week{{< /button >}}
+</div>

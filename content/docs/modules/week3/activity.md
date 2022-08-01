@@ -1,15 +1,11 @@
 ---
-title: Live Stream Activity
+title: After-class exercises
 draft: false
 ---
 
-# Live Stream Activity
-
-You will work on this activity during the live stream.
+# After-class exercises
 
 ## Overview
-
-- Type: Breakout activity with 4-6 students
 - Duration: 25 minutes, with 15-minute post discussion
 - Goals
   - Let's assume you've just received data from a data provider or finished scraping your data. You'll learn how to explore the data set best!

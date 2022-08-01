@@ -1,14 +1,14 @@
 ---
-title: Live Stream Activity
+title: After-class exercises
 draft: False
 ---
 
 # Live Stream Activity
 
 # Excercise 1
+
 ## Overview
 
-- Type: Breakout activity with 4-6 Students
 - Duration: 25 minutes
 - Goals
   - Understand the process of input-transformation-output

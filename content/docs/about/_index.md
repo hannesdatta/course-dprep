@@ -15,11 +15,14 @@ Feedback is appreciated always.
 
 ## Instructors and Creators
 
-The course is coordinated and instructed by [Hannes Datta](https://hannesdatta.com). Course material, if not indicated otherwise, has been developed by [Hannes Datta](https://hannesdatta.com) and [Roy Klaasse Bos](http://royklaassebos.nl/) from Tilburg University.
+The course is coordinated and instructed by [Hannes Datta](https://hannesdatta.com). Want to get in touch with him during the course? Visit [the support section](../course/support). 
+
+The course material, if not indicated otherwise, has been developed by [Hannes Datta](https://hannesdatta.com) from Tilburg University, with the support of [Roy Klaasse Bos](http://royklaassebos.nl/) and Ralph Delsing.
 
 ## Acknowledgements
 
 In developing this course, we have borrowed from some of the finest (open) content on the web, among others:
+
 * The Turing Way. (2021). [A How To Guide for Reproducible Data Science](https://the-turing-way.netlify.app/welcome)
 * Colt Steele. (2020). [Introduction to Git](https://www.notion.so/Introduction-to-Git-ac396a0697704709a12b6a0e545db049)
 * Colt Steele. (2020). [Introduction to Github](https://www.notion.so/Introduction-to-GitHub-202af6f64bbd4299b15f238dcd09d2a7)

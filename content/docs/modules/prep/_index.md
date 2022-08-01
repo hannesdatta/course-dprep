@@ -2,26 +2,18 @@
 weight: 1
 title: Preparation before the course starts
 description: Setup your computer and learn the basics of R before the course starts.
-bookCollapseSection: true
+bookCollapseSection: false
 ---
 
 # Preparation before the course starts
 
-This course requires an advanced software setup before you can get started. So, please spend some time carefully working through the software installation guide!
+In this class, you'll learn the basics of R and GitHub, and how to use these tools to professionally working on empirical research projects.
 
-- [Install software (R & RStudio, Git, Hugo, automation & build tools) now](../../../docs/tutorials/software-installation/_index.md)
+It's important to spend some time *before the beginning of the class* to install the required software, and familiarize yourself with Python.
 
-We also use some premium content of Datacamp.com, so make sure to sign up using your Tilburg University account to be able to follow the material.
+{{< button relref="../../../docs/tutorials/software-installation" >}}Get started now!{{< /button >}}  
 
-- Get a [Datacamp.com account to access Premium content for free](../../../docs/course/support/datacamp)
+{{< datacamp >}}
 
-Finally, we recommend using a text editor, as this greatly improves your user experience and allows you to easily change text and code. In combination with Hugo, you can see a preview of the changes that you made to a site instantly!
-
-- [Click here to install Atom as your text editor](https://tilburgsciencehub.com/choose/text-editor)
-
-
-
-
----
 <br>
-{{< button relref="week1" >}}Next week{{< /button >}}
+<div style="text-align: right">{{< button relref="week1" >}}Next week{{< /button >}}</div>

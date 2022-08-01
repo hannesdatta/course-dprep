@@ -18,20 +18,20 @@ draft: false
 00->
 -->
 
-## Self-study and activities
-- Tutorial
-  - [Data exploration with R and RMarkdown](docs/tutorials/data-exploration-in-r)
+## Online coaching session
+- Feedback on team project (activity #1)
 
+## Self-study and activities
+- tba
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
-## Live stream 3
-- Livestream TBA: Using Scrum for Research, Issue & Project Management with Git and GitHub, and Inspecting Data
-- Look at the [cheatsheets](../../building-blocks/cheat-sheets) to refresh and improve your Git and programming skills!
-- Instead of the Q&A/walk-through of this week’s tutorial, there will be a simple Q&A session next week.
+## Tutorial
+{{% laptop %}}
 
-<!--- [Activity to explore new data](activity.md)
--->
+- [In-class tutorial: Data exploration with R and RMarkdown](docs/tutorials/data-exploration-in-r) and [after-class exercises](activity)
 
+
+<!--
 {{< hint info >}}
 __Update/add repository URLs__
 
@@ -81,7 +81,7 @@ paper? advice?))-->
 
 <br>
 
----
-<br>
+<div style="text-align: right">
 {{< button relref="week2" >}}Previous week{{< /button >}}
 {{< button relref="week4" >}}Next week{{< /button >}}
+</div>

@@ -1,25 +1,22 @@
 ---
-title: Live Stream Activity
+title: After-class exercises
 draft: False
 ---
 
-# Live Stream Activity
-
-You will work on this activity during the live stream.
+# After-class exercises
 
 ## Overview
 
-- Type: Breakout activity
-- Duration: 25 minutes, with 15-minute post discussion
+- Duration: 30 minutes, with 15-minute post discussion
 - Goals
   - Able to clone any open-source repository from Github locally and run it using Hugo!
   - Make changes to such repository by following the Git workflow and creating a pull request!
 
-## Breakout session structure
+## Tasks
 
 This week, we used Git, which really becomes powerful when collaborating with others - sometimes even with people you've never met before! In fact, you can easily contribute to open source projects, simply by "forking" a public GitHub repository (= taking a copy of the repository), making changes to the source code, and proposing to the owner of the project to integrate your changes in the "head revision"/"main branch" (= the code that runs the project).
 
-Now, start putting your Git skills into practice, by making changes to the [course website](https://dprep.hannesdatta.com), or [Tilburg Science Hub](https://tilburgsciencehub.com). For example, by fixing typos, or rewriting parts of the tutorials or building blocks. To get started, view the steps below.
+Now, start putting your Git skills into practice, by making changes to the [course website](https://dprep.hannesdatta.com), [Tilburg Science Hub](https://tilburgsciencehub.com), or [Pulse](https://github.com/hannesdatta/pulse). For example, by fixing typos, or rewriting parts of the tutorials or building blocks. To get started, view the steps below.
 
 
 {{< hint info >}}

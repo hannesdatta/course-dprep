@@ -1,8 +1,8 @@
 ---
 weight: 2
-title: Week 1) Getting started with R
+title: Week 1) Getting started 
 description: Familiarize yourself with R and RStudio, and explore datasets.
-bookCollapseSection: true
+bookCollapseSection: false
 draft: false
 ---
 
@@ -13,44 +13,25 @@ draft: false
 ## Kick-starting your week
 - [Watch the kick-off for the week](https://youtu.be/XM2dkYN-Fbc)!
 
-## First lecture on campus
+## Opening lecture and R bootcamp
 
-- Introduction to the course <!--([re-watch](https://youtu.be/iq88xsSGyTg)))-->
-  - [Slides](slides.html)
+{{% laptop %}}
 
-<!--
-  - Recordings
-    - 1 | getting started - TBA!
-    - 2 | why should you take this class (preview of what you'll learn!) + course setup - TBA!
--->
-{{< hint info >}}
-Recordings of the livestreams are published on Hannes' YouTube channel, so ensure you [subscribe to it](http://www.youtube.com/c/hannesdatta?sub_confirmation=1) to stay up-to-date!
-
-{{< /hint >}}
-
-<!--## Kick-starting your week
-- Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
-00->
--->
+- Introduction to the course ([slides](slides.html))
+- [Tutorial: R Bootcamp](docs/tutorials/r-bootcamp)
 
 ## Self-study and activities
-- Preparation
-  - If you haven't done so, please [complete the software installation](../../../docs/tutorials/software-installation/_index.md)
+- If you haven't done so, please [complete the software installation](../../../docs/tutorials/software-installation/)
+- Exercises after class
 - Readings
   - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
   - [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
-- Tutorial
-  - [R Bootcamp](docs/tutorials/r-bootcamp)
 
 
 <!--
 - [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
 - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
-
-## Live stream 1
-- Q&A/walk-through of this week’s tutorial
-  - TBA!
 
 
 [^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)
@@ -101,7 +82,7 @@ paper? advice?))-->
 
 <br>
 
----
-<br>
+<div style="text-align: right">
 {{< button relref="prep" >}}Previous week{{< /button >}}
 {{< button relref="week2" >}}Next week{{< /button >}}
+</div>

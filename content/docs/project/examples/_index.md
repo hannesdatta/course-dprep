@@ -1,9 +1,12 @@
 ---
-title: Examples
-bookFlatSection: true
+bookFlatSection: false
 title: "Examples"
 bookHidden: false
-weight: 90
+weight: 50
+bookCollapseSection: true
+draft: false
+description: Curious to see what you can build after following this course? Or looking for some ideas how to structure the directory structure of your team project?
+
 ---
 
 # Examples

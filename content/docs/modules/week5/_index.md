@@ -11,17 +11,18 @@ draft: false
 ## Kick-starting your week
 - [Watch the energizer for the week on YouTube!](https://youtu.be/PdWZ1s8XXiU)
 
+## Online coaching session
+- Feedback on team project (activity #3)
 
 ## Self-study and activities
-- Tutorial
-  - [Pipeline Building and Automation](docs/tutorials/make-tutorial)
 - Optional readings
   - Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
   - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
 
-## Live stream 5
+## Tutorial
+- [In-class tutorial: Pipeline Building and Automation](docs/tutorials/make-tutorial) and [after-class exercises](activity)
 - Check out the [make cheatsheet!](../week5/make_cheatsheet.pdf)
-- Q&A/walk-through of this week’s tutorial - TBA!
+
 
 
 
@@ -37,7 +38,8 @@ draft: false
 
 <br>
 
----
-<br>
+
+<div style="text-align: right">
 {{< button relref="week4" >}}Previous week{{< /button >}}
 {{< button relref="week6" >}}Next week{{< /button >}}
+</div>

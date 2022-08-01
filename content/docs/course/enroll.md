@@ -12,8 +12,8 @@ Thanks for showing an interest in this (open education) class!
 
 - This course (3 ECTS) is taught in the Marketing Analytics Program at Tilburg University (please check Osiris for the specifics). The course codes are 328059-M-3 (fall) and 328062-M-3 (spring).
 - Interested Research Master or PhD students are encouraged to apply for a seat.
-  - Students from Tilburg University can enroll in this course upon the approval of [the instructor](mailto:h.datta@tilburguniversity.edu) and their coordinator (please notify the course coordinator by 15 August 2020).
-  - Students outside of Tilburg University are invited to audit this course. For admission, please [email](mailto:h.datta@tilburguniversity.edu) a brief research statement and motivation of why you want to join this class, and your CV by 15 January (for courses starting in block 3, spring edition), and 15 August (for courses starting in block 1; fall edition). Eligible candidates will be notified via email within one week.
+  - Students from Tilburg University can enroll in this course upon the approval of [the instructor](mailto:h.datta@tilburguniversity.edu) and their coordinator (please notify the course coordinator by {{< param "Date_Notify_Coordinator" >}}).
+  - Students outside of Tilburg University are invited to audit this course. For admission, please [email](mailto:h.datta@tilburguniversity.edu) a brief research statement and motivation of why you want to join this class, and your CV by {{< param "Date_Send_Motivation" >}}. Eligible candidates will be notified via email by {{< param "Date_Notified_Candidates" >}}.
 
 {{< hint info >}}
 __Not a student in Tilburg yet?__

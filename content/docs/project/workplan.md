@@ -1,7 +1,7 @@
 ---
 weight: 10
 title: "Workplan"
-bookCollapseSection: true
+bookCollapseSection: false
 description: "What to do, when? Check out the workplan!"
 draft: false
 ---

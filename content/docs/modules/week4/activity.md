@@ -1,13 +1,12 @@
 ---
-title: Live Stream Activity
+title: After-class exercises
 draft: false
 ---
 
-# Live Stream Activity
+# After-class exercises
 
 ## Overview
 
-- Type: Breakout activity with 4-6 students<!--, *or* guided "look over the shoulders of Hannes" session-->
 - Duration 15-20 minutes
 - Goals
   - Understand the process of input-transformation-output
