@@ -1,5 +1,5 @@
 ---
-weight: 20
+weight: 10
 title: "Data"
 bookCollapseSection: true
 description: "Kickstart your team project with this data set"

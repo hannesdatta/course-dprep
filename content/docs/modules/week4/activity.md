@@ -17,7 +17,7 @@ draft: false
 
 Write an R script, which transforms the input data, and writes an output file ("input-transformation-output").
 
-Actively make use of the [cheat sheets](../../../building-blocks/cheat-sheets) (especially the one on `dplyr` in the data wrangling section).
+Actively make use of the [cheat sheets](docs/project/resources/cheat-sheets) (especially the one on `dplyr` in the data wrangling section).
 
 ### Input
 

@@ -1,6 +1,6 @@
 ---
 weight: 30
-title: "Grading details"
+title: "Grading"
 bookCollapseSection: true
 description: "Find out how you'll be graded - and adjust your efforts accordingly!"
 draft: false

@@ -12,15 +12,15 @@ draft: false
 - Watch the energizer for the week on YouTube (tba)
 
 ## Self-study
-- Continue to work on your [team projects](docs/course/project)
+- Continue to work on your [team projects](docs/project)
 <!--- Get inspired by the [building blocks](docs/building-blocks/)-->
 
 ## Online coaching session (optional)
-- Feedback on team project ([activity #4](../../project/workplan/activity4)) 
+- Feedback on team project (activity #4)
 
 ## On-campus coaching session (optional) 
 {{% laptop %}}
-- Feedback on team project ([activity #4](../../project/workplan/activity4))
+- Feedback on team project (activity #4)
 
 
 

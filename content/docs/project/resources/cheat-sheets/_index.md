@@ -1,5 +1,5 @@
 ---
-weight: 1
+weight: 20
 title: Cheat Sheets
 description: A collection of amazing cheatsheets to help you survive R, Git, and make!
 bookCollapseSection: true
@@ -37,12 +37,12 @@ All sorts of cheatsheets for RStudio can be found [here!](https://rstudio.com/re
 
 ## 2. Version control with Git
 
+- [The full Git workflow - good for working on your team project!](https://tilburgsciencehub.com/building-blocks/collaborate-and-share-your-work/use-github/github_cheatsheet_tsh.pdf)
 - [Commonly used Git commands](https://education.github.com/git-cheat-sheet-education.pdf)
-- [The full Git workflow - good for working on your team project!](../../modules/week3/Git_cheatsheet.pdf)
 
 ## 3. Make and automation
 
-- [Make workflow cheatsheet](../../modules/week5/tsh_make_cheatsheet.pdf)
+- [Make workflow cheatsheet](tsh_make_cheatsheet.pdf)
 - [Basic syntax](https://makefiletutorial.com)
 - [Rendering R markdown docs in make](https://monashbioinformaticsplatform.github.io/2017-11-16-open-science-training/topics/automation.html)
 

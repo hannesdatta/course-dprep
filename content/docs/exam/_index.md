@@ -33,7 +33,7 @@ The course content will be tested in the form of a __take-home exam__, to be com
   - Part 2 is open from 9am - 11.59am + 1 minute (noon). You should only start working on part 2 after finishing part 1.
 - Working on your exam: on your own computer
 - Submitting your exam: all questions (including file uploads) will be submitted via TestVision
-- Support during the exam: preferably WhatsApp [see support section of this website](../support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
+- Support during the exam: preferably WhatsApp [see support section of this website](/docs/course/support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
 
 ## Form
 

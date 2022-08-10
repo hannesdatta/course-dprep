@@ -20,9 +20,21 @@ Together with your team members, you will
 
 Working on your team project is not only a great refresher on the course content, but *especially* gives you a better sense of the added value of using Git/GitHub when collaborating with one another, and automation with `make` with a many source code files.
 
+<!--
+## Deliverables
+
+The deliverable of the team project is an *end-to-end, fully automized workflow*:
+- it should download the (raw) data directly from its source,
+- explore the raw data files with RMarkdown documents rendered as PDF or HTML files,
+- transform and reshape the data into the right format, and
+- address a research question and/or business problem using some of the building blocks (e.g., regression, apps, "deployment").
+
+Check out [the detailed grading guidelines here](grading_details.md).
+-->
+
 ## Grading
 
-Head over to the [grading details](grading_details) to understand what is expected from you in each part of this project.
+Head over to the [grading details](grading) to understand what is expected from you in each part of this project.
 
 ## Teams
 
@@ -44,7 +56,7 @@ Head over to the [grading details](grading_details) to understand what is expect
 
 ## Coaching
 
-Students can meet the course instructor for feedback during the scheduled coaching sessions (see [schedule](docs/course/schedule)).
+Students can meet the course instructor for feedback during the scheduled coaching sessions (see [schedule](/docs/modules)).
 
 - Attendance is not mandatory but strongly encouraged.
 - Sign-up may be necessary!

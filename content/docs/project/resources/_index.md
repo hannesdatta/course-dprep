@@ -1,14 +1,14 @@
 ---
 bookFlatSection: false
-title: "Building Blocks"
+title: "More resources"
 bookHidden: false
 weight: 50
 bookCollapseSection: true
 draft: false
-description: Building blocks are code snippets that we will make available throughout the course, and that you can use for your team projects.
+description: Discover example projects and code snippets to use for your team projects.
 ---
 
-# Building Blocks
+# More resources
 
 Building blocks are code snippets that we will make available throughout the course, and that you can use for your team projects.
 

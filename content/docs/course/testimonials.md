@@ -1,55 +1,53 @@
 ---
 bookFlatSection: true
-title: "Student acknowledgements"
+title: "Testimonials"
 bookHidden: false
 weight: 25
 description: " "
 ---
 
-# Student acknowledgements
+# Testimonials
 
-To get an idea of how students of previous editions of this course thought of this course, we included some of main points that were mentioned in the course evaluation by them below.
+To get an idea of how students of previous editions of this course thought of it, we included some of the main points mentioned in the course evaluation by them below.
 
 ## About the course
 - _Genuinely one of the best courses I have taken.
-The course material teach some very valuable
-skills. I liked the way pulse was used to have a
-clear view of task to do weekly and to keep up with
+The course material teaches some very valuable
+skills. I liked the way Pulse was used to have a
+clear view of weekly to dos, and to keep up with
 the material._
 
 - _I really liked how the lectures were done and
 that it was really an addition to the online work you
-had to do. This complemented each other well_
+had to do. This complemented each other well._
 
-- _It was very practical and I quickly learnt new
-skills_
+- _The course was very practical and I quickly learnt new
+skills._
 
-- _Overall, what I learned is completely new and
-valuable. It's up to date with everyone in the field
-use_
+- _Overall, what I learned was completely new and
+valuable. The content is up to date, with everyone in the field
+using these tools._
 
-- _I really liked the fact that we learned some new
-skills. I liked it very much and it was interesting._
 
 ## About the team project and tutorials
 
 - _I really have the feeling that I learned a lot in just
 a few weeks. I got really excited every time I
-understood the tutorials, which made me even
-more enthusiastic to learn more and more :)_
+understood the content of the tutorials, which made me even
+more enthusiastic to learn more and more. :)_
 
-- _I really liked the structure of die course. The
+- _I really liked the structure of the course. The
 overview of what had to be done was really clear.
-Also the datacamp tutorials, combined with
-practice assignments were really helpfull in
+Also the Datacamp tutorials, combined with
+practice assignments were really helpful in
 understanding the material. And I really liked the
-project. Every thing that we learned in the tutorials
+project. Everything that we learned in the tutorials
 and in the assignments we could use in practice.
 The project was really well aligned with the course
 material._
 
-- _1. Pulse really helped me as an overview of what
-had to be done for a particular week. 2. The project
+- _Pulse really helped me as an overview of what
+had to be done for a particular week. Also, the project
 was fun to work on. It also helped me to use the
 'theory' and do something with it and get better
 skills and understanding._

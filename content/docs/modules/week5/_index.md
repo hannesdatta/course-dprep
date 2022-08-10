@@ -21,7 +21,7 @@ draft: false
 
 ## Tutorial
 - [In-class tutorial: Pipeline Building and Automation](docs/tutorials/make-tutorial) and [after-class exercises](activity)
-- Check out the [make cheatsheet!](../week5/make_cheatsheet.pdf)
+- Check out the [make cheatsheet!](/docs/project/resources/cheat-sheets/tsh_make_cheatsheet.pdf)
 
 
 

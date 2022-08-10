@@ -72,7 +72,7 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ## Assessment
 
-- [Team project](project) (40%, out of which 10% are based on students' individual contribution, measured by [self- and peer assessment](../project/grading/peerassessment))
+- [Team project](/docs/project) (40%, out of which 10% are based on students' individual contribution, measured by [self- and peer assessment](/docs/project/grading))
 - [Computer exam](/docs/exam) (55%)
 - Submitting one's progress on the course's learning goals  (5%)[^3]
 
@@ -88,7 +88,7 @@ Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, et
 
 
 - If students have a grade lower than 5.0 on the exam, they cannot pass this course.
-  - Required action: Students will have to take the [exam resit](exam).
+  - Required action: Students will have to take the [exam resit](/docs/exam).
 - If students are not part of a team, they cannot obtain a grade for the team project and hence cannot pass this course.
   - Required action: Re-enroll in this course's next edition, and ensure you are part of a team.
 - If students have an exam grade higher or equal to 5.0 but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.

@@ -1,26 +1,16 @@
 ---
 weight: 10
-title: "Workplan"
+title: "Workplan and coaching"
 bookCollapseSection: false
 description: "What to do, when? Check out the workplan!"
 draft: false
 ---
 
-# Work plan
+# Workplan and Coaching
 
-## Deliverables
+You’ll start working on your project -- an *end-to-end, fully automated research workflow* -- in the first course week. The activities below help you to structure your project. Stick to the plan to ensure you can finish the project in time.
 
-The deliverable of the team project is an *end-to-end, fully automized workflow*:
-- it should download the (raw) data directly from its source,
-- explore the raw data files with RMarkdown documents rendered as PDF or HTML files,
-- transform and reshape the data into the right format, and
-- address a research question and/or business problem using some of the building blocks (e.g., regression, apps, "deployment").
-
-Check out [the detailed grading guidelines here](grading_details.md).
-
-## Milestones
-
-To help you structure the assignment and make sure you finish in time, we have introduced a set of milestones and guidelines. There are frequent (optional) feedback sessions that you can use to gather feedback on your preliminary work.
+## Planning
 
 | Week | Project Stage | Working on | Deliverable/Feedback on |
 |:---- | :---- | :---- | :---- |
