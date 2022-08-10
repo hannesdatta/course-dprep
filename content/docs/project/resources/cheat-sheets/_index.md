@@ -1,5 +1,5 @@
 ---
-weight: 20
+weight: 30
 title: Cheat Sheets
 description: A collection of amazing cheatsheets to help you survive R, Git, and make!
 bookCollapseSection: true

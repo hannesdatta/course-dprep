@@ -3,7 +3,7 @@ weight: 60
 title: Starting up a new empirical research project on your local computer
 description: Start working on a new project, using the principles of workflow management and reproducible science
 bookCollapseSection: true
-draft: false
+draft: true
 ---
 
 # Starting up a new empirical research project on your local computer
@@ -109,9 +109,9 @@ __What's next? Continue working on your project!__
 
 Think you're done? No way! This is just the start of your reproducible research project. So take some time to go through our suggestions on how to continue your work on the project.
 
-- [Inspect raw data after data delivery](../../tutorials/data-exploration-in-R)
+- [Inspect raw data after data delivery](/docs/tutorials/data-exploration-in-r)
   - Write an RMarkdown file, exploring your raw data (e.g., with summary statistics, reporting on missingness, number of observations, interesting relationships, etc.)
-- [Prepare data for analysis](../../tutorials/data-preparation), and [document the resulting dataset](https://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/documenting-data/)
+- [Prepare data for analysis](docs/tutorials/data-preparation), and [document the resulting dataset](https://tilburgsciencehub.com/tutorials/project-setup/principles-of-project-setup-and-workflow-management/documenting-data/)
 - Pull in changes from GitHub (and push your own changes to the remote)
 - Create issues, and assign team members to these issues
 - Work on your repository's readme - the *first* thing users of your repository will view when visiting it on GitHub

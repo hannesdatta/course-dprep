@@ -10,6 +10,6 @@ description: Discover example projects and code snippets to use for your team pr
 
 # More resources
 
-Building blocks are code snippets that we will make available throughout the course, and that you can use for your team projects.
+Discover example projects and code snippets that you can use for your team projects.
 
 {{<section>}}
