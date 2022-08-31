@@ -22,11 +22,13 @@ draft: false
 
 ## Self-study and activities
 - If you haven't done so, please [complete the software installation](../../../docs/tutorials/software-installation/)
-- Exercises after class
+- Exercises after class (please complete chapters 1-4 of the R Bootcamp at your own pace)
+- Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
+
+<!--
 - Readings
   - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
-  - [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
-
+-->
 
 <!--
 - [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)

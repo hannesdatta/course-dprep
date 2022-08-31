@@ -76,6 +76,9 @@ Students are recommended to follow this course before embarking on thesis projec
 - [Computer exam](/docs/exam) (55%)
 - Submitting one's progress on the course's learning goals  (5%)[^3]
 
+[^3]: In particular, students regularly monitor their progress on the course's learning goals. At least one evaluation per course week is required to obtain points on this component of the course grade.
+
+
 ### Passing requirements
 
 Students pass this course if

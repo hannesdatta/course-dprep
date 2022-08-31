@@ -2,7 +2,7 @@
 weight: 5
 title: Software installation
 description: Install the required software for this course
-bookCollapseSection: true
+bookCollapseSection: false
 ---
 
 # Tutorial: Software Installation
