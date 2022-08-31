@@ -18,7 +18,7 @@ _This edition: {{< param "Course_Edition_Current" >}} | Next edition: {{< param 
 
 Welcome to the course website of dPrep.
 
-This course teaches you to __efficiently manage empirical (marketing) research projects__, using tools such as GitHub and R.
+This course teaches you to __efficiently manage empirical (marketing) research projects__, using tools such as [R/RStudio](https://rstudio.com) and [GitHub](https://github.com).
 
 Please use the navigation bar and buttons below to access the course material.
 

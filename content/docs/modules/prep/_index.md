@@ -9,7 +9,7 @@ bookCollapseSection: false
 
 In this class, you'll learn the basics of R and GitHub, and how to use these tools to professionally working on empirical research projects.
 
-It's important to spend some time *before the beginning of the class* to install the required software, and familiarize yourself with Python.
+It's important to spend some time *before the beginning of the class* to install the required software, and familiarize yourself with R/RStudio.
 
 {{< button relref="../../../docs/tutorials/software-installation" >}}Get started now!{{< /button >}}  
 
