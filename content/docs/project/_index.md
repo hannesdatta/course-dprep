@@ -41,7 +41,7 @@ Head over to the [grading details](grading) to understand what is expected from 
 - Students work in groups
   - 4-5 students per team
   - Allocation in the first course week
-  - Register via GitHub classroom (link will be disclosed soon)
+  - Enroll your team to the template repository from GitHub classroom (https://classroom.github.com/a/mZWLEDIF)
 <!--
 - Three types of teams
   - __(1) Regular teams__ (by default) work with data from [AirBnB](airbnb.md)
