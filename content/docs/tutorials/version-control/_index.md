@@ -21,16 +21,18 @@ draft: false
 
 ## Getting Started
 
-1. Develop your command line (Windows) / terminal (Mac) skills:
-    - What is the [command line / terminal](https://generalassembly.github.io/prework/cl)?!
+1. Preparation before the in-class tutorial
+    - Develop your command line (Windows) / terminal (Mac) skills ([first chapter only](https://www.datacamp.com/courses/introduction-to-shell))
+    - [Familiarize yourself with GitHub by working on this tutorial!](https://github.com/skills/introduction-to-github)
+
 
 {{< hint info >}}
-Though the contents of the presentation above are demonstrated with a Mac, Windows users can still follow along by installing Cygwin or using Git Bash, for example. The main goal here is to understand how directory structures work and how to navigate in the terminal or command line.
+Also check out [this presentation about the command line / terminal](https://generalassembly.github.io/prework/cl). Though it is targeted to Mac users, it provides a great overview. Windows users could still follow along using *the same commands* by using Git Bash (or Cygwin). The main goal here is to understand how directory structures work and how to navigate in the terminal or command line.
 {{< /hint >}}
 
-2. [Familiarize yourself with GitHub by working on this tutorial!](https://github.com/skills/introduction-to-github)
+2. In-class tutorial: View slides (to be uploaded)
 
-3. Apply the end-to-end Git workflow using Git Bash (i.e., through the command line) ([View tutorial](version-control.html))
+3. After-class exercises & tutorial: Apply the end-to-end Git workflow using Git Bash (i.e., through the command line) ([View tutorial](version-control.html))
 
 
 {{< hint info >}}
