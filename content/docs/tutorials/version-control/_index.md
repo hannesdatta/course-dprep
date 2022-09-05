@@ -30,16 +30,13 @@ draft: false
 Also check out [this presentation about the command line / terminal](https://generalassembly.github.io/prework/cl). Though it is targeted to Mac users, it provides a great overview. Windows users could still follow along using *the same commands* by using Git Bash (or Cygwin). The main goal here is to understand how directory structures work and how to navigate in the terminal or command line.
 {{< /hint >}}
 
-2. In-class tutorial: View slides (to be uploaded)
+2. In-class tutorial: [View slides](tutorial.html)
 
-3. After-class exercises & tutorial: Apply the end-to-end Git workflow using Git Bash (i.e., through the command line) ([View tutorial](version-control.html))
+3. After-class exercises & tutorial ([View tutorial](version-control.html))
 
 
 {{< hint info >}}
 __Curious how to use Git with a graphical user interface?__
-(optional, but highly useful)
-
-- [Sourcetreeapp](https://www.sourcetreeapp.com) is a free Git client for Windows, Mac and Linux!
-- Git also [smoothly integrates with R - find out how!](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/)
-
+- Use Git directly from within R - [find out how!](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/)
+- Another fantastic Git client is [Sourcetreeapp](https://www.sourcetreeapp.com), which works on Windows, Mac and Linux!
 {{< /hint >}}
