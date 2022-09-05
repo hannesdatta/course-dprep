@@ -13,7 +13,17 @@ draft: false
 
 ## Self-study and activities
 - [Reading: Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup) (30 minutes)
-- [Get to know GitHub](https://lab.github.com/githubtraining/introduction-to-github) (60 minutes)
+- Get to know GitHub
+  - Make an account at [github.com](https://github.com/signup)
+  - [Install GitHub](docs/tutorials/software-installation) on your computer
+  - [Work on this training](https://lab.github.com/githubtraining/introduction-to-github) to familiarize yourself with GitHub (60 minutes)
+- Get to know the [Shell in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")
+
+
+{{% hint info %}}
+Please choose a professional GitHub username (e.g., *firstname.lastname*, *initial.lastname*, etc.). Chances are high you are going to use your GitHub profile when applying for jobs.
+
+{{% /hint %}}
 
 <!--
 - Optional readings
