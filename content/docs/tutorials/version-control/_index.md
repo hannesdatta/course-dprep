@@ -2,8 +2,7 @@
 weight: 20
 title: Version Control and Project Management with Git and GitHub
 description: Manage your project professionally, keep track of file changes and apply the end-to-end Git workflow.
-bookCollapseSection: true
-draft: false
+bookCollapseSection: false
 ---
 
 # Tutorial: Project Management and Version Control with Git/GitHub
