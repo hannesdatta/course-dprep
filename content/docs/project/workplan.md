@@ -16,8 +16,8 @@ You’ll start working on your project -- an *end-to-end, fully automated resear
 |:---- | :---- | :---- | :---- |
 | 1 | Getting started | Allocate teams & get idea about data context; think about research motivation | Register teams |
 | 2 | GitHub | Set up *public* repository on Git, have initial readme with a preliminary research question and initialize directories | Create team repository via GitHub classroom |
-| 3 | Data exploration | Refine research motivation, work with [GitHub Issues and Project Board](https://tilburgsciencehub.com/learn/scrum) (columns "backlog", and the current sprint's "to do's", "in progress", and "done"), start exploring and auditing data | Coaching #1 - [Grading details](grading_details.md#1-github-repository) &#8594; 1.1 and 1.2 (Research Motivation and Repository Structure)
-| 4 | Data preparation | Prepare data for analysis | Coaching #2 - [Grading details](grading_details.md#2-data-preparation--analysis) &#8594; 2.1 and 2.2 (Data exploration and Data Preparation)
-| 5 | Automation  | Start automating your pipeline and refine source code | Coaching #3 - [Grading details](grading_details.md#3-source-code-and-automation) &#8594; 3.1 and 3.2 (Source code quality and degree of automation)
-| 6 | Analysis and Deployment | Refine source code and analysis | Coaching #4 - [Grading details](grading_details.md#23-analysis-and-deployment-15) &#8594; 2.3 (Analysis and deployment)
+| 3 | Data exploration | Refine research motivation, work with [GitHub Issues and Project Board](https://tilburgsciencehub.com/learn/scrum) (columns "backlog", and the current sprint's "to do's", "in progress", and "done"), start exploring and auditing data | Coaching #1 - [Grading details](grading#1-github-repository) &#8594; 1.1 and 1.2 (Research Motivation and Repository Structure)
+| 4 | Data preparation | Prepare data for analysis | Coaching #2 - [Grading details](grading#2-data-preparation--analysis) &#8594; 2.1 and 2.2 (Data exploration and Data Preparation)
+| 5 | Automation  | Start automating your pipeline and refine source code | Coaching #3 - [Grading details](grading#3-source-code-and-automation) &#8594; 3.1 and 3.2 (Source code quality and degree of automation)
+| 6 | Analysis and Deployment | Refine source code and analysis | Coaching #4 - [Grading details](grading#23-analysis-and-deployment-15) &#8594; 2.3 (Analysis and deployment)
 | 7 | Wrap-up | Conduct final housekeeping checks  | Optional feedback meetings
