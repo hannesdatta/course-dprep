@@ -8,7 +8,10 @@ autosize: true
 Structure of this tutorial
 ========================================================
 
-- In-class part
+- Progress?
+  - Installed & worked through 60-minute tutorial?
+  - Shell/terminal/command prompt? (see dprep site)
+- In-class part of __this tutorial__
   - Overview about Git & GitHub
   - Project management
   - Versioning and the GitHub workflow
@@ -41,6 +44,9 @@ __Let's talk about it...__
 
 Overview about a repository
 ============================
+incremental: true
+
+__Describe the "content" of a repository.__
 
 - Each repository has...
   - Readme w/ project description (`README.md`)
