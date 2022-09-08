@@ -6,6 +6,8 @@ This repository hosts all educational materials (e.g., syllabus, tutorials, cour
 
 **If you're looking for the course website, please point your browser to [https://dprep.hannesdatta.com](https://dprep.hannesdatta.com).**
 
+**Please also take a look at tilburgsciencehub.com**.
+
 ## Using this repository
 
 ### Overview
