@@ -22,7 +22,9 @@ draft: false
 - Feedback on team project (activity #1)
 
 ## Self-study and activities
-- tba
+- Develop your R skills by working on the [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3) course
+- Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (section 6)
+
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
 ## Tutorial
