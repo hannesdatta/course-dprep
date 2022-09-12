@@ -37,7 +37,7 @@ Please choose a professional GitHub username (e.g., *firstname.lastname*, *initi
 {{% laptop %}}
 
 - [In-class tutorial: Project Management and Version Control with Git/GitHub](docs/tutorials/version-control) and [after-class exercises](activity)
-- [Git & Github cheatsheet](git_cheatsheet.pdf)
+- [Git & Github cheatsheet](https://github.com/tilburgsciencehub/website/raw/master/content/building-blocks/collaborate-and-share-your-work/use-github/github_cheatsheet_tsh.pdf)
 
 
 
