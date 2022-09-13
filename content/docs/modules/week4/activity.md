@@ -1,6 +1,6 @@
 ---
 title: After-class exercises
-draft: false
+draft: true
 ---
 
 # After-class exercises

@@ -2,7 +2,7 @@
 weight: 50
 title: Weeks 7) Course summary and exam preparation
 description: Finalize your team projects and prepare for the exam
-bookCollapseSection: true
+bookCollapseSection: false
 draft: false
 ---
 

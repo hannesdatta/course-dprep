@@ -2,7 +2,7 @@
 weight: 3
 title: Week 3) Exploring and auditing new data with RMarkdown
 description: Explore datasets.
-bookCollapseSection: true
+bookCollapseSection: false
 draft: false
 ---
 

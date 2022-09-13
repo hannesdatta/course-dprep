@@ -2,7 +2,7 @@
 weight: 50
 title: Week 6) Final project phase
 description: Finalize your team projects!
-bookCollapseSection: true
+bookCollapseSection: false
 draft: false
 ---
 

@@ -2,7 +2,7 @@
 weight: 5
 title: Week 5) Pipeline building and automation
 description: Automate your project's pipeline and make your work reproducible.
-bookCollapseSection: true
+bookCollapseSection: false
 draft: false
 ---
 
