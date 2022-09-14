@@ -30,7 +30,7 @@ draft: false
 ## Tutorial
 {{% laptop %}}
 
-- [In-class tutorial: Data exploration with R and RMarkdown](docs/tutorials/data-exploration-in-r) and [after-class exercises](activity)
+- [In-class tutorial: Data exploration with R and RMarkdown](docs/tutorials/data-exploration-in-r) and after-class exercises
 
 
 <!--

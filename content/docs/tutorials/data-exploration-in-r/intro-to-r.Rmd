@@ -13,33 +13,32 @@ library(webexercises)
 
 *In this tutorial, we'll walk you through the steps of exploring a data set and obtaining an understanding about the setting in which data was collected. After completion of the tutorial, you'll be able to produce an RMarkdown document, which you can render as a PDF or HTML document (e.g., to show others, initiate a discussion about data, etc.).*
 
-*We've chosen a data set used by [Sim et al. 2020](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3649085), in which the authors estimate the effect that COVID-19 had on music consumption on Spotify!*
+*We've chosen a data set used by [Sim et al. 2022](https://doi.org/10.1287/mksc.2021.1321), in which the authors estimate the effect that COVID-19 had on music consumption on Spotify!*
 
-*Along the way, you'll practice the skills you have been equipped with in the DataCamp tutorials.*
+*Along the way, you'll practice the skills you have been equipped with in the Datacamp tutorials.*
 
 
 --- 
 
 ### Prerequisites
 * [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
-* [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r)
 * [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r)
+* [Getting started with RMarkdown](https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html)
 
 --- 
 
 ### Learning Objectives
-- Setup R and R Studio
 - Explore data sets in R
   - Read data from text files into data frames in R
   - Create and handle various data types in R (e.g., vector, matrix, dataframe)
   - Change the content of data frames (e.g., create, drop, or rename columns)
   - Filter data in data frames (e.g., by index, logical expressions, missing records, etc.)
-  - Apply basic programming concepts (if-else statements, for-loop, functions )
+  - Apply basic programming concepts (if-else statements, for-loop, functions)
 - Assess data quality and obtain an understanding about the data
   - Calculate with data (e.g., taking an average)
   - Generate summary statistics (e.g., using `summary()` and `table()`)
   - Generate plots (e.g., using `plot()`)
-  - Produce an RMarkdown document (HTML, PDF)
+  - Produce RMarkdown documents (HTML, PDF)
 
 --- 
 
@@ -51,26 +50,24 @@ For technical issues outside of scheduled classes, please check the [support sec
 
 ### 1. Loading and Inspecting the Data
 
-[Google’s COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) are used extensively by governments and researchers to get an understanding about the pandemic's effect on social life and the economy. In the data, Google provides information on
-*daily percentage changes* in the number of visits by place category, compared with the
-corresponding day of the week during the 5-week (pre-Covid) period between January 3 and February 6, 2020. The data consists of 112,000 rows that cover six categories of places: retail & recreation, grocery & pharmacy, parks, transit stations, workplaces, and residence. 
+[Google’s COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) are used extensively by governments and researchers to get an understanding about the pandemic's effect on social life and the economy. In the data, Google provides information on *daily percentage changes* in the number of visits by place category, compared with the corresponding day of the week during the 5-week (pre-Covid) period between January 3 and February 6, 2020. The data consists of many observations that cover six categories of places: retail & recreation, grocery & pharmacy, parks, transit stations, workplaces, and residence. 
 
-With the help of the `read.csv()` function, we can now import the (2020) mobility data for the Netherlands into R. Download this [data set from Google](https://www.google.com/covid19/mobility/) (you have to unzip it first!), create a *new R script* in the same directory, and read in the data. 
+With the help of `dplyr`'s `read_csv()` function, we can now import the mobility data for the Netherlands into R. Download the [__Region CSVs__ archive from Google](https://www.google.com/covid19/mobility/) (you have to unzip it first!), create a *new R script* in the same directory, and read in `2020_NL_Region_Mobility_Report.csv`.
 
 Tip: If R doesn't find your data, set your working directory properly (we typically click on SESSION --> SET WORKING DIRECTORY --> TO SOURCE FILE LOCATION). Hardcoding directories in your code (e.g., with `setwd()`) is not good practice.
 
 ```{r load_data}
-mobility <- read.csv("2020_NL_Region_Mobility_Report.csv", sep=",")
+mobility <- read_csv("2020_NL_Region_Mobility_Report.csv")
 
 # Alternatively, you can use the data set stored on the course website.
-# mobility <- read.csv('https://media.githubusercontent.com/media/hannesdatta/course-dprep/master/content/docs/tutorials/data-exploration-in-r/2020_NL_Region_Mobility_Report.csv', sep = ',')
+# mobility <- read_csv('https://media.githubusercontent.com/media/hannesdatta/course-dprep/master/content/docs/tutorials/data-exploration-in-r/2020_NL_Region_Mobility_Report.csv', sep = ',')
 ```
 \
 **Exercise 1**     
 Inspect the `mobility` data frame, and describe the *structure of the data set* in your own words. 
 - Which column names does the data have?
 - How are variables/metrics operationalized? 
-- What is the unit of analysis at which the data is provided ("what's the grouping variable?"). 
+- What is the unit of analysis at which the data is provided ("what uniquely identifies a row in this dataset?"). 
 - How is the data sorted (if at all)?
 - Are the values contained in each column complete? Do these values all make sense? 
 - Are “strings” properly encoded (i.e., do they contain any weird characters, or do they seem appropriately rendered so you can read them)?
@@ -234,7 +231,7 @@ Now let's start calculating with our dates.
 What's the first and last date in our data frame? Tip: you can use `min()` and `max()` now that the date column has been converted into date format! 
 
 `r hide("Solution Exercise 6")`
-The data runs from  February 15 2020 (`min(mobility$date)`) to January 5 2021 (`max(mobility$date)`).
+The data runs fromFebruary 15, 2020 (`min(mobility$date)`) to December 31, 2021 (`max(mobility$date)`).
 
 Observe above that you can not only use R code in code cells, but also in text by enclosing it in special characters: `r min(mobility$date)`.
 `r unhide()`
@@ -260,7 +257,7 @@ mobility <- mobility %>% mutate(avg_mobility2 = rowMeans(select(., columns), na.
 ```
 
 ```{r eval=FALSE, webex.hide = 'Inefficient solutions'}
-# solution (elegant, but not sustainable as column names could change)
+# solution (elegant, but not sustainable as column names could change!!!)
 mobility$avg_mobility <- rowMeans(mobility[,6:ncol(mobility)], na.rm = TRUE)
 
 # solution (least elegant - and far less efficient) - do you notice the difference in running time?  
@@ -298,13 +295,13 @@ We know that the values in the `province` and `city` columns are empty for the c
 \
 
 **Exercise 8**  
-Create three subsets (`country`, `province`, `city`) of `mobility` according to the descriptions above. To filter for empty strings (`""`) you can use the boolean expression `df$column == ""`. This essentially checks whether the column contains the characters listed in `""`.
+Create three subsets (`country`, `province`, `city`) of `mobility` according to the descriptions above. To filter for NA strings (`NA`) you can use the boolean expression `is.na(df$column)`. This essentially checks whether the column contains missing values.
 
 
 ```{r, webex.hide = 'Solution Exercise 8'}
-country <- mobility %>% filter(city == "" & province == "")
-province <- mobility %>% filter(city == "" & province != "")
-city <- mobility %>% filter(city != "")
+country <- mobility %>% filter(is.na(city) & is.na(province))
+province <- mobility %>% filter(is.na(city) & !is.na(province))
+city <- mobility %>% filter(!is.na(city))
 ```
 
 \
@@ -393,10 +390,10 @@ missings(country, columns)
 result <- lapply(list(country, province, city), missings, cols = columns)
 
 # we can also nicely "bind" them together
-do.call('rbind', result)
+bind_rows(result)
 
 #... and add data set names
-data.frame(dataset = c('country','province','city'), do.call('rbind', result))
+data.frame(dataset = c('country','province','city'), bind_rows(result))
 ```
 
 \
@@ -445,8 +442,8 @@ legend("bottomleft", c("residential", "workplace"), fill=c("red", "blue")) # leg
 Replicate the the following plot with R code (consider the labels, axes, colors, etc.):
 
 ```{r echo=FALSE}
-plot(x = country[country$date > "2020-09-01", "date"], 
-     y = country[country$date > "2020-09-01", "transit_stations"], 
+plot(x = country[country$date > "2020-09-01", ]$date, 
+     y = country[country$date > "2020-09-01", ]$transit_stations,
      col = "black", 
      type = "l",  
      ylim = c(-85, 0), # range of vertical axis
@@ -457,8 +454,8 @@ plot(x = country[country$date > "2020-09-01", "date"],
 \
 
 ```{r, webex.hide = 'Solution Exercise 11'}
-plot(x = country[country$date > "2020-09-01", "date"], 
-     y = country[country$date > "2020-09-01", "transit_stations"], 
+plot(x = country[country$date > "2020-09-01",]$date, 
+     y = country[country$date > "2020-09-01",]$transit_stations, 
      col = "black", 
      type = "l",  
      ylim = c(-85, 0), # range of vertical axis
