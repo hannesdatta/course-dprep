@@ -23,7 +23,10 @@ draft: false
 {{% hint info %}}
 Please choose a professional GitHub username (e.g., *firstname.lastname*, *initial.lastname*, etc.). Chances are high you are going to use your GitHub profile when applying for jobs.
 
+Experiencing any issues to authenticate with GitHub (e.g., an error message about your password)? Head over to the [support section](/docs/course/support) for how to solve this issue.
+
 {{% /hint %}}
+
 
 <!--
 - Optional readings
