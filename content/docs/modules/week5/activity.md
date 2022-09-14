@@ -1,6 +1,6 @@
 ---
 title: After-class exercises
-draft: False
+draft: True
 ---
 
 # Live Stream Activity

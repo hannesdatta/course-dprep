@@ -2,7 +2,7 @@
 weight: 3
 title: Week 2) Project Management and Version Control
 description: Keep track of file changes and apply the end-to-end Git workflow!
-bookCollapseSection: true
+bookCollapseSection: false
 draft: false
 ---
 
@@ -23,7 +23,10 @@ draft: false
 {{% hint info %}}
 Please choose a professional GitHub username (e.g., *firstname.lastname*, *initial.lastname*, etc.). Chances are high you are going to use your GitHub profile when applying for jobs.
 
+Experiencing any issues to authenticate with GitHub (e.g., an error message about your password)? Head over to the [support section](/docs/course/support) for how to solve this issue.
+
 {{% /hint %}}
+
 
 <!--
 - Optional readings
@@ -36,9 +39,9 @@ Please choose a professional GitHub username (e.g., *firstname.lastname*, *initi
 ## Tutorial
 {{% laptop %}}
 
-- [In-class tutorial: Project Management and Version Control with Git/GitHub](docs/tutorials/version-control) and [after-class exercises](activity)
+- [In-class tutorial: Project Management and Version Control with Git/GitHub](docs/tutorials/version-control) and after-class exercises
 - [Git & Github cheatsheet](https://github.com/tilburgsciencehub/website/raw/master/content/building-blocks/collaborate-and-share-your-work/use-github/github_cheatsheet_tsh.pdf)
-
+- Optional activity: [Contributing to an open source web site](activity)
 
 
 <br>

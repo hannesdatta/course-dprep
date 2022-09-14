@@ -2,7 +2,7 @@
 weight: 4
 title: Week 4) Engineering data sets
 description: Use tidyverse and dplyr to structure your data for analysis.
-bookCollapseSection: true
+bookCollapseSection: false
 draft: false
 ---
 

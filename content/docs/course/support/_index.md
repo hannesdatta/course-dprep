@@ -36,3 +36,20 @@ Older machines may face difficulties storing large datasets into memory. Fortuna
 Sign up for a [Kaggle account](https://www.kaggle.com/account/login), visit the "Code" tab, and click on "New Notebook". By default, it opens a Python notebook but in the right sidebar you can change the settings to R (only R scripts are supported; no markdown files). Note that you first need to upload your datasets to Kaggle before you can use them (click "Add data" button in the top right). Take note of the file path of your datasets: `../input/{DATASET-TITLE}/{DATASET-NAME}.csv` which may be somewhat different than you're used to in RStudio.
 
 {{< /hint >}}
+
+{{< hint warning >}}
+__Git complains about "support for password authentication"__  
+
+If you're trying to run `git push` or `git clone`, it may happen you receive an error message that *"Support for password authentication was removed on August 13, 2021"*. In short, Git doesn't accept passwords anymore, but instead of using a password, you can generate and use a so-called "token".
+
+Here is how to do that:
+
+1. Go to https://github.com/settings/tokens and click "Generate new token"
+2. Set an expiration date for your token (long enough for this course, at least)
+3. Under "select scopes", check the "repo", "gist", and "project" boxes.
+4. At the bottom of the page, click "Generate token"
+5. Copy your token.
+6. After trying to push your change using git (e.g., `git push -u origin master`), enter your GitHub username when prompted, and __paste the copied token when asked for your password.__
+
+{{< /hint >}}
+

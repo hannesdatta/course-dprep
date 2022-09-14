@@ -381,7 +381,7 @@ my_passwords/*
 
 2. `cd` into the root directory of `version-control-exercises`. Type `touch .gitignore` to quickly generate a new file called `.gitignore` from the terminal. For example, you can also type `touch todo.txt`.
 
-3. Type `open .gitignore` to open the file in a text editor.   
+3. Type `open .gitignore` (on MacOS) or `start .gitignore` (on Windows) to open the file in a text editor.   
 
 4. In the `.gitignore` file type `my_secret_key.txt` and save it. This will ignore the file when committing changes.
 

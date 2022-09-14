@@ -1,6 +1,7 @@
 ---
 title: After-class exercises
-draft: false
+draft: true
+bookHidden: true
 ---
 
 # After-class exercises
