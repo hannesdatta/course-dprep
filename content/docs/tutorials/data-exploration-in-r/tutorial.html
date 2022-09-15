@@ -795,9 +795,20 @@ hljs.initHighlightingOnLoad();
 <h3>Before we get started</h3>
 <div class="slideContent" >
 <ul>
-<li><p>Experiencing password/authentication issues when trying to use Git? Check the <a href="https://dprep.hannesdatta.com/docs/course/support">support section</a> to see how to solve this issue!</p></li>
-<li><p>Some tech issues w/ Pulse at this moment - will fix when I find the time</p></li>
-<li><p>Ensure teams have their repositories in <strong>GitHub classrooms</strong> (link on <a href="https://dprep.hannesdatta.com/docs/project">course site</a>)</p></li>
+<li><p>Git/GitHub (week 2)</p>
+
+<ul>
+<li>Experiencing password/authentication issues when trying to use Git? Check the <a href="https://dprep.hannesdatta.com/docs/course/support">support section</a> to see how to solve this issue!</li>
+<li>Fixing open source projects using forks and pull requests </li>
+<li>Other issues w/ Git/GitHub?</li>
+</ul></li>
+<li><p>Tech issues w/ Pulse at this moment - will fix eventually</p></li>
+<li><p>Team work</p>
+
+<ul>
+<li>Ensure teams have their repositories in <strong>GitHub classrooms</strong> (link on <a href="https://dprep.hannesdatta.com/docs/project">course site</a>)</li>
+<li>Reality check: wanting to stay enrolled?</li>
+</ul></li>
 </ul>
 
 </div>
@@ -822,7 +833,7 @@ hljs.initHighlightingOnLoad();
 <li>After class
 
 <ul>
-<li>Please go through the entire (written) tutorial on the <a href="https://dprep.hannesdatta.com/docs/tutorials/version-control">dprep site</a>. </li>
+<li>Please go through the entire tutorial on the <a href="https://dprep.hannesdatta.com/docs/tutorials/version-control">dprep site</a>. </li>
 </ul></li>
 </ul>
 
@@ -860,7 +871,7 @@ hljs.initHighlightingOnLoad();
 <li>Choose HTML as output, and pick a good filename (e.g., &ldquo;tutorial&rdquo;)</li>
 </ol>
 
-<p>We will continue when you&#39;re done.</p>
+<p><strong>We will continue when you&#39;re done.</strong></p>
 
 </div>
 
@@ -869,11 +880,15 @@ hljs.initHighlightingOnLoad();
 <h3>RMarkdown basics</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">We already know markdown syntax</li>
+<li class="fragment">We already know markdown syntax, right?</li>
+<li class="fragment">Introducing inline code</li>
 <li class="fragment">Code cells &amp; running code (click)</li>
-<li class="fragment">Inline code</li>
 <li class="fragment">Compiling the entire document</li>
-<li class="fragment">Options to run (or not run) code cells when compiling documents</li>
+<li class="fragment">Options to run (or not run) code cells when compiling documents
+
+<ul>
+<li class="fragment"><code>echo</code>, <code>include</code></li>
+</ul></li>
 </ul>
 
 </div>
@@ -883,9 +898,9 @@ hljs.initHighlightingOnLoad();
 <h3>Base R</h3>
 <div class="slideContent" >
 <ul>
-<li>Datacamp&#39;s Intermediate covers &ldquo;base R&rdquo; - basic programming concepts that are at the <strong>core</strong> of R</li>
-<li>We will first review some of these concepts.</li>
-<li>It&#39;s good to have a cheat sheet available - use <a href="https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf">this</a></li>
+<li class="fragment">Datacamp&#39;s Intermediate covers &ldquo;base R&rdquo; - basic programming concepts that are at the <strong>core</strong> of R</li>
+<li class="fragment">We will first review some of these concepts.</li>
+<li class="fragment">It&#39;s good to have a cheat sheet available - use <a href="https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf">this</a></li>
 </ul>
 
 </div>
@@ -929,7 +944,7 @@ streams &lt;- read_csv(&#39;streams.csv&#39;, skip=1, n_max = Inf)
 </code></pre>
 
 <ul>
-<li>Imagine the data had millions of rows. Write some code that only opens the first 100 rows if a variable called <code>prototype</code> is <code>TRUE</code>. If <code>prototype</code> is <code>FALSE</code>, all rows need to be loaded.</li>
+<li><strong>Imagine the data had millions of rows. Write some code that only opens the first 100 rows if a variable called <code>prototype</code> is <code>TRUE</code>. If <code>prototype</code> is <code>FALSE</code>, all rows need to be loaded.</strong></li>
 </ul>
 
 </div>
@@ -960,15 +975,15 @@ for (url in urls) {
 <h3>Loops versus the apply family</h3>
 <div class="slideContent" >
 <ul>
-<li>Loops dont&#39; &ldquo;return&rdquo; anything - they just execute stuff over and over again</li>
-<li>Functions from the <code>apply</code> family, though, DO return information.</li>
-<li>Apply comes in multiple flavors:
+<li class="fragment">Loops dont&#39; &ldquo;return&rdquo; anything - they just execute stuff over and over again</li>
+<li class="fragment">Functions from the <code>apply</code> family, though, DO return information.</li>
+<li class="fragment">Apply comes in multiple flavors:
 
 <ul>
-<li><code>lapply</code> (loops over a <code>vector</code> or <code>list</code>, returns a <code>list</code>)</li>
-<li><code>sapply</code> (loops over a <code>vector</code>, returns as a <code>vector</code>)</li>
-<li><code>apply</code> (loops over rows or columns of a matrix, returns a <code>vector</code>)</li>
-<li>Other versions of <code>apply</code> exist, but I rarely use them</li>
+<li class="fragment"><code>lapply</code> (loops over a <code>vector</code> or <code>list</code>, returns a <code>list</code>)</li>
+<li class="fragment"><code>sapply</code> (loops over a <code>vector</code>, returns as a <code>vector</code>)</li>
+<li class="fragment"><code>apply</code> (loops over rows or columns of a matrix, returns a <code>vector</code>)</li>
+<li class="fragment">Other versions of <code>apply</code> exist, but I rarely use them</li>
 </ul></li>
 </ul>
 
@@ -1143,8 +1158,10 @@ my_dataset %&gt;% group_by(neighbourhood) %&gt;% summarize(hosts = n_distinct(ho
 
 <ul>
 <li>get repository in shape!</li>
-<li>explore datasets for analysis</li>
-<li>in particular: what is the unit of analysis? what operations do you need to execute to get there?</li>
+<li>refine research question &amp; <strong>deployment</strong></li>
+<li>explore &amp; prepare datasets for analysis</li>
+<li>e.g., unit of analysis!</li>
+<li>adhere to GitHub workflows when collaborating</li>
 </ul></li>
 </ul>
 

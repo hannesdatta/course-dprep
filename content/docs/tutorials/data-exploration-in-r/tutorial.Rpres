@@ -7,11 +7,16 @@ autosize: true
 Before we get started
 =====================
 
-- Experiencing password/authentication issues when trying to use Git? Check the [support section](https://dprep.hannesdatta.com/docs/course/support) to see how to solve this issue!
+- Git/GitHub (week 2)
+  - Experiencing password/authentication issues when trying to use Git? Check the [support section](https://dprep.hannesdatta.com/docs/course/support) to see how to solve this issue!
+  - Fixing open source projects using forks and pull requests 
+  - Other issues w/ Git/GitHub?
+  
+- Tech issues w/ Pulse at this moment - will fix eventually
 
-- Some tech issues w/ Pulse at this moment - will fix when I find the time
-
-- Ensure teams have their repositories in __GitHub classrooms__ (link on [course site](https://dprep.hannesdatta.com/docs/project))
+- Team work
+  - Ensure teams have their repositories in __GitHub classrooms__ (link on [course site](https://dprep.hannesdatta.com/docs/project))
+  - Reality check: wanting to stay enrolled?
 
 Structure of this tutorial
 ========================================================
@@ -24,7 +29,7 @@ Structure of this tutorial
 *This part features __selected__ issues.*
 
 - After class
-  - Please go through the entire (written) tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/tutorials/version-control). 
+  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/tutorials/version-control). 
 
 From Base R to RMarkdown
 =============
@@ -45,21 +50,22 @@ DO: Creating your first RMarkdown
 1. Select file --> new --> RMarkdown.
 2. Choose HTML as output, and pick a good filename (e.g., "tutorial")
 
-We will continue when you're done.
+__We will continue when you're done.__
 
 RMarkdown basics
 ======
 incremental: true
 
-- We already know markdown syntax
+- We already know markdown syntax, right?
+- Introducing inline code
 - Code cells & running code (click)
-- Inline code
 - Compiling the entire document
 - Options to run (or not run) code cells when compiling documents
-
+  - `echo`, `include`
 
 Base R
 ==============
+incremental: true
 
 - Datacamp's Intermediate covers "base R" - basic programming concepts that are at the __core__ of R
 - We will first review some of these concepts.
@@ -98,7 +104,7 @@ library(tidyverse)
 streams <- read_csv('streams.csv', skip=1, n_max = Inf)
 ```
 
-- Imagine the data had millions of rows. Write some code that only opens the first 100 rows if a variable called `prototype` is `TRUE`. If `prototype` is `FALSE`, all rows need to be loaded.
+- __Imagine the data had millions of rows. Write some code that only opens the first 100 rows if a variable called `prototype` is `TRUE`. If `prototype` is `FALSE`, all rows need to be loaded.__
 
 Loops
 =====
@@ -118,6 +124,7 @@ __Do:__ Use the code snippet from the previous slide to download all historical 
 
 Loops versus the apply family
 ============
+incremental: true
 
 - Loops dont' "return" anything - they just execute stuff over and over again
 - Functions from the `apply` family, though, DO return information.
@@ -239,5 +246,8 @@ Next steps
 - Work through the tutorial and complete exercises (all solutions available)
 - Continue working on projects
   - get repository in shape!
-  - explore datasets for analysis
-  - in particular: what is the unit of analysis? what operations do you need to execute to get there?
+  - refine research question & __deployment__
+  - explore & prepare datasets for analysis
+    - e.g., unit of analysis!
+  - adhere to GitHub workflows when collaborating
+  
