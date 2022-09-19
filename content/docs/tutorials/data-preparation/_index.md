@@ -14,7 +14,7 @@ draft: false
 * Merge data sets on one or more indices and understand the different types of joins (inner, left, right join)
 * Handle and preprocess string data (remove characters, splitting)
 * Apply a variety of feature engineering techniques (grouping, rank, counter)
-* Document code and analyses with an R Markdown
+* Document code and analyses with RMarkdown
 
 
 ## Planning
@@ -23,17 +23,9 @@ draft: false
 
 ## Getting started
 
-1. Develop your R skills by completing the DataCamp courses
-    - [DataCamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
-    - [DataCamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
-    - [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+1. In-class tutorial (view slides [tba])
 
-2. During this week's lecture, we will go over this tutorial where you practice preparing a dataset with R for further analysis. You can already take a look at it here: ([View](data-preparation.html), [Download; right click - download file as](data-preparation.Rmd))
-
-    - Download the data from [here](data.zip) and store it in the same directory as your Markdown file.
-
-3. This part includes additional explanation and exercises using dplyr and tidyr. This part is __optional but highly recommended__ if you found the Datacamp courses to be a bit difficult or if you simply want some extra material!
-    - [Data manipulation tutorial using dplyr and tidyr](https://cengel.github.io/R-data-wrangling/tidyr.html)
+2. After-class exercises ([View](data-preparation.html), [Download; right click - download file as](data-preparation.Rmd))
 
 
 

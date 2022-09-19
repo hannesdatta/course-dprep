@@ -16,14 +16,25 @@ draft: false
 - Feedback on team project (activity #2)
 
 ## Self-study and activities
-- [Data preparation process and challenges](https://www.topbots.com/data-preparation-for-machine-learning/)
+- Develop your R skills by completing the DataCamp courses
+    - [DataCamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
+    - [DataCamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+    - [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+- [Reading: Data preparation process and challenges](https://www.topbots.com/data-preparation-for-machine-learning/)
+
+{{% hint info %}}
+__Having a hard time with Datacamp, or seeking to practice more?__
+
+Then check [this material on manipulating data using `dplyr` and `tidyr`](https://cengel.github.io/R-data-wrangling/)!
+{{% /hint %}}
 
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
 ## Tutorial
 {{% laptop %}}
 
-- [In-class tutorial: Data Preparation in R](docs/tutorials/data-preparation) and [after-class exercises](activity)
+- [In-class tutorial: Data Preparation in R](docs/tutorials/data-preparation) and after-class exercises
+
 
 <!--
 ## Self-study and activities
