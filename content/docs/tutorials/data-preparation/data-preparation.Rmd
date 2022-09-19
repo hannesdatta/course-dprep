@@ -15,9 +15,9 @@ library(webexercises)
 --- 
 
 ### Prerequisites
-* [DataCamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
-* [DataCamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
-* [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+* [Datacamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
+* [Datacamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+* [Datacamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
 
 
 --- 
@@ -77,7 +77,15 @@ For this exercise we have collected the rankings for 2020 which have been split 
 \
 
 **Exercise 1**  
-Download the [data sets](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/data-preparation/data.zip) and describe the structure of the data sets in your own words. What is the target unit of analysis? Do columns seem complete? Are there any values that do not make sense? Are “strings” properly encoded? What are common columns across the three files? Please keep in mind that opening the data into a spreadsheet programme such as Excel only shows you the first 1.05 million records or so (R, however, can load in all the data!).
+Download the [data sets](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/data-preparation/data.zip) and describe the structure of the data sets in your own words. 
+
+- What is the target unit of analysis? 
+- Do columns seem complete? 
+- Are there any values that do not make sense? 
+- Are “strings” properly encoded? 
+- What are common columns across the three files? 
+
+Please keep in mind that opening the data into a spreadsheet programme such as Excel only shows you the first 1.05 million records or so (R, however, can load in all the data!).
 
 `r hide("Solution Exercise 1")`
 The streams data set contains the top 200 songs on given date in a country. The popularity and song id columns have missing values, the ranks are all between 1 and 200, and the number of streams seems is at least 1000. The `country` column can be joined on the `country_code_2_letter` from the country_codes file. Similarly, the `song_id` can be joined on the `song_id` from songs.csv. The `song_name` column has some non-ASCII characters (e.g., `Ë™™Â•Ω‰∏çÂì≠`) here and there. Roughly one sixth of all songs is not associated with any genre tags, 17 songs don't have any song id, and for 9 songs the artist is missing. 
@@ -88,20 +96,20 @@ The streams data set contains the top 200 songs on given date in a country. The 
 **Exercise 2**  
 Merge all three files into a single data frame `df` and export the result as `merged_df.csv`. Keep in mind the following instructions:
 
-* Use the merge functions of `dplyr` and aim for concise code (tip: look up the DataCamp tutorials for the syntax!).
-* Note that CSV-files are separated by commas (hence the name comma-separated-value!) but they can also be separated by other delimiters (e.g., `;`). You need to explicitly tell the `read.csv()` function which one to use!
+* Use the join functions of `dplyr` and aim for concise code (tip: look up the Datacamp tutorials for the syntax!).
+* Note that CSV-files are separated by commas (hence the name comma-separated-value!), but they can also be separated by other delimiters (e.g., `;`). Rather than using `read_csv()`, you can use `read_delim()` and explicitly tell R which separation character (`delim=';'`) to use!
 * Examine the effect of picking a left, right, and inner join, and how that affects the completeness of your data. Strive for a final data frame that captures as much of the original data as possible.
 * To avoid confusion between overlapping column names (e.g., country appears in both `streams.csv` and `country_codes.csv`), you may consider adding suffixes. 
 
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE, webex.hide = 'Solution Exercise 2'}
-# install.packages("dplyr") - run this command if you have never used the package before
-library(dplyr)
+# install.packages("tidyverse") - run this command if you have never used the package before
+library(tidyverse)
 
 # input
-streams <- read.csv("streams.csv", sep=",")
-songs <- read.csv("songs.csv", sep=",")
-country_codes <- read.csv("country_codes.csv", sep=";")
+streams <- read_csv("streams.csv")
+songs <- read_csv("songs.csv")
+country_codes <- read_delim("country_codes.csv", delim = ";")
 
 # transformation
 df <- streams %>% 
@@ -111,7 +119,7 @@ df <- streams %>%
 # Since countries in Oceania are missing in country_codes.csv we use a left join here (otherwise you'd miss out on +/- 139K records)
 
 # output
-write.csv(df, "merged_df.csv", row.names=FALSE)
+write_csv(df, "merged_df.csv")
 ```
 
 
@@ -128,13 +136,13 @@ A track can appear in multiple top 200 lists across countries (e.g., both in the
 
 ```{r eval=FALSE, webex.hide = 'Solution Exercise 3'}
 #input
-df <- read.csv("merged_df.csv", sep=",")
+df <- read_csv("merged_df.csv")
 
 # transformation
 df <- df %>% filter(!duplicated(df))
 
 # output
-write.csv(df, "df_no_duplicates.csv", row.names = FALSE)
+write_csv(df, "df_no_duplicates.csv")
 ```
 
 \
@@ -159,7 +167,7 @@ Implement this data imputation strategy using the `filter`, `groupby`, and `summ
 
 ```{r eval=FALSE, webex.hide = 'Solution Exercise 4'}
 # input
-df <- read.csv("df_no_duplicates.csv", sep=",")
+df <- read_csv("df_no_duplicates.csv")
 
 # transformation
 imputation_values <- df %>% filter(!is.na(popularity)) %>% 
@@ -174,12 +182,12 @@ df <- df_joined %>% mutate(popularity_filled = ifelse(is.na(popularity), popular
 # Since the popularity score is country independent and it is either present for all records or not available for any country (or time period), we should find a way to group songs together. For example, if the artist has other songs for which the popularity score is known we could take the median of those scores, or we could look for songs with similar genre tag words.
 
 # output
-write.csv(df, "df_imputed.csv", row.names = FALSE)
+write_csv(df, "df_imputed.csv")
 ```
 
 ---
 
-### 2. Feature Engineering
+### 2. Feature Engineering / Operationalizing Variables
 
 \
 
@@ -200,7 +208,7 @@ date <- seq(min(as.Date(df$date)), max(as.Date(df$date)), by = "day")
 
 # Step 2
 counter <- 1:length(date)
-dates <- data.frame(cbind(counter=counter, date=as.character(date)))
+dates <- data.frame(counter=counter, date=date)
 
 # Step 3
 df <- df %>% inner_join(dates, by = "date")
@@ -226,7 +234,7 @@ Add a `ranking` column to `df` using the `dplyr` package and export the result a
 
 ```{r eval=FALSE, webex.hide = 'Solution Exercise 6'}
 # input
-df <- read.csv("df_imputed.csv", sep=",")
+df <- read_csv("df_imputed.csv")
 
 # transformation
 df <- df %>% group_by(country, date) %>%
@@ -239,12 +247,12 @@ df <- df %>% group_by(country, date) %>%
 df <- df %>% filter(!is.na(song_id))
 
 # output
-write.csv(df, "df_ranking.csv", row.names = FALSE)
+write_csv(df, "df_ranking.csv")
 ```
 
 \
 
-#### 2.3 Reshape 
+#### 2.3 Reshaping / pivoting longer or wider
 
 The lion share of tracks are assigned to more than one genre. For example, the famous song "Señorita" by Shawn Mendes and Camilo Cabello is categorized as `pop`, but also as `canadian pop`, `post-teen pop`, `viral pop`, and `dance pop`. The data frame stores these records as a list of comma-separated genres. On a high level, we like to move from this state: 
 
@@ -289,19 +297,17 @@ After some data wrangling we can transform the data into the following format:
 \
 
 **Exercise 7**   
-As a last step, we call the `dcast()` function of the `reshape2` package to transform the data frame into the desired format (see the documentation of the package for details!), and export the results as `df_reshaped.csv`. 
+As a last step, we use the `pivot_longer()` and `pivot_wider()` functions to change the format of our data frame (see, e.g., [this overview](https://tidyr.tidyverse.org/reference/pivot_longer.html) or these [code snippets](https://dcl-wrangle.stanford.edu/pivot-advanced.html)). We then store the results in `df_reshaped.csv`. 
 
-Following these steps, it's your turn to create a data set, with (a) rows being the dates, (b) columns being the song IDs, and (c) the cells indicating a song's total number of streams.
+Following these steps, it's your turn to create a data set, with (a) rows being the dates, (b) columns being the song IDs, and (c) the cells indicating a song's sum of streams.
 
 \
 
 ```{r eval=FALSE, webex.hide = 'Solution Exercise 7'}
-library(reshape2)
-
 # load input
-df <- read.csv("df_ranking.csv", sep=",", stringsAsFactors = FALSE)
+df <- read_csv("df_ranking.csv")
 
-song_popularity = dcast(df, formula=date~song_id, fun.aggregate = sum, value.var = "streams")
+song_popularity = df %>% pivot_wider(id_cols = date, names_from = 'song_id', values_from = 'streams', values_fn = sum)
 
 # let us look at the columns (--> these are song IDs!)
 colnames(song_popularity)
@@ -310,7 +316,8 @@ colnames(song_popularity)
 song_popularity$date[1:10]
 
 # output
-write.csv(song_popularity, "df_reshaped.csv")
+write_csv(song_popularity, "df_reshaped.csv")
+
 ```
 
 \
