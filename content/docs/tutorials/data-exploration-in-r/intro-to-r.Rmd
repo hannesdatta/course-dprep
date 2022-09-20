@@ -170,6 +170,10 @@ head(mobility)
 ncol(mobility)
 ```
 
+```{r, echo = TRUE, webex.hide = 'Optional solution', results = 'hide', warning = FALSE}
+# optional solution 
+mobility[c(1,5,6,7)]<-list(NULL)
+```
 \
 
 #### Rename Columns
@@ -252,6 +256,16 @@ Add the `avg_mobility` column to your dataset (keep in mind that the data frame 
 
 columns <- c('retail_and_recreation', 'grocery_and_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential')
 mobility <- mobility %>% mutate(avg_mobility2 = rowMeans(select(., columns), na.rm =TRUE))
+
+
+```
+
+```{r, webex.hide = 'Optional solution Exercise 7', eval = FALSE}
+# solution (efficient, but prone to couting error) (create an array first, then rowMeans of array)
+
+avg_mobility_array <- mobility[c(6,7,8,9,10,11)]
+
+mobility$avg_mobility <- rowMeans(avg_mobility_array, na.rm = TRUE)
 
 
 ```
