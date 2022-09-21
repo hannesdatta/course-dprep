@@ -23,7 +23,7 @@ draft: false
 
 ## Getting started
 
-1. In-class tutorial ([view slides](tutorial.html)
+1. In-class tutorial ([view slides](tutorial.html))
 
 2. After-class exercises ([View](data-preparation.html), [Download; right click - download file as](data-preparation.Rmd))
 
