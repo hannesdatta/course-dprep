@@ -32,7 +32,7 @@ Course week|Date|Time|Location|Content|
 |                              |Thu 15 Sep | 8.45-10.30 | On campus | Tutorial: Data exploration using RMarkdown
 |{{< button relref="week4" >}}Week 4{{< /button >}}|Mon 19 Sep | 10.45-12.30 | Online | [Team coaching #2](/docs/project/workplan)
 |                              |Thu 22 Sep | 8.45-10.30 | On campus | Tutorial: Engineering datasets
-|{{< button relref="week5" >}}Week 5{{< /button >}}|Mon 26 Sep | 10.45-12.30 | On campus | [Team coaching #3](/docs/project/workplan)
+|{{< button relref="week5" >}}Week 5{{< /button >}}|Mon 26 Sep | 10.45-12.30 | Online | [Team coaching #3](/docs/project/workplan)
 |                              |Wed 28 Sep | 8.45-10.30 | On campus | Tutorial: Pipeline automation
 |{{< button relref="week6" >}}Week 6{{< /button >}} |Mon 3 Oct  | 10.45-12.30 | Online | [Team coaching #4](/docs/project/workplan)
 |                              |Thu 6 Oct  | 8.45-10.30 | On campus | [Team coaching #5](/docs/project/workplan)
