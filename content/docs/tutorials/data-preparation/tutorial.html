@@ -787,6 +787,11 @@ hljs.initHighlightingOnLoad();
 <h1>Engineering data sets (in-class tutorial)</h1><p>Hannes Datta</p>
 
 <div class="slideContent" >
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
 
 </div>
 
@@ -827,8 +832,7 @@ hljs.initHighlightingOnLoad();
 <br></li>
 </ul>
 
-<ol>
-<li>Group meeting (&ldquo;scrum meeting&rdquo;)
+<p><strong>1) Group meeting (&ldquo;scrum meeting&rdquo;)</strong></p>
 
 <ul>
 <li>review issues: done, in progress, not started (+ why)</li>
@@ -836,16 +840,27 @@ hljs.initHighlightingOnLoad();
 <li>write and assign new issues</li>
 <li>(re)prioritize issues on your project board</li>
 <li>set date &amp; time for next group meeting</li>
-</ul></li>
-<li>Individual work
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Working together in teams (II)</h3>
+<div class="slideContent" >
+<p><strong>2) Individual work</strong></p>
 
 <ul>
 <li>work on assigned issues</li>
 <li>help others work on theirs if they are stuck</li>
 <li>got some new ideas? write an issue (and put it in the backlog on the project board)</li>
-</ul></li>
-<li>Repeat&hellip; until you&#39;re done (or the deadline has passed&hellip;)</li>
-</ol>
+</ul>
+
+<p><strong>3) Repeat&hellip;</strong></p>
+
+<ul>
+<li>&hellip;until you&#39;re done (or the deadline has passed&hellip;)</li>
+</ul>
 
 </div>
 
@@ -889,7 +904,7 @@ hljs.initHighlightingOnLoad();
 <li class="fragment">Prerequisites/loading packages (<code>library()</code>)</li>
 <li class="fragment">Input (e.g., <code>read_csv()</code>) - always <strong>relative</strong> filenames!</li>
 <li class="fragment">Transformation (i.e., operations on your data)</li>
-<li class="fragment">Output (e.g., <code>write_csv()</code>)</li>
+<li class="fragment">Output (e.g., <code>write_csv()</code> &ndash; also w/ <strong>relative</strong> filenames)</li>
 </ul></li>
 <li class="fragment">Zoom in on ways to transform (while respecting I-T-O building blocks + its header)</li>
 </ul>
@@ -899,7 +914,7 @@ hljs.initHighlightingOnLoad();
 </section>
 <section data-transition="linear" data-transition-speed="default">
 <h3>DO: Let&#x27;s get today&#x27;s data and start exploring</h3>
-<div class="slideContent" >
+<div class="slideContent small-code" >
 <p>Run this snippet to download today&#39;s data (it&#39;s zipped - contains a couple of <code>.csv</code> files)</p>
 
 <pre><code class="r">library(tidyverse)
@@ -925,10 +940,9 @@ unzip(&#39;data.zip&#39;)
 <li class="fragment">What are columns in the data?</li>
 <li class="fragment">Do values in these columns seem complete? Do they all make sense? Are they properly encoded?</li>
 <li class="fragment"><em>What are common columns across (multiple) files (potential for merging!)</em></li>
-<li class="fragment">What uniquely defines a row?</li>
+<li class="fragment">What uniquely defines a row?
+<br><br><br><strong>Does not require &ldquo;additional&rdquo; preparation</strong> of your data.</li>
 </ul>
-
-<p>&ndash;&gt; does not require &ldquo;additional&rdquo; preparation</p>
 
 </div>
 
@@ -941,7 +955,6 @@ unzip(&#39;data.zip&#39;)
 
 <ul>
 <li class="fragment">Covered <code>tidyverse</code> in our R Bootcamp at the beginning of the class (remember?)</li>
-<li class="fragment">Recap</li>
 <li class="fragment">loading it: <code>library(tidyverse)</code> &ndash; will cover many packages</li>
 <li class="fragment">has so-called &ldquo;verbs&rdquo; &ndash; commands that execute <em>data wrangling</em> operations</li>
 <li class="fragment">can combine these verbs using <code>%&gt;%</code> (the piping character)</li>
@@ -954,7 +967,7 @@ unzip(&#39;data.zip&#39;)
 </section>
 <section data-transition="linear" data-transition-speed="default">
 <h3>Do: Let&#x27;s ask *better* questions using tidyverse</h3>
-<div class="slideContent" >
+<div class="slideContent small-code" >
 <ul>
 <li>Let&#39;s first load all datasets</li>
 </ul>
@@ -1013,10 +1026,13 @@ EUR per stream)</p>
 <div class="slideContent" >
 <p>Let&#39;s keep on generating stats, this time using <code>group_by()</code> and <code>summarise()</code> (plus verbs we have seen earlier)</p>
 
-<p>1) Create a new dataset, called <code>streams2</code>, summing up the streams by song.
-2) Create a new dataset, called <code>artists</code>, showing the count of songs by artist.
-3) Look at <code>artists</code>, and spit out the row that lists the number of songs for Ellie Goulding (<code>==</code>)
-4) Refine your search from (3) to include also collaborations (tip: <code>grepl()</code>!)</p>
+<p>1) Create a new dataset, called <code>streams2</code>, summing up the streams by song.</p>
+
+<p>2) Create a new dataset, called <code>artists</code>, showing the count of songs by artist.</p>
+
+<p>3) Look at <code>artists</code>, and spit out the row that lists the number of songs for Ellie Goulding (<code>==</code>)</p>
+
+<p>4) Refine your search from (3) to include also collaborations (tip: <code>grepl()</code>!)</p>
 
 </div>
 
@@ -1106,7 +1122,7 @@ EUR per stream)</p>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Final data operation</h3>
+<h3>Final data operation for today...!</h3>
 <div class="slideContent" >
 <ul>
 <li>Run the code snippet below, which generates some example data (in wide format).</li>
@@ -1133,17 +1149,17 @@ wide = df %&gt;% select(-genres)
 <h3>Summary of today&#x27;s tutorial</h3>
 <div class="slideContent" >
 <ul>
-<li>Work in &ldquo;ITO building blocks&rdquo; (+ loading libraries, of course!)</li>
-<li>Wrangling is necessary to get data into shape and generate meaning/understanding</li>
-<li>Pivoting is difficult&hellip; it&#39;s enough if you get the concept now - you will have to fiddle around with it anyways</li>
-<li>Have your cheat sheets available always &ndash; especially the <code>dplyr</code> one is useful (and very <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">visual</a>!</li>
+<li class="fragment">Work in &ldquo;ITO building blocks&rdquo; (+ loading libraries, of course!)</li>
+<li class="fragment">Wrangling is necessary to get data into shape and generate meaning/understanding</li>
+<li class="fragment">Pivoting is difficult&hellip; it&#39;s enough if you get the concept now - you will have to fiddle around with it anyways</li>
+<li class="fragment">Have your cheat sheets available always &ndash; especially the <code>dplyr</code> one is useful (and very <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">visual</a>!)</li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Next steps</h3>
+<h3>Next steps (I)</h3>
 <div class="slideContent" >
 <ul>
 <li>This tutorial
@@ -1159,6 +1175,23 @@ wide = df %&gt;% select(-genres)
 <li>explore &amp; prepare datasets for analysis</li>
 <li>adhere to GitHub workflows when collaborating</li>
 <li>get your project board in shape and learn &ldquo;new way of working&rdquo;</li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Next steps (II)</h3>
+<div class="slideContent" >
+<ul>
+<li>Next week
+
+<ul>
+<li>coaching session 10.45-12.30 - I&#39;ll be on campus (but we can meet online, too - indicate!)</li>
+<li>tutorial on Wednesday morning!
+<br><br>
+<strong>Thanks!</strong></li>
 </ul></li>
 </ul>
 
