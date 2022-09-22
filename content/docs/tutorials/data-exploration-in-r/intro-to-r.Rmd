@@ -170,9 +170,10 @@ head(mobility)
 ncol(mobility)
 ```
 
-```{r, echo = TRUE, webex.hide = 'Optional solution', results = 'hide', warning = FALSE}
-# optional solution 
+```{r, echo = TRUE, webex.hide = 'Very suboptimal solution', results = 'hide', warning = FALSE}
+# Very suboptimal solution
 mobility[c(1,5,6,7)]<-list(NULL)
+# The problem with this solution is in changing the columns. If a column changes, the numbers of the corresponding columns might also change, resulting in a different outcome of the code above.
 ```
 \
 
@@ -267,6 +268,7 @@ avg_mobility_array <- mobility[c(6,7,8,9,10,11)]
 
 mobility$avg_mobility <- rowMeans(avg_mobility_array, na.rm = TRUE)
 
+# The answer above, same as for exercise 4 makes use of counting which is prone to error if we add or remove a column!
 
 ```
 
