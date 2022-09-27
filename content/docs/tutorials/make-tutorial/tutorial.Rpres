@@ -1,0 +1,315 @@
+Automation with make (in-class tutorial)
+========================================================
+author: Hannes Datta
+date: 
+autosize: true
+
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+Before we get started
+=====================
+
+- Pulse
+  - up and running - thanks for your feedback
+  - like it? be in touch - we can add to do's for other classes (or update existing ones)
+- GitHub
+  - project boards should now be activated for all teams
+  - ensure you work in the `course-dprep` organization
+- Exam
+  - dates on the site - all ok or conflicts?
+  - invite you to make practice questions via PRs
+
+Feedback on team projects
+========
+incremental: true
+
+- team-member based branches OR **issue-based branches**
+- working in a fork vs. being a contributor
+- do not store raw data on GitHub + naming conventions (`dataset1`, etc.)
+- script conventions
+	- absolute vs. relative file names
+	- generalizable -- no "amsterdam" specific variable names
+	- install packages: ideally in *one* script
+- preparation: define unit of analysis (e.g., date & city)
+
+<!--
+- monitor feature branches (for hannes)-->
+
+ 
+
+
+Working together in teams
+========
+
+- [Scrum](https://tilburgsciencehub.com/learn/scrum) is meant to be helpful, not distracting!
+- Think of it as 'iterating' between working in a group, and individually
+<br>
+
+__1) Group meeting ("scrum meeting")__
+  - review issues: done, in progress, not started (+ why)
+  - review and integrate open pull requests one by one + check whether project still runs
+  - write and assign new issues
+  - (re)prioritize issues on your project board
+  - set date & time for next group meeting
+
+Working together in teams (II)
+========
+
+__2) Individual work__
+  - work on assigned issues
+  - help others work on theirs if they are stuck
+  - got some new ideas? write an issue (and put it in the backlog on the project board)
+  
+__3) Repeat...__
+- ...until you're done (or the deadline has passed...)
+
+
+Structure of this tutorial
+========================================================
+
+- In-class part of __this tutorial__
+  - [Tidyverse - chapter 1 & 3](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1)
+  - [Cleaning data in R - chapter 1 & 2](https://learn.datacamp.com/courses/cleaning-data-in-r)
+  - [Joining Data with `dplyr`- chapter 1 & 2](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1)
+  - And...of course, our [own tutorial](https://dprep.hannesdatta.com/docs/tutorials/data-preparation/data-preparation.html) that ties everything together
+  
+__Get your cheat sheets ready!!!__
+
+- After class
+  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/tutorials/data-preparation/data-preparation.html). 
+
+Why this tutorial
+==================
+incremental: true
+
+- Final dataset rarely available
+- Requires wrangling/transformations (can you name a few examples? there are *many*!)
+- In projects, structure scripts in four blocks
+  - Prerequisites/loading packages (`library()`)
+  - Input (e.g., `read_csv()`) - always __relative__ filenames!
+  - Transformation (i.e., operations on your data)
+  - Output (e.g., `write_csv()` -- also w/ __relative__ filenames)
+- Zoom in on ways to transform (while respecting I-T-O building blocks + its header)
+
+DO: Let's get today's data and start exploring
+======
+class: small-code
+
+Run this snippet to download today's data (it's zipped - contains a couple of `.csv` files)
+
+```{r}
+library(tidyverse)
+download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/data-preparation/data.zip', 'data.zip')
+unzip('data.zip')
+```
+
+We split this group in three parts -- focusing on `streams.csv`, `songs.csv`, and `country_codes.csv`.
+
+- Load the data set using `read_csv()`
+- Then, use the `head()`, `View()`, `summary()`, `dim()` commands and try to describe the data set
+- On categorical data (characters, strings), use the `table()` command to look at frequencies
+
+Common questions we can "ask" to a dataset
+=========
+incremental: true
+
+- What are columns in the data?
+- Do values in these columns seem complete? Do they all make sense? Are they properly encoded?
+- *What are common columns across (multiple) files (potential for merging!)*
+- What uniquely defines a row?
+<br><br><br>__Does not require "additional" preparation__ of your data.
+
+Common questions we can "ask" to a dataset (II)
+=========
+incremental: true
+
+- Useful information can be obtained if we make use of __extra wrangling...__
+  - Covered `tidyverse` in our R Bootcamp at the beginning of the class (remember?)
+  - loading it: `library(tidyverse)` -- will cover many packages
+  - has so-called "verbs" -- commands that execute *data wrangling* operations
+  - can combine these verbs using `%>%` (the piping character)
+- __Can you name a few of these verbs? What do they do?__
+
+Do: Let's ask *better* questions using tidyverse
+========
+class: small-code
+
+- Let's first load all datasets
+
+```{r}
+library(tidyverse)
+streams <- read_csv('streams.csv')
+songs <- read_csv('songs.csv')
+countries <- read_delim('country_codes.csv', ';')
+```
+
+Now, use the `tidyverse` verbs `filter()`, `arrange()`, and `mutate()` to answer the following questions.
+
+1) How many observations do we have for Belgium (country == 'BE')?
+
+2) Which song ID has most streams in the data (in which country, and when)?
+
+3) What's the name of that song?
+
+4) Add a new column to `streams`, showing the approx. revenue for each song/day/country (tip: Spotify pays about 0.0038
+EUR per stream)
+
+Grouping and summarizing
+=============
+
+- Grouping and summarizing is another powerful way to generate extra stats
+
+```{r}
+streams %>% group_by(country) %>% summarise(N=n())
+```
+
+- Alternatively... (in other words: sooo many functions that make code "look" better)
+
+```{r eval=FALSE}
+streams %>% count(country)
+```
+
+Do: Using grouping and summaries
+==============
+
+Let's keep on generating stats, this time using `group_by()` and `summarise()` (plus verbs we have seen earlier)
+
+1) Create a new dataset, called `streams2`, summing up the streams by song.
+
+2) Create a new dataset, called `artists`, showing the count of songs by artist.
+
+3) Look at `artists`, and spit out the row that lists the number of songs for Ellie Goulding (`==`)
+
+4) Refine your search from (3) to include also collaborations (tip: `grepl()`!)
+
+Merging/joining
+=======
+
+- Great job so far!
+- But, hasn't it been cumbersome to work w/ three separate datasets?
+- We can *join* them
+  - Why join / Why not to join? Mostly a memory issue. Think about it wisely.
+  - Syntax covered in "Joining data w/ dplyr" on Datacamp
+- Recap
+  - `inner_join()` -- but keeps only observations that occur in *both tables* (potential of losing control!)
+  - my favorite is `left_join()` ("keep everything in the left table, add the right table where you can)
+  - think about order of your merge
+
+Do: Let's join!
+=====
+
+1. First, join `streams` (left) with `songs` (right)
+2. Then, join `countries` to the result from (1).
+3. Turn your entire code in a self-contained module, w/ four blocks: 
+  - loading libraries, 
+  - input of raw data
+  - transformation
+  - output (here: save as `streams_merged.csv`)
+
+```{r eval=FALSE, include=FALSE}
+library(tidyverse)
+streams <- read_csv('streams.csv')
+songs <- read_csv('songs.csv')
+countries <- read_delim('country_codes.csv', ';')
+
+streams_merged = streams %>% left_join(songs, by = c('song_id')) %>% left_join(countries, by = c("country" = "country_code_2_letter"))
+
+write_csv(streams_merged, 'streams_merged.csv')
+
+```
+
+Dealing with missing values
+=========
+
+- Many reasons for values to be missing - they could be actual 0s even!
+- In our example, we would like to replace values with the `median` value of popularity in a given country at a given date.
+- Like with many things in data preparation, we proceed in steps.
+<br>
+__Can you come up with a step-wise procedure to achieve this?__ 
+
+Do: Impute some values
+====
+
+1. First, create a new data set with the median popularity by country and data (`group_by()` and `summarize()`!)
+2. Merge this data to `streams_merged` (`left_join()`)
+3. Add a new column, called `popularity_filled` (`mutate()`)
+4. Wrap it into a ITO building block :)
+
+```{r eval=FALSE, include=FALSE}
+# Solution
+library(tidyverse)
+streams <- read_csv('streams.csv')
+songs <- read_csv('songs.csv')
+countries <- read_delim('country_codes.csv', ';')
+
+streams_merged = streams %>% left_join(songs, by = c('song_id')) %>% left_join(countries, by = c("country" = "country_code_2_letter"))
+
+pop = streams_merged %>% group_by(country, date) %>% summarize(pop = median(popularity, na.rm=T))
+
+final_streams <- streams_merged %>% left_join(pop) %>% mutate(filled_pop = ifelse(is.na(popularity), pop, popularity))
+
+write_csv(streams_merged, 'streams_merged.csv')
+```
+
+Feature engineering
+=============
+incremental: true
+
+- Fancy term for "variable operationalization"
+- Simply means: measure "stuff"
+- Can you come up with a few new variables that **characterize music listening** at the country/date level? At the country level?
+- Invest time in *thinking* about which variables you want to create - you're in full control!
+- At this stage, think also about external data sets you may want to link (e.g., holidays on a country/day)
+
+Final data operation for today...!
+===========
+
+- Run the code snippet below, which generates some example data (in wide format).
+- Describe the structure of the data.
+
+```{r}
+df = songs %>% top_n(10) 
+genres = unique(unlist(strsplit(df$genres, ',')))
+for (genre in genres) df[[paste0('genre_', genre)]] = as.numeric(grepl(genre,df$genres))
+wide = df %>% select(-genres)
+```
+
+- Now, let's convert it to a long format.
+```{r}
+long = wide %>% pivot_longer(cols = starts_with('genre'))
+```
+
+Summary of today's tutorial
+=====
+incremental: true
+
+- Work in "ITO building blocks" (+ loading libraries, of course!)
+- Wrangling is necessary to get data into shape and generate meaning/understanding
+- Pivoting is difficult... it's enough if you get the concept now - you will have to fiddle around with it anyways
+- Have your cheat sheets available always -- especially the `dplyr` one is useful (and very [visual](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)!)
+
+Next steps (I)
+===============
+
+- This tutorial
+  - selected solutions available in the `.Rpres` file ([available on GitHub](https://github.com/hannesdatta/course-dprep/tree/master/content/docs/tutorials/data-preparation))
+  - add more solutions if you like via PRs!
+- Work through the tutorial and complete exercises (all solutions available)
+
+- Continue working on projects
+  - explore & prepare datasets for analysis
+  - adhere to GitHub workflows when collaborating
+  - get your project board in shape and learn "new way of working"
+  
+Next steps (II)
+===============
+
+- Next week
+  - coaching session 10.45-12.30 - I'll be on campus (but we can meet online, too - indicate!)
+  - tutorial on Wednesday morning!
+<br><br>
+__Thanks!__
