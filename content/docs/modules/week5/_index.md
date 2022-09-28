@@ -15,12 +15,18 @@ draft: false
 - Feedback on team project (activity #3)
 
 ## Self-study and activities
+
+- Watch (in this order...)
+    - [This is why you should automate the pipeline of your empirical research project](https://youtu.be/9aivqe-phL0)
+    - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)
+    - The content of the slides shown in the videos is [available here](pipelineautomation.pdf).
+- Read the building block ["What are makefiles"](https://tilburgsciencehub.com/learn/makefiles)
 - Optional readings
   - Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
   - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
 
 ## Tutorial
-- [In-class tutorial: Pipeline Building and Automation](docs/tutorials/make-tutorial) and [after-class exercises](activity)
+- [In-class tutorial: Pipeline Building and Automation](docs/tutorials/make-tutorial) and after-class exercises
 - Check out the [make cheatsheet!](/docs/project/resources/cheat-sheets/tsh_make_cheatsheet.pdf)
 
 
