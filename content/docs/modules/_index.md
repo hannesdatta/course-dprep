@@ -36,7 +36,7 @@ Course week|Date|Time|Location|Content|
 |                              |Wed 28 Sep | 8.45-10.30 | On campus | Tutorial: Pipeline automation
 |{{< button relref="week6" >}}Week 6{{< /button >}} |Mon 3 Oct  | 10.45-12.30 | Online | [Team coaching #4](/docs/project/workplan)
 |                              |Thu 6 Oct  | 8.45-10.30 | On campus | [Team coaching #5](/docs/project/workplan)
-|{{< button relref="week7" >}}Week 7{{< /button >}}  |Mon 10 Oct | 14.00-15.45 | Online | [Team coaching #6](/docs/project/workplan)
+|{{< button relref="week7" >}}Week 7{{< /button >}}  |Mon 10 Oct | 08.45-10.30 | Online | [Team coaching #6](/docs/project/workplan)
 |                              |Thu 13 Oct | 8.45-10.30 | On campus | Course summary and exam preparation 
 
 {{% hint info %}}
