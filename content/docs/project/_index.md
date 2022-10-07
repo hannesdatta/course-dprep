@@ -20,6 +20,13 @@ Together with your team members, you will
 
 Working on your team project is not only a great refresher on the course content, but *especially* gives you a better sense of the added value of using Git/GitHub when collaborating with one another, and automation with `make` with a many source code files.
 
+
+{{< hint info >}}
+
+This project may be *different* from other projects that you have worked on during your study. In particular, the purpose of this project is *not to write an academic research paper*, but instead to focus on the *infrastructure* of working on an academic research paper. More more insights, [check the grading guidelines](grading).
+
+{{< /hint >}}
+
 <!--
 ## Deliverables
 
