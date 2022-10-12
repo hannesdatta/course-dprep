@@ -22,8 +22,8 @@ This course teaches you to __efficiently manage empirical (marketing) research p
 
 Please use the navigation bar and buttons below to access the course material.
 
-{{< button relref="./docs/course/" >}}Syllabus & learning objectives {{< /button >}}
 {{< button relref="./docs/modules" >}}Course schedule and modules{{< /button >}}
+{{< button relref="./docs/course/" >}}Syllabus & learning objectives {{< /button >}}
 {{< button relref="./docs/course/enroll.md" >}}Enroll now!{{< /button >}}
 
 

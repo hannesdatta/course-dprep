@@ -802,13 +802,11 @@ https://support.rstudio.com/hc/en-us/articles/200486468
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Welcome to the final live stream in dPrep!</h3>
+<h3>Welcome to the final lecture in dPrep!</h3>
 <div class="slideContent" >
-<ul>
-<li>Please <strong>turn on</strong> your camera; it helps us to interact better!</li>
-<li>The <strong>chat</strong> is open</li>
-<li>If you haven&#39;t done so, please <strong>explore the exam page &amp; example questions</strong> at <a href="">https://dprep.hannesdatta.com/docs/course/exam</a>.</li>
-</ul>
+<p><br><br></p>
+
+<p>If you haven&#39;t done so, please <strong>explore the exam page &amp; example questions</strong> at <a href="">https://dprep.hannesdatta.com/docs/exam</a>.</p>
 
 <!--
 - Team project:
@@ -873,7 +871,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Lessons learnt #1: Versioning and Project Management with Git(Hub)</h3>
+<h3>Lessons learnt #1: Versioning and Project Management with Git(Hub) (I)</h3>
 <div class="slideContent" >
 <ul>
 <li class="fragment">Scrum &amp; the project board as a way to collaborate with one another
@@ -881,23 +879,37 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <ul>
 <li class="fragment">Writing issues is hard (!)</li>
 <li class="fragment">Seems to put a lot of structure on stuff, did it work out?</li>
+<li class="fragment">Recall how to work together &ndash; team &lt;-&gt; individual</li>
 </ul></li>
 <li class="fragment">Versioning can be powerful!
 
 <ul>
-<li class="fragment">Rolling back whenever you want</li>
 <li class="fragment">delete stuff that isn&#39;t needed</li>
-<li class="fragment">Oh no! Can&#39;t push!</li>
 <li class="fragment">GUI (e.g., in R) are cool (and much easier to use!)</li>
+<li class="fragment">Oh no! Can&#39;t push!</li>
+<li class="fragment">Rolling back whenever you want</li>
 </ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Lessons learnt #1: Versioning and Project Management with Git(Hub) (II)</h3>
+<div class="slideContent" >
+<ul>
+<li class="fragment">Know what to version, and what not</li>
 <li class="fragment">Collaborate on open source projects
 
 <ul>
-<li class="fragment">I know what PRs are!</li>
-<li class="fragment">less risk of &ldquo;destroying&rdquo; one&#39;s work</li>
+<li class="fragment">You know what PRs are!</li>
+<li class="fragment">You may even actually contributed to public projects!</li>
 </ul></li>
-<li class="fragment">Learn the tools used in business</li>
+<li class="fragment">Learn the tools used in business
+
+<ul>
 <li class="fragment">But: takes a lot of time to become good at</li>
+</ul></li>
 </ul>
 
 </div>
@@ -912,11 +924,13 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <ul>
 <li class="fragment">ability to quickly produce clean docs to share!</li>
 <li class="fragment">uh&hellip; but how to run it w/ make?</li>
+<li class="fragment"><strong>verify you can render markdown documents on your computer!</strong></li>
 </ul></li>
 <li class="fragment">Doing data quality checks? 
 
 <ul>
 <li class="fragment">getting back to your data supplier if needed!</li>
+<li class="fragment">reporting summary stats</li>
 </ul></li>
 <li class="fragment">Use it when it is useful (e.g., produce a doc, slides, etc., NOT data cleaning)</li>
 </ul>
@@ -925,7 +939,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Lessons learnt #3: Data Preparation</h3>
+<h3>Lessons learnt #3: Data Engineering</h3>
 <div class="slideContent" >
 <ul>
 <li class="fragment">Why do we actually <em>have</em> to clean up data?!
@@ -937,17 +951,15 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 <ul>
 <li class="fragment">so&hellip; use cheatsheets (also for the exam!)</li>
+<li class="fragment">know &amp; apply common data operations!</li>
 </ul></li>
-<li class="fragment">Make ITO blocks (input, transformation, output!)
+<li class="fragment">Make ITO blocks
 
 <ul>
-<li class="fragment">yeah, crucial for <code>make</code>, too!</li>
+<li class="fragment">setup to load libraries, <strong>then</strong> input, transformation, output!</li>
+<li class="fragment">super crucial for <code>make</code>, too!</li>
 </ul></li>
-<li class="fragment">What <em>are</em> the components of a research project?
-
-<ul>
-<li class="fragment">ability to identify what&#39;s missing!</li>
-</ul></li>
+<li class="fragment">Modularize code, iterate, and use functions</li>
 </ul>
 
 </div>
@@ -987,10 +999,10 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Reflection</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">it&#39;s amazing to see you learn &amp; grow!</li>
-<li class="fragment">many started from scratch</li>
-<li class="fragment">others thought they could program, but were challenged, too!</li>
-<li class="fragment">saw so much: different projects, datasets, software programs, &ldquo;way of doing things&rdquo;, videos, websites</li>
+<li>it&#39;s amazing to see you learn &amp; grow!</li>
+<li>many started R from scratch</li>
+<li>others thought they could program, but were challenged, too!</li>
+<li>saw so much: different projects, datasets, software programs, &ldquo;way of doing things&rdquo;, way of coding, videos, websites</li>
 </ul>
 
 <p>My recommendation: take time to let it sink in. And trust in my choice of teaching you this. <strong>Your hard work will pay off.</strong></p>
@@ -1002,12 +1014,12 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Looking ahead: During your studies (I)</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment"><p>Gradually implement across classes or projects</p>
+<li class="fragment">Gradually implement across classes or projects
 
 <ul>
 <li class="fragment">e.g., some projects just benefit from better directory structure, while others may need &ldquo;more&rdquo;</li>
 </ul></li>
-<li class="fragment"><p class="fragment">Realize it takes time to learn</p>
+<li class="fragment">Realize it takes time to learn
 
 <ul>
 <li class="fragment">it took me years to become proficient</li>
@@ -1021,16 +1033,17 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Looking ahead: During your studies (II)</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment"><p>Use for thesis!</p>
+<li class="fragment">Use for thesis!
 
 <ul>
 <li class="fragment">but, be aware your skills are <em>so</em> fresh, your professor likely has never heard about it! &ndash;&gt; use, teach, show how productive you are!</li>
 </ul></li>
-<li class="fragment"><p class="fragment">Build your job market profile</p>
+<li class="fragment">Build your job market profile
 
 <ul>
 <li class="fragment">e.g., have a Hugo website with your CV</li>
 <li class="fragment">e.g., &ldquo;pin&rdquo; your best repositories (but don&#39;t call them <code>dprep-team-X</code>; remember, you&#39;re a marketer!)</li>
+<li class="fragment">have a compelling about page on GitHub</li>
 </ul></li>
 </ul>
 
@@ -1045,9 +1058,9 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 <ul>
 <li class="fragment">contribute to <a href="https://tilburgsciencehub.com">Tilburg Science Hub</a></li>
-<li class="fragment">join our lab (<a href="https://tilburgsciencehub.com/onboarding">https://tilburgsciencehub.com/onboarding</a>)</li>
-<li class="fragment">join <a href="https://www.linkedin.com/company/open-science-community-tilburg/">https://www.linkedin.com/company/open-science-community-tilburg/</a></li>
+<li class="fragment">follow us on <a href="https://www.linkedin.com/company/open-science-community-tilburg/">LinkedIn</a> and <a href="https://twitter.com/tilburgscience">Twitter</a></li>
 </ul></li>
+<li class="fragment">Invest in your research skills (e.g., Docker, singularity, coding)</li>
 </ul>
 
 </div>
@@ -1058,15 +1071,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <div class="slideContent" >
 <ul>
 <li class="fragment">automate stuff, save time for the things you love!</li>
-<li class="fragment">be confident - and keep on learning</li>
-<li class="fragment">most importantly: seize opportunities
-
-<ul>
-<li class="fragment">as a researcher</li>
-<li class="fragment">as an entrepreneur</li>
-<li class="fragment">as a citizen who <em>knows</em> data &amp; tech opportunities</li>
-</ul></li>
-<li class="fragment">&ldquo;shake it up&rdquo;/&ldquo;mix it&rdquo; with your unique skillset</li>
+<li class="fragment">be confident - and keep on learning (e.g., <a href="https://tilburgsciencehub.com">Tilburg Science Hub</a>, <a href="https://datacamp.com">Datacamp</a>, <a href="https://datacarpentry.org">Data carpentry</a>, <a href="https://softwarecarpentry.org">software carpentry</a>, <a href="https://the-turing-way.netlify.app/welcome">The Turing Way</a>)</li>
 </ul>
 
 </div>
@@ -1076,18 +1081,19 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Next steps: Submissions and preparing for the exam</h3>
 <div class="slideContent" >
 <ul>
-<li><p>Deadline for project coming up!</p>
+<li>Deadline for project coming up!
 
 <ul>
-<li>remember: make it work on different computers and operating systems</li>
-<li>avoid absolute paths!</li>
+<li>remember: <strong>make it work</strong> on different computers and operating systems</li>
+<li><strong>avoid</strong> absolute paths!</li>
 <li>verify data can be downloaded smoothly</li>
+<li>test make thoroughly (demonstration if we have the time)</li>
 </ul></li>
-<li><p>Exam preparation</p>
+<li>Exam preparation
 
 <ul>
-<li><a href="https://dprep.hannesdatta.com/docs/course/exam/">https://dprep.hannesdatta.com/docs/course/exam/</a></li>
-<li><a href="https://dprep.hannesdatta.com/docs/course/exam/examplequestions/">https://dprep.hannesdatta.com/docs/course/exam/examplequestions/</a></li>
+<li><a href="https://dprep.hannesdatta.com/docs/exam/">https://dprep.hannesdatta.com/docs/exam/</a></li>
+<li><a href="https://dprep.hannesdatta.com/docs/exam/examplequestions/">https://dprep.hannesdatta.com/docs/exam/examplequestions/</a></li>
 </ul></li>
 </ul>
 
@@ -1098,29 +1104,23 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Next steps: Official course evaluation</h3>
 <div class="slideContent" >
 <ul>
-<li><p>Course evaluation has been immensely important to this course</p>
+<li>Course evaluation has been immensely important to this course
 
 <ul>
-<li>put Git(Hub) first in this course - it can be used on anything that you do afterwards</li>
-<li>reduced workload by wiping out weekly &ldquo;data challenges&rdquo; that needed to be submitted</li>
+<li>developed new on-campus tutorials &amp; exercises</li>
+<li>released example projects publicly</li>
+<li>streamlined course w/ GitHub for Classrooms</li>
+<li>increased coaching slots</li>
 </ul></li>
 <li><p>Course evaluation has been critical to my career</p>
 
 <ul>
 <li>Without my past evaluations, I wouldn&#39;t be teaching to you today</li>
-<li>I will look at all comments</li>
+<li>I will look at all comments. </li>
+<li><strong>Scores are most important to show importance of this course</strong></li>
 </ul></li>
-<li><p>Scores are most important to show importance of this course</p></li>
-<li><p>You will be invited via <a href="https://app.evalytics.nl/#/login?evaluationId=103964">Evalytics</a></p></li>
+<li><p>You will be invited via <a href="https://app.evalytics.nl/#/login">Evalytics</a></p></li>
 </ul>
-
-<!--
-::: notes
-
-  - e.g., new (?) format (live streams rather than lectures)
-  - e.g., new content (e.g., Jupyter Notebooks rather than books)
-  - ...
--->
 
 </div>
 
@@ -1129,16 +1129,10 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Informal feedback</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">quality of tutorials?</li>
-<li class="fragment">live streams versus offline lectures?</li>
-<li class="fragment">Pulse?</li>
-<li class="fragment">quality of website?</li>
+<li class="fragment">Quality of on-campus sessions?</li>
+<li class="fragment">Feel you&#39;ve learned R sufficiently?</li>
+<li class="fragment">Coaching moments sufficient?</li>
 </ul>
-
-<!--
-- open education good or bad?
-- like the presence of external students (or not)?
--->
 
 </div>
 
@@ -1147,23 +1141,20 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Stay in touch!</h3>
 <div class="slideContent" >
 <ul>
-<li>Add me! <a href="https://www.linkedin.com/in/hannes-datta/">https://www.linkedin.com/in/hannes-datta/</a></li>
-<li>Subscribe to my channel! <a href="https://www.youtube.com/c/hannesdatta">https://www.youtube.com/c/hannesdatta</a></li>
-<li>App me! +31 13 466 8938</li>
-<li>See me: K728, mostly Mondays (but send a text to make an appointment)</li>
-</ul>
-
-<p><br><br><br></p>
+<li>Stay in touch
 
 <ul>
-<li>Contribute! 
-
-<ul>
-<li><a href="https://tilburgsciencehub.com">https://tilburgsciencehub.com</a> as a volunteer</li>
-<li>join my team as an RA (e.g., machine learning, data engineering); see also <a href="https://tilburgsciencehub.com/onboarding">https://tilburgsciencehub.com/onboarding</a>
-<br><br><br></li>
+<li><a href="https://www.linkedin.com/in/hannes-datta/">LinkedIn</a>,<a href="https://www.youtube.com/c/hannesdatta">YouTube</a>, <a href="https://twitter.com/hannesdatta">Twitter</a></li>
+<li>WhatsApp! +31 13 466 8938</li>
 </ul></li>
-<li>And, finally&hellip; let&#39;s show to the world how awesome your new skills are!</li>
+<li>Contribute to <strong>Tilburg&#39;s Open Science initiatives</strong>! 
+
+<ul>
+<li><a href="https://tilburgsciencehub.com">https://tilburgsciencehub.com</a> as content developer / community manager</li>
+<li>change this course at <a href="https://github.com/hannesdatta/course-dprep">https://github.com/hannesdatta/course-dprep</a>
+<br><br></li>
+</ul></li>
+<li><strong>And, finally&hellip; let&#39;s show to the world how awesome your new skills are!</strong></li>
 </ul>
 
 </div>
