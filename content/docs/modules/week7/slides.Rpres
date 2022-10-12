@@ -194,6 +194,17 @@ Next steps: Submissions and preparing for the exam
   - https://dprep.hannesdatta.com/docs/exam/
   - https://dprep.hannesdatta.com/docs/exam/examplequestions/
 
+Exam tips
+=======
+incremental: true
+
+- Expect an unexpected data set & data wrangling
+- Know common data operations in `dplyr`
+- When handing in documents, check what I require (for `.Rmd`, I sometimes ask for rendered `.pdf` documents - does it work on your computer?)
+- Be prepared to contribute to open source projects on GitHub -- know how to do PRs
+- Be prepared to run, correct and develop new `make` workflows
+
+
 
 Next steps: Official course evaluation
 ========================================================
