@@ -140,6 +140,49 @@ Now, use the `tidyverse` verbs `filter()`, `arrange()`, and `mutate()` to answer
 EUR per stream)
 
 Grouping and summarizing
+
+Answers to previous questions:
+========
+class: small-code
+
+- Let's first load all datasets
+
+```{r}
+library(tidyverse)
+streams <- read_csv('streams.csv')
+songs <- read_csv('songs.csv')
+countries <- read_delim('country_codes.csv', ';')
+```
+
+Now, use the `tidyverse` verbs `filter()`, `arrange()`, and `mutate()` to answer the following questions.
+
+1) How many observations do we have for Belgium (country == 'BE')?
+
+```{r}
+streams_without_duplicates %>% filter(country=="BE") %>% count()
+```
+
+2) Which song ID has most streams in the data (in which country, and when)?
+
+```{r}
+streams_without_duplicates %>% arrange(desc(streams))
+```
+
+3) What's the name of that song?
+```{r}
+songs %>% filter(song_id==21831898)
+```
+
+4) Add a new column to `streams`, showing the approx. revenue for each song/day/country (tip: Spotify pays about 0.0038
+EUR per stream)
+
+```{r}
+streams_without_duplicates$revenue <- 0.0038 * streams_without_duplicates$streams
+
+streams_without_duplicates <- streams_without_duplicates %>% mutate(revenue = streams * 0.0038)
+```
+
+Grouping and summarizing
 =============
 
 - Grouping and summarizing is another powerful way to generate extra stats
@@ -166,6 +209,35 @@ Let's keep on generating stats, this time using `group_by()` and `summarise()` (
 3) Look at `artists`, and spit out the row that lists the number of songs for Ellie Goulding (`==`)
 
 4) Refine your search from (3) to include also collaborations (tip: `grepl()`!)
+
+Answers to previous questions:
+==============
+
+Let's keep on generating stats, this time using `group_by()` and `summarise()` (plus verbs we have seen earlier)
+
+1) Create a new dataset, called `streams2`, summing up the streams by song.
+
+```{r}
+streams2 <- streams_without_duplicates %>% group_by(song_id) %>% summarise(totstreams = sum(streams))
+```
+
+2) Create a new dataset, called `artists`, showing the count of songs by artist.
+
+```{r}
+artists <- songs %>% count(artists)
+```
+
+3) Look at `artists`, and spit out the row that lists the number of songs for Ellie Goulding (`==`)
+
+```{r}
+songs %>% count(artists) %>% filter(artists=='Ellie Goulding')
+```
+
+4) Refine your search from (3) to include also collaborations (tip: `grepl()`!)
+
+```{r}
+songs %>% count(artists) %>% filter(grepl('Ellie Goulding', artists, ignore.case=T))
+```
 
 Merging/joining
 =======
