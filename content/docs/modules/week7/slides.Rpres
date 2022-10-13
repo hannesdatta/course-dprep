@@ -22,6 +22,8 @@ Welcome to the final lecture in dPrep!
 
 If you haven't done so, please **explore the exam page & example questions** at [https://dprep.hannesdatta.com/docs/exam]().
 
+The __course evaluation__ is live at https://app.evalytics.nl. Please voice your opinions!
+
 <!--
 - Team project:
 
@@ -58,17 +60,18 @@ Agenda
 - Remaining questions / Q&A
 
 
+Course framework
+========================================================
+
+![dprep](dprep_framework.png)
+
+
 Positioning in the study program
 ========================================================
 
 ![dprep](dprep_positioning.png)
  
-
-Course framework
-========================================================
-
-![dprep](dprep_framework.png)
- 
+  
 Lessons learnt #1: Versioning and Project Management with Git(Hub) (I)
 ========================================================
 incremental: true
@@ -115,7 +118,7 @@ incremental: true
   - re-watch it: https://youtu.be/z_Hh1jlL1Ac
 - Data prep code can be sooo complex
   - so... use cheatsheets (also for the exam!)
-  - know & apply common data operations!
+  - know & apply common data operations (what are those?)!
 - Make ITO blocks
   - setup to load libraries, __then__ input, transformation, output!
   - super crucial for `make`, too!
@@ -135,12 +138,30 @@ incremental: true
   - but, yeah, NOT at the beginning when you still learn
 - Continuously improve documentation & code
 
-Reflection
+Common mistakes w/ make
+==========
+
+- Multiple targets, not multiple rules
+- The *all* rule: think of it as a "first" rule only!
+- Gradually building your makefile
+- Remember, __go in baby steps!__
+- Happy to take a look at your repositories
+
+Any other questions about your projects?
+=======
+
+__We can address them now!__
+
+Reflection about the course
 ========================================================
 
 - it's amazing to see you learn & grow!
-- many started R from scratch
-- others thought they could program, but were challenged, too!
+  - I feel I can talk to programmers!
+  - You see code and feel what it does!
+  - that feeling you get when your code runs...!
+- different levels
+  - many started R from scratch
+  - others thought they could program, but were challenged, too!
 - saw so much: different projects, datasets, software programs, "way of doing things", way of coding, videos, websites
 
 My recommendation: take time to let it sink in. And trust in my choice of teaching you this. __Your hard work will pay off.__
