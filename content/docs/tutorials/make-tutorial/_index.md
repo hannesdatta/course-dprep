@@ -24,16 +24,8 @@ draft: false
 
 ## Getting started
 
-1. Watch (in this order...)
-    - [This is why you should automate the pipeline of your empirical research project](https://youtu.be/9aivqe-phL0)
-    - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)
-    - The content of the slides shown in the videos is [available here](pipelineautomation.pdf).
-
-
-2. Read the building block ["What are makefiles"](https://tilburgsciencehub.com/learn/makefiles)
-
-3. Start learning `make`! ([View](make-tutorial.html), [Download; right click - download file as](make-tutorial.Rmd))
-
+1. In-class tutorial ([view slides](tutorial.html))
+2. After-class exercises ([View](make-tutorial.html), [Download; right click - download file as](make-tutorial.Rmd))
 
 
 <!--
