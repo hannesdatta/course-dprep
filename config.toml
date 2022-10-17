@@ -26,7 +26,7 @@ enableGitInfo = true
 
 [params]
 
-  Course_Deadline_Project = "Monday, 17 October 2022"
+  Course_Deadline_Project = "Monday, 17 October 2022 (23.59)"
   Course_Exam_Mainsit = "Wednesday, 19 October 2022"
   Course_Exam_Resit = "Wednesday, 11 January 2022"
   Course_Edition_Current = "August - October 2022"
