@@ -15,9 +15,9 @@ library(webexercises)
 --- 
 
 ### Prerequisites
-* [Datacamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
-* [Datacamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
-* [Datacamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+* [Datacamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
+* [Datacamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+* [Datacamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
 
 
 --- 
