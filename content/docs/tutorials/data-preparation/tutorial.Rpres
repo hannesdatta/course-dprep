@@ -53,9 +53,9 @@ Structure of this tutorial
 ========================================================
 
 - In-class part of __this tutorial__
-  - [Tidyverse - chapter 1 & 3](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1)
-  - [Cleaning data in R - chapter 1 & 2](https://learn.datacamp.com/courses/cleaning-data-in-r)
-  - [Joining Data with `dplyr`- chapter 1 & 2](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1)
+  - [Tidyverse - chapter 1 & 3](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1)
+  - [Cleaning data in R - chapter 1 & 2](https://datacamp.com/courses/cleaning-data-in-r)
+  - [Joining Data with `dplyr`- chapter 1 & 2](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1)
   - And...of course, our [own tutorial](https://dprep.hannesdatta.com/docs/tutorials/data-preparation/data-preparation.html) that ties everything together
   
 __Get your cheat sheets ready!!!__
