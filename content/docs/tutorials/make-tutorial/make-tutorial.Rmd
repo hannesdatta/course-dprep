@@ -17,7 +17,7 @@ __The solutions to the exercises and an FAQ are at the end of this document.__
 ### Prerequisites
 
 * Get familiar with the shell/terminal/command line
-  * [DataCamp Introduction to Shell](https://learn.datacamp.com/courses/introduction-to-shell) (chapter 1; Mac &amp; Windows) 
+  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; Mac &amp; Windows) 
   * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
 
 
