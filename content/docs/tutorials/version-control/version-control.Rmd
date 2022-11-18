@@ -26,7 +26,7 @@ background-color: white;
 ### Prerequisites
 
 * Get familiar with the shell/terminal/command line
-  * [DataCamp Introduction to Shell](https://learn.datacamp.com/courses/introduction-to-shell) (chapter 1; Mac & Windows) 
+  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; Mac & Windows) 
   * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
 * Download and install the latest version of [Git](https://git-scm.com/downloads) (Mac users first need to install [homebrew](https://brew.sh/)).  
 
