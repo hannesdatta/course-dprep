@@ -17,9 +17,9 @@ draft: false
 
 ## Self-study and activities
 - Develop your R skills by completing the DataCamp courses
-    - [DataCamp Introduction to Tidyverse](https://campus.datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
-    - [DataCamp Cleaning Data in R](https://learn.datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
-    - [DataCamp Joining Data with dplyr](https://campus.datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+    - [DataCamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
+    - [DataCamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+    - [DataCamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
 - [Reading: Data preparation process and challenges](https://www.topbots.com/data-preparation-for-machine-learning/)
 
 {{% hint info %}}
