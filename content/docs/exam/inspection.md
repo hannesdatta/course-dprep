@@ -52,8 +52,8 @@ Would you like to ask how the answer key was applied in your case? Ask the cours
 
 Any unresolved questions? Then __file a request for review__.
 
-- Do so for each question by entering a comment in the designated comment field on TestVision (‘comments on the question’). 
-- In your writing, please briefly argue why you believe you deserve (more) points for the specific question. In arguing, refer as much as possible to the answer key.
+- Do so for each question by entering a comment in the designated comment box on TestVision, which is located below each question.
 
+![](../commentbox.png)
 
-
+- When adding a request for review, please __briefly__ argue why you believe you deserve (more) points for the specific question. In your request, refer as much as possible to the answer key.
