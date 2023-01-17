@@ -65,13 +65,19 @@ Head over to the [grading details](grading) to understand what is expected from 
 
 Students can meet the course instructor for feedback during the scheduled coaching sessions (see [schedule](/docs/modules)).
 
-- Attendance is not mandatory but strongly encouraged.
-- Sign-up may be necessary!
-<!--- The meetings will be recorded, and shared with other students.-->
-- We will make use of [TeamViewer](https://tilburgsciencehub.com/get/teamviewer). Please install it and be prepared to share your ID and temporary password.
+Teams participating in coaching sessions attend the entire session. They typically work together on the team project, and the course instructor will "walk around" (either in breakout rooms on Zoom, or physically) to address students' questions. There will be approximately 10 minutes per team in total; some teams may prefer to use the entire time at once, while other teams may prefer to ask multiple, short questions over the entire duration of the session.
+
 
 {{< hint info >}}
-__Links to recordings and more tips & tricks__
+__Use of TeamViewer__
+
+- We use TeamViewer to allow the course coordinator use your mouse and keyboard to debug code during a Zoom session. Please [install TeamViewer](https://tilburgsciencehub.com/get/teamviewer) and be prepared to share your ID and temporary password.
+
+{{< /hint >}}
+
+
+{{< hint info >}}
+__Links to recordings__
 
 - [Open Science Boost - Hannes' playlist with videos on how to boost research efficiency](https://www.youtube.com/playlist?list=PLdDbyJQwReWgG0JCkRFmg4o-Wo8WvSB4r)
 - We're continuously adding new content to [Tilburg Science Hub](https://tilburgsciencehub.com), so bookmark the page and check for updates frequently!

@@ -35,6 +35,7 @@ The course content will be tested in the form of a __take-home exam__, to be com
 - Submitting your exam: all questions (including file uploads) will be submitted via TestVision
 - Support during the exam: preferably WhatsApp [see support section of this website](/docs/course/support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
 
+
 ## Form
 
 - Open book take-home exam (i.e., you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
@@ -42,9 +43,13 @@ The course content will be tested in the form of a __take-home exam__, to be com
 - Some questions will be personalized (i.e., there is only one correct answer per student)
 
 {{< hint warning >}}
-__Communication with anybody about the content of the exam, during *and after* the take-home exam, is strictly prohibited.__
+
+- Communication with anybody about the exam content, during *and after* the take-home exam, is strictly prohibited.
+- Students must not copy-paste from websites, academic papers, or make use of ChatGTP (or similar AI-based tools) etc. when formulating answers to questions.
+- Students must not mention their names or student numbers in submitted files, except when being explicitly asked to do so. This is to ensure the exam can be graded anonymously as much as possible.
 
 {{< /hint >}}
+
 
 ## Content
 
