@@ -45,7 +45,7 @@ The course content will be tested in the form of a __take-home exam__, to be com
 {{< hint warning >}}
 
 - Communication with anybody about the exam content, during *and after* the take-home exam, is strictly prohibited.
-- Students must not copy-paste from websites, academic papers, or make use of ChatGTP (or similar AI-based tools) etc. when formulating answers to questions.
+- Students must not copy-paste from websites, academic papers, or make use of ChatGPT (or similar AI-based tools) etc. when formulating answers to questions.
 - Students must not mention their names or student numbers in submitted files, except when being explicitly asked to do so. This is to ensure the exam can be graded anonymously as much as possible.
 
 {{< /hint >}}
