@@ -31,13 +31,13 @@ If you haven't done so, please
 Agenda
 ========================================================
 
-- Part 1 (08.45 to about 9.45)
+- Part 1 (10.45 to about 11.45)
   - (Getting to know each other)
   - Motivation for the course
   - Course framework and learning goals
   - Agenda and practical arrangements
 - Break
-- Part 2: R Bootcamp on your laptops (about 10.00 - 11.30)
+- Part 2: R Bootcamp on your laptops (about 12.00 - 13.30)
 
 
 <!--
@@ -49,8 +49,8 @@ Disclaimer
 incremental: true
 
 - Slow me down
-- Lectures are *complements*, not substitutes for self-study & course website
-- Minimal use of slides; will post always
+- Lectures are complements, not substitutes for self-study & course website
+- Minimal use of slides; will post but not record
 - This is not a class that merely teaches you __R__ (but, if you invest time, you'll learn R on the way!)
 - Mix of students at various levels (e.g., beginners, advanced R users)
 - Consider me your coach, not your *distant professor*
@@ -150,7 +150,7 @@ Course objectives (II): Collaborate on research projects using GitHub
   - e.g., https://github.com/hannesdatta/brand-equity-journal-of-marketing
   - e.g., https://github.com/hannesdatta/spotify-playlist-clustering
   - e.g., even this class: https://github.com/hannesdatta/course-dprep
-  
+
 2. document your own code, and use unlimited version history
   - e.g., check out how a project looked like a while ago
   - e.g., clean up stuff (because you can roll back anyways!)
@@ -166,10 +166,10 @@ Course objectives (III): Automate your research pipeline
 - automated text mining workflow
   - https://tilburgsciencehub.com/practice/pipeline-automation
 - start new projects from templates
-    - https://tilburgsciencehub.com/examples/reproducible-workflow-airbnb/
-    - https://github.com/rgreminger/example-make-workflow
-    - https://tilburgsciencehub.com/try/simple-workflow
-    
+  - https://tilburgsciencehub.com/examples/reproducible-workflow-airbnb/
+  - https://github.com/rgreminger/example-make-workflow
+  - https://tilburgsciencehub.com/try/simple-workflow
+  
 
 Course objectives (IV)
 ==================================
@@ -179,6 +179,7 @@ Apply coding, collaboration and automation in a **data- and/or computation-inten
   - Data intensity
       - big data: volume, variety, veracity, velocity
       - "Where prototyping on small data makes sense"
+      - e.g.,: InsideAirbnb
   - Computation intensity
       - small data, but long computation time
       - potential for running things in parallel
@@ -189,12 +190,12 @@ Common struggles & Tips
 
 - Take time to become acquainted with the format (e.g., no Canvas but website & [Pulse](https://pulse.tilburg-digital.com))
 - Can be tough at first, but you will become more experienced rapidly!
--	It may be very difficult to follow dPrep and oDCM simultaneously, but the skills you learn will be very useful for your coming courses, Master Thesis & future career!
+-	It is challenging to follow dPrep and oDCM simultaneously as a rookie, but the skills you learn will be very useful for your coming courses, Master Thesis & future career!
 
 <br><br>
 -	Some useful tips:
   -	Start preparing early on (the first weeks will be the most challenging!)
-  -	Have the same group members across courses
+  -	Have the same group members across courses, mix skill levels
   -	Collaborate with each other and try to help one another!
 
 
@@ -268,10 +269,14 @@ Tutorials
 Grading
 ========================================================
 
-- Fill in your weekly participation in Pulse (5%)
+- Keep track of your learning progress in Pulse (5%)
 - Team project, with self- and peer assessment (40%)
 - (Online) computer exam (55%)
-
+- Potential to get bonus points (max. .5 on your final grade!)
+  - adding material to the course website
+  - providing solutions, updating questions
+  - sharing code snippets, etc.
+  
 <!--
 ::: notes
 
@@ -339,8 +344,7 @@ Use of WhatsApp
 
 ![WhatsApp](wa_qr.png)
 
-- Onboarding (names needed!)
-- Email is not so optimal
+- Email is usually slower
 - Check out the course's support section
 
 
@@ -349,16 +353,10 @@ What's in for you?
 
 - Essential job market skills
   - get the jargon, know your tools
-  - marketing is much more than blabla - high-tech!
+  - marketing = data analytics
 
 - Essential to show expertise
   - potential for follow-ups here in Tilburg and beyond
-
-- Exciting area
-  - new business models
-  - new methods
-  - new technologies
-
 
 Success factors
 ========================================================
@@ -376,5 +374,11 @@ Please tell me __what would make this course a success__ for you
 Next steps
 ========================================================
 
-- We will continue with the R bootcamp after a break
-- Haven't followed the installation guide? Check it out on the course page now! (tutorials -- software installation)
+- Find a group (max. 5 students; please "mix" by experience with R!)
+- Check whether you can access https://pulse.tilburg-digital.com and mark your first to dos
+- Got Datacamp access? [Try it now](https://www.datacamp.com/groups/shared_links/a88c8a218963bb637aa5e933ac615626815c76481a4ebb30dfca206ea9de5397)
+- Follow the **installation guide** (https://dprep.hannesdatta.com --> tutorials --> software installation)
+
+<br>
+- We will continue with the **R bootcamp** after a break
+
