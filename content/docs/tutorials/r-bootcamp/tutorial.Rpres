@@ -14,9 +14,9 @@ Based on https://datacarpentry.org/r-socialsci/ (chapters 1-4)
 <br>
 <br> 
 - In-class part
-  - 9.45-10.30: Introduction to R
+  - 11.45-12.30: Introduction to R
   - break
-  - 10.45-11.30: Starting with data and data wrangling
+  - 12.45-13.30: Starting with data and data wrangling
  
 *This part features __selected__ issues.*
 
@@ -223,10 +223,23 @@ DO: Let's practice!
 
 __Tip: also check out the `dplyr` [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
+Writing a code file (and running it in your terminal)
+========================================================
+
+- We use RStudio for prototyping code
+- For "production", we usually run our code via the terminal/command line
+- First, we have to store our code as a `.R` file
+- Then, we can call it via the terminal
+  - `R --vanilla < filename.R` (gives output)
+  - `Rscript filename.R` (gives only output if made explicit)
+  
+__Let's try it out!__
+
+
 Next steps
 ========================================================
 
 - Complete this tutorial at Data Carpentry
-- Form and register teams!
+- Form and register teams! (remember: __mix__ skills!)
 - Check your weekly To Do's at http://pulse.tilburg-digital.com
-- Familiarize yourself with the course website!
+- Familiarize yourself with the course website at https://dprep.hannesdatta.com

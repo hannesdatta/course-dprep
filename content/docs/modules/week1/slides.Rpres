@@ -50,7 +50,7 @@ incremental: true
 
 - Slow me down
 - Lectures are *complements*, not substitutes for self-study & course website
-- Minimal use of slides; will post always
+- Minimal (use of) slides - use Ctrl/Cmd + or - to zoom in/out in your browser
 - This is not a class that merely teaches you __R__ (but, if you invest time, you'll learn R on the way!)
 - Mix of students at various levels (e.g., beginners, advanced R users)
 - Consider me your coach, not your *distant professor*
@@ -239,19 +239,24 @@ all students have Canvas access?
 
 -->
 
-When streaming...
-========================================================
-
-- use the public chat
-- help me as a moderator if I miss questions
-- possibility to interact on your computers (install Teamviewer via [tilburgsciencehub.com/get/teamviewer]())
-
 Project
 ========================================================
 
 - based on public data from [Inside AirBnb](http://insideairbnb.com/amsterdam/)
 - build a __research pipeline__; specifics on the course site (including grading details)
 - self- and peer assessment (own versus team performance)
+
+Project coaching
+========================================================
+
+- Usually takes place online
+- Teams meet online on Zoom for the duration of the scheduled class, using dedicated __breakout rooms__
+- Instructor "walks around" and addresses questions
+- Coaching sessions __require preparation__: I'll show you right now on the course website (without preparation, you won't get a lot out of these sessions...)
+
+<br>
+
+__Install TeamViewer, please__: Possibility to interact on your computers (see [tilburgsciencehub.com/get/teamviewer]())
 
 Tutorials
 ========================================================
