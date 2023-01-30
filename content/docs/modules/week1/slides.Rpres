@@ -49,13 +49,8 @@ Disclaimer
 incremental: true
 
 - Slow me down
-<<<<<<< HEAD
 - Lectures are *complements*, not substitutes for self-study & course website
 - Minimal (use of) slides - use Ctrl/Cmd + or - to zoom in/out in your browser
-=======
-- Lectures are complements, not substitutes for self-study & course website
-- Minimal use of slides; will post but not record
->>>>>>> bdc66487f4f15004f410825c831c01d652a16690
 - This is not a class that merely teaches you __R__ (but, if you invest time, you'll learn R on the way!)
 - Mix of students at various levels (e.g., beginners, advanced R users)
 - Consider me your coach, not your *distant professor*
