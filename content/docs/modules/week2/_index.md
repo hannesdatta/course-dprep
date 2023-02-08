@@ -15,7 +15,7 @@ draft: false
 - Get to know GitHub
   - Make an account at [github.com](https://github.com/signup)
   - [Install GitHub](docs/tutorials/software-installation) on your computer
-  - [Work on this training](https://lab.github.com/githubtraining/introduction-to-github) to familiarize yourself with GitHub (60 minutes)
+  - [Work on this training](https://github.com/skills/introduction-to-github) to familiarize yourself with GitHub (60 minutes)
 - Get to know the [Shell in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")
 - [Reading: Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup) (30 minutes)
 
