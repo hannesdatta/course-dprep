@@ -10,25 +10,26 @@ Structure of this tutorial
 
 - Progress?
   - Installed & worked through 60-minute tutorial?
-  - Shell/terminal/command prompt? (see dprep site)
+  - Recapping shell/terminal/command prompt (see dprep site)
 - In-class part of __this tutorial__
   - Overview about Git & GitHub
-  - Project management
+  - Project management 101
   - Versioning and the GitHub workflow
 
 *This part features __selected__ issues.*
 
 - After class
-  - Please go through the entire (written) tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/tutorials/version-control). 
+  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/tutorials/version-control). 
   - Review shell/command line/terminal
 
 Introduction to GitHub
 ========================================================
 incremental: true
 
-- What is Git? (--> file versioning in repositories, open source)
-- What is GitHub? (Git + online tool for collaboration & exploration, commercial)
+- What is Git? (--> file versioning in "repositories"/folders, open source)
+- What is GitHub? (Git + platform for collaboration, automated testing, deployment; semi-commercial)
 - Alternatives to GitHub (e.g., bitbucket, gitlab, etc.)
+- GitHub (or its alternatives) are used to professionally manage research and software development projects
 
 DO: Explore projects on GitHub.com
 ================================
@@ -49,8 +50,8 @@ incremental: true
 __Describe the "content" of a repository.__
 
 - Each repository has...
-  - Readme w/ project description (`README.md`)
-  - Meta data (e.g., about, releases, stars)
+  - readme w/ project description (`README.md`)
+  - meta data (e.g., about, releases, stars)
 
 - On a repository, we can find several tabs
   - Code
@@ -63,21 +64,20 @@ __Describe the "content" of a repository.__
 DO: Creating a repository on GitHub.com
 =================
 
-- Normally, we start a new repository on GitHub.com, or start from existing folder on our computer
+- Normally, we start a new repository on GitHub.com, or start from an existing folder on our computer
 <br><br>
 - __Today__, we use "GitHub classroom" (so I can see what you're up to)
   - Open this link, please: https://classroom.github.com/a/yZKt41QJ
-  - Change title of `readme.md` to "First repository with exercises in dPrep" & commit your changes
-
+  - Change title of `readme.md` to "First repository with exercises in dPrep" & commit your changes on GitHub.com
+  
 Recap
 ===========
 
 - In essence, we use Git/GitHub for adding/changing code
-- Whenever we save code in Git's version history, we call this a commit
+- Whenever we save code in Git's version history, we call this a "commit"
 - Everybody who has access to this Git repository will be able to roll back to this version
 <br><br>
 - __Question: Why make a difference between *saving* and *committing*?__
-
 
 Working with Git/GitHub
 =================================
@@ -93,20 +93,52 @@ Working with Git/GitHub
 
 __We first proceed with the interactive interface on GitHub.com.__
 
+Working together in teams
+========
+
+- The [Scrum method](https://tilburgsciencehub.com/learn/scrum) is 
+  - an effective project management tool
+  - meant to be helpful, not distracting
+- Key ingredients
+  - Break down project in smaller to do's, 
+  - organize them in sprints, and 
+  - meet to discuss progress
+  
+Note: I will have to make you members of the organization for this to work...
+
+
+- [Scrum](https://tilburgsciencehub.com/learn/scrum) is meant to be helpful, not distracting!
+- Think of it as 'iterating' between working in a group, and individually
+<br>
+
+__1) Group meeting ("scrum meeting")__
+  - review issues: done, in progress, not started (+ why)
+  - review and integrate open pull requests one by one + check whether project still runs
+  - write and assign new issues
+  - (re)prioritize issues on your project board
+  - set date & time for next group meeting
+
+Working together in teams (II)
+========
+
+__2) Individual work__
+  - work on assigned issues
+  - help others work on theirs if they are stuck
+  - got some new ideas? write an issue (and put it in the backlog on the project board)
+  
+__3) Repeat...__
+- ...until you're done (or the deadline has passed...)
+
+
 DO: Organize project board
 =========================
 
-- [The Scrum method](https://tilburgsciencehub.com/learn/scrum) is an effective project management tool
-- Key: Break down project in smaller to do's, organize them in sprints, and meet to discuss progress
 
 <br>
 __Task:__
 - Navigate to your repository's project page, and create a __new board__.
 - Create columns to organize tasks, call them
-  - backlog
-  - to do
-  - in progress
-  - done
+  - backlog, to do, in progress, done
 
 When done, you should have an empty board with four columns (you may want to change to card view).
 
@@ -169,13 +201,25 @@ DO: Clone repository and work on it
 
 1. Copy the URL to your class room repository
 2. Open Git Bash, and type `git clone https://github.com/course-dprep/in-class-tutorial-hannesdatta` (__use your username, of course!__)
-3. Add something to the readme and save
-4. Perform Git workflow
+3. Create a development branch and check it out locally
+4. Add something to the readme and save (note, not yet committed)
+5. Perform Git workflow
   - `git status` (view changes)
   - `git add <filename>` (add file(s) to "staging area")
   - `git commit -m "message"` (freeze commit)
-  - `git push -u origin master` (push to GitHub)
+  - `git push` (push to GitHub; sometimes also `git push -u origin branch_name`)
 5. View changes on GitHub.com - do you see them?
+
+Development branches vs. master/main branch
+===========
+
+- The `master`/`main` branch holds your *working version* of your project.
+- All "smaller" features are developed in separate development branches
+  - These are not called `hannes-123`, but named by a feature
+  - They are ideally created on GitHub.com and checked out locally
+
+
+
 
 Browsing GitHub on the web
 ===============
