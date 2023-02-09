@@ -19,7 +19,7 @@ background-color: white;
 }
 ```
 
-*For your group projects, you have probably used a tool like Google Drive or Dropbox to share your work with others. Although you could theoretically share your R files using these tools, it has a few limitations  when it comes to version control. For example, how can you easily return to a previous version of your work? Or what happens once your friend and you are overwriting each others' code? In this tutorial, we'll introduce you to Git and GitHub and learn you to streamline your collaboration workflows!*
+*For your team projects, you have probably used a tool like Google Drive or Dropbox to share your work with others. Although you could theoretically share your R files using these tools, it has a few limitations  when it comes to version control. For example, how can you easily return to a previous version of your work? Or what happens once your friend and you are overwriting each others' code? In this tutorial, we'll introduce you to Git and GitHub and learn you to streamline your collaboration workflows!*
 
 ---
 
@@ -57,7 +57,7 @@ Gits most important features are:
 
 * It's highly useful in a **team environment** because everyone can work independently on the same files. Since there is a permanent record of who made the change, you can easily trace back each others' contributions. 
 
-* It automatically notifies you when your work **conflicts** with someone else's. For example, say that for your group assignment you wrote the following in an R Markdown file `In this assignment, we explore...`, whereas your classmate who was working on the assignment at the same time wrote `The goal of this assignment is to...`, Git will inform you about a so-called merge conflict once you try to combine versions of your work. In other words, it allows you to easily compare two versions side-by-side and makes sure that you don't accidentally overwrite each others' work.
+* It automatically notifies you when your work **conflicts** with someone else's. For example, say that for your team assignment you wrote the following in an R Markdown file `In this assignment, we explore...`, whereas your classmate who was working on the assignment at the same time wrote `The goal of this assignment is to...`, Git will inform you about a so-called merge conflict once you try to combine versions of your work. In other words, it allows you to easily compare two versions side-by-side and makes sure that you don't accidentally overwrite each others' work.
 
 \
 
