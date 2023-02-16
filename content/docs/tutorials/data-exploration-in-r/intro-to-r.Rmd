@@ -101,8 +101,7 @@ table(mobility$sub_region_1)
 Suppose you'd like to extract data for the Netherlands as a whole (i.e., NOT at the regional or city level), how would you have to filter for it? Re-generate a data summary (`summary()`) on this new table, and inspect missing values.
 
 ```{r, echo = TRUE, webex.hide = 'Solution Exercise 2'}
-filtered_df <- mobility %>% filter(sub_region_1 == '',
-                                  sub_region_2 == '')
+filtered_df <- mobility %>% filter(is.na(sub_region_1) & is.na(sub_region_2))
 summary(filtered_df)
 ```
 
@@ -170,7 +169,7 @@ head(mobility)
 ncol(mobility)
 ```
 
-```{r, echo = TRUE, webex.hide = 'Very suboptimal solution', results = 'hide', warning = FALSE}
+```{r eval=FALSE, warning=FALSE, include=FALSE, results='hide', webex.hide='Very suboptimal solution'}
 # Very suboptimal solution
 mobility[c(1,5,6,7)]<-list(NULL)
 # The problem with this solution is in changing the columns. If a column changes, the numbers of the corresponding columns might also change, resulting in a different outcome of the code above.
@@ -194,7 +193,8 @@ You can rename a column of a data frame (`df`) by overwriting the current column
 **Exercise 5**  
 Trim the long column names (e.g., `retail_and_recreation_percent_change_from_baseline` becomes `retail_and_recreation`) and replace `sub_region_1` and `sub_region_2` by `province` and `city`, respectively. 
 
-```{r, webex.hide = 'OK-ish solution', eval = FALSE}
+```{r, webex.hide = 'Bad solution', eval = FALSE}
+# This solution works but is suboptimal, as the *format* of the input data may change (and hence, render the renamed columns wrong).
 colnames(mobility) = c("country_region", 
                       "province",
                       "city", 
@@ -209,9 +209,9 @@ colnames(mobility) = c("country_region",
 
 ```
 
-```{r, webex.hide = 'Better solution Exercise 5'}
+```{r, webex.hide = 'Better solution'}
 # First use the rename function to rename sub_region_1 & sub_region_2. After that, use the rename_with function to remove all the suffixes with "_percent_change_from_baseline'
-mobility <- mobility %>% rename(province = sub_region_1,
+mobility_updated <- mobility %>% rename(province = sub_region_1,
                                 city = sub_region_2) %>%
                          rename_with(~str_remove(., '_percent_change_from_baseline'))
 ```
@@ -220,7 +220,11 @@ mobility <- mobility %>% rename(province = sub_region_1,
 
 #### Convert into Date
 
-Although the dates may look like "regular" dates (e.g., `2020-02-15`), R treats them like a character string (try running `class(mobility$date)` for yourself!). Since we want the data to be ordinal so that `2020-02-16` is placed right before `2020-02-15`, we need to convert the `date` column into date format. Date conversion can cause you a mild headache, and it even gets more complex with varying date formats across different geographic regions. 
+Although the dates may look like "regular" dates (e.g., `2020-02-15`), R sometimes treats them like a character string (try running `class(mobility$date)` for yourself!). 
+
+When working with `dplyr`/`tidyverse`, though, dates are mostly imported correctly.
+
+If they are still characters rather than dates, you need to convert the `date` column into date format. Date conversion can cause you a mild headache, and it even gets more complex with varying date formats across different geographic regions. 
 
 This is how to convert a character-encoded date to a "real date":
 
@@ -256,16 +260,15 @@ Add the `avg_mobility` column to your dataset (keep in mind that the data frame 
 # solution (most elegant and sustainable)
 
 columns <- c('retail_and_recreation', 'grocery_and_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential')
-mobility <- mobility %>% mutate(avg_mobility2 = rowMeans(select(., columns), na.rm =TRUE))
+mobility_updated <- mobility_updated %>% mutate(avg_mobility2 = rowMeans(select(., columns), na.rm =TRUE))
 
 
 ```
 
-```{r, webex.hide = 'Optional solution Exercise 7', eval = FALSE}
-# solution (efficient, but prone to couting error) (create an array first, then rowMeans of array)
-
+```{r, webex.hide = 'Bad solution Exercise 7', eval = FALSE}
+# prone to errors of referencing to the correct columns
 avg_mobility_array <- mobility[c(6,7,8,9,10,11)]
-
+# this is inefficient, too, because it does not make use of the dplyr functions (and hence, is considerably slower on large datasets)
 mobility$avg_mobility <- rowMeans(avg_mobility_array, na.rm = TRUE)
 
 # The answer above, same as for exercise 4 makes use of counting which is prone to error if we add or remove a column!
@@ -273,7 +276,7 @@ mobility$avg_mobility <- rowMeans(avg_mobility_array, na.rm = TRUE)
 ```
 
 ```{r eval=FALSE, webex.hide = 'Inefficient solutions'}
-# solution (elegant, but not sustainable as column names could change!!!)
+# solution (also not sustainable as column names could change!!!)
 mobility$avg_mobility <- rowMeans(mobility[,6:ncol(mobility)], na.rm = TRUE)
 
 # solution (least elegant - and far less efficient) - do you notice the difference in running time?  
@@ -315,9 +318,9 @@ Create three subsets (`country`, `province`, `city`) of `mobility` according to 
 
 
 ```{r, webex.hide = 'Solution Exercise 8'}
-country <- mobility %>% filter(is.na(city) & is.na(province))
-province <- mobility %>% filter(is.na(city) & !is.na(province))
-city <- mobility %>% filter(!is.na(city))
+country <- mobility_updated %>% filter(is.na(city) & is.na(province))
+province <- mobility_updated %>% filter(is.na(city) & !is.na(province))
+city <- mobility_updated %>% filter(!is.na(city))
 ```
 
 \
