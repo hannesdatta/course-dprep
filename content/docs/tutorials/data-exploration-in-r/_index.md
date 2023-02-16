@@ -39,7 +39,7 @@ draft: false
 -->
 
 1. In-class tutorial: [View slides](tutorial.html)
-2. After-class exercises & tutorial ([View](intro-to-r.html)
+2. After-class exercises & tutorial ([View](intro-to-r.html))
 
 <!--- If you like, you can submit your exercises as a "proof for investing in your skills" (self- and peer assessment). Work on the exercises in the answer skeleton file ([Download](intro-to-r-skeleton.Rmd); right-click, download linked file as...). Then, open the file in RStudio.
 
