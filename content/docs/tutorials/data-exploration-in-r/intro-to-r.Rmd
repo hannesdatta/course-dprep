@@ -1,6 +1,6 @@
 ---
 title: "Data exploration in R (dPrep)"
-author: "Practice"
+author: "Practice (updated 16 Feb. 2023)"
 output: webexercises::webexercises_default
 ---
 
