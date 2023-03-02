@@ -14,40 +14,11 @@ Before we get started
 =====================
 
 - Pulse
-  - up and running - thanks for your feedback
   - like it? be in touch - we can add to do's for other classes (or update existing ones)
-- GitHub
-  - project boards should now be activated for all teams
-  - ensure you work in the `course-dprep` organization
 - Exam
-  - dates on the site - all ok or conflicts?
+  - dates fixed: 3 April (Monday for practical - 2 hours each); 4 April (Tuesday, on campus, theoretical part)
   - invite you to make practice questions via PRs
-
-Working together in teams
-========
-
-- [Scrum](https://tilburgsciencehub.com/learn/scrum) is meant to be helpful, not distracting!
-- Think of it as 'iterating' between working in a group, and individually
-<br>
-
-__1) Group meeting ("scrum meeting")__
-  - review issues: done, in progress, not started (+ why)
-  - review and integrate open pull requests one by one + check whether project still runs
-  - write and assign new issues
-  - (re)prioritize issues on your project board
-  - set date & time for next group meeting
-
-Working together in teams (II)
-========
-
-__2) Individual work__
-  - work on assigned issues
-  - help others work on theirs if they are stuck
-  - got some new ideas? write an issue (and put it in the backlog on the project board)
-  
-__3) Repeat...__
-- ...until you're done (or the deadline has passed...)
-
+- Bonus points - check our GitHub repository
 
 Structure of this tutorial
 ========================================================
@@ -69,12 +40,24 @@ incremental: true
 
 - Final dataset rarely available
 - Requires wrangling/transformations (can you name a few examples? there are *many*!)
-- In projects, structure scripts in four blocks
+- In projects, structure scripts in four blocks -- required to automate workflow later
   - Prerequisites/loading packages (`library()`)
   - Input (e.g., `read_csv()`) - always __relative__ filenames!
   - Transformation (i.e., operations on your data)
   - Output (e.g., `write_csv()` -- also w/ __relative__ filenames)
 - Zoom in on ways to transform (while respecting I-T-O building blocks + its header)
+
+
+Does and do not's
+==========
+
+__A few observations from your team projects.__
+
+- absolutely important to work in (a) local repositories, with (b) issue-based branches, and (c) pull requests
+- Code files need to be structured as setup-ITO -- required for automation!
+- Choose appropriate file format: Rmarkdowns for reports/PDFs/HTML, `.R` for regular scripts
+- Adhere to tidyverse functions (e.g., `read_csv`, not `read.csv`)
+- Incorporate programming concepts: looping, using functions
 
 DO: Let's get today's data and start exploring
 ======
@@ -139,9 +122,7 @@ Now, use the `tidyverse` verbs `filter()`, `arrange()`, and `mutate()` to answer
 4) Add a new column to `streams`, showing the approx. revenue for each song/day/country (tip: Spotify pays about 0.0038
 EUR per stream)
 
-Grouping and summarizing
-
-Answers to previous questions:
+Answers to previous questions (I)
 ========
 class: small-code
 
@@ -156,6 +137,10 @@ countries <- read_delim('country_codes.csv', ';')
 
 Now, use the `tidyverse` verbs `filter()`, `arrange()`, and `mutate()` to answer the following questions.
 
+Answers to previous questions (II)
+========
+class: small-code
+
 1) How many observations do we have for Belgium (country == 'BE')?
 
 ```{r}
@@ -167,6 +152,10 @@ streams_without_duplicates %>% filter(country=="BE") %>% count()
 ```{r}
 streams_without_duplicates %>% arrange(desc(streams))
 ```
+
+Answers to previous questions (III)
+========
+class: small-code
 
 3) What's the name of that song?
 ```{r}
@@ -184,8 +173,9 @@ streams_without_duplicates <- streams_without_duplicates %>% mutate(revenue = st
 
 Grouping and summarizing
 =============
+class: small-code
 
-- Grouping and summarizing is another powerful way to generate extra stats
+- Grouping and summarizing (also called aggregation) is another powerful way to generate extra stats
 
 ```{r}
 streams %>% group_by(country) %>% summarise(N=n())
@@ -210,8 +200,9 @@ Let's keep on generating stats, this time using `group_by()` and `summarise()` (
 
 4) Refine your search from (3) to include also collaborations (tip: `grepl()`!)
 
-Answers to previous questions:
+Answers to previous questions (I)
 ==============
+class: small-code
 
 Let's keep on generating stats, this time using `group_by()` and `summarise()` (plus verbs we have seen earlier)
 
@@ -226,6 +217,10 @@ streams2 <- streams_without_duplicates %>% group_by(song_id) %>% summarise(totst
 ```{r}
 artists <- songs %>% count(artists)
 ```
+
+Answers to previous questions (II)
+==============
+class: small-code
 
 3) Look at `artists`, and spit out the row that lists the number of songs for Ellie Goulding (`==`)
 
@@ -254,6 +249,7 @@ Merging/joining
 
 Do: Let's join!
 =====
+class: small-code
 
 1. First, join `streams` (left) with `songs` (right)
 2. Then, join `countries` to the result from (1).
@@ -286,6 +282,7 @@ __Can you come up with a step-wise procedure to achieve this?__
 
 Do: Impute some values
 ====
+class: small-code
 
 1. First, create a new data set with the median popularity by country and data (`group_by()` and `summarize()`!)
 2. Merge this data to `streams_merged` (`left_join()`)
@@ -342,7 +339,7 @@ incremental: true
 
 - Work in "ITO building blocks" (+ loading libraries, of course!)
 - Wrangling is necessary to get data into shape and generate meaning/understanding
-- Pivoting is difficult... it's enough if you get the concept now - you will have to fiddle around with it anyways
+- Pivoting (from long to wide, and wide to long) is difficult... it's enough if you get the concept now - you will have to fiddle around with it anyways
 - Have your cheat sheets available always -- especially the `dplyr` one is useful (and very [visual](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)!)
 
 Next steps (I)
@@ -350,19 +347,20 @@ Next steps (I)
 
 - This tutorial
   - selected solutions available in the `.Rpres` file ([available on GitHub](https://github.com/hannesdatta/course-dprep/tree/master/content/docs/tutorials/data-preparation))
-  - add more solutions if you like via PRs!
-- Work through the tutorial and complete exercises (all solutions available)
+  - Work through the tutorial and complete exercises (all solutions available)
 
 - Continue working on projects
   - explore & prepare datasets for analysis
   - adhere to GitHub workflows when collaborating
   - get your project board in shape and learn "new way of working"
+  - adhere to setup-ITO structure (required for next week)
   
 Next steps (II)
 ===============
 
 - Next week
-  - coaching session 10.45-12.30 - I'll be on campus (but we can meet online, too - indicate!)
-  - tutorial on Wednesday morning!
+  - coaching session
+  - tutorial on Thursday!
+  
 <br><br>
 __Thanks!__
