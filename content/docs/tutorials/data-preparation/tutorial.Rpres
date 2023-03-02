@@ -13,12 +13,13 @@ autosize: true
 Before we get started
 =====================
 
-- Pulse
-  - like it? be in touch - we can add to do's for other classes (or update existing ones)
 - Exam
   - dates fixed: 3 April (Monday for practical - 2 hours each); 4 April (Tuesday, on campus, theoretical part)
   - invite you to make practice questions via PRs
-- Bonus points - check our GitHub repository
+- Bonus points
+  - check our GitHub repository for opportunities
+- Pulse
+  - like it? be in touch - we can add to do's for other classes (or update existing ones)
 
 Structure of this tutorial
 ========================================================
@@ -53,10 +54,10 @@ Does and do not's
 
 __A few observations from your team projects.__
 
-- absolutely important to work in (a) local repositories, with (b) issue-based branches, and (c) pull requests
+- absolutely important to work in local repositories, with issue-based branches, and pull requests.
 - Code files need to be structured as setup-ITO -- required for automation!
 - Choose appropriate file format: Rmarkdowns for reports/PDFs/HTML, `.R` for regular scripts
-- Adhere to tidyverse functions (e.g., `read_csv`, not `read.csv`)
+- Adhere to tidyverse functions (e.g., `read_csv()`, not `read.csv()`)
 - Incorporate programming concepts: looping, using functions
 
 DO: Let's get today's data and start exploring
@@ -75,9 +76,9 @@ We split this group in three parts -- focusing on `streams.csv`, `songs.csv`, an
 
 - Load the data set using `read_csv()`
 - Then, use the `head()`, `View()`, `summary()`, `dim()` commands and try to describe the data set
-- On categorical data (characters, strings), use the `table()` command to look at frequencies
+- On categorical data, use the `table()` command for frequencies
 
-Common questions we can "ask" to a dataset
+Common questions we can "ask" to a dataset (I)
 =========
 incremental: true
 
@@ -98,7 +99,7 @@ incremental: true
   - can combine these verbs using `%>%` (the piping character)
 - __Can you name a few of these verbs? What do they do?__
 
-Do: Let's ask *better* questions using tidyverse
+Do: Better questions using tidyverse
 ========
 class: small-code
 
@@ -113,9 +114,9 @@ countries <- read_delim('country_codes.csv', ';')
 
 Now, use the `tidyverse` verbs `filter()`, `arrange()`, and `mutate()` to answer the following questions.
 
-1) How many observations do we have for Belgium (country == 'BE')?
+1) How many obs. do we have for Belgium (country == 'BE')?
 
-2) Which song ID has most streams in the data (in which country, and when)?
+2) Which song ID has most streams (in which country, and when)?
 
 3) What's the name of that song?
 
@@ -144,13 +145,13 @@ class: small-code
 1) How many observations do we have for Belgium (country == 'BE')?
 
 ```{r}
-streams_without_duplicates %>% filter(country=="BE") %>% count()
+streams %>% filter(country=="BE") %>% count()
 ```
 
 2) Which song ID has most streams in the data (in which country, and when)?
 
 ```{r}
-streams_without_duplicates %>% arrange(desc(streams))
+streams %>% arrange(desc(streams))
 ```
 
 Answers to previous questions (III)
@@ -166,9 +167,9 @@ songs %>% filter(song_id==21831898)
 EUR per stream)
 
 ```{r}
-streams_without_duplicates$revenue <- 0.0038 * streams_without_duplicates$streams
+streams$revenue <- 0.0038 * streams$streams # the old way
 
-streams_without_duplicates <- streams_without_duplicates %>% mutate(revenue = streams * 0.0038)
+streams <- streams %>% mutate(revenue = streams * 0.0038) # better
 ```
 
 Grouping and summarizing
@@ -209,7 +210,7 @@ Let's keep on generating stats, this time using `group_by()` and `summarise()` (
 1) Create a new dataset, called `streams2`, summing up the streams by song.
 
 ```{r}
-streams2 <- streams_without_duplicates %>% group_by(song_id) %>% summarise(totstreams = sum(streams))
+streams2 <- streams %>% group_by(song_id) %>% summarise(totstreams = sum(streams))
 ```
 
 2) Create a new dataset, called `artists`, showing the count of songs by artist.
