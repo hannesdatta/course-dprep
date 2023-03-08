@@ -8,44 +8,45 @@ bookCollapseSection: true
 
 # Final exam
 
-The course content will be tested in the form of a __take-home exam__, to be completed __within three hours__.
+The course content will be tested in the form of a computer exam, consisting of a __theoretical part__ (on campus, 1 hour), and a __practical part__ (take-home exam, 2 hours). 
 
 ## Date & time
 
 ### Main sit
 
-- Date: __{{< param "Course_Exam_Mainsit" >}}__
-- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
-- Exam registration: at the latest one week prior to the exam via [this form](https://docs.google.com/forms/d/e/1FAIpQLSeJg09VehRpZxkVitKp22hGqvoTLdFT3-CMVZXDpISc0447bg/viewform?usp=sf_link)
-- Inspection: tba <!--(signup here: https://forms.gle/6y5q66tsJzsGN59b9, Zoom link see Canvas)-->
+- Date: __{{< param "Course_Exam_MainsitTheory" >}}__ (theoretical part, on campus), and __{{< param "Course_Exam_MainsitPractice" >}}__ (practical part, on campus).
+- Time: to be announced (see also Osiris)
+<!--- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)-->
+- Exam registration: via Osiris
 
 ### Resit
 
-- Date: __{{< param "Course_Exam_Resit" >}}__
-- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)
-- Registration: at the latest one week prior to the exam via [this form](https://docs.google.com/forms/d/e/1FAIpQLSeJg09VehRpZxkVitKp22hGqvoTLdFT3-CMVZXDpISc0447bg/viewform?usp=sf_link)  <!--by 7 June 2021 at the latest, via https://forms.gle/KXQBjtTvY9saQQhS8.-->
+- Date: __{{< param "Course_Exam_ResitTheory" >}}__ (theoretical part, on campus), and __{{< param "Course_Exam_ResitPractice" >}}__ (practical part, on campus).
+- Time: to be announced (see also Osiris)
+<!--- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)-->
+- Resit exam registration: via Osiris
 
 ## Technicalities & support
 
-- Receiving your exam: via [TestVision](https://TilburgU.testvision.nl/online/kandidaten) on the day of the exam
+- Receiving your exam: via [TestVision](https://TilburgU.testvision.nl/online/kandidaten) on the examination dates.
 - The exam consists of two parts, which you will have to work on in "separate" exams:
-  - Part 1 is open from 9am - 10am. I.e., it needs to be finished at the latest by 10am.
-  - Part 2 is open from 9am - 11.59am + 1 minute (noon). You should only start working on part 2 after finishing part 1.
-- Working on your exam: on your own computer
+  - The theoretical part needs to be finished within one hour (for timings, see Osiris).
+  - The practical part is open for two hours (exact timing tba).
+- Working on your exam: on a computer at the University (theoretical part, on campus), on your computer (practical part, take-home).
 - Submitting your exam: all questions (including file uploads) will be submitted via TestVision
-- Support during the exam: preferably WhatsApp [see support section of this website](/docs/course/support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
+- Support during the practical exam: preferably WhatsApp [see support section of this website](/docs/course/support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
 
 
 ## Form
 
-- Open book take-home exam (i.e., you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
+- On-campus exam (theoretical part), and open book take-home exam (practical part; i.e., for this part, you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
 - several sections with subquestions (all open questions; both in written, or by means of code/file uploads)
 - Some questions will be personalized (i.e., there is only one correct answer per student)
 
 {{< hint warning >}}
 
 - Communication with anybody about the exam content, during *and after* the take-home exam, is strictly prohibited.
-- Students must not copy-paste from websites, academic papers, or make use of ChatGPT (or similar AI-based tools) etc. when formulating answers to questions.
+- Students must not copy-paste from websites, academic papers, or make use of ChatGPT (or similar AI-based tools) etc. when formulating answers to questions (unless otherwise instructed on the exam).
 - Students must not mention their names or student numbers in submitted files, except when being explicitly asked to do so. This is to ensure the exam can be graded anonymously as much as possible.
 
 {{< /hint >}}
@@ -53,18 +54,19 @@ The course content will be tested in the form of a __take-home exam__, to be com
 
 ## Content
 
-### Part 1: Theory
+### Theoretical part
 
 - This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__ (i.e., not in order of difficulty or weight/points).
-- Students __*cannot* go back between questions__ (i.e., questions need to be answered in the order in which they appear).
-- Allocate approximately 45 minutes to work on this part.
+- Students can go __*freely back and forth between questions*__ in this part.
+<!--- Students __*cannot* go back between questions__ (i.e., questions need to be answered in the order in which they appear).-->
+<!--- Allocate approximately 45 minutes to work on this part.-->
 - Cognitive skills that will be tested are knowledge, comprehension, and analysis.
 
-### Part 2: Practical
+### Practical part
 
 - This part of the exam consists of __personalized open questions__, shown in __random order__ (i.e., not in order of difficulty or weight/points).
 - Students can go __*freely back and forth between questions*__ in this part.
-- Allocate approximately 2:15 minutes to work on this part, which focuses on all learning goals of the course as practiced in the tutorials.
+- Allocate 2 hours to work on this part, which focuses on all learning goals of the course as practiced in the tutorials.
 - Expect two questions (potentially w/ smaller subquestions), mixing "mix" various learning goals. For example:
   - Work on an issue posted at a publicly available GitHub repository, which focuses on data exploration and transformation (e.g., using RMarkdown, tidyverse).
   - Automate an existing workflow, and cast it into a repository structure that you share (privately) with the course coordinator for grading. Alternatively, add a module to an existing workflow (e.g., regression analysis), and integrate new module in automation pipeline.
