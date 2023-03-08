@@ -14,10 +14,9 @@ Before we get started
 =====================
 
 - Exam
-  - registration via site, not Osiris
-  - add dates to your agendas
-  - take at home
-- Today's materia...
+  - registration via Osiris!
+  - add dates to your agendas (3 April: practice, take home; 4 April: theory, on campus)
+- Today's material...
   - slide deck available on the [site](https://dprep.com/hannesdatta/com/docs/tutorials)!
   - [download the Make cheatsheet](https://tilburgsciencehub.com/building-blocks/automate-and-execute-your-work/automate-your-workflow/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
 
@@ -25,10 +24,9 @@ Feedback on team projects (I)
 ========
 incremental: true
 
-- team-member based branches OR **issue-based branches**
 - working together in teams
   - fork vs. being a contributor
-  - scrum vs. individual work (see notes from last week!)
+  - scrum vs. individual work
 - data on GitHub
   - only link to download raw data
   - **do not** store any raw data on GitHub
@@ -41,7 +39,7 @@ incremental: true
 - coding conventions
 	- absolute vs. relative file names
 	- generalizable -- no "amsterdam"-specific variable names when possible
-	- install packages: ideally in *one* script
+	- install packages: ideally in *one* script -- see [here](https://gist.github.com/hannesdatta/3446b205a9f5aa598f99bfa5116e5be0)
 - preparation: define unit of analysis (e.g., date & city)
 
 Where we are heading today
@@ -55,7 +53,8 @@ __Let's describe our toolstack...__
   - branches & pull requests
 - We have learnt how to **explore data and engineer datasets**
   - Rmarkdown & plotting
-  - `tidyverse` & data prep.
+  - `tidyverse` & data prep
+  - setup + ITO
 - But... process is still *quite manual*
   - how to "run" code? (e.g., order, all code files?)
 
@@ -225,8 +224,6 @@ Let's take a step back...
 - Make "accompanies" your coding, and constantly allows you to check whether you've done things right.
 - Can become a great timesaver in your career!
 
-
-
 Reflection
 =====
 
@@ -243,8 +240,8 @@ Next steps
 ======
 
 - Three more coaching sessions
-  - schedule see site
-  - I invite you to distribute my time by yourselves (prob 10-minute slots, but I'm flexible)
+  - schedule see site (some changes next week)
+  - two are optional: just be there w/ your team if needed (I will walk around)
 - Exam preparation
   - in final lecture
   - keep an eye on site
