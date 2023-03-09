@@ -15,22 +15,21 @@ Before we get started
 
 - Exam
   - registration via Osiris!
-  - add dates to your agendas (3 April: practice, take home; 4 April: theory, on campus)
+  - add dates to your agendas (3 April: practice, take home, 10am to noon; 4 April: theory, on campus, time tba)
 - Today's material...
-  - slide deck available on the [site](https://dprep.com/hannesdatta/com/docs/tutorials)!
-  - [download the Make cheatsheet](https://tilburgsciencehub.com/building-blocks/automate-and-execute-your-work/automate-your-workflow/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
+  - slide deck available on the [site](https://dprep.hannesdatta.com/docs/tutorials/make-tutorial/)!
+  - [download the `make` cheatsheet](https://tilburgsciencehub.com/building-blocks/automate-and-execute-your-work/automate-your-workflow/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
 
 Feedback on team projects (I)
 ========
 incremental: true
 
 - working together in teams
-  - fork vs. being a contributor
-  - scrum vs. individual work
+  - working with Git locally (vs. in the cloud)
+  - scrum/project board & issues vs. individual work
 - data on GitHub
-  - only link to download raw data
-  - **do not** store any raw data on GitHub
-  - naming conventions (*not* `dataset1`, etc.)
+  - **do not** store any raw data on GitHub but download programmatically
+  - naming conventions (*not* `dataset1`, etc.) - clean the template!
 
 Feedback on team projects (II)
 ========
@@ -40,7 +39,7 @@ incremental: true
 	- absolute vs. relative file names
 	- generalizable -- no "amsterdam"-specific variable names when possible
 	- install packages: ideally in *one* script -- see [here](https://gist.github.com/hannesdatta/3446b205a9f5aa598f99bfa5116e5be0)
-- preparation: define unit of analysis (e.g., date & city)
+- preparation: be clear about unit of analysis (e.g., date & city)
 
 Where we are heading today
 ==========
@@ -48,13 +47,12 @@ Where we are heading today
 __Let's describe our toolstack...__
 
 - We use **Git/GitHub** to collaborate on code
-  - versioning
-  - issues & project board
-  - branches & pull requests
+  - versioning of files - frequent commits
+  - issues, branches and pull requests
+  - management via project board
 - We have learnt how to **explore data and engineer datasets**
   - Rmarkdown & plotting
-  - `tidyverse` & data prep
-  - setup + ITO
+  - `tidyverse` & data preparation, setup + ITO
 - But... process is still *quite manual*
   - how to "run" code? (e.g., order, all code files?)
 
@@ -63,14 +61,11 @@ __Today, we learn how to automate projects.__
 
 Automation tools
 ========
+incremental: true
 
 - Many automation tools on the market
 - Originally designed to automate software builds
 - Launches "other" software programs (e.g., R), mostly on the terminal/command prompt
-
-<br>
-<br>
-
 - We use `make`
   - probably one of the oldest ones on the market
   - free/open source, widely used
@@ -91,20 +86,20 @@ DO: Verify make and R are properly installed
 __If you can't run `make` and `Rscript` from your terminal, you won't be able to proceed.__
 
 1. Verify __`make`__ is properly installed
-  - open the terminal/command prompt 
-  - type `make` (enter). 
-  - See this? `make: *** No targets specified` -- then it is *correctly installed*!
+  - open the terminal/command prompt and type `make` (enter). 
+  - See this? `make: *** No targets specified` -- then it is __correctly installed__!
 2. Verify you can run `Rscript` from the terminal/command prompt
   - type `Rscript` (enter). 
   - See output starting with `Usage: Rscript [options] file [args]`...? -- then you are *all set*!
 
 Do: Getting familiar with today's data/practice project
 ========
+class: small-code
 
 Today's project is based on a prototype project using Airbnb data. Please __download the source code now__ (run code below).
 
 ```{r}
-download.file('https://gist.githubusercontent.com/hannesdatta/1f764090ae3ebfaabe7a91ea4b971c3d/raw/e1ebaa4c86cae1081cce4c7839909e080f130125/run_antwerp.R', 'run_antwerp.R')
+download.file('https://gist.githubusercontent.com/hannesdatta/1f764090ae3ebfaabe7a91ea4b971c3d/raw/2df12443cd144141dedb866967cbe985b97052f5/run_antwerp.R', 'run_antwerp.R')
 ```
 
 1. __Open the file__ `run_antwerp.R` in RStudio to check out the code - can you run the first few lines? Does it work?
@@ -122,7 +117,7 @@ Understanding `run_antwerp.R`
 
 __We will now gradually "modularize" (split in multiple code files) and automate our project, using `make`.__
 
-Writing our first `make` recipe
+Writing our first make recipe
 =====
 
 - To automate projects, we will write a `makefile` and put it in the root of our project directory
@@ -131,7 +126,9 @@ Writing our first `make` recipe
   - what are prerequisites, dependencies? (also files)
   - how to build it? (a command to execute stuff)
 
-__DO__: 
+DO: Writing our first make recipe
+==============
+
 - Create a new file, called `makefile` (no extension)
 - Paste the code below and save (use a tab to indent `R --vanilla` ...)
 - Then type `make` on terminal. What happens?
@@ -141,10 +138,10 @@ plot_all.pdf: run_Antwerp.R
   R --vanilla < run_Antwerp.R
 ```
 
-Running make again
+DO: Running make again
 ======
 
-__Let us now change something in the source code of `run_antwerp.R`, e.g., change `Universiteitsbuurt` to ` `Stadspark`__ to experience a `make` workflow.
+__Let us now change something in the source code of `run_antwerp.R`, e.g., change `Universiteitsbuurt` to `Stadspark  to experience a `make` workflow.__
 
 - Type `make -n` (preview what will have to be done)
 - Type `make` (to run the pipeline)
@@ -152,7 +149,7 @@ __Let us now change something in the source code of `run_antwerp.R`, e.g., chang
 
 __Last step really important and often forgotten in projects.__
 
-Cleaning up the project directory
+DO: Cleaning up the project directory
 =====
 
 When working with `make`, it's handy to keep our project tidy (i.e., get right of "old" files automatically).
@@ -176,7 +173,7 @@ Towards modularization
 
 ![](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/make-tutorial/images/dependencies_Antwerp.png)
 
-__How?__ split up code, implement ITO, write `makefile` rule, test rule. Step-by-step.
+__How?__ split up code, implement setup + ITO, write `makefile` rule, test rule. Step-by-step.
 
 Demonstration: ITO and make for download.R
 =====
@@ -201,7 +198,7 @@ Getting the directories right
 - We now should have a fully automated pipeline. 
 - But... we have not cleanly separated `src` files from generated output files.
 
-- Do:
+- __Do:__
   - Create a `src` code directory and move source code files there
   - Use code to create a `gen` directory in an R file (preferably run early on)
   - Change directory names in output files in `.R` files
@@ -228,21 +225,21 @@ Reflection
 =====
 
 - You've covered it all - congrats!
-- Now it's time to let it sink in. And practice.
-  - GitHub for code, and only code!
+- Now it's time to let it sink in. __And practice.__
+  - GitHub for code and project management (not data). Work locally.
   - Work according to scrum method in feature branches.
-  - Explore, prepare and analyze data using R. Focus on workflow, proper ITO building blocks, demonstration of your skills!
+  - Explore, prepare and analyze data using R. Focus on workflow, proper setup + ITO building blocks, demonstration of your skills!
   - Automate entire pipeline.
   - Do all steps at the same time. Not separately!
-- This is a state-of-the-art toolkit that will put you ahead of the curve in productivity. In your Master program, and beyond.
+- This is a __state-of-the-art toolkit__ that will put you ahead of the curve in productivity. In your Master program, and beyond.
 
 Next steps
 ======
 
 - Three more coaching sessions
   - schedule see site (some changes next week)
-  - two are optional: just be there w/ your team if needed (I will walk around)
+  - two sessions are optional: just be there w/ your team if needed (I will walk around)
 - Exam preparation
   - in final lecture
-  - keep an eye on site
+  - watch the site and Canvas for updates
 - Any questions?
