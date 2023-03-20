@@ -33,7 +33,8 @@ enableGitInfo = true
   Date_Send_Motivation = "15 January, 2023"
   Date_Notified_Candidates = "23 January, 2023"
   
-  Course_Deadline_Project = "Friday, 24 March (23.59)" 
+  #Course_Deadline_Project = "Friday, 24 March (23.59)" 
+  Course_Deadline_Project = "Monday, 27 March (23.59)" 
   #"Monday, 17 October 2022 (23.59)"
   
   Course_Exam_MainsitTheory = "Tuesday, 4 April 2023" # "Tuesday, 18 October 2022"
