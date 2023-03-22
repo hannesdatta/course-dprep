@@ -14,17 +14,18 @@ The course content will be tested in the form of a computer exam, consisting of 
 
 ### Main sit
 
-- Date: __{{< param "Course_Exam_MainsitTheory" >}}__ (theoretical part, on campus), and __{{< param "Course_Exam_MainsitPractice" >}}__ (practical part, on campus).
-- Time: to be announced (see also Osiris)
-<!--- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)-->
+- __Theoretical part__ (on campus, max. 1 hour): {{< param "Course_Exam_MainsitTheory" >}}
+- __Practical part__ (take home, max. 2 hours): {{< param "Course_Exam_MainsitPractice" >}}
 - Exam registration: via Osiris
+<!--- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)-->
 
 ### Resit
 
-- Date: __{{< param "Course_Exam_ResitTheory" >}}__ (theoretical part, on campus), and __{{< param "Course_Exam_ResitPractice" >}}__ (practical part, on campus).
-- Time: to be announced (see also Osiris)
+- __Theoretical part__ (on campus, max. 1 hour): {{< param "Course_Exam_ResitTheory" >}}
+- __Practical part__ (take home, max. 2 hours): {{< param "Course_Exam_ResitPractice" >}}
+- Exam registration: via Osiris
+
 <!--- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)-->
-- Resit exam registration: via Osiris
 
 ## Technicalities & support
 
@@ -34,20 +35,20 @@ The course content will be tested in the form of a computer exam, consisting of 
   - The practical part is open for two hours (exact timing tba).
 - Working on your exam: on a computer at the University (theoretical part, on campus), on your computer (practical part, take-home).
 - Submitting your exam: all questions (including file uploads) will be submitted via TestVision
-- Support during the practical exam: preferably WhatsApp [see support section of this website](/docs/course/support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
+- Support during the practical part of the exam: preferably WhatsApp [see support section of this website](/docs/course/support); Support only for "unforeseen" errors. No support will be given for technical issues that students *should* have solved during the course (e.g., installation of R or `make`, installing packages, running Python code in an automated workflow, etc.)
 
 
 ## Form
 
-- On-campus exam (theoretical part), and open book take-home exam (practical part; i.e., for this part, you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
-- several sections with subquestions (all open questions; both in written, or by means of code/file uploads)
+- On-campus exam (theoretical part, closed book except selected course material that students can download on the instruction page of the exam), and open book take-home exam (practical part; i.e., for this part, you can access any material you find helpful, including material you have stored on your computers, or that you find on the internet).
+- Several sections with subquestions (all open questions; both in written, or by means of code/file uploads)
 - Some questions will be personalized (i.e., there is only one correct answer per student)
 
 {{< hint warning >}}
 
 - Communication with anybody about the exam content, during *and after* the take-home exam, is strictly prohibited.
-- Students must not copy-paste from websites, academic papers, or make use of ChatGPT (or similar AI-based tools) etc. when formulating answers to questions (unless otherwise instructed on the exam).
-- Students must not mention their names or student numbers in submitted files, except when being explicitly asked to do so. This is to ensure the exam can be graded anonymously as much as possible.
+- Students must not copy-paste from websites, academic papers. The use of ChatGPT or similar AI-based tools is only allowed if stated explicitly for selected questions on the pratical part of the exam.
+- Students must not mention their names or student numbers in any of the submitted files, except when being explicitly asked to do so. This is to ensure the exam can be graded anonymously.
 
 {{< /hint >}}
 
