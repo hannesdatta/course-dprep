@@ -145,7 +145,7 @@ Common mistakes w/ make
 - The *all* rule: think of it as a "first" rule only!
 - Gradually building your makefile
 - Remember, __go in baby steps!__
-- Happy to take a look at your repositories
+- Happy to take a look at your repositories now - anyone?
 
 Any other questions about your projects?
 =======
@@ -192,7 +192,7 @@ incremental: true
 
 - Become part of the open science community at Tilburg
   - contribute to [Tilburg Science Hub](https://tilburgsciencehub.com)
-  - follow us on [LinkedIn](https://www.linkedin.com/company/open-science-community-tilburg/) and [Twitter](https://twitter.com/tilburgscience)
+  - follow us on [LinkedIn](https://www.linkedin.com/company/tilburgsciencehub/) and [Twitter](https://twitter.com/tilburgscience)
 - Invest in your research skills (e.g., Docker, singularity, coding)
 
 Looking ahead: After your studies
@@ -210,19 +210,44 @@ Next steps: Submissions and preparing for the exam
   - remember: __make it work__ on different computers and operating systems
   - __avoid__ absolute paths!
   - verify data can be downloaded smoothly
-  - test make thoroughly (demonstration if we have the time)
+  - test `make` thoroughly (demonstration if we have the time)
 - Exam preparation
   - https://dprep.hannesdatta.com/docs/exam/
   - https://dprep.hannesdatta.com/docs/exam/examplequestions/
 
-Exam tips
+Exam overview: Practical part
+=============
+
+- Organization
+  - When: 3 April, 10am - 11.59am + 1 minute, take home
+  - Work max. 2 hours on this part
+- How?
+  - open book, on your computer
+  - ChatGPT/GitHub Copilot et al. ONLY when explicitly asked for.
+- What?
+  - let's look at [some questions now](https://dprep.hannesdatta.com/docs/exam/examplequestions/#practical-part)
+  - prep well - expect new datasets that are big (too big maybe even) -- aggregation!
+
+Exam overview: Theoretical part
+=============
+
+- Organization
+  - When: 4 April, 1pm - 3.15pm (jointly w/ oDCM; break of 15 minutes inside)
+  - Work max. 1 hour on this part
+- How?
+  - closed book
+  - I can make selected resources available on the instruction page. __Which ones?__
+- What?
+  - let's look at [some questions now](https://dprep.hannesdatta.com/docs/exam/examplequestions/#theoretical-part)
+
+Some tips for your exam
 =======
 incremental: true
 
 - Expect an unexpected data set & data wrangling
-- Know common data operations in `dplyr`
+- Know common data operations in `dplyr` & become fast!
 - When handing in documents, check what I require (for `.Rmd`, I sometimes ask for rendered `.pdf` documents - does it work on your computer?)
-- Be prepared to contribute to open source projects on GitHub -- know how to do PRs
+- Be prepared to contribute to open source projects on GitHub -- know how to do PRs, roll back to previous versions, write issues, etc.
 - Be prepared to run, correct and develop new `make` workflows
 
 
@@ -231,10 +256,8 @@ Next steps: Official course evaluation
 ========================================================
 
 - Course evaluation has been immensely important to this course
-  - developed new on-campus tutorials & exercises
-  - released example projects publicly
-  - streamlined course w/ GitHub for Classrooms
-  - increased coaching slots
+  - this semester: coaching sessions with breakout groups
+  - last semester: developed new on-campus tutorials, released example projects
 - Course evaluation has been critical to my career
   - Without my past evaluations, I wouldn't be teaching to you today
   - I will look at all comments. 
@@ -247,9 +270,10 @@ Informal feedback
 ========================================================
 incremental: true
 
-- Quality of on-campus sessions?
-- Feel you've learned R sufficiently?
-- Coaching moments sufficient?
+- Coaching sessions?
+- Use of Pulse?
+- How was it for beginners? 
+- What's are three things you'd like me to change?
 
 
 
@@ -262,6 +286,7 @@ Stay in touch!
 - Contribute to __Tilburg's Open Science initiatives__! 
   - https://tilburgsciencehub.com as content developer / community manager
   - change this course at https://github.com/hannesdatta/course-dprep
+- Watch out for dPrep and oDCM master thesis topics!
 <br><br>
 - __And, finally... let's show to the world how awesome your new skills are!__
 

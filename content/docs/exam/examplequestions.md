@@ -13,11 +13,11 @@ Questions will be asked along the course's learning goals, and complexity levels
 Below, you can find a few example questions, which will be discussed with students in the final live stream of this course.
 
 
-## Part 1
+## Theoretical part
 
 {{< hint warning >}}
 
-This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__.
+This part of the exam consists of __personalized open and closed (multiple-choice) questions__, shown in __random order__. You can freely go back and forth between these questions.
 
 {{< /hint >}}
 ![](../dprep_part1.png)
@@ -58,7 +58,7 @@ data/dataset.csv: load.R
 
 ![](../dprep_overview.png)
 
-## Part 2:
+## Practical part
 
 {{< hint warning >}}
 
