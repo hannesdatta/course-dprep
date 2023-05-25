@@ -40,8 +40,8 @@ enableGitInfo = true
   Course_Exam_MainsitTheory = "Tuesday, 4 April 2023 (1pm-3.15pm)" # "Tuesday, 18 October 2022"
   Course_Exam_MainsitPractice = "Monday, 3 April 2023 (10am-11.59am + 1 minute)" # "Tuesday, 18 October 2022"
    
-  Course_Exam_ResitTheory = "tba" # "Tuesday, 10 January 2023"
-  Course_Exam_ResitPractice = "tba" # "Tuesday, 10 January 2023"
+  Course_Exam_ResitTheory = "Wednesday, 28 June 2023 (time tba)" # "Tuesday, 10 January 2023"
+  Course_Exam_ResitPractice = "Tuesday, 27 June 2023 (10am-11.59am + 1 minute)" # "Tuesday, 10 January 2023"
 
   Datacamp_Link = "https://www.datacamp.com/groups/shared_links/a88c8a218963bb637aa5e933ac615626815c76481a4ebb30dfca206ea9de5397"
 
