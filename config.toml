@@ -26,23 +26,29 @@ enableGitInfo = true
 
 [params]
 
-  Course_Edition_Current = "February - April 2023"
-  Course_Edition_Next = "August - October 2023"
+  Course_Edition_Current = "August - October 2023"
+  Course_Edition_Next = "February - April 2024"
   
-  Date_Notify_Coordinator = "15 January, 2023"
-  Date_Send_Motivation = "15 January, 2023"
-  Date_Notified_Candidates = "23 January, 2023"
+  Date_Notify_Coordinator = "15 August, 2023"
+  Date_Send_Motivation = "15 August, 2023"
+  Date_Notified_Candidates = "23 August, 2023"
   
-  #Course_Deadline_Project = "Friday, 24 March (23.59)" 
-  Course_Deadline_Project = "Monday, 27 March (23.59)" 
-  #"Monday, 17 October 2022 (23.59)"
-  
-  Course_Exam_MainsitTheory = "Tuesday, 4 April 2023 (1pm-3.15pm)" # "Tuesday, 18 October 2022"
-  Course_Exam_MainsitPractice = "Monday, 3 April 2023 (10am-11.59am + 1 minute)" # "Tuesday, 18 October 2022"
-   
-  Course_Exam_ResitTheory = "Wednesday, 28 June 2023 (time tba)" # "Tuesday, 10 January 2023"
-  Course_Exam_ResitPractice = "Tuesday, 27 June 2023 (10am-11.59am + 1 minute)" # "Tuesday, 10 January 2023"
+  Course_Deadline_Project = "Monday, 16 October (23.59)" 
+  #Course_Deadline_Project = "Monday, 27 March (23.59)" 
 
+  Course_Exam_MainsitTheory = "tba"
+  Course_Exam_MainsitPractice = "tba"
+   
+  Course_Exam_ResitTheory = "tba"
+  Course_Exam_ResitPractice = "tba"
+
+  #Course_Exam_MainsitTheory = "Tuesday, 4 April 2023 (1pm-3.15pm)" # "Tuesday, 18 October 2022"
+  #Course_Exam_MainsitPractice = "Monday, 3 April 2023 (2pm-4pm)" # "Tuesday, 18 October 2022"
+   
+  #Course_Exam_ResitTheory = "Wednesday, 28 June 2023 (time tba)" # "Tuesday, 10 January 2023"
+  #Course_Exam_ResitPractice = "Tuesday, 27 June 2023 (2pm-4pm)" # "Tuesday, 10 January 2023"
+
+ 
   Datacamp_Link = "https://www.datacamp.com/groups/shared_links/a88c8a218963bb637aa5e933ac615626815c76481a4ebb30dfca206ea9de5397"
 
 
