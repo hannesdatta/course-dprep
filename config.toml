@@ -49,9 +49,7 @@ enableGitInfo = true
   #Course_Exam_ResitPractice = "Tuesday, 27 June 2023 (2pm-4pm)" # "Tuesday, 10 January 2023"
 
  
-  Datacamp_Link = "https://www.datacamp.com/groups/shared_links/a88c8a218963bb637aa5e933ac615626815c76481a4ebb30dfca206ea9de5397"
-
-
+  Datacamp_Link = "https://www.datacamp.com/groups/shared_links/98b9065e22fed54a54b1f9821a070cc9b478c96953100c874ee85765a75b3cdf"
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
