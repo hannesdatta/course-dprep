@@ -11,15 +11,14 @@ draft: false
 ## Kick-starting your week
 - [Watch the energizer for the week on YouTube!](https://youtu.be/PdWZ1s8XXiU)
 
-## Online coaching session
-- Feedback on team project (activity #3)
-
 ## Tutorial
 {{% laptop %}}
 
 - In-class tutorial ([view slides](tutorial/tutorial.html))
 - Check out the [make cheatsheet!](/docs/project/resources/cheat-sheets/tsh_make_cheatsheet.pdf)
 
+## Coaching session
+- Start working on [activity #4](/docs/project/workplan) for the team project
 
 ## Self-study and activities
 

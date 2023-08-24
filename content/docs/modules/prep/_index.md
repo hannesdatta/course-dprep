@@ -24,8 +24,14 @@ Git is a file versioning tool - think of it as a combination of Dropbox (with un
 
 - Please install Git, by following these [setup instructions](
 https://tilburgsciencehub.com/get/git).
-- Also get a [GitHub account](https://github.com). We advise you using a "presentable" username - very likely, your GitHub profile will be mentioned on your CV when you apply for jobs.
+- Signup to [GitHub.com](https://github.com). 
+
+{{% hint info %}}
+- When signing up to GitHub, we recommend choosing a professional GitHub username (e.g., *firstname.lastname*, *initial.lastname*, etc.). Chances are high you are going to use your GitHub profile when applying for jobs. 
 - Looking for a more graphical user experience? Then you may find [GitHub Desktop](https://desktop.github.com) useful as well.
+- Experiencing any issues to authenticate with GitHub (e.g., an error message about your password)? Head over to the [support section](/docs/course/support) for how to solve this issue.
+{{% /hint %}}
+
 
 ### 3) Install `make`
 
@@ -45,10 +51,19 @@ Finally, we're borrowing some tutorials from [Datacamp.com](https://datacamp.com
 
 - Please follow these steps to [obtain access to premium content of Datacamp](docs/course/support/datacamp.md).
 
-### 6) Follow Datacamp.com tutorials for learning R
+### 6) Follow useful tutorials
 
-- Please follow [this Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) at Datacamp.com.
-
+- New to R?
+    - Then please follow [this Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) at Datacamp.com.
+- Never worked with the command line/bash/terminal? 
+    - Then please develop your command line (Windows) / terminal (Mac) skills
+    - Check out the ([Datacamp tutorial - first chapter only](https://www.datacamp.com/courses/introduction-to-shell))
+    - Also check out [this presentation about the command line / terminal](https://generalassembly.github.io/prework/cl). 
+        - Though it is targeted to Mac users, it provides a great overview.
+        - Windows users could still follow along using *the same commands* by using Git Bash (or Cygwin). 
+        - The main goal here is to understand how directory structures work and how to navigate in the terminal or command line.
+- New to GitHub?
+    - Then [work on this training](https://github.com/skills/introduction-to-github) to familiarize yourself with it (60 minutes)
 
 ---
 <br>

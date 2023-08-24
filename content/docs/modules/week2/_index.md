@@ -11,20 +11,6 @@ draft: false
 ## Kick-starting your week
 - [Watch the kick-off for the week!](https://youtu.be/kL-s7XHWiWI) 
 
-## Preparation before the tutorial
-- Get a GitHub account and [work on this training](https://github.com/skills/introduction-to-github) to familiarize yourself with GitHub (60 minutes)
-{{% hint info %}}
-- Please choose a professional GitHub username (e.g., *firstname.lastname*, *initial.lastname*, etc.). Chances are high you are going to use your GitHub profile when applying for jobs. 
-- Experiencing any issues to authenticate with GitHub (e.g., an error message about your password)? Head over to the [support section](/docs/course/support) for how to solve this issue.
-
-{{% /hint %}}
-- Develop your command line (Windows) / terminal (Mac) skills
-  - Check out the ([Datacamp tutorial - first chapter only](https://www.datacamp.com/courses/introduction-to-shell))
-  - Also check out [this presentation about the command line / terminal](https://generalassembly.github.io/prework/cl). 
-    - Though it is targeted to Mac users, it provides a great overview.
-    - Windows users could still follow along using *the same commands* by using Git Bash (or Cygwin). 
-    - The main goal here is to understand how directory structures work and how to navigate in the terminal or command line.
-
 <!--
 - Optional readings
   - [Code and Data for the Social Sciences: A Practitioner’s Guide](https://www.brown.edu/Research/Shapiro/pdfs/CodeAndData.pdf)
@@ -37,6 +23,10 @@ draft: false
 {{% laptop %}}
 
 - View [slides](tutorial/tutorial-inclass.html)
+- Ensure you've completed the setup and tutorials from the ["preparation material" section](/docs/modules/prep)
+
+## Coaching session
+- Start working on [activity #1](/docs/project/workplan) for the team project
 
 ## Self-study and activities
 - Improve your knowledge about [Shell/Bash in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")

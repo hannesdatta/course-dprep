@@ -16,13 +16,7 @@ draft: false
 <!--- Get inspired by the [building blocks](docs/building-blocks/)-->
 
 ## Online coaching session (optional)
-- Feedback on team project (activity #4)
-
-## On-campus coaching session (optional) 
-{{% laptop %}}
-- Feedback on team project (activity #4)
-
-
+- Feedback on team project 
 
 <div style="text-align: right">
 {{< button relref="week5" >}}Previous week{{< /button >}}

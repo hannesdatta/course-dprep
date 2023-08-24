@@ -33,7 +33,7 @@ draft: false
 2. After-class exercises & tutorial ([View](tutorial/intro-to-r.html))
 
 ## Coaching session
-- Feedback on team project (activity #1)
+- Start working on [activity #2](/docs/project/workplan) for the team project
 
 ## Self-study and activities
 - Develop your R skills by working on the [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3) course

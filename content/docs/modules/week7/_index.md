@@ -15,7 +15,7 @@ draft: false
 - Continue to work on your [team projects](/docs/project)
 
 ## Online coaching session (optional)
-- Feedback on team project
+- Feedback on team project 
 
 ## Final lecture
 
