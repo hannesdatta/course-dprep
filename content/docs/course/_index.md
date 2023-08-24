@@ -82,7 +82,7 @@ Students are recommended to follow this course before embarking on thesis projec
 ### Passing requirements
 
 Students pass this course if
-- the final course grade (i.e., the weighted average of the following three components: (1) the group project, (2) the exam, and (3) the pass or fail on submitting one's progress on the course's learning goals); weights indicated above) is ≥ 5.5, and
+- the final course grade (i.e., the weighted average of the following two components: (1) the group project, and (2) the exam; weights indicated above) is ≥ 5.5, and
 - the exam grade is higher than or equal to 5.0 (≥ 5.0).
 
 Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
@@ -103,7 +103,7 @@ Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, et
 
 The course is designed as an open education course, with all of its source code publicly available at [the course's GitHub repository](https://github.com/hannesdatta/course-dprep). Students can earn bonus points for contributing to the course in the form of source code (e.g., to provide solutions for assignments, to write a tutorial for a new package, for debugging code, for maintaining the course's issue board, etc.). Some contributions may also qualify for publication at [Tilburg Science Hub](https://tilburgsciencehub.com) (see also [here](https://github.com/tilburgsciencehub/website) for the platform's GitHub repository).
 
-Bonus points are awareded to motivate students and reward excellence (e.g., students shwoing a performance exceeding the normally expected learning outcomes of the course). The award of bonus points can only lead to a mark-up of a sufficient grade, not of an insufficient grade. Moreover, the mark-up is not higher than 0.5 points and is only be awarded once at the level of the final grade. 
+Bonus points are awareded to motivate students and reward excellence (e.g., students showing a performance exceeding the normally expected learning outcomes of the course). The award of bonus points can only lead to a mark-up of a sufficient grade, not of an insufficient grade. Moreover, the mark-up is not higher than 0.5 points and is only be awarded once at the level of the final grade. 
 
 Each award of a bonus point is accompanied by an individualized argumentation (i.e. for each student). The award of bonus points is used sparsingly.
 
