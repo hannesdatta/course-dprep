@@ -32,9 +32,6 @@ After successful completion of this course, you will be able to:
 - Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)
 - Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)
 - Use Workflow Management Tools to create and run portable, automated, and reproducible data pipelines
-- Track, evaluate and share your progress on the course's learning goals[^2]
-
-[^2]: Students use a web app to monitor their progress on the course's learning goals by "ticking off" items from a to-do list (e.g., "I have installed Python," "I have finished Tutorial X," etc.). The instructor can use the app to learn which topics to highlight during live streams. Students, in turn, can use the app to see how far others in the class have already proceeded, giving them direct feedback on their performance.
 
 <br>
 <img style="width:75%" src="dprep_framework.png" />
@@ -72,12 +69,15 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ## Assessment
 
-- [Team project](/docs/project) (40%, out of which 10% are based on students' individual contribution, measured by [self- and peer assessment](/docs/project/grading))
-- [Computer exam](/docs/exam) (55%)
-- Submitting one's progress on the course's learning goals  (5%)[^3]
+- [Team project](/docs/project) (50%, out of which 10% are based on students' individual contribution, measured by [self- and peer assessment](/docs/project/grading))
+- [Computer exam](/docs/exam) (50%)
+
+
+<!--
+[^2]: Students use a web app to monitor their progress on the course's learning goals by "ticking off" items from a to-do list (e.g., "I have installed Python," "I have finished Tutorial X," etc.). The instructor can use the app to learn which topics to highlight during live streams. Students, in turn, can use the app to see how far others in the class have already proceeded, giving them direct feedback on their performance.
 
 [^3]: In particular, students regularly monitor their progress on the course's learning goals. At least one evaluation per course week is required to obtain points on this component of the course grade.
-
+-->
 
 ### Passing requirements
 
@@ -96,7 +96,7 @@ Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, et
   - Required action: Re-enroll in this course's next edition, and ensure you are part of a team.
 - If students have an exam grade higher or equal to 5.0 but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.
   - Required action: Correct team project based on the course coordinator's grading report, and hand it in again within two weeks after publication of the final grades in this course (submission on Canvas). Only students who fail the team project can have their projects re-graded.
-- Students who have passed the course, but wish to retake the exam, can take the exam resit. The highest exam grade counts. Grades for the team project are retained. In other words, the resit exam still counts for 55% of the final course grade.
+- Students who have passed the course, but wish to retake the exam, can take the exam resit. The highest exam grade counts. Grades for the team project are retained. In other words, the resit exam still counts for 50% of the final course grade.
 - Students who fail the exam and wish to re-take the course in the subsequent semester can *retain* their assignment grades upon approval of the course coordinator (grades remain valid for the *next* edition of the course).
 
 ### Bonus points
