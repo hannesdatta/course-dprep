@@ -12,10 +12,20 @@ draft: false
 ## Kick-starting your week
 - [Watch the kick-off for the week](https://youtu.be/z_Hh1jlL1Ac)!
 
-## Online coaching session
+## Coaching session
 - Feedback on team project (activity #2)
 
+<!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
+
+## Tutorial
+{{% laptop %}}
+
+- In-class tutorial ([view slides](tutorial/tutorial.html))
+
+
 ## Self-study and activities
+
+- After-class exercises ([View](tutorial/data-preparation.html), [Download; right click - download file as](tutorial/data-preparation.Rmd))
 - Develop your R skills by completing the DataCamp courses
     - [DataCamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
     - [DataCamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
@@ -27,13 +37,6 @@ __Having a hard time with Datacamp, or seeking to practice more?__
 
 Then check [this material on manipulating data using `dplyr` and `tidyr`](https://cengel.github.io/R-data-wrangling/)!
 {{% /hint %}}
-
-<!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
-
-## Tutorial
-{{% laptop %}}
-
-- [In-class tutorial: Data Preparation in R](docs/tutorials/data-preparation) and after-class exercises
 
 
 <!--

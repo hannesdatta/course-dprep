@@ -1,0 +1,64 @@
+---
+title: "Data Preparation - Practice"
+author: "YOUR NAME"
+date: "DATE"
+output: html_document
+---
+
+\
+
+#### Exercise 1
+
+```{r}
+# install.packages('dplyr')  you only need to install the package once!
+# library(dplyr)
+# your answer
+```
+
+\
+
+#### Exercise 2
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 3
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 4
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 5
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 6
+
+```{r}
+# your answer
+```
+
+\
+
+#### Exercise 7
+
+```{r}
+# your answer
+```

@@ -1,0 +1,322 @@
+Exploring and auditing new data with RMarkdown (in-class tutorial)
+========================================================
+author: Hannes Datta
+date: 
+autosize: true
+
+Before we get started
+=====================
+
+- Git/GitHub (week 2)
+  - Experiencing password/authentication issues when trying to use Git? Check the [support section](https://dprep.hannesdatta.com/docs/course/support) to see how to solve this issue!
+  - Contributing to [open source projects] using forks and pull requests --> demonstration
+  
+- Team work
+  - Let's look at your repositories right now
+  - Reality check: wanting to stay enrolled?
+
+<!--  - Ensure teams have their repositories in __GitHub classrooms__ (link on [course site](https://dprep.hannesdatta.com/docs/project))-->
+
+Structure of this tutorial
+========================================================
+
+- Data preparation theory ("the bigger picture")
+
+- In-class part of __this tutorial__
+  - [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r)
+  - [Getting started with R Markdown](https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html)
+  - Data exploration with R and RMarkdown
+
+*This part features __selected__ issues.*
+
+- After class
+  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/). 
+
+From Base R to RMarkdown
+=============
+incremental: true
+
+- Recall, there are multiple ways to code in R
+  - RStudio
+  - Your favorite script editor (e.g., VS Code) + running from the terminal
+- But -- in all of these cases, the output will be "ugly" (i.e., just some text)
+- RMarkdown is a way to format output nicely
+  - mix of code and text (formatted in markdown) - you may already know the concept from Jupyter Notebook
+  - possibility to compile into HTML, PDF, Word, etc.
+- great for prototyping code, but bad for "production"
+  
+DO: Creating your first RMarkdown
+=========
+
+1. Select file --> new --> RMarkdown.
+2. Choose HTML as output, and pick a good filename (e.g., "tutorial")
+
+__We will continue when you're done.__
+
+RMarkdown basics
+======
+incremental: true
+
+- We already know markdown syntax, right?
+  - If not: dig up a cheat sheet online right now!
+- Introducing inline code
+- Code cells & running code (click)
+- Compiling the entire document
+- Options to run (or not run) code cells when compiling documents
+  - that 'little wheel'
+  - `echo`, `include`
+
+Base R
+==============
+incremental: true
+
+- Datacamp's Intermediate covers "base R" - basic programming concepts that are at the __core__ of R
+- We will first review some of these concepts.
+- It's good to have a cheat sheet available - use [this](https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf)
+
+Do: Conditionals 
+================
+
+Let's create some data!
+
+```{r}
+x <- c(10, 20, NA, 5, 3, 100)
+```
+
+<br>
+__Write code that displays...__
+
+1. all values equal to 10
+2. all values NOT equal to 10
+3. values larger than 20
+4. values smaller than 10
+5. counts the number of missing values
+6. all values larger than 20 OR missing values
+7. all values larger than 5 and smaller than 20.
+
+Do: Controls
+================
+
+- If statements allow you to conditionally execute some parts of your code.
+- Please first download some data - __observe the n_max statement!__
+
+```{r}
+download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/modules/week4/regional-global-daily-latest.csv", "streams.csv")
+library(tidyverse)
+streams <- read_csv('streams.csv', skip=1, n_max = Inf)
+```
+
+- __Imagine the data had millions of rows. Write some code that only opens the first 100 rows if a variable called `prototype` is `TRUE`. If `prototype` is `FALSE`, all rows need to be loaded.__
+
+Solution
+================
+
+```{r}
+download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/modules/week4/regional-global-daily-latest.csv", "streams.csv")
+library(tidyverse)
+
+prototype = TRUE
+n_max = Inf
+if (prototype==TRUE) n_max = 100
+streams <- read_csv('streams.csv', skip=1, n_max = n_max)
+```
+
+__Beware:__
+- `read.csv` is NOT `read_csv` (the latter is more efficient!)
+- n_max / nrows (for `read.csv`) are __critically important__!
+
+Loops
+=====
+
+- Loops are super handy to execute functions over and over again.
+
+```{r}
+urls = c('http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2022-09-07/visualisations/listings.csv', 'http://data.insideairbnb.com/belgium/vlg/antwerp/2022-06-22/visualisations/listings.csv', 'http://data.insideairbnb.com/united-states/nc/asheville/2022-06-11/visualisations/listings.csv')
+
+for (url in urls) {
+  filename = paste(gsub('[^a-zA-Z]', '', url), '.csv') # keep only letter
+  filename = gsub('httpdatainsideairbnbcom', '', filename) # wipe httpdatainsideairbnbcom from filename
+  download.file(url, destfile = filename) # download file
+}
+```
+
+__Do:__ Use the code snippet from the previous slide to download all historical __listing__ datasets for the city of Barcelona. Check whether files have been saved properly!
+
+Solution
+=========
+
+Loops versus the apply family
+============
+incremental: true
+
+- Loops don't "return" anything - they just execute stuff over and over again
+- Functions from the `apply` family, though, DO return information.
+- Apply comes in multiple flavors:
+  - `lapply` (loops over a `vector` or `list`, returns a `list`)
+  - `sapply` (loops over a `vector`, returns as a `vector`)
+  - `apply` (loops over rows or columns of a matrix, returns a `vector`)
+  - Other versions of `apply` exist, but I rarely use them
+
+Using `lapply` for crunching data
+===========
+
+```{r}
+urls = c('http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2022-09-07/visualisations/listings.csv', 'http://data.insideairbnb.com/belgium/vlg/antwerp/2022-06-22/visualisations/listings.csv', 'http://data.insideairbnb.com/united-states/nc/asheville/2022-06-11/visualisations/listings.csv')
+datasets <- lapply(urls, read_csv, n_max = 200)
+```
+
+__Do__ 
+
+1. run the code snippet above, and inspect the data by typing `datasets[[1]]`, `datasets[[2]]`, etc. - does it correspond to what you would expect?
+2. Obtain summary statistics for all datasets, using `lapply` and `summary`.
+3. Write a `loop` that prints (`print`) summary statistics (`summary`). 
+
+Let's take a step back
+=========
+
+__What's the key difference between the "apply" family, and for loops?__
+
+Steps in data preparation
+================
+
+__Each and every source code file obeys to this procedure__.
+
+- 1) Loading packages/prerequisites
+- 2) Input (e.g., loading)
+- 3) Transform
+  - many options...: filtering, grouping and summarizing, creating new variables, etc.
+  - mostly leads to a "different primary key than the input data" (--> unit of analysis)
+- 4) Output (e.g., saving, passing on to the next script)
+
+__To do all of this, we require knowledge of new programming concepts.__ So let's continue.
+
+Functions
+==========
+
+- Sometimes, we would like to re-use code. For this, we make use of self-made functions. 
+- For example, a function that "reduces" the size of the data set to the unit of analysis you're interested in.
+- Start by prototyping your function.
+
+```{r, results = 'hide'}
+my_dataset = datasets[[1]]
+my_dataset %>% group_by(neighbourhood) %>% summarize(hosts = n_distinct(host_id))
+```
+
+__DO:__
+
+1. Write a function that executes the data aggregation code above, for any dataset it receives as an input. Tip: start with `prep_data <- function(dataset) { # your code here }`
+2. Try to test the function on `datasets[[1]]` and `datasets[[2]]`
+
+Solution and extra do's: Functions
+=========
+
+```{r, results = 'hide'}
+prep_data <- function(dataset) {
+  dataset %>% group_by(neighbourhood) %>% summarize(hosts = n_distinct(host_id))
+  return(my_dataset)
+}
+prep_data(datasets[[1]])
+```
+
+__Now let's continue with some more exercises.__
+
+1. Call the function on _all datasets_ stored in `datasets`, using `lapply`. Save the result in a new variable, called `edited_datasets`.
+2. The result still is available in three separate datasets. Can you use the `bind_rows()` function from the `dplyr` package to bind them together? Call it `final_dataset`.
+
+Solution
+======
+
+
+```{r, include = TRUE}
+prep_data <- function(dataset) {
+  result = dataset %>% group_by(neighbourhood) %>% summarize(hosts = n_distinct(host_id))
+  result = result %>% mutate(neighbourhood = as.character(neighbourhood))
+  return(result)
+}
+edited_datasets <- lapply(datasets, prep_data)
+final_dataset <- bind_rows(edited_datasets)
+```
+
+Some more programming concepts that help us transform data
+=========
+
+- Regular expressions are extremely powerful to work with text data -- e.g., neighborhoods, city names, etc.
+  - `grepl` can help you filter for information
+  - `gsub` helps you to replace information
+  
+```{r}
+final_dataset %>% filter(grepl('Centrum', neighbourhood))
+```
+
+__DO__
+
+1. Search for the neighboorhood `de pijp` using `filter` and `grepl`.
+2. Search for the `zuidas` using `filter` and `grepl`. Can you make your search case-insensitive?
+
+
+Getting started with exploring data
+=====
+
+- We'll make use of the Google mobility dataset 
+
+__DO:__
+
+1. Download the __regional CSV__ from https://www.google.com/covid19/mobility/ & unzip
+2. Load the data into R using `read_csv()`
+3. Start exploring the data: use `head()`, `tail()`, and `View()`
+
+Summary statistics
+========
+incremental: true
+
+- We can generate summary statistics using the `summary()` command.
+  - do values make sense?
+  - are there any missing values?
+- We can also zoom in on specific columns
+  - let's start making sense of the `retail_and_recreation_percent_change_from_baseline` variable: what does it mean?
+  - let's plot this variable over time!
+  
+Cleaning the data
+=========
+
+- Typically, the raw data is always messy and likely not at the correct unit of analysis (e.g., city level).
+- Also, we may still want to select columns, or rename them.
+
+<br>
+__DO:__
+
+1. Drop these columns: `cols_to_drop <- c('country_region_code', 'metro_area', 'iso_3166_2_code', 'census_fips_code')`
+2. Rename `sub_region_1` to `province`, and `sub_region_2` to `city`
+
+We can also use more advanced functions, e.g., to wipe the `percent_change...` from the column names.
+
+Verifying data types
+=========
+
+- `class(mobility$date)`
+- Can only calculate with dates when they are actual dates!
+
+Do: Selecting subsets
+======
+
+- Can you explore the data a bit more? Which observations are measured at the __country level__?
+- How can you select only these country-level observations, using `%>% filter(...)`?
+
+Wrapping everything up in a "clean" script
+==============
+
+1. Prerequisites loaded?
+2. Adhered to input - transformation - output?
+3. File callable from the command prompt? --> we will need this for automation in subsequent tutorials
+
+Next steps
+===============
+
+- Work through the tutorial and complete exercises (all solutions available)
+- Continue working on projects
+  - get repository in shape!
+  - refine research question & __deployment__
+  - explore & prepare datasets for analysis
+    - e.g., unit of analysis!
+  - adhere to GitHub workflows when collaborating
+- ability to score bonus points

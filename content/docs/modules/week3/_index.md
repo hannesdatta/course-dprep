@@ -18,7 +18,21 @@ draft: false
 00->
 -->
 
-## Online coaching session
+## Tutorial
+{{% laptop %}}
+
+
+<!--
+1. Develop your R skills by working on the this DataCamp course
+    - [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3)
+
+2. Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (section 6)
+-->
+
+1. In-class tutorial: [View slides](tutorial/tutorial.html)
+2. After-class exercises & tutorial ([View](tutorial/intro-to-r.html))
+
+## Coaching session
 - Feedback on team project (activity #1)
 
 ## Self-study and activities
@@ -26,12 +40,6 @@ draft: false
 - Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (section 6)
 
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
-
-## Tutorial
-{{% laptop %}}
-
-- [In-class tutorial: Data exploration with R and RMarkdown](docs/tutorials/data-exploration-in-r) and after-class exercises
-
 
 <!--
 {{< hint info >}}

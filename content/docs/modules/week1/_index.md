@@ -17,12 +17,15 @@ draft: false
 
 {{% laptop %}}
 
-- Introduction to the course ([slides](slides.html))
-- [Tutorial: R Bootcamp](docs/tutorials/r-bootcamp)
+- Introduction to the course (View [slides](slides.html))
+- In-class tutorial: R Bootcamp (view [learning goals](tutorial.md))
+  - Selected overview of [R for Social Scientists (chapters 1-4)](https://datacarpentry.org/r-socialsci/)
+  - View [slides](tutorial-inclass.html)
+
 
 ## Self-study and activities
 - If you haven't done so, please [complete the software installation](../../../docs/tutorials/software-installation/)
-- Exercises after class (please complete chapters 1-4 of the R Bootcamp at your own pace)
+- Exercises after class (please complete chapters 1-4 of the R Bootcamp at your own pace; about 4-5 hours)
 - Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
 
 <!--
