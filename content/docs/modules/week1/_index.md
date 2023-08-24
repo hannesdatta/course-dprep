@@ -17,12 +17,15 @@ draft: false
 
 {{% laptop %}}
 
-- Introduction to the course ([slides](slides.html))
-- [Tutorial: R Bootcamp](docs/tutorials/r-bootcamp)
+- Introduction to the course (View [slides](slides.html))
+- In-class tutorial: R Bootcamp (view [learning goals](tutorial.md))
+  - Selected overview of [R for Social Scientists (chapters 1-4)](https://datacarpentry.org/r-socialsci/)
+  - View [slides](tutorial-inclass.html)
+
 
 ## Self-study and activities
-- If you haven't done so, please [complete the software installation](../../../docs/tutorials/software-installation/)
-- Exercises after class (please complete chapters 1-4 of the R Bootcamp at your own pace)
+- If you haven't done so, please [complete the software installation](/docs/modules/prep)
+- Exercises after class (please complete chapters 1-4 of the R Bootcamp at your own pace; about 4-5 hours)
 - Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
 
 <!--
@@ -34,7 +37,6 @@ draft: false
 - [Data exploration with R and RMarkdown (Tutorial and Data Challenge 1)](docs/tutorials/data-exploration-in-r)
 - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
-
 
 [^1]: Mela, C. F. (2011). Structural Workshop Paper—Data Selection and Procurement. *Marketing Science*, 30(6), 965-976. [https://doi.org/10.1287/mksc.1110.0650](https://doi.org/10.1287/mksc.1110.0650)
 

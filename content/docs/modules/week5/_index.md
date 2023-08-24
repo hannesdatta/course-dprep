@@ -11,11 +11,18 @@ draft: false
 ## Kick-starting your week
 - [Watch the energizer for the week on YouTube!](https://youtu.be/PdWZ1s8XXiU)
 
-## Online coaching session
-- Feedback on team project (activity #3)
+## Tutorial
+{{% laptop %}}
+
+- In-class tutorial ([view slides](tutorial/tutorial.html))
+- Check out the [make cheatsheet!](/docs/project/resources/cheat-sheets/tsh_make_cheatsheet.pdf)
+
+## Coaching session
+- Start working on [activity #4](/docs/project/workplan) for the team project
 
 ## Self-study and activities
 
+- After-class exercises ([View](tutorial/make-tutorial.html), [Download; right click - download file as](tutorial/make-tutorial.Rmd))
 - Watch (in this order...)
     - [This is why you should automate the pipeline of your empirical research project](https://youtu.be/9aivqe-phL0)
     - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)
@@ -24,13 +31,6 @@ draft: false
 - Optional readings
   - Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
   - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
-
-## Tutorial
-- [In-class tutorial: Pipeline Building and Automation](docs/tutorials/make-tutorial) and after-class exercises
-- Check out the [make cheatsheet!](/docs/project/resources/cheat-sheets/tsh_make_cheatsheet.pdf)
-
-
-
 
 
 <!--

@@ -11,23 +11,6 @@ draft: false
 ## Kick-starting your week
 - [Watch the kick-off for the week!](https://youtu.be/kL-s7XHWiWI) 
 
-## Self-study and activities
-- Get to know GitHub
-  - Make an account at [github.com](https://github.com/signup)
-  - [Install GitHub](docs/tutorials/software-installation) on your computer
-  - [Work on this training](https://github.com/skills/introduction-to-github) to familiarize yourself with GitHub (60 minutes)
-- Get to know the [Shell in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")
-- [Reading: Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup) (30 minutes)
-
-
-{{% hint info %}}
-Please choose a professional GitHub username (e.g., *firstname.lastname*, *initial.lastname*, etc.). Chances are high you are going to use your GitHub profile when applying for jobs.
-
-Experiencing any issues to authenticate with GitHub (e.g., an error message about your password)? Head over to the [support section](/docs/course/support) for how to solve this issue.
-
-{{% /hint %}}
-
-
 <!--
 - Optional readings
   - [Code and Data for the Social Sciences: A Practitioner’s Guide](https://www.brown.edu/Research/Shapiro/pdfs/CodeAndData.pdf)
@@ -39,10 +22,27 @@ Experiencing any issues to authenticate with GitHub (e.g., an error message abou
 ## Tutorial
 {{% laptop %}}
 
-- [In-class tutorial: Project Management and Version Control with Git/GitHub](docs/tutorials/version-control) and after-class exercises
+- View [slides](tutorial/tutorial-inclass.html)
+- Ensure you've completed the setup and tutorials from the ["preparation material" section](/docs/modules/prep)
+
+## Coaching session
+- Start working on [activity #1](/docs/project/workplan) for the team project
+
+## Self-study and activities
+- Improve your knowledge about [Shell/Bash in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")
+- [Reading: Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup) (30 minutes)
+- After-class exercises & tutorial ([View tutorial](tutorial/version-control.html))
+
+
+{{< hint info >}}
+__Tips & tricks__
+- Curious how to use Git with a graphical user interface?
+  - Use Git directly from within R - [find out how!](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/)
+  - Another fantastic Git client is [Sourcetreeapp](https://www.sourcetreeapp.com), which works on Windows, Mac and Linux!
 - [Git & Github cheatsheet](https://github.com/tilburgsciencehub/website/raw/master/content/building-blocks/collaborate-and-share-your-work/use-github/github_cheatsheet_tsh.pdf)
 - Optional activity: [Contributing to an open source web site](activity)
 
+{{< /hint >}}
 
 <br>
 

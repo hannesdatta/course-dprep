@@ -4,6 +4,7 @@ title: "Tutorials"
 bookHidden: false
 weight: 30
 bookCollapseSection: true
+bookHidden: true
 
 ---
 
