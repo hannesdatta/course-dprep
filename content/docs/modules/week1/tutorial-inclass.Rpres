@@ -13,10 +13,7 @@ Based on https://datacarpentry.org/r-socialsci/ (chapters 1-4)
 
 <br>
 <br> 
-- In-class part
-  - 11.45-12.30: Introduction to R
-  - break
-  - 12.45-13.30: Starting with data and data wrangling
+- In-class part: Introduction to R and starting with data and data wrangling
  
 *This part features __selected__ issues.*
 
@@ -70,7 +67,7 @@ Interacting with R
 incremental: true
 
 - Running code (ctrl + R, buttons, running code top-down)
-- Installing additional packages (package tab, `install.packages()`)
+- Installing additional packages (package tab or `install.packages()`)
 <br><br>
 - DO: Let's all verify package `tidyverse` is installed!
 
@@ -94,7 +91,7 @@ DO: A bit of practice
 
 1. Assign the following values to the variable `rooms`: 1, 2, 1, 8
 2. Use the function `max()` to calculate the maximum number of rooms 
-3. Modify rooms by adding `NA` to it: 1, 2, 1, 8, NA
+3. Modify rooms by adding `NA` to it: 1, 2, 1, 8, NA (why do we need `NA`s?)
 4. Recalculate the maximum & check the help (`?max`, followed by enter) to see how to tackle the problem!
 5. Write a bit of code to return the third value of `rooms`
 6. Write a bit of code to return the number of rooms larger or equal to 2. Tip: `length()` & conditional subsetting required!
@@ -241,5 +238,4 @@ Next steps
 
 - Complete this tutorial at Data Carpentry
 - Form and register teams! (remember: __mix__ skills!)
-- Check your weekly To Do's at http://pulse.tilburg-digital.com
-- Familiarize yourself with the course website at https://dprep.hannesdatta.com
+- Review course material/course website
