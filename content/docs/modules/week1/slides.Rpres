@@ -16,8 +16,9 @@ We're about to start with the first lecture of this class.
 
 If you haven't done so, please 
 
-- **explore the course page** at [https://dprep.hannesdatta.com]().
-- login at [http://pulse.tilburg-digital.com]() to explore this week's to do's
+- explore the **course page** at [https://dprep.hannesdatta.com]().
+- complete the **software installation** (https://dprep.hannesdatta.com/docs/modules/prep/)
+- my slides are available here: https://dprep.hannesdatta.com/docs/modules/week1
 
 <!--
 - drafted this course for a very long time
@@ -31,29 +32,30 @@ If you haven't done so, please
 Agenda
 ========================================================
 
-- Part 1 (10.45 to about 11.45)
-  - (Getting to know each other)
+- Part 1 (12.45 to about 13.45)
+  - Getting acquainted
   - Motivation for the course
   - Course framework and learning goals
   - Agenda and practical arrangements
 - Break
-- Part 2: R Bootcamp on your laptops (about 12.00 - 13.30)
+- Part 2: R Bootcamp on your laptops (about 14.00 - 15.30)
 
 
 <!--
 continue with course motivation
 -->
 
+
 Disclaimer
 ========================================================
 incremental: true
 
-- Slow me down
-- Lectures are *complements*, not substitutes for self-study & course website
 - Minimal (use of) slides - use Ctrl/Cmd + or - to zoom in/out in your browser
-- This is not a class that merely teaches you __R__ (but, if you invest time, you'll learn R on the way!)
-- Mix of students at various levels (e.g., beginners, advanced R users)
-- Consider me your coach, not your *distant professor*
+- Recording sessions (do remind me, please)
+- You will have to invest a lot of time and energy
+- Mix of lectures, team work and self-study -- all are necessary
+- Consider me your coach
+- Slow me down if needed
 
 Research and teaching (all openly available)
 ========================================================
@@ -65,27 +67,28 @@ Research and teaching (all openly available)
   - YouTube channel (https://youtube.com/c/hannesdatta)
   - Twitter (https://twitter.com/hannesdatta)
   - My public code (https://github.com/hannesdatta)
-  
+
+
 Getting to know your "science" skills...
 ========================================================
+incremental: true
 
-- Experience in R?
-- Experience with research projects? How did you manage them?
-- What are you working on right now? (e.g., project, study, thesis?)
-- Where do you want to work when you finish the program?
+- Who's ever used R? Share your coolest R experience!
+- Experience with (data-intensive) research? How did you "tame" the data? How did you collaborate?
+- Fast forward to the future... where would you like to work? 
 
 
 Motivation for course (I)
 ========================================================
 
-- did my PhD in quant marketing
+- did my PhD in quantitative marketing
 - coded a lot (data prep, modeling), but didn't *learn how to structure my work*
 - created a [complete chaos](https://tilburgsciencehub.com/tutorials/reproducible-research-and-automation/principles-of-project-setup-and-workflow-management/structure_phd_2013) (but still [got published](https://doi.org/10.1509%2Fjmr.12.0160))
 
 Motivation for course (II)
 ========================================================
 
-- Cannot find code that prepped the dataset
+- Cannot find code that prepped the data set
 - Cannot find code of the econometric model that eventually got published
 
 What was so bad about it?
@@ -94,7 +97,7 @@ What was so bad about it?
 - Reproducibility
     - I couldn't reproduce results whenever I wanted to
 - Replicability
-    - My peers didn't really understand how I did things
+    - My peers didn't really understand how I did things - so they also couldn't check whether I did it correctly
 - Efficiency
     - when making changes to data, I had to go the the beginning, repeating all steps
     - a colleague asked me for the data years after; it wasn't properly documented!
@@ -102,7 +105,7 @@ What was so bad about it?
 Why should you care?
 ========================================================
 
-- You will soon work on data-intensive projects - whether in academia (e.g., thesis) or in business
+- You will soon work on data-intensive projects - whether at University (e.g., thesis) or in business
 - You will change code *continuously* before a project is final
 - Team members or colleagues will look at and use your code
     - to help you
@@ -137,25 +140,29 @@ Course objectives (I): Develop your coding skills
 
 *a few examples*
 
-- Produce good-looking documents in [RMarkdown](https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html) rather than ugly, non-readable docs
+- Produce good-looking documents in [RMarkdown](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/intro-to-r.html) rather than ugly, non-readable docs
 - Program [apps to showcast research results](https://tilburgsciencehub.com/try/shiny-app)
-- Engineer complex data sets using [tidyverse/dplyr](https://dprep.hannesdatta.com/docs/tutorials/data-preparation/)
+- Engineer complex data sets using [tidyverse/dplyr](https://dprep.hannesdatta.com/docs/modules/week4/tutorial/tutorial.html)
 
-Course objectives (II): Collaborate on research projects using GitHub
+Course objectives (II): Collaborate on research projects using GitHub (1/2)
 ========================================================
 
 *a few examples*
 
-1. view, run, learn from, and extend the work of others
+1) view, run, learn from, and extend the work of others
   - e.g., https://github.com/hannesdatta/brand-equity-journal-of-marketing
   - e.g., https://github.com/hannesdatta/spotify-playlist-clustering
   - e.g., even this class: https://github.com/hannesdatta/course-dprep
 
-2. document your own code, and use unlimited version history
+Course objectives (II): Collaborate on research projects using GitHub (2/2)
+========================================================
+
+
+2) document your own code, and use unlimited version history
   - e.g., check out how a project looked like a while ago
   - e.g., clean up stuff (because you can roll back anyways!)
 
-3. collaborate with others on projects
+3) collaborate with others on projects
   - e.g., check the issue page at https://github.com/tilburgsciencehub/website/issues
 
 Course objectives (III): Automate your research pipeline
@@ -185,30 +192,24 @@ Apply coding, collaboration and automation in a **data- and/or computation-inten
       - potential for running things in parallel
 
 
-Common struggles & Tips
+Tips & tricks
 ========================================================
 
-- Take time to become acquainted with the format (e.g., no Canvas but website & [Pulse](https://pulse.tilburg-digital.com))
+- Take time to become acquainted with the format (e.g., no Canvas)
 - Can be tough at first, but you will become more experienced rapidly!
--	It is challenging to follow dPrep and oDCM simultaneously as a rookie, but the skills you learn will be very useful for your coming courses, Master Thesis & future career!
-
-<br><br>
--	Some useful tips:
-  -	Start preparing early on (the first weeks will be the most challenging!)
-  -	Have the same group members across courses, mix skill levels
-  -	Collaborate with each other and try to help one another!
-
+-	Start preparing early on (the first weeks will be the most challenging!)
+-	Have the same group members across courses, mix skill levels
+-	Collaborate with each other and try to help one another!
 
 Course structure
 ========================================================
 
 - Skill building (weeks 1-5)
   - Kicking of the week (video)
+  - On-campus tutorial, followed by coaching sessions for feedback & activities
   - Self-study (readings, tutorials)
-  - On-campus tutorial for feedback & immersive activities
-
-<br><br>
-- Project phase (throughout the entire course)
+<br>
+- Project phase (weeks 1-7)
   - Apply skills in a team project
   - Evolves gradually as your skills improve
   - Building blocks / code snippets used to customize projects
@@ -225,7 +226,7 @@ Course website
 
 Visit [https://dprep.hannesdatta.com]()!
 
-- It's open education, so spread the word!
+- it's freely available - spread the word
 - Course website is your #1 resource, Canvas only used for
   - posting important announcements,
   - sign up for teams, and
@@ -243,45 +244,53 @@ all students have Canvas access?
 Project
 ========================================================
 
-- based on public data from [Inside AirBnb](http://insideairbnb.com/amsterdam/)
-- build a __research pipeline__; specifics on the course site (including grading details)
-- self- and peer assessment (own versus team performance)
+- build a __research pipeline__
+  - download data - prepare for analysis - run analysis - report
+  - based on public data from [Inside AirBnb](http://insideairbnb.com/amsterdam/); alternatively, use public [imdb datasets](https://developer.imdb.com/non-commercial-datasets/)
+  - specifics on the course site
+- team requirements
+  - five persons (mix expertise if possible), register on Canvas by early next week
+  - you can keep previous grade (repeater) - still register on Canvas
+- evaluation
+  - self- and peer assessment (own versus team performance)
+  - grading rubric available on the course website
 
 Project coaching
 ========================================================
 
-- Usually takes place online
-- Teams meet online on Zoom for the duration of the scheduled class, using dedicated __breakout rooms__
-- Instructor "walks around" and addresses questions
-- Coaching sessions __require preparation__: I'll show you right now on the course website (without preparation, you won't get a lot out of these sessions...)
-
-<br>
-
-__Install TeamViewer, please__: Possibility to interact on your computers (see [tilburgsciencehub.com/get/teamviewer]())
-
+- teams meet on campus 
+  - during scheduled coaching class hours
+  - except in the last two weeks (online feedback in breakout rooms)
+- instructor walks around and addresses questions
+- coaching sessions may require preparation - check on the course website
+  
 Tutorials
 ========================================================
 
-- make use of courses by Datacamp.com (get access!) and Software Carpentry
+- make use of courses by datacamp.com (get access - see links on site and Canvas) and Software Carpentry
 - will require a lot of effort & feedback
 - four tutorials
   - learn how to collaborate on code using GitHub
-  - explore new data using RMarkdowns
+  - explore new data using RMarkdown 
   - prepare datasets for analysis
   - automate entire workflows using `make`
-- all skills are highly valued by the job market
+- all skills are highly valued on the job market
 
 Grading
 ========================================================
 
-- Keep track of your learning progress in Pulse (5%)
-- Team project, with self- and peer assessment (40%)
-- (Online) computer exam (55%)
+- Team project (50%)
+  - with self- and peer assessment
+  - hand in via GitHub
+- [Computer exam](https://dprep.hannesdatta.com/docs/exam) (50%) on TestVision
+  - part 1: on campus, closed book (theory, 1 hour)
+  - part 2: at home, open book (practical part, 2 hours)
+  - mix of open (free-flowing answers) and closed questions (multiple choice)
 - Potential to get bonus points (max. .5 on your final grade!)
-  - adding material to the course website
-  - providing solutions, updating questions
-  - sharing code snippets, etc.
-  
+  - adding material to the course website,   - providing solutions, updating questions, sharing code snippets, etc.
+  - both on Tilburg Science Hub as well as the course website - talk to me about your ideas
+
+
 <!--
 ::: notes
 
@@ -295,7 +304,7 @@ My commitment
 ========================================================
 
 - Boost your own efficiency by making your work reproducible & transparent
-- Help you boost the efficiency of others by being able to share work and collaborate on projects
+- Help others by sharing work and collaborating on projects
 - Start learning R, __but__, becoming an expert requires years of practice
 - Open software only (usable right away, no admin rights required)
 - Bring in your own ideas, don't be afraid to study topics off the main stream!
@@ -312,35 +321,8 @@ Brain-dead by coding
 
 &#8594; quick feedback loops in first few weeks
 
-<!--
-::: notes
-
-Mention how we aim to remedy this initial hurdle? (quick feedback loops especially in the first few weeks)
-
-:::
--->
-
-Steps of escalation & getting in touch
-========================================================
-
-When you run into trouble, this is your way out!
-
-1. Try to find the info on the course website (+ updates!)
-2. Ask Google and Stackoverflow
-3. Ask friend/classmate (form learning groups, e.g., coordinate via discussion board)
-4. Can it wait? Defer to live streams.
-5. If it can't wait: be in touch with me
-
-<!--
-::: notes
-
-* Google/Stackoverflow are your best friends
-* Live demonstration of how to search on Google and Stackoverflow
-* Comment on experiment with live coding sessions (start a call - talk to fellow classmates who're facing the same struggles)
 
 
-:::
--->
 
 Use of WhatsApp
 ========================================================
@@ -356,17 +338,23 @@ Use of WhatsApp
 What's in for you?
 ========================================================
 
-- Essential job market skills
-  - get the jargon, know your tools
-  - marketing = data analytics
-
-- Essential to show expertise
-  - potential for follow-ups here in Tilburg and beyond
+- Enhanced data analysis abilities: knowing the latest packages
+- Competitive advantage: everyone learns R, barely anyone learns GitHub and automation skills (but, they are so useful)
+- Efficient collaboration: we focus also on project management - making you more productive in the future
+- Reproducible workflows: saves time, enhances data quality and accuracy
+- Potential for follow-ups here in Tilburg and beyond
 
 Success factors
 ========================================================
 
-Please tell me __what would make this course a success__ for you
+At the end of this course, what would make you say...
+
+__"This was a truly successful and enriching journey for me!"? 🌟__
+
+
+<br>
+<br>
+*Please let me know your thoughts.*
 
 <!--
 ::: notes
@@ -379,11 +367,13 @@ Please tell me __what would make this course a success__ for you
 Next steps
 ========================================================
 
-- Find a group (max. 5 students; please "mix" by experience with R!)
-- Check whether you can access https://pulse.tilburg-digital.com and mark your first to dos
-- Got Datacamp access? [Try it now](https://www.datacamp.com/groups/shared_links/a88c8a218963bb637aa5e933ac615626815c76481a4ebb30dfca206ea9de5397)
-- Follow the **installation guide** (https://dprep.hannesdatta.com --> tutorials --> software installation)
+- Find a group (max. 5 students; please "mix" by experience with R!) - talk to others during the break!
+- Got Datacamp access? [Enroll now](https://www.datacamp.com/groups/shared_links/98b9065e22fed54a54b1f9821a070cc9b478c96953100c874ee85765a75b3cdf)
+- Complete the [software installation](https://dprep.hannesdatta.com/docs/modules/prep)
+- Be inclusive, so please keep communication during the breaks in English :)
 
 <br>
-- We will continue with the **R bootcamp** after a break
+<br>
+
+🌟📚 After a well-deserved break, we continue with the **R bootcamp**.
 
