@@ -36,12 +36,14 @@ enableGitInfo = true
   Course_Deadline_Project = "Monday, 16 October (23.59)" 
   #Course_Deadline_Project = "Monday, 27 March (23.59)" 
 
-  Course_Exam_MainsitTheory = "tba"
+  
+  Course_Exam_MainsitTheory = "Monday, 16 October (time tba)"
   Course_Exam_MainsitPractice = "tba"
    
-  Course_Exam_ResitTheory = "tba"
+  Course_Exam_ResitTheory = "Monday, 18 December (time tba)"
   Course_Exam_ResitPractice = "tba"
-
+  
+  
   #Course_Exam_MainsitTheory = "Tuesday, 4 April 2023 (1pm-3.15pm)" # "Tuesday, 18 October 2022"
   #Course_Exam_MainsitPractice = "Monday, 3 April 2023 (2pm-4pm)" # "Tuesday, 18 October 2022"
    
