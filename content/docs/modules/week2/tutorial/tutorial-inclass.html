@@ -793,31 +793,26 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Structure of this tutorial</h3>
+<h3>Structure of today&#x27;s sessions</h3>
 <div class="slideContent" >
 <ul>
-<li>Organizational stuff
+<li>Tutorial (recorded)
 
 <ul>
-<li>Exam updates (part 1 on campus; part 2 take home; likely 4 &amp; 5 April 2023)</li>
-<li>Team signups (done on Canvas?)</li>
+<li>Organizational stuff (e.g., teams complete on Canvas?)</li>
+<li>In-class part of this tutorial (selected issues)</li>
 </ul></li>
-<li>In-class part of <strong>this tutorial</strong>
+<li>Coaching session (we will change rooms)
 
 <ul>
-<li>Overview about Git &amp; GitHub</li>
-<li>Project management 101</li>
-<li>Versioning and the GitHub workflow</li>
+<li>Setup repository, ensure repository syncs to your computers</li>
+<li>Create branches, change files and make pull requests</li>
+<li>Converge on RQ</li>
 </ul></li>
-</ul>
-
-<p><em>This part features <strong>selected</strong> issues.</em></p>
-
-<ul>
 <li>After class
 
 <ul>
-<li>Please go through the entire tutorial on the <a href="https://dprep.hannesdatta.com/docs/tutorials/version-control">dprep site</a>. </li>
+<li>Please go through the entire tutorial on the <a href="https://dprep.hannesdatta.com/docs/modules/week2/tutorial/version-control.html">dprep site</a>. </li>
 <li>Review shell/command line/terminal commands</li>
 </ul></li>
 </ul>
@@ -830,9 +825,10 @@ hljs.initHighlightingOnLoad();
 <div class="slideContent" >
 <ul>
 <li class="fragment">What is Git? (&ndash;&gt; file versioning in &ldquo;repositories&rdquo;/folders, open source)</li>
-<li class="fragment">What is GitHub? (Git + platform for collaboration, automated testing, deployment; semi-commercial)</li>
-<li class="fragment">Alternatives to GitHub (e.g., Bitbucket, GitLab, etc.)</li>
+<li class="fragment">What is GitHub? (Git + platform for collaboration, automated testing &amp; deployment; commercial but &ldquo;free&rdquo; when open source, owned by Microsoft)</li>
+<li class="fragment">Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible)</li>
 <li class="fragment">GitHub (or its alternatives) are used to <strong>professionally manage</strong> research and software development projects</li>
+<li class="fragment">Most recently, GitHub data was used to train GitHub Copilot, Microsoft&#39;s coding AI</li>
 </ul>
 
 </div>
@@ -874,7 +870,7 @@ hljs.initHighlightingOnLoad();
 
 <ul>
 <li class="fragment">Code (we can have code on multiple &#39;branches&#39;)</li>
-<li class="fragment">Pull requests (to collaborate by merging one branch into another)</li>
+<li class="fragment">Pull requests (to collaborate; merging branches)</li>
 <li class="fragment">Issues (think of it as to dos)</li>
 <li class="fragment">Projects (organize your to dos)</li>
 <li class="fragment">Discussions (social feature)</li>
@@ -894,7 +890,7 @@ hljs.initHighlightingOnLoad();
 <li><strong>Today</strong>, we use &ldquo;GitHub classroom&rdquo; (so I can see what you&#39;re up to)
 
 <ul>
-<li>Open this link, please: <a href="https://classroom.github.com/a/4y1MLjjN">https://classroom.github.com/a/4y1MLjjN</a></li>
+<li>Open this link, please: <a href="https://classroom.github.com/a/XPYAqnPa">https://classroom.github.com/a/XPYAqnPa</a></li>
 <li>Change title of <code>readme.md</code> to &ldquo;First repository with exercises in dPrep&rdquo; &amp; <strong>commit</strong> your changes on GitHub.com</li>
 </ul></li>
 </ul>
@@ -1111,8 +1107,12 @@ hljs.initHighlightingOnLoad();
 <li class="fragment">For now, assume we want to work on our own computer</li>
 </ul>
 
-<p><br></p>
+</div>
 
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>GitHub (online interface) vs. Git</h3>
+<div class="slideContent" >
 <ul>
 <li class="fragment">Let&#39;s introduce some Git vocab here
 
@@ -1131,13 +1131,13 @@ hljs.initHighlightingOnLoad();
 <h3>DO: Clone repository and verify you see the repository</h3>
 <div class="slideContent" >
 <ol>
-<li>Copy the URL to your class room repository</li>
+<li>Copy the URL to <em>your</em> class room repository</li>
 <li>Open Git Bash, and type </li>
 </ol>
 
-<p><code>git clone https://github.com/course-dprep/in-class-tutorial-hannesdatta</code> </p>
+<p><code>git clone https://github.com/YOUR-NAME/in-class-tutorial-hannesdatta</code> </p>
 
-<p>(<strong>use your username, of course!</strong>)</p>
+<p>(<strong>use your username, please!</strong>)</p>
 
 <ol>
 <li>Check whether you see your repository on your computer</li>
@@ -1242,8 +1242,8 @@ hljs.initHighlightingOnLoad();
 
 <ul>
 <li>RStudio (requires a project)</li>
-<li>GitHub desktop</li>
 <li>Visual Studio Code</li>
+<li>GitHub desktop</li>
 </ul></li>
 </ul>
 
@@ -1254,7 +1254,7 @@ hljs.initHighlightingOnLoad();
 <h3>Working with GitHub requires a new mindset</h3>
 <div class="slideContent" >
 <ol>
-<li>There is one working version of our project &ndash; it&#39;s in the <code>main</code> or <code>master branch</code> (vs.: we work in one synchronized folder in the cloud)</li>
+<li>There is one working version of our project &ndash; it&#39;s in the <code>main</code> branch (vs.: we work in one synchronized folder in the cloud)</li>
 <li>All &#39;development steps&#39; are to be taken in development branches (vs.: I call my file <code>rfile-hannes1.R</code>)</li>
 <li>Communication is done exclusively on GitHub &ndash; namely, in issues (unless when meeting in person) (vs.: we email, call, WhatsApp, use Zoom, teams, and then forget what we talked about)</li>
 <li>We adhere to the Scrum project management system: project board, issues, prioritization </li>
@@ -1274,12 +1274,37 @@ hljs.initHighlightingOnLoad();
 
 <ul>
 <li>set up a repository</li>
-<li>decide on whether to work in one repos or in forks</li>
+<li>recommend to work in one repository (vs. forks)</li>
 <li>clone the relevant repositories</li>
 <li>organizing repos according to today&#39;s principles (project board, issues, etc.)</li>
 </ul></li>
 <li>Invest in your GitHub profile (design an about page)</li>
 </ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Goal of today&#x27;s coaching session</h3>
+<div class="slideContent" >
+<p><strong>Technical</strong></p>
+
+<ul>
+<li>1) Setup your project&#39;s GitHub repository</li>
+<li>2) Ensure you can all clone the project &amp; contribute to it</li>
+<li>3) Work on your first &ldquo;branch&rdquo; and push changes</li>
+<li>4) Merge a pull request</li>
+<li>5) Work according to Git workflow</li>
+</ul>
+
+<p><strong>Conceptual</strong></p>
+
+<ul>
+<li>1) Decide which data set to use</li>
+<li>2) Fix preliminary research question &amp; gather feedback</li>
+</ul>
+
+<p><strong>You can leave when you feel &#39;ready&#39;.</strong></p>
 
 </div>
 

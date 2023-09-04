@@ -5,21 +5,18 @@ date:
 autosize: true
 
 
-Structure of this tutorial
+Structure of today's sessions
 ========================================================
 
-- Organizational stuff
-  - Exam updates (part 1 on campus; part 2 take home; likely 4 & 5 April 2023)
-  - Team signups (done on Canvas?)
-- In-class part of __this tutorial__
-  - Overview about Git & GitHub
-  - Project management 101
-  - Versioning and the GitHub workflow
-
-*This part features __selected__ issues.*
-
+- Tutorial (recorded)
+  - Organizational stuff (e.g., teams complete on Canvas?)
+  - In-class part of this tutorial (selected issues)
+- Coaching session (we will change rooms)
+  - Setup repository, ensure repository syncs to your computers
+  - Create branches, change files and make pull requests
+  - Converge on RQ
 - After class
-  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/tutorials/version-control). 
+  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/modules/week2/tutorial/version-control.html). 
   - Review shell/command line/terminal commands
 
 Introduction to GitHub
@@ -27,9 +24,10 @@ Introduction to GitHub
 incremental: true
 
 - What is Git? (--> file versioning in "repositories"/folders, open source)
-- What is GitHub? (Git + platform for collaboration, automated testing, deployment; semi-commercial)
-- Alternatives to GitHub (e.g., Bitbucket, GitLab, etc.)
+- What is GitHub? (Git + platform for collaboration, automated testing & deployment; commercial but "free" when open source, owned by Microsoft)
+- Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible)
 - GitHub (or its alternatives) are used to **professionally manage** research and software development projects
+- Most recently, GitHub data was used to train GitHub Copilot, Microsoft's coding AI
 
 DO: Explore projects on GitHub.com
 ================================
@@ -55,7 +53,7 @@ __Pick any repository, and describe its content.__
 
 - On a repository, we can find several tabs
   - Code (we can have code on multiple 'branches')
-  - Pull requests (to collaborate by merging one branch into another)
+  - Pull requests (to collaborate; merging branches)
   - Issues (think of it as to dos)
   - Projects (organize your to dos)
   - Discussions (social feature)
@@ -67,7 +65,7 @@ DO: Creating a repository on GitHub.com
 - Normally, we start a new repository on GitHub.com, or start from an existing folder on our computer
 <br><br>
 - __Today__, we use "GitHub classroom" (so I can see what you're up to)
-  - Open this link, please: https://classroom.github.com/a/4y1MLjjN
+  - Open this link, please: https://classroom.github.com/a/XPYAqnPa
   - Change title of `readme.md` to "First repository with exercises in dPrep" & __commit__ your changes on GitHub.com
   
 Recap
@@ -204,7 +202,9 @@ incremental: true
 - Need a way to get our work from GitHub.com synced with our local computers
 - For now, assume we want to work on our own computer
 
-<br>
+GitHub (online interface) vs. Git
+==========================
+incremental: true
 
 - Let's introduce some Git vocab here
   - `git clone` repository to which you have access to (once)
@@ -215,12 +215,12 @@ incremental: true
 DO: Clone repository and verify you see the repository
 ======
 
-1. Copy the URL to your class room repository
+1. Copy the URL to *your* class room repository
 2. Open Git Bash, and type 
 
-`git clone https://github.com/course-dprep/in-class-tutorial-hannesdatta` 
+`git clone https://github.com/YOUR-NAME/in-class-tutorial-hannesdatta` 
 
-(__use your username, of course!__)
+(__use your username, please!__)
 
 3. Check whether you see your repository on your computer
 
@@ -289,18 +289,17 @@ There are many other features worthwhile to explore
 - Comparing changes between files
 - Using alternative Graphical User Interfaces
   - RStudio (requires a project)
-  - GitHub desktop
   - Visual Studio Code
+  - GitHub desktop
   
 Working with GitHub requires a new mindset
 =========================
 
-1. There is one working version of our project -- it's in the `main` or `master branch` (vs.: we work in one synchronized folder in the cloud)
+1. There is one working version of our project -- it's in the `main` branch (vs.: we work in one synchronized folder in the cloud)
 2. All 'development steps' are to be taken in development branches (vs.: I call my file `rfile-hannes1.R`)
 3. Communication is done exclusively on GitHub -- namely, in issues (unless when meeting in person) (vs.: we email, call, WhatsApp, use Zoom, teams, and then forget what we talked about)
 4. We adhere to the Scrum project management system: project board, issues, prioritization 
 5. GitHub is for *code*, not for data (so, do not commit any data files) [more later in this course]
-
 
 Next steps
 ===============
@@ -309,7 +308,25 @@ Next steps
 - Use the cheat sheets throughout
 - Start working on your project
   - set up a repository
-  - decide on whether to work in one repos or in forks
+  - recommend to work in one repository (vs. forks)
   - clone the relevant repositories
   - organizing repos according to today's principles (project board, issues, etc.)
 - Invest in your GitHub profile (design an about page)
+
+Goal of today's coaching session
+==============
+
+__Technical__
+
+- 1) Setup your project's GitHub repository
+- 2) Ensure you can all clone the project & contribute to it
+- 3) Work on your first "branch" and push changes
+- 4) Merge a pull request
+- 5) Work according to Git workflow
+
+__Conceptual__
+
+- 1) Decide which data set to use
+- 2) Fix preliminary research question & gather feedback
+
+__You can leave when you feel 'ready'.__
