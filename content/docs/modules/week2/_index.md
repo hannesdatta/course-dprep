@@ -26,7 +26,7 @@ draft: false
 - Ensure you've completed the setup and tutorials from the ["preparation material" section](/docs/modules/prep)
 
 ## Coaching session
-- Start working on [activity #1](/docs/project/workplan) for the team project
+- Start working on [coaching #1 activities](/docs/project/workplan) for the team project
 
 ## Self-study and activities
 - Improve your knowledge about [Shell/Bash in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")
