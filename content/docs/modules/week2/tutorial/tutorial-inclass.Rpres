@@ -316,17 +316,18 @@ Next steps
 Goal of today's coaching session
 ==============
 
-__Technical__
+__Steps__
 
 - 1) Setup your [project's GitHub repository](https://classroom.github.com/a/jM2XJHij)
-- 2) Ensure you can all clone the project & contribute to it
-- 3) Work on your first "branch" and push changes
-- 4) Merge a pull request
-- 5) Work according to Git workflow
+  - One person sets it up (and remembers the team name)
+  - Other team members can use the same link to join the team
+- 2) Ensure you can all clone the project (`git clone URL-OF-REPOSITORY`)
+- 3) Decide which data set to use
+- 4) Fix preliminary research question and add to `readme.md`
+- 5) Write your first issues: what do you want to work on next (assign team members to it; arrange on project board)
+- 6) Work on Git technicalities
+  - Create new branch, do git workflow and push changes
+  - Merge pull requests
 
-__Conceptual__
-
-- 1) Decide which data set to use
-- 2) Fix preliminary research question & gather feedback
 
 __You can leave when you feel 'ready'.__
