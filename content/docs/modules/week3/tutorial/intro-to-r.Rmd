@@ -1,6 +1,6 @@
 ---
 title: "Data exploration in R (dPrep)"
-author: "Practice (updated 16 Feb. 2023)"
+author: "Practice (updated 10 September 2023)"
 output: webexercises::webexercises_default
 ---
 
@@ -23,7 +23,7 @@ library(webexercises)
 ### Prerequisites
 * [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
 * [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r)
-* [Getting started with RMarkdown](https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html)
+* [Getting started with RMarkdown](https://datacarpentry.org/r-socialsci/06-rmarkdown.html)
 
 --- 
 
@@ -60,7 +60,7 @@ Tip: If R doesn't find your data, set your working directory properly (we typica
 mobility <- read_csv("2020_NL_Region_Mobility_Report.csv")
 
 # Alternatively, you can use the data set stored on the course website.
-# mobility <- read_csv('https://media.githubusercontent.com/media/hannesdatta/course-dprep/master/content/docs/tutorials/data-exploration-in-r/2020_NL_Region_Mobility_Report.csv', sep = ',')
+# mobility <- read_csv('https://media.githubusercontent.com/media/hannesdatta/course-dprep/master/content/docs/modules/week3/tutorial/2020_NL_Region_Mobility_Report.csv', sep = ',')
 ```
 \
 **Exercise 1**     
@@ -240,7 +240,7 @@ Now let's start calculating with our dates.
 What's the first and last date in our data frame? Tip: you can use `min()` and `max()` now that the date column has been converted into date format! 
 
 `r hide("Solution Exercise 6")`
-The data runs fromFebruary 15, 2020 (`min(mobility$date)`) to December 31, 2021 (`max(mobility$date)`).
+The data runs from February 15, 2020 (`min(mobility$date)`) to December 31, 2020 (`max(mobility$date)`).
 
 Observe above that you can not only use R code in code cells, but also in text by enclosing it in special characters: `r min(mobility$date)`.
 `r unhide()`
@@ -260,7 +260,7 @@ Add the `avg_mobility` column to your dataset (keep in mind that the data frame 
 # solution (most elegant and sustainable)
 
 columns <- c('retail_and_recreation', 'grocery_and_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential')
-mobility_updated <- mobility_updated %>% mutate(avg_mobility2 = rowMeans(select(., columns), na.rm =TRUE))
+mobility_updated <- mobility_updated %>% mutate(avg_mobility2 = rowMeans(select(., all_of(columns)), na.rm =TRUE))
 
 
 ```
@@ -279,7 +279,7 @@ mobility$avg_mobility <- rowMeans(avg_mobility_array, na.rm = TRUE)
 # solution (also not sustainable as column names could change!!!)
 mobility$avg_mobility <- rowMeans(mobility[,6:ncol(mobility)], na.rm = TRUE)
 
-# solution (least elegant - and far less efficient) - do you notice the difference in running time?  
+# solution (least elegant - and far less efficient!!!) - do you notice the difference in running time?  
 
 for(counter in 1:nrow(mobility)){
   row = mobility[counter, ]
@@ -357,7 +357,6 @@ inspect_data <- function(df){
   cat('Number of columns: ')
   cat(ncol(df))
   cat('\n\n')
-  
   
   cat('Number of observations: ')
   cat(nrow(df))
