@@ -23,7 +23,7 @@ draft: false
 - In-class tutorial ([view slides](tutorial/tutorial.html))
 
 ## Coaching session
-- Start working on [activity #3](/docs/project/workplan) for the team project
+- Continue working on your projects (see [coaching #3](/docs/project/workplan))
 
 ## Self-study and activities
 

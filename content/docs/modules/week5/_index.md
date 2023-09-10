@@ -18,7 +18,7 @@ draft: false
 - Check out the [make cheatsheet!](/docs/project/resources/cheat-sheets/tsh_make_cheatsheet.pdf)
 
 ## Coaching session
-- Start working on [activity #4](/docs/project/workplan) for the team project
+- Continue working on your projects (see [coaching #4](/docs/project/workplan))
 
 ## Self-study and activities
 
