@@ -10,8 +10,10 @@ draft: false
 
 <!--__Obtain business and data understanding, and explore data in R__-->
 
+<!--
 ## Kick-starting your week
 - Watch the energizer for the week - TBA!
+-->
 
 <!--## Kick-starting your week
 - Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
@@ -37,7 +39,7 @@ draft: false
 
 ## Self-study and activities
 - Develop your R skills by working on the [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3) course
-- Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (section 6)
+- Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (chapter 7, getting started with R Markdown)
 
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 
