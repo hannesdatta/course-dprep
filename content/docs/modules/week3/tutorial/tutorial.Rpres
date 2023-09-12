@@ -18,20 +18,7 @@ Before we get started
   - coaching session: goal to get setup on GitHub
   - tutorial: way of working -- individual/team; issue-based
   - technical issues with Git? see, e.g., [password/authentication](https://dprep.hannesdatta.com/docs/course/support)
-
-Before we get started
-====================
-incremental: true
-
-- Recap: Git workflow (using our Cheatsheet)
-- Example application: contributing to [open source projects](https://github.com/tilburgsciencehub/website) using __forks__ and pull requests (can demonstrate)
-
-- How's your team work going?
-  - Let's look at __some__ of your repositories right now
-  - __Reality check__: doubting whether to stay enrolled? tell your team how you feel!
-
-
-<!--  - Ensure teams have their repositories in __GitHub classrooms__ (link on [course site](https://dprep.hannesdatta.com/docs/project))-->
+- Reality check: doubting whether to stay enrolled? Tell your team about how you feel!
 
 Structure of this tutorial
 ========================================================
@@ -339,7 +326,6 @@ Summary of concepts covered so far
 - loops and the `apply` family (`lapply`)
 - functions
 
-
 Now we can get started with exploring data
 =====
 
@@ -426,3 +412,36 @@ Next steps
   - explore & prepare datasets for analysis
     - e.g., unit of analysis!
   - adhere to GitHub workflows when collaborating
+
+Coaching session
+==================
+
+__Welcome to today's coaching session.__
+
+Before we get started
+====================
+incremental: true
+
+- Recap: Git workflow (using our Cheatsheet)
+- Example application: contributing to [open source projects](https://github.com/tilburgsciencehub/website) using __forks__ and pull requests (can demonstrate)
+
+- How's your team work going?
+  - Let's look at __some__ of your repositories right now
+  - __Reality check__: doubting whether to stay enrolled? tell your team how you feel!
+
+
+<!--  - Ensure teams have their repositories in __GitHub classrooms__ (link on [course site](https://dprep.hannesdatta.com/docs/project))-->
+
+Coaching session - To do
+=================
+
+- From past weeks
+  - Any open issues about Git and GitHub?
+  - RQ and mode of deployment clear?
+- Today's focus: See [grading details](https://dprep.hannesdatta.com/docs/project/grading/#2-data-preparation--analysis), section 2.1 ("Data exploration")
+  - Download raw data programmatically
+  - Create RMarkdown reports for raw data/input files...
+    - allowing users to understand content of such files, and the definition of variables. 
+    - properly formatted, rendered as HTML or PDF files
+    - feature information in a variety of modes (e.g., running text, tables, or figures). 
+    - code irrelevant to understanding data, including warning messages, are hidden.

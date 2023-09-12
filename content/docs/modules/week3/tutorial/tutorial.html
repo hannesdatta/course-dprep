@@ -808,26 +808,8 @@ hljs.initHighlightingOnLoad();
 <li>tutorial: way of working &ndash; individual/team; issue-based</li>
 <li>technical issues with Git? see, e.g., <a href="https://dprep.hannesdatta.com/docs/course/support">password/authentication</a></li>
 </ul></li>
+<li>Reality check: doubting whether to stay enrolled? Tell your team about how you feel!</li>
 </ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Before we get started</h3>
-<div class="slideContent" >
-<ul>
-<li class="fragment">Recap: Git workflow (using our Cheatsheet)</li>
-<li class="fragment"><p>Example application: contributing to <a href="https://github.com/tilburgsciencehub/website">open source projects</a> using <strong>forks</strong> and pull requests (can demonstrate)</p></li>
-<li class="fragment"><p class="fragment">How&#39;s your team work going?</p>
-
-<ul>
-<li class="fragment">Let&#39;s look at <strong>some</strong> of your repositories right now</li>
-<li class="fragment"><strong>Reality check</strong>: doubting whether to stay enrolled? tell your team how you feel!</li>
-</ul></li>
-</ul>
-
-<!--  - Ensure teams have their repositories in __GitHub classrooms__ (link on [course site](https://dprep.hannesdatta.com/docs/project))-->
 
 </div>
 
@@ -1005,7 +987,7 @@ hljs.initHighlightingOnLoad();
 </section>
 <section data-transition="linear" data-transition-speed="default">
 <h3>Do: Controls</h3>
-<div class="slideContent" >
+<div class="slideContent small-code" >
 <ul>
 <li><strong>If statements</strong> allow you to conditionally execute some parts of your code.</li>
 <li>Please first download some data - <strong>observe the n_max statement!</strong></li>
@@ -1025,7 +1007,7 @@ streams &lt;- read_csv(&#39;streams.csv&#39;, skip=1, n_max = Inf)
 </section>
 <section data-transition="linear" data-transition-speed="default">
 <h3>Solution</h3>
-<div class="slideContent" >
+<div class="slideContent small-code" >
 <pre><code class="r">download.file(&quot;https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/modules/week4/regional-global-daily-latest.csv&quot;, &quot;streams.csv&quot;)
 library(tidyverse)
 
@@ -1217,7 +1199,7 @@ final_dataset &lt;- bind_rows(edited_datasets)
 </section>
 <section data-transition="linear" data-transition-speed="default">
 <h3>Some more programming concepts that help us transform data</h3>
-<div class="slideContent" >
+<div class="slideContent small-code" >
 <ul>
 <li>Regular expressions are extremely powerful to work with text data &ndash; e.g., neighborhoods, city names, etc.
 
@@ -1399,6 +1381,58 @@ final_dataset &lt;- bind_rows(edited_datasets)
 <li>explore &amp; prepare datasets for analysis</li>
 <li>e.g., unit of analysis!</li>
 <li>adhere to GitHub workflows when collaborating</li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Coaching session</h3>
+<div class="slideContent" >
+<p><strong>Welcome to today&#39;s coaching session.</strong></p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Before we get started</h3>
+<div class="slideContent" >
+<ul>
+<li class="fragment">Recap: Git workflow (using our Cheatsheet)</li>
+<li class="fragment"><p>Example application: contributing to <a href="https://github.com/tilburgsciencehub/website">open source projects</a> using <strong>forks</strong> and pull requests (can demonstrate)</p></li>
+<li class="fragment"><p class="fragment">How&#39;s your team work going?</p>
+
+<ul>
+<li class="fragment">Let&#39;s look at <strong>some</strong> of your repositories right now</li>
+<li class="fragment"><strong>Reality check</strong>: doubting whether to stay enrolled? tell your team how you feel!</li>
+</ul></li>
+</ul>
+
+<!--  - Ensure teams have their repositories in __GitHub classrooms__ (link on [course site](https://dprep.hannesdatta.com/docs/project))-->
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Coaching session - To do</h3>
+<div class="slideContent" >
+<ul>
+<li>From past weeks
+
+<ul>
+<li>Any open issues about Git and GitHub?</li>
+<li>RQ and mode of deployment clear?</li>
+</ul></li>
+<li>Today&#39;s focus: See <a href="https://dprep.hannesdatta.com/docs/project/grading/#2-data-preparation--analysis">grading details</a>, section 2.1 (&ldquo;Data exploration&rdquo;)
+
+<ul>
+<li>Download raw data programmatically</li>
+<li>Create RMarkdown reports for raw data/input files&hellip;</li>
+<li>allowing users to understand content of such files, and the definition of variables. </li>
+<li>properly formatted, rendered as HTML or PDF files</li>
+<li>feature information in a variety of modes (e.g., running text, tables, or figures). </li>
+<li>code irrelevant to understanding data, including warning messages, are hidden.</li>
 </ul></li>
 </ul>
 
