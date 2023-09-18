@@ -14,35 +14,37 @@ Before we get started
 =====================
 
 - Exam
-  - dates fixed: 3 April (Monday for practical - 2 hours each); 4 April (Tuesday, on campus, theoretical part)
-  - invite you to make practice questions via PRs
+  - dates will be discussed this week w/ scheduling
+
+
+<!--
 - Bonus points
   - check our GitHub repository for opportunities
-- Pulse
-  - like it? be in touch - we can add to do's for other classes (or update existing ones)
+
+-->
 
 Structure of this tutorial
 ========================================================
 
-- In-class part of __this tutorial__
+- In-class __tutorial__ featuring selected issues raised in:
   - [Tidyverse - chapter 1 & 3](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1)
   - [Cleaning data in R - chapter 1 & 2](https://datacamp.com/courses/cleaning-data-in-r)
   - [Joining Data with `dplyr`- chapter 1 & 2](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1)
-  - And...of course, our [own tutorial](https://dprep.hannesdatta.com/docs/tutorials/data-preparation/data-preparation.html) that ties everything together
+  - And...of course, our [own tutorial](https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html) that ties everything together
   
 __Get your cheat sheets ready!!!__
 
 - After class
-  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/tutorials/data-preparation/data-preparation.html). 
+  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html). 
 
 Why this tutorial
 ==================
 incremental: true
 
-- Final dataset rarely available
+- Final data set rarely available
 - Requires wrangling/transformations (can you name a few examples? there are *many*!)
 - In projects, structure scripts in four blocks -- required to automate workflow later
-  - Prerequisites/loading packages (`library()`)
+  - Setup/prerequisites/loading packages (`library()`)
   - Input (e.g., `read_csv()`) - always __relative__ filenames!
   - Transformation (i.e., operations on your data)
   - Output (e.g., `write_csv()` -- also w/ __relative__ filenames)
@@ -68,7 +70,7 @@ Run this snippet to download today's data (it's zipped - contains a couple of `.
 
 ```{r}
 library(tidyverse)
-download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/data-preparation/data_without_duplicates.zip', 'data.zip')
+download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip', 'data.zip')
 unzip('data.zip')
 ```
 
@@ -330,6 +332,7 @@ wide = df %>% select(-genres)
 ```
 
 - Now, let's convert it to a long format.
+
 ```{r}
 long = wide %>% pivot_longer(cols = starts_with('genre'))
 ```
@@ -340,28 +343,32 @@ incremental: true
 
 - Work in "ITO building blocks" (+ loading libraries, of course!)
 - Wrangling is necessary to get data into shape and generate meaning/understanding
-- Pivoting (from long to wide, and wide to long) is difficult... it's enough if you get the concept now - you will have to fiddle around with it anyways
+- Pivoting (from long to wide, and wide to long) is difficult... it's enough if you get the concept now - you will have to fiddle around with it a bit anyways
 - Have your cheat sheets available always -- especially the `dplyr` one is useful (and very [visual](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)!)
 
 Next steps (I)
 ===============
 
 - This tutorial
-  - selected solutions available in the `.Rpres` file ([available on GitHub](https://github.com/hannesdatta/course-dprep/tree/master/content/docs/tutorials/data-preparation))
+  - selected solutions available in the `.Rpres` file ([available on GitHub](https://github.com/hannesdatta/course-dprep/tree/master/content/docs/modules/week4/tutorial))
   - Work through the tutorial and complete exercises (all solutions available)
 
-- Continue working on projects
-  - explore & prepare datasets for analysis
-  - adhere to GitHub workflows when collaborating
-  - get your project board in shape and learn "new way of working"
-  - adhere to setup-ITO structure (required for next week)
-  
-Next steps (II)
-===============
+- We will continue with our coaching session
 
-- Next week
-  - coaching session
-  - tutorial on Thursday!
-  
-<br><br>
-__Thanks!__
+Coaching session (I)
+=============
+
+- Watch out for stuff from previous weeks
+  - `.Rmd` exploration done?
+  - adhering to GitHub workflows when collaborating?
+  - getting project board into shape & learn new way of working
+  - adhering to setup-ITO structure
+
+Coaching session (II)
+===========
+
+- Continue working on projects
+- Target today is to make progress on section 2.2 of the grading guidelines
+  - variety of common data operations (involving `dplyr`, `tidyverse`, etc.): merging, aggregating, de-duplication, reshaping, converting dates, regular expressions, etc.
+  - basic programming concepts: looping, vectorization, writing functions, handling errors/bugs)
+  - feature engineering/variable operationalization

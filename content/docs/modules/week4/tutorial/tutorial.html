@@ -804,20 +804,15 @@ hljs.initHighlightingOnLoad();
 <li>Exam
 
 <ul>
-<li>dates fixed: 3 April (Monday for practical - 2 hours each); 4 April (Tuesday, on campus, theoretical part)</li>
-<li>invite you to make practice questions via PRs</li>
-</ul></li>
-<li>Bonus points
-
-<ul>
-<li>check our GitHub repository for opportunities</li>
-</ul></li>
-<li>Pulse
-
-<ul>
-<li>like it? be in touch - we can add to do&#39;s for other classes (or update existing ones)</li>
+<li>dates will be discussed this week w/ scheduling</li>
 </ul></li>
 </ul>
+
+<!--
+- Bonus points
+  - check our GitHub repository for opportunities
+
+-->
 
 </div>
 
@@ -826,13 +821,13 @@ hljs.initHighlightingOnLoad();
 <h3>Structure of this tutorial</h3>
 <div class="slideContent" >
 <ul>
-<li>In-class part of <strong>this tutorial</strong>
+<li>In-class <strong>tutorial</strong> featuring selected issues raised in:
 
 <ul>
 <li><a href="https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1">Tidyverse - chapter 1 &amp; 3</a></li>
 <li><a href="https://datacamp.com/courses/cleaning-data-in-r">Cleaning data in R - chapter 1 &amp; 2</a></li>
 <li><a href="https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1">Joining Data with <code>dplyr</code>- chapter 1 &amp; 2</a></li>
-<li>And&hellip;of course, our <a href="https://dprep.hannesdatta.com/docs/tutorials/data-preparation/data-preparation.html">own tutorial</a> that ties everything together</li>
+<li>And&hellip;of course, our <a href="https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html">own tutorial</a> that ties everything together</li>
 </ul></li>
 </ul>
 
@@ -842,7 +837,7 @@ hljs.initHighlightingOnLoad();
 <li>After class
 
 <ul>
-<li>Please go through the entire tutorial on the <a href="https://dprep.hannesdatta.com/docs/tutorials/data-preparation/data-preparation.html">dprep site</a>. </li>
+<li>Please go through the entire tutorial on the <a href="https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html">dprep site</a>. </li>
 </ul></li>
 </ul>
 
@@ -853,12 +848,12 @@ hljs.initHighlightingOnLoad();
 <h3>Why this tutorial</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Final dataset rarely available</li>
+<li class="fragment">Final data set rarely available</li>
 <li class="fragment">Requires wrangling/transformations (can you name a few examples? there are <em>many</em>!)</li>
 <li class="fragment">In projects, structure scripts in four blocks &ndash; required to automate workflow later
 
 <ul>
-<li class="fragment">Prerequisites/loading packages (<code>library()</code>)</li>
+<li class="fragment">Setup/prerequisites/loading packages (<code>library()</code>)</li>
 <li class="fragment">Input (e.g., <code>read_csv()</code>) - always <strong>relative</strong> filenames!</li>
 <li class="fragment">Transformation (i.e., operations on your data)</li>
 <li class="fragment">Output (e.g., <code>write_csv()</code> &ndash; also w/ <strong>relative</strong> filenames)</li>
@@ -891,7 +886,7 @@ hljs.initHighlightingOnLoad();
 <p>Run this snippet to download today&#39;s data (it&#39;s zipped - contains a couple of <code>.csv</code> files)</p>
 
 <pre><code class="r">library(tidyverse)
-download.file(&#39;https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/data-preparation/data_without_duplicates.zip&#39;, &#39;data.zip&#39;)
+download.file(&#39;https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip&#39;, &#39;data.zip&#39;)
 unzip(&#39;data.zip&#39;)
 </code></pre>
 
@@ -1015,7 +1010,7 @@ countries &lt;- read_delim(&#39;country_codes.csv&#39;, &#39;;&#39;)
  8 17274280 2020-01-15 US             100 3624169
  9 17274280 2020-01-16 US              NA 3577849
 10 17274280 2020-01-13 US             100 3483960
-# … with 278,714 more rows
+# ℹ 278,714 more rows
 </code></pre>
 
 </div>
@@ -1133,13 +1128,13 @@ streams &lt;- streams %&gt;% mutate(revenue = streams * 0.0038) # better
   &lt;chr&gt;                             &lt;int&gt;
 1 Calvin Harris; Ellie Goulding         1
 2 Ellie Goulding                        7
-3 Ellie Goulding; blackbear             1
-4 Ellie Goulding; Diplo; Red Velvet     1
-5 Ellie Goulding; Diplo; Swae Lee       1
-6 Ellie Goulding; Juice WRLD            2
-7 Ellie Goulding; Juice WRLD; R3HAB     1
-8 Ellie Goulding; Lauv                  2
-9 Ellie Goulding; Lauv; Syn Cole        1
+3 Ellie Goulding; Diplo; Red Velvet     1
+4 Ellie Goulding; Diplo; Swae Lee       1
+5 Ellie Goulding; Juice WRLD            2
+6 Ellie Goulding; Juice WRLD; R3HAB     1
+7 Ellie Goulding; Lauv                  2
+8 Ellie Goulding; Lauv; Syn Cole        1
+9 Ellie Goulding; blackbear             1
 </code></pre>
 
 </div>
@@ -1259,7 +1254,7 @@ wide = df %&gt;% select(-genres)
 <ul>
 <li class="fragment">Work in &ldquo;ITO building blocks&rdquo; (+ loading libraries, of course!)</li>
 <li class="fragment">Wrangling is necessary to get data into shape and generate meaning/understanding</li>
-<li class="fragment">Pivoting (from long to wide, and wide to long) is difficult&hellip; it&#39;s enough if you get the concept now - you will have to fiddle around with it anyways</li>
+<li class="fragment">Pivoting (from long to wide, and wide to long) is difficult&hellip; it&#39;s enough if you get the concept now - you will have to fiddle around with it a bit anyways</li>
 <li class="fragment">Have your cheat sheets available always &ndash; especially the <code>dplyr</code> one is useful (and very <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">visual</a>!)</li>
 </ul>
 
@@ -1273,16 +1268,26 @@ wide = df %&gt;% select(-genres)
 <li><p>This tutorial</p>
 
 <ul>
-<li>selected solutions available in the <code>.Rpres</code> file (<a href="https://github.com/hannesdatta/course-dprep/tree/master/content/docs/tutorials/data-preparation">available on GitHub</a>)</li>
+<li>selected solutions available in the <code>.Rpres</code> file (<a href="https://github.com/hannesdatta/course-dprep/tree/master/content/docs/modules/week4/tutorial">available on GitHub</a>)</li>
 <li>Work through the tutorial and complete exercises (all solutions available)</li>
 </ul></li>
-<li><p>Continue working on projects</p>
+<li><p>We will continue with our coaching session</p></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Coaching session (I)</h3>
+<div class="slideContent" >
+<ul>
+<li>Watch out for stuff from previous weeks
 
 <ul>
-<li>explore &amp; prepare datasets for analysis</li>
-<li>adhere to GitHub workflows when collaborating</li>
-<li>get your project board in shape and learn &ldquo;new way of working&rdquo;</li>
-<li>adhere to setup-ITO structure (required for next week)</li>
+<li><code>.Rmd</code> exploration done?</li>
+<li>adhering to GitHub workflows when collaborating?</li>
+<li>getting project board into shape &amp; learn new way of working</li>
+<li>adhering to setup-ITO structure</li>
 </ul></li>
 </ul>
 
@@ -1290,19 +1295,18 @@ wide = df %&gt;% select(-genres)
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Next steps (II)</h3>
+<h3>Coaching session (II)</h3>
 <div class="slideContent" >
 <ul>
-<li>Next week
+<li>Continue working on projects</li>
+<li>Target today is to make progress on section 2.2 of the grading guidelines
 
 <ul>
-<li>coaching session</li>
-<li>tutorial on Thursday!</li>
+<li>variety of common data operations (involving <code>dplyr</code>, <code>tidyverse</code>, etc.): merging, aggregating, de-duplication, reshaping, converting dates, regular expressions, etc.</li>
+<li>basic programming concepts: looping, vectorization, writing functions, handling errors/bugs)</li>
+<li>feature engineering/variable operationalization</li>
 </ul></li>
 </ul>
-
-<p><br><br>
-<strong>Thanks!</strong></p>
 
 </div>
 
