@@ -77,11 +77,11 @@ For this exercise we have collected the rankings for 2020 which have been split 
 \
 
 **Exercise 1**  
-Download the [data sets](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/data-preparation/data.zip) and describe the structure of the data sets in your own words. 
+Download the [data sets](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip) and describe the structure of the data sets in your own words. 
 
 ```{r}
 # downloading and unzipping the data
-download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/data-preparation/data.zip', 'data.zip')
+download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip', 'data.zip')
 unzip('data.zip', overwrite=TRUE)
 ```
 
