@@ -801,16 +801,17 @@ hljs.initHighlightingOnLoad();
 <h3>Before we get started</h3>
 <div class="slideContent" >
 <ul>
+<li>Last &ldquo;content&rdquo; week</li>
 <li>Exam
 
 <ul>
 <li>registration via Osiris!</li>
-<li>add dates to your agendas (3 April: practice, take home, 10am to noon; 4 April: theory, on campus, time tba)</li>
+<li>check example questions on the course website</li>
 </ul></li>
 <li>Today&#39;s material&hellip;
 
 <ul>
-<li>slide deck available on the <a href="https://dprep.hannesdatta.com/docs/tutorials/make-tutorial/">site</a>!</li>
+<li>slide deck available on the <a href="https://dprep.hannesdatta.com/docs/modules/week5/tutorial/make-tutorial/">site</a>!</li>
 <li><a href="https://tilburgsciencehub.com/building-blocks/automate-and-execute-your-work/automate-your-workflow/tsh_make_cheatsheet.pdf">download the <code>make</code> cheatsheet</a> from Tilburg Science Hub</li>
 </ul></li>
 </ul>
@@ -825,14 +826,14 @@ hljs.initHighlightingOnLoad();
 <li class="fragment">working together in teams
 
 <ul>
-<li class="fragment">working with Git locally (vs. in the cloud)</li>
+<li class="fragment">working with Git locally (vs. in the cloud) - see video on Canvas</li>
 <li class="fragment">scrum/project board &amp; issues vs. individual work</li>
 </ul></li>
 <li class="fragment">data on GitHub
 
 <ul>
 <li class="fragment"><strong>do not</strong> store any raw data on GitHub but download programmatically</li>
-<li class="fragment">naming conventions (<em>not</em> <code>dataset1</code>, etc.) - clean the template!</li>
+<li class="fragment">naming conventions (<em>not</em> <code>dataset1</code>, etc.) - clean up the template!</li>
 </ul></li>
 </ul>
 
@@ -848,9 +849,9 @@ hljs.initHighlightingOnLoad();
 <ul>
 <li class="fragment">absolute vs. relative file names</li>
 <li class="fragment">generalizable &ndash; no &ldquo;amsterdam&rdquo;-specific variable names when possible</li>
-<li class="fragment">install packages: ideally in <em>one</em> script &ndash; see <a href="https://gist.github.com/hannesdatta/3446b205a9f5aa598f99bfa5116e5be0">here</a></li>
+<li class="fragment">install packages: can be done in <em>one</em> script &ndash; see <a href="https://gist.github.com/hannesdatta/3446b205a9f5aa598f99bfa5116e5be0">here</a></li>
 </ul></li>
-<li class="fragment">preparation: be clear about unit of analysis (e.g., date &amp; city)</li>
+<li class="fragment">preparation: be clear about unit of analysis (e.g., date &amp; city, movie, etc.)</li>
 </ul>
 
 </div>
@@ -1000,7 +1001,7 @@ hljs.initHighlightingOnLoad();
 <div class="slideContent" >
 <ul>
 <li>Create a new file, called <code>makefile</code> (no extension)</li>
-<li>Paste the code below and save (use a tab to indent <code>R --vanilla</code> &hellip;)</li>
+<li>Paste the code below and save (use a <strong>tab</strong> to indent <code>R --vanilla</code> or <code>Rscript</code>&hellip;)</li>
 <li>Then type <code>make</code> on terminal. What happens?</li>
 </ul>
 
@@ -1052,10 +1053,10 @@ hljs.initHighlightingOnLoad();
 <h3>Towards modularization </h3>
 <div class="mediaInline slideContent" >
 <ul>
-<li>We ultimately will have to split our project in <a href="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/make-tutorial/images/dependencies_Antwerp.png">separate files</a>. (Why?)</li>
+<li>We ultimately will have to split our project in <a href="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/week5/tutorial/images/dependencies_Antwerp.png">separate files</a>. (Why?)</li>
 </ul>
 
-<p><img src="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/make-tutorial/images/dependencies_Antwerp.png" alt=""/></p>
+<p><img src="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week5/tutorial/images/dependencies_Antwerp.png" alt=""/></p>
 
 <p><strong>How?</strong> split up code, implement setup + ITO, write <code>makefile</code> rule, test rule. Step-by-step.</p>
 
@@ -1079,7 +1080,7 @@ hljs.initHighlightingOnLoad();
 <section data-transition="linear" data-transition-speed="default">
 <h3>Do: Let&#x27;s continue splitting up our project and trying to automate it</h3>
 <div class="mediaInline slideContent" >
-<p><img src="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/tutorials/make-tutorial/images/dependencies_Antwerp.png" alt=""/></p>
+<p><img src="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week5/tutorial/images/dependencies_Antwerp.png" alt=""/></p>
 
 <p><strong>How?</strong> split up code, implement ITO, write <code>makefile</code> rule, test rule. Step-by-step.</p>
 
@@ -1148,8 +1149,8 @@ hljs.initHighlightingOnLoad();
 <ul>
 <li>GitHub for code and project management (not data). Work locally.</li>
 <li>Work according to scrum method in feature branches.</li>
-<li>Explore, prepare and analyze data using R. Focus on workflow, proper setup + ITO building blocks, demonstration of your skills!</li>
-<li>Automate entire pipeline.</li>
+<li>Explore, prepare and analyze data using R. Focus on workflow, proper setup + ITO building blocks, demonstration of your skills</li>
+<li>Automate entire pipeline - ensure it runs on other computers</li>
 <li>Do all steps at the same time. Not separately!</li>
 </ul></li>
 <li>This is a <strong>state-of-the-art toolkit</strong> that will put you ahead of the curve in productivity. In your Master program, and beyond.</li>
@@ -1165,16 +1166,28 @@ hljs.initHighlightingOnLoad();
 <li>Three more coaching sessions
 
 <ul>
-<li>schedule see site (some changes next week)</li>
-<li>two sessions are optional: just be there w/ your team if needed (I will walk around)</li>
+<li>one today (on campus)</li>
+<li>two more (week 6 and beginning of week 7 - online; attendance optional)</li>
+<li>will create breakout rooms</li>
 </ul></li>
 <li>Exam preparation
 
 <ul>
 <li>in final lecture</li>
-<li>watch the site and Canvas for updates</li>
+<li>watch the site and Canvas for updates on the exact exam date</li>
 </ul></li>
 <li>Any questions?</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Coaching session</h3>
+<div class="slideContent" >
+<ul>
+<li>Let&#39;s get started to identify &#39;broad&#39; issues - can try addressing these issues specifically</li>
+<li>Work on grading criteria 3.1 (source code quality), and 3.2 (automation using make)</li>
 </ul>
 
 </div>
