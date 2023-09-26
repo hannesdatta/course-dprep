@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *When working on large-scale data intensive projects, it's important to define a project pipeline and automate it end to end so that you don't have to manually produce your research results but you can just sit back and relax and have the computer do the the job for you. In this tutorial, you learn how to organize your files and directories and set-up a makefile that executes your whole project with just a single command!*
 
+*Updated 26 September 2023* 
+
 __The solutions to the exercises and an FAQ are at the end of this document.__
 
 ---
@@ -216,7 +218,7 @@ Tip: keep in mind that all file paths are relative to the current storage locati
 **Exercise 7**  
 Not only the file paths in the R scripts changed by moving the files to different directories, but also the relative paths in the make file are no longer up to date. Make the necessary changes to the targets, commands, and prerequisites and then try running `make -n` to see whether it works as expected.
 
-Tip: add `mkdir -p data` as a command above `download.R` in the makefile so that it first creates the data folder before it tries to store the downloaded data there. If you forget to do this and you didn't create the folder manually, it will throw an error once it attempts to save a file in the unknown folder. Do the same for the `gen/temp` and `gen/output` subfolders.
+Tip: add `Rscript -e "dir.create('data')"` as a command above `download.R` in the makefile so that it first creates the data folder before it tries to store the downloaded data there. If you forget to do this and you didn't create the folder manually, it will throw an error once it attempts to save a file in the unknown folder. Do the same for the `gen/temp` and `gen/output` subfolders.
 
 \
 
@@ -229,7 +231,7 @@ Writing long file paths, such as `../../gen/temp/aggregated_df.csv` is cumbersom
 TEMP = ../../gen/temp
 DATA = ../../data
 
-$(TEMP)/aggregated_df.csv: $(DATA)/listings.csv $(DATA)/reviews.csv  clean.R
+$(TEMP)/aggregated_df.csv: $(DATA)/listings.csv $(DATA)/reviews.csv clean.R
     R --vanilla < clean.R
 ```
 In other words, you specify the file path as a variable at the top (e.g., `TEMP = ...`) after which you can reference it with `$(VARIABLE)`. 
@@ -260,7 +262,7 @@ Therefore, we create two makefiles so that you end up with the following file st
 ```
 
 **Exercise 10**   
-Create the makefile in `src/analysis` and `src/data-preparation`, copy the related make commands from the makefile in the root directory, and add an `all` phony target to both makefiles. Don't forget to include the `mkdir -p` commands!
+Create the makefile in `src/analysis` and `src/data-preparation`, copy the related make commands from the makefile in the root directory, and add an `all` phony target to both makefiles. Don't forget to include the `R -e "dir.create('directory_name')"` commands!
 
 **Exercise 11**  
 Run `make -n` in `src/analysis` and `src/data-preparation` separately and see whether it works as expected. Then, manually remove the `data` and `gen` folders and try to regenerate all files. How many times do you have to run `make`? 
@@ -328,11 +330,11 @@ all: $(DATA)/listings.csv $(DATA)/reviews.csv $(TEMP)/aggregated_df.csv
 	R --vanilla < download.R
 
 ../../data/listings.csv: download.R
-	mkdir -p ../../data
+	R -e "dir.create('../../data', recursive = TRUE)"
 	R --vanilla < download.R
 
 ../../gen/temp/aggregated_df.csv: ../../data/listings.csv ../../data/reviews.csv  clean.R
-	mkdir -p ../../gen/temp
+  R -e "dir.create('../../gen/temp', recursive = TRUE)"
 	R --vanilla < clean.R
 ```
 
@@ -345,7 +347,7 @@ OUTPUT = = ../../gen/output
 all: $(TEMP)/pivot_table.csv $(OUTPUT)/plot_Antwerp.pdf $(OUTPUT)/plot_all.pdf
 
 $(TEMP)/pivot_table.csv: $(TEMP)/aggregated_df.csv pivot_table.R
-	mkdir -p ../../gen/output
+	R -e "dir.create('../../gen/output', recursive = TRUE)"
 	R --vanilla < pivot_table.R
 
 $(OUTPUT)/plot_Antwerp.pdf: $(TEMP)/pivot_table.csv plot_antwerp.R
