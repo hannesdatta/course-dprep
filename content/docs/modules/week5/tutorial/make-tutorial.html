@@ -811,8 +811,8 @@ directory and run <code>make</code> again to build up all files from
 scratch. The code snippet below removes the <code>data</code> and
 <code>gen</code> folders as well as their contents.</p>
 <pre><code>clean:
-    -rm -r data
-    -rm -r gen</code></pre>
+    R -e &quot;unlink(&quot;data&quot;, recursive = TRUE)&quot;
+    R -e &quot;unlink(&quot;gen&quot;, recursive = TRUE)&quot;</code></pre>
 <p><strong>Exercise 13</strong><br />
 Add the <code>clean</code> phony target to the makefile located in the
 root directory. Then, run <code>make clean</code> to trigger it. Does it
@@ -836,8 +836,8 @@ analysis: data-preparation
     make -C src/analysis
 
 clean:
-    -rm -r data
-    -rm -r gen</code></pre>
+    R -e &quot;unlink(&quot;data&quot;, recursive = TRUE)&quot;
+    R -e &quot;unlink(&quot;gen&quot;, recursive = TRUE)&quot;</code></pre>
 <p><em>src/data-preparation</em></p>
 <pre><code>DATA = ../../data
 TEMP = ../../gen/temp
@@ -845,11 +845,11 @@ TEMP = ../../gen/temp
 all: $(DATA)/listings.csv $(DATA)/reviews.csv $(TEMP)/aggregated_df.csv
 
 ../../data/reviews.csv: download.R
-    R --vanilla &lt; download.R
+  R --vanilla &lt; download.R
 
 ../../data/listings.csv: download.R
-    R -e &quot;dir.create(&#39;../../data&#39;, recursive = TRUE)&quot;
-    R --vanilla &lt; download.R
+  R -e &quot;dir.create(&#39;../../data&#39;, recursive = TRUE)&quot;
+  R --vanilla &lt; download.R
 
 ../../gen/temp/aggregated_df.csv: ../../data/listings.csv ../../data/reviews.csv  clean.R
   R -e &quot;dir.create(&#39;../../gen/temp&#39;, recursive = TRUE)&quot;
@@ -862,14 +862,14 @@ OUTPUT = = ../../gen/output
 all: $(TEMP)/pivot_table.csv $(OUTPUT)/plot_Antwerp.pdf $(OUTPUT)/plot_all.pdf
 
 $(TEMP)/pivot_table.csv: $(TEMP)/aggregated_df.csv pivot_table.R
-    R -e &quot;dir.create(&#39;../../gen/output&#39;, recursive = TRUE)&quot;
-    R --vanilla &lt; pivot_table.R
+  R -e &quot;dir.create(&#39;../../gen/output&#39;, recursive = TRUE)&quot;
+  R --vanilla &lt; pivot_table.R
 
 $(OUTPUT)/plot_Antwerp.pdf: $(TEMP)/pivot_table.csv plot_antwerp.R
-    R --vanilla &lt; plot_antwerp.R
+  R --vanilla &lt; plot_antwerp.R
 
 $(OUTPUT)/plot_all.pdf: $(TEMP)/aggregated_df.csv plot_all.R
-    R --vanilla &lt; plot_all.R</code></pre>
+  R --vanilla &lt; plot_all.R</code></pre>
 <p><br />
 </p>
 </div>

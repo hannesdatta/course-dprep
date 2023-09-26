@@ -291,8 +291,8 @@ Like the `all` phony target generates all files, another convention is to have a
 
 ```
 clean:
-	-rm -r data
-	-rm -r gen
+	R -e "unlink("data", recursive = TRUE)"
+	R -e "unlink("gen", recursive = TRUE)"
 ```
 
 **Exercise 13**  
@@ -315,8 +315,8 @@ analysis: data-preparation
 	make -C src/analysis
 
 clean:
-	-rm -r data
-	-rm -r gen
+	R -e "unlink("data", recursive = TRUE)"
+	R -e "unlink("gen", recursive = TRUE)"
 ```
 
 *src/data-preparation*
@@ -327,11 +327,11 @@ TEMP = ../../gen/temp
 all: $(DATA)/listings.csv $(DATA)/reviews.csv $(TEMP)/aggregated_df.csv
 
 ../../data/reviews.csv: download.R
-	R --vanilla < download.R
+  R --vanilla < download.R
 
 ../../data/listings.csv: download.R
-	R -e "dir.create('../../data', recursive = TRUE)"
-	R --vanilla < download.R
+  R -e "dir.create('../../data', recursive = TRUE)"
+  R --vanilla < download.R
 
 ../../gen/temp/aggregated_df.csv: ../../data/listings.csv ../../data/reviews.csv  clean.R
   R -e "dir.create('../../gen/temp', recursive = TRUE)"
@@ -347,14 +347,14 @@ OUTPUT = = ../../gen/output
 all: $(TEMP)/pivot_table.csv $(OUTPUT)/plot_Antwerp.pdf $(OUTPUT)/plot_all.pdf
 
 $(TEMP)/pivot_table.csv: $(TEMP)/aggregated_df.csv pivot_table.R
-	R -e "dir.create('../../gen/output', recursive = TRUE)"
-	R --vanilla < pivot_table.R
+  R -e "dir.create('../../gen/output', recursive = TRUE)"
+  R --vanilla < pivot_table.R
 
 $(OUTPUT)/plot_Antwerp.pdf: $(TEMP)/pivot_table.csv plot_antwerp.R
-	R --vanilla < plot_antwerp.R
+  R --vanilla < plot_antwerp.R
 
 $(OUTPUT)/plot_all.pdf: $(TEMP)/aggregated_df.csv plot_all.R
-	R --vanilla < plot_all.R
+  R --vanilla < plot_all.R
 ```
 \
 
