@@ -291,8 +291,8 @@ Like the `all` phony target generates all files, another convention is to have a
 
 ```
 clean:
-	R -e "unlink("data", recursive = TRUE)"
-	R -e "unlink("gen", recursive = TRUE)"
+	R -e "unlink('data', recursive = TRUE)"
+	R -e "unlink('gen', recursive = TRUE)"
 ```
 
 **Exercise 13**  
@@ -315,8 +315,8 @@ analysis: data-preparation
 	make -C src/analysis
 
 clean:
-	R -e "unlink("data", recursive = TRUE)"
-	R -e "unlink("gen", recursive = TRUE)"
+	R -e "unlink('data', recursive = TRUE)"
+	R -e "unlink('gen', recursive = TRUE)"
 ```
 
 *src/data-preparation*

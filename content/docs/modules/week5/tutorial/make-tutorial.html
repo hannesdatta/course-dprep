@@ -811,8 +811,8 @@ directory and run <code>make</code> again to build up all files from
 scratch. The code snippet below removes the <code>data</code> and
 <code>gen</code> folders as well as their contents.</p>
 <pre><code>clean:
-    R -e &quot;unlink(&quot;data&quot;, recursive = TRUE)&quot;
-    R -e &quot;unlink(&quot;gen&quot;, recursive = TRUE)&quot;</code></pre>
+    R -e &quot;unlink(&#39;data&#39;, recursive = TRUE)&quot;
+    R -e &quot;unlink(&#39;gen&#39;, recursive = TRUE)&quot;</code></pre>
 <p><strong>Exercise 13</strong><br />
 Add the <code>clean</code> phony target to the makefile located in the
 root directory. Then, run <code>make clean</code> to trigger it. Does it
@@ -836,8 +836,8 @@ analysis: data-preparation
     make -C src/analysis
 
 clean:
-    R -e &quot;unlink(&quot;data&quot;, recursive = TRUE)&quot;
-    R -e &quot;unlink(&quot;gen&quot;, recursive = TRUE)&quot;</code></pre>
+    R -e &quot;unlink(&#39;data&#39;, recursive = TRUE)&quot;
+    R -e &quot;unlink(&#39;gen&#39;, recursive = TRUE)&quot;</code></pre>
 <p><em>src/data-preparation</em></p>
 <pre><code>DATA = ../../data
 TEMP = ../../gen/temp
