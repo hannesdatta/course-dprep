@@ -96,17 +96,17 @@ Imagine you are a research assistant at Tilburg University, and you receive the 
 
 Dear (name of student),
 
-Tilburg University is on its way to not only publish papers, but also the code that generated the results. That’s extremely important for open science - i.e., allowing others to reproduce findings. In the attachment (download here), I’m sending you the code of my empirical project. Admittedly, it’s not very well structured (e.g., directory structures are absent), but at least I have a common R file (“run.R”) that ties all the parts together.
+Tilburg University is on its way to not only publish papers, but also the code that generated the results. That’s extremely important for open science - i.e., allowing others to reproduce findings. In the attachment (download here), I’m sending you the code of my empirical project. Admittedly, it’s not very well structured (e.g., directory structures are absent), but at least I have a common R file ([run.R](https://github.com/hannesdatta/course-dprep/blob/master/content/docs/modules/week5/tutorial/run_antwerp.R)) that ties all the parts together.
 
-Can you apply your learnings from dPrep on this repository (e.g., http://127.0.0.1:1313/docs/tutorials/make-tutorial/)? Your deliverable is just a link to a (private!) GitHub repository.
+Starting from `run.R`, can you apply your learnings from dPrep, and submit a link to a new repository in which you...
 
 - Create a proper directory structure (e.g., pipeline stages, see `run.R` for some ideas),
 - Separate source code from generated files,
-- Have a proper readme at the repository,
+- Have a proper readme at the repository (in an `.md` file),
 - Ignore files that should not be versioned using .gitignore, and
 - remove `run.R` and replace it by a proper makefile for this project.
 
-I really look forward seeing your work.  Please work in a private GitHub repository, and add me (username: hannesdatta) as your collaborator so I can see your code.
+I really look forward seeing your work. Your deliverable is just a link to a (private!) GitHub repository, provided in the answer box below.
 
 {{< /hint >}}
 
