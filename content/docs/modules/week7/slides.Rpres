@@ -81,21 +81,22 @@ incremental: true
   - Seems to put a lot of structure on stuff, did it work out?
   - Recall how to work together -- team <-> individual
 - Versioning can be powerful!
-  - delete stuff that isn't needed
-  - GUI (e.g., in R) are cool (and much easier to use!)
-  - Oh no! Can't push!
-  - Rolling back whenever you want
+  - delete stuff that isn't needed, roll back when you want
+  - Oh no, not authenticated!
+  - Oh no! Can't push! (pull first!)
+  - GUIs (e.g., in R) are available, too!
   
 Lessons learnt #1: Versioning and Project Management with Git(Hub) (II)
 ========================================================
 incremental: true
 
-- Know what to version, and what not
+- Ready to use Git/versioning in a business
+  - Know what to version, and what not
+  - Purpose of `.gitignore`
+  - How to work together (issues, feature branches, PRs)
 - Collaborate on open source projects
-  - You know what PRs are!
+  - You know what forks are!
   - You may even actually contributed to public projects!
-- Learn the tools used in business
-  - But: takes a lot of time to become good at
 
 Lessons learnt #2: Data Exploration
 ========================================================
@@ -131,7 +132,7 @@ incremental: true
 - Clarity about *where* to store stuff
   - review! (components - `src`, `gen`, `data`; modules - e.g., `analysis`, `data-prep`, ...)
 - Run the work others have done
-  - my work, your work, somebody else's work (e.g., text mining stuff on tilburgsciencehub.com)
+  - my work, your work, somebody else's work
 - Discover mistakes in code
   - e.g., packages that weren't loaded, order of cells/code
 - Save time!
@@ -141,10 +142,9 @@ incremental: true
 Common mistakes w/ make
 ==========
 
-- Multiple targets, not multiple rules
-- The *all* rule: think of it as a "first" rule only!
-- Gradually building your makefile
-- Remember, __go in baby steps!__
+- Multiple *targets*, not multiple rules
+- The rule on top! That's where everything starts.
+- Gradually build your makefile. __Go in baby steps!__
 - Happy to take a look at your repositories now - anyone?
 
 Any other questions about your projects?
@@ -156,13 +156,12 @@ Reflection about the course
 ========================================================
 
 - it's amazing to see you learn & grow!
-  - I feel I can talk to programmers!
-  - You see code and feel what it does!
   - that feeling you get when your code runs...!
+  - I can talk to you as "members of my own dev team"
+  - I've witnessed you "seeing code and feeling what it does!"
 - different levels
-  - many started R from scratch
-  - others thought they could program, but were challenged, too!
-- saw so much: different projects, datasets, software programs, "way of doing things", way of coding, videos, websites
+  - many started R from scratch; some could program but still were challenged!
+- saw so much: different projects, data sets, tools, "way of doing things", way of coding, videos, websites
 
 My recommendation: take time to let it sink in. And trust in my choice of teaching you this. __Your hard work will pay off.__
 
@@ -192,14 +191,16 @@ incremental: true
 
 - Become part of the open science community at Tilburg
   - contribute to [Tilburg Science Hub](https://tilburgsciencehub.com)
+  - improve [music-to-scrape](https://music-to-scrape.org)
   - follow us on [LinkedIn](https://www.linkedin.com/company/tilburgsciencehub/) and [Twitter](https://twitter.com/tilburgscience)
-- Invest in your research skills (e.g., Docker, singularity, coding)
+- Invest in your research skills (e.g., Docker, coding)
 
 Looking ahead: After your studies
 ========================================================
 incremental: true
 
 - automate stuff, save time for the things you love!
+- write packages (e.g., recently seen internal AirBnB and Walmart packages)
 - be confident - and keep on learning (e.g., [Tilburg Science Hub](https://tilburgsciencehub.com), [Datacamp](https://datacamp.com), [Data carpentry](https://datacarpentry.org), [software carpentry](https://softwarecarpentry.org), [The Turing Way](https://the-turing-way.netlify.app/welcome))
 
 
@@ -208,37 +209,39 @@ Next steps: Submissions and preparing for the exam
 
 - Deadline for project coming up!
   - remember: __make it work__ on different computers and operating systems
-  - __avoid__ absolute paths!
+  - __do not use__ absolute paths!
   - verify data can be downloaded smoothly
   - test `make` thoroughly (demonstration if we have the time)
 - Exam preparation
   - https://dprep.hannesdatta.com/docs/exam/
   - https://dprep.hannesdatta.com/docs/exam/examplequestions/
 
-Exam overview: Practical part
-=============
-
-- Organization
-  - When: 3 April, 10am - 11.59am + 1 minute, take home
-  - Work max. 2 hours on this part
-- How?
-  - open book, on your computer
-  - ChatGPT/GitHub Copilot et al. ONLY when explicitly asked for.
-- What?
-  - let's look at [some questions now](https://dprep.hannesdatta.com/docs/exam/examplequestions/#practical-part)
-  - prep well - expect new datasets that are big (too big maybe even) -- aggregation!
 
 Exam overview: Theoretical part
 =============
 
 - Organization
-  - When: 4 April, 1pm - 3.15pm (jointly w/ oDCM; break of 15 minutes inside)
-  - Work max. 1 hour on this part
+  - When: 16 October, 1-2pm (1 hour)
 - How?
-  - closed book
-  - I can make selected resources available on the instruction page. __Which ones?__
+  - closed book, no software like R, __just TestVision__
+  - I'm making selecting resources available on the instruction page - [check them out here](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/exam/cheatsheets-exam.zip)
 - What?
+  - familiarize yourselves with [how TestVision works with a practice test](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2)
   - let's look at [some questions now](https://dprep.hannesdatta.com/docs/exam/examplequestions/#theoretical-part)
+
+
+Exam overview: Practical part
+=============
+
+- Organization
+  - When: 17 October, 10am - 11.59am + 1 minute, take home
+  - Work max. 2 hours on this part
+- How?
+  - open book, on your computer
+  - ChatGPT and other tools ONLY when explicitly asked for.
+- What?
+  - let's look at [some questions now](https://dprep.hannesdatta.com/docs/exam/examplequestions/#practical-part)
+  - prep well - expect new datasets that are big (too big maybe even) -- aggregation, selection of number of rows, etc.
 
 Some tips for your exam
 =======
@@ -247,7 +250,7 @@ incremental: true
 - Expect an unexpected data set & data wrangling
 - Know common data operations in `dplyr` & become fast!
 - When handing in documents, check what I require (for `.Rmd`, I sometimes ask for rendered `.pdf` documents - does it work on your computer?)
-- Be prepared to contribute to open source projects on GitHub -- know how to do PRs, roll back to previous versions, write issues, etc.
+- Be prepared to make commits to GitHub repositories -- know how clone, fork, write issues, do PRs, roll back to previous versions, etc.
 - Be prepared to run, correct and develop new `make` workflows
 
 
@@ -256,7 +259,7 @@ Next steps: Official course evaluation
 ========================================================
 
 - Course evaluation has been immensely important to this course
-  - this semester: coaching sessions with breakout groups
+  - this semester: new data set, coaching sessions with breakout groups on campus and online
   - last semester: developed new on-campus tutorials, released example projects
 - Course evaluation has been critical to my career
   - Without my past evaluations, I wouldn't be teaching to you today
@@ -271,7 +274,6 @@ Informal feedback
 incremental: true
 
 - Coaching sessions?
-- Use of Pulse?
 - How was it for beginners? 
 - What's are three things you'd like me to change?
 
