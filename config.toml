@@ -33,15 +33,15 @@ enableGitInfo = true
   Date_Send_Motivation = "15 August, 2023"
   Date_Notified_Candidates = "23 August, 2023"
   
-  Course_Deadline_Project = "Monday, 16 October (23.59)" 
+  Course_Deadline_Project = "Monday, 16 October 2023 (23.59)" 
   #Course_Deadline_Project = "Monday, 27 March (23.59)" 
 
   
-  Course_Exam_MainsitTheory = "Monday, 16 October (1pm - 2pm)"
-  Course_Exam_MainsitPractice = "Tuesday, 17 October (10am - 11.59am + 1 minute = noon)"
+  Course_Exam_MainsitTheory = "Monday, 16 October 2023 (1pm - 2pm)"
+  Course_Exam_MainsitPractice = "Tuesday, 17 October 2023 (10am - 11.59am + 1 minute = noon)"
    
-  Course_Exam_ResitTheory = "Monday, 18 December (time tba)"
-  Course_Exam_ResitPractice = "tba"
+  Course_Exam_ResitTheory = "Monday, 18 December 2023 (time tba)"
+  Course_Exam_ResitPractice = "Tuesday, 16 January 2024 (10 - 11.59am + 1 minute = noon)"
   
   
   #Course_Exam_MainsitTheory = "Tuesday, 4 April 2023 (1pm-3.15pm)" # "Tuesday, 18 October 2022"
