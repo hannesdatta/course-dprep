@@ -41,7 +41,7 @@ enableGitInfo = true
   Course_Exam_MainsitPractice = "Tuesday, 17 October 2023 (10am - 11.59am + 1 minute = noon)"
    
   Course_Exam_ResitTheory = "Monday, 18 December 2023 (time tba)"
-  Course_Exam_ResitPractice = "Tuesday, 16 January 2024 (10 - 11.59am + 1 minute = noon)"
+  Course_Exam_ResitPractice = "Tuesday, 16 January 2024 (9 - 11am)"
   
   
   #Course_Exam_MainsitTheory = "Tuesday, 4 April 2023 (1pm-3.15pm)" # "Tuesday, 18 October 2022"
