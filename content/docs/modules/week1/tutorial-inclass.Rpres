@@ -33,6 +33,7 @@ incremental: true
   - has a large community
   - it's free, open-source and cross-platform!
   - works even in the cloud!
+- But... can be geeky + many ways to do the "same thing" (-> confusing!), e.g., `data.table` vs. `dplyr`
 
 DO: Creating a new project
 ========================================================
