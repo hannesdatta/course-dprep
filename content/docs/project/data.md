@@ -10,37 +10,9 @@ draft: false
 
 # Data
 
-You have the choice between two datasets: AirBnB or IMDb.
+You have the choice between two datasets: IMDb (or AirBnB.
 
-## Dataset 1: AirBnB
-
-### About
-
-[Inside Airbnb](http://insideairbnb.com/amsterdam/) is an independent, open-source data tool developed by community activist Murray Cox who aims to shed light on how Airbnb is being used and affecting neighborhoods in large cities. The tool provides a visual overview of the amount, availability, and spread of rooms across a city, as well as an approximation of the number of bookings and occupancy rate.
-
-This data set allows for a variety of research questions, such as:
-- How does the presence of specific neighborhood amenities impact the pricing of Airbnb listings in different cities?
-- Do properties with a higher number of positive reviews command a price premium, and does this relationship differ across neighborhoods?
-- Can the availability of Airbnb listings be predicted based on historical booking patterns, seasonal trends, and local events?
-- What are the key factors influencing the popularity of certain neighborhoods for Airbnb stays, as indicated by booking frequency and review sentiment?
-- To what extent do superhosts outperform regular hosts in terms of occupancy rates and pricing adjustments, and is this consistent across different city markets?
-- How do different types of property amenities (e.g., pool, gym, balcony) impact occupancy rates and nightly prices across diverse neighborhoods?
-- Does the presence of local events, such as concerts or festivals, influence the pricing strategy of Airbnb hosts in proximity to those events?
-- Can machine learning models accurately predict the popularity of newly listed Airbnb properties based on their features and neighborhood characteristics?
-
-### Download the data
-
-The data is available per city (e.g., Amsterdam) and entity (e.g., listings, calendar, reviews, neighbourhoods, etc.).
-
-- Visit [the data section at InsideAirbnb now](http://insideairbnb.com/get-the-data.html)
-
-{{< hint info >}}
-__Pick the city that you find interesting!__
-
-Inside AirBnB offers datasets for various cities around the world. Feel free to explore the city/cities that spark your interest!
-{{< /hint >}}
-
-## Dataset 2: IMDb
+## Dataset 1: IMDb
 
 ### About
 
@@ -71,3 +43,32 @@ You can [view](XXX) the report over here and dowload the project directory (incl
 
 <!-- You can [view](XXX) the report over here and dowload the project directory (including all R files) from [here](XXX). In the report, 3 sections can be distinguished: Input, Transformation, and Output of which we'll mention the contents below.
  -->
+
+
+## Dataset 2: AirBnB
+
+### About
+
+[Inside Airbnb](http://insideairbnb.com/amsterdam/) is an independent, open-source data tool developed by community activist Murray Cox who aims to shed light on how Airbnb is being used and affecting neighborhoods in large cities. The tool provides a visual overview of the amount, availability, and spread of rooms across a city, as well as an approximation of the number of bookings and occupancy rate.
+
+This data set allows for a variety of research questions, such as:
+- How does the presence of specific neighborhood amenities impact the pricing of Airbnb listings in different cities?
+- Do properties with a higher number of positive reviews command a price premium, and does this relationship differ across neighborhoods?
+- Can the availability of Airbnb listings be predicted based on historical booking patterns, seasonal trends, and local events?
+- What are the key factors influencing the popularity of certain neighborhoods for Airbnb stays, as indicated by booking frequency and review sentiment?
+- To what extent do superhosts outperform regular hosts in terms of occupancy rates and pricing adjustments, and is this consistent across different city markets?
+- How do different types of property amenities (e.g., pool, gym, balcony) impact occupancy rates and nightly prices across diverse neighborhoods?
+- Does the presence of local events, such as concerts or festivals, influence the pricing strategy of Airbnb hosts in proximity to those events?
+- Can machine learning models accurately predict the popularity of newly listed Airbnb properties based on their features and neighborhood characteristics?
+
+### Download the data
+
+The data is available per city (e.g., Amsterdam) and entity (e.g., listings, calendar, reviews, neighbourhoods, etc.).
+
+- Visit [the data section at InsideAirbnb now](http://insideairbnb.com/get-the-data.html)
+
+{{< hint info >}}
+__Pick the city that you find interesting!__
+
+Inside AirBnB offers datasets for various cities around the world. Feel free to explore the city/cities that spark your interest!
+{{< /hint >}}

@@ -111,7 +111,7 @@ https://www.youtube.com/watch?v=z_Hh1jlL1Ac
   - "Breakout challenge" <- advanced users
   - One guided group: stays here
 
-- Task: see activity for this module, online: https://dprep.hannesdatta.com/docs/course/modules/week2/activity/
+- Task: see activity for this module, online: https://dprep.hannesdatta.com/docs/course/modules/week3/activity/
   - Can choose between several tasks (1 is easiest, 3 hardest)
 
 ## Work on challenge now

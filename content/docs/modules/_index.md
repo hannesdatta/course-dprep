@@ -27,9 +27,9 @@ Course week|Date|Time|Location|Content|
 |:-:|---------|---------|-------------|--------------------|
 |{{< button relref="prep" >}}Week 0{{< /button >}}  | | | | Preparation before the course starts   
 |{{< button relref="week1" >}}Week 1{{< /button >}} |Wed 31 Jan | 08.45-12.30 | On campus | Getting started with R
-|{{< button relref="week2" >}}Week 2{{< /button >}}|Thu 8 Feb | 10.45-12.30 | On campus | Tutorial: Project management and version control
+|{{< button relref="week2" >}}Week 2{{< /button >}}|Thu 8 Feb | 10.45-12.30 | On campus | Tutorial: Project management and exploring data with RMarkdown
 |                                                   |        | 12.45-14.30 | On campus | [Team coaching #1](/docs/project/workplan)
-|{{< button relref="week3" >}}Week 3{{< /button >}}|Thu 22 Feb | 10.45-12.30 | On campus | Tutorial: Data exploration using RMarkdown
+|{{< button relref="week3" >}}Week 3{{< /button >}}|Thu 22 Feb | 10.45-12.30 | On campus | Tutorial: Version control using GitHub
 |                                                  |           | 12.45-14.30 | On campus | [Team coaching #2](/docs/project/workplan)
 |{{< button relref="week4" >}}Week 4{{< /button >}}|Thu 29 Feb | 08.45-10.30 | On campus | Tutorial: Engineering datasets
 |                                                  |           | 10.45-12.30 | On campus | [Team coaching #3](/docs/project/workplan)
