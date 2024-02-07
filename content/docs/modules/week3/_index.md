@@ -6,7 +6,7 @@ bookCollapseSection: false
 draft: false
 ---
 
-# Week 2: Version control and project management <!--+ feedback-->
+# Week 3: Version control and project management <!--+ feedback-->
 
 ## Kick-starting your week
 - [Watch the kick-off for the week!](https://youtu.be/kL-s7XHWiWI) 
