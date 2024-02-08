@@ -801,15 +801,17 @@ hljs.initHighlightingOnLoad();
 <h3>Before we get started</h3>
 <div class="slideContent" >
 <ul>
-<li>Looking back&hellip;
-
-<ul>
-<li>coaching session: goal to get setup on GitHub</li>
-<li>tutorial: way of working &ndash; individual/team; issue-based</li>
-<li>technical issues with Git? see, e.g., <a href="https://dprep.hannesdatta.com/docs/course/support">password/authentication</a></li>
-</ul></li>
-<li>Reality check: doubting whether to stay enrolled? Tell your team about how you feel!</li>
+<li>Group work will get started - ensure your teams are properly registered</li>
+<li>Any pending installation issues? Let me know!</li>
 </ul>
+
+<!--
+- Looking back...
+  - coaching session: goal to get setup on GitHub
+  - tutorial: way of working -- individual/team; issue-based
+  - technical issues with Git? see, e.g., [password/authentication](https://dprep.hannesdatta.com/docs/course/support)
+- Reality check: doubting whether to stay enrolled? Tell your team about how you feel!
+--> 
 
 </div>
 
@@ -823,7 +825,7 @@ hljs.initHighlightingOnLoad();
 <li><p>After class</p>
 
 <ul>
-<li>Review today&#39;s <a href="https://dprep.hannesdatta.com/docs/modules/week3/tutorial/intro-to-r.html">tutorial</a>. </li>
+<li>Review today&#39;s <a href="https://dprep.hannesdatta.com/docs/modules/week2/tutorial/intro-to-r.html">tutorial</a>. </li>
 <li>Work through self-study material
 
 <ul>
@@ -1112,7 +1114,17 @@ datasets &lt;- lapply(urls, read_csv, n_max = 200, col_types=list(neighbourhood=
 <section data-transition="linear" data-transition-speed="default">
 <h3>Why again `lapply`?</h3>
 <div class="slideContent" >
-<p><strong>What&#39;s the key difference between the &ldquo;apply&rdquo; family, and for loops?</strong></p>
+<p><strong>What&#39;s the key difference between the &ldquo;apply family&rdquo; and &ldquo;for loops&rdquo;?</strong></p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Solution</h3>
+<div class="slideContent" >
+<ul>
+<li><code>lapply</code> &ldquo;returns&rdquo; stuff; loops just execute stuff without returning anything</li>
+</ul>
 
 </div>
 
@@ -1204,7 +1216,7 @@ final_dataset &lt;- bind_rows(edited_datasets)
 <li>Regular expressions are extremely powerful to work with text data &ndash; e.g., neighborhoods, city names, etc.
 
 <ul>
-<li><code>grepl</code> can help you filter for information</li>
+<li><code>grepl</code> can filter for information, without typing the &ldquo;exact&rdquo; search query</li>
 <li><code>gsub</code> helps you to replace information</li>
 </ul></li>
 </ul>
@@ -1252,7 +1264,7 @@ final_dataset &lt;- bind_rows(edited_datasets)
 <h3>Now we can get started with exploring data</h3>
 <div class="slideContent" >
 <ul>
-<li>We&#39;ll make use of the Google mobility dataset </li>
+<li>We&#39;ll make use of the <strong>Google mobility dataset</strong></li>
 </ul>
 
 <p><strong>DO:</strong></p>
@@ -1349,7 +1361,7 @@ final_dataset &lt;- bind_rows(edited_datasets)
 <ol>
 <li>Setup done/packages and other prerequisites loaded?</li>
 <li>Adhered to input - transformation - output?</li>
-<li>File callable from the command prompt? &ndash;&gt; we will need this for automation in subsequent tutorials</li>
+<li>File callable from the command prompt? &ndash;&gt; we will need this for automation in subsequent tutorials (<code>Rscript &lt;filename&gt;</code>)</li>
 </ol>
 
 </div>
@@ -1372,17 +1384,29 @@ final_dataset &lt;- bind_rows(edited_datasets)
 <div class="slideContent" >
 <ul>
 <li>Work through the tutorial and complete exercises (all solutions available)</li>
-<li>Join our coaching session, following today&#39;s tutorial session (check room!)</li>
-<li>Continue working on projects
+<li>Start working on team projects
 
 <ul>
-<li>get repository in shape!</li>
-<li>refine research question &amp; <strong>deployment</strong></li>
-<li>explore &amp; prepare datasets for analysis</li>
-<li>e.g., unit of analysis!</li>
-<li>adhere to GitHub workflows when collaborating</li>
+<li>pick a dataset: IMDB or InsideAirbnb</li>
+<li>come up with a &#39;research question&#39; (but note: this course is about <em>engineering a research pipeline</em>, not about rigorously answering the RQ!)</li>
+</ul></li>
+<li>Join our coaching session, following today&#39;s tutorial session (check room!)
+
+<ul>
+<li></li>
 </ul></li>
 </ul>
+
+<!--
+- Continue working on projects
+  - get repository in shape!
+  - refine research question & __deployment__
+  - explore & prepare datasets for analysis
+    - e.g., unit of analysis!
+  - adhere to GitHub workflows when collaborating
+-->
+
+<p>&lt;!&ndash;</p>
 
 </div>
 
@@ -1417,13 +1441,13 @@ final_dataset &lt;- bind_rows(edited_datasets)
 <section data-transition="linear" data-transition-speed="default">
 <h3>Coaching session - To do</h3>
 <div class="slideContent" >
-<ul>
-<li>From past weeks
+<!--
+- From past weeks
+  - Any open issues about Git and GitHub?
+  - RQ and mode of deployment clear?
+  -->
 
 <ul>
-<li>Any open issues about Git and GitHub?</li>
-<li>RQ and mode of deployment clear?</li>
-</ul></li>
 <li>Today&#39;s focus: See <a href="https://dprep.hannesdatta.com/docs/project/grading/#2-data-preparation--analysis">grading details</a>, section 2.1 (&ldquo;Data exploration&rdquo;)
 
 <ul>

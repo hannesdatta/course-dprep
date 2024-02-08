@@ -14,11 +14,16 @@ autosize: true
 Before we get started
 =====================
 
+- Group work will get started - ensure your teams are properly registered
+- Any pending installation issues? Let me know!
+
+<!--
 - Looking back...
   - coaching session: goal to get setup on GitHub
   - tutorial: way of working -- individual/team; issue-based
   - technical issues with Git? see, e.g., [password/authentication](https://dprep.hannesdatta.com/docs/course/support)
 - Reality check: doubting whether to stay enrolled? Tell your team about how you feel!
+--> 
 
 Structure of this tutorial
 ========================================================
@@ -28,7 +33,7 @@ Structure of this tutorial
 - In-class part of **this week's tutorial**: we will use RMarkdown to start exploring new data
 
 - After class
-  - Review today's [tutorial](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/intro-to-r.html). 
+  - Review today's [tutorial](https://dprep.hannesdatta.com/docs/modules/week2/tutorial/intro-to-r.html). 
   - Work through self-study material
       - [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r)
       - Data carpentry's [Getting started with R Markdown](https://datacarpentry.org/r-socialsci/06-rmarkdown.html)
@@ -235,7 +240,12 @@ __Do__
 Why again `lapply`?
 =========
 
-__What's the key difference between the "apply" family, and for loops?__
+__What's the key difference between the "apply family" and "for loops"?__
+
+Solution
+======
+
+- `lapply` "returns" stuff; loops just execute stuff without returning anything
 
 Steps in data preparation
 ================
@@ -303,7 +313,7 @@ Some more programming concepts that help us transform data
 class: small-code
 
 - Regular expressions are extremely powerful to work with text data -- e.g., neighborhoods, city names, etc.
-  - `grepl` can help you filter for information
+  - `grepl` can filter for information, without typing the "exact" search query
   - `gsub` helps you to replace information
   
 ```{r}
@@ -329,7 +339,7 @@ Summary of concepts covered so far
 Now we can get started with exploring data
 =====
 
-- We'll make use of the Google mobility dataset 
+- We'll make use of the __Google mobility dataset__
 
 __DO:__
 
@@ -389,7 +399,7 @@ Wrapping everything up in a "clean" script
 
 1. Setup done/packages and other prerequisites loaded?
 2. Adhered to input - transformation - output?
-3. File callable from the command prompt? --> we will need this for automation in subsequent tutorials
+3. File callable from the command prompt? --> we will need this for automation in subsequent tutorials (`Rscript <filename>`)
 
 Let's zoom out again
 ==============
@@ -400,19 +410,26 @@ Remember the workflow from the start of today's session?
 
 We've just covered step 1. Concepts and programming knowledge extends to subsequent parts.
 
-
 Next steps
 ===============
 
 - Work through the tutorial and complete exercises (all solutions available)
+- Start working on team projects
+  - pick a dataset: IMDB or InsideAirbnb
+  - come up with a 'research question' (but note: this course is about *engineering a research pipeline*, not about rigorously answering the RQ!)
 - Join our coaching session, following today's tutorial session (check room!)
+  - 
+
+<!--
 - Continue working on projects
   - get repository in shape!
   - refine research question & __deployment__
   - explore & prepare datasets for analysis
     - e.g., unit of analysis!
   - adhere to GitHub workflows when collaborating
+-->
 
+<!--
 Coaching session
 ==================
 
@@ -432,12 +449,16 @@ incremental: true
 
 <!--  - Ensure teams have their repositories in __GitHub classrooms__ (link on [course site](https://dprep.hannesdatta.com/docs/project))-->
 
+
 Coaching session - To do
 =================
 
+<!--
 - From past weeks
   - Any open issues about Git and GitHub?
   - RQ and mode of deployment clear?
+  -->
+  
 - Today's focus: See [grading details](https://dprep.hannesdatta.com/docs/project/grading/#2-data-preparation--analysis), section 2.1 ("Data exploration")
   - Download raw data programmatically
   - Create RMarkdown reports for raw data/input files...
