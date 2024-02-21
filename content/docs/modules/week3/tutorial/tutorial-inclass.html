@@ -796,18 +796,17 @@ hljs.initHighlightingOnLoad();
 <h3>Structure of today&#x27;s sessions</h3>
 <div class="slideContent" >
 <ul>
-<li>Tutorial (recorded)
+<li>In-class part of GitHub tutorial
 
 <ul>
-<li>Organizational stuff (e.g., teams complete on Canvas?)</li>
-<li>In-class part of this tutorial (selected issues)</li>
+<li>matters because you will manage your project on GitHub</li>
 </ul></li>
-<li>Coaching session (we will change rooms)
+<li>Coaching session 
 
 <ul>
-<li>Setup repository, ensure repository syncs to your computers</li>
-<li>Create branches, change files and make pull requests</li>
-<li>Converge on RQ</li>
+<li>Setup repository, sync to your computers</li>
+<li>Know the Git workflow: branches, commits, pull requests (PRs)</li>
+<li>Converge on RQ for project</li>
 </ul></li>
 <li>After class
 
@@ -821,14 +820,25 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
+<h3>Feel you want to be challenged more?</h3>
+<div class="slideContent" >
+<ul>
+<li>Flip through my deck</li>
+<li>find the klaaropdracht (&ldquo;assignment for when you&#39;re already ready with processing all of my material&rdquo;) at the end (today: designing your GitHub profile page)</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
 <h3>Introduction to GitHub</h3>
 <div class="slideContent" >
 <ul>
 <li class="fragment">What is Git? (&ndash;&gt; file versioning in &ldquo;repositories&rdquo;/folders, open source)</li>
 <li class="fragment">What is GitHub? (Git + platform for collaboration, automated testing &amp; deployment; commercial but &ldquo;free&rdquo; when open source, owned by Microsoft)</li>
-<li class="fragment">Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible)</li>
+<li class="fragment">Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible, too)</li>
 <li class="fragment">GitHub (or its alternatives) are used to <strong>professionally manage</strong> research and software development projects</li>
-<li class="fragment">Most recently, GitHub data was used to train GitHub Copilot, Microsoft&#39;s coding AI</li>
+<li class="fragment">Most recently, public GitHub repositories were used to train GitHub Copilot, Microsoft&#39;s coding AI</li>
 </ul>
 
 </div>
@@ -890,7 +900,7 @@ hljs.initHighlightingOnLoad();
 <li><strong>Today</strong>, we use &ldquo;GitHub classroom&rdquo; (so I can see what you&#39;re up to)
 
 <ul>
-<li>Open this link, please: <a href="https://classroom.github.com/a/XPYAqnPa">https://classroom.github.com/a/XPYAqnPa</a></li>
+<li>Open this link, please: <a href="https://classroom.github.com/a/-fdGcfuD">https://classroom.github.com/a/-fdGcfuD</a></li>
 <li>Change title of <code>readme.md</code> to &ldquo;First repository with exercises in dPrep&rdquo; &amp; <strong>commit</strong> your changes on GitHub.com</li>
 </ul></li>
 </ul>
@@ -903,7 +913,7 @@ hljs.initHighlightingOnLoad();
 <div class="slideContent" >
 <ul>
 <li>In essence, we use Git/GitHub for adding/changing code</li>
-<li>Whenever we save code in Git&#39;s version history, we call this a &ldquo;commit&rdquo;</li>
+<li>Whenever we save code in <strong>Git&#39;s version history</strong>, we call this a &ldquo;commit&rdquo;</li>
 <li>Everybody who has access to this Git repository will be able to roll back to this version
 <br><br></li>
 <li><strong>Question: Why make a difference between <em>saving</em> and <em>committing</em>?</strong></li>
@@ -1135,9 +1145,9 @@ hljs.initHighlightingOnLoad();
 <li>Open Git Bash, and type </li>
 </ol>
 
-<p><code>git clone https://github.com/YOUR-NAME/in-class-tutorial-hannesdatta</code> </p>
+<p><code>git clone https://github.com/course-dprep/in-class-tutorial-hannesdatta</code> </p>
 
-<p>(<strong>use your username, please!</strong>)</p>
+<p>(<strong>use your username, not hannesdatta, please!</strong>)</p>
 
 <ol>
 <li>Check whether you see your repository on your computer</li>
@@ -1235,7 +1245,7 @@ hljs.initHighlightingOnLoad();
 <h3>There are many other features worthwhile to explore</h3>
 <div class="slideContent" >
 <ul>
-<li>Working on open source projects vs. being a collaborator</li>
+<li>Working on open source projects (forking &amp; PRs) vs. being a collaborator (direct pushes)</li>
 <li>Exploring version history</li>
 <li>Comparing changes between files</li>
 <li>Using alternative Graphical User Interfaces
@@ -1273,12 +1283,11 @@ hljs.initHighlightingOnLoad();
 <li>Start working on your project
 
 <ul>
-<li>set up a repository</li>
-<li>recommend to work in one repository (vs. forks)</li>
-<li>clone the relevant repositories</li>
-<li>organizing repos according to today&#39;s principles (project board, issues, etc.)</li>
+<li>set up a repository in our <code>dprep</code> organization (link later)</li>
+<li>I will initialize these repositories with a few issues to get started</li>
+<li>Work on these issues (e.g., cloning to computer, organizing code, setting up project board, writing new issues)</li>
 </ul></li>
-<li>Invest in your GitHub profile (design an about page)</li>
+<li>Idea: Invest in your GitHub profile (design an about page)</li>
 </ul>
 
 </div>
@@ -1290,25 +1299,36 @@ hljs.initHighlightingOnLoad();
 <p><strong>Steps</strong></p>
 
 <ul>
-<li>1) Setup your <a href="https://classroom.github.com/a/jM2XJHij">project&#39;s GitHub repository</a>
+<li>1) Setup your <a href="https://classroom.github.com/a/acpAUbLr">project&#39;s GitHub repository</a>
 
 <ul>
 <li>One person sets it up (and remembers the team name)</li>
 <li>Other team members can use the same link to join the team</li>
 </ul></li>
-<li>2) Ensure you can all clone the project (<code>git clone URL-OF-REPOSITORY</code>)</li>
-<li>3) Decide which data set to use</li>
-<li>4) Fix preliminary research question and add to <code>readme.md</code></li>
-<li>5) Write your first issues: what do you want to work on next (assign team members to it; arrange on project board)</li>
-<li>6) Work on Git technicalities
-
-<ul>
-<li>Create new branch, do git workflow and push changes</li>
-<li>Merge pull requests</li>
-</ul></li>
+<li>2) Head over to the repository&#39;s <strong>issue</strong> page</li>
+<li>3) Start working on your first issues (start with issue #1, etc.)</li>
 </ul>
 
-<p><strong>You can leave when you feel &#39;ready&#39;.</strong></p>
+<p><strong>Be in touch when you get stuck (you will!) ;)</strong></p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Today&#x27;s &quot;klaaropdracht&quot;</h3>
+<div class="slideContent" >
+<ul>
+<li>Create an amazing GitHub About page for your profile (important for job market!) </li>
+</ul>
+
+<p><strong>How to Start:</strong></p>
+
+<ul>
+<li>Dive into <a href="https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">GitHub&#39;s customization guide</a> for step-by-step instructions.</li>
+<li>Pin repositories that highlight your skills and what you&#39;re passionate about.</li>
+<li>Add a touch of personality: share your tech stack, what drives you, and where you aim to go.</li>
+<li>A few examples: <a href="https://github.com/FranciscaOrtizRuiz">https://github.com/FranciscaOrtizRuiz</a>, <a href="https://github.com/rodrigo-arenas">https://github.com/rodrigo-arenas</a>, <a href="https://github.com/archd3sai">https://github.com/archd3sai</a>, <a href="https://github.com/natnew">https://github.com/natnew</a> - ideas on how to make your page stand out</li>
+</ul>
 
 </div>
 

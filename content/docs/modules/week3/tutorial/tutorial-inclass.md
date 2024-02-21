@@ -8,16 +8,21 @@ autosize: true
 Structure of today's sessions
 ========================================================
 
-- Tutorial (recorded)
-  - Organizational stuff (e.g., teams complete on Canvas?)
-  - In-class part of this tutorial (selected issues)
-- Coaching session (we will change rooms)
-  - Setup repository, ensure repository syncs to your computers
-  - Create branches, change files and make pull requests
-  - Converge on RQ
+- In-class part of GitHub tutorial
+  - matters because you will manage your project on GitHub
+- Coaching session 
+  - Setup repository, sync to your computers
+  - Know the Git workflow: branches, commits, pull requests (PRs)
+  - Converge on RQ for project
 - After class
-  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/modules/week2/tutorial/version-control.html). 
+  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control.html). 
   - Review shell/command line/terminal commands
+
+Feel you want to be challenged more?
+====
+
+- Flip through my deck
+- find the klaaropdracht ("assignment for when you're already ready with processing all of my material") at the end (today: designing your GitHub profile page)
 
 Introduction to GitHub
 ========================================================
@@ -25,9 +30,9 @@ incremental: true
 
 - What is Git? (--> file versioning in "repositories"/folders, open source)
 - What is GitHub? (Git + platform for collaboration, automated testing & deployment; commercial but "free" when open source, owned by Microsoft)
-- Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible)
+- Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible, too)
 - GitHub (or its alternatives) are used to **professionally manage** research and software development projects
-- Most recently, GitHub data was used to train GitHub Copilot, Microsoft's coding AI
+- Most recently, public GitHub repositories were used to train GitHub Copilot, Microsoft's coding AI
 
 DO: Explore projects on GitHub.com
 ================================
@@ -65,14 +70,14 @@ DO: Creating a repository on GitHub.com
 - Normally, we start a new repository on GitHub.com, or start from an existing folder on our computer
 <br><br>
 - __Today__, we use "GitHub classroom" (so I can see what you're up to)
-  - Open this link, please: https://classroom.github.com/a/XPYAqnPa
+  - Open this link, please: https://classroom.github.com/a/-fdGcfuD
   - Change title of `readme.md` to "First repository with exercises in dPrep" & __commit__ your changes on GitHub.com
   
 Recap
 ===========
 
 - In essence, we use Git/GitHub for adding/changing code
-- Whenever we save code in Git's version history, we call this a "commit"
+- Whenever we save code in __Git's version history__, we call this a "commit"
 - Everybody who has access to this Git repository will be able to roll back to this version
 <br><br>
 - __Question: Why make a difference between *saving* and *committing*?__
@@ -218,9 +223,9 @@ DO: Clone repository and verify you see the repository
 1. Copy the URL to *your* class room repository
 2. Open Git Bash, and type 
 
-`git clone https://github.com/YOUR-NAME/in-class-tutorial-hannesdatta` 
+`git clone https://github.com/course-dprep/in-class-tutorial-hannesdatta` 
 
-(__use your username, please!__)
+(__use your username, not hannesdatta, please!__)
 
 3. Check whether you see your repository on your computer
 
@@ -284,7 +289,7 @@ It's good practice to assign *reviewers* to new pull requests.
 There are many other features worthwhile to explore
 ===============
 
-- Working on open source projects vs. being a collaborator
+- Working on open source projects (forking & PRs) vs. being a collaborator (direct pushes)
 - Exploring version history
 - Comparing changes between files
 - Using alternative Graphical User Interfaces
@@ -307,27 +312,31 @@ Next steps
 - Start with the recap exercises on the dprep site (self-guided tutorial)
 - Use the cheat sheets throughout
 - Start working on your project
-  - set up a repository
-  - recommend to work in one repository (vs. forks)
-  - clone the relevant repositories
-  - organizing repos according to today's principles (project board, issues, etc.)
-- Invest in your GitHub profile (design an about page)
+  - set up a repository in our `dprep` organization (link later)
+  - I will initialize these repositories with a few issues to get started
+  - Work on these issues (e.g., cloning to computer, organizing code, setting up project board, writing new issues)
+- Idea: Invest in your GitHub profile (design an about page)
 
 Goal of today's coaching session
 ==============
 
 __Steps__
 
-- 1) Setup your [project's GitHub repository](https://classroom.github.com/a/jM2XJHij)
+- 1) Setup your [project's GitHub repository](https://classroom.github.com/a/acpAUbLr)
   - One person sets it up (and remembers the team name)
   - Other team members can use the same link to join the team
-- 2) Ensure you can all clone the project (`git clone URL-OF-REPOSITORY`)
-- 3) Decide which data set to use
-- 4) Fix preliminary research question and add to `readme.md`
-- 5) Write your first issues: what do you want to work on next (assign team members to it; arrange on project board)
-- 6) Work on Git technicalities
-  - Create new branch, do git workflow and push changes
-  - Merge pull requests
+- 2) Head over to the repository's __issue__ page
+- 3) Start working on your first issues (start with issue #1, etc.)
 
+__Be in touch when you get stuck (you will!) ;)__
 
-__You can leave when you feel 'ready'.__
+Today's "klaaropdracht"
+=========
+
+- Create an amazing GitHub About page for your profile (important for job market!) 
+
+**How to Start:**
+- Dive into [GitHub's customization guide](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile) for step-by-step instructions.
+- Pin repositories that highlight your skills and what you're passionate about.
+- Add a touch of personality: share your tech stack, what drives you, and where you aim to go.
+- A few examples: https://github.com/FranciscaOrtizRuiz, https://github.com/rodrigo-arenas, https://github.com/archd3sai, https://github.com/natnew - ideas on how to make your page stand out
