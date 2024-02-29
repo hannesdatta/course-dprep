@@ -13,10 +13,14 @@ autosize: true
 Before we get started
 =====================
 
-- Exam
-  - dates will be discussed this week w/ scheduling
-
-
+- Check exam dates on the course page
+  - Thursday, 4 April (main sit)
+  - Friday, 28 June (resit)
+- GitHub way of working
+  - I commented on/added issues to your team repositories!
+- Structure
+  - Back to R, __but__: maintain way of working using Git/GitHub
+  
 <!--
 - Bonus points
   - check our GitHub repository for opportunities
@@ -35,7 +39,7 @@ Structure of this tutorial
 __Get your cheat sheets ready!!!__
 
 - After class
-  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html). 
+  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/modules/week4/tutorial/data-preparation). 
 
 Why this tutorial
 ==================
@@ -48,7 +52,7 @@ incremental: true
   - Input (e.g., `read_csv()`) - always __relative__ filenames!
   - Transformation (i.e., operations on your data)
   - Output (e.g., `write_csv()` -- also w/ __relative__ filenames)
-- Zoom in on ways to transform (while respecting I-T-O building blocks + its header)
+- Zoom in on ways to transform (while respecting setup-I-T-O building blocks)
 
 
 Does and do not's
@@ -58,9 +62,9 @@ __A few observations from your team projects.__
 
 - absolutely important to work in local repositories, with issue-based branches, and pull requests.
 - Code files need to be structured as setup-ITO -- required for automation!
-- Choose appropriate file format: Rmarkdowns for reports/PDFs/HTML, `.R` for regular scripts
+- Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, `.R` for regular scripts
 - Adhere to tidyverse functions (e.g., `read_csv()`, not `read.csv()`)
-- Incorporate programming concepts: looping, using functions
+- Incorporate programming concepts: __looping__, using __functions__
 
 DO: Let's get today's data and start exploring
 ======
@@ -361,7 +365,7 @@ Coaching session (I)
 - Watch out for stuff from previous weeks
   - `.Rmd` exploration done?
   - adhering to GitHub workflows when collaborating?
-  - getting project board into shape & learn new way of working
+  - getting project board into shape & become proficient in "the new way of working"
   - adhering to setup-ITO structure
 
 Coaching session (II)
