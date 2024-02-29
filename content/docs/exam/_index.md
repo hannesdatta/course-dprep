@@ -95,10 +95,14 @@ Please [view the list of example questions here](examplequestions).
 
 ### Technical tips & beyond
 
-- Verify your software setup (you should be able to produce RMarkdown documents as PDF documents, run `make`, and even run existing Python code on your computer).
+- Verify that you are familiar with the on-campus computers so that you know how to use them (e.g., Windows, how to open RStudio, how to navigate on the command prompt, etc.)
 - Know how to zip and unzip files
 - Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)
 - Revise your code before submission, so that you ensure it runs from top to bottom without problems.
+
+<!--
+- Verify your software setup (you should be able to produce RMarkdown documents as PDF documents, run `make`, and even run existing Python code on your computer).
+-->
 
 <!--
 
