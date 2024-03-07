@@ -19,18 +19,19 @@ Before we get started
   - check example questions on the course website
 - Today's material...
   - slide deck available on the [site](https://dprep.hannesdatta.com/docs/modules/week5/tutorial/make-tutorial/)!
-  - [download the `make` cheatsheet](https://tilburgsciencehub.com/building-blocks/automate-and-execute-your-work/automate-your-workflow/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
+  - [download the `make` cheatsheet](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/images/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
 
 Feedback on team projects (I)
 ========
 incremental: true
 
 - working together in teams
-  - working with Git locally (vs. in the cloud) - see video on Canvas
+  - working with Git locally (vs. in the cloud) 
+  - being able to push & pull; work in branches
   - scrum/project board & issues vs. individual work
 - data on GitHub
   - **do not** store any raw data on GitHub but download programmatically
-  - naming conventions (*not* `dataset1`, etc.) - clean up the template!
+  - start having a proper directory structure
 
 Feedback on team projects (II)
 ========
@@ -195,7 +196,7 @@ Getting the directories right
 =====
 
 - We now should have a fully automated pipeline. 
-- But... we have not cleanly separated `src` files from generated output files.
+- But... we have not cleanly separated `src` files from generated output files. See also [here](https://tilburgsciencehub.com/structure/project-setup/?utm_campaign=referral-short) for full description on how to name directories.
 
 - __Do:__
   - Create a `src` code directory and move source code files there
@@ -225,9 +226,9 @@ Reflection
 
 - You've covered it all - congrats!
 - Now it's time to let it sink in. __And practice.__
-  - GitHub for code and project management (not data). Work locally.
+  - GitHub for code and project management (not data!). Work locally.
   - Work according to scrum method in feature branches.
-  - Explore, prepare and analyze data using R. Focus on workflow, proper setup + ITO building blocks, demonstration of your skills
+  - Explore, prepare and analyze data using R. Focus on workflow, proper setup + ITO building blocks
   - Automate entire pipeline - ensure it runs on other computers
   - Do all steps at the same time. Not separately!
 - This is a __state-of-the-art toolkit__ that will put you ahead of the curve in productivity. In your Master program, and beyond.
@@ -237,15 +238,14 @@ Next steps
 
 - Three more coaching sessions
   - one today (on campus)
-  - two more (week 6 and beginning of week 7 - online; attendance optional)
+  - two more (week 6 and end of week 7 - online; attendance optional)
   - will create breakout rooms
 - Exam preparation
-  - in final lecture
-  - watch the site and Canvas for updates on the exact exam date
+  - in final lecture (beginning of week 7)
 - Any questions?
 
 Coaching session
 ======
 
 - Let's get started to identify 'broad' issues - can try addressing these issues specifically
-- Work on grading criteria 3.1 (source code quality), and 3.2 (automation using `make)
+- Work on grading criteria 3.1 (source code quality), and 3.2 (automation using `make`)
