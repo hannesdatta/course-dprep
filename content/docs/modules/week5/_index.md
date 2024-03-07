@@ -29,7 +29,7 @@ draft: false
     - The content of the slides shown in the videos is [available here](pipelineautomation.pdf).
 - Read the building block ["What are makefiles"](https://tilburgsciencehub.com/learn/makefiles)
 - Optional readings
-  - Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/tutorials/project-management/principles-of-project-setup-and-workflow-management/automation/)
+  - Notes on [Automating Your Pipeline](https://tilburgsciencehub.com/topics/automation/workflows/starting/principles-of-project-setup-and-workflow-management/automation/)
   - Revisit the [slidedeck](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
 
 
