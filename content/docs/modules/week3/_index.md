@@ -39,7 +39,7 @@ __Tips & tricks__
 - Curious how to use Git with a graphical user interface?
   - Use Git directly from within R - [find out how!](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/)
   - Another fantastic Git client is [Sourcetreeapp](https://www.sourcetreeapp.com), which works on Windows, Mac and Linux!
-- [Git & Github cheatsheet](https://github.com/tilburgsciencehub/website/raw/master/content/building-blocks/collaborate-and-share-your-work/use-github/github_cheatsheet_tsh.pdf)
+- [Git & Github cheatsheet](https://github.com/hannesdatta/course-dprep/blob/master/content/docs/modules/week3/tutorial/git_cheatsheet.pdf)
 - Optional activity: [Contributing to an open source web site](activity)
 
 {{< /hint >}}
