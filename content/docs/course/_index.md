@@ -21,14 +21,14 @@ Join Hannes' professional network on [LinkedIn](https://www.linkedin.com/in/hann
 
 ### Learning goals
 
-The increasing complexity of data (e.g., scraped from the Internet)[^1] and analytics (e.g., requiring high-performance computing) need a novel way of working to efficiently manage empirical marketing research projects. Therefore, in this course, you (1) develop your coding skills in R ("code"), (2) collaborate on research projects using GitHub ("collaborate"), (3) automate your research pipeline end-to-end ("automate"). The three principles ("code-collaborate-automate") are applied along the typical research workflow (i.e., data exploration, preparation, analysis, and reporting). They specifically zoom in on engineering data sets from complex raw data and disseminate research findings in a novel way (e.g., using apps).
+The increasing complexity of data (e.g., scraped from the Internet)[^1] and analytics (e.g., requiring high-performance computing) need a novel way of working to efficiently manage empirical marketing research projects. Therefore, in this course, you (1) develop your coding skills in R/RStudio (“code”), (2) collaborate on research projects using Git/GitHub (“collaborate”), and (3) automate your research pipeline end-to-end (“automate”). The three principles (“code-collaborate-automate”) are applied along the typical research workflow (i.e., data exploration, preparation, analysis, and reporting). The course specifically zooms in on engineering data sets from complex raw data and disseminate research findings in a novel way (e.g., using Markdown documents or apps).
 
 [^1]: For example, see the data sections in these papers: [Building a user panel of music consumption from Spotify](http://tiu.nu/spotify), [Preparing a panel data set on electronics sales and marketing mix activities across thousands of brands](https://journals.sagepub.com/doi/10.1177/00222437211058102).
 
 After successful completion of this course, you will be able to:
 
-- Use GitHub for managing empirical research projects (e.g., GitHub Issues and Project Boards)
-- Use Git/GitHub for versioning files and collaborating on privately-shared and publicly-available (open science) GitHub repositories
+- Use GitHub (or similar tools) for managing empirical research projects (e.g., Issues and Project Boards)
+- Use Git/GitHub (or similar tools) for versioning files and collaborating on privately-shared and publicly-available (open science) code repositories
 - Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)
 - Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)
 - Use Workflow Management Tools to create and run portable, automated, and reproducible data pipelines
@@ -51,7 +51,7 @@ Students are recommended to follow this course before embarking on thesis projec
 
 - The course is instructed to MSc students in the Marketing Analytics (TiSEM) program.
 - [Preparation material](../modules/prep) is available, and students need to have acquired working knowledge in R before the start of the course. Novices may further benefit from following other courses at Tilburg University in which R is used.
-- Students can use their own computer for this course (Windows, Mac, or Linux). Android/Chromebook/iOS devices are not supported. Moreover, we highly recommend a computer with at least 8 GBs of RAM as we'll work with large data sets that require significant preprocessing capacity.
+- Students can use their own computer for the duration of this course (Windows, Mac, or Linux). Android/Chromebook/iOS devices are not supported. We recommend laptop with 16 GB+ of RAM as we work with larger data sets requiring preprocessing capacity. The exam is held on campus, using Windows computers. Mac and Linux users are advised to practice on the on-campus computers before the exam.
 
 ## Teaching format
 
@@ -69,8 +69,8 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ## Assessment
 
-- [Team project](/docs/project) (50%, out of which 10% are based on students' individual contribution, measured by [self- and peer assessment](/docs/project/grading))
-- [Computer exam](/docs/exam) (50%)
+- [Team project](/docs/project) (40%, out of which 10% are based on students' individual contribution, measured by [self- and peer assessment](/docs/project/grading))
+- [Computer exam](/docs/exam) (60%)
 
 
 <!--
