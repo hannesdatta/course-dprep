@@ -12,14 +12,13 @@ Questions will be asked along the course's learning goals, and complexity levels
 
 Below, you can find a few example questions, which will be discussed with students in the final live stream of this course.
 
-
-
 {{< hint warning >}}
 
 This exam consists of __open and closed (multiple-choice) questions__. You can freely go back and forth between these questions.
 
 {{< /hint >}}
 ![](../dprep_part1.png)
+![](../dprep_part2.png)
 
 *Note: the number of questions depends on the points awarded to each question. The instructions during the final exam may slightly vary, so make sure to still read it accordingly.*
 
