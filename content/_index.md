@@ -9,12 +9,7 @@ type: docs
 _Instructor: [dr. Hannes Datta](https://hannesdatta.com)_ <a href="https://www.linkedin.com/in/hannes-datta/" target="_blank" style="text-decoration: none; display: inline-block; padding: 5px 10px; border-radius: 5px;"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" alt="LinkedIn Logo" style="width: 20px; vertical-align: middle;">LinkedIn</a>
 <a class="github-button" href="https://github.com/hannesdatta" aria-label="Follow @hannesdatta on GitHub">GitHub</a> <a href="https://twitter.com/hannesdatta?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">X</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-
-
-
-_Course codes: 328059-M3 (fall, block 1) and 328062-M3 (spring, block 3)_
-
-_This edition: {{< param "Course_Edition_Current" >}} | Next edition: {{< param "Course_Edition_Next" >}}_
+_This edition: {{< param "Course_Edition_Current" >}} (328059-M3) | Next edition: {{< param "Course_Edition_Next" >}}_
 
 -------
 

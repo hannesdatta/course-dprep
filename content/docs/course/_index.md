@@ -56,22 +56,14 @@ Students are recommended to follow this course before embarking on thesis projec
 ## Teaching format
 
 - Blended (a mix of online/offline lectures and tutorials, and online/offline coaching sessions)
-- Combination of self-paced tutorials (e.g., using R Notebooks or pre-recorded clips), and interactive live streams for feedback and coaching <!--(recordings are shared with students)-->
+- Combination of self-paced tutorials (e.g., using R Notebooks or pre-recorded clips), and interactive live streams for feedback and coaching 
 - Learn state-of-the-art tools popular among scientists, marketing analysts, and data scientists (e.g., R, GitHub, `make`)
 - Open education & open science (all material is open; publicly accessible course page that stays with you, even after the end of the course)
 
-<!--- Prepare for life-long learning (Open education (publicly accessible course page, copy-pasting code snippets and examples, starting projects with workflow templates)
-- Life-long learning (course material will stay with you indefinitely
--->
-<!--- Interactive, immersive and student-centred: live coding, working with real data sets <!--debates, -->
-<!--, simulations, hackathon-->
-<!-- work on VMs on AWS, code in SQL and R, compete on Kaggle, or work on own computer--; Coding Dojo student-=led analysis; while sharing screens-->
-
 ## Assessment
 
-- [Team project](/docs/project) (40%, out of which 10% are based on students' individual contribution, measured by [self- and peer assessment](/docs/project/grading))
+- [Team project](/docs/project) (40%, out of which 8% are based on students' individual contribution, measured by [self- and peer assessment](/docs/project/grading))
 - [Computer exam](/docs/exam) (60%)
-
 
 <!--
 [^2]: Students use a web app to monitor their progress on the course's learning goals by "ticking off" items from a to-do list (e.g., "I have installed Python," "I have finished Tutorial X," etc.). The instructor can use the app to learn which topics to highlight during live streams. Students, in turn, can use the app to see how far others in the class have already proceeded, giving them direct feedback on their performance.
@@ -96,8 +88,9 @@ Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, et
   - Required action: Re-enroll in this course's next edition, and ensure you are part of a team.
 - If students have an exam grade higher or equal to 5.0 but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.
   - Required action: Correct team project based on the course coordinator's grading report, and hand it in again within two weeks after publication of the final grades in this course (submission on Canvas). Only students who fail the team project can have their projects re-graded.
-- Students who have passed the course, but wish to retake the exam, can take the exam resit. The highest exam grade counts. Grades for the team project are retained. In other words, the resit exam still counts for 50% of the final course grade.
-- Students who fail the exam and wish to re-take the course in the subsequent semester can *retain* their assignment grades upon approval of the course coordinator (grades remain valid for the *next* edition of the course).
+- Students who have passed the course, but wish to retake the exam, can take the exam resit. The last exam grade counts. Grades for the team project are retained. In other words, the resit exam still counts for 60% of the final course grade.
+- Students who fail the exam and wish to re-take the course in the subsequent semester can *retain* their assignment grades. 
+<!-- upon approval of the course coordinator (grades remain valid for the *next* edition of the course).-->
 
 ### Bonus points
 
