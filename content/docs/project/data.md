@@ -2,7 +2,7 @@
 weight: 10
 title: "Data"
 bookCollapseSection: true
-description: "Kickstart your team project with this data set"
+description: "Kickstart your team project with these data sets."
 draft: false
 ---
 
@@ -10,9 +10,57 @@ draft: false
 
 # Data
 
-You have the choice between two datasets: IMDb (or AirBnB.
+Please pick one of these data sets as your primary source data for the team project.
 
-## Dataset 1: IMDb
+## Dataset 1: Yelp Reviews
+
+### About
+
+[Yelp](https://www.yelp.com) is a widely-used platform for discovering local businesses, including restaurants, shops, services, and more. It hosts a vast collection of user-generated reviews, photos, and detailed business information. The Yelp dataset is a curated subset of this data, designed to support academic research and educational purposes. 
+
+The Yelp dataset can be used to answer various research questions and practical applications, such as:
+
+- What factors influence the ratings and reviews that businesses receive?
+- How do user demographics and behaviors affect their reviewing patterns?
+- Can we predict business success based on review sentiment?
+- What are the key characteristics of businesses in different metropolitan areas?
+- How do visual elements in user-uploaded photos relate to review sentiment or business ratings?
+- What are the trends in customer feedback across different industries and regions?
+- How can mobile apps leverage user-generated content to enhance local business discovery?
+
+### Download the data
+
+Multiple datasets are available for download.
+
+- Visit the [Yelp Dataset documentation page](https://www.yelp.com/dataset/documentation/main) to download the data in JSON format.
+- To convert them to CSV files, follow the instructions found on [Yelp's GitHub repository](https://github.com/Yelp/dataset-examples).
+
+<!--
+
+## Dataset 1: Twitch Live Streaming
+
+### About
+
+[Twitch](https://www.twitch.tv) is a leading platform for live streaming, primarily focused on gaming, but also including streams of music, creative content, and "in real life" (IRL) broadcasts. This dataset captures user engagement within Twitch's streaming ecosystem over a 43-day period. By collecting data on all active streamers and the users participating in their chat rooms every 10 minutes, it provides a rich source for understanding community interactions, content consumption patterns, and the overall structure of live streaming networks.
+
+The Twitch dataset can be used to explore various research questions, such as:
+
+- How does viewer engagement fluctuate throughout the day or week across different streamers and genres?
+- What is the relationship between streamer popularity and chat activity?
+- Can we identify patterns of user migration between streamers over time?
+- How do external events or trends influence live streaming activity on Twitch?
+- Are there distinct user behaviors or engagement patterns associated with different types of content (e.g., gaming vs. non-gaming streams)?
+- What are the characteristics of highly engaged communities within the Twitch ecosystem?
+
+### Download the data
+
+To access this dataset and start your analysis:
+
+- Visit [the Twitch dataset page](https://cseweb.ucsd.edu/~jmcauley/datasets.html#twitch) to download the data. Start with the smaller data set!
+
+-->
+
+## Dataset 2: IMDb
 
 ### About
 
@@ -45,6 +93,7 @@ You can [view](XXX) the report over here and dowload the project directory (incl
  -->
 
 
+<!--
 ## Dataset 2: AirBnB
 
 ### About
@@ -72,3 +121,4 @@ __Pick the city that you find interesting!__
 
 Inside AirBnB offers datasets for various cities around the world. Feel free to explore the city/cities that spark your interest!
 {{< /hint >}}
+-->
