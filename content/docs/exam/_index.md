@@ -14,13 +14,13 @@ The course content will be tested in the form of a computer exam, taken on campu
 
 ### Main sit
 
-- On campus, 3 hours: {{< param "Course_Exam_MainsitTheory" >}}
+- On campus, 3 hours: {{< param "Course_Exam_Mainsit" >}}
 - Exam registration: via Osiris
 <!--- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)-->
 
 ### Resit
 
-- On campus, 3 hours: {{< param "Course_Exam_ResitTheory" >}}
+- On campus, 3 hours: {{< param "Course_Exam_Resit" >}}
 - Exam registration: via Osiris
 
 <!--- Time: __9.00am - 12pm (i.e., 11.59am + 1 minute)__ (Amsterdam time, you can start when you want, but *must* submit before the deadline)-->
