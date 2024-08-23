@@ -10,14 +10,63 @@ draft: false
 
 You’ll start working on your project -- an *end-to-end, fully automated research workflow* -- in the first course week. The activities below help you to structure your project. Stick to the plan to ensure you can finish the project in time.
 
-## Planning
+{{< hint info >}}
+**Deliverables** are submitted on Canvas and due by Friday, 7 pm, of the respective course week. The course team will provide short feedback in writing at least a day before the next coaching session.
+{{< /hint >}}
 
-| Week | Project Stage | Working on | Deliverable/Feedback on |
-|:---- | :---- | :---- | :---- |
-| 1 | No team work yet | Explore whom you would like to collaborate with (team formation).
-| 2 | Data Exploration | Pick data set and come up with suitable research question, start exploring data using RMarkdown. | Register teams on Canvas & Coaching #1 - [Grading details](grading.md#1-github-repository) &#8594; 1.1 (Research Motivation) and 2.1 (Data Exploration)
-| 3 | GitHub | Set up repository on GitHub using the `course-dprep` organization, initialize [GitHub Issues and Project Board](https://tilburgsciencehub.com/learn/scrum) (columns "backlog", and the current sprint's "to do's", "in progress", and "done"), commit initial `readme.md` with research question and initialize directories, continue exploring and auditing data, and committing files throughout using the command line/terminal| Coaching #2 - [Grading details](grading.md#1-github-repository) &#8594; 1.2 (Repository Structure), 1.3 (Way of working using GitHub) |
-| 4 | Data preparation | Preparing your dataset for analysis. | Coaching #3 - [Grading details](grading.md#2-data-preparation--analysis) &#8594; 2.2 (Data Preparation), 1.3 (Way of working using GitHub)
-| 5 | Automation  | Start automating your pipeline and refine source code. | Coaching #4 - [Grading details](grading.md#3-source-code-and-automation) &#8594; 3.1 and 3.2 (Source code quality and degree of automation)
-| 6 | Analysis and Deployment | Refine source code and analysis | Coaching #5/6 - [Grading details](grading.md#23-analysis-and-deployment-15) &#8594; 2.3 (Analysis and deployment)
-| 7 | Wrap-up | Conduct final housekeeping checks  | Optional feedback meetings
+## Week 1: Team Formation
+
+- Explore whom you would like to work with.
+- Register your team on Canvas.
+
+## Week 2: Data Exploration (Coaching #1)
+- **Coaching Support:**
+  - Discuss your research question and data set choice with your coach. Ensure the question is suitable and the data set is appropriate for the analysis.
+  - Begin exploring your data using RMarkdown to understand its structure and contents.
+  - Address any installation or data access issues.
+- **Deliverables:**
+  - RMarkdown document (both `.md` and rendered as `.pdf`), with your research motivation and initial data exploration (see [grading guidelines](https://dprep.hannesdatta.com/docs/project/grading), 1.1 (Research Motivation) and 2.1 (Data Exploration)).
+
+
+## Week 3: GitHub Setup and Data Preparation (Coaching #2)
+- **Progress on Project:**
+  - Set up your GitHub repository under the `course-dprep` organization. This should include initializing GitHub Issues, setting up a Project Board with columns for "backlog," "to do," "in progress," and "done," and committing your initial `readme.md` file with the research question.
+  - Continue data preparation by cleaning and transforming the dataset. Ensure that you document your process in RMarkdown.
+- **Coaching Support:**
+  - Review the setup of your GitHub repository with your coach. Ensure the repository structure aligns with your project needs and that you are effectively using GitHub for collaboration.
+  - Discuss your progress on data preparation. Ensure that the data is properly cleaned and ready for analysis.
+- **Deliverables:**
+  - Link to your GitHub team repository with (a) updated RMarkdown document reflecting the progress in data preparation, (b) a repository that's in a good shape (containing your initial `readme.md` file and the first version of your data exploration script to the GitHub repository).
+  - For more details, see [grading guidelines](https://dprep.hannesdatta.com/docs/project/grading), 1.2 (Repository Structure) and 1.3 (Way of working using GitHub).
+
+## Week 4: Advanced Data Preparation and Initial Analysis (Coaching #3)
+- **Progress on Project:**
+    - Furhter refine the data preparation, ensuring that the dataset is fully ready for analysis. This should include handling missing data and any necessary feature engineering.
+  - Begin conducting initial analyses, documenting your process and findings in RMarkdown.
+  - Continue updating and refining your GitHub repository, ensuring all changes are committed and documented.
+- **Coaching Support:**
+  - Discuss any challenges in advanced data preparation with your coach, such as handling missing data, data transformations, and variable operationalization.
+  - Review your initial analysis plans. Ensure that your approach to data analysis is sufficient.
+  - Support with working with GitHub (it is very important that all team members contribute to the repository using the Git workflow discussed in class)
+- **Deliverables:**
+  - Updated GitHub repository, with an emphasis on 2.2 (Data Preparation) and 1.3 (Way of working using GitHub). For details, see [grading guidelines](https://dprep.hannesdatta.com/docs/project/grading).
+
+## Week 5: Automation and Refinement (Coaching #4)
+- **Progress on Project:**
+  - Implement automation in your data processing pipeline, ensuring it works without error.
+  - Continue refining your analysis, incorporating feedback and improving the robustness of your code.
+  - Ensure that your GitHub repository is up to date, with all automation scripts committed and properly documented.
+- **Coaching Support:**
+  - Review your automation strategy with your coach, focusing on debugging and efficiency.
+- **Deliverables:**
+  - Automated data processing pipeline scripts (`makefile`), committed and documented in your GitHub repository. 
+  - For details, see [grading guidelines](https://dprep.hannesdatta.com/docs/project/grading), with an emphasis on 3.1 and 3.2 (Source code quality and degree of automation).
+
+## Weeks 6-7: Final Analysis (Coaching #5/#6), optional
+- **Progress on Project:**
+    - Debug automation of your project
+    - Conduct final housekeeping checks with your coach to ensure all deliverables are complete and all documentation is in order.
+  - Continue updating your GitHub repository, ensuring that all scripts, documentation, and final analysis are committed.
+- **Coaching Support:**
+  - Review the progress of your final analysis and discuss deployment strategies with your coach. Focus on the robustness of your analysis and the usability of your deployment plan. For details, see [grading guidelines](https://dprep.hannesdatta.com/docs/project/grading), section 2.3 (Analysis and Deployment).
+  - Get feedback on any remaining technical challenges and ensure that your code is well-documented and ready for final submission.
