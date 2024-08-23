@@ -10,23 +10,32 @@ description: " "
 
 Are you experiencing technical difficulties, e.g., when working through the tutorials?
 
-<!--
-Contact the course coordinator via email, please: h.datta@tilburguniversity.edu.
--->
+## Chatbot
+
+In collaboration with tilburg.ai, we offer a Chatbot trained on course materials. Powered by the latest OpenAI Chat Completion API, it provides an interface similar to ChatGPT. Use it to get quick feedback or ask course-related questions. [Start your chat now!](https://dprep.tilburgai.nl)
+
+Please note that the Chatbot is in a pilot phase and may make mistakes. Conversations may be monitored anonymously by tilburg.ai and the course coordinator to improve the tool and potentially roll it out to other courses at Tilburg University.
+
+## WhatsApp
 
 For quick questions, please use *WhatsApp* to get in touch with us (+31 13 466 8938).
 
-- Be as specific as possible (e.g., include screenshots, your R markdown documents or codes, errors) so that we can help you better.
+- Be as specific as possible (e.g., include screenshots, your Jupyter Notebooks or other source code, errors) so that we can help you better.
 - Informal language is perfectly fine.
-- Please write to us in English.
-- Be prepared that we call you back.
-- We may ask you for permission to share the conversation with other students on the course's FAQ page. Names/etc. are of course taken out! If you don't wish your issue to be shared with others, simply say so!
+- Be prepared that we call you back if that makes solving a question easier.
 
-**WhatsApp**
-+31 13 466 8938
+<!--- We may ask you for permission to share the conversation with other students on the course's FAQ page. Names/etc. are of course taken out! If you don't wish your issue to be shared with others, simply say so!
+-->
 
-**Email**
-h.datta@tilburguniversity.edu
+[Text us on WhatsApp now!](https://wa.me/31134668938)
+
+
+## E-Mail
+You can also send us an email to get in touch with us, but note that response times may be slower than through WhatsApp.
+
+- h.datta@tilburguniversity.edu
+- r.sudhaharan@tilburguniversity.edu
+
 
 
 {{< hint warning >}}
