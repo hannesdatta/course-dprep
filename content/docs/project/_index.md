@@ -27,6 +27,11 @@ This project may be *different* from other projects that you have worked on duri
 
 {{< /hint >}}
 
+## Getting started
+
+{{<section>}}
+
+
 <!--
 ## Deliverables
 
@@ -39,16 +44,30 @@ The deliverable of the team project is an *end-to-end, fully automized workflow*
 Check out [the detailed grading guidelines here](grading_details.md).
 -->
 
-## Grading
+## Organization
 
-Head over to the [grading details](grading) to understand what is expected from you in each part of this project.
+### Coaching sessions
 
-## Teams
+During the course, you will have the opportunity to meet up with the course instructor for coaching sessions. These sessions are meant for you to receive feedback on your ideas and code. Frequently, this also entails problem-solving & debugging.
 
-- Students work in groups
-  - 4-5 students per team
-  - Allocation in the first course week
-  - Enroll your team to the template repository from GitHub classroom (https://classroom.github.com/a/mZWLEDIF)
+Teams participating in coaching sessions attend the entire session. They typically work together on the team project, and the course instructor will "walk around" to address students' questions. When on Zoom, breakout rooms will be created. There will be approximately 10 minutes per team in total; some teams may prefer to use the entire time at once, while other teams may prefer to ask multiple, short questions over the entire duration of the session.
+
+__Deliverables:__ Most coaching sessions will help the team work on some deliverables, which are always due at the end of a course week and are submitted on Canvas by Friday, 7 pm.
+
+### Team composition
+
+- 4-5 students per team
+- Allocation in the first course week
+- Enroll your team to the template repository from GitHub classroom (https://classroom.github.com/a/mZWLEDIF)
+
+
+### Deadline & submission
+- The submitted repository on Github classroom is the team project that will be graded.
+- Deadline: {{< param "Course_Deadline_Project" >}}
+<!--Originally 26 March 2021, 6pm; extended to 2 April 2021, 6pm.-->
+
+
+
 <!--
 - Three types of teams
   - __(1) Regular teams__ (by default) work with data from [AirBnB](airbnb.md)
@@ -61,38 +80,7 @@ Head over to the [grading details](grading) to understand what is expected from 
   - __(3) (External) PhD and research master students__ auditing this course can work on their own research projects.
 -->
 
-## Coaching
 
-Students can meet the course instructor for feedback during the scheduled coaching sessions (see [schedule](/docs/modules)).
-
-Teams participating in coaching sessions attend the entire session. They typically work together on the team project, and the course instructor will "walk around" (either in breakout rooms on Zoom, or physically) to address students' questions. There will be approximately 10 minutes per team in total; some teams may prefer to use the entire time at once, while other teams may prefer to ask multiple, short questions over the entire duration of the session.
-
-
-{{< hint info >}}
-__Use of TeamViewer__
-
-- We use TeamViewer to allow the course coordinator use your mouse and keyboard to debug code during a Zoom session. Please [install TeamViewer](https://tilburgsciencehub.com/get/teamviewer) and be prepared to share your ID and temporary password.
-
-{{< /hint >}}
-
-
-{{< hint info >}}
-__Links to recordings__
-
-- [Open Science Boost - Hannes' playlist with videos on how to boost research efficiency](https://www.youtube.com/playlist?list=PLdDbyJQwReWgG0JCkRFmg4o-Wo8WvSB4r)
-- We're continuously adding new content to [Tilburg Science Hub](https://tilburgsciencehub.com), so bookmark the page and check for updates frequently!
-- Recorded sessions from previous editions of the course
-  - Three sessions with student teams during the first project week: https://youtu.be/CLpBwDTL5Xg
-  - Background information on why not to version your data, and how to efficiently collaborate using GitHub Issues and the project board: https://youtu.be/pe-Zzu8s0So
-
-{{< /hint >}}
-
-
-## Deadline & Submission
-- The submitted repository on Github classroom is the team project that will be graded.
-
-- Deadline: {{< param "Course_Deadline_Project" >}}
-<!--Originally 26 March 2021, 6pm; extended to 2 April 2021, 6pm.-->
 
 
 {{< hint info>}}
@@ -104,9 +92,6 @@ Note that we will check out the state of the repository __at the deadline date a
 
 {{< /hint >}}
 
-## Getting started
-
-{{<section>}}
 
 
 <!--

@@ -49,3 +49,14 @@ __Tips__
 
 {{< /hint >}}
 
+
+{{< hint info >}}
+__Links to recordings__
+
+- [Open Science Boost - Hannes' playlist with videos on how to boost research efficiency](https://www.youtube.com/playlist?list=PLdDbyJQwReWgG0JCkRFmg4o-Wo8WvSB4r)
+- We're continuously adding new content to [Tilburg Science Hub](https://tilburgsciencehub.com), so bookmark the page and check for updates frequently!
+- Recorded sessions from previous editions of the course
+  - Three sessions with student teams during the first project week: https://youtu.be/CLpBwDTL5Xg
+  - Background information on why not to version your data, and how to efficiently collaborate using GitHub Issues and the project board: https://youtu.be/pe-Zzu8s0So
+
+{{< /hint >}}
