@@ -58,7 +58,8 @@ DO: Organize working directory
 
 <img src="https://datacarpentry.org/r-socialsci/fig/rstudio_project_files.jpeg"  width=50% height=20%>
 
-```{r}
+
+```r
 dir.create("data") # continue w/ other directories
 ```
 - Can you come up with other ways to create a folder/directory structure?
@@ -112,20 +113,23 @@ DO: Download and open the dataset!
 
 - Download the data to your computer
 
-```{r}
+
+```r
 download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/modules/week4/regional-global-daily-latest.csv", "streams.csv")
 ```
 
 - Load the data into R using the tidyverse `read_csv()` function
 
-```{r}
+
+```r
 library(tidyverse)
 streams <- read_csv('streams.csv', skip=1)
 ```
 
 - Then, take a look at the data by typing in the console...
 
-```{r echo=TRUE, eval = FALSE}
+
+```r
 streams # full preview
 head(streams) # limited preview
 view(streams) # point-and click view
@@ -151,8 +155,26 @@ incremental: true
 
 `select()`: subsetting/selecting columns
 
-```{r}
+
+```r
 streams %>% select(`Track Name`)
+```
+
+```
+# A tibble: 200 × 1
+   `Track Name`                     
+   <chr>                            
+ 1 STAY (with Justin Bieber)        
+ 2 INDUSTRY BABY (feat. Jack Harlow)
+ 3 THATS WHAT I WANT                
+ 4 Heat Waves                       
+ 5 Woman                            
+ 6 Bad Habits                       
+ 7 Pepas                            
+ 8 MONTERO (Call Me By Your Name)   
+ 9 Shivers                          
+10 Beggin'                          
+# ℹ 190 more rows
 ```
 
 `dplyr` 101: basic commands and pipes
@@ -160,8 +182,16 @@ streams %>% select(`Track Name`)
 
 `filter()`: subset rows on conditions
 
-```{r}
+
+```r
 streams %>% filter(`Track Name` == "Pepas")
+```
+
+```
+# A tibble: 1 × 5
+  Position `Track Name` Artist  Streams URL                                     
+     <dbl> <chr>        <chr>     <dbl> <chr>                                   
+1        7 Pepas        Farruko 4048596 https://open.spotify.com/track/5fwSHlTE…
 ```
 
 
@@ -170,9 +200,27 @@ streams %>% filter(`Track Name` == "Pepas")
 
 `mutate()`: create new columns by using information from other columns
 
-```{r}
+
+```r
 streams <- streams %>% mutate(weekly_streams = `Streams` * 7)
 streams %>% select(`Track Name`, `Streams`, weekly_streams)
+```
+
+```
+# A tibble: 200 × 3
+   `Track Name`                      Streams weekly_streams
+   <chr>                               <dbl>          <dbl>
+ 1 STAY (with Justin Bieber)         8469665       59287655
+ 2 INDUSTRY BABY (feat. Jack Harlow) 7189005       50323035
+ 3 THATS WHAT I WANT                 4554200       31879400
+ 4 Heat Waves                        4476838       31337866
+ 5 Woman                             4201276       29408932
+ 6 Bad Habits                        4158040       29106280
+ 7 Pepas                             4048596       28340172
+ 8 MONTERO (Call Me By Your Name)    3762718       26339026
+ 9 Shivers                           3742188       26195316
+10 Beggin'                           3646313       25524191
+# ℹ 190 more rows
 ```
 
 `dplyr` 101: basic commands and pipes
@@ -180,8 +228,26 @@ streams %>% select(`Track Name`, `Streams`, weekly_streams)
 
 `group_by()` and `summarize()`: create summary statistics on grouped data
 
-```{r}
+
+```r
 streams %>% group_by(Artist) %>% summarize(total_streams = sum(Streams))
+```
+
+```
+# A tibble: 121 × 2
+   Artist        total_streams
+   <chr>                 <dbl>
+ 1 $uicideboy$          862781
+ 2 24kGoldn            1293398
+ 3 A-Wall               817164
+ 4 ATB                  757095
+ 5 Ariana Grande       2539856
+ 6 Aventura            2149469
+ 7 Avicii              1610117
+ 8 BTS                 4739470
+ 9 Baby Keem           1558924
+10 Bad Bunny           3567213
+# ℹ 111 more rows
 ```
 
 `dplyr` 101: basic commands and pipes
@@ -189,8 +255,26 @@ streams %>% group_by(Artist) %>% summarize(total_streams = sum(Streams))
 
 `arrange()`: sort results; use `desc()` to show in *descending* order
 
-```{r}
+
+```r
 streams %>% group_by(Artist) %>% summarize(total_streams = sum(Streams)) %>% arrange(desc(total_streams))
+```
+
+```
+# A tibble: 121 × 2
+   Artist         total_streams
+   <chr>                  <dbl>
+ 1 Lil Nas X           24334525
+ 2 Doja Cat            14534676
+ 3 Drake               13979533
+ 4 Olivia Rodrigo      13589501
+ 5 Ed Sheeran           9810986
+ 6 The Kid LAROI        9353107
+ 7 The Weeknd           6671164
+ 8 Billie Eilish        6634519
+ 9 J Balvin             5970510
+10 Måneskin             5484032
+# ℹ 111 more rows
 ```
 
 `dplyr` 101: basic commands and pipes
@@ -198,8 +282,17 @@ streams %>% group_by(Artist) %>% summarize(total_streams = sum(Streams)) %>% arr
 
 - `count()`: count discrete values
 
-```{r}
+
+```r
 streams %>% count(Streams>1E6)
+```
+
+```
+# A tibble: 2 × 2
+  `Streams > 1e+06`     n
+  <lgl>             <int>
+1 FALSE                98
+2 TRUE                102
 ```
 
 DO: Let's practice!
