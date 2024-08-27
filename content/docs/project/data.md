@@ -33,7 +33,18 @@ The Yelp dataset can be used to answer various research questions and practical 
 Multiple datasets are available for download.
 
 - Visit the [Yelp Dataset documentation page](https://www.yelp.com/dataset/documentation/main) to download the data in JSON format.
-- To convert them to CSV files, follow the instructions found on [Yelp's GitHub repository](https://github.com/Yelp/dataset-examples).
+- To convert the JSON files to CSV format, follow these steps:
+1. Obtain the conversion script by downloading or copying the code from this [Gist](https://gist.github.com/srosh2000/b6f10b8ec9c7b318acb706a9189d0f68).
+2. Save the script as `json_to_csv_converter.py` in your working directory. 
+3. Run the script from your terminal with the following command:
+
+```bash
+python json_to_csv_converter.py yelp_academic_dataset.json
+```
+
+Replace `yelp_academic_dataset.json` with the path to the JSON file you wish to convert.
+
+The script will generate a CSV file with the same name as your input JSON file, located in the same directory. For example, the input `yelp_academic_dataset.json` will produce `yelp_academic_dataset.csv`.
 
 <!--
 
