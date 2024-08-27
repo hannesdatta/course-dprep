@@ -32,13 +32,13 @@ If you haven't done so, please
 Agenda
 ========================================================
 
-- Part 1 (8.45 to about 9.45)
+- Part 1 (10.45 to about 12.15)
   - Meeting each other!
   - Motivation for the course
   - Course framework and learning goals
   - Agenda and practical arrangements
 - Break
-- Part 2: R Bootcamp on your laptops (about 10.00 - 12.30)
+- Part 2: R Bootcamp on your laptops (about 12.30 - 14.30)
 
 
 <!--
@@ -54,8 +54,8 @@ incremental: true
 - Recording sessions (no editing, do remind me to post, please)
 - You will have to invest a lot of time and energy
 - Mix of lectures, team work and self-study -- all are necessary
-- Consider me your coach, not your distant prof.
-- Slow me down (yes, that's needed)
+- Consider me your coach, not your distant professor
+- Slow me down (yes, that's needed!)
 
 Research and teaching (all openly available)
 ========================================================
@@ -64,13 +64,11 @@ Research and teaching (all openly available)
 - Tilburg Science Hub (https://tilburgsciencehub.com)
 - Tilburg AI (https://tilburg.ai)
 - Teaching ([thesis supervision](https://thesis.hannesdatta.com), [oDCM](https://odcm.hannesdatta.com))
-- Socials
-  - YouTube channel (https://youtube.com/c/hannesdatta)
-  - X (https://x.com/hannesdatta)
-  - My public code (https://github.com/hannesdatta)
+- YouTube channel (https://youtube.com/c/hannesdatta), LinkedIn (https://linkedin.com/in/hannesdatta)
+- My public code (https://github.com/hannesdatta)
 
 
-Getting to know your "science" skills...
+Getting to know your programming skills...
 ========================================================
 incremental: true
 
@@ -94,10 +92,10 @@ Motivation for course (II)
 What was so bad about it?
 ========================================================
 
-- Reproducibility
-    - I couldn't reproduce results whenever I wanted to
 - Replicability
-    - My peers didn't really understand how I did things - so they also couldn't check whether I did it correctly
+    - I couldn't replicate results whenever I wanted to
+- Reproducibility
+    - My peers didn't really understand how I did things - so they also couldn't implement similar designs to test effects
 - Efficiency
     - when making changes to data, I had to go the the beginning, repeating all steps
     - a colleague asked me for the data years after; it wasn't properly documented!
@@ -109,9 +107,9 @@ Why should you care?
 - You will change code *continuously* before a project is final
 - Team members or colleagues will look at and use your code
     - to help you
-    - to continue your work
-- Costly investment in terms of time and effort, but...
-- __Small efficiency gains will pay off soon!__
+    - to take over your work
+- Learning 'good coding practices' is a costly investment (time/effort), but...
+- Small __efficiency__ gains will pay off soon!
 
 What's efficient?
 ========================================================
@@ -121,14 +119,14 @@ incremental: true
 - reduce setup costs to return to a project (e.g., finding relevant files, getting your code to work)
 - reduce coding mistakes (or catching them at all!)
 - rotating and collaborating on tasks (e.g., team members taking over)
-- sharing/reusing code (e.g., in packages)
+- sharing/reusing code (e.g., in so-called "packages" or "libraries")
 - receiving feedback from others
 
 What's not efficient?
 ========================================================
 incremental: true
 
-- Waiting (e.g., for results, for estimation)
+- Waiting (e.g., for results, for data to be prepped)
 - Getting distracted while waiting
 - Forgetting how things *were* done/implemented (and why)
 - Losing data
@@ -138,34 +136,32 @@ incremental: true
 Course objectives (I): Develop your coding skills
 ========================================================
 
-*a few examples*
+1) Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)
+  - Engineer complex data sets using [tidyverse/dplyr](https://dprep.hannesdatta.com/docs/modules/week4/tutorial/tutorial.html)
 
-- Produce good-looking documents in [RMarkdown](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/intro-to-r.html) rather than ugly, non-readable docs
-- Program [apps to showcast research results](https://tilburgsciencehub.com/try/shiny-app)
-- Engineer complex data sets using [tidyverse/dplyr](https://dprep.hannesdatta.com/docs/modules/week4/tutorial/tutorial.html)
+2) Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)
+  - Produce good-looking documents in [RMarkdown](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/intro-to-r.html) rather than ugly, non-readable docs
+  - Program [apps to showcast research results](https://tilburgsciencehub.com/try/shiny-app)
 
 Course objectives (II): Collaborate on research projects using GitHub (1/2)
 ========================================================
 
-*a few examples*
-
-1) view, run, learn from, and extend the work of others
-  - e.g., https://github.com/hannesdatta/brand-equity-journal-of-marketing
-  - e.g., https://github.com/hannesdatta/spotify-playlist-clustering
-  - e.g., even this class: https://github.com/hannesdatta/course-dprep
-
-Course objectives (II): Collaborate on research projects using GitHub (2/2)
-========================================================
+1) collaborate with others on projects
+  - e.g., check the issue page at https://github.com/tilburgsciencehub/website/issues
 
 2) document your own code, and use unlimited version history
-  - e.g., check out how a project looked like a while ago
+  - e.g., check out [how a project looked like a while ago
   - e.g., clean up stuff (because you can roll back anyways!)
 
-3) collaborate with others on projects
-  - e.g., check the issue page at https://github.com/tilburgsciencehub/website/issues
+*a few examples*
+- https://github.com/hannesdatta/brand-equity-journal-of-marketing
+- https://github.com/hannesdatta/spotify-playlist-clustering
+- even this class: https://github.com/hannesdatta/course-dprep
 
 Course objectives (III): Automate your research pipeline
 ========================================================
+
+- create and run portable, automated, and reproducible data pipelines
 
 *a few examples*
 
@@ -173,27 +169,12 @@ Course objectives (III): Automate your research pipeline
   - https://tilburgsciencehub.com/practice/pipeline-automation
 - start new projects from templates
   - https://tilburgsciencehub.com/examples/reproducible-workflow-airbnb/
-  - https://github.com/rgreminger/example-make-workflow
-  - https://tilburgsciencehub.com/try/simple-workflow
+
   
-
-Course objectives (IV)
-==================================
-
-Apply coding, collaboration and automation in a **data- and/or computation-intensive project**
-
-  - Data intensity
-      - "big data": volume, variety, veracity, velocity
-      - "Where prototyping on small data makes sense"
-      - e.g.,: InsideAirbnb
-  - Computation intensity
-      - small data, but long computation time
-      - potential for running things in parallel
-
 Tips & tricks
 ========================================================
 
-- Take time to become acquainted with the format of the course (e.g., public website, no Canvas)
+- Take time to become acquainted with the format of the course (e.g., public website for course material, Canvas for submissions)
 - Can be tough at first, but you will become more experienced rapidly!
 -	Start preparing early on! (The first weeks will be the most challenging!)
 -	Have the same group members across courses, mix skill levels
@@ -203,8 +184,7 @@ Course structure
 ========================================================
 
 - Skill building (weeks 1-5)
-  - Kicking off the week (video)
-  - On-campus tutorial, followed by coaching sessions for feedback & activities
+  - On-campus tutorial (Hannes), followed by coaching sessions for feedback & activities (Roshini)
   - Self-study (readings, tutorials)
 <br>
 - Project phase (weeks __2__-7)
@@ -236,8 +216,7 @@ Project
 
 - build a __research pipeline__
   - download data - prepare for analysis - run analysis - report
-  - based on public data from [IMDB](https://developer.imdb.com/non-commercial-datasets/); alternatively, you can use [Inside AirBnb](http://insideairbnb.com/amsterdam/)
-  - specifics on the course site
+  - based on public data from Yelp and IMDb, specifics see [course page]((https://dprep.hannesdatta.com/docs/project/data/)
 - team requirements
   - five persons (mix expertise if possible), register on Canvas by early next week (not less - change of dropout is high!)
   - you can keep previous grade (repeater) - still register on Canvas (!)
@@ -252,7 +231,6 @@ Project coaching
   - during scheduled coaching class hours
   - except in the last two weeks (online feedback in breakout rooms)
 - instructor walks around and addresses questions
-- coaching sessions may require preparation - check on the course website
 
 Tutorials
 ========================================================
@@ -272,12 +250,8 @@ Grading
 - Team project (40%)
   - with self- and peer assessment
   - hand in via GitHub
-- [Computer exam](https://dprep.hannesdatta.com/docs/exam) (60%) on campus
+- [Computer exam](https://dprep.hannesdatta.com/docs/exam) (60%) on campus, no internet
   - mix of open (free-flowing answers) and closed questions (multiple choice)
-- Potential to get bonus points (max. .5 on your final grade!)
-  - substantial enrichment of existing course material
-  - contributing to a Tilburg-based open source project (e.g., Tilburg Science Hub, music-to-scrape.org, course websites)
-  - talk to me before starting to work on it
 
 <!--
 ::: notes
@@ -310,10 +284,11 @@ Brain-dead by coding
 &#8594; quick feedback loops in first few weeks
 
 
-Use of WhatsApp
+Getting support
 ========================================================
 
-- Please use WhatsApp: +31 13 466 8938.
+- Course chatbot in collaboration with tilburg.ai (see https://dprep.tilburgai.nl)
+- Text me instead? Please use WhatsApp: +31 13 466 8938.
 
 ![WhatsApp](wa_qr.jpeg)
 

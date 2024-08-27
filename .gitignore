@@ -31,3 +31,5 @@ slides.md
 .Rproj.user
 *.Rproj
 .hugo_build.lock
+
+/.quarto/
