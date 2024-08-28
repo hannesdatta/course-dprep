@@ -89,6 +89,8 @@ The IMDb data can allow you to answer a variety of research questions, such as:
 - What factors most strongly influence the average rating of a movie or a TV show?
 - Are there differences in audience engagement between content targeted at adults and non-adults?
 - How does popularity of crew member(s) influence a title's viewer engagement (e.g. votes, ratings)?
+- Is an individual’s fame related to his/her birth year?
+- Are there patterns in viewer engagement with TV series episodes based on release timing?
 
 ### Download the data
 
