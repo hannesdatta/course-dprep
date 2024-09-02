@@ -7,38 +7,29 @@ draft: false
 
 # Week 2: Project Management and exploring and auditing data with RMarkdown
 
-<!--__Obtain business and data understanding, and explore data in R__-->
+## Learning goals
 
-<!--
-## Kick-starting your week
-- Watch the energizer for the week - TBA!
--->
+- Explore, manipulate, and filter data sets in R, including reading data from text files and modifying data frames.
+- Create and manage various data types in R, such as vectors, matrices, and data frames.
+- Apply basic programming concepts, generate summary statistics, and create plots in R.
+- Assess data quality, perform calculations, and produce RMarkdown documents in HTML or PDF formats.
 
-<!--## Kick-starting your week
-- Watch [the energizer for the week](https://youtu.be/2xc6a2BCEAQ) on YouTube!
-00->
--->
 
-## Tutorial
+## Lecture
+
 {{% laptop %}}
 
+- Tutorial (view [slides](tutorial/tutorial.html), view [complete tutorial](tutorial/intro-to-r.html))
 
-<!--
-1. Develop your R skills by working on the this DataCamp course
-    - [Intermediate R on DataCamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3)
-
-2. Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (section 6)
--->
-
-1. In-class tutorial: [View slides](tutorial/tutorial.html)
-2. After-class exercises & tutorial ([View](tutorial/intro-to-r.html))
 
 ## Coaching session
-- Start working on [coaching #1 activities](/docs/project/workplan) for the team project
+- Start working on your team goals for this course week (see [oaching #1 on your workplan](/docs/project/workplan)).
 
-## Self-study and activities
-- Develop your R skills by working on the [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3) course
+## After the lecture
+
 - Please work through the final part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (chapter 7, getting started with R Markdown)
+- Optional (for students needing more practice with R/RStudio): 
+  - Develop your R skills by working on the [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3) course
 
 <!--- Demo clips on efficiency gains <!-- (2-minute clips); or podcasts-->
 

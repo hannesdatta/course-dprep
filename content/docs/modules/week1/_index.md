@@ -10,22 +10,27 @@ draft: false
 
 <!--__Obtain business and data understanding, and explore data in R__-->
 
-## Kick-starting your week
-- [Watch the kick-off for the week](https://youtu.be/XM2dkYN-Fbc)!
+## Learning Goals
+
+- Understand the added value of this course in your study program
+- Know what to prepare, and how to do it effectively
+- Understand the grading and assessment criteria for the course
+- Get familiar with the RStudio interface and basic data manipulation using dplyr
+
+## Preparation before the lecture
+
+- Please [complete the software installation](/docs/modules/prep)
 
 ## Opening lecture and R bootcamp
 
 {{% laptop %}}
 
 - Introduction to the course (View [slides](slides.html))
-- In-class tutorial: R Bootcamp (view [learning goals](tutorial.md))
-  - Selected overview of [R for Social Scientists (chapters 1-4)](https://datacarpentry.org/r-socialsci/)
-  - View [slides](tutorial-inclass.html)
+- In-class tutorial: R Bootcamp ([view slides](tutorial-inclass.html), view [full tutorial (chapters 1-4)](https://datacarpentry.org/r-socialsci/))
 
+## After the lecture
 
-## Self-study and activities
-- If you haven't done so, please [complete the software installation](/docs/modules/prep)
-- Exercises after class (please complete chapters 1-4 of the R Bootcamp at your own pace; about 4-5 hours)
+- Exercises after class (please complete [chapters 1-4 of the R Bootcamp](https://datacarpentry.org/r-socialsci/) at your own pace; about 4-5 hours)
 - Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
 
 <!--
