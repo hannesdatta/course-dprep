@@ -8,21 +8,26 @@ draft: false
 
 # Week 5: Pipeline Building and Automation
 
-## Kick-starting your week
-- [Watch the energizer for the week on YouTube!](https://youtu.be/PdWZ1s8XXiU)
 
-## Tutorial
+## Learning goals
+* Learn how to organize your project with a coherent directory structure
+* Conceive your project as a pipeline
+* Separate your code into smaller chunks (each one with inputs, transformations and outputs)
+* Automate workflows and make them reproducible using `make`
+
+
+## Lecture
 {{% laptop %}}
 
-- In-class tutorial ([view slides](tutorial/tutorial.html))
+- Tutorial (view [slides](tutorial/tutorial.html), view [complete tutorial](tutorial/make-tutorial.html))
 - Check out the [make cheatsheet!](/docs/project/resources/cheat-sheets/tsh_make_cheatsheet.pdf)
 
 ## Coaching session
-- Continue working on your projects (see [coaching #4](/docs/project/workplan))
+- Work on your team goals for this course week (see [coaching #4 on your workplan](/docs/project/workplan)).
 
-## Self-study and activities
+## After the lecture
 
-- After-class exercises ([View](tutorial/make-tutorial.html), [Download; right click - download file as](tutorial/make-tutorial.Rmd))
+- Complete all after-class exercises for this week's tutorial ([View](tutorial/make-tutorial.html), [Download; right click - download file as](tutorial/make-tutorial.Rmd))
 - Watch (in this order...)
     - [This is why you should automate the pipeline of your empirical research project](https://youtu.be/9aivqe-phL0)
     - [Four steps to automate & make reproducible your empirical research project](https://youtu.be/rJGGCX6bcPo)

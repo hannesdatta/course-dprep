@@ -8,18 +8,20 @@ draft: false
 
 # Week 7: Project phase and final course week
 
-## Kick-starting your week
-- Watch the energizer for the week on YouTube (tba)
 
-## Self-study
-- Continue to work on your [team projects](/docs/project)
+## Learning goals
+- Complete your [team projects](docs/project)
+- Know what to expect for the exam
+- Reflect upon learning goals of this course 
 
-## Online coaching session (optional)
-- Feedback on team project 
 
-## Final lecture
-
+## Lecture
 - Course summary and exam preparation ([slides](slides.html))
+
+## Coaching session (online, optional)
+- Work on your team goals for this course week (see [coaching #6 on your workplan](/docs/project/workplan)).
+
+
 
 <br>
 <div style="text-align: right">

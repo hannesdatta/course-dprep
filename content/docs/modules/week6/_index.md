@@ -8,15 +8,13 @@ draft: false
 
 # Week 6: Project phase
 
-## Kick-starting your week
-- Watch the energizer for the week on YouTube (tba)
 
-## Self-study
-- Continue to work on your [team projects](docs/project)
-<!--- Get inspired by the [building blocks](docs/building-blocks/)-->
+## Learning goals
+- Implement all skills in your [team projects](docs/project)
 
-## Online coaching session (optional)
-- Feedback on team project 
+## Coaching session (online, optional)
+- Work on your team goals for this course week (see [coaching #5 on your workplan](/docs/project/workplan)).
+
 
 <div style="text-align: right">
 {{< button relref="week5" >}}Previous week{{< /button >}}

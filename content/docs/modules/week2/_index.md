@@ -23,7 +23,7 @@ draft: false
 
 
 ## Coaching session
-- Start working on your team goals for this course week (see [oaching #1 on your workplan](/docs/project/workplan)).
+- Work on your team goals for this course week (see [coaching #1 on your workplan](/docs/project/workplan)).
 
 ## After the lecture
 

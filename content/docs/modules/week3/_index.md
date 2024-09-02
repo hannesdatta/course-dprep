@@ -8,31 +8,32 @@ draft: false
 
 # Week 3: Version control and project management <!--+ feedback-->
 
-## Kick-starting your week
-- [Watch the kick-off for the week!](https://youtu.be/kL-s7XHWiWI) 
 
-<!--
-- Optional readings
-  - [Code and Data for the Social Sciences: A Practitioner’s Guide](https://www.brown.edu/Research/Shapiro/pdfs/CodeAndData.pdf)
-  - [Modified principles for Code and Data](https://www.shirokuriwaki.com/programming/project-organization.html)
-  - [Data analysis workflow](http://www.coordinationtoolkit.org/wp-content/uploads/130907-Data-flow.pdf)
-  - [Additional information on reproducing work, organizing files and version control](https://www.tse-fr.eu/sites/default/files/TSE/documents/doc/wp/2018/wp_tse_933.pdf)
--->
+## Learning goals
 
-## Tutorial
+- Understand and apply basic Git commands and workflows for version control in software projects.
+- Set up and manage repositories on GitHub, including creating branches, committing changes, and resolving conflicts.
+- Collaborate effectively on projects using GitHub, including using pull requests and branching strategies.
+- Gain proficiency in restoring previous versions of work and managing repository contents using `.gitignore` and other Git features.
+
+
+## Preparation before the lecture
+
+- Improve your knowledge about [Shell/Bash in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")
+
+
+## Lecture
 {{% laptop %}}
 
-- View [slides](tutorial/tutorial-inclass.html)
-- Ensure you've completed the setup and tutorials from the ["preparation material" section](/docs/modules/prep)
+- Tutorial (view [slides](tutorial/tutorial-inclass.html), view [complete tutorial](tutorial/version-control.html))
+
 
 ## Coaching session
-- Continue working on your projects (see [coaching #2](/docs/project/workplan))
+- Work on your team goals for this course week (see [coaching #2 on your workplan](/docs/project/workplan)).
 
-## Self-study and activities
-- Improve your knowledge about [Shell/Bash in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")
+## After the lecture
+- Complete all exercises in this week's tutorial ([View tutorial](tutorial/version-control.html))
 - [Reading: Principles of Project Setup and Workflow Management](https://tilburgsciencehub.com/learn/project-setup) (30 minutes)
-- After-class exercises & tutorial ([View tutorial](tutorial/version-control.html))
-
 
 {{< hint info >}}
 __Tips & tricks__
