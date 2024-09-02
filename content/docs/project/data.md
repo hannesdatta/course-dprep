@@ -21,12 +21,14 @@ Please pick one of these data sets as your primary source data for the team proj
 The Yelp dataset can be used to answer various research questions and practical applications, such as:
 
 - What factors influence the ratings and reviews that businesses receive?
-- How do user demographics and behaviors affect their reviewing patterns?
 - Can we predict business success based on review sentiment?
 - What are the key characteristics of businesses in different metropolitan areas?
 - How do visual elements in user-uploaded photos relate to review sentiment or business ratings?
 - What are the trends in customer feedback across different industries and regions?
 - How can mobile apps leverage user-generated content to enhance local business discovery?
+- What are the characteristics of businesses that receive a high volume of tips?
+- What role do tips play in influencing other users' perceptions and decisions?
+- What role do review photos play in influencing user decisions and conversion rates?
 
 ### Download the data
 
@@ -83,10 +85,12 @@ The IMDb data can allow you to answer a variety of research questions, such as:
 - How have trends in genre popularity evolved over time in the entertainment industry?
 - Is there a connection between the format of a title (movie, TV series, etc.) and its audience reception?
 - Does the involvement of specific creators (directors, writers) impact the success of their projects?
-- Is an individual's fame related to his/her birth year?
-- Are there patterns in viewer engagement with TV series episodes based on release timing?
+- Which types of titles generate the most online-word-of-mouth (as indicated by user-generated content like reviews and ratings)?
+- What factors most strongly influence the average rating of a movie or a TV show?
 - Are there differences in audience engagement between content targeted at adults and non-adults?
-- Is there a connection between audience ratings and the financial performance of titles?
+- How does popularity of crew member(s) influence a title's viewer engagement (e.g. votes, ratings)?
+- Is an individual’s fame related to his/her birth year?
+- Are there patterns in viewer engagement with TV series episodes based on release timing?
 
 ### Download the data
 
