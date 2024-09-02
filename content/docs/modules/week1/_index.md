@@ -30,7 +30,7 @@ draft: false
 
 ## After the lecture
 
-- Exercises after class (please complete [chapters 1-4 of the R Bootcamp](https://datacarpentry.org/r-socialsci/) at your own pace; about 4-5 hours)
+- Exercises after class (please complete [chapters 1-4 in R for Social Scientists](https://datacarpentry.org/r-socialsci/) at your own pace; about 4-5 hours)
 - Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
 
 <!--

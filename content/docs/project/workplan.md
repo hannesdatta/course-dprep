@@ -22,11 +22,10 @@ You’ll start working on your project -- an *end-to-end, fully automated resear
 ## Week 2: Data Exploration (Coaching #1)
 - **Coaching Support:**
   - Discuss your research question and data set choice with your coach. Ensure the question is suitable and the data set is appropriate for the analysis.
-  - Begin exploring your data using RMarkdown to understand its structure and contents.
+  - Begin exploring your data using RMarkdown to understand its structure and contents. 
   - Address any installation or data access issues.
 - **Deliverables:**
   - RMarkdown document (both `.md` and rendered as `.pdf`), with your research motivation and initial data exploration (see [grading guidelines](https://dprep.hannesdatta.com/docs/project/grading), 1.1 (Research Motivation) and 2.1 (Data Exploration)).
-
 
 ## Week 3: GitHub Setup and Data Preparation (Coaching #2)
 - **Progress on Project:**
