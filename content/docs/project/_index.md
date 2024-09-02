@@ -58,7 +58,7 @@ __Deliverables:__ Most coaching sessions will help the team work on some deliver
 
 - 4-5 students per team
 - Allocation in the first course week
-- Enroll your team to the template repository from GitHub classroom (https://classroom.github.com/a/mZWLEDIF)
+- Enroll your team to the template repository from GitHub classroom (https://classroom.github.com/a/miO8DP3Y)
 
 
 ### Deadline & submission
