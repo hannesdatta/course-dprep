@@ -70,7 +70,7 @@ DO: Creating a repository on GitHub.com
 - Normally, we start a new repository on GitHub.com, or start from an existing folder on our computer
 <br><br>
 - __Today__, we use "GitHub classroom" (so I can see what you're up to)
-  - Open this link, please: https://classroom.github.com/a/K4FxS25n
+  - Open this link, please: https://classroom.github.com/a/gNdiSwNr
   - Change title of `readme.md` to "First repository with exercises in dPrep" & __commit__ your changes on GitHub.com
   
 Recap
@@ -93,6 +93,8 @@ Working with Git/GitHub
   - issues, project boards
   - reviewing code contributions (pull requests)
   - browsing version history, etc.
+  - __no code changes__ (unless typos)
+  - __no code uploads__ (always through *Git*)
 
 <br>
 
@@ -220,14 +222,15 @@ incremental: true
 DO: Clone repository and verify you see the repository
 ======
 
-1. Copy the URL to *your* class room repository
-2. Open Git Bash, and type 
+1.) Copy the URL to *your* class room repository
 
-`git clone https://github.com/course-dprep/in-class-tutorial-hannesdatta` 
+2.) Open Git Bash, and type 
 
-(__use your username, not hannesdatta, please!__)
+`git clone https://github.com/course-dprep/{in-class-tutorial-hannesdatta}` 
 
-3. Check whether you see your repository on your computer
+(__REPLACE with your username, do not {hannesdatta}, please!__)
+
+3.) Check whether you see your repository on your computer
 
 <br>
 __Got an error?__ ("Support for password authentication was removed on August 13, 2021") --> Check [how to fix it here](https://dprep.hannesdatta.com/docs/course/support/).
@@ -311,24 +314,9 @@ Next steps
 
 - Start with the recap exercises on the dprep site (self-guided tutorial)
 - Use the cheat sheets throughout
-- Start working on your project
-  - set up a repository in our `dprep` organization (link later)
-  - I will initialize these repositories with a few issues to get started
-  - Work on these issues (e.g., cloning to computer, organizing code, setting up project board, writing new issues)
-- Idea: Invest in your GitHub profile (design an about page)
+- Start working on your project (e.g., set up a repository in our `dprep` organization)
 
-Goal of today's coaching session
-==============
-
-__Steps__
-
-- 1) Setup your [project's GitHub repository](https://classroom.github.com/a/K4FxS25n)
-  - One person sets it up (and remembers the team name)
-  - Other team members can use the same link to join the team
-- 2) Head over to the repository's __issue__ page
-- 3) Start working on your first issues (start with issue #1, etc.)
-
-__Be in touch when you get stuck (you will!) ;)__
+- __Idea: Invest in your GitHub profile (design an about page)__
 
 Today's "klaaropdracht"
 =========
