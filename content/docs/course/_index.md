@@ -11,7 +11,7 @@ bookCollapseSection: true
 
 ## Instructor
 
-This course is instructed by [dr. Hannes Datta](https://hannesdatta.com), Associate Professor at the Marketing Department of Tilburg University. 
+This course is instructed by [dr. Hannes Datta](https://hannesdatta.com), Associate Professor at the Marketing Department of Tilburg University and [Msc. Roshini Sudhaharan](https://www.linkedin.com/in/roshinisudhaharan/), Junior Lecturer at the Marketing Department of Tilburg Univeristy.
 
 {{< hint info >}}
 Join Hannes' professional network on [LinkedIn](https://www.linkedin.com/in/hannes-datta/), subscribe to his [YouTube Channel](https://youtube.com/c/hannesdatta), and start following him on [GitHub](https://github.com/hannesdatta) and [Twitter](https://twitter.com/hannesdatta) to stay up-to-date!

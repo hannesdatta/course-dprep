@@ -14,9 +14,11 @@ Feedback is appreciated always.
 
 ## Instructors and Creators
 
-The course is coordinated and instructed by [Hannes Datta](https://hannesdatta.com). Want to get in touch with him during the course? Visit [the support section](../course/support). 
+The course is coordinated and instructed by [Hannes Datta](https://hannesdatta.com) and [Roshini Sudhaharan](https://www.linkedin.com/in/roshinisudhaharan/). Want to get in touch with us during the course? Visit [the support section](../course/support). 
 
 The course material, if not indicated otherwise, has been developed by [Hannes Datta](https://hannesdatta.com) from Tilburg University, with the support of [Roy Klaasse Bos](http://royklaassebos.nl/) and Ralph Delsing.
+
+
 
 ## Acknowledgements
 
