@@ -10,32 +10,34 @@ autosize: true
 }
 </style>
 
-Before we get started
-=====================
 
-- Check exam dates on the course page
-  - Thursday, 4 April (main sit)
-  - Friday, 28 June (resit)
-- GitHub way of working
-  - I commented on/added issues to your team repositories!
-- Structure
-  - Back to R, __but__: maintain way of working using Git/GitHub
-  
-<!--
-- Bonus points
-  - check our GitHub repository for opportunities
+Before we get started (I)
+==========
 
--->
+__A few observations from your team projects.__
+
+- absolutely important to work in local repositories, with issue-based branches, and pull requests.
+- Code files need to be structured as setup-ITO -- required for automation!
+- Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, `.R` for regular scripts
+- Adhere to `tidyverse` functions (e.g., `read_csv()`, not `read.csv()`)
+- Incorporate programming concepts: __looping__, using __functions__
+
+Before we get started (II)
+==========
+
+- Asked our scheduling department to move the tutorials of next week to the computer lab
+- Request to host a "catch up" session: Let's discuss topics and dates.
+- I printed cheat sheets!
 
 Structure of this tutorial
 ========================================================
 
-- In-class __tutorial__ featuring selected issues raised in:
+- Back to R, __but__: maintain way of working using Git/GitHub
+- In-class [tutorial](https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html) featuring selected issues raised in:
   - [Tidyverse - chapter 1 & 3](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1)
   - [Cleaning data in R - chapter 1 & 2](https://datacamp.com/courses/cleaning-data-in-r)
   - [Joining Data with `dplyr`- chapter 1 & 2](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1)
-  - And...of course, our [own tutorial](https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html) that ties everything together
-  
+
 __Get your cheat sheets ready!!!__
 
 - After class
@@ -53,18 +55,6 @@ incremental: true
   - Transformation (i.e., operations on your data)
   - Output (e.g., `write_csv()` -- also w/ __relative__ filenames)
 - Zoom in on ways to transform (while respecting setup-I-T-O building blocks)
-
-
-Does and do not's
-==========
-
-__A few observations from your team projects.__
-
-- absolutely important to work in local repositories, with issue-based branches, and pull requests.
-- Code files need to be structured as setup-ITO -- required for automation!
-- Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, `.R` for regular scripts
-- Adhere to tidyverse functions (e.g., `read_csv()`, not `read.csv()`)
-- Incorporate programming concepts: __looping__, using __functions__
 
 DO: Let's get today's data and start exploring
 ======
@@ -316,7 +306,7 @@ Feature engineering
 =============
 incremental: true
 
-- Fancy term for "variable operationalization"
+- aka "variable operationalization"
 - Simply means: measure "stuff"
 - Can you come up with a few new variables that **characterize music listening** at the country/date level? At the country level?
 - Invest time in *thinking* about which variables you want to create - you're in full control!
@@ -350,29 +340,10 @@ incremental: true
 - Pivoting (from long to wide, and wide to long) is difficult... it's enough if you get the concept now - you will have to fiddle around with it a bit anyways
 - Have your cheat sheets available always -- especially the `dplyr` one is useful (and very [visual](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)!)
 
-Next steps (I)
+Next steps 
 ===============
 
-- This tutorial
+- Complete exercises in this tutorial
   - selected solutions available in the `.Rpres` file ([available on GitHub](https://github.com/hannesdatta/course-dprep/tree/master/content/docs/modules/week4/tutorial))
-  - Work through the tutorial and complete exercises (all solutions available)
 
-- We will continue with our coaching session
-
-Coaching session (I)
-=============
-
-- Watch out for stuff from previous weeks
-  - `.Rmd` exploration done?
-  - adhering to GitHub workflows when collaborating?
-  - getting project board into shape & become proficient in "the new way of working"
-  - adhering to setup-ITO structure
-
-Coaching session (II)
-===========
-
-- Continue working on projects
-- Target today is to make progress on section 2.2 of the grading guidelines
-  - variety of common data operations (involving `dplyr`, `tidyverse`, etc.): merging, aggregating, de-duplication, reshaping, converting dates, regular expressions, etc.
-  - basic programming concepts: looping, vectorization, writing functions, handling errors/bugs)
-  - feature engineering/variable operationalization
+- You will continue with the coaching session

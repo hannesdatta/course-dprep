@@ -798,32 +798,29 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Before we get started</h3>
+<h3>Before we get started (I)</h3>
 <div class="slideContent" >
-<ul>
-<li>Check exam dates on the course page
+<p><strong>A few observations from your team projects.</strong></p>
 
 <ul>
-<li>Thursday, 4 April (main sit)</li>
-<li>Friday, 28 June (resit)</li>
-</ul></li>
-<li>GitHub way of working
-
-<ul>
-<li>I commented on/added issues to your team repositories!</li>
-</ul></li>
-<li>Structure
-
-<ul>
-<li>Back to R, <strong>but</strong>: maintain way of working using Git/GitHub</li>
-</ul></li>
+<li>absolutely important to work in local repositories, with issue-based branches, and pull requests.</li>
+<li>Code files need to be structured as setup-ITO &ndash; required for automation!</li>
+<li>Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, <code>.R</code> for regular scripts</li>
+<li>Adhere to <code>tidyverse</code> functions (e.g., <code>read_csv()</code>, not <code>read.csv()</code>)</li>
+<li>Incorporate programming concepts: <strong>looping</strong>, using <strong>functions</strong></li>
 </ul>
 
-<!--
-- Bonus points
-  - check our GitHub repository for opportunities
+</div>
 
--->
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Before we get started (II)</h3>
+<div class="slideContent" >
+<ul>
+<li>Asked our scheduling department to move the tutorials of next week to the computer lab</li>
+<li>Request to host a &ldquo;catch up&rdquo; session: Let&#39;s discuss topics and dates.</li>
+<li>I printed cheat sheets!</li>
+</ul>
 
 </div>
 
@@ -832,13 +829,13 @@ hljs.initHighlightingOnLoad();
 <h3>Structure of this tutorial</h3>
 <div class="slideContent" >
 <ul>
-<li>In-class <strong>tutorial</strong> featuring selected issues raised in:
+<li>Back to R, <strong>but</strong>: maintain way of working using Git/GitHub</li>
+<li>In-class <a href="https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html">tutorial</a> featuring selected issues raised in:
 
 <ul>
 <li><a href="https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1">Tidyverse - chapter 1 &amp; 3</a></li>
 <li><a href="https://datacamp.com/courses/cleaning-data-in-r">Cleaning data in R - chapter 1 &amp; 2</a></li>
 <li><a href="https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1">Joining Data with <code>dplyr</code>- chapter 1 &amp; 2</a></li>
-<li>And&hellip;of course, our <a href="https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html">own tutorial</a> that ties everything together</li>
 </ul></li>
 </ul>
 
@@ -870,22 +867,6 @@ hljs.initHighlightingOnLoad();
 <li class="fragment">Output (e.g., <code>write_csv()</code> &ndash; also w/ <strong>relative</strong> filenames)</li>
 </ul></li>
 <li class="fragment">Zoom in on ways to transform (while respecting setup-I-T-O building blocks)</li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Does and do not&#x27;s</h3>
-<div class="slideContent" >
-<p><strong>A few observations from your team projects.</strong></p>
-
-<ul>
-<li>absolutely important to work in local repositories, with issue-based branches, and pull requests.</li>
-<li>Code files need to be structured as setup-ITO &ndash; required for automation!</li>
-<li>Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, <code>.R</code> for regular scripts</li>
-<li>Adhere to tidyverse functions (e.g., <code>read_csv()</code>, not <code>read.csv()</code>)</li>
-<li>Incorporate programming concepts: <strong>looping</strong>, using <strong>functions</strong></li>
 </ul>
 
 </div>
@@ -1225,7 +1206,7 @@ streams &lt;- streams %&gt;% mutate(revenue = streams * 0.0038) # better
 <h3>Feature engineering</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Fancy term for &ldquo;variable operationalization&rdquo;</li>
+<li class="fragment">aka &ldquo;variable operationalization&rdquo;</li>
 <li class="fragment">Simply means: measure &ldquo;stuff&rdquo;</li>
 <li class="fragment">Can you come up with a few new variables that <strong>characterize music listening</strong> at the country/date level? At the country level?</li>
 <li class="fragment">Invest time in <em>thinking</em> about which variables you want to create - you&#39;re in full control!</li>
@@ -1273,50 +1254,15 @@ wide = df %&gt;% select(-genres)
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Next steps (I)</h3>
+<h3>Next steps </h3>
 <div class="slideContent" >
 <ul>
-<li><p>This tutorial</p>
+<li><p>Complete exercises in this tutorial</p>
 
 <ul>
 <li>selected solutions available in the <code>.Rpres</code> file (<a href="https://github.com/hannesdatta/course-dprep/tree/master/content/docs/modules/week4/tutorial">available on GitHub</a>)</li>
-<li>Work through the tutorial and complete exercises (all solutions available)</li>
 </ul></li>
-<li><p>We will continue with our coaching session</p></li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Coaching session (I)</h3>
-<div class="slideContent" >
-<ul>
-<li>Watch out for stuff from previous weeks
-
-<ul>
-<li><code>.Rmd</code> exploration done?</li>
-<li>adhering to GitHub workflows when collaborating?</li>
-<li>getting project board into shape &amp; become proficient in &ldquo;the new way of working&rdquo;</li>
-<li>adhering to setup-ITO structure</li>
-</ul></li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Coaching session (II)</h3>
-<div class="slideContent" >
-<ul>
-<li>Continue working on projects</li>
-<li>Target today is to make progress on section 2.2 of the grading guidelines
-
-<ul>
-<li>variety of common data operations (involving <code>dplyr</code>, <code>tidyverse</code>, etc.): merging, aggregating, de-duplication, reshaping, converting dates, regular expressions, etc.</li>
-<li>basic programming concepts: looping, vectorization, writing functions, handling errors/bugs)</li>
-<li>feature engineering/variable operationalization</li>
-</ul></li>
+<li><p>You will continue with the coaching session</p></li>
 </ul>
 
 </div>
