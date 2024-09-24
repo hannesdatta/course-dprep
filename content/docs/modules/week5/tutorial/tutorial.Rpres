@@ -21,28 +21,6 @@ Before we get started
   - slide deck available on the [site](https://dprep.hannesdatta.com/docs/modules/week5/tutorial/make-tutorial/)!
   - [download the `make` cheatsheet](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/images/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
 
-Feedback on team projects (I)
-========
-incremental: true
-
-- working together in teams
-  - working with Git locally (vs. in the cloud) 
-  - being able to push & pull; work in branches
-  - scrum/project board & issues vs. individual work
-- data on GitHub
-  - **do not** store any raw data on GitHub but download programmatically
-  - start having a proper directory structure
-
-Feedback on team projects (II)
-========
-incremental: true
-
-- coding conventions
-	- absolute vs. relative file names
-	- generalizable -- no "amsterdam"-specific variable names when possible
-	- install packages: can be done in *one* script -- see [here](https://gist.github.com/hannesdatta/3446b205a9f5aa598f99bfa5116e5be0)
-- preparation: be clear about unit of analysis (e.g., date & city, movie, etc.)
-
 Where we are heading today
 ==========
 
@@ -238,14 +216,8 @@ Next steps
 
 - Three more coaching sessions
   - one today (on campus)
-  - two more (week 6 and end of week 7 - online; attendance optional)
-  - will create breakout rooms
+  - two more (week 6 on site, and end of week 7 - online; attendance optional)
+  - will create breakout rooms online
 - Exam preparation
   - in final lecture (beginning of week 7)
 - Any questions?
-
-Coaching session
-======
-
-- Let's get started to identify 'broad' issues - can try addressing these issues specifically
-- Work on grading criteria 3.1 (source code quality), and 3.2 (automation using `make`)
