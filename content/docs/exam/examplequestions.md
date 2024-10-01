@@ -61,6 +61,20 @@ I really look forward seeing your work. Your deliverable is the zipped Git repos
 
 {{< /hint >}}
 
+4. Please [download and unzip the research pipeline](practice_workflow.zip) of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
+
+      1) Please run make as is. Then, fix any errors that prevents make from knowing it is "up-to-date" (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).
+
+      2) The make pipeline is not properly configured (i.e., one call to all scripts, rather than subsequent "built recipes" that tie all source code files together). Please fix the makefile such that the entire project is being built and that all dependencies are correctly defined. (10P)
+
+      3) You may recall the value of creating subdirectories to structure your project. Create the necessary subdirectories and update your makefile so that it works on this new directory structure. (5P)
+
+      Requirements/tips
+      - Recall make is always executing the "first" recipe it encounters.
+      - If you need to create new directories from within R, you can use `dir.create('directory_name')`.
+      - Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in RStudio, it may happen that some of the installed packages cannot be found.
+
+
 4. Other example questions.
       1. Please name three ways to deploy one's research findings. (*knowledge*)
       2. What are the main benefits of exploring data using RMarkdown documents, compared to “point-and-click” interfaces (e.g., SPSS), or manually investigating data by issuing commands in the R terminal? (*comprehension*)
