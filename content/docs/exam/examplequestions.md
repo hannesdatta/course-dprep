@@ -99,18 +99,27 @@ I really look forward seeing your work. Your deliverable is the zipped Git repos
 
 
 4. Other example questions.
-      1. Please name three ways to deploy one's research findings. (*knowledge*)
+      1. Please name three ways to deploy one's research findings. (*knowledge*) 
+     
+      Solution: via an app (e.g., dashboard), an API, via a Quarto document/PDF-rendered RMarkdown document (other options possible as well).
       2. What are the main benefits of exploring data using RMarkdown documents, compared to “point-and-click” interfaces (e.g., SPSS), or manually investigating data by issuing commands in the R terminal? (*comprehension*)
+     
+     Solution: You can easily generate professional-looking documents that are ready to share with non-technical colleagues. Unlike manual investigation or point-and-click methods, writing everything in code ensures consistent results when the code is re-run. Additionally, the code clearly documents each step taken, enhancing both the transparency and the understanding of the final output.
+     
       3. What are the benefits from automating pipelines, compared to manually executing source code files? (*comprehension*)
-      4. Please view the code snippet below and assess the completeness of the script with regard to the ITO components of a source code file. Can you identify any missing piece in the code? (*analysis*)
+      
+      Solution: Automating pipelines makes everything more consistent and saves time by running the same steps every time without mistakes. It also helps handle larger tasks easily, keeps things organized, and makes it easier to spot errors. Plus, it’s great for teamwork because everyone follows the same process.
+      
+      4. Please view the code snippet below and assess the completeness of the script with regard to the Setup-ITO components of a source code file. Can you identify any missing piece in the code? (*analysis*)
 
       ```
       library(dplyr)
       df <- read.csv('data.csv')
       df <- df %>% filter(age >= 18)
       ```
+      Solution: Following the Setup-ITO process, the "output" step is missing (e.g., `write_csv(df, file = 'output.csv')`). Additionally, the code snippet uses `read.csv` instead of `read_csv`, which can result in slower performance.
 
-      5. Please assess whether the makefile below will run when you type "make". (*analysis*)
+      5. Please assess whether the makefile below will correctly work when you type "make" in the `\code` folder of this project. (*analysis*)
 
       {{< hint >}}
       Directory Structure:
@@ -126,4 +135,5 @@ I really look forward seeing your work. Your deliverable is the zipped Git repos
             R --vanilla < load.R
       
       {{< /hint >}}
-      
+ 
+      Solution: The `makefile` is incorrectly configured due to incorrect relative directories. While the `makefile` will be found in the working directory (`code`), and it will successfully run `load.R` (since it’s also in the same directory), the workflow won’t be recognized as complete. This is because `make` expects the target to be in `data/dataset.csv`, whereas it should be relative to the current working directory, i.e., `../data/dataset.csv`. Furthermore, `load.R` might not run at all if its inputs are incorrectly pointed to `data/dataset.csv` instead of `../data/dataset.csv`.
