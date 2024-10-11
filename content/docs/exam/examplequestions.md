@@ -97,6 +97,31 @@ I really look forward seeing your work, delivered in a clean zipped Git reposito
       - If you need to create new directories from within R, you can use `dir.create('directory_name')`.
       - Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in RStudio, it may happen that some of the installed packages cannot be found.
 
+      Solution:
+
+      1) The target `logit_model.csv` was not set correctly.`analysis_and_report.R` creates a file called `logit_model_summary.csv`. Hence, `make` will be looking for a file called `logit_model.csv`, which is never created. Therefore, it will not "know" it is "up-to-date".
+      2) See below.
+      ```
+      # Makefile to automate the email marketing analysis
+
+      # An overarching "all" rule that requests the final output files
+      all: logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv
+
+      # Rule to create the processed dataset
+      processed_email_data.csv: data_process.R
+            Rscript data_process.R # Use Rscript to run the R file
+
+      # Rule to generate final output files; depends on processed data and analysis script
+      logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv: processed_email_data.csv analysis_and_report.R
+            Rscript analysis_and_report.R
+
+      # Clean rule to remove generated files
+      clean:
+            R -e "unlink('*.csv')"
+            R -e "unlink('*.png')"
+
+      ```
+      3) Temporary files (i.e., `processed_email_data.csv`) need to be stored in `temp`. All source code needs to be stored in `src`, and the final output files need to be put into `output`. [See here for all modified source files](../practice_workflow_solution.zip) (which includes the `.R` scripts - see file directories and commands to create new directories!).
 
 4. Other example questions.
       1. Please name three ways to deploy one's research findings. (*knowledge*) 
