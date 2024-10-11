@@ -809,9 +809,7 @@ https://support.rstudio.com/hc/en-us/articles/200486468
 
 <p>If you haven&#39;t done so, please <strong>explore the exam page &amp; example questions</strong> at <a href="">https://dprep.hannesdatta.com/docs/exam</a>.</p>
 
-<!--
-The __course evaluation__ is live at https://app.evalytics.nl. Please voice your opinions!
--->
+<p>The <strong>course evaluation</strong> is live at <a href="https://app.evalytics.nl">https://app.evalytics.nl</a>. Please voice your opinions!</p>
 
 <!--
 - Team project:
@@ -889,10 +887,10 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li class="fragment">Versioning can be powerful!
 
 <ul>
-<li class="fragment">delete stuff that isn&#39;t needed, roll back when you want</li>
-<li class="fragment">Oh no, not authenticated!</li>
+<li class="fragment">delete stuff that isn&#39;t needed (&ldquo;housekeeping&rdquo;), roll back when you want (<code>git checkout COMMITID -b branch</code>)</li>
+<li class="fragment">Oh no, not authenticated! (browser authentication works best)</li>
 <li class="fragment">Oh no! Can&#39;t push! (pull first!)</li>
-<li class="fragment">GUIs (e.g., in R or VS Code) are available, too!</li>
+<li class="fragment">Use GUIs (e.g., in R or VS Code), complemented with Git Bash</li>
 </ul></li>
 </ul>
 
@@ -903,12 +901,13 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Lessons learnt #1: Versioning and Project Management with Git(Hub) (II)</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Ready to use Git/versioning in a business
+<li class="fragment">Ready to use Git/versioning in a business setting
 
 <ul>
+<li class="fragment">clone repositories</li>
 <li class="fragment">Know what to version, and what not</li>
-<li class="fragment">Purpose of <code>.gitignore</code></li>
-<li class="fragment">How to work together (issues, feature branches, pull requests/PRs)</li>
+<li class="fragment">Use <code>.gitignore</code> (and know what it CANNOT do)</li>
+<li class="fragment">Work together using issues, feature branches &amp; pull requests (PRs)/merge requests</li>
 </ul></li>
 <li class="fragment">Collaborate on open source projects
 
@@ -928,17 +927,17 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li class="fragment">RMarkdown! (mixing code with reporting)
 
 <ul>
-<li class="fragment">ability to quickly produce clean docs to share!</li>
-<li class="fragment">uh&hellip; but how to run it w/ make?</li>
-<li class="fragment"><strong>verify you can render markdown documents!</strong></li>
+<li class="fragment">ability to quickly produce clean documents to share!</li>
+<li class="fragment">uh&hellip; but how to run it with make?</li>
+<li class="fragment"><strong>verify you can render markdown documents to HTML and PDF!</strong></li>
 </ul></li>
-<li class="fragment">Doing data quality checks? 
+<li class="fragment">Doing data quality checks?
 
 <ul>
 <li class="fragment">getting back to your data supplier if needed!</li>
-<li class="fragment">reporting summary stats</li>
+<li class="fragment">reporting summary statistics (<code>summary</code>, <code>table</code>, <code>dplyr</code> for summary stats by group)</li>
 </ul></li>
-<li class="fragment">Use it when it is useful (e.g., produce a doc, slides, etc., NOT data cleaning)</li>
+<li class="fragment">Use RMarkdown when it is <em>useful</em> (i.e., to produce a doc, slides; NOT for data cleaning)</li>
 </ul>
 
 </div>
@@ -951,19 +950,19 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li class="fragment">Why do we actually <em>have</em> to clean up data?!
 
 <ul>
-<li class="fragment">re-watch it: <a href="https://youtu.be/z_Hh1jlL1Ac">https://youtu.be/z_Hh1jlL1Ac</a></li>
+<li class="fragment">re-watch my summary: <a href="https://youtu.be/z_Hh1jlL1Ac">https://youtu.be/z_Hh1jlL1Ac</a></li>
 </ul></li>
-<li class="fragment">Data prep code can be sooo complex
+<li class="fragment">Data prep code can be complex
 
 <ul>
 <li class="fragment">so&hellip; use cheatsheets (also for the exam!)</li>
 <li class="fragment">know &amp; apply common data operations (what are those?)!</li>
 </ul></li>
-<li class="fragment">Make ITO blocks
+<li class="fragment">Make setup-ITO blocks
 
 <ul>
 <li class="fragment">setup to load libraries, <strong>then</strong> input, transformation, output!</li>
-<li class="fragment">super crucial for <code>make</code>, too!</li>
+<li class="fragment">super crucial for <code>make</code>, too! (know why?)</li>
 </ul></li>
 <li class="fragment">Modularize code, loop, and use functions</li>
 </ul>
@@ -1005,8 +1004,10 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Common mistakes w&#x2F; make</h3>
 <div class="slideContent" >
 <ul>
-<li>Multiple <em>targets</em>, not multiple rules</li>
-<li>The rule on top! That&#39;s where everything starts.</li>
+<li>Wrong: One &ldquo;all&rdquo; rule with all targets as prerequisites</li>
+<li>Wrong: Incomplete dependencies</li>
+<li>Wrong: Multiple Rscript execution commands per recipe</li>
+<li>Correct: one &ldquo;entry&rdquo; rule on top, referencing the <em>final</em> output(s)</li>
 <li>Gradually build your makefile. <strong>Go in baby steps!</strong></li>
 <li>Happy to take a look at your repositories now - anyone?</li>
 </ul>
@@ -1030,15 +1031,15 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 <ul>
 <li>that feeling you get when your code runs&hellip;!</li>
-<li>I can talk to you as &ldquo;members of my own dev team&rdquo;</li>
+<li>I can talk to you as &ldquo;members of my own development team&rdquo;</li>
 <li>I&#39;ve witnessed you &ldquo;seeing code and feeling what it does!&rdquo;</li>
 </ul></li>
 <li>different levels
 
 <ul>
-<li>many started R from scratch; some could program but still were challenged!</li>
+<li>many started R from scratch; some could program but still were challenged with make and GitHub</li>
 </ul></li>
-<li>saw so much: different projects, data sets, tools, &ldquo;way of doing things&rdquo;, way of coding, videos, websites</li>
+<li>we&#39;ve seen a lot: different projects, data sets, tools, &ldquo;way of doing things&rdquo;, way of coding, videos, websites</li>
 </ul>
 
 <p>My recommendation: take time to let it sink in. And trust in my choice of teaching you this. <strong>Your hard work will pay off.</strong></p>
@@ -1060,6 +1061,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 <ul>
 <li class="fragment">it took me years to become proficient</li>
+<li class="fragment">onboard team members to &ldquo;your&rdquo; way of working</li>
 </ul></li>
 </ul>
 
@@ -1095,10 +1097,11 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 <ul>
 <li class="fragment">contribute to <a href="https://tilburgsciencehub.com">Tilburg Science Hub</a></li>
+<li class="fragment">apply for a job at <a href="https://tilburg.ai">tilburg.ai</a></li>
 <li class="fragment">improve <a href="https://music-to-scrape.org">music-to-scrape.org</a></li>
 <li class="fragment">follow us on <a href="https://www.linkedin.com/company/tilburgsciencehub/">LinkedIn</a> and <a href="https://twitter.com/tilburgscience">X</a></li>
 </ul></li>
-<li class="fragment">Invest in your research skills (e.g., Docker, coding)</li>
+<li class="fragment">Invest in your research skills (e.g., Docker, coding, the cloud)</li>
 </ul>
 
 </div>
@@ -1127,6 +1130,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li><strong>do not use</strong> absolute paths!</li>
 <li>verify data can be downloaded smoothly</li>
 <li>test <code>make</code> thoroughly (demonstration if we have the time)</li>
+<li>don&#39;t test any assumptions - this is about a running workflow, not about research methods!</li>
 </ul></li>
 <li>Exam preparation
 
@@ -1146,21 +1150,85 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li>Organization
 
 <ul>
-<li>4 April (time tba; 3 hours)</li>
+<li>14 October (time?; 3 hours)</li>
 <li>On campus, using <strong>TestVision</strong></li>
 </ul></li>
 <li>Software &amp; materials
 
 <ul>
 <li>access to R/RStudio, Git, make</li>
-<li>access to github.com/course-dprep and classroom.github.com; no access to ChatGPT or other AI tools</li>
+<li>no access to the internet</li>
 <li>I&#39;m making selecting resources available on the instruction page - <a href="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/exam/cheatsheets-exam.zip">check them out here</a></li>
 </ul></li>
 <li>How to prepare?
 
 <ul>
-<li>familiarize yourselves with <a href="https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&amp;taal=2">how TestVision works with a practice test</a></li>
+<li>familiarize yourselves with how TestVision works (link on Canvas)</li>
 <li>let&#39;s look at <a href="https://dprep.hannesdatta.com/docs/exam/examplequestions/">some questions now</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Learning goals, distribution of points + tips (I)</h3>
+<div class="slideContent" >
+<ul>
+<li>100 points in total, 9 questions</li>
+<li><p>Mix of open and closed questions</p></li>
+<li><p>LG 1: Use R to clean and transform data for analysis [synthesis; <strong>20% of points</strong>]</p>
+
+<ul>
+<li>know core concepts and corresponding code in <code>tidyverse</code>/<code>dplyr</code>: e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions) </li>
+<li>become fast in coding - no time to &ldquo;look up&rdquo; these commands elaborately</li>
+<li>open <code>.Rdata</code>, submit code and/or submit saved <code>.Rdata</code> file.</li>
+<li>many &ldquo;small&rdquo; questions</li>
+<li>I simulated the data</li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Learning goals, distribution of points + tips (II)</h3>
+<div class="slideContent" >
+<ul>
+<li>LG 2: Use GitHub for managing empirical research projects  [evaluation; <strong>10% of points</strong>]
+
+<ul>
+<li>conceptual questions on GitHub issues, project boards, Scrum, etc.</li>
+</ul></li>
+<li>LG 3: Use Git/GitHub for versioning files and collaboration on privately-shared and publicly-available (open science) GitHub repositories [application; <strong>30% of points</strong>]
+
+<ul>
+<li>question type: download zipped repository</li>
+<li>Be prepared to work with Git Bash (e.g., <code>git checkout</code>, <code>git merge</code>, <code>git add</code>, etc.)</li>
+<li>download git repository, unzip, do your commits, zip again and submit as a zipfile</li>
+<li>know how to make commits with commit messages, create branches, switch branches, etc.</li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Learning goals, distribution of points + tips (II)</h3>
+<div class="slideContent" >
+<ul>
+<li>LG 4: Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps) [comprehension; <strong>15% of points</strong>]
+
+<ul>
+<li>except &ldquo;new&rdquo;/unseen data</li>
+<li>When handing in documents, check what I require (for <code>.Rmd</code>, I sometimes ask for rendered <code>.pdf</code> documents - does it work on your computer?)</li>
+</ul></li>
+<li>LG 5: Make
+
+<ul>
+<li>Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines [application; <strong>25% of points</strong>]</li>
+<li>Expect a <code>zip</code> file containing a make pipeline</li>
+<li>Complete a few smaller tasks: run, correct and develop new <code>make</code> workflow</li>
 </ul></li>
 </ul>
 
@@ -1171,47 +1239,8 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Some tips for your exam</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Expect an unexpected data set &amp; data wrangling</li>
-<li class="fragment">Know common data operations in <code>dplyr</code> &amp; become fast!</li>
-<li class="fragment">When handing in documents, check what I require (for <code>.Rmd</code>, I sometimes ask for rendered <code>.pdf</code> documents - does it work on your computer?)</li>
-<li class="fragment">Be prepared to work with Git Bash
-
-<ul>
-<li class="fragment">know how to make commits with commit messages, create branches, switch branches, etc.</li>
-<li class="fragment">download git repository, unzip, do your commits, zip again and submit as a zipfile</li>
-</ul></li>
-<li class="fragment">Be prepared to work with GitHub
-
-<ul>
-<li class="fragment">know how to clone, fork, write issues, do PRs</li>
-<li class="fragment">know how to roll back to previous version</li>
-</ul></li>
-<li class="fragment">Be prepared to use <code>make</code>
-
-<ul>
-<li class="fragment">run, correct and develop new <code>make</code> workflows</li>
-</ul></li>
+<li class="fragment">Work on a joint cheat sheet (link to be shared on Canvas) - deadline this Friday, 3pm</li>
 <li class="fragment">Be prepared to download data sets from Testvision (<code>.Rdata</code>) - on the Cover page of the exam or in a specific question on the exam.</li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Learning goals + distribution of points</h3>
-<div class="slideContent" >
-<ul>
-<li>100 points in total, about 25 questions</li>
-<li>Mix of open and closed questions</li>
-<li>Learning goals &amp; question weights
-
-<ol>
-<li>Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions) [synthesis; <strong>20% of points</strong>]</li>
-<li>Use GitHub for managing empirical research projects (e.g., GitHub Issues and Project Boards) [evaluation; <strong>10% of points</strong>]</li>
-<li>Use Git/GitHub for versioning files and collaborating on privately-shared and publicly-available (open science) GitHub repositories [application; <strong>30% of points</strong>]</li>
-<li>Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps) [comprehension; <strong>15% of points</strong>]</li>
-<li>Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines [application; <strong>25% of points</strong>]</li>
-</ol></li>
 </ul>
 
 </div>
