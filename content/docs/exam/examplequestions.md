@@ -84,7 +84,7 @@ I really look forward seeing your work, delivered in a clean zipped Git reposito
 
 {{< /hint >}}
 
-4. Please [download and unzip the research pipeline](practice_workflow.zip) of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
+4. Please [download and unzip the research pipeline](../practice_workflow.zip) of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
 
       1) Please run make as is. Then, fix any errors that prevents make from knowing it is "up-to-date" (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).
 
