@@ -22,10 +22,33 @@ This exam consists of __open and closed (multiple-choice) questions__. You can f
 
 *Note: the number of questions depends on the points awarded to each question. The instructions during the final exam may slightly vary, so make sure to still read it accordingly.*
 
-1. Please download the `datasets.RData` workspace file from the exam cover page and open it in RStudio. Please answer the following questions using the objects in this R workspace.
-    1. Please use the dataset stored in `data1`. Using `dplyr`, reshape this dataset from wide to long. Paste the code snippet with the solution below.
+1. Please download the [`datasets.RData` workspace](../datasets.RData) file from the exam cover page and open it in RStudio. Please answer the following questions using the objects in this R workspace.
+    1. Please use the dataset stored in `data1`. Using `dplyr`, reshape this dataset from wide to long, and store it in a new object, called `q1`. Paste the code snippet with the solution below.
     2. Please use the dataset stored in `data2`. Using `dplyr`, please create an aggregated dataset, taking an average of `variable1` and `variable2` for all users in the data (i.e., you obtain a dataset with the number of rows equal to the number of users in the data).
     3. Please take a look at `data3`. Please propose which data preparation steps are necessary to clean this data.
+    ```
+    # Solution:
+    library(tidyverse)
+    q1 <- data1 %>%
+      pivot_longer(cols = starts_with("X202"),
+      names_prefix='X', 
+      names_to = "year", 
+      values_to = "review_score")
+    
+    q2 <- data2 %>% group_by(user_id) %>% 
+       summarize(mean_var1=mean(variable1), mean_var2=mean(variable2))
+
+    # q3:
+    summary(q3)
+
+    # There are missing observations for price and number_of_reviews;
+    # these cases could either be deleted or set to the sample average.
+
+    # In addition, host_response_rate is a character column, but should
+    # be converted to a numeric column. In so doing, it's important to 
+    # drop the %-sign, and also decide what to do with the NA.
+    ```
+
 2. Imagine you have just enrolled as a thesis student, and you receive the following email from your advisor. Submit your PDF document, and provide a conclusion on the suitability of the explored data for the research question.
 
 {{< hint >}}
