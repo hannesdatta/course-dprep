@@ -63,24 +63,24 @@ Please render your RMarkdown as a PDF document. Please keep any code that you’
 
 {{< /hint >}}
 
-3. Please download the `github_repository.zip` file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here. 
+3. Please download the [`github_repository.zip`](../github_repository.zip) file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here. 
 
 {{< hint >}}
 
 Dear (name of student),
 
-Tilburg University is on its way to not only publish papers, but also the code that generated the results. That’s extremely important for open science - i.e., allowing others to reproduce findings. In the attachment (download here), I’m sending you the code of my empirical project. Admittedly, it’s not very well structured (e.g., directory structures are absent), but at least I have a common R file ([run.R](https://github.com/hannesdatta/course-dprep/blob/master/content/docs/modules/week5/tutorial/run_antwerp.R)) that ties all the parts together.
+Tilburg University is on its way to not only publish papers, but also the code that generated the results. That’s extremely important for open science - i.e., allowing others to reproduce findings. In the attachment (download here), I’m sending you a zipped Git repository of my empirical project. Admittedly, it’s not very well structured (e.g., directory structures are absent), but at least I have a common R file (`run.R`) that simulates some demo data and ties all the parts of my project together.
 
 Starting from `run.R`, can you apply your learnings from dPrep, and submit a link to a new repository in which you...
 
-- Create a proper directory structure (e.g., pipeline stages, see `run.R` for some ideas),
-- Separate source code from generated files,
+- Separate the workflow into individual files corresponding to the main steps in this project (e.g., simulate data, see `run.R` for some ideas),
+- Separate source code from generated files (i.e., use separate folders),
 - Have a proper readme at the repository (in an `.md` file),
-- Ignore files that should not be versioned using .gitignore, and
+- Ignore files that should not be versioned using `.gitignore`, and
 - remove `run.R` and replace it by a proper makefile for this project.
 - throughout, make use of frequent commits and commit messages.
 
-I really look forward seeing your work. Your deliverable is the zipped Git repository, which you can upload in the answer box below.
+I really look forward seeing your work, delivered in a clean zipped Git repository, which you can upload below.
 
 {{< /hint >}}
 
