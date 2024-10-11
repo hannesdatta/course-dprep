@@ -55,7 +55,7 @@ This exam consists of __open and closed (multiple-choice) questions__. You can f
 
 Dear (name of student),
 
-I really look forward to working with you on this exciting dataset, capturing the consumption of music on Spotify. I scraped it from spotifycharts.com a while ago. Please download this `data.zip`, which contains a stripped-down version of an RMarkdown file and the data. 
+I really look forward to working with you on this exciting dataset, capturing the consumption of music on Spotify. I scraped it from spotifycharts.com a while ago. Please download this [`data.zip`](../data.zip), which contains a stripped-down version of an RMarkdown file and the data. 
 
 As a starting point, please explore the data set using RMarkdown. I’d love to learn more about the data myself (haven’t looked into it yet) - maybe you can figure out a way to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption?
 
