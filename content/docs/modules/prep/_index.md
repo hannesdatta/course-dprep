@@ -15,16 +15,19 @@ It's important to spend some time *before the beginning of the class* to install
 
 Throughout the course, we'll use R - a comprehensive toolbox to handle and analyze large data sets. The best thing about R is that it's open source. It's freely usable by anyone. Plus there's a vibrant community that keeps on developing R. Or extend it with your own packages.
 
-- Please install R and RStudio, by following these [setup instructions](http://tilburgsciencehub.com/get/r/).
+- Please install R and RStudio, by following these [setup instructions](http://tilburgsciencehub.com/topics/Computer-Setup/software-installation/RStudio/r/).
 - If you'd like, you can also already start working on the [R Bootcamp](docs/modules/week1) which we will cover in the first course week.
+<!-- was: http://tilburgsciencehub.com/get/r/-->
 
 ### 2) Get a GitHub account and install Git
 
 Git is a file versioning tool - think of it as a combination of Dropbox (with unlimited & free rollbacks to previous file versions) and messaging client (to discuss projects with team members).
 
 - Please install Git, by following these [setup instructions](
-https://tilburgsciencehub.com/get/git).
+http://tilburgsciencehub.com/topics/Automation/version-control/start-git/git/).
 - Signup to [GitHub.com](https://github.com). 
+
+<!-- was: https://tilburgsciencehub.com/get/git> -->
 
 {{% hint info %}}
 - When signing up to GitHub, we recommend choosing a professional GitHub username (e.g., *firstname.lastname*, *initial.lastname*, etc.). Chances are high you are going to use your GitHub profile when applying for jobs. 
@@ -37,7 +40,9 @@ https://tilburgsciencehub.com/get/git).
 
 During this course, we'll be using Make - a tool used by software developers to automate workflows (e.g., to compile a new software program). Of course, we won't write entire software programs, but instead work on our project pipelines (that consist of preparing and analyzing data).
 
-- You can find a tutorial for installing make [here](https://tilburgsciencehub.com/get/make).
+- You can find a tutorial for installing make [here](https://tilburgsciencehub.com/topics/Automation/automation-tools/Makefiles/make/.
+
+<!-- was: https://tilburgsciencehub.com/get/make)>-->
 
 ### 4) Get a good text editor
 
