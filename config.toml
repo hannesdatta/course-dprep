@@ -39,7 +39,7 @@ enableGitInfo = true
   Course_Exam_Mainsit = "tba" # "Monday, 14 October 2024"
   Course_Exam_Resit = "tba" # "Monday, 16 December 2024"
   
-  Datacamp_Link = "https://www.datacamp.com/groups/shared_links/6c2820ba43d86311be5b9e5a911735dd7acf95eb8b7fb8f8ef768f526072d9d9"
+  Datacamp_Link = "https://www.datacamp.com/groups/shared_links/1da903ac900a217d264a771211c0f5ea3fd66f58dbe718c412db79744c1e57f5"
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
