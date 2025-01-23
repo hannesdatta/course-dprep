@@ -26,7 +26,8 @@ The course consists of weekly modules, which will gradually develop your coding 
 Course week|Date|Time|Location|Content|
 |:-:|---------|---------|-------------|--------------------|
 |{{< button relref="prep" >}}Week 0{{< /button >}}  | | | | Preparation before the course starts   
-|{{< button relref="week1" >}}Week 1{{< /button >}} |Thu 30 Jan | 10.45-14.30 | On campus | Getting started with R
+|{{< button relref="week1" >}}Week 1{{< /button >}} |Wed 29 Jan | 09.30-10.15 | On campus | Q&A to help you fix installation issues (optional, together with students following [oDCM](https://odcm.hannesdatta.com))
+| |Thu 30 Jan | 10.45-14.30 | On campus | Getting started with R
 |{{< button relref="week2" >}}Week 2{{< /button >}}|Wed 5 Feb | 10.45-12.30 | On campus | Tutorial: Project management and exploring data with RMarkdown
 |                                                   |        | 12.45-14.30 | On campus | [Team coaching #1](/docs/project/workplan)
 |{{< button relref="week3" >}}Week 3{{< /button >}}|Wed 12 Feb | 10.45-12.30 | On campus | Tutorial: Version control using GitHub
