@@ -21,6 +21,8 @@ Together with your team members, you will
 Working on your team project is not only a great refresher on the course content, but *especially* gives you a better sense of the added value of using Git/GitHub when collaborating with one another, and automation with `make` with a many source code files.
 
 
+For inspiration, explore past team projects like [Airbnb Price Calculator](https://github.com/course-dprep/airbnb-price-calculator), [COVID-19 and Length of Stay](https://github.com/course-dprep/covid19_on_length_of_stay-team1), and [Movie Genre IMDb Analysis](https://github.com/course-dprep/MovieGenre_IMDbAnalysis). Use these as a starting point, keeping in mind that grading criteria may have changed and these examples are not flawless.
+
 {{< hint info >}}
 
 This project may be *different* from other projects that you have worked on during your study. In particular, the purpose of this project is *not to write an academic research paper*, but instead to focus on the *infrastructure* of working on an academic research paper. More more insights, [check the grading guidelines](grading).
