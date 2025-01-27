@@ -68,6 +68,10 @@ The course content will be tested in the form of a computer exam, taken on campu
   - Generate RMarkdown documents
   - Clean/transform data using dplyr/tidyverse.
 
+## Two examination opportunities per academic year
+
+Students enrolled in the course “Data Preparation and Workflow Management” can choose to take the on-campus computer exam during a maximum of two out of four examination opportunities per academic year.
+
 ## Preparing for the exam
 
 ### Ideas for developing your proficiency
