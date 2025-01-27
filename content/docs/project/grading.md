@@ -34,7 +34,7 @@ Weights for each component of the grading rubric below are indicated in brackets
 {{< /hint>}}
 
 
-Please refer to the [grading rubric](other\dprep-project-rubric.pdf) for further details on the assessment criteria. 
+Please refer to the [grading rubric](../../../other/dprep-project-rubric.pdf) for further details on the assessment criteria. 
 
 {{< hint info>}}
 ***Disclaimer:***
