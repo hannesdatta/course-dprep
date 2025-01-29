@@ -32,13 +32,13 @@ If you haven't done so, please
 Agenda
 ========================================================
 
-- Part 1 (10.45 to about 12.15)
+- Part 1 (10.45 to about 11.45)
   - Meeting each other!
   - Motivation for the course
   - Course framework and learning goals
   - Agenda and practical arrangements
 - Break
-- Part 2: R Bootcamp on your laptops (about 12.30 - 14.30)
+- Part 2: R Bootcamp on your laptops (about 12.00 - 13.30/13.45)
 
 
 <!--
@@ -61,8 +61,8 @@ Research and teaching (all openly available)
 ========================================================
 
 - Research on digital media and branding (https://hannesdatta.com)
-- Tilburg Science Hub (https://tilburgsciencehub.com)
-- Tilburg AI (https://tilburg.ai)
+- __Tilburg Science Hub (https://tilburgsciencehub.com)__
+- Tilburg.ai (https://tilburg.ai)
 - Teaching ([thesis supervision](https://thesis.hannesdatta.com), [oDCM](https://odcm.hannesdatta.com))
 - YouTube channel (https://youtube.com/c/hannesdatta), LinkedIn (https://linkedin.com/in/hannesdatta)
 - My public code (https://github.com/hannesdatta)
@@ -72,9 +72,10 @@ Getting to know your programming skills...
 ========================================================
 incremental: true
 
-- Who's ever used R? (Share your coolest R experience!)
-- Experience with (data-intensive) research? How did you "tame" the data? How did you collaborate?
-- Fast forward to the future... where would you like to work? What's your passion?
+- Who's ever used R? (Share your wildest R moment...!)
+- Ever wrangled with messy data? How did you clean it up? Did you team up or go solo?
+- Imagine your dream job ??? what is it going to be?
+
 
 Motivation for course (I)
 ========================================================
@@ -230,19 +231,21 @@ Project coaching
 - teams meet on campus 
   - during scheduled coaching class hours
   - except in the last two weeks (online feedback in breakout rooms)
-- instructor walks around and addresses questions
+- coach (Roshini) meets all teams for a check-in moment (first 45m); then walks around and addresses (remaining) questions
 
 Tutorials
 ========================================================
 
-- make use of courses by [datacamp.com]() (get access - see links on site and Canvas) and Software Carpentry
-- will require a lot of effort & feedback
-- four tutorials
+- four __key__ tutorials
   - explore new data using RMarkdown 
   - learn how to collaborate on code using GitHub
   - prepare datasets for analysis
   - automate workflows using `make`
-- __all skills__ are highly valued on the job market
+- build skills using courses on [datacamp.com]() (get access - see links on site and Canvas) and Software Carpentry
+
+<br>
+__skill building requires time, effort *and* (human!) feedback__, but is highly valued on the job market
+
 
 Grading
 ========================================================
@@ -250,8 +253,9 @@ Grading
 - Team project (40%)
   - with self- and peer assessment
   - hand in via GitHub
-- [Computer exam](https://dprep.hannesdatta.com/docs/exam) (60%) on campus, no internet
+- Computer exam (60%) on campus, no internet
   - mix of open (free-flowing answers) and closed questions (multiple choice)
+  - elaborate [preview of exam + example questions](https://dprep.hannesdatta.com/docs/exam) available on the course website
 
 <!--
 ::: notes
@@ -261,16 +265,6 @@ Grading
 
 :::
 -->
-
-My commitment
-========================================================
-
-- Boost your own efficiency by making your work reproducible & transparent
-- Help others by sharing work and collaborating on projects
-- Start learning R, __but__, becoming an expert requires years of practice
-- Open software only (usable right away, no admin rights required)
-- Bring in your own ideas, don't be afraid to study topics off the main stream!
-- Discuss own work and ideas, __but__ this requires interaction & working hard
 
 Brain-dead by coding
 ========================================================
@@ -298,6 +292,7 @@ Getting support
 
 What's in for you?
 ========================================================
+incremental: true
 
 - Enhanced data analysis abilities: knowing the latest packages
 - Competitive advantage: everyone learns R, barely anyone learns GitHub and automation skills (but, they are so useful)
@@ -310,12 +305,8 @@ Success factors
 
 At the end of this course, what would make you say...
 
-__"This was a truly successful and enriching journey for me!"? 🌟__
+__"This was actually worth it... !!!"?__
 
-
-<br>
-<br>
-*Please let me know your thoughts.*
 
 <!--
 ::: notes
@@ -328,13 +319,13 @@ __"This was a truly successful and enriching journey for me!"? 🌟__
 Next steps
 ========================================================
 
-- Find a group by week 2 (max. 5 students; please "mix" by experience with R!) - no need to start working already (talk to others during the break to meet up)
+- Find a group by week 2 (max. 5 students, min. 4; please "mix" by experience with R!) - no need to start working already (talk to others during the break to meet up)
 - Got Datacamp access? [Enroll now](https://dprep.hannesdatta.com/docs/course/support/datacamp/)
 - Complete the [software installation](https://dprep.hannesdatta.com/docs/modules/prep)
-- Be inclusive, so please keep communication during the breaks in English :)
+- Get GitHub Education Pack (+ why!)
 
 <br>
 <br>
 
-🌟📚 After a well-deserved break, we continue with the **R bootcamp**.
+After a well-deserved break, we continue with the **R bootcamp**.
 
