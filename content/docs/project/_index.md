@@ -50,9 +50,13 @@ Check out [the detailed grading guidelines here](grading_details.md).
 
 During the course, you will have the opportunity to meet up with the course instructor for coaching sessions. These sessions are meant for you to receive feedback on your ideas and code. Frequently, this also entails problem-solving & debugging.
 
-Teams participating in coaching sessions attend the entire session. They typically work together on the team project, and the course instructor will "walk around" to address students' questions. When on Zoom, breakout rooms will be created. There will be approximately 10 minutes per team in total; some teams may prefer to use the entire time at once, while other teams may prefer to ask multiple, short questions over the entire duration of the session.
+- **Participation:** All teams attend the full session. Teams typically collaborate on their projects while the course instructor provides support (in-person by walking around or via Zoom breakout rooms).
 
-__Deliverables:__ Most coaching sessions will help the team work on some deliverables, which are always due at the end of a course week and are submitted on Canvas by Friday, 7 pm.
+- **Session Format:**
+    - First Half: Each team gets 5–10 minutes to provide a progress update and seek assistance from the coach.
+    - Second Half: Time is allocated on a needs basis to address specific issues or questions raised by teams.
+
+__Deliverables:__ Most coaching sessions will help the team work on some deliverables, which are always due before the next coaching session. Please refer to Canvas for exact due dates each week.
 
 ### Team composition
 
