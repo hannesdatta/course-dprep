@@ -27,7 +27,7 @@ draft: false
 
 ## After the lecture
 
-- Please work through the RMarkdown part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (chapter 7, getting started with R Markdown)
+- Please work through the RMarkdown part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (chapters 6-7: plotting with `ggplot2` and getting started with R Markdown)
 - Optional (for students needing more practice with R/RStudio): 
   - Develop your R skills by working on the [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3) course
 
