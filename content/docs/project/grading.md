@@ -17,7 +17,13 @@ Points can be obtained for three assessment criteria:
 2. Data preparation and analysis (45% of the final grade)
 3. Quality of the source code and degree of automation (25% of the final grade)
 
-Weights for each component of the grading rubric below are indicated in brackets (e.g., 5%). In calculating your final grade, percentages are converted to grade points on a ten-point scale (e.g., 5% make up 0.5 grade points on a 10-point scale), weighted by the following percentages:
+
+{{< hint >}}
+__The [grading rubric](/docs/other/dprep-project-rubric.pdf) can be viewed/downloaded here__.
+{{< /hint>}}
+
+
+Weights for each component of the grading rubric are indicated in brackets (e.g., 5%). In calculating your final grade, percentages are converted to grade points on a ten-point scale (e.g., 5% make up 0.5 grade points on a 10-point scale), weighted by the following percentages:
 
 * *High proficiency* and/or exceeds expectations (grade points x 100%)
 * *Adequate proficiency* (grade points x 80%)
@@ -34,7 +40,6 @@ Weights for each component of the grading rubric below are indicated in brackets
 {{< /hint>}}
 
 
-Please refer to the [grading rubric](/other/dprep-project-rubric.pdf) for further details on the assessment criteria. 
 
 {{< hint info>}}
 ***Disclaimer:***
