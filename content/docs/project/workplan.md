@@ -10,7 +10,6 @@ draft: false
 
 You’ll start working on your project -- an *end-to-end, fully automated research workflow* -- in the first course week. The activities below help you to structure your project. Stick to the plan to ensure you can finish the project in time.
 
-**Structure of Coaching Sessions:** During the first half of the coaching session, each team will have 5–10 minutes to provide an update on their progress and seek your coach's assistance if they encounter any challenges. The second half will be dedicated to addressing specific issues or questions raised by teams on a needs basis. It is, therefore, up to the teams to be proactive in asking for guidance during this time.
 
 {{< hint info >}}
 **Deliverables** are submitted on Canvas. Please check Canvas for the due dates for each week. The course team will provide short feedback in line with the [grading rubric](../../../other/dprep-project-rubric.pdf) at least a day before the next coaching session.
