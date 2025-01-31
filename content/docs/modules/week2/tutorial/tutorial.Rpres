@@ -16,14 +16,15 @@ Before we get started
 
 - Group work will get started - ensure your teams are properly registered
   - Both on Canvas
-  - And on GitHub: https://classroom.github.com/a/K4FxS25n
-- Any pending installation issues? Let me know!
-- Today's session is *interactive*: I brought signs to indicate how far you are
-  - green: I'm done
-  - yellow: working on it...
-  - red + raise arm: need help!
+  - ...and on GitHub: https://classroom.github.com/classrooms/107044217-course-dprep-classroom-spring-2025
+  - please use same team names both on Canvas and GitHub (thanks!)
+- Any pending installation issues? Get in touch with Roshini during the coaching session.
 
 <!--
+LINK TO GH to be updated.
+old:https://classroom.github.com/a/K4FxS25n
+
+https://classroom.github.com/classrooms/107044217-course-dprep-classroom-spring-2025
 - Looking back...
   - coaching session: goal to get setup on GitHub
   - tutorial: way of working -- individual/team; issue-based
@@ -39,8 +40,8 @@ Structure of this tutorial
 - Today's **tutorial**: we will use RMarkdown to start exploring new data
 
 - After class
+  - Work through [chapters 6-7](https://datacarpentry.org/r-socialsci/06-rmarkdown.html) of "R for Social Scientists" (on R Markdown & ggplot)
   - Complete exercises in [today's tutorial](https://dprep.hannesdatta.com/docs/modules/week2/tutorial/intro-to-r.html)
-  - Work through [chapter 7](https://datacarpentry.org/r-socialsci/06-rmarkdown.html) of "R for Social Scientists" (on R Markdown)
   - Optional: [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r)
 
 Data preparation theory (I) - Research workflow
@@ -114,226 +115,49 @@ incremental: true
 - Options to run (or not run) code cells when compiling documents
   - that 'little wheel'
   - `echo`, `include`
+  
   ![](fig_cell.png)
 
-Reviewing basic programming concepts in Base R
-==============
-incremental: true
 
-- Last week, we covered __basic__ programming concepts in "base R".
-- We will first review some of these concepts.
-- It's good to have a cheat sheet available - use [this](https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf)
-
-Do: Recap from our bootcamp
-================
-
-Let's create some data!
-
-```{r}
-set.seed(1234)
-campaign_responses <- floor(sample(c(NA, rnorm(100, mean = 50, sd = 20)), 1E3, replace = TRUE))
-
-```
-
-<br>
-__Write code for the following exercises:__
-
-1. Find all campaigns with exactly 25 responses.
-2. Identify campaigns with less than 25 responses (maybe we should adjust these campaigns?).
-3. Count the campaigns that received more than 50 responses (these are our top performers).
-4. Count how many campaigns have missing response data (to ensure data integrity).
-5. List campaigns with more than 50 responses OR missing data (high performers or data issues).
-6. Identify campaigns with responses between 10 and 50 (average performers we could potentially optimize).
-
-Do: Controls
-================
-class: small-code
-
-- __If statements__ allow you to conditionally execute some parts of your code.
-- Please first download some data - __observe the n_max statement!__
-
-```{r}
-download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/modules/week4/regional-global-daily-latest.csv", "streams.csv")
-library(tidyverse)
-streams <- read_csv('streams.csv', skip=1, n_max = Inf)
-```
-
-- __Imagine the data had millions of rows. Write some code that only opens the first 100 rows if a variable called `prototype` is `TRUE`. If `prototype` is `FALSE`, all rows need to be loaded.__
-
-Solution
-================
-class: small-code
-
-```{r}
-download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/modules/week4/regional-global-daily-latest.csv", "streams.csv")
-library(tidyverse)
-
-prototype = TRUE
-n_max = Inf
-if (prototype==TRUE) n_max = 100
-streams <- read_csv('streams.csv', skip=1, n_max = n_max)
-```
-
-__Beware:__
-- `read.csv` is NOT `read_csv` (the latter is more efficient!)
-- n_max / nrows (for `read.csv`) are __critically important__!
-
-Why are we doing this again?
-=============
-
-Remember our research workflow? Before we can start with exactly the same data, we all need to download this data set first.
-
-__Question:__ Why not do it manually? What could go wrong?
-
-
-Loops
-=====
-class: small-code
-
-- Loops are super handy to execute functions over and over again.
-
-```{r}
-urls = c('title.episode.tsv.gz', 'title.ratings.tsv.gz')
-
-for (url in urls) {
-  url_to_download = paste0('https://datasets.imdbws.com/', url) # complete the URL
-  filename = url # set filename where the data needs to be saved
-  download.file(url_to_download, destfile = filename) # download file
-}
-```
-
-__Do:__ Use the code snippet above to download __also__ the "ratings" data from IMDb. Check whether files have been saved properly!
-
-Solution
-=========
-
-```
-# your code here
-# urls = # Assemble list of URLs here
-# then, copy paste code snippet for downloading and renaming data
-
-```
-
-Loops versus the "apply family"
-============
-incremental: true
-
-- Loops don't "return" anything - they just execute stuff over and over again
-- Functions from the `apply` family, though, DO return information.
-- Apply comes in multiple flavors:
-  - `lapply` (loops over a `vector` or `list`, returns a `list`)
-  - `sapply` (loops over a `vector`, returns as a `vector`)
-  - `apply` (loops over rows or columns of a matrix, returns a `vector`)
-  - Other versions of `apply` exist, but I rarely use them
-- Applies are super handy when working with data
-
-Using `lapply` for crunching data
-===========
-class: small-code
-
-```{r}
-urls = c('https://datasets.imdbws.com/title.episode.tsv.gz', 'https://datasets.imdbws.com/title.ratings.tsv.gz')
-
-datasets <- lapply(urls, read_delim, delim='\t', na = '\\N')
-```
-
-__Do__ 
-
-1. run the code snippet above, and inspect the data. You can enter each data set by typing `datasets[[1]]`, `datasets[[2]]`, etc. - does it correspond to what you would expect?
-2. Obtain summary statistics for all data sets, using `lapply` and the `summary`. 
-
-Why again `lapply`?
-=========
-
-__What's the key difference between the "apply family" and "for loops"?__
-
-Solution
-======
-
-- `lapply` "returns" stuff; loops just execute stuff without returning anything
-
-Some more programming concepts that help us transform data
-=========
-class: small-code
-
-- Regular expressions are extremely powerful to work with text data -- movie titles
-  - `grepl` can filter for information, without typing the "exact" search query
-  - `gsub` helps you to replace information
-  
-```{r}
-episodes = datasets[[1]] 
-episodes %>% filter(grepl('tt003', tconst))
-```
-
-__DO__
-
-1. Search for the episodes of "Breaking Bad" (`903747`) using `filter` and `grepl` (in `datasets[[1]]`)
-2. Search for the rating "The Wolf of Wall Street" (`0993846`) using `filter` and `grepl` (in `datasets[[2]]`). 
-
-Functions
-==========
-class: small-code
-
-- Sometimes, we would like to re-use code. For this, we make use of self-made functions. 
-- For example, a function that searches for different movies/titles in the IMDb data.
-- Always start by prototyping your function.
-
-```{r, results = 'hide'}
-episodes = datasets[[1]]
-episodes %>% filter(grepl('tt003', tconst))
-```
-
-__Starting code:__
-
-```{r, results = 'hide'}
-search <- function(searchterm) {
-  # put some code here
-
-}
-```
-
-Summary of concepts covered so far
-=================
-
-- setup-ito
-- knitting markdown documents
-- conditional logic
-- controls
-- downloading data
-- loops and the `apply` family (`lapply`)
-- functions
-
-Now we can get started with exploring and auditing data
+Let's get started with exploring and auditing data
 =====
 
-- We'll make use of the __Google Mobility Dataset__
+We'll make use of the __Google Mobility Dataset__
 
-__DO:__
+1. Run the code snippet below
 
-1. Download the __regional CSV__ from https://www.google.com/covid19/mobility/ & unzip
-2. Load the data into R using `read_csv()`
-3. Start exploring the data: use `head()`, `tail()`, and `View()`
+```{r}
+library(tidyverse)
+mobility <- read_csv('https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/master/content/docs/modules/week2/tutorial/2020_NL_Region_Mobility_Report.csv')
+```
+
+2. Start exploring the data: use `head()`, `tail()`, and `View()`
+
 
 Unit of analysis
 ===========
 
-- __Unit of analysis__: Refers to the specific entity or level of observation at which you analyze data 
+- What is it? → The level at which data is collected (e.g., individuals, groups, products, events).  
+- Why does it matter? → It shapes **how you summarize and interpret data**—wrong levels lead to **misleading results**.  
+- Example:  
+  - A store tracks **purchases** → Unit = **transaction**  
+  - To study **customer behavior**, we must **aggregate by customer** (or **customer-month**, etc.) 
 
-- __Why is it important?__ It determines how you aggregate, summarize, and interpret your data. Without knowing your unit of analysis -- at each part of your project -- you will likely get lost.
+<br>
+- Key Questions:  
+  - 👉 *What is my current unit of analysis?*  
+  - 👉 *Is this the right level for my research question?*  
+  - 👉 *Do I need to aggregate or transform my data?*  
 
-- __Example__: The episodes and rating data is organized along the individual *episode*-level. Using the column `parentTconst` in `datasets[[1]]`, you could aggregate this data to another unit of analysis: the series level.
-
-Summary statistics
+Creating summary statistics
 ========
 incremental: true
 
 - We can generate summary statistics using the `summary()` command.
   - do values make sense?
   - are there any missing values?
-- We can also zoom in on specific columns
-  - let's start making sense of the `retail_and_recreation_percent_change_from_baseline` variable: what does it mean?
-  - let's plot this variable over time!
-- If our target unit of analysis is different from the unit of analysis in the current data set, we can also use aggregation.
+- We can also zoom in on specific columns and create summary stats (e.g., on `retail_and_recreation_percent_change_from_baseline`) - what does it mean?
+
 
 Cleaning the data
 =========
@@ -344,10 +168,24 @@ Cleaning the data
 <br>
 __DO:__
 
-1. Drop these columns: `cols_to_drop <- c('country_region_code', 'metro_area', 'iso_3166_2_code', 'census_fips_code')`
+1. Drop these columns: `country_region_code`, `metro_area`, `iso_3166_2_code`, `census_fips_code`
 2. Rename `sub_region_1` to `province`, and `sub_region_2` to `city`
 
-We can also use more advanced functions, e.g., to wipe the `percent_change...` from the column names.
+Solution
+====
+
+```{r}
+mobility <- mobility %>% rename(province = sub_region_1,
+                                city = sub_region_2,
+                                retail_and_recreation = retail_and_recreation_percent_change_from_baseline,
+                                grocery_and_pharmacy = grocery_and_pharmacy_percent_change_from_baseline,
+                                parks = parks_percent_change_from_baseline,
+                                transit_stations = transit_stations_percent_change_from_baseline,
+                                workplaces = workplaces_percent_change_from_baseline,
+                                residential = residential_percent_change_from_baseline)
+                
+```
+
 
 Verifying data types
 =========
@@ -360,13 +198,167 @@ Do: Selecting subsets
 
 - Can you explore the data a bit more? Which observations are measured at the __country level__?
 - How can you select only these country-level observations, using `%>% filter(...)`?
+- Put the province level data sets into `province`, the country-level datasets into `country`
+
+Solution
+====
+
+Please all run this snippet to be able to continue the tutorial if you have not solved it yourselves.
+
+```{r}
+country <- mobility %>% filter(is.na(city) & is.na(province))
+province <- mobility %>% filter(is.na(city) & !is.na(province))
+```
+
+Missing values
+=================
+
+- Why care about missing values?  
+  - Missing data can **bias results** and **affect analysis**  
+  - Some methods ignore missing values, others break if not handled  
+  - Solutions depend on **why** values are missing  
+- Ways to explore missing values
+  - `summary()`
+  - `sum(is.na(columnname))`
+  
+DO: Explore missing values in the `country` dataset using `summary()`
+
+
+
+DO: Replacing missing values
+=================
+ 
+- `mutate`: create new or edit existing column
+- `ifelse(X, A, B)` does action A or B, depending on X
+- `is.na(col)` checks for missing values in a column
+
+Please replace missing values by their mean for `retail_and_recreation` and other "place" columns in the `province` dataset.
+
+Solution
+=====
+
+```{r}
+province_updated = province %>% mutate(retail_and_recreation = ifelse(is.na(retail_and_recreation), mean(retail_and_recreation,na.rm=T), retail_and_recreation),
+                               grocery_and_pharmacy = ifelse(is.na(grocery_and_pharmacy), mean(grocery_and_pharmacy,na.rm=T), grocery_and_pharmacy),
+                               parks = ifelse(is.na(parks), mean(parks,na.rm=T), parks),
+                               transit_stations = ifelse(is.na(transit_stations), mean(transit_stations,na.rm=T), transit_stations),
+                               workplaces = ifelse(is.na(workplaces), mean(workplaces,na.rm=T), workplaces),
+                               residential = ifelse(is.na(residential), mean(residential,na.rm=T), transit_stations)
+                               )
+
+```
+
+Visualization using `ggplot2`
+===========
+
+- Why?
+  - great plotting tool: `ggplot2` (better than built-in functionality)
+  - works seamlessly with `dplyr` pipelines
+  - can create really complex charts, real quick, plus export them to PDF/PNG, etc.
+
+- Steps
+  - define dataset: `ggplot(data = your_data)` or `data %>% ggplot()`
+  - set easthetics (aes): `aes(x= ..., y = ...)`
+  - choose geometry/chart type (`geom_`): `geom_line()`, `geom_point`, `geom_col` (barchart)
+  - customize (e.g., titles, colors, themes, labels, etc.)
+  
+DO: First chart
+=====
+
+```{r}
+
+library(ggplot2)
+
+ggplot(data = country) + 
+  geom_line(aes(x = date, y = retail_and_recreation), 
+    color = "black") +
+  labs(title = "Changes in Visits to Retail Areas Over Time",
+       x = "Date",
+       y = "% Change from Baseline") +
+  theme_minimal()
+```
+
+1. Change color of lines to blue
+2. Try out another theme: `theme_light`
+3. Change the y axis from `retail_and_recreation` to `parks` + change title
+
+
+Adding more data points to a chart
+=====
+
+```{r}
+
+library(ggplot2)
+
+ggplot(data = country) + 
+  geom_line(aes(x = date, y = retail_and_recreation, color = 'Retail')) +
+  geom_line(aes(x = date, y = parks, color = 'Parks')) +
+  scale_color_manual(values = c("Retail" = "red", "Parks" = "blue")) +
+  labs(title = "Time spent at retail vs. parks",
+       x = "Date",
+       y = "% Change from Baseline") +
+  theme_minimal()
+```
+
+DO: Can you also add information from time spent at work?
+
+
+Grouping via facet wrap
+=====
+
+Sometimes, it makes sense "automatically" grouping our plots, such as by province!
+
+```{r}
+province_updated %>% ggplot() + 
+  geom_line(aes(x = date, y = retail_and_recreation, color = 'Retail')) +
+  geom_line(aes(x = date, y = parks, color = 'Parks')) +
+  facet_wrap(~province) + 
+  scale_color_manual(values = c("Retail" = "red", "Parks" = "blue")) +
+  labs(title = "Time spent at retail vs. parks",
+       x = "Date",
+       y = "% Change from Baseline",
+       color = "Place") +
+  theme_minimal()
+```
+
+Grouping via "key" column in a long data set
+=====
+
+Run this!
+
+```{r}
+province_long <- province_updated %>%
+  select(province,date, retail_and_recreation, grocery_and_pharmacy, parks, transit_stations, workplaces, residential) %>%
+  pivot_longer(cols = c(retail_and_recreation, grocery_and_pharmacy, parks, 
+                        transit_stations, workplaces, residential),
+               names_to = "place_category",
+               values_to = "mobility_change") 
+```
+
+Grouping via "key" column in a long data set
+=====
+
+```{r}
+province_long %>% ggplot(aes(x=date, y=mobility_change, color=place_category)) +
+  geom_line()  + 
+  facet_wrap(~province)+
+  theme_minimal()
+```
+
+Saving plots
+====
+
+```r
+ggsave()
+```
 
 Wrapping everything up in a "clean" script
 ==============
 
 1. Setup done/packages and other prerequisites loaded?
 2. Adhered to input - transformation - output?
-3. File callable from the command prompt? --> we will need this for automation in subsequent tutorials (`Rscript <filename>`)
+3. Clean up any remaining garbage
+4. File callable from the command prompt? --> we will need this for automation in subsequent tutorials (`Rscript <filename>`)
 
 
 Recap: Steps in data preparation
@@ -393,9 +385,9 @@ We've just covered step 1. Concepts and programming knowledge extends to subsequ
 Next steps
 ===============
 
+- Revisit RMarkdown & ggplot on Data Carpentry
 - Work through the tutorial and complete exercises (all solutions available)
 - Start working on team projects
   - pick a dataset: IMDb or Yelp
-  - come up with a 'research question' (but note: this course is about *engineering a research pipeline*, not about rigorously answering the RQ!)
-- Join the coaching session, following today's tutorial session
+  - come up with a research question (but note: this course is about *engineering a research pipeline*, not about rigorously answering the RQ!)
 

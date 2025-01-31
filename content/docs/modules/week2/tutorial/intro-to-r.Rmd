@@ -113,7 +113,7 @@ mobility <- read_csv("raw_data/2020_NL_Region_Mobility_Report.csv")
 __Troubleshooting__
 
 - If R doesn’t find your file: Click **Session → Set working directory → To source file location**. Avoid using `setwd()` — hardcoding directories can cause problems!
-- Don't manage to download the file directly from Google? You can also use an archived version: `mobility <- read_csv('https://media.githubusercontent.com/media/hannesdatta/course-dprep/master/content/docs/modules/week3/tutorial/2020_NL_Region_Mobility_Report.csv', sep = ',')`
+- Don't manage to download the file directly from Google? You can also use an archived version: `mobility <- read_csv('https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/master/content/docs/modules/week2/tutorial/2020_NL_Region_Mobility_Report.csv')`
 
 ## Exercise 1: Data Inspection
 
