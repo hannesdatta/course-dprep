@@ -2937,11 +2937,16 @@ can use for plotting, called <code>province_summary</code>.</p>
 <span id="cb51-8"><a href="#cb51-8" tabindex="-1"></a>province_summary <span class="ot">&lt;-</span> province_long <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(province, place_category) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">avg_mobility_change =</span> <span class="fu">mean</span>(mobility_change, <span class="at">na.rm=</span>T))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;province&#39;. You can override using the
 ## `.groups` argument.</code></pre>
-<p>Tips: - Use <code>ggplot2</code> with <code>geom_col()</code> to
-compare categories across provinces.<br />
-- Use <code>facet_wrap(~province)</code> to create separate charts for
+<p>Tips:</p>
+<ul>
+<li>Use <code>ggplot2</code> with <code>geom_col()</code> to compare
+categories across provinces.<br />
+</li>
+<li>Use <code>facet_wrap(~province)</code> to create separate charts for
 each province.<br />
-- Adjust colors, titles, and labels for clarity.</p>
+</li>
+<li>Adjust colors, titles, and labels for clarity.</li>
+</ul>
 <div class="webex-solution">
 <button>
 Solution to Exercise 12

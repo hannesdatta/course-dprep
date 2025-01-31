@@ -737,6 +737,7 @@ province_summary <- province_long %>% group_by(province, place_category) %>% sum
 ```
 
 Tips:
+
 - Use `ggplot2` with `geom_col()` to compare categories across provinces.  
 - Use `facet_wrap(~province)` to create separate charts for each province.  
 - Adjust colors, titles, and labels for clarity.  
