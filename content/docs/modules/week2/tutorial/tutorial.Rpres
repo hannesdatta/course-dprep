@@ -16,8 +16,7 @@ Before we get started
 
 - Group work will get started - ensure your teams are properly registered
   - Both on Canvas
-  - ...and on GitHub: https://classroom.github.com/classrooms/107044217-course-dprep-classroom-spring-2025
-  - please use same team names both on Canvas and GitHub (thanks!)
+  - ...and on GitHub: https://classroom.github.com/a/njMpaR5l (use SAME team numbers!)
 - Today's content __builds__ on previous' week's content (R Bootcamp)
 - Any pending installation issues? Get in touch with Roshini during the coaching session.
 
@@ -553,8 +552,8 @@ Next steps
 1. Work through RMarkdown & ggplot2 chapters in [R for Social Scientists](https://datacarpentry.org/r-socialsci/)
 2. Work through this week's tutorial (not just "understand", but actually "do"), see [here](https://dprep.hannesdatta.com/docs/modules/week2/tutorial/intro-to-r)
 3. Coaching session: Starting up your team projects
-  - Choose data set
-    - pick a dataset: IMDb or Yelp
+  - Finalize team registration (on Canvas *and* on [GitHub Classrooms](https://classroom.github.com/a/njMpaR5l))
+  - Choose data set: IMDb or Yelp
   - Find research question (but note: this course is about *engineering a research pipeline*, not about rigorously answering the RQ!!!)
   - Start your data exploration (see [workplan](https://dprep.hannesdatta.com/docs/project/workplan/))
 
