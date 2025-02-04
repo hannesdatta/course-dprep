@@ -18,6 +18,7 @@ Before we get started
   - Both on Canvas
   - ...and on GitHub: https://classroom.github.com/classrooms/107044217-course-dprep-classroom-spring-2025
   - please use same team names both on Canvas and GitHub (thanks!)
+- Today's content __builds__ on previous' week's content (R Bootcamp)
 - Any pending installation issues? Get in touch with Roshini during the coaching session.
 
 <!--
@@ -38,14 +39,19 @@ https://classroom.github.com/classrooms/107044217-course-dprep-classroom-spring-
 Structure of this tutorial
 ========================================================
 
-- Data preparation theory ("the bigger picture")
+- Introduction
+    - A bit of data preparation theory ("the bigger picture")
+    - How to write source code (e.g., R) files
 
-- Today's **tutorial**: we will use RMarkdown to start exploring new data
+- Part 1: RMarkdown for exploring new data
 
+- Part 2: `ggplot2` for plotting [updated this year]
+  
 - After class
   - Work through [chapters 6-7](https://datacarpentry.org/r-socialsci/06-rmarkdown.html) of "R for Social Scientists" (on R Markdown & ggplot)
   - Complete exercises in [today's tutorial](https://dprep.hannesdatta.com/docs/modules/week2/tutorial/intro-to-r.html)
-  - Optional: [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r)
+  - Optional: 
+      - [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r)
 
 Data preparation theory (I) - Research workflow
 ====
@@ -55,17 +61,16 @@ Data preparation theory (I) - Research workflow
 Data preparation theory (II): Components of source code
 ====
 
-1) Initializing the script/setup
-- Loading packages
-- Making connections to databases
-- Any other "main" parameters (e.g., "Knowing" whether to prototype or not)
-2) Input
-- Read data (e.g., unstructured/unstructured data, remote/local locations, files or databases)
-3) Transformation
-- E.g., filtering, aggregation, merging, transformation, deduplication (more later)
-4) Output
-- Store (intermediate) data, figures (e.g., auditing, final)
-
+- 1) Initializing the script/setup
+    - Loading packages
+    - Making connections to databases
+    - Any other global ("main") parameters (e.g., sample size, prototype flag, etc.)
+- 2) Input
+    - Read data (e.g., unstructured/unstructured data, remote/local locations, files or databases)
+- 3) Transformation
+    - E.g., filtering, aggregation, merging, transformation, deduplication (more later)
+- 4) Output
+    - Store (intermediate) data, figures (e.g., auditing, final)
 
 Data preparation theory (III): A research pipeline
 ====
@@ -75,10 +80,14 @@ Data preparation theory (III): A research pipeline
 Today's session
 ===
 
-- Today, we're “just” exploring data
+- Today, we're focusing on step 1 - exploring and plotting data
 - ...but, some of the source code will end up in your data preparation for your project.
 
 ![Today's focus: Step 1 of research workflow](fig_researchworkflow.png)
+
+Part 1: RMarkdown
+========
+
 
 Exploring data using RMarkdown
 ==============
@@ -90,7 +99,7 @@ incremental: true
 - But -- in all of these cases, the output will be "ugly" (i.e., just some text)
 - RMarkdown is a way to format output nicely -- and ideally suited for exploring data
   - mix of code and text (formatted in markdown) - you already know the concept from Jupyter Notebook
-  - possibility to compile into HTML, PDF, Word, etc.
+  - possibility to compile into HTML, PDF, Word, and many more
 - great for prototyping code, but bad for "production" (this is also the case for Python's Jupter Notebook)
 
 DO: Creating your first RMarkdown
@@ -98,9 +107,10 @@ DO: Creating your first RMarkdown
 
 In today's session, we create our own RMarkdown document.
 
-1. Select file --> new --> RMarkdown.
+1. Select file &rarr; new &rarr; RMarkdown.
 2. Choose HTML as output, and pick a good file name (e.g., "tutorial")
-3. Try to __compile__ the document by clicking on "knit to HTML". Save your document before first!
+3. Save your `.Rmd` file.
+4. Convert ("knit"/"compile") the document to HTML by clicking on __"knit to HTML"__. 
 
 ![](fig_knit.png)
 
@@ -111,33 +121,47 @@ RMarkdown basics
 incremental: true
 
 - We already know markdown syntax, right?
-  - If not: find a cheat sheet online right now!
+  - If not: find a cheat sheet online right now or use [this one](https://www.markdownguide.org/cheat-sheet/)
 - All compiled the document? Try this first __always__!
-- Code cells & running code (click, ctrl/cmd+enter)
-- Using inline code
-- Options to run (or not run) code cells when compiling documents
-  - that 'little wheel'
-  - `echo`, `include`
+- Navigating an RMarkdown document
+  - Code cells & running code (click, ctrl/cmd+enter)
+  - Using inline code 
+  - Options to run (or not run) code cells when compiling documents
+    - that 'little wheel' (upper right)
+    - `echo`, `include` parameters
   
-  ![](fig_cell.png)
+    ![](fig_cell.png)
 
 
 Let's get started with exploring and auditing data
 =====
 
-We'll make use of the __Google Mobility Dataset__
+We'll make use of the __[Google Mobility Datasets](https://www.google.com/covid19/mobility/)__ from The Netherlands.
 
-1. Run the code snippet below
+1) In the tutorial on the site, you can either download the data from my server __or__ get the data directly from Google (try downloading yourself). If downloading yourself, watch out for "conversion" issues.
+
+2) In class (to smoothen things...), please just run the code snippet below:
 
 ```{r}
 library(tidyverse)
 mobility <- read_csv('https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/master/content/docs/modules/week2/tutorial/2020_NL_Region_Mobility_Report.csv')
 ```
 
-2. Start exploring the data: use `head()`, `tail()`, and `View()`
+3) Exploring the data: use `head()`, `tail()`, and `View()`/`glimpse()`
+  - Think yourself as a __data detective__ -- you just arrived at the (crime) scene, and it's time to scan for clues.
+  - Turn on your critical thinking mode: __Do you understand what's in the data? Are there weird patterns? What questions pop into your head?__
 
 
-Unit of analysis
+Verifying data types
+=========
+
+- `glimpse()` gives you an overview about data types and first values
+- alternatively, you can use `class(mobility$date)` to inspect classes (e.g., dates, numerics, characters)
+- Recall: can only calculate with dates when they are actual dates! (same with numbers: doesn't work with characters!)
+- Also important to spot wrong encodings
+
+
+Build an understanding about the unit of observation/analysis
 ===========
 
 - What is it? → The level at which data is collected (e.g., individuals, groups, products, events).  
@@ -148,9 +172,10 @@ Unit of analysis
 
 <br>
 - Key Questions:  
-  - 👉 *What is my current unit of analysis?*  
-  - 👉 *Is this the right level for my research question?*  
-  - 👉 *Do I need to aggregate or transform my data?*  
+  - 👉 What is my current unit of analysis? [DO]
+  - 👉 Is this the right level for my research question?
+  - 👉 Do I need to/How could I aggregate or transform my data? [DO]
+
 
 Creating summary statistics
 ========
@@ -162,58 +187,82 @@ incremental: true
 - We can also zoom in on specific columns and create summary stats (e.g., on `retail_and_recreation_percent_change_from_baseline`) - what does it mean?
 
 
-Cleaning the data
+DO: Cleaning and enriching data for exploration
 =========
 
 - Typically, the raw data is always messy and likely not at the correct unit of analysis (e.g., city level).
 - Also, we may still want to select columns, or rename them.
 
 <br>
-__DO:__
 
-1. Drop these columns: `country_region_code`, `metro_area`, `iso_3166_2_code`, `census_fips_code`
-2. Rename `sub_region_1` to `province`, and `sub_region_2` to `city`
+__Please use the `dplyr` commands `select()` (column selection), and `rename()`__.
 
-Solution
+1. Drop these columns
+  - `country_region_code`
+  - `metro_area`
+  - `iso_3166_2_code`
+  - `census_fips_code`
+2. Rename 
+  - `sub_region_1` to `province`, and 
+  - `sub_region_2` to `city`
+
+Solutions
 ====
 
 ```{r}
-mobility <- mobility %>% rename(province = sub_region_1,
-                                city = sub_region_2,
-                                retail_and_recreation = retail_and_recreation_percent_change_from_baseline,
-                                grocery_and_pharmacy = grocery_and_pharmacy_percent_change_from_baseline,
-                                parks = parks_percent_change_from_baseline,
-                                transit_stations = transit_stations_percent_change_from_baseline,
-                                workplaces = workplaces_percent_change_from_baseline,
-                                residential = residential_percent_change_from_baseline)
-                
+# dropping
+mobility <- mobility %>% select(-country_region_code, metro_area, iso_3166_2_code, census_fips_code)
+# renaming
+mobility <- mobility %>% 
+  rename(province = sub_region_1,
+        city = sub_region_2,
+        retail_and_recreation = retail_and_recreation_percent_change_from_baseline,
+        grocery_and_pharmacy = grocery_and_pharmacy_percent_change_from_baseline,
+        parks = parks_percent_change_from_baseline,
+        transit_stations = transit_stations_percent_change_from_baseline,
+        workplaces = workplaces_percent_change_from_baseline,
+        residential = residential_percent_change_from_baseline)
 ```
 
+Understanding how the data is recorded
+=====
 
-Verifying data types
-=========
+We want to understand how the data is coded; let's take a look at unique combinations of country_region, province, and city.
 
-- `class(mobility$date)`
-- Can only calculate with dates when they are actual dates!
+```{r}
+overview <- mobility %>% group_by(country_region, province, city) %>% count()
+```
+
+DO: Run the snippet and explore it using `View()`. 
+
+
 
 Do: Selecting subsets
 ======
 
-- Can you explore the data a bit more? Which observations are measured at the __country level__?
-- How can you select only these country-level observations, using `%>% filter(...)`?
-- Put the province level data sets into `province`, the country-level datasets into `country`
+- We want to create two new data sets
+  - `province` only contains the observations for a province in NL (city must be missing, but province not)
+  - `country` only contains observations for NL (city and province must be missing)
+- Use the `dplyr` verbs `filter()`, the piping character (`%>%`), and the "NA" detector function `is.na()`
+
+__Task: Create the two data sets: `province` and `country`.__
 
 Solution
 ====
 
-Please all run this snippet to be able to continue the tutorial if you have not solved it yourselves.
+Please run this snippet to be able to continue the tutorial if you have not solved it yourselves.
 
 ```{r}
-country <- mobility %>% filter(is.na(city) & is.na(province))
-province <- mobility %>% filter(is.na(city) & !is.na(province))
+country  <- mobility %>% 
+  filter(is.na(city) & is.na(province))
+
+province <- mobility %>% 
+  filter(is.na(city) & !is.na(province)) 
+# Note, the explamation sign (!) negates a TRUE into a FALSE (and the other way around)
+
 ```
 
-Missing values
+Let's talk about... Missing values (`NA`)
 =================
 
 - Why care about missing values?  
@@ -223,8 +272,11 @@ Missing values
 - Ways to explore missing values
   - `summary()`
   - `sum(is.na(columnname))`
-  
-DO: Explore missing values in the `country` dataset using `summary()`
+
+<br>
+- __DO: Explore missing values in the `country` dataset using `summary()`__
+    - Which columns?
+    - Are they "actual" missings?
 
 
 
@@ -235,21 +287,61 @@ DO: Replacing missing values
 - `ifelse(X, A, B)` does action A or B, depending on X
 - `is.na(col)` checks for missing values in a column
 
-Please replace missing values by their mean for `retail_and_recreation` and other "place" columns in the `province` dataset.
+
+```r
+# toybox example, does not run (because this particular data doesn't exist)
+new_data = old_data %>% 
+  mutate(new_variable = ifelse(is.na(old_variable),
+                               mean(old_variable, na.rm=T),
+                               old_variable))
+```
+
+<br>
+__Please replace missing values by their mean for `retail_and_recreation` and other "place" columns in the `province` dataset.__
 
 Solution
 =====
 
 ```{r}
-province_updated = province %>% mutate(retail_and_recreation = ifelse(is.na(retail_and_recreation), mean(retail_and_recreation,na.rm=T), retail_and_recreation),
-                               grocery_and_pharmacy = ifelse(is.na(grocery_and_pharmacy), mean(grocery_and_pharmacy,na.rm=T), grocery_and_pharmacy),
-                               parks = ifelse(is.na(parks), mean(parks,na.rm=T), parks),
-                               transit_stations = ifelse(is.na(transit_stations), mean(transit_stations,na.rm=T), transit_stations),
-                               workplaces = ifelse(is.na(workplaces), mean(workplaces,na.rm=T), workplaces),
-                               residential = ifelse(is.na(residential), mean(residential,na.rm=T), transit_stations)
-                               )
+province_updated <- province %>%
+  mutate(
+    retail_and_recreation = ifelse(
+      is.na(retail_and_recreation),
+      mean(retail_and_recreation, na.rm = TRUE),
+      retail_and_recreation
+    ),
+    grocery_and_pharmacy = ifelse(
+      is.na(grocery_and_pharmacy),
+      mean(grocery_and_pharmacy, na.rm = TRUE),
+      grocery_and_pharmacy
+    ),
+    parks = ifelse(
+      is.na(parks),
+      mean(parks, na.rm = TRUE),
+      parks
+    ),
+    transit_stations = ifelse(
+      is.na(transit_stations),
+      mean(transit_stations, na.rm = TRUE),
+      transit_stations
+    ),
+    workplaces = ifelse(
+      is.na(workplaces),
+      mean(workplaces, na.rm = TRUE),
+      workplaces
+    ),
+    residential = ifelse(
+      is.na(residential),
+      mean(residential, na.rm = TRUE),
+      residential
+    )
+  )
 
 ```
+
+Part 2: `ggplot2`
+=====
+
 
 Visualization using `ggplot2`
 ===========
@@ -260,18 +352,16 @@ Visualization using `ggplot2`
   - can create really complex charts, real quick, plus export them to PDF/PNG, etc.
 
 - Steps
-  - define dataset: `ggplot(data = your_data)` or `data %>% ggplot()`
-  - set easthetics (aes): `aes(x= ..., y = ...)`
-  - choose geometry/chart type (`geom_`): `geom_line()`, `geom_point`, `geom_col` (barchart)
-  - customize (e.g., titles, colors, themes, labels, etc.)
+  - define dataset: `ggplot(data = your_data)` or  `data %>% ggplot()`
+  - set aesthetics (aes) -- what goes where?: `aes(x= ..., y = ...)`
+  - choose geometry/chart type (`geom_`): `geom_line()`, `geom_point`, `geom_col` (barchart), `geom_hist` (histogram)
+  - customize (e.g., titles, colors, themes, labels, etc.) - I use ChatGPT/Google to find tips
   
 DO: First chart
 =====
 
-```{r}
-
+```{r, fig.width=16, fig.height=4, fig.align='center', fig.cap = ''}
 library(ggplot2)
-
 ggplot(data = country) + 
   geom_line(aes(x = date, y = retail_and_recreation), 
     color = "black") +
@@ -281,116 +371,190 @@ ggplot(data = country) +
   theme_minimal()
 ```
 
-1. Change color of lines to blue
-2. Try out another theme: `theme_light`
-3. Change the y axis from `retail_and_recreation` to `parks` + change title
+__Your tasks:__
 
+1. Change the color of lines to __blue__
+2. Try out another theme: `theme_light()` instead of `theme_minimal()`
+3. Please change the y axis from `retail_and_recreation` to `parks` + change title of plot.
 
-Adding more data points to a chart
-=====
-
-```{r}
-
-library(ggplot2)
-
-ggplot(data = country) + 
-  geom_line(aes(x = date, y = retail_and_recreation, color = 'Retail')) +
-  geom_line(aes(x = date, y = parks, color = 'Parks')) +
-  scale_color_manual(values = c("Retail" = "red", "Parks" = "blue")) +
-  labs(title = "Time spent at retail vs. parks",
-       x = "Date",
-       y = "% Change from Baseline") +
-  theme_minimal()
-```
-
-DO: Can you also add information from time spent at work?
-
-
-Grouping via facet wrap
-=====
-
-Sometimes, it makes sense "automatically" grouping our plots, such as by province!
-
-```{r}
-province_updated %>% ggplot() + 
-  geom_line(aes(x = date, y = retail_and_recreation, color = 'Retail')) +
-  geom_line(aes(x = date, y = parks, color = 'Parks')) +
-  facet_wrap(~province) + 
-  scale_color_manual(values = c("Retail" = "red", "Parks" = "blue")) +
-  labs(title = "Time spent at retail vs. parks",
-       x = "Date",
-       y = "% Change from Baseline",
-       color = "Place") +
-  theme_minimal()
-```
-
-Grouping via "key" column in a long data set
-=====
-
-Run this!
-
-```{r}
-province_long <- province_updated %>%
-  select(province,date, retail_and_recreation, grocery_and_pharmacy, parks, transit_stations, workplaces, residential) %>%
-  pivot_longer(cols = c(retail_and_recreation, grocery_and_pharmacy, parks, 
-                        transit_stations, workplaces, residential),
-               names_to = "place_category",
-               values_to = "mobility_change") 
-```
-
-Grouping via "key" column in a long data set
-=====
-
-```{r}
-province_long %>% ggplot(aes(x=date, y=mobility_change, color=place_category)) +
-  geom_line()  + 
-  facet_wrap(~province)+
-  theme_minimal()
-```
-
-Saving plots
+Useful to know: saving plots
 ====
+
+We can save plots to a file by immediately calling this command after creating a plot.
 
 ```r
 ggsave()
 ```
 
+- Extensions:
+  - `ggsave(filename = 'plot.pdf')` or `ggsave(filename = 'plot.png')` - pick any format
+  - can specify `width`, `height`, `dpi`, `bg` (background), etc.
+  - create directories with `dir.create()` if needed
+  - wipe files using `unlink('directory_name/*.*')` (be careful)
+  - You can use loops as well! It can easily create hundreds of plots!
+
+
+Extension 1: Adding more data points to a chart (manually)
+=====
+
+```{r, fig.width=16, fig.height=4, fig.align='center', fig.cap = ''}
+library(ggplot2)
+ggplot(data = country) + 
+  geom_line(aes(x = date, 
+                y = retail_and_recreation, 
+                color = 'Retail')) +
+  geom_line(aes(x = date, 
+                y = parks, 
+                color = 'Parks')) +
+  scale_color_manual(values = c("Retail" = "red", 
+                                "Parks" = "blue")) +
+  labs(title = "Time spent at retail vs. parks",
+       x = "Date",
+       y = "% Change from Baseline",
+       color = "Locations") +
+  theme_minimal()
+```
+
+__DO: Please add a *third* data point: time spent at work (color:  black).__
+
+
+Solution
+=====
+
+```{r, fig.width=16, fig.height=4, fig.align='center', fig.cap = ''}
+library(ggplot2)
+ggplot(data = country) + 
+  geom_line(aes(x = date, 
+                y = retail_and_recreation, 
+                color = 'Retail')) +
+  geom_line(aes(x = date, 
+                y = parks, 
+                color = 'Parks')) +
+  geom_line(aes(x = date, 
+                y = workplaces, 
+                color = 'Work')) +
+  scale_color_manual(values = c("Retail" = "red", 
+                                "Parks" = "blue",
+                                "Work" = "black")) +
+  labs(title = "Time spent at different locations",
+       x = "Date",
+       y = "% Change from Baseline",
+       color = "Locations") +
+  theme_minimal()
+```
+
+Extension 2: Create grouping via facet wrap
+=====
+
+Sometimes, it makes sense "automatically" grouping our plots, such as by province!
+
+```{r, fig.width=14, fig.height=6, fig.align='center', fig.cap = ''}
+province_updated %>% ggplot() + 
+  geom_line(aes(x = date, 
+                y = retail_and_recreation, 
+                color = 'Retail')) +
+  geom_line(aes(x = date, 
+                y = parks, 
+                color = 'Parks')) +
+  facet_wrap(~province) + # THIS LINE IS NEW 
+  scale_color_manual(values = c("Retail" = "red", 
+                                "Parks" = "blue")) +
+  labs(title = "Time spent at retail vs. parks",
+       x = "Date",
+       y = "% Change from Baseline",
+       color = "Locations") +
+  theme_minimal()
+```
+
+Extension 3: Grouping via a column in the data set (I)
+=====
+
+To work on this, let's first run this cell.
+
+```{r}
+province_long <- province_updated %>%
+  select(
+    province, date, 
+    retail_and_recreation, grocery_and_pharmacy, 
+    parks, transit_stations, workplaces, residential
+  ) %>%
+  pivot_longer(
+    cols = c(
+      retail_and_recreation, grocery_and_pharmacy, 
+      parks, transit_stations, workplaces, residential
+    ),
+    names_to = "place_category",
+    values_to = "mobility_change"
+  )
+```
+
+This converts your "wide" data into a "long" data set (you will learn more about this in week 4).
+
+Extension 3: Grouping via a column in the data set (II)
+=====
+
+
+```{r, fig.width=16, fig.height=8, fig.align='center', fig.cap = 'The plot now shows all locations without explicitly naming them in the code as before.'}
+province_long %>% filter(province == 'North Brabant') %>%
+  ggplot(aes(x=date, 
+             y=mobility_change, 
+             color=place_category)) +
+  geom_line()  + 
+  ggtitle('Mobility in North Brabant') + 
+  theme_minimal()
+```
+
+Extension 3: Grouping via a column in the data set (III
+=====
+
+We can also __add__ a facet wrap, as in extension 2.
+
+```{r, fig.width=16, fig.height=8, fig.align='center', fig.cap = 'The plot now shows all locations per province.'}
+province_long %>% # no filter this time - show all provinces!
+  ggplot(aes(x=date, 
+             y=mobility_change, 
+             color=place_category)) +
+  geom_line()  + 
+  facet_wrap(~province)+
+  theme_minimal()
+```
+
 Wrapping everything up in a "clean" script
 ==============
 
+Think of this as __doing it at every end of your work cycle__.
+
+Clean up your script(s)!
+
 1. Setup done/packages and other prerequisites loaded?
 2. Adhered to input - transformation - output?
-3. Clean up any remaining garbage
-4. File callable from the command prompt? --> we will need this for automation in subsequent tutorials (`Rscript <filename>`)
+  - input: loading data
+  - transformation: filtering, grouping and summarizing, creating new variables, etc.; __mostly leads to a "different primary key than the input data" (&rarr; unit of analysis!)__
+  - output: e.g., saving plots, saving a new data set
+3. Cleaned up any remaining garbage?
+4. File callable from the command prompt?
+  - We will need this for automation in subsequent tutorials
+  - Try from the command prompt/terminal:
+    - `Rscript your_r_script.R` or 
+    - `R --vanilla < your_r_script.R` 
 
-
-Recap: Steps in data preparation
-================
-
-__Each and every source code file obeys to the "setup-ITO" procedure__.
-
-- 1) Setup such as loading packages, setting variables, making database connection
-- 2) Input (e.g., loading data)
-- 3) Transformation
-  - many options...: filtering, grouping and summarizing, creating new variables, etc.
-  - mostly leads to a "different primary key than the input data" (--> unit of analysis!)
-- 4) Output (e.g., saving, passing on to the next script)
-
-Let's zoom out again
-==============
+Concluding thoughts
+=====
 
 Remember the workflow from the start of today's session?
 
 ![Main goals in each step of the research workflow](fig_researchworkflow.png)
 
-We've just covered step 1. Concepts and programming knowledge extends to subsequent parts.
+We've covered step 1! Concepts and programming knowledge extends to subsequent parts.
 
 Next steps
 ===============
 
-- Revisit RMarkdown & ggplot on Data Carpentry
-- Work through the tutorial and complete exercises (all solutions available)
-- Start working on team projects
-  - pick a dataset: IMDb or Yelp
-  - come up with a research question (but note: this course is about *engineering a research pipeline*, not about rigorously answering the RQ!)
+1. Work through RMarkdown & ggplot2 chapters in [R for Social Scientists](https://datacarpentry.org/r-socialsci/)
+2. Work through this week's tutorial (not just "understand", but actually "do"), see [here](https://dprep.hannesdatta.com/docs/modules/week2/tutorial/intro-to-r)
+3. Coaching session: Starting up your team projects
+  - Choose data set
+    - pick a dataset: IMDb or Yelp
+  - Find research question (but note: this course is about *engineering a research pipeline*, not about rigorously answering the RQ!!!)
+  - Start your data exploration (see [workplan](https://dprep.hannesdatta.com/docs/project/workplan/))
 
