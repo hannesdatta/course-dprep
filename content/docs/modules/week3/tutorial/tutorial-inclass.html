@@ -812,7 +812,6 @@ hljs.initHighlightingOnLoad();
 
 <ul>
 <li>Please go through the entire tutorial on the <a href="https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control.html">dprep site</a>. </li>
-<li>Review shell/command line/terminal commands</li>
 </ul></li>
 </ul>
 
@@ -820,11 +819,22 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Feel you want to be challenged more?</h3>
+<h3>Before we code...</h3>
 <div class="slideContent" >
 <ul>
-<li>Flip through my deck</li>
-<li>find the klaaropdracht (&ldquo;assignment for when you&#39;re already ready with processing all of my material&rdquo;) at the end (today: designing your GitHub profile page)</li>
+<li>Review shell/command line/terminal commands!</li>
+<li>There are (optional) tutorials for that, too!
+
+<ul>
+<li><a href="https://datacamp.com/courses/introduction-to-shell">DataCamp Introduction to Shell</a> (chapter 1; for Mac &amp; Windows users) </li>
+<li><a href="https://generalassembly.github.io/prework/cl/#/">How To Use The Command Line</a> (optional - only for Mac users)</li>
+</ul></li>
+<li>Feel you want to be challenged more?
+
+<ul>
+<li>Flip through my deck - complete exercises faster</li>
+<li>Check out the ideas on the last slide for what you could do to make your GitHub profile stand out.</li>
+</ul></li>
 </ul>
 
 </div>
@@ -834,7 +844,7 @@ hljs.initHighlightingOnLoad();
 <h3>Introduction to GitHub</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">What is Git? (&ndash;&gt; file versioning in &ldquo;repositories&rdquo;/folders, open source)</li>
+<li class="fragment">What is Git? (&rarr; file versioning in &ldquo;repositories&rdquo;/folders, open source)</li>
 <li class="fragment">What is GitHub? (Git + platform for collaboration, automated testing &amp; deployment; commercial but &ldquo;free&rdquo; when open source, owned by Microsoft)</li>
 <li class="fragment">Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible, too)</li>
 <li class="fragment">GitHub (or its alternatives) are used to <strong>professionally manage</strong> research and software development projects</li>
@@ -845,20 +855,10 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>DO: Explore projects on GitHub.com</h3>
+<h3>Exploring projects on GitHub.com</h3>
 <div class="slideContent" >
 <ul>
-<li>Browse the list of project topics at <a href="https://github.com/topics">https://github.com/topics</a></li>
-<li>Click on a topic that sparks your interest, and browse available repositories.</li>
-</ul>
-
-<p><br>
-<br> 
-<strong>Let&#39;s talk about it&hellip;</strong></p>
-
-<ul>
-<li>Which topic did you choose?</li>
-<li>Which repositories did you discover?</li>
+<li>List of project topics at <a href="https://github.com/topics">https://github.com/topics</a></li>
 </ul>
 
 </div>
@@ -867,10 +867,8 @@ hljs.initHighlightingOnLoad();
 <section data-transition="linear" data-transition-speed="default">
 <h3>Overview about a repository</h3>
 <div class="slideContent" >
-<p><strong>Pick any repository, and describe its content.</strong></p>
-
 <ul>
-<li class="fragment"><p class="fragment">Each repository has&hellip;</p>
+<li class="fragment"><p>Each repository has&hellip;</p>
 
 <ul>
 <li class="fragment">readme w/ project description (<code>README.md</code>)</li>
@@ -900,7 +898,7 @@ hljs.initHighlightingOnLoad();
 <li><strong>Today</strong>, we use &ldquo;GitHub classroom&rdquo; (so I can see what you&#39;re up to)
 
 <ul>
-<li>Open this link, please: <a href="https://classroom.github.com/a/gNdiSwNr">https://classroom.github.com/a/gNdiSwNr</a></li>
+<li>Open this link, please: <a href="https://classroom.github.com/a/hQv-HrMs">https://classroom.github.com/a/hQv-HrMs</a></li>
 <li>Change title of <code>readme.md</code> to &ldquo;First repository with exercises in dPrep&rdquo; &amp; <strong>commit</strong> your changes on GitHub.com</li>
 </ul></li>
 </ul>
@@ -969,7 +967,20 @@ hljs.initHighlightingOnLoad();
 </ul></li>
 </ul>
 
-<p>Note: I will have to make you members of the organization for this to work&hellip;</p>
+<p>Note: I will have to make you members of the organization for this to work&hellip; (let&#39;s see - otherwise we move up until after the break)</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Project Management on GitHub</h3>
+<div class="slideContent" >
+<ul>
+<li>Issues: Individual to do&#39;s</li>
+<li>Project board: Use to organize &amp; prioritize individual issues</li>
+</ul>
+
+<p>We now start with the project board. Afterwards, we talk about issues.</p>
 
 </div>
 
@@ -1048,7 +1059,7 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>DO: Let&#x27;s perform the Git Workflow online</h3>
+<h3>DO: Let&#x27;s perform the Git Workflow (online)</h3>
 <div class="slideContent" >
 <p><strong>Overview available at <a href="https://dprep.hannesdatta.com/docs/project/resources/cheat-sheets/">https://dprep.hannesdatta.com/docs/project/resources/cheat-sheets/</a></strong></p>
 
@@ -1146,14 +1157,31 @@ hljs.initHighlightingOnLoad();
 
 <p>2.) Open Git Bash, and type </p>
 
-<p><code>git clone https://github.com/course-dprep/{in-class-tutorial-hannesdatta}</code> </p>
+<p><code>git clone https://github.com/course-dprep/XXXXXXX</code> </p>
 
-<p>(<strong>REPLACE with your username, do not {hannesdatta}, please!</strong>)</p>
+<p>(<strong>REPLACE XXXXXXX with the name of your repository, which you find in the URL of your browser</strong>)</p>
 
-<p>3.) Check whether you see your repository on your computer</p>
+<p>3.) Check whether you see your repository on your computer (e.g., Windows Explorer)</p>
 
 <p><br>
-<strong>Got an error?</strong> (&ldquo;Support for password authentication was removed on August 13, 2021&rdquo;) &ndash;&gt; Check <a href="https://dprep.hannesdatta.com/docs/course/support/">how to fix it here</a>.</p>
+<strong>Got an error?</strong> (&ldquo;Support for password authentication was removed on August 13, 2021&rdquo;) &rarr; Check <a href="https://dprep.hannesdatta.com/docs/course/support/">how to fix it here</a>.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>What we do in Git</h3>
+<div class="slideContent" >
+<ul>
+<li class="fragment"><p>Once the repos is available locally, we can &ldquo;work&rdquo; in it.</p>
+
+<ul>
+<li class="fragment">e.g., add code, run data preparation, etc.</li>
+</ul></li>
+<li class="fragment"><p class="fragment">While doing so, we make &ldquo;commits&rdquo; (we save code in our unlimited version history)</p></li>
+<li class="fragment"><p class="fragment">We can do so on different branches - each issue has its own development branch</p></li>
+<li class="fragment"><p class="fragment">You next learn how to do all of this.</p></li>
+</ul>
 
 </div>
 
@@ -1176,28 +1204,6 @@ hljs.initHighlightingOnLoad();
 </ul></li>
 <li>View changes on GitHub.com - do you see them?</li>
 </ol>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>DO: Rolling back</h3>
-<div class="slideContent" >
-<ul>
-<li>When working with Git, we can always roll back to previous versions of a file</li>
-<li>Each &ldquo;file&rdquo; is tagged with a commit hash (we can view those on GitHub.com or using <code>git log</code>)
-<br>
-<br></li>
-</ul>
-
-<ol>
-<li>Identify the hash of one of your earlier commits</li>
-<li>Type <code>git checkout &lt;commithash&gt; filename</code> (will overwrite old file)</li>
-<li>Verify this is the old file!</li>
-<li>Go back to the latest version: git checkout filename</li>
-</ol>
-
-<p>(Alternatively, use: <code>git show &lt;commithash&gt;:filename &gt; old_filename</code>) to get the old file as a second file.)</p>
 
 </div>
 
@@ -1241,6 +1247,28 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
+<h3>Rolling back</h3>
+<div class="slideContent" >
+<ul>
+<li>When working with Git, we can always roll back to previous versions of a file</li>
+<li>Each &ldquo;file&rdquo; is tagged with a commit hash (we can view those on GitHub.com or using <code>git log</code>)
+<br>
+<br></li>
+</ul>
+
+<ol>
+<li>Identify the hash of one of your earlier commits</li>
+<li>Type <code>git checkout &lt;commithash&gt; filename</code> (will overwrite old file)</li>
+<li>Verify this is the old file!</li>
+<li>Go back to the latest version: <code>git checkout filename</code></li>
+</ol>
+
+<p>(Alternatively, use: <code>git show &lt;commithash&gt;:filename &gt; old_filename</code>) to get the old file as a second file.)</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
 <h3>There are many other features worthwhile to explore</h3>
 <div class="slideContent" >
 <ul>
@@ -1274,20 +1302,56 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Next steps</h3>
+<h3>Summary</h3>
 <div class="slideContent" >
 <ul>
-<li>Start with the recap exercises on the dprep site (self-guided tutorial)</li>
-<li>Use the cheat sheets throughout</li>
-<li><p>Start working on your project (e.g., set up a repository in our <code>dprep</code> organization)</p></li>
-<li><p><strong>Idea: Invest in your GitHub profile (design an about page)</strong></p></li>
+<li>GitHub vs. Git: cloud vs. local computer
+
+<ul>
+<li>GitHub: project management w/ board &amp; issues, synchronization</li>
+<li>Git: &ldquo;clone&rdquo; repository, work locally</li>
+</ul></li>
+<li>How to use?
+
+<ul>
+<li>Always Git for working on code, never the cloud (!!!)</li>
+<li>Git workflow: issue, development branch, <code>git checkout</code>, <code>git pull</code>, <code>git status</code>,  <code>git add</code>, <code>git commit</code>, <code>git push</code></li>
+</ul></li>
+<li>Beware
+
+<ul>
+<li>you will encounter &ldquo;merging issues&rdquo; - completely normal; you will learn how to solve them w/ Roshini</li>
+</ul></li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Today&#x27;s &quot;klaaropdracht&quot;</h3>
+<h3>Next steps</h3>
+<div class="slideContent" >
+<ul>
+<li>Start with the <a href="https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control">tutorial</a></li>
+<li>Use the cheat sheets throughout</li>
+<li>Excellent practice tool: <a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a>
+
+<ul>
+<li>Main: Introduction Sequence</li>
+<li>Remote: Push &amp; Pull, To Origin and Beyond</li>
+</ul></li>
+<li>Coaching
+
+<ul>
+<li>Start working on your project (e.g., set up a repository in our <code>course-dprep</code> organization)</li>
+</ul></li>
+<li><strong>Idea: Invest in your GitHub profile (design an about page)</strong></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Some fun activity if you&#x27;re getting bored...</h3>
 <div class="slideContent" >
 <ul>
 <li>Create an amazing GitHub About page for your profile (important for job market!) </li>

@@ -16,41 +16,36 @@ Structure of today's sessions
   - Converge on RQ for project
 - After class
   - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control.html). 
-  - Review shell/command line/terminal commands
 
-Feel you want to be challenged more?
+Before we code...
 ====
 
-- Flip through my deck
-- find the klaaropdracht ("assignment for when you're already ready with processing all of my material") at the end (today: designing your GitHub profile page)
+- Review shell/command line/terminal commands!
+- There are (optional) tutorials for that, too!
+  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; for Mac & Windows users) 
+  * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
+- Feel you want to be challenged more?
+  - Flip through my deck - complete exercises faster
+  - Check out the ideas on the last slide for what you could do to make your GitHub profile stand out.
 
 Introduction to GitHub
 ========================================================
 incremental: true
 
-- What is Git? (--> file versioning in "repositories"/folders, open source)
+- What is Git? (&rarr; file versioning in "repositories"/folders, open source)
 - What is GitHub? (Git + platform for collaboration, automated testing & deployment; commercial but "free" when open source, owned by Microsoft)
 - Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible, too)
 - GitHub (or its alternatives) are used to **professionally manage** research and software development projects
 - Most recently, public GitHub repositories were used to train GitHub Copilot, Microsoft's coding AI
 
-DO: Explore projects on GitHub.com
+Exploring projects on GitHub.com
 ================================
 
-- Browse the list of project topics at https://github.com/topics
-- Click on a topic that sparks your interest, and browse available repositories.
-
-<br>
-<br> 
-__Let's talk about it...__
-- Which topic did you choose?
-- Which repositories did you discover?
+- List of project topics at https://github.com/topics
 
 Overview about a repository
 ============================
 incremental: true
-
-__Pick any repository, and describe its content.__
 
 - Each repository has...
   - readme w/ project description (`README.md`)
@@ -70,7 +65,7 @@ DO: Creating a repository on GitHub.com
 - Normally, we start a new repository on GitHub.com, or start from an existing folder on our computer
 <br><br>
 - __Today__, we use "GitHub classroom" (so I can see what you're up to)
-  - Open this link, please: https://classroom.github.com/a/gNdiSwNr
+  - Open this link, please: https://classroom.github.com/a/hQv-HrMs
   - Change title of `readme.md` to "First repository with exercises in dPrep" & __commit__ your changes on GitHub.com
   
 Recap
@@ -112,7 +107,16 @@ Using GitHub for collaborating in teams
   - organize them on your project board, and 
   - meet to discuss progress in sprints.
   
-Note: I will have to make you members of the organization for this to work...
+Note: I will have to make you members of the organization for this to work... (let's see - otherwise we move up until after the break)
+
+Project Management on GitHub
+======
+
+- Issues: Individual to do's
+- Project board: Use to organize & prioritize individual issues
+
+We now start with the project board. Afterwards, we talk about issues.
+
 
 DO: Organize project board
 =========================
@@ -157,7 +161,7 @@ DO: Let's create our first issue
 
 Tip: For now, let's say you need to add the motivation of your project to the readme.
 
-DO: Let's perform the Git Workflow online
+DO: Let's perform the Git Workflow (online)
 ======================
 
 __Overview available at https://dprep.hannesdatta.com/docs/project/resources/cheat-sheets/__
@@ -226,14 +230,28 @@ DO: Clone repository and verify you see the repository
 
 2.) Open Git Bash, and type 
 
-`git clone https://github.com/course-dprep/{in-class-tutorial-hannesdatta}` 
+`git clone https://github.com/course-dprep/XXXXXXX` 
 
-(__REPLACE with your username, do not {hannesdatta}, please!__)
+(__REPLACE XXXXXXX with the name of your repository, which you find in the URL of your browser__)
 
-3.) Check whether you see your repository on your computer
+3.) Check whether you see your repository on your computer (e.g., Windows Explorer)
 
 <br>
-__Got an error?__ ("Support for password authentication was removed on August 13, 2021") --> Check [how to fix it here](https://dprep.hannesdatta.com/docs/course/support/).
+__Got an error?__ ("Support for password authentication was removed on August 13, 2021") &rarr; Check [how to fix it here](https://dprep.hannesdatta.com/docs/course/support/).
+
+
+What we do in Git
+======
+incremental: true
+
+- Once the repos is available locally, we can "work" in it.
+  - e.g., add code, run data preparation, etc.
+  
+- While doing so, we make "commits" (we save code in our unlimited version history)
+
+- We can do so on different branches - each issue has its own development branch
+
+- You next learn how to do all of this.
 
 
 DO: Let's perform the Git workflow
@@ -249,23 +267,6 @@ DO: Let's perform the Git workflow
   - `git commit -m "message"` (freeze commit)
   - `git push` (push to GitHub; sometimes also `git push -u origin branch_name`)
 6. View changes on GitHub.com - do you see them?
-
-DO: Rolling back
-===============
-
-- When working with Git, we can always roll back to previous versions of a file
-- Each "file" is tagged with a commit hash (we can view those on GitHub.com or using `git log`)
-<br>
-<br>
-
-1. Identify the hash of one of your earlier commits
-2. Type `git checkout <commithash> filename` (will overwrite old file)
-3. Verify this is the old file!
-4. Go back to the latest version: `git checkout filename
-
-
-(Alternatively, use: `git show <commithash>:filename > old_filename`) to get the old file as a second file.)
-
 
 Development branches vs. master/main branch
 ===========
@@ -289,6 +290,24 @@ It's good practice to assign *reviewers* to new pull requests.
   - If everything runs smoothly: say so in the issue as well, and accept the PR
 4. Click "merge" on GitHub.com (or, better, wait for the team meeting and do these things together)
 
+
+Rolling back
+===============
+
+- When working with Git, we can always roll back to previous versions of a file
+- Each "file" is tagged with a commit hash (we can view those on GitHub.com or using `git log`)
+<br>
+<br>
+
+1. Identify the hash of one of your earlier commits
+2. Type `git checkout <commithash> filename` (will overwrite old file)
+3. Verify this is the old file!
+4. Go back to the latest version: `git checkout filename`
+
+
+(Alternatively, use: `git show <commithash>:filename > old_filename`) to get the old file as a second file.)
+
+
 There are many other features worthwhile to explore
 ===============
 
@@ -309,16 +328,32 @@ Working with GitHub requires a new mindset
 4. We adhere to the Scrum project management system: project board, issues, prioritization 
 5. GitHub is for *code*, not for data (so, do not commit any data files) [more later in this course]
 
+Summary
+=============
+
+- GitHub vs. Git: cloud vs. local computer
+  - GitHub: project management w/ board & issues, synchronization
+  - Git: "clone" repository, work locally
+- How to use?
+  - Always Git for working on code, never the cloud (!!!)
+  - Git workflow: issue, development branch, `git checkout`, `git pull`, `git status`,  `git add`, `git commit`, `git push`
+- Beware
+  - you will encounter "merging issues" - completely normal; you will learn how to solve them w/ Roshini
+
+
 Next steps
 ===============
 
-- Start with the recap exercises on the dprep site (self-guided tutorial)
+- Start with the [tutorial](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control)
 - Use the cheat sheets throughout
-- Start working on your project (e.g., set up a repository in our `dprep` organization)
-
+- Excellent practice tool: https://learngitbranching.js.org/
+  - Main: Introduction Sequence
+  - Remote: Push & Pull, To Origin and Beyond
+- Coaching
+  - Start working on your project (e.g., set up a repository in our `course-dprep` organization)
 - __Idea: Invest in your GitHub profile (design an about page)__
 
-Today's "klaaropdracht"
+Some fun activity if you're getting bored...
 =========
 
 - Create an amazing GitHub About page for your profile (important for job market!) 
