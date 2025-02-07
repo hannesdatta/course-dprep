@@ -34,7 +34,7 @@ Course week|Date|Time|Location|Content|
 |                                                  |           | 12.45-14.30 | On campus | [Team coaching #2](/docs/project/workplan)
 |{{< button relref="week4" >}}Week 4{{< /button >}}|Wed 19 Feb | 12.45-14.30 | On campus | Tutorial: Engineering datasets
 |                                                  |           | 14.45-16.30 | On campus | [Team coaching #3](/docs/project/workplan)
-|{{< button relref="week5" >}}Week 5{{< /button >}}|Wed 26 Feb | 12.45-14.30 | On campus | Tutorial: Pipeline automation
+|{{< button relref="week5" >}}Week 5{{< /button >}}|Wed 26 Feb | 10.45-12.30 | On campus | Tutorial: Pipeline automation
 |                                                  |           | 14.45-16.30 | On campus | [Team coaching #4](/docs/project/workplan)
 |{{< button relref="week6" >}}Week 6{{< /button >}}|Fri 14 Mar | 12.45-14:30 | Online | [Team coaching #5](/docs/project/workplan)
 |{{< button relref="week7" >}}Week 7{{< /button >}}|Tue 18 Mar | 12.45-14.30 | Online | [Team coaching #6](/docs/project/workplan)
