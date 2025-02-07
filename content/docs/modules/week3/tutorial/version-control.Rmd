@@ -1,8 +1,14 @@
 ---
-title: "Version Control"
-author: ""
-output: webexercises::webexercises_default
+title: "Version Control using Git & GitHub"
+date: "Last updated: 7 February 2025"
+output:  
+  webexercises::webexercises_default:
+    theme: flatly  # Use a modern Bootstrap theme (e.g., cosmo, yeti, flatly)
+    #toc: true      # Adds a floating table of contents
+    #toc_float: false
+    highlight: tango
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -26,19 +32,21 @@ background-color: white;
 ### Prerequisites
 
 * Get familiar with the shell/terminal/command line
-  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; Mac & Windows) 
+  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; for Mac & Windows users) 
   * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
-* Download and install the latest version of [Git](https://git-scm.com/downloads) (Mac users first need to install [homebrew](https://brew.sh/)).  
+* Installation
+  * Download and install the latest version of [Git](https://git-scm.com/downloads) (Mac users first need to install [homebrew](https://brew.sh/)).
+  * There's an extra tool - called GitHub CLI - which makes many steps in Git easier. Install it [here](https://cli.github.com/).
 
 
 --- 
 
-### Learning Objectives
-* Setup Git and GitHub, and know what both are
-* Apply the end-to-end Git workflow, using simple text files created in the editor
-* Experience the power of file versioning (e.g., restoring, branching)
-* Learn to collaborate on projects using GitHub
+### Learning Objectives and Structure
 
+1) Setup Git and GitHub, and know what both are
+2) Apply the end-to-end Git workflow, using simple text files created in the editor
+3) Experience the power of file versioning (e.g., restoring, branching)
+4) Learn to collaborate on projects using GitHub
 
 ### 1. Getting started with version control using Git and GitHub
 
@@ -116,7 +124,7 @@ Create a [GitHub account](https://github.com/join?ref_cta=Sign+up&ref_loc=header
  
 #### 1.3 Create a New Repository
 
-In this step-by-step tutorial, we're going to create a new repository and copy it to our local computer. Note that GitHub also offers a [graphical tool](https://desktop.github.com/) to work with Git, yet we strongly recommend sticking to the command line as it helps you to get a better understanding of how all concepts fit together.  
+In this step-by-step tutorial, we're going to create a new repository and copy it to our local computer. Note that [GitHub](https://desktop.github.com/), [RStudio](https://jennybc.github.io/2014-05-12-ubc/ubc-r/session03_git.html#learngit) and [VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview) also allow you to directly work with Git, yet we recommend sticking to the command line as it helps you to get a better understanding of how all concepts fit together.  
 
 1. Head over to [GitHub](https://github.com/) (the website) and click on the "+" symbol in the top right corner to create a new repository. Give it the name `version-control-exercises`, keep it public, and check the box that says add a README file:
 
@@ -152,7 +160,7 @@ Note that in this exercise, you have been working with a pre-existing repository
 
 \
 
-### 2 The end-to-end Git workflow
+### 2. The end-to-end Git workflow
 
 Working with Git is something that will eventually become as natural to you as pressing CTRL + S to save your work. In other words, you're about to integrate Git in your daily routines to keep tracking the progress that you make. Here, we describe the main, end-to-end Git workflow process. Think of it like a workcycle, that you perform multiple times a day.
 
@@ -359,7 +367,7 @@ do so (now or later) by using -c with the switch command. Example:
 ```
 \
 
-#### 3.2 Gitignore
+#### 3.2 Ignoring files with `.gitignore`
 
 **Importance**  
 Data analysis often produces temporary or intermediate files that you don't want to save (e.g., `.DS_Store` or `.Rhistory`). Also, especially when working in a public Git repository, you may want to exclude specific files that are not meant for everyone's eyes. 
@@ -528,7 +536,10 @@ opts_p <- c(
 
 \
 
-#### 3.4 Pull Requests
+### 4. Collaborate on projects using GitHub
+
+#### 4.1 Pull Requests
+
 Although working in branches can be highly effective and streamline your workflows, in some cases it is advisable that someone (e.g., your supervisor) oversees your changes before integrating your work. By issuing a so-called **pull-request** the repository owner is notified about your changes and can decide how to follow up. More specifically, a pull request allows developers to review and verify changes before allowing them to be applied to the main branch.
 
 At the top of your forked repository (think of it as your own copy of someone else's repo - details below), you can click on the pull request button:
@@ -562,7 +573,7 @@ After that is done, other collaborators can review the pull request, analyze the
 
 \
 
-#### 3.5 Forking Repositories
+#### 4.2 Forking Repositories
 
 **Importance**    
 Sometimes you may want to contribute to a public project of which you don’t know the authors, or you simply want to use it as a starting point for your own project. This process of creating a copy of someone else's project is called *forking*.
@@ -573,31 +584,15 @@ Thus, a *fork* is your personal copy of a repository owned by someone else. So, 
 
 \
 
-#### 3.6 Frequently Asked Questions
+### 5. Wrap-Up
 
-
-* *How do I delete a repository?*   
-Go to "Settings" and scroll down to the bottom of the page. There you find a "Danger Zone" which allows you to delete a repository (but also to make a private repository public).
-
-* *Can I collaborate with others without making my repository public?*  
-Yes, you can create a private repository and add collaborators on GitHub via "Settings" > "Manage Access" > "Invite a collaborator".
-
-* *I accidentally uploaded a file to GitHub which I want to remove. How do I fix this?*  
-`cd` into the directory that contains the file and remove it with the command `rm <filename>` or `rm -rf <folder>` if it's a folder. Then, add, commit, and push your changes, and the file should be gone.
-
-* *Git takes very long to push my changes. Why is that?*   
-While you can add a variety of files to your GitHub repository, Git is a tool for version control of code. These files with code (e.g., R Markdown) are usually rather small in size and can be easily processed. It is, however, not meant for version control of your data. Although you can add files up to 100 MB, we recommend fetching large files in other ways because pushing and pulling changes will be much faster. That's because a repository contains every version of every file. So, if you commit a `data.csv` of 50 MB twice it already takes up 100 MB! Git LFS allows you to version large files while saving disk space and cloning time using the same Git workflow that you're used to. Contrary to Git, it does not keep all your project's data locally. In [this](http://tilburgsciencehub.com/git-lfs/) tutorial we walk you through the steps on how to get started with it.
-
-\
-
-#### 3.7 Wrap-Up
 Throughout this section, you have learned a variety of Git commands and workflows. If you put them into practice, you never have to worry about losing or overwriting your work. All your changes are captured, and you can always go back to a previous state. And now that you have an understanding of forking and pull requests, we highly encourage you to take a look at some [popular Gitub](https://github.com/trending) repositories and maybe even make some contributions yourself!
 
 \
 
 ---
 
-### 4. Summary of Git Commands 
+### 5.1 Important Git Commands 
 
 | Command | Use | 
 | :----- | :---- | 
@@ -615,10 +610,35 @@ Throughout this section, you have learned a variety of Git commands and workflow
 
 Please also view the [summary of Git commands](https://dprep.hannesdatta.com/docs/building-blocks/automation/git/), and the various [Git cheatsheets on the course website](https://dprep.hannesdatta.com/docs/building-blocks/cheat-sheets/).
 
----
 
-### 5. Further Learning
-To learn more about Git, make sure to check the following resources:
+#### 5.2 Frequently Asked Questions
+
+* *How do I delete a repository?*   
+Go to "Settings" and scroll down to the bottom of the page. There you find a "Danger Zone" which allows you to delete a repository (but also to make a private repository public).
+
+* *Can I collaborate with others without making my repository public?*  
+Yes, you can create a private repository and add collaborators on GitHub via "Settings" > "Manage Access" > "Invite a collaborator".
+
+* *I accidentally uploaded a file to GitHub which I want to remove. How do I fix this?*  
+`cd` into the directory that contains the file and remove it with the command `rm <filename>` or `rm -rf <folder>` if it's a folder. Then, add, commit, and push your changes, and the file should be gone.
+
+* *Git takes very long to push my changes. Why is that?*   
+While you can add a variety of files to your GitHub repository, Git is a tool for version control of code. These files with code (e.g., R Markdown) are usually rather small in size and can be easily processed. It is, however, not meant for version control of your data. Although you can add files up to 100 MB, we recommend fetching large files in other ways because pushing and pulling changes will be much faster. That's because a repository contains every version of every file. So, if you commit a `data.csv` of 50 MB twice it already takes up 100 MB! Git LFS allows you to version large files while saving disk space and cloning time using the same Git workflow that you're used to. Contrary to Git, it does not keep all your project's data locally. In [this](http://tilburgsciencehub.com/git-lfs/) tutorial we walk you through the steps on how to get started with it.
+
+\
+
+#### 5.3 More practice!
+
+It can be daunting to get started using Git commands. But there's help:
+
+> At [learngitbranching.js.org](https://learngitbranching.js.org), you get access to an interactive web app that takes you through learning how Git works on the command line. It's difficult, but rewarding!
+>
+> If you decide to practice more, we recommend following these sections:
+>
+> - Main: Introduction Sequence
+> - Remote: Push & Pull, and "To Origin and Beyond"
+
+Further Learning:
 
 * [Simple Guide to Forks in GitHub and Git](https://www.dataschool.io/simple-guide-to-forks-in-github-and-git)
 
@@ -627,6 +647,3 @@ To learn more about Git, make sure to check the following resources:
 * [Git official documentation](https://git-scm.com/doc)
 
 * [Free Git Pro book](https://git-scm.com/book/en/v2)
-
-* [Learn Git Branching](https://learngitbranching.js.org)
-
