@@ -8,25 +8,16 @@ autosize: true
 Structure of today's sessions
 ========================================================
 
-- In-class part of GitHub tutorial
-  - matters because you will manage your project on GitHub
+- Part 1: GitHub - cloud ("project management")
+- Part 2: Git - work locally ("workflow")
+<br>
+
 - Coaching session 
   - Setup repository, sync to your computers
   - Know the Git workflow: branches, commits, pull requests (PRs)
   - Converge on RQ for project
-- After class
-  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control.html). 
 
-Before we code...
-====
-
-- Review shell/command line/terminal commands!
-- There are (optional) tutorials for that, too!
-  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; for Mac & Windows users) 
-  * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
-- Feel you want to be challenged more?
-  - Flip through my deck - complete exercises faster
-  - Check out the ideas on the last slide for what you could do to make your GitHub profile stand out.
+- After class: complete [tutorial](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control.html) + review command line/terminal (e.g., [Datacamp, Mac & Windows](https://datacamp.com/courses/introduction-to-shell); [Mac Tutorial](https://generalassembly.github.io/prework/cl/#/))
 
 Introduction to GitHub
 ========================================================
@@ -37,21 +28,17 @@ incremental: true
 - Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible, too)
 - GitHub (or its alternatives) are used to **professionally manage** research and software development projects
 - Most recently, public GitHub repositories were used to train GitHub Copilot, Microsoft's coding AI
+- Curious? [Explore topics!](https://github.com/topics)
 
-Exploring projects on GitHub.com
-================================
-
-- List of project topics at https://github.com/topics
-
-Overview about a repository
+What is a repository?
 ============================
 incremental: true
 
-- Each repository has...
-  - readme w/ project description (`README.md`)
-  - meta data (e.g., about, releases, stars)
-
-- On a repository, we can find several tabs
+- Simple definition: "a directory with *versioned* files"
+- Let's refine...:
+  - w/ a readme (e.g., project description, `README.md`)
+  - w/ meta data (e.g., about, releases, stars)
+- Let's review tabs on a GitHub repos:
   - Code (we can have code on multiple 'branches')
   - Pull requests (to collaborate; merging branches)
   - Issues (think of it as to dos)
@@ -59,12 +46,15 @@ incremental: true
   - Discussions (social feature)
   - (and many more...)
 
-DO: Creating a repository on GitHub.com
+Creating a repository on GitHub.com
 =================
 
-- Normally, we start a new repository on GitHub.com, or start from an existing folder on our computer
-<br><br>
-- __Today__, we use "GitHub classroom" (so I can see what you're up to)
+- Use an existing folder on computer (`git init`)
+- New repository (online)
+- "Fork" a repositoruy (copy online)
+
+<br>
+- __DO__ Today, we use "GitHub classroom" (so I can see what you're up to)
   - Open this link, please: https://classroom.github.com/a/hQv-HrMs
   - Change title of `readme.md` to "First repository with exercises in dPrep" & __commit__ your changes on GitHub.com
   
@@ -203,7 +193,7 @@ __Meet again with your team.__
 Repeat workflow until you're done (or the deadline has passed...)
 
 
-GitHub (online interface) vs. Git
+Part 2: Git (compared to GitHub)
 ==========================
 incremental: true
 
@@ -213,11 +203,12 @@ incremental: true
 - Need a way to get our work from GitHub.com synced with our local computers
 - For now, assume we want to work on our own computer
 
-GitHub (online interface) vs. Git
+Git (compared to GitHub)
 ==========================
 incremental: true
 
-- Let's introduce some Git vocab here
+- We use git on the command line (but, GUIs are available)
+- To use it on the command line, we need to know some new commands:
   - `git clone` repository to which you have access to (once)
   - `git pull` to update from the cloud (before starting to work)
   - `git status`, `git add`, `git commit -m "message"` (multiple times)
@@ -277,8 +268,30 @@ Development branches vs. master/main branch
   - They are ideally created on GitHub.com and checked out locally
 - When your work on a branch is done, create a __pull request__ (your team members can now integrate your changes)
 
+Switching branches
+=====
+
+- When working on a project, you often have to switch branches.
+- Git commands
+  - `git branch -l` to see which branches exist
+  - `git branch <new_branch>` create a new branch name
+  - `git fetch` or `git fetch --all` to "update" all branches from cloud
+  - `git checkout <branchname>` or `git switch <branchname>` to switch (back and forth)
+- Where to see on which branch you are
+
+DO: Switching branches
+===
+
+- Create a new branch, called `feature` (`git branch feature`)
+- Switch to this new branch (`git switch feature`)
+- Git workflow... (nothing to do here for now)
+- Switch back to the `main` branch.
+
+
 Reviewing and merging pull requests
 ====================
+
+When new changes become available (online) at a branch, you can integrate them using "pull requests".
 
 It's good practice to assign *reviewers* to new pull requests.
 
@@ -344,16 +357,15 @@ Summary
 Next steps
 ===============
 
-- Start with the [tutorial](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control)
+- Complete the [tutorial](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control) at home
 - Use the cheat sheets throughout
 - Excellent practice tool: https://learngitbranching.js.org/
   - Main: Introduction Sequence
   - Remote: Push & Pull, To Origin and Beyond
 - Coaching
   - Start working on your project (e.g., set up a repository in our `course-dprep` organization)
-- __Idea: Invest in your GitHub profile (design an about page)__
 
-Some fun activity if you're getting bored...
+Some fun activity to make your GitHub profiles more professional (optional)
 =========
 
 - Create an amazing GitHub About page for your profile (important for job market!) 

@@ -796,45 +796,17 @@ hljs.initHighlightingOnLoad();
 <h3>Structure of today&#x27;s sessions</h3>
 <div class="slideContent" >
 <ul>
-<li>In-class part of GitHub tutorial
-
-<ul>
-<li>matters because you will manage your project on GitHub</li>
-</ul></li>
-<li>Coaching session 
+<li>Part 1: GitHub - cloud (&ldquo;project management&rdquo;)</li>
+<li><p>Part 2: Git - work locally (&ldquo;workflow&rdquo;)
+<br></p></li>
+<li><p>Coaching session </p>
 
 <ul>
 <li>Setup repository, sync to your computers</li>
 <li>Know the Git workflow: branches, commits, pull requests (PRs)</li>
 <li>Converge on RQ for project</li>
 </ul></li>
-<li>After class
-
-<ul>
-<li>Please go through the entire tutorial on the <a href="https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control.html">dprep site</a>. </li>
-</ul></li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Before we code...</h3>
-<div class="slideContent" >
-<ul>
-<li>Review shell/command line/terminal commands!</li>
-<li>There are (optional) tutorials for that, too!
-
-<ul>
-<li><a href="https://datacamp.com/courses/introduction-to-shell">DataCamp Introduction to Shell</a> (chapter 1; for Mac &amp; Windows users) </li>
-<li><a href="https://generalassembly.github.io/prework/cl/#/">How To Use The Command Line</a> (optional - only for Mac users)</li>
-</ul></li>
-<li>Feel you want to be challenged more?
-
-<ul>
-<li>Flip through my deck - complete exercises faster</li>
-<li>Check out the ideas on the last slide for what you could do to make your GitHub profile stand out.</li>
-</ul></li>
+<li><p>After class: complete <a href="https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control.html">tutorial</a> + review command line/terminal (e.g., <a href="https://datacamp.com/courses/introduction-to-shell">Datacamp, Mac &amp; Windows</a>; <a href="https://generalassembly.github.io/prework/cl/#/">Mac Tutorial</a>)</p></li>
 </ul>
 
 </div>
@@ -849,32 +821,24 @@ hljs.initHighlightingOnLoad();
 <li class="fragment">Alternatives to GitHub (e.g., Bitbucket, GitLab; on-site installation possible, too)</li>
 <li class="fragment">GitHub (or its alternatives) are used to <strong>professionally manage</strong> research and software development projects</li>
 <li class="fragment">Most recently, public GitHub repositories were used to train GitHub Copilot, Microsoft&#39;s coding AI</li>
+<li class="fragment">Curious? <a href="https://github.com/topics">Explore topics!</a></li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Exploring projects on GitHub.com</h3>
+<h3>What is a repository?</h3>
 <div class="slideContent" >
 <ul>
-<li>List of project topics at <a href="https://github.com/topics">https://github.com/topics</a></li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Overview about a repository</h3>
-<div class="slideContent" >
-<ul>
-<li class="fragment"><p>Each repository has&hellip;</p>
+<li class="fragment">Simple definition: &ldquo;a directory with <em>versioned</em> files&rdquo;</li>
+<li class="fragment">Let&#39;s refine&hellip;:
 
 <ul>
-<li class="fragment">readme w/ project description (<code>README.md</code>)</li>
-<li class="fragment">meta data (e.g., about, releases, stars)</li>
+<li class="fragment">w/ a readme (e.g., project description, <code>README.md</code>)</li>
+<li class="fragment">w/ meta data (e.g., about, releases, stars)</li>
 </ul></li>
-<li class="fragment"><p class="fragment">On a repository, we can find several tabs</p>
+<li class="fragment">Let&#39;s review tabs on a GitHub repos:
 
 <ul>
 <li class="fragment">Code (we can have code on multiple &#39;branches&#39;)</li>
@@ -890,12 +854,18 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>DO: Creating a repository on GitHub.com</h3>
+<h3>Creating a repository on GitHub.com</h3>
 <div class="slideContent" >
 <ul>
-<li>Normally, we start a new repository on GitHub.com, or start from an existing folder on our computer
-<br><br></li>
-<li><strong>Today</strong>, we use &ldquo;GitHub classroom&rdquo; (so I can see what you&#39;re up to)
+<li>Use an existing folder on computer (<code>git init</code>)</li>
+<li>New repository (online)</li>
+<li>&ldquo;Fork&rdquo; a repositoruy (copy online)</li>
+</ul>
+
+<p><br></p>
+
+<ul>
+<li><strong>DO</strong> Today, we use &ldquo;GitHub classroom&rdquo; (so I can see what you&#39;re up to)
 
 <ul>
 <li>Open this link, please: <a href="https://classroom.github.com/a/hQv-HrMs">https://classroom.github.com/a/hQv-HrMs</a></li>
@@ -1120,7 +1090,7 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>GitHub (online interface) vs. Git</h3>
+<h3>Part 2: Git (compared to GitHub)</h3>
 <div class="slideContent" >
 <ul>
 <li class="fragment">For now, we only used GitHub.com</li>
@@ -1134,10 +1104,11 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>GitHub (online interface) vs. Git</h3>
+<h3>Git (compared to GitHub)</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Let&#39;s introduce some Git vocab here
+<li class="fragment">We use git on the command line (but, GUIs are available)</li>
+<li class="fragment">To use it on the command line, we need to know some new commands:
 
 <ul>
 <li class="fragment"><code>git clone</code> repository to which you have access to (once)</li>
@@ -1226,8 +1197,42 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
+<h3>Switching branches</h3>
+<div class="slideContent" >
+<ul>
+<li>When working on a project, you often have to switch branches.</li>
+<li>Git commands
+
+<ul>
+<li><code>git branch -l</code> to see which branches exist</li>
+<li><code>git branch &lt;new_branch&gt;</code> create a new branch name</li>
+<li><code>git fetch</code> or <code>git fetch --all</code> to &ldquo;update&rdquo; all branches from cloud</li>
+<li><code>git checkout &lt;branchname&gt;</code> or <code>git switch &lt;branchname&gt;</code> to switch (back and forth)</li>
+</ul></li>
+<li>Where to see on which branch you are</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>DO: Switching branches</h3>
+<div class="slideContent" >
+<ul>
+<li>Create a new branch, called <code>feature</code> (<code>git branch feature</code>)</li>
+<li>Switch to this new branch (<code>git switch feature</code>)</li>
+<li>Git workflow&hellip; (nothing to do here for now)</li>
+<li>Switch back to the <code>main</code> branch.</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
 <h3>Reviewing and merging pull requests</h3>
 <div class="slideContent" >
+<p>When new changes become available (online) at a branch, you can integrate them using &ldquo;pull requests&rdquo;.</p>
+
 <p>It&#39;s good practice to assign <em>reviewers</em> to new pull requests.</p>
 
 <ol>
@@ -1331,7 +1336,7 @@ hljs.initHighlightingOnLoad();
 <h3>Next steps</h3>
 <div class="slideContent" >
 <ul>
-<li>Start with the <a href="https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control">tutorial</a></li>
+<li>Complete the <a href="https://dprep.hannesdatta.com/docs/modules/week3/tutorial/version-control">tutorial</a> at home</li>
 <li>Use the cheat sheets throughout</li>
 <li>Excellent practice tool: <a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a>
 
@@ -1344,14 +1349,13 @@ hljs.initHighlightingOnLoad();
 <ul>
 <li>Start working on your project (e.g., set up a repository in our <code>course-dprep</code> organization)</li>
 </ul></li>
-<li><strong>Idea: Invest in your GitHub profile (design an about page)</strong></li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Some fun activity if you&#x27;re getting bored...</h3>
+<h3>Some fun activity to make your GitHub profiles more professional (optional)</h3>
 <div class="slideContent" >
 <ul>
 <li>Create an amazing GitHub About page for your profile (important for job market!) </li>
