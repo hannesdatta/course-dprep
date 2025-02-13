@@ -1,43 +1,45 @@
 ---
 title: "Data Preparation"
-author: "Practise"
-output: webexercises::webexercises_default
+date: "Last updated: 12 February 2025"
+output:  
+  webexercises::webexercises_default:
+    theme: flatly
+    highlight: tango
 ---
 
+
+
 ```{r setup, include=FALSE}
+#output: webexercises::webexercises_default
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyverse)
 library(webexercises)
+library(knitr)
+
 ```
 
-*In this tutorial, we'll take data preparation to the next level by considering a variety of common data issues in the Spotify Top 200 rankings. We'll start off with multiple raw big data sets and end up with a single data frame ready for analysis!*
+# Introduction
+In this tutorial, we'll take data preparation to the next level by considering a variety of common data issues in the Spotify Top 200 rankings. We'll start off with multiple raw big data sets and end up with a single data frame ready for analysis!
 
+ 
+## What You'll Learn in this Tutorial
+- Merge data sets on one or more indices and understand the different types of joins (inner, left, right join).
+- Handle missing and duplicate values.
+- Handle and preprocess string data (remove characters, splitting).
+- Perform feature engineering.
+- Use R Markdown to document your workflow.
 
---- 
+## Prerequisites
 
-### Prerequisites
+Ready to start? Here's what we recommend you do before going through this tutorial.
+
 * [Datacamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
 * [Datacamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
 * [Datacamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
 
 
---- 
-
-### Learning Objectives
-* Merge data sets on one or more indices and understand the different types of joins (inner, left, right join)
-* Handle and preprocess string data (remove characters, splitting)
-* Apply a variety of feature engineering techniques (grouping, rank, counter)
-* Document code and analyses with an R Markdown 
-
---- 
-
-### Support Needed? 
-For technical issues outside of scheduled classes, please check the [support section](https://dprep.hannesdatta.com/docs/course/support) on the course website.
-
----
-
-### 1. Loading and Inspecting the Data
-
-#### 1.1 Merging Data
+## Exploring the Beats: Inside the Spotify Top 200 Data
 [Spotify Charts](https://spotifycharts.com/regional) has listed the daily top 200 most streamed songs by country since 2017. As you can see below, you can use the dropdown menus to change your selection, and clicking in the top right corner returns the data in CSV-format. 
 
 ![](./images/spotify-top-200.gif){width=50%}
@@ -74,73 +76,134 @@ For this exercise we have collected the rankings for 2020 which have been split 
 | country_code_3_letter | The three-letter country code | `USA` | 
 | country_number | The official ISO country code | `840` |
 
-\
 
-**Exercise 1**  
-Download the [data sets](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip) and describe the structure of the data sets in your own words. 
+
+# Part 1: Downloading and Inspecting the Data 
+## Create a new R project
+1. Open RStudio and create a new project by clicking on `File` -> `New Project` -> `New Directory` -> `New Project`.
+2. Name your project `data-preparation` and save it in a location of your choice.
+3. Add a `data` folder:
+- Option 1 (code): Run `dir.create("data")
+- Option 2 (Manual): Click *New Folder (📁)* in the Files pane  
+
+## Download the data
+
+Click [here](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
 
 ```{r}
 # downloading and unzipping the data
 download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip', 'data.zip')
 unzip('data.zip', overwrite=TRUE)
 ```
+Now, load the data into R using `readr`'s `read_csv` and `read_delim` functions:
 
-- What is the target unit of analysis? 
-- Do columns seem complete? 
-- Are there any values that do not make sense? 
-- Are “strings” properly encoded? 
-- What are common columns across the three files? 
+__Tip:__
 
-Please keep in mind that opening the data into a spreadsheet program such as Excel only shows you the first 1.05 million records or so (R, however, can load in all the data!).
-
-`r hide("Solution Exercise 1")`
-The streams data set contains the top 200 songs on given date in a country. The popularity and song id columns have missing values, the ranks are all between 1 and 200, and the number of streams seems is at least 1000. The `country` column can be joined on the `country_code_2_letter` from the country_codes file. Similarly, the `song_id` can be joined on the `song_id` from songs.csv. The `song_name` column has some non-ASCII characters (e.g., `Ë™™Â•Ω‰∏çÂì≠`) here and there. Roughly one sixth of all songs is not associated with any genre tags, 17 songs don't have any song id, and for 9 songs the artist is missing. 
-`r unhide()`
-
-\
-
-**Exercise 2**  
-Merge all three files into a single data frame `df` and export the result as `merged_df.csv`. Keep in mind the following instructions:
-
-* Use the join functions of `dplyr` and aim for concise code (tip: look up the Datacamp tutorials for the syntax!).
-* Note that CSV-files are separated by commas (hence the name comma-separated-value!), but they can also be separated by other delimiters (e.g., `;`). Rather than using `read_csv()`, you can use `read_delim()` and explicitly tell R which separation character (`delim=';'`) to use!
-* Examine the effect of picking a left, right, and inner join, and how that affects the completeness of your data. Strive for a final data frame that captures as much of the original data as possible.
-* To avoid confusion between overlapping column names (e.g., country appears in both `streams.csv` and `country_codes.csv`), you may consider adding suffixes. 
+*Note that CSV-files are separated by commas (hence the name comma-separated-value!), but they can also be separated by other delimiters (e.g., `;`). Rather than using `read_csv()`, you can use `read_delim()` and explicitly tell R which separation character (`delim=';'`) to use!*
 
 
-```{r message=FALSE, warning=FALSE, eval=FALSE, webex.hide = 'Solution Exercise 2'}
-# install.packages("tidyverse") - run this command if you have never used the package before
-library(tidyverse)
+```{r}
+#install.packges("readr") # uncomment and run this if you have not installed `readr` package in R
+library(readr)
 
-# input
 streams <- read_csv("streams.csv")
 songs <- read_csv("songs.csv")
 country_codes <- read_delim("country_codes.csv", delim = ";")
+```
+__Troubleshooting__
 
-# transformation
+- If R doesn’t find your file: Click **Session → Set working directory → To source file location**. Avoid using `setwd()` — hardcoding directories can cause problems!
+
+## 📌 Exercise 1: Data Inspection
+Your task is to examine the datasets and identify the following: 
+
+1. What is the target unit of analysis? (*The unit of analysis tells us what each row in the dataset represents.*)
+2. Are there any missing values in the columns?
+3. Are there any values that are out of range and do not make sense?
+4. Are "string" values properly encoded?
+5. What are common columns across the three datasets?
+
+__Tips:__
+
+- Take a __look__ at the data using the function `head(streams)`, or `View(streams)`. If you'd like to view more rows with `head`, use `head(streams, 100)` (for, e.g., the first 100 rows). (`tail()` gives you the last rows of the data).
+
+- The command `summary(songs)` or `glimpse(songs)` generates descriptive statistics for all variables in the data. You can also use this command on individual columns (e.g., `summary(streams$date)`).
+
+- Character or factor columns are best inspected using the `table()` command. These will create frequency tables.
+
+```{r, echo = TRUE, webex.hide = 'Solutions to Exercise 1'}
+
+# View the first rows of the datasets to get an overview
+head(streams)
+head(songs)
+head(country_codes)
+
+# 1. Identify target unit of analysis 
+# Ans: The streams data set contains the top 200 songs on given date in a country. 
+
+# 2. Missing values 
+colSums(is.na(streams)) # popularity and song_id have missing values
+colSums(is.na(songs)) # lot of missing values in genres
+colSums(is.na(country_codes))
+
+# 3. Out of range values
+# overall checks 
+summary(streams)
+summary(songs)
+summary(country_codes)
+# You could check more specifically. For e.g. if popularity scores are between 0 and 100 (based on data description)
+summary(streams$popularity)
+
+# 4. Check string formatting
+# Find song names with non-ASCII characters
+non_ascii_songs <- songs %>%
+  filter(!grepl("^[ -~]+$", song_name))
+
+print(non_ascii_songs)
+
+# 5. Common columns
+common_cols1 <- intersect(names(streams), names(songs))
+print(common_cols1) # song_id
+
+common_cols2 <- intersect(names(streams), names(country_codes))
+print(common_cols2) #country
+
+```
+
+# Part 2: Merging 
+In this section, we want to prepare the final dataset by merging the three datasets. The "join" functions from `dplyr` come in handy for this. 
+
+## 📌 Exercise 2: 
+
+Examine the effect of picking a `left_join`, `right_join`, and `inner_join`, and how that affects the completeness of your data. Strive for a final data frame that captures as much of the original data as possible.
+
+1. Merge the streams data with the songs dataframe. 
+2. Merge the streams data with country_codes dataframe
+3. Export the final data frame as `merged_df.csv` after merging all 3 datasets.
+
+__Tips:__
+
+- Identify common columns across the datasets.
+- Look up the Datacamp tutorials for the syntax for join functions. 
+- To avoid confusion between overlapping column names (e.g., country appears in both `streams.csv` and `country_codes.csv`), you may consider adding suffixes. 
+
+
+```{r, webex.hide = 'Solutions to Exercise 2'}
 df <- streams %>% 
   inner_join(songs, by = "song_id") %>%
   left_join(country_codes, by = c("country" = "country_code_2_letter"), suffix = c("_streams", "_cc"))
 
 # Since countries in Oceania are missing in country_codes.csv we use a left join here (otherwise you'd miss out on +/- 139K records)
 
-# output
 write_csv(df, "merged_df.csv")
+
 ```
+# Part 3: Data Pre-Processing
 
-
-\
-
-#### 1.2 Duplicates
-
-\
-
-**Exercise 3**  
+## 📌 Exercise 3a: Removing Duplicates
 A track can appear in multiple top 200 lists across countries (e.g., both in the Netherlands and in Belgium) for sustained periods of time (e.g., yesterday and today). For that reason, a `song_id` may occur repeatedly within the data frame. Yet it can also happen that exactly the same record appears more than once. For example, the scraper that collected the data in the first place might have run twice which duplicated some of the records, or we accidentally made a copy-paste mistake ourselves. Check whether such duplicates are present in `df` and if so remove them. Export the result as `df_no_duplicates.csv`.
 
-\
-
-```{r eval=FALSE, webex.hide = 'Solution Exercise 3'}
+```{r, webex.hide = 'Solutions to Exercise 3a'}
 #input
 df <- read_csv("merged_df.csv")
 
@@ -151,9 +214,8 @@ df <- df %>% filter(!duplicated(df))
 write_csv(df, "df_no_duplicates.csv")
 ```
 
-\
+## 📌 Exercise 3b: Data Imputation
 
-#### 1.3 Data Imputation 
 In roughly half of the cases, the `popularity` column is missing which turns out to be troublesome once you move towards a model building phase. Therefore, we ask you to impute these missing values by the median popularity score of the country on a given date. Here's a simple example to illustrate: 
 
 | song_name | country | date | popularity | popularity_filled | 
@@ -167,11 +229,9 @@ In roughly half of the cases, the `popularity` column is missing which turns out
 
 The `popularity_filled` column has been added which takes on the value of the `popularity` column if present and otherwise missing data (`NA`) are replaced with their imputed values. In this example, the popularity of song `C` in the United Kingdom has been computed as the median of `{62, 66, 91} = 66`. Note that it does not take into account song `E` in the United Kingdom (different date) and song `A` in the Netherlands (different country).   
 
-
-**Exercise 4**  
 Implement this data imputation strategy using the `filter`, `groupby`, and `summarise` functions from the `dplyr` package and the result as `df_imputed.csv`. We recommend first computing the imputation values (for each country across the days), and then replacing missing values in the `popularity` column with their matching counterparts. Evaluate your results in terms of the pros and cons of this approach and try to come up with an alternative imputation strategy (incl. arguments why you prefer that approach).
 
-```{r eval=FALSE, webex.hide = 'Solution Exercise 4'}
+```{r, webex.hide = 'Solutions to Exercise 3b'}
 # input
 df <- read_csv("df_no_duplicates.csv")
 
@@ -190,19 +250,12 @@ df <- df_joined %>% mutate(popularity_filled = ifelse(is.na(popularity), popular
 # output
 write_csv(df, "df_imputed.csv")
 ```
+# Part 4: Feature Engineering
 
----
+## 📌 Exercise 4a: Creating Trend Variable
 
-### 2. Feature Engineering / Operationalizing Variables
-
-\
-
-#### 2.1 Trend Variable
 More likely than not, you have come across the `lm()` (i.e., linear model) function once before during your studies. Then, you also know that a regression model can only interpret numeric data. Categorical fields are typically converted into so-called dummy variables that take on either the value `0` or `1`. In a similar vein, dates are often converted into trend variables as input for a time-series model. For example, in our dataset January the 1st, of 2020 becomes 1 and the 15th of December 2020 (the last entry of `df`) becomes 350. Follow the steps below to create this trend variable for the `date` column of `df`: 
 
-\
-
-**Exercise 5**  
 1. Study the [documentation](https://stat.ethz.ch/R-manual/R-devel/library/base/html/seq.Date.html) of the `seq` function to create a sequence of dates (see examples at the bottom of the page).
 2. Create a data frame `dates` with two columns: `date` (i.e., the sequence of dates) and `counter` (i.e., a numeric value between 1 and 350). Tip: you may first need to convert the `dates` column into character format (`as.charcter(date)`).
 3. Merge `df` and `dates` and inspect your results (which type of join do you use?)
@@ -220,9 +273,8 @@ dates <- data.frame(counter=counter, date=date)
 df <- df %>% inner_join(dates, by = "date")
 ```
 
-\
+## 📌 Exercise 4b: Creating ranks 
 
-#### 2.2 Ranks
 Even though the data frame represents the Spotify top 200 charts, none of the columns indicates the rank of a given track. We can easily derive it from the number of streams, the `date`, and the `country` column. The built-in R function `ranks` returns a vector of ranks for a given input. By default, the lowest digit gets the highest rank (e.g., 1 becomes rank 1), you can reverse the order by adding a minus sign (`-`) in front of the input vector:
 
 ```{r}
@@ -233,12 +285,9 @@ print(rank(rank_example))
 print(rank(-rank_example)) 
 ```
 
-\
-
-**Exercise 6**  
 Add a `ranking` column to `df` using the `dplyr` package and export the result as `df_ranking.csv`. Although it is unlikely that some tracks have exactly the same number of streams, think about how you will deal with these edge cases (tip: run `?rank` to look up the documentation). Does your ranking always run from 1 to 200? Why is that? Investigate the root cause and fix it! 
 
-```{r eval=FALSE, webex.hide = 'Solution Exercise 6'}
+```{r eval=FALSE, webex.hide = 'Solution Exercise 4b'}
 # input
 df <- read_csv("df_imputed.csv")
 
@@ -255,18 +304,14 @@ df <- df %>% filter(!is.na(song_id))
 # output
 write_csv(df, "df_ranking.csv")
 ```
+# Part 5: Pivoting the Data 
 
-\
-
-#### 2.3 Reshaping / pivoting longer or wider
-
-The lion share of tracks are assigned to more than one genre. For example, the famous song "Señorita" by Shawn Mendes and Camilo Cabello is categorized as `pop`, but also as `canadian pop`, `post-teen pop`, `viral pop`, and `dance pop`. The data frame stores these records as a list of comma-separated genres. On a high level, we like to move from this state: 
+Most tracks are assigned to more than one genre. For example, the famous song "Señorita" by Shawn Mendes and Camilo Cabello is categorized as `pop`, but also as `canadian pop`, `post-teen pop`, `viral pop`, and `dance pop`. The data frame stores these records as a list of comma-separated genres. On a high level, we like to move from this state: 
 
 | song_name | genres | 
 | :----- | :---- | 
 | Señorita | `pop, canadian pop, post-teen pop, viral pop, dance pop` | 
 
-\
 
 To a format in which the columns represent genre tag words and the table values indicate which genre(s) belong to which `song_name`: 
 
@@ -276,11 +321,11 @@ To a format in which the columns represent genre tag words and the table values 
 | Memories | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | Psycho | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
 
-\
+
 
 To this end, we first need to separate the `genres` column of `df` into individual genres. We can use the built-in R function `strsplit` for that in the following way (note the double brackets `[[]]` around `1`!): 
 
-\
+
 
 ```{r}
 genres_example <- c("pop", "canadian pop", "post-teen pop", "viral pop", "dance pop")
@@ -300,16 +345,14 @@ After some data wrangling we can transform the data into the following format:
 | 13594414 | dance pop | 
 | 13977556 | pop` | 
 
-\
 
-**Exercise 7**   
+## 📌 Exercise 5: Reshape the data
 As a last step, we use the `pivot_longer()` and `pivot_wider()` functions to change the format of our data frame (see, e.g., [this overview](https://tidyr.tidyverse.org/reference/pivot_longer.html) or these [code snippets](https://dcl-wrangle.stanford.edu/pivot-advanced.html)). We then store the results in `df_reshaped.csv`. 
 
 Following these steps, it's your turn to create a data set, with (a) rows being the dates, (b) columns being the song IDs, and (c) the cells indicating a song's sum of streams.
 
-\
 
-```{r eval=FALSE, webex.hide = 'Solution Exercise 7'}
+```{r eval=FALSE, webex.hide = 'Solution Exercise 5'}
 # load input
 df <- read_csv("df_ranking.csv")
 
@@ -323,8 +366,41 @@ song_popularity$date[1:10]
 
 # output
 write_csv(song_popularity, "df_reshaped.csv")
-
 ```
 
-\
+# Conclusion
+
+Congratulations! 🎉 You have successfully navigated the key steps of data preparation and gained hands-on experience with essential data wrangling techniques in R.  Here are the key takeaways from this tutorial:  
+
+**✅ Data Inspection & Cleaning**  
+
+- Loaded and explored raw datasets to understand their structure.
+- Identified missing values, out-of-range values, and encoding issues.
+- Detected and removed duplicate records to ensure data integrity.
+
+
+**✅ Data Merging & Joins**
+
+- Used inner_join(), left_join(), and right_join() to combine datasets and learnt how different join types affect data completeness.
+- Resolved column conflicts by adding suffixes during merging.
+  
+**✅ Handling Missing Values & Data Imputation**
+
+- Applied imputation techniques to replace missing values using median-based imputation.
+- Discussed pros and cons of different imputation methods and their impact on analysis.
+
+**✅ Feature Engineering & Transformations**
+
+- Created new variables like trend indicators for time-series modeling and ranking.
+- Filtered and processed text-based columns, such as genre extraction.
+
+**✅ Reshaping Data for Analysis**
+
+- Used pivot_longer() and pivot_wider() to restructure datasets.
+
+Great job completing this tutorial! Keep practicing! 🎉  
+
+## Support Needed? 
+
+For technical issues outside of scheduled classes, please check the [support section](https://dprep.hannesdatta.com/docs/course/support) on the course website.
 
