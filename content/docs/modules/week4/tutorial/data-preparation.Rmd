@@ -20,10 +20,12 @@ library(knitr)
 ```
 
 # Introduction
+
 In this tutorial, we'll take data preparation to the next level by considering a variety of common data issues in the Spotify Top 200 rankings. We'll start off with multiple raw big data sets and end up with a single data frame ready for analysis!
 
  
 ## What You'll Learn in this Tutorial
+
 - Merge data sets on one or more indices and understand the different types of joins (inner, left, right join).
 - Handle missing and duplicate values.
 - Handle and preprocess string data (remove characters, splitting).
@@ -40,6 +42,7 @@ Ready to start? Here's what we recommend you do before going through this tutori
 
 
 ## Exploring the Beats: Inside the Spotify Top 200 Data
+
 [Spotify Charts](https://spotifycharts.com/regional) has listed the daily top 200 most streamed songs by country since 2017. As you can see below, you can use the dropdown menus to change your selection, and clicking in the top right corner returns the data in CSV-format. 
 
 ![](./images/spotify-top-200.gif){width=50%}
@@ -79,6 +82,7 @@ For this exercise we have collected the rankings for 2020 which have been split 
 
 
 # Part 1: Downloading and Inspecting the Data 
+
 ## Create a new R project
 1. Open RStudio and create a new project by clicking on `File` -> `New Project` -> `New Directory` -> `New Project`.
 2. Name your project `data-preparation` and save it in a location of your choice.

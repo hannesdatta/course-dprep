@@ -17,17 +17,10 @@ Before we get started (I)
 __A few observations from your team projects.__
 
 - absolutely important to work in local repositories, with issue-based branches, and pull requests.
-- Code files need to be structured as setup-ITO -- required for automation!
+- Source code files need to be structured as setup-ITO -- required for automation!
 - Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, `.R` for regular scripts
 - Adhere to `tidyverse` functions (e.g., `read_csv()`, not `read.csv()`)
-- Incorporate programming concepts: __looping__, using __functions__
-
-Before we get started (II)
-==========
-
-- Asked our scheduling department to move the tutorials of next week to the computer lab
-- Request to host a "catch up" session: Let's discuss topics and dates.
-- I printed cheat sheets!
+- Incorporate programming concepts where needed: __looping__, using __functions__
 
 Structure of this tutorial
 ========================================================
@@ -42,6 +35,38 @@ __Get your cheat sheets ready!!!__
 
 - After class
   - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/modules/week4/tutorial/data-preparation). 
+
+
+Data preparation theory (I) - Research workflow
+====
+
+![Main goals in each step of the research workflow](fig_researchworkflow.png)
+
+Data preparation theory (II): Components of source code
+====
+
+- 1) Initializing the script/setup
+    - Loading packages
+    - Making connections to databases
+    - Any other global ("main") parameters (e.g., sample size, prototype flag, etc.)
+- 2) Input
+    - Read data (e.g., unstructured/unstructured data, remote/local locations, files or databases)
+- 3) Transformation
+    - E.g., filtering, aggregation, merging, transformation, deduplication (more later)
+- 4) Output
+    - Store (intermediate) data, figures (e.g., auditing, final)
+
+
+Commands you know (DO): Let's practice!
+=========
+
+- `select()`: subset columns
+- `filter()`: subset rows on conditions
+- `mutate()`: create new columns by using information from other columns
+- `group_by()` and `summarize()`: create summary statistics on grouped data
+- `arrange()`: sort results
+- `count()`: count discrete values
+
 
 Why this tutorial
 ==================
