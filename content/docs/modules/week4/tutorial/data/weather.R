@@ -6,7 +6,7 @@ library(lubridate)
 set.seed(42)
 
 # Define the number of days (change as needed)
-n_days <- 730  # Simulate 2 years
+n_days <- 365  # One years of data
 
 # Generate a sequence of days
 dates <- seq(from = as.Date("2024-01-01"), by = "day", length.out = n_days)

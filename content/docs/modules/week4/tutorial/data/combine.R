@@ -22,8 +22,8 @@ playlists <- playlists %>% mutate(date = ISOweek2date(paste0(iso_week,'-1')))
 #all dates
 
 # Define parameters
-n_days <- 730  # Two years of data
-artists <- paste0("Artist ", 1:100)
+n_days <- 365  # One years of data
+artists <- unique(read_csv('realistic_fake_artists_with_numbers.csv')$Artist)
 dates <- seq(from = as.Date("2024-01-01"), by = "day", length.out = n_days)
 
 
@@ -35,7 +35,8 @@ streams <- streams %>% left_join(socials_wide, by = c('date','artist'))
 
 streams <- streams %>% left_join(playlists, by = c('date','artist'))
 
-streams=streams %>% group_by(artist, country) %>% arrange(artist, country,date) %>% mutate(playlists=zoo::na.locf(playlists)) %>% ungroup()
+streams=streams %>% group_by(artist, country) %>% arrange(artist, country,date) %>% 
+  mutate(playlists=zoo::na.locf(playlists, na.rm=F)) %>% ungroup()
 
 
 
@@ -58,7 +59,7 @@ country_pop <- tibble(
 # Generate artist popularity trends (unobserved)
 artist_trends <- tibble(
   artist = artists,
-  global_trend = runif(100, -0.001, 0.003),  # Some artists grow, some decline
+  global_trend = runif(length(artists), -0.001, 0.003),  # Some artists grow, some decline
   country_variation = map(artists, ~ rnorm(4, mean = 0, sd = 0.002)) # Variation per country
 ) %>%
   unnest_wider(country_variation, names_sep = "_") %>%
@@ -119,6 +120,17 @@ streams2 <- streams %>%
 # Display first few rows
 print(head(streams2))
 
+# Generate some missings
+
+# Create missing data
+streams2 <- streams2 %>% mutate(is_NA = runif(n())<.06)
+streams2 <- streams2 %>% group_by(artist, date) %>% mutate(is_missing = first(runif(1)<.02)) %>% ungroup()
+streams2 <- streams2 %>% group_by(date) %>% mutate(is_missing2 = first(runif(1)<.1)) %>% ungroup()
+
+streams2 = streams2 %>% mutate(streams = ifelse(is_NA==T, NA, streams))
+streams2 = streams2 %>% filter(!is_missing & !is_missing2) %>% select(-is_missing, -is_missing2, -is_NA)
+
+
 # Save to CSV
-write_csv(streams2, "artist_streams.csv")
+write_csv(streams2, "streams.csv")
 

@@ -6,8 +6,8 @@ library(lubridate)
 set.seed(42)
 
 # Define parameters
-n_days <- 730  # Two years of data
-artists <- paste0("Artist ", 1:100)
+n_days <- 365  # One years of data
+artists <- unique(read_csv('realistic_fake_artists_with_numbers.csv')$Artist)
 dates <- seq(from = as.Date("2024-01-01"), by = "day", length.out = n_days)
 
 # Convert dates to ISO year-week
@@ -37,6 +37,14 @@ playlist_data <- crossing(artist_base_values, week_data) %>%
 
 # Display first few rows
 print(head(playlist_data))
+
+# Create missing weeks
+set.seed(123)
+playlist_data <- playlist_data %>% mutate(is_NA = runif(n())<.05)
+missing_weeks = sample(unique(playlist_data$iso_week), 10)
+playlist_data <- playlist_data %>% mutate(is_missing = iso_week %in% missing_weeks)
+playlist_data = playlist_data %>% mutate(playlists = ifelse(is_NA==T, NA, playlists))
+playlist_data = playlist_data %>% filter(!is_missing) %>% select(-is_missing, -is_NA)
 
 # Save to CSV
 write_csv(playlist_data, "playlists.csv")

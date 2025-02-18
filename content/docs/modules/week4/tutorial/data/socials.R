@@ -6,9 +6,10 @@ library(lubridate)
 set.seed(42)
 
 # Define parameters
-n_days <- 730  # Two years of data
-artists <- paste0("Artist ", 1:100)
+n_days <- 365  # One years of data
+artists <- unique(read_csv('realistic_fake_artists_with_numbers.csv')$Artist)
 dates <- seq(from = as.Date("2024-01-01"), by = "day", length.out = n_days)
+
 platforms <- c("TikTok", "X", "Snapchat", "Instagram")
 metrics <- c("followers", "comments")
 
@@ -38,6 +39,14 @@ expanded_data <- data_grid %>%
 
 # Display first few rows
 print(head(expanded_data))
+
+# Create missing data
+expanded_data <- expanded_data %>% mutate(is_NA = runif(n())<.02)
+expanded_data <- expanded_data %>% group_by(platform, date) %>% mutate(is_missing = first(runif(1)<.05)) %>% ungroup()
+expanded_data <- expanded_data %>% group_by(date) %>% mutate(is_missing2 = first(runif(1)<.1)) %>% ungroup()
+
+expanded_data = expanded_data %>% mutate(value = ifelse(is_NA==T, NA, value))
+expanded_data = expanded_data %>% filter(!is_missing & !is_missing2) %>% select(-is_missing, -is_missing2, -is_NA)
 
 # Save to CSV
 write_csv(expanded_data, "socials.csv")
