@@ -798,56 +798,50 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Before we get started (I)</h3>
+<h3>Before we get started</h3>
 <div class="slideContent" >
-<p><strong>A few observations from your team projects.</strong></p>
+<ul>
+<li>Exam dates are now available
 
 <ul>
-<li>absolutely important to work in local repositories, with issue-based branches, and pull requests.</li>
-<li>Code files need to be structured as setup-ITO &ndash; required for automation!</li>
-<li>Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, <code>.R</code> for regular scripts</li>
-<li>Adhere to <code>tidyverse</code> functions (e.g., <code>read_csv()</code>, not <code>read.csv()</code>)</li>
-<li>Incorporate programming concepts: <strong>looping</strong>, using <strong>functions</strong></li>
+<li>dPrep: 3 April 2025 (resit 27 June)</li>
+<li>oDCM: 1 April 2025 (resit 26 June)</li>
+</ul></li>
+<li>Mac users: Please familiarize yourselves with R/RStudio on Windows during the oDCM lab session this Friday</li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Before we get started (II)</h3>
+<h3>Structure of this week</h3>
 <div class="slideContent" >
 <ul>
-<li>Asked our scheduling department to move the tutorials of next week to the computer lab</li>
-<li>Request to host a &ldquo;catch up&rdquo; session: Let&#39;s discuss topics and dates.</li>
-<li>I printed cheat sheets!</li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Structure of this tutorial</h3>
-<div class="slideContent" >
-<ul>
-<li>Back to R, <strong>but</strong>: maintain way of working using Git/GitHub</li>
-<li>In-class <a href="https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html">tutorial</a> featuring selected issues raised in:
+<li><strong>Today&#39;s (updated &amp; overhauled) tutorial:</strong> back to R, <strong>but</strong>: maintain way of working using Git/GitHub
 
 <ul>
-<li><a href="https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1">Tidyverse - chapter 1 &amp; 3</a></li>
-<li><a href="https://datacamp.com/courses/cleaning-data-in-r">Cleaning data in R - chapter 1 &amp; 2</a></li>
-<li><a href="https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1">Joining Data with <code>dplyr</code>- chapter 1 &amp; 2</a></li>
+<li>Part 1: expanding our knowledge of R
+
+<ul>
+<li>applying functions, advanced cleaning, dealing with time, merging data, pivoting</li>
+</ul></li>
+<li>Part 2: case studies and exercises
+
+<ul>
+<li>application to typicaly marketing analytics data issues</li>
+<li>some exercises still to be added</li>
+</ul></li>
+</ul></li>
+<li>Coaching session</li>
+<li>After class
+
+<ul>
+<li>Work through the <a href="https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html">tutorial</a> (self study)</li>
+<li>Optional content: <a href="https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1">Tidyverse - chapter 1 &amp; 3</a>, <a href="https://datacamp.com/courses/cleaning-data-in-r">Cleaning data in R - chapter 1 &amp; 2</a>, <a href="https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1">Joining Data with <code>dplyr</code>- chapter 1 &amp; 2</a></li>
 </ul></li>
 </ul>
 
 <p><strong>Get your cheat sheets ready!!!</strong></p>
-
-<ul>
-<li>After class
-
-<ul>
-<li>Please go through the entire tutorial on the <a href="https://dprep.hannesdatta.com/docs/modules/week4/tutorial/data-preparation">dprep site</a>. </li>
-</ul></li>
-</ul>
 
 </div>
 
@@ -866,7 +860,22 @@ hljs.initHighlightingOnLoad();
 <li class="fragment">Transformation (i.e., operations on your data)</li>
 <li class="fragment">Output (e.g., <code>write_csv()</code> &ndash; also w/ <strong>relative</strong> filenames)</li>
 </ul></li>
-<li class="fragment">Zoom in on ways to transform (while respecting setup-I-T-O building blocks)</li>
+<li class="fragment"><strong>Now:</strong> zoom in on ways to transform (while respecting setup-I-T-O building blocks)</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Recap: Commands you already know </h3>
+<div class="slideContent" >
+<ul>
+<li><code>select()</code>: subset columns</li>
+<li><code>filter()</code>: subset rows on conditions</li>
+<li><code>mutate()</code>: create new columns by using information from other columns</li>
+<li><code>group_by()</code> and <code>summarize()</code>: create summary statistics on grouped data</li>
+<li><code>arrange()</code>: sort results</li>
+<li><code>count()</code>: count discrete values</li>
 </ul>
 
 </div>
@@ -878,278 +887,425 @@ hljs.initHighlightingOnLoad();
 <p>Run this snippet to download today&#39;s data (it&#39;s zipped - contains a couple of <code>.csv</code> files)</p>
 
 <pre><code class="r">library(tidyverse)
-download.file(&#39;https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip&#39;, &#39;data.zip&#39;)
-unzip(&#39;data.zip&#39;)
+download.file(&#39;https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip&#39;, &#39;week4_data.zip&#39;)
+unzip(&#39;week4_data.zip&#39;, overwrite=TRUE)
 </code></pre>
 
-<p>We split this group in three parts &ndash; focusing on <code>streams.csv</code>, <code>songs.csv</code>, and <code>country_codes.csv</code>.</p>
-
 <ul>
-<li>Load the data set using <code>read_csv()</code></li>
+<li>Load all data sets using <code>read_csv()</code></li>
 <li>Then, use the <code>head()</code>, <code>View()</code>, <code>summary()</code>, <code>dim()</code> commands and try to describe the data set</li>
-<li>On categorical data, use the <code>table()</code> command for frequencies</li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Common questions we can &quot;ask&quot; to a dataset (I)</h3>
+<h3>Solution</h3>
 <div class="slideContent" >
-<ul>
-<li class="fragment">What are columns in the data?</li>
-<li class="fragment">Do values in these columns seem complete? Do they all make sense? Are they properly encoded?</li>
-<li class="fragment"><em>What are common columns across (multiple) files (potential for merging!)</em></li>
-<li class="fragment">What uniquely defines a row?
-<br><br><br><strong>Does not require &ldquo;additional&rdquo; preparation</strong> of your data.</li>
-</ul>
+<pre><code class="r">library(tidyverse)
+
+streams &lt;- read_csv(&#39;streams.csv&#39;)
+weather &lt;- read_csv(&#39;weather.csv&#39;)
+socials &lt;- read_csv(&#39;socials.csv&#39;)
+playlists &lt;- read_csv(&#39;playlists.csv&#39;)
+</code></pre>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Common questions we can &quot;ask&quot; to a dataset (II)</h3>
+<h3>Part 1: Expanding our knowledge of R</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Useful information can be obtained if we make use of <strong>extra wrangling&hellip;</strong>
+<li><p>Knowledge so far is restricted to&hellip;</p>
 
 <ul>
-<li class="fragment">Covered <code>tidyverse</code> in our R Bootcamp at the beginning of the class (remember?)</li>
-<li class="fragment">loading it: <code>library(tidyverse)</code> &ndash; will cover many packages</li>
-<li class="fragment">has so-called &ldquo;verbs&rdquo; &ndash; commands that execute <em>data wrangling</em> operations</li>
-<li class="fragment">can combine these verbs using <code>%&gt;%</code> (the piping character)</li>
+<li>opening/saving data (<code>read_csv</code>, <code>write_csv</code>), </li>
+<li>exploring data (<code>head</code>, <code>View()</code>, <code>summary()</code>, <code>table()</code>, <code>dim()</code></li>
+<li>wrangling with tidyverse/dplyr: <code>group_by()</code>, <code>summarize()</code>, <code>mutate()</code>, <code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>count()</code></li>
 </ul></li>
-<li class="fragment"><strong>Can you name a few of these verbs? What do they do?</strong></li>
+<li><p>But&hellip; what about more complex operations?</p>
+
+<ul>
+<li>custom summary statistics? ranking? </li>
+<li>removing duplicates?</li>
+<li>complex text searches?</li>
+<li>dealing with time series data?</li>
+<li>merging multiple data sets?</li>
+<li>reshaping data?</li>
+</ul></li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Do: Better questions using tidyverse</h3>
+<h3>Part 1: Expanding our knowledge of R</h3>
+<div class="slideContent" >
+<p>What&#39;s to come&hellip;</p>
+
+<ul>
+<li>1A) Applying base R functions in <code>tidyverse</code></li>
+<li>1B) Advanced Cleaning: Using regular expressions</li>
+<li>1C) Dealing with Time</li>
+<li>1D) Merging Data</li>
+<li>1E) Reshaping Data</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1A) Applying functions in `tidyverse`</h3>
 <div class="slideContent small-code" >
 <ul>
-<li>Let&#39;s first load all datasets</li>
+<li>Summarize can take any functions as arguments</li>
+<li>Best to have Base R cheat sheet available</li>
 </ul>
 
-<pre><code class="r">library(tidyverse)
-streams &lt;- read_csv(&#39;streams.csv&#39;)
-songs &lt;- read_csv(&#39;songs.csv&#39;)
-countries &lt;- read_delim(&#39;country_codes.csv&#39;, &#39;;&#39;)
+<pre><code class="r">streams %&gt;%
+  group_by(artist) %&gt;%
+  summarize(
+    mean_streams = mean(streams, na.rm = TRUE))
 </code></pre>
 
-<p>Now, use the <code>tidyverse</code> verbs <code>filter()</code>, <code>arrange()</code>, and <code>mutate()</code> to answer the following questions.</p>
+<pre><code># A tibble: 107 × 2
+   artist               mean_streams
+   &lt;chr&gt;                       &lt;dbl&gt;
+ 1 10 Beats to Phoenix         5519.
+ 2 10 Notes to Wolves          5795.
+ 3 30 Minutes to Mirage        5021.
+ 4 30 Minutes to Rebels        5034.
+ 5 30 Minutes to Saints        5098.
+ 6 30 Ways to Storm            5865.
+ 7 40 Days to Rebels           5082.
+ 8 40 Miles to Storm           5386.
+ 9 60 Notes to Echo            4558.
+10 77 Beats to Wolves          5661.
+# ℹ 97 more rows
+</code></pre>
 
-<p>1) How many obs. do we have for Belgium (country == &#39;BE&#39;)?</p>
-
-<p>2) Which song ID has most streams (in which country, and when)?</p>
-
-<p>3) What&#39;s the name of that song?</p>
-
-<p>4) Add a new column to <code>streams</code>, showing the approx. revenue for each song/day/country (tip: Spotify pays about 0.0038
-EUR per stream)</p>
+<p>DO: Extend code snippet above to include standard deviation (<code>sd</code>), minimum (<code>min</code>) and maximum (<code>max</code>) in the summary table.</p>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Answers to previous questions (I)</h3>
+<h3>Solution</h3>
+<div class="slideContent" >
+<pre><code class="r">library(dplyr)
+
+# Compute basic statistics per artist
+streams %&gt;%
+  group_by(artist) %&gt;%
+  summarize(
+    min_streams = min(streams, na.rm = TRUE),
+    mean_streams = mean(streams, na.rm = TRUE),
+    max_streams = max(streams, na.rm = TRUE),
+    sd_streams = sd(streams, na.rm = TRUE) 
+
+  )
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1A) Applying functions in `tidyverse`</h3>
+<div class="slideContent small-code" >
+<p><strong>DO</strong> </p>
+
+<ul>
+<li>Extract the daily &ldquo;top 10&rdquo; - i.e., the top 10 artists on a given day.</li>
+<li>Tips
+
+<ul>
+<li>First, group by <code>date</code> and <code>country</code></li>
+<li>Use the <code>rank()</code> function to find the &ldquo;rank&rdquo; of streams (inverse!) - in combination w/ <code>mutate()</code></li>
+<li>Reorder your data set by <code>date</code> and <code>ranks</code></li>
+<li>Show the first 10 observations for each day (<code>filter</code>)</li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Solution</h3>
+<div class="slideContent" >
+<pre><code class="r">streams %&gt;% 
+  group_by(date, country) %&gt;% 
+  mutate(rank = rank(-streams)) %&gt;% 
+  ungroup() %&gt;% 
+  arrange(date, country, rank) %&gt;% 
+  filter(rank&lt;=10)
+</code></pre>
+
+<pre><code># A tibble: 12,960 × 5
+   date       artist            country streams  rank
+   &lt;date&gt;     &lt;chr&gt;             &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+ 1 2024-01-01 Logan Brown       BE        14221     1
+ 2 2024-01-01 Wolves Band       BE        13816     2
+ 3 2024-01-01 Neon Wolves       BE        13291     3
+ 4 2024-01-01 El Saints         BE        11344     4
+ 5 2024-01-01 Electric Rebels   BE        10577     5
+ 6 2024-01-01 Mirage Crew       BE         9341     6
+ 7 2024-01-01 Noah Carter       BE         9084     7
+ 8 2024-01-01 Liam Harris       BE         8722     8
+ 9 2024-01-01 Wolves Collective BE         8442     9
+10 2024-01-01 Neon Phoenix      BE         8013    10
+# ℹ 12,950 more rows
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1A) Applying functions in `tidyverse`</h3>
 <div class="slideContent small-code" >
 <ul>
-<li>Let&#39;s first load all datasets</li>
+<li>Meeting <code>unique()</code>: removes duplicates from a vector</li>
+<li><code>n_distinct()</code>: counts the number of unique values in a vector</li>
+<li><code>distinct()</code>: removes duplicate rows</li>
+<li>Let&#39;s count the number of unique artists</li>
 </ul>
 
-<pre><code class="r">library(tidyverse)
-streams &lt;- read_csv(&#39;streams.csv&#39;)
-songs &lt;- read_csv(&#39;songs.csv&#39;)
-countries &lt;- read_delim(&#39;country_codes.csv&#39;, &#39;;&#39;)
-</code></pre>
-
-<p>Now, use the <code>tidyverse</code> verbs <code>filter()</code>, <code>arrange()</code>, and <code>mutate()</code> to answer the following questions.</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Answers to previous questions (II)</h3>
-<div class="slideContent small-code" >
-<p>1) How many observations do we have for Belgium (country == &#39;BE&#39;)?</p>
-
-<pre><code class="r">streams %&gt;% filter(country==&quot;BE&quot;) %&gt;% count()
+<pre><code class="r">streams %&gt;% summarize(number_of_artists = n_distinct(artist))
 </code></pre>
 
 <pre><code># A tibble: 1 × 1
-      n
-  &lt;int&gt;
-1 69900
+  number_of_artists
+              &lt;int&gt;
+1               107
 </code></pre>
 
-<p>2) Which song ID has most streams in the data (in which country, and when)?</p>
+<pre><code class="r"># or: length(unique(streams$artist))
 
-<pre><code class="r">streams %&gt;% arrange(desc(streams))
+distinct(streams)
 </code></pre>
 
-<pre><code># A tibble: 278,724 × 5
-    song_id date       country popularity streams
-      &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;
- 1 21831898 2020-07-24 US              NA 4175284
- 2 21831405 2020-07-24 US              NA 3937822
- 3 21831540 2020-07-24 US              99 3829002
- 4 17274280 2020-01-17 US              NA 3781452
- 5 24344394 2020-12-11 US             100 3645354
- 6 17274280 2020-01-14 US              NA 3644167
- 7 17274280 2020-01-18 US             100 3636720
- 8 17274280 2020-01-15 US             100 3624169
- 9 17274280 2020-01-16 US              NA 3577849
-10 17274280 2020-01-13 US             100 3483960
-# ℹ 278,714 more rows
-</code></pre>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Answers to previous questions (III)</h3>
-<div class="slideContent small-code" >
-<p>3) What&#39;s the name of that song?</p>
-
-<pre><code class="r">songs %&gt;% filter(song_id==21831898)
-</code></pre>
-
-<pre><code># A tibble: 1 × 4
-   song_id song_name artists      genres                     
-     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;                      
-1 21831898 the 1     Taylor Swift dance pop,pop,post-teen pop
-</code></pre>
-
-<p>4) Add a new column to <code>streams</code>, showing the approx. revenue for each song/day/country (tip: Spotify pays about 0.0038
-EUR per stream)</p>
-
-<pre><code class="r">streams$revenue &lt;- 0.0038 * streams$streams # the old way
-
-streams &lt;- streams %&gt;% mutate(revenue = streams * 0.0038) # better
+<pre><code># A tibble: 135,824 × 4
+   date       artist              country streams
+   &lt;date&gt;     &lt;chr&gt;               &lt;chr&gt;     &lt;dbl&gt;
+ 1 2024-01-01 10 Beats to Phoenix BE         6983
+ 2 2024-01-02 10 Beats to Phoenix BE         8451
+ 3 2024-01-03 10 Beats to Phoenix BE            0
+ 4 2024-01-04 10 Beats to Phoenix BE            0
+ 5 2024-01-05 10 Beats to Phoenix BE         1710
+ 6 2024-01-06 10 Beats to Phoenix BE         3069
+ 7 2024-01-07 10 Beats to Phoenix BE           NA
+ 8 2024-01-08 10 Beats to Phoenix BE          666
+ 9 2024-01-09 10 Beats to Phoenix BE            0
+10 2024-01-10 10 Beats to Phoenix BE            0
+# ℹ 135,814 more rows
 </code></pre>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Grouping and summarizing</h3>
-<div class="slideContent small-code" >
-<ul>
-<li>Grouping and summarizing (also called aggregation) is another powerful way to generate extra stats</li>
-</ul>
-
-<pre><code class="r">streams %&gt;% group_by(country) %&gt;% summarise(N=n())
-</code></pre>
-
-<pre><code># A tibble: 4 × 2
-  country     N
-  &lt;chr&gt;   &lt;int&gt;
-1 BE      69900
-2 DE      69499
-3 NL      69800
-4 US      69525
-</code></pre>
-
-<ul>
-<li>Alternatively&hellip; (in other words: sooo many functions that make code &ldquo;look&rdquo; better)</li>
-</ul>
-
-<pre><code class="r">streams %&gt;% count(country)
-</code></pre>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Do: Using grouping and summaries</h3>
-<div class="slideContent" >
-<p>Let&#39;s keep on generating stats, this time using <code>group_by()</code> and <code>summarise()</code> (plus verbs we have seen earlier)</p>
-
-<p>1) Create a new dataset, called <code>streams2</code>, summing up the streams by song.</p>
-
-<p>2) Create a new dataset, called <code>artists</code>, showing the count of songs by artist.</p>
-
-<p>3) Look at <code>artists</code>, and spit out the row that lists the number of songs for Ellie Goulding (<code>==</code>)</p>
-
-<p>4) Refine your search from (3) to include also collaborations (tip: <code>grepl()</code>!)</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Answers to previous questions (I)</h3>
-<div class="slideContent small-code" >
-<p>Let&#39;s keep on generating stats, this time using <code>group_by()</code> and <code>summarise()</code> (plus verbs we have seen earlier)</p>
-
-<p>1) Create a new dataset, called <code>streams2</code>, summing up the streams by song.</p>
-
-<pre><code class="r">streams2 &lt;- streams %&gt;% group_by(song_id) %&gt;% summarise(totstreams = sum(streams))
-</code></pre>
-
-<p>2) Create a new dataset, called <code>artists</code>, showing the count of songs by artist.</p>
-
-<pre><code class="r">artists &lt;- songs %&gt;% count(artists)
-</code></pre>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Answers to previous questions (II)</h3>
-<div class="slideContent small-code" >
-<p>3) Look at <code>artists</code>, and spit out the row that lists the number of songs for Ellie Goulding (<code>==</code>)</p>
-
-<pre><code class="r">songs %&gt;% count(artists) %&gt;% filter(artists==&#39;Ellie Goulding&#39;)
-</code></pre>
-
-<pre><code># A tibble: 1 × 2
-  artists            n
-  &lt;chr&gt;          &lt;int&gt;
-1 Ellie Goulding     7
-</code></pre>
-
-<p>4) Refine your search from (3) to include also collaborations (tip: <code>grepl()</code>!)</p>
-
-<pre><code class="r">songs %&gt;% count(artists) %&gt;% filter(grepl(&#39;Ellie Goulding&#39;, artists, ignore.case=T))
-</code></pre>
-
-<pre><code># A tibble: 9 × 2
-  artists                               n
-  &lt;chr&gt;                             &lt;int&gt;
-1 Calvin Harris; Ellie Goulding         1
-2 Ellie Goulding                        7
-3 Ellie Goulding; Diplo; Red Velvet     1
-4 Ellie Goulding; Diplo; Swae Lee       1
-5 Ellie Goulding; Juice WRLD            2
-6 Ellie Goulding; Juice WRLD; R3HAB     1
-7 Ellie Goulding; Lauv                  2
-8 Ellie Goulding; Lauv; Syn Cole        1
-9 Ellie Goulding; blackbear             1
-</code></pre>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Merging&#x2F;joining</h3>
+<h3>1B) Advanced Cleaning: Using Regular Expressions</h3>
 <div class="slideContent" >
 <ul>
-<li>Great job so far!</li>
-<li>But, hasn&#39;t it been cumbersome to work w/ three separate datasets?</li>
-<li>We can <em>join</em> them
+<li>Functions you need to know
+
+<ul>
+<li><code>grepl(x, y)</code> - detect whether <code>y</code> contains <code>x</code> (evaluates to <code>TRUE</code> or <code>FALSE</code>)</li>
+<li><code>grep(x, y, value=TRUE)</code> - detect whether <code>y</code> contains <code>x</code> (&amp; returns the search results)</li>
+<li><code>gsub(x, z, y)</code> - searches <code>x</code> in <code>y</code> and replaces <code>x</code> by <code>z</code></li>
+</ul></li>
+<li>How to search? Examples:
+
+<ul>
+<li><code>grepl(&quot;\\d&quot;, &quot;Song123&quot;)</code> &rarr; <code>TRUE</code></li>
+<li><code>grepl(&quot;[a-z]&quot;, &quot;K3&quot;)</code> → <code>FALSE</code> (case-sensitive)</li>
+<li><code>grepl(&quot;^The&quot;, &quot;The Beatles&quot;)</code> → <code>TRUE</code>, but&hellip;</li>
+<li><code>grepl(&quot;^the&quot;, &quot;The Beatles&quot;)</code> → <code>FALSE</code> (know why?)</li>
+<li><code>grepl(&quot;band$&quot;, &quot;Jazz Band&quot;, ignore.case=T)</code> → <code>TRUE</code> </li>
+<li><code>grepl(&quot;jazz$&quot;, &quot;Jazz Band&quot;, ignore.case=T)</code> → <code>FALSE</code> (know why?)</li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1B) Advanced Cleaning: Using Regular Expressions</h3>
+<div class="slideContent" >
+<p><strong>DO</strong>:</p>
+
+<ul>
+<li>How many artists have a number in their name?</li>
+<li>Which bands end on &ldquo;Band&rdquo;?</li>
+<li>Replace <code>Storm</code> by <code>Wind</code></li>
+</ul>
+
+<p>Tip: first extract the unique artist names.</p>
+
+<pre><code class="r">artists &lt;- unique(streams$artist)
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Solution</h3>
+<div class="slideContent" >
+<pre><code class="r">artists &lt;- unique(streams$artist)
+grep(&#39;\\d&#39;, artists, value=T)
+grep(&#39;band$&#39;, artists, value=T, ignore.case=T)
+gsub(&#39;Storm&#39;,&#39;Wind&#39;,artists)
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1C) Dealing with time</h3>
+<div class="slideContent" >
+<ul>
+<li><code>zoo::na.locf()</code></li>
+</ul>
+
+<pre><code class="r">playlists = playlists %&gt;% group_by(artist) %&gt;% arrange(artist, iso_week) %&gt;% mutate(playlists_imputed = zoo::na.locf(playlists, na.rm=F))
+playlists
+</code></pre>
+
+<pre><code># A tibble: 4,494 × 4
+# Groups:   artist [107]
+   iso_week artist              playlists playlists_imputed
+   &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt;             &lt;dbl&gt;
+ 1 2024-W01 10 Beats to Phoenix        24                24
+ 2 2024-W02 10 Beats to Phoenix        28                28
+ 3 2024-W03 10 Beats to Phoenix        28                28
+ 4 2024-W04 10 Beats to Phoenix        27                27
+ 5 2024-W06 10 Beats to Phoenix        NA                27
+ 6 2024-W07 10 Beats to Phoenix        25                25
+ 7 2024-W08 10 Beats to Phoenix        15                15
+ 8 2024-W11 10 Beats to Phoenix        61                61
+ 9 2024-W12 10 Beats to Phoenix        22                22
+10 2024-W14 10 Beats to Phoenix        23                23
+# ℹ 4,484 more rows
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1C) Dealing with time</h3>
+<div class="slideContent" >
+<ul>
+<li>leads and lags</li>
+</ul>
+
+<pre><code class="r">playlists = playlists %&gt;% group_by(artist) %&gt;% arrange(artist, iso_week) %&gt;% mutate(playlists_lagged = lag(playlists_imputed),
+       playlists_lead = lead(playlists_imputed))
+
+playlists
+</code></pre>
+
+<p><strong>DO:</strong> Can you compute the change from one week to the next?</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Solution</h3>
+<div class="slideContent" >
+<pre><code class="r">playlists = playlists %&gt;% group_by(artist) %&gt;% arrange(artist, iso_week) %&gt;% mutate(playlists_lagged = lag(playlists_imputed),
+       playlists_lead = lead(playlists_imputed),
+       change = playlists_imputed - playlists_lagged)
+playlists
+</code></pre>
+
+<pre><code># A tibble: 4,494 × 7
+# Groups:   artist [107]
+   iso_week artist   playlists playlists_imputed playlists_lagged playlists_lead
+   &lt;chr&gt;    &lt;chr&gt;        &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;
+ 1 2024-W01 10 Beat…        24                24               NA             28
+ 2 2024-W02 10 Beat…        28                28               24             28
+ 3 2024-W03 10 Beat…        28                28               28             27
+ 4 2024-W04 10 Beat…        27                27               28             27
+ 5 2024-W06 10 Beat…        NA                27               27             25
+ 6 2024-W07 10 Beat…        25                25               27             15
+ 7 2024-W08 10 Beat…        15                15               25             61
+ 8 2024-W11 10 Beat…        61                61               15             22
+ 9 2024-W12 10 Beat…        22                22               61             23
+10 2024-W14 10 Beat…        23                23               22             24
+# ℹ 4,484 more rows
+# ℹ 1 more variable: change &lt;dbl&gt;
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1C) Dealing with time</h3>
+<div class="slideContent" >
+<ul>
+<li><p>Time conversion using <code>lubridate</code></p>
+
+<ul>
+<li><code>isoweek()</code></li>
+<li><code>month</code> and <code>year</code> </li>
+<li>potentially to use w/ <code>paste0()</code></li>
+</ul></li>
+<li><p>DO: create a week variable from the date column</p></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Solution</h3>
+<div class="slideContent" >
+<pre><code class="r">library(lubridate)
+
+streams &lt;- streams %&gt;%
+  mutate(
+    week = isoweek(date),
+    week2 = ISOweek::ISOweek(date),
+    month = month(date),
+    year = year(date)
+  )
+
+streams %&gt;% select(date, week, week2, month, year) %&gt;% head(10)
+</code></pre>
+
+<pre><code># A tibble: 10 × 5
+   date        week week2    month  year
+   &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+ 1 2024-01-01     1 2024-W01     1  2024
+ 2 2024-01-02     1 2024-W01     1  2024
+ 3 2024-01-03     1 2024-W01     1  2024
+ 4 2024-01-04     1 2024-W01     1  2024
+ 5 2024-01-05     1 2024-W01     1  2024
+ 6 2024-01-06     1 2024-W01     1  2024
+ 7 2024-01-07     1 2024-W01     1  2024
+ 8 2024-01-08     2 2024-W02     1  2024
+ 9 2024-01-09     2 2024-W02     1  2024
+10 2024-01-10     2 2024-W02     1  2024
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1D) Merging&#x2F;joining</h3>
+<div class="slideContent" >
+<ul>
+<li>How can we assemble different data sets together? </li>
+<li>We can <em>join</em> them!
 
 <ul>
 <li>Why join / Why not to join? Mostly a memory issue. Think about it wisely.</li>
-<li>Syntax covered in &ldquo;Joining data w/ dplyr&rdquo; on Datacamp</li>
-</ul></li>
-<li>Recap
+<li>Keys: required to join (e.g., single key, composite keys</li>
+<li>Different type of joins
 
 <ul>
-<li><code>inner_join()</code> &ndash; but keeps only observations that occur in <em>both tables</em> (potential of losing control!)</li>
-<li>my favorite is <code>left_join()</code> (&ldquo;keep everything in the left table, add the right table where you can)</li>
-<li>think about order of your merge</li>
+<li><code>left_join</code> (&ldquo;keep everything in the left table, add the right table where you can)</li>
+<li><code>inner_join()</code> - keeps only observations that occur in <em>both tables</em> (potential of losing control!)</li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -1160,82 +1316,124 @@ streams &lt;- streams %&gt;% mutate(revenue = streams * 0.0038) # better
 <h3>Do: Let&#x27;s join!</h3>
 <div class="slideContent small-code" >
 <ol>
-<li>First, join <code>streams</code> (left) with <code>songs</code> (right)</li>
-<li>Then, join <code>countries</code> to the result from (1).</li>
-<li>Turn your entire code in a self-contained module, w/ four blocks: 
+<li>Create a ISO week column for streams (from date)</li>
+<li>Join streams (left) with playlists (right) using a <code>left_join()</code>; join by artist and week (composite key).</li>
+</ol>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Solution</h3>
+<div class="slideContent" >
+<pre><code class="r">streams &lt;- streams %&gt;% mutate(week=ISOweek::ISOweek(date))
+
+merged_data &lt;- streams %&gt;%
+  left_join(playlists, by = c(&quot;artist&quot; = &quot;artist&quot;, 
+                              &quot;week&quot;=&quot;iso_week&quot;))
+head(merged_data)
+</code></pre>
+
+<pre><code># A tibble: 6 × 13
+  date       artist            country streams week  week2 month  year playlists
+  &lt;date&gt;     &lt;chr&gt;             &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+1 2024-01-01 10 Beats to Phoe… BE         6983 2024… 2024…     1  2024        24
+2 2024-01-02 10 Beats to Phoe… BE         8451 2024… 2024…     1  2024        24
+3 2024-01-03 10 Beats to Phoe… BE            0 2024… 2024…     1  2024        24
+4 2024-01-04 10 Beats to Phoe… BE            0 2024… 2024…     1  2024        24
+5 2024-01-05 10 Beats to Phoe… BE         1710 2024… 2024…     1  2024        24
+6 2024-01-06 10 Beats to Phoe… BE         3069 2024… 2024…     1  2024        24
+# ℹ 4 more variables: playlists_imputed &lt;dbl&gt;, playlists_lagged &lt;dbl&gt;,
+#   playlists_lead &lt;dbl&gt;, change &lt;dbl&gt;
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1E) Pivoting</h3>
+<div class="slideContent" >
+<ul>
+<li>Mostly two data set &ldquo;types&rdquo;
 
 <ul>
-<li>loading libraries, </li>
-<li>input of raw data</li>
-<li>transformation</li>
-<li>output (here: save as <code>streams_merged.csv</code>)</li>
+<li>&ldquo;Long&rdquo;: each observation has its own row, with a single column for values (see <code>streams.csv</code>)</li>
+<li>&ldquo;Wide&rdquo;: each row is a single entity, with multiple columns for different variables (see <code>weather.csv</code>)</li>
 </ul></li>
-</ol>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Dealing with missing values</h3>
-<div class="slideContent" >
-<ul>
-<li>Many reasons for values to be missing - they could be actual 0s even!</li>
-<li>In our example, we would like to replace values with the <code>median</code> value of popularity in a given country at a given date.</li>
-<li>Like with many things in data preparation, we proceed in steps.
-<br>
-<strong>Can you come up with a step-wise procedure to achieve this?</strong> </li>
+<li>When we convert from long to wide or the other way around, we call this &#39;pivoting&#39; or &#39;reshaping&#39;</li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Do: Impute some values</h3>
-<div class="slideContent small-code" >
+<h3>1E) Pivoting: wide to long</h3>
+<div class="slideContent" >
+<p>Requires: <code>cols</code>, <code>names_to</code>, and <code>values_to</code></p>
+
+<pre><code class="r">long = weather %&gt;% pivot_longer(cols=!date, names_to=&#39;variable&#39;,values_to=&#39;value&#39;)
+long
+</code></pre>
+
+<pre><code># A tibble: 2,920 × 3
+   date       variable value
+   &lt;date&gt;     &lt;chr&gt;    &lt;dbl&gt;
+ 1 2024-01-01 DE_temp  14.3 
+ 2 2024-01-01 BE_temp  10.5 
+ 3 2024-01-01 NL_temp  10.6 
+ 4 2024-01-01 US_temp  17.1 
+ 5 2024-01-01 DE_sun    5.46
+ 6 2024-01-01 BE_sun    5.16
+ 7 2024-01-01 NL_sun    4.31
+ 8 2024-01-01 US_sun    6.93
+ 9 2024-01-02 DE_temp   8.72
+10 2024-01-02 BE_temp  17.1 
+# ℹ 2,910 more rows
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>1E) Pivoting: long to wide</h3>
+<div class="slideContent" >
+<p>Requires: <code>id_cols</code>, <code>names_from</code>, <code>values_from</code></p>
+
+<pre><code class="r">long %&gt;% pivot_wider(id_cols=c(&#39;date&#39;), names_from=&#39;variable&#39;,values_from=&#39;value&#39;)
+</code></pre>
+
+<pre><code># A tibble: 365 × 9
+   date       DE_temp BE_temp NL_temp US_temp DE_sun BE_sun NL_sun US_sun
+   &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1 2024-01-01   14.3    10.5    10.6     17.1   5.46   5.16   4.31   6.93
+ 2 2024-01-02    8.72   17.1    10.4     21.8   4.88   5.63   3.75  12   
+ 3 2024-01-03   11.7     7.41   11.7     17.4   6.50   6.09   5.06   7.95
+ 4 2024-01-04   12.7    10.5     8.78    15.3   4.97   5.44   4.07  10.3 
+ 5 2024-01-05   12.2    13.0     9.82    29.3   6.08   6.61   6.22  11.6 
+ 6 2024-01-06   10.9    17.0    13.4     13.3   6.01   6.18   6.13   8.63
+ 7 2024-01-07   16.0    12.6    11.0     11.8   8.70   5.96   5.27   8.03
+ 8 2024-01-08   11.4    16.2     9.55    14.4   6.15   7.46   5.40   7.99
+ 9 2024-01-09   17.9     7.76   14.6     16.8   7.23   5.61   5.30   6.42
+10 2024-01-10   11.9    17.2    11.9     20.6   5.84   7.54   5.98   7.82
+# ℹ 355 more rows
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Part 2: Case studies (work in progress)</h3>
+<div class="slideContent" >
 <ol>
-<li>First, create a new data set with the median popularity by country and data (<code>group_by()</code> and <code>summarize()</code>!)</li>
-<li>Merge this data to <code>streams_merged</code> (<code>left_join()</code>)</li>
-<li>Add a new column, called <code>popularity_filled</code> (<code>mutate()</code>)</li>
-<li>Wrap it into a ITO building block :)</li>
+<li>Aggregate <code>streams</code> to the weekly level (ISO)</li>
+<li>Create a trend variable, going from 1 (for the first date) to the last date</li>
+<li>Full data set: for all artists, countries, and dates, create an &ldquo;empty&rdquo; data set; then, merge existing <code>streams</code> to it.</li>
+<li>Do LOCF imputation on <code>streams</code> in (3)</li>
+<li>Load weather data, pivot to long by country &amp; merge (by date &amp; country)</li>
+<li>Load social media data, pivot to wide and merge</li>
+<li>Scaling up I: use <code>for</code> loop to create 10 line plots for an artists&#39; streams, and save using <code>ggsave()</code></li>
+<li>Scaling up II: use <code>lapply</code> to estimate individual regression models (<code>lm</code>) for 10 artists; return results and summarize.</li>
 </ol>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Feature engineering</h3>
-<div class="slideContent" >
-<ul>
-<li class="fragment">aka &ldquo;variable operationalization&rdquo;</li>
-<li class="fragment">Simply means: measure &ldquo;stuff&rdquo;</li>
-<li class="fragment">Can you come up with a few new variables that <strong>characterize music listening</strong> at the country/date level? At the country level?</li>
-<li class="fragment">Invest time in <em>thinking</em> about which variables you want to create - you&#39;re in full control!</li>
-<li class="fragment">At this stage, think also about external data sets you may want to link (e.g., holidays on a country/day)</li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Final data operation for today...!</h3>
-<div class="slideContent" >
-<ul>
-<li>Run the code snippet below, which generates some example data (in wide format).</li>
-<li>Describe the structure of the data.</li>
-</ul>
-
-<pre><code class="r">df = songs %&gt;% top_n(10) 
-genres = unique(unlist(strsplit(df$genres, &#39;,&#39;)))
-for (genre in genres) df[[paste0(&#39;genre_&#39;, genre)]] = as.numeric(grepl(genre,df$genres))
-wide = df %&gt;% select(-genres)
-</code></pre>
-
-<ul>
-<li>Now, let&#39;s convert it to a long format.</li>
-</ul>
-
-<pre><code class="r">long = wide %&gt;% pivot_longer(cols = starts_with(&#39;genre&#39;))
-</code></pre>
 
 </div>
 
@@ -1263,6 +1461,20 @@ wide = df %&gt;% select(-genres)
 <li>selected solutions available in the <code>.Rpres</code> file (<a href="https://github.com/hannesdatta/course-dprep/tree/master/content/docs/modules/week4/tutorial">available on GitHub</a>)</li>
 </ul></li>
 <li><p>You will continue with the coaching session</p></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Coaching notes</h3>
+<div class="slideContent" >
+<ul>
+<li>absolutely important to work in local repositories, with issue-based branches, and pull requests.</li>
+<li>Source code files need to be structured as setup-ITO &ndash; required for automation!</li>
+<li>Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, <code>.R</code> for regular scripts</li>
+<li>Adhere to <code>tidyverse</code> functions (e.g., <code>read_csv()</code>, not <code>read.csv()</code>)</li>
+<li>Incorporate programming concepts where needed: <strong>looping</strong>, using <strong>functions</strong></li>
 </ul>
 
 </div>

@@ -11,61 +11,29 @@ autosize: true
 </style>
 
 
-Before we get started (I)
-==========
+Before we get started
+=====================
 
-__A few observations from your team projects.__
+- Exam dates are now available
+  - dPrep: 3 April 2025 (resit 27 June)
+  - oDCM: 1 April 2025 (resit 26 June)
+- Mac users: Please familiarize yourselves with R/RStudio on Windows during the oDCM lab session this Friday
 
-- absolutely important to work in local repositories, with issue-based branches, and pull requests.
-- Source code files need to be structured as setup-ITO -- required for automation!
-- Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, `.R` for regular scripts
-- Adhere to `tidyverse` functions (e.g., `read_csv()`, not `read.csv()`)
-- Incorporate programming concepts where needed: __looping__, using __functions__
-
-Structure of this tutorial
+Structure of this week
 ========================================================
 
-- Back to R, __but__: maintain way of working using Git/GitHub
-- In-class [tutorial](https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html) featuring selected issues raised in:
-  - [Tidyverse - chapter 1 & 3](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1)
-  - [Cleaning data in R - chapter 1 & 2](https://datacamp.com/courses/cleaning-data-in-r)
-  - [Joining Data with `dplyr`- chapter 1 & 2](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1)
+- __Today's (updated & overhauled) tutorial:__ back to R, __but__: maintain way of working using Git/GitHub
+  - Part 1: expanding our knowledge of R
+      - applying functions, advanced cleaning, dealing with time, merging data, pivoting
+  - Part 2: case studies and exercises
+      - application to typicaly marketing analytics data issues
+      - some exercises still to be added
+- Coaching session
+- After class
+  - Work through the [tutorial](https://dprep.hannesdatta.com/content/docs/modules/week4/tutorial/data-preparation.html) (self study)
+  - Optional content: [Tidyverse - chapter 1 & 3](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1), [Cleaning data in R - chapter 1 & 2](https://datacamp.com/courses/cleaning-data-in-r), [Joining Data with `dplyr`- chapter 1 & 2](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1)
 
 __Get your cheat sheets ready!!!__
-
-- After class
-  - Please go through the entire tutorial on the [dprep site](https://dprep.hannesdatta.com/docs/modules/week4/tutorial/data-preparation). 
-
-
-Data preparation theory (I) - Research workflow
-====
-
-![Main goals in each step of the research workflow](fig_researchworkflow.png)
-
-Data preparation theory (II): Components of source code
-====
-
-- 1) Initializing the script/setup
-    - Loading packages
-    - Making connections to databases
-    - Any other global ("main") parameters (e.g., sample size, prototype flag, etc.)
-- 2) Input
-    - Read data (e.g., unstructured/unstructured data, remote/local locations, files or databases)
-- 3) Transformation
-    - E.g., filtering, aggregation, merging, transformation, deduplication (more later)
-- 4) Output
-    - Store (intermediate) data, figures (e.g., auditing, final)
-
-
-Commands you know (DO): Let's practice!
-=========
-
-- `select()`: subset columns
-- `filter()`: subset rows on conditions
-- `mutate()`: create new columns by using information from other columns
-- `group_by()` and `summarize()`: create summary statistics on grouped data
-- `arrange()`: sort results
-- `count()`: count discrete values
 
 
 Why this tutorial
@@ -79,7 +47,19 @@ incremental: true
   - Input (e.g., `read_csv()`) - always __relative__ filenames!
   - Transformation (i.e., operations on your data)
   - Output (e.g., `write_csv()` -- also w/ __relative__ filenames)
-- Zoom in on ways to transform (while respecting setup-I-T-O building blocks)
+- __Now:__ zoom in on ways to transform (while respecting setup-I-T-O building blocks)
+
+Recap: Commands you already know 
+=========
+
+- `select()`: subset columns
+- `filter()`: subset rows on conditions
+- `mutate()`: create new columns by using information from other columns
+- `group_by()` and `summarize()`: create summary statistics on grouped data
+- `arrange()`: sort results
+- `count()`: count discrete values
+
+
 
 DO: Let's get today's data and start exploring
 ======
@@ -89,272 +69,308 @@ Run this snippet to download today's data (it's zipped - contains a couple of `.
 
 ```{r}
 library(tidyverse)
-download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip', 'data.zip')
-unzip('data.zip')
+download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip', 'week4_data.zip')
+unzip('week4_data.zip', overwrite=TRUE)
 ```
 
-We split this group in three parts -- focusing on `streams.csv`, `songs.csv`, and `country_codes.csv`.
-
-- Load the data set using `read_csv()`
+- Load all data sets using `read_csv()`
 - Then, use the `head()`, `View()`, `summary()`, `dim()` commands and try to describe the data set
-- On categorical data, use the `table()` command for frequencies
 
-Common questions we can "ask" to a dataset (I)
-=========
-incremental: true
-
-- What are columns in the data?
-- Do values in these columns seem complete? Do they all make sense? Are they properly encoded?
-- *What are common columns across (multiple) files (potential for merging!)*
-- What uniquely defines a row?
-<br><br><br>__Does not require "additional" preparation__ of your data.
-
-Common questions we can "ask" to a dataset (II)
-=========
-incremental: true
-
-- Useful information can be obtained if we make use of __extra wrangling...__
-  - Covered `tidyverse` in our R Bootcamp at the beginning of the class (remember?)
-  - loading it: `library(tidyverse)` -- will cover many packages
-  - has so-called "verbs" -- commands that execute *data wrangling* operations
-  - can combine these verbs using `%>%` (the piping character)
-- __Can you name a few of these verbs? What do they do?__
-
-Do: Better questions using tidyverse
-========
-class: small-code
-
-- Let's first load all datasets
+Solution
+====
 
 ```{r}
 library(tidyverse)
+
 streams <- read_csv('streams.csv')
-songs <- read_csv('songs.csv')
-countries <- read_delim('country_codes.csv', ';')
+weather <- read_csv('weather.csv')
+socials <- read_csv('socials.csv')
+playlists <- read_csv('playlists.csv')
 ```
 
-Now, use the `tidyverse` verbs `filter()`, `arrange()`, and `mutate()` to answer the following questions.
+Part 1: Expanding our knowledge of R
+=====
 
-1) How many obs. do we have for Belgium (country == 'BE')?
+- Knowledge so far is restricted to...
+  - opening/saving data (`read_csv`, `write_csv`), 
+  - exploring data (`head`, `View()`, `summary()`, `table()`, `dim()`
+  - wrangling with tidyverse/dplyr: `group_by()`, `summarize()`, `mutate()`, `filter()`, `select()`, `arrange()`, `count()`
+  
+- But... what about more complex operations?
+  - custom summary statistics? ranking? 
+  - removing duplicates?
+  - complex text searches?
+  - dealing with time series data?
+  - merging multiple data sets?
+  - reshaping data?
+  
+Part 1: Expanding our knowledge of R
+=====
 
-2) Which song ID has most streams (in which country, and when)?
+What's to come...
 
-3) What's the name of that song?
+- 1A) Applying base R functions in `tidyverse`
+- 1B) Advanced Cleaning: Using regular expressions
+- 1C) Dealing with Time
+- 1D) Merging Data
+- 1E) Reshaping Data
 
-4) Add a new column to `streams`, showing the approx. revenue for each song/day/country (tip: Spotify pays about 0.0038
-EUR per stream)
-
-Answers to previous questions (I)
-========
+1A) Applying functions in `tidyverse`
+=====
 class: small-code
 
-- Let's first load all datasets
+- Summarize can take any functions as arguments
+- Best to have Base R cheat sheet available
 
 ```{r}
-library(tidyverse)
-streams <- read_csv('streams.csv')
-songs <- read_csv('songs.csv')
-countries <- read_delim('country_codes.csv', ';')
+streams %>%
+  group_by(artist) %>%
+  summarize(
+    mean_streams = mean(streams, na.rm = TRUE))
 ```
 
-Now, use the `tidyverse` verbs `filter()`, `arrange()`, and `mutate()` to answer the following questions.
+DO: Extend code snippet above to include standard deviation (`sd`), minimum (`min`) and maximum (`max`) in the summary table.
 
-Answers to previous questions (II)
-========
-class: small-code
-
-1) How many observations do we have for Belgium (country == 'BE')?
-
-```{r}
-streams %>% filter(country=="BE") %>% count()
-```
-
-2) Which song ID has most streams in the data (in which country, and when)?
-
-```{r}
-streams %>% arrange(desc(streams))
-```
-
-Answers to previous questions (III)
-========
-class: small-code
-
-3) What's the name of that song?
-```{r}
-songs %>% filter(song_id==21831898)
-```
-
-4) Add a new column to `streams`, showing the approx. revenue for each song/day/country (tip: Spotify pays about 0.0038
-EUR per stream)
-
-```{r}
-streams$revenue <- 0.0038 * streams$streams # the old way
-
-streams <- streams %>% mutate(revenue = streams * 0.0038) # better
-```
-
-Grouping and summarizing
-=============
-class: small-code
-
-- Grouping and summarizing (also called aggregation) is another powerful way to generate extra stats
-
-```{r}
-streams %>% group_by(country) %>% summarise(N=n())
-```
-
-- Alternatively... (in other words: sooo many functions that make code "look" better)
+Solution
+====
 
 ```{r eval=FALSE}
-streams %>% count(country)
+library(dplyr)
+
+# Compute basic statistics per artist
+streams %>%
+  group_by(artist) %>%
+  summarize(
+    min_streams = min(streams, na.rm = TRUE),
+    mean_streams = mean(streams, na.rm = TRUE),
+    max_streams = max(streams, na.rm = TRUE),
+    sd_streams = sd(streams, na.rm = TRUE) 
+    
+  )
 ```
 
-Do: Using grouping and summaries
-==============
-
-Let's keep on generating stats, this time using `group_by()` and `summarise()` (plus verbs we have seen earlier)
-
-1) Create a new dataset, called `streams2`, summing up the streams by song.
-
-2) Create a new dataset, called `artists`, showing the count of songs by artist.
-
-3) Look at `artists`, and spit out the row that lists the number of songs for Ellie Goulding (`==`)
-
-4) Refine your search from (3) to include also collaborations (tip: `grepl()`!)
-
-Answers to previous questions (I)
-==============
+1A) Applying functions in `tidyverse`
+=====
 class: small-code
 
-Let's keep on generating stats, this time using `group_by()` and `summarise()` (plus verbs we have seen earlier)
+__DO__ 
 
-1) Create a new dataset, called `streams2`, summing up the streams by song.
+- Extract the daily "top 10" - i.e., the top 10 artists on a given day.
+- Tips
+  - First, group by `date` and `country`
+  - Use the `rank()` function to find the "rank" of streams (inverse!) - in combination w/ `mutate()`
+  - Reorder your data set by `date` and `ranks`
+  - Show the first 10 observations for each day (`filter`)
+
+Solution
+====
 
 ```{r}
-streams2 <- streams %>% group_by(song_id) %>% summarise(totstreams = sum(streams))
+streams %>% 
+  group_by(date, country) %>% 
+  mutate(rank = rank(-streams)) %>% 
+  ungroup() %>% 
+  arrange(date, country, rank) %>% 
+  filter(rank<=10)
+
 ```
 
-2) Create a new dataset, called `artists`, showing the count of songs by artist.
-
-```{r}
-artists <- songs %>% count(artists)
-```
-
-Answers to previous questions (II)
-==============
+1A) Applying functions in `tidyverse`
+=====
 class: small-code
 
-3) Look at `artists`, and spit out the row that lists the number of songs for Ellie Goulding (`==`)
+- Meeting `unique()`: removes duplicates from a vector
+- `n_distinct()`: counts the number of unique values in a vector
+- `distinct()`: removes duplicate rows
+- Let's count the number of unique artists
 
 ```{r}
-songs %>% count(artists) %>% filter(artists=='Ellie Goulding')
+streams %>% summarize(number_of_artists = n_distinct(artist))
+
+# or: length(unique(streams$artist))
+
+distinct(streams)
 ```
 
-4) Refine your search from (3) to include also collaborations (tip: `grepl()`!)
+1B) Advanced Cleaning: Using Regular Expressions
+=====
+
+- Functions you need to know
+  - `grepl(x, y)` - detect whether `y` contains `x` (evaluates to `TRUE` or `FALSE`)
+  - `grep(x, y, value=TRUE)` - detect whether `y` contains `x` (& returns the search results)
+  - `gsub(x, z, y)` - searches `x` in `y` and replaces `x` by `z`
+- How to search? Examples:
+  - `grepl("\\d", "Song123")` &rarr; `TRUE`
+  - `grepl("[a-z]", "K3")` → `FALSE` (case-sensitive)
+  - `grepl("^The", "The Beatles")` → `TRUE`, but...
+  - `grepl("^the", "The Beatles")` → `FALSE` (know why?)
+  - `grepl("band$", "Jazz Band", ignore.case=T)` → `TRUE` 
+  - `grepl("jazz$", "Jazz Band", ignore.case=T)` → `FALSE` (know why?)
+  
+
+1B) Advanced Cleaning: Using Regular Expressions
+=====
+
+__DO__:
+
+- How many artists have a number in their name?
+- Which bands end on "Band"?
+- Replace `Storm` by `Wind`
+
+Tip: first extract the unique artist names.
+
+```{r eval=T, include=TRUE}
+artists <- unique(streams$artist)
+
+```
+
+
+Solution
+===
+
+```{r eval=F, include=TRUE}
+artists <- unique(streams$artist)
+grep('\\d', artists, value=T)
+grep('band$', artists, value=T, ignore.case=T)
+gsub('Storm','Wind',artists)
+
+```
+
+1C) Dealing with time
+=====
+
+- `zoo::na.locf()`
 
 ```{r}
-songs %>% count(artists) %>% filter(grepl('Ellie Goulding', artists, ignore.case=T))
+playlists = playlists %>% group_by(artist) %>% arrange(artist, iso_week) %>% mutate(playlists_imputed = zoo::na.locf(playlists, na.rm=F))
+playlists
 ```
 
-Merging/joining
+
+1C) Dealing with time
+=====
+
+- leads and lags
+
+```{r, eval=F, echo=T}
+playlists = playlists %>% group_by(artist) %>% arrange(artist, iso_week) %>% mutate(playlists_lagged = lag(playlists_imputed),
+       playlists_lead = lead(playlists_imputed))
+
+playlists
+```
+
+__DO:__ Can you compute the change from one week to the next?
+
+Solution
+====
+
+```{r}
+playlists = playlists %>% group_by(artist) %>% arrange(artist, iso_week) %>% mutate(playlists_lagged = lag(playlists_imputed),
+       playlists_lead = lead(playlists_imputed),
+       change = playlists_imputed - playlists_lagged)
+playlists
+```
+
+1C) Dealing with time
+=====
+
+- Time conversion using `lubridate`
+  - `isoweek()`
+  - `month` and `year` 
+  - potentially to use w/ `paste0()`
+
+- DO: create a week variable from the date column
+  
+
+Solution
+====
+
+```{r}
+library(lubridate)
+
+streams <- streams %>%
+  mutate(
+    week = isoweek(date),
+    week2 = ISOweek::ISOweek(date),
+    month = month(date),
+    year = year(date)
+  )
+
+streams %>% select(date, week, week2, month, year) %>% head(10)
+```
+
+1D) Merging/joining
 =======
 
-- Great job so far!
-- But, hasn't it been cumbersome to work w/ three separate datasets?
-- We can *join* them
+- How can we assemble different data sets together? 
+- We can *join* them!
   - Why join / Why not to join? Mostly a memory issue. Think about it wisely.
-  - Syntax covered in "Joining data w/ dplyr" on Datacamp
-- Recap
-  - `inner_join()` -- but keeps only observations that occur in *both tables* (potential of losing control!)
-  - my favorite is `left_join()` ("keep everything in the left table, add the right table where you can)
-  - think about order of your merge
-
+  - Keys: required to join (e.g., single key, composite keys
+  - Different type of joins
+       - `left_join` ("keep everything in the left table, add the right table where you can)
+       - `inner_join()` - keeps only observations that occur in *both tables* (potential of losing control!)
+  
 Do: Let's join!
 =====
 class: small-code
 
-1. First, join `streams` (left) with `songs` (right)
-2. Then, join `countries` to the result from (1).
-3. Turn your entire code in a self-contained module, w/ four blocks: 
-  - loading libraries, 
-  - input of raw data
-  - transformation
-  - output (here: save as `streams_merged.csv`)
+1. Create a ISO week column for streams (from date)
+2. Join streams (left) with playlists (right) using a `left_join()`; join by artist and week (composite key).
 
-```{r eval=FALSE, include=FALSE}
-library(tidyverse)
-streams <- read_csv('streams.csv')
-songs <- read_csv('songs.csv')
-countries <- read_delim('country_codes.csv', ';')
-
-streams_merged = streams %>% left_join(songs, by = c('song_id')) %>% left_join(countries, by = c("country" = "country_code_2_letter"))
-
-write_csv(streams_merged, 'streams_merged.csv')
-
-```
-
-Dealing with missing values
-=========
-
-- Many reasons for values to be missing - they could be actual 0s even!
-- In our example, we would like to replace values with the `median` value of popularity in a given country at a given date.
-- Like with many things in data preparation, we proceed in steps.
-<br>
-__Can you come up with a step-wise procedure to achieve this?__ 
-
-Do: Impute some values
+Solution
 ====
-class: small-code
-
-1. First, create a new data set with the median popularity by country and data (`group_by()` and `summarize()`!)
-2. Merge this data to `streams_merged` (`left_join()`)
-3. Add a new column, called `popularity_filled` (`mutate()`)
-4. Wrap it into a ITO building block :)
-
-```{r eval=FALSE, include=FALSE}
-# Solution
-library(tidyverse)
-streams <- read_csv('streams.csv')
-songs <- read_csv('songs.csv')
-countries <- read_delim('country_codes.csv', ';')
-
-streams_merged = streams %>% left_join(songs, by = c('song_id')) %>% left_join(countries, by = c("country" = "country_code_2_letter"))
-
-pop = streams_merged %>% group_by(country, date) %>% summarize(pop = median(popularity, na.rm=T))
-
-final_streams <- streams_merged %>% left_join(pop) %>% mutate(filled_pop = ifelse(is.na(popularity), pop, popularity))
-
-write_csv(streams_merged, 'streams_merged.csv')
-```
-
-Feature engineering
-=============
-incremental: true
-
-- aka "variable operationalization"
-- Simply means: measure "stuff"
-- Can you come up with a few new variables that **characterize music listening** at the country/date level? At the country level?
-- Invest time in *thinking* about which variables you want to create - you're in full control!
-- At this stage, think also about external data sets you may want to link (e.g., holidays on a country/day)
-
-Final data operation for today...!
-===========
-
-- Run the code snippet below, which generates some example data (in wide format).
-- Describe the structure of the data.
 
 ```{r}
-df = songs %>% top_n(10) 
-genres = unique(unlist(strsplit(df$genres, ',')))
-for (genre in genres) df[[paste0('genre_', genre)]] = as.numeric(grepl(genre,df$genres))
-wide = df %>% select(-genres)
+streams <- streams %>% mutate(week=ISOweek::ISOweek(date))
+
+merged_data <- streams %>%
+  left_join(playlists, by = c("artist" = "artist", 
+                              "week"="iso_week"))
+head(merged_data)
+
 ```
 
-- Now, let's convert it to a long format.
+
+1E) Pivoting
+=======
+
+- Mostly two data set "types"
+  - "Long": each observation has its own row, with a single column for values (see `streams.csv`)
+  - "Wide": each row is a single entity, with multiple columns for different variables (see `weather.csv`)
+- When we convert from long to wide or the other way around, we call this 'pivoting' or 'reshaping'
+
+1E) Pivoting: wide to long
+=====
+
+Requires: `cols`, `names_to`, and `values_to`
 
 ```{r}
-long = wide %>% pivot_longer(cols = starts_with('genre'))
+
+long = weather %>% pivot_longer(cols=!date, names_to='variable',values_to='value')
+long
 ```
+
+1E) Pivoting: long to wide
+=====
+
+Requires: `id_cols`, `names_from`, `values_from`
+```{r}
+long %>% pivot_wider(id_cols=c('date'), names_from='variable',values_from='value')
+
+```
+
+Part 2: Case studies (work in progress)
+====
+
+1. Aggregate `streams` to the weekly level (ISO)
+2. Create a trend variable, going from 1 (for the first date) to the last date
+3. Full data set: for all artists, countries, and dates, create an "empty" data set; then, merge existing `streams` to it.
+4. Do LOCF imputation on `streams` in (3)
+5. Load weather data, pivot to long by country & merge (by date & country)
+6. Load social media data, pivot to wide and merge
+7. Scaling up I: use `for` loop to create 10 line plots for an artists' streams, and save using `ggsave()`
+8. Scaling up II: use `lapply` to estimate individual regression models (`lm`) for 10 artists; return results and summarize.
+
 
 Summary of today's tutorial
 =====
@@ -365,6 +381,8 @@ incremental: true
 - Pivoting (from long to wide, and wide to long) is difficult... it's enough if you get the concept now - you will have to fiddle around with it a bit anyways
 - Have your cheat sheets available always -- especially the `dplyr` one is useful (and very [visual](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)!)
 
+
+
 Next steps 
 ===============
 
@@ -372,3 +390,13 @@ Next steps
   - selected solutions available in the `.Rpres` file ([available on GitHub](https://github.com/hannesdatta/course-dprep/tree/master/content/docs/modules/week4/tutorial))
 
 - You will continue with the coaching session
+
+
+Coaching notes
+==========
+
+- absolutely important to work in local repositories, with issue-based branches, and pull requests.
+- Source code files need to be structured as setup-ITO -- required for automation!
+- Choose appropriate file format: Rmarkdowns or Quarto for reports/PDFs/HTML, `.R` for regular scripts
+- Adhere to `tidyverse` functions (e.g., `read_csv()`, not `read.csv()`)
+- Incorporate programming concepts where needed: __looping__, using __functions__

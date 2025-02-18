@@ -22,3 +22,4 @@ wipe:
 week4_data.zip: streams.csv playlists.csv socials.csv weather.csv zip.R
 	Rscript zip.R
 	
+# create duplicaet rows (exact duplicates) in streams

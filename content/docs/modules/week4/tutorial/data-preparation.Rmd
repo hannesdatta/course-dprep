@@ -47,7 +47,7 @@ Ready to start? Here's what we recommend you do before going through this tutori
 
 Let's explore the data. It consists of four files, which vary in structure, unit of observation, etc. This is on purpose because then you can learn all the concepts required in this tutorial.
  
-- `artist_streams.csv`: number of streams (`streams`) for an `artist` in a given `country` on a given day (`date`)
+- `streams.csv`: number of streams (`streams`) for an `artist` in a given `country` on a given day (`date`)
 - `weather.csv`: for each day and country, the average temperature (`_temp`) and sun hours (`_sun`)
 - `socials.csv`: for every `artist` and day (`date`), this data lists social media metrics (e.g., on `platform` TikTok, a `metric` followers is observed and has the `value` 458352)
 - `playlists.csv`: for each week `iso_week` and `artist`, the data lists the number of `playlists` an artist was listed on on Spotify.
@@ -61,12 +61,12 @@ Let's explore the data. It consists of four files, which vary in structure, unit
 
 ### Download the data
 
-Click [here](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
+Click [here](https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 # downloading and unzipping the data
-#download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip', 'data.zip')
-#unzip('data.zip', overwrite=TRUE)
+download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip', 'week4_data.zip')
+unzip('week4_data.zip', overwrite=TRUE)
 ```
 Now, load the data into R using `read_csv`:
 
@@ -74,10 +74,10 @@ Now, load the data into R using `read_csv`:
 ```{r echo=TRUE, message=FALSE, results='hide'}
 library(tidyverse)
 
-streams <- read_csv('data/artist_streams.csv')
-weather <- read_csv('data/weather.csv')
-socials <- read_csv('data/socials.csv')
-playlists <- read_csv('data/playlists.csv')
+streams <- read_csv('streams.csv')
+weather <- read_csv('weather.csv')
+socials <- read_csv('socials.csv')
+playlists <- read_csv('playlists.csv')
 
 ```
 
