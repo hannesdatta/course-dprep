@@ -1,6 +1,6 @@
 ---
-title: "Data Preparation"
-date: "Last updated: 12 February 2025"
+title: "Engineering data sets"
+date: "Last updated: 19 February 2025"
 output:  
   webexercises::webexercises_default:
     theme: flatly
@@ -8,6 +8,13 @@ output:
     toc: true
 ---
 
+<style>
+table {
+  width: auto !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 
 
 ```{r setup, include=FALSE}
@@ -26,13 +33,16 @@ In this tutorial, we'll tackle common data challenges using a simulated music st
 
 ## What You'll Learn in this Tutorial
 
-- Expand your knowledge of R functions (e.g., base functions such as `rank()` or `unique()`, `for` loops and `lapply()`)
-- Merge data sets on one or more indices and understand the different types of joins (inner, left, right join).
+- Expand your knowledge of R functions (e.g., base functions such as `rank()` or `unique()`)
 - Handle missing and duplicate values.
 - Handle and preprocess string data (remove characters, splitting using regular expressions).
 - Operationalize variables and handle pivoting (wide to long, long to wide)
+- Merge data sets on one or more indices and understand the different types of joins (inner, left, right join).
 - Scale workflows (e.g., batch plotting, estimation of linear models, `lm()`)
 - Implement techniques to exemplary case studies often encountered in marketing research
+
+<!--
+, `for` loops and `lapply()`-->
 
 ## Prerequisites
 
@@ -43,16 +53,8 @@ Ready to start? Here's what we recommend you do before going through this tutori
 * [Datacamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
 
 
-## Downloading and Exploring the Data
-
-Let's explore the data. It consists of four files, which vary in structure, unit of observation, etc. This is on purpose because then you can learn all the concepts required in this tutorial.
- 
-- `streams.csv`: number of streams (`streams`) for an `artist` in a given `country` on a given day (`date`)
-- `weather.csv`: for each day and country, the average temperature (`_temp`) and sun hours (`_sun`)
-- `socials.csv`: for every `artist` and day (`date`), this data lists social media metrics (e.g., on `platform` TikTok, a `metric` followers is observed and has the `value` 458352)
-- `playlists.csv`: for each week `iso_week` and `artist`, the data lists the number of `playlists` an artist was listed on on Spotify.
-
 ### Create a new R project
+
 1. Open RStudio and create a new project by clicking on `File` -> `New Project` -> `New Directory` -> `New Project`.
 2. Name your project `data-preparation` and save it in a location of your choice.
 3. Add a `data` folder:
@@ -61,15 +63,16 @@ Let's explore the data. It consists of four files, which vary in structure, unit
 
 ### Download the data
 
-Click [here](https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
+Click [here](https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week4/tutorial/data/week4_data.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
 
-```{r eval=FALSE, include=TRUE}
+```{r eval=TRUE, include=TRUE}
 # downloading and unzipping the data
-download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip', 'week4_data.zip')
-unzip('week4_data.zip', overwrite=TRUE)
+if (!file.exists('week4_data.zip')) {
+  download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week4/tutorial/data/week4_data.zip', 'week4_data.zip')
+  unzip('week4_data.zip', overwrite=TRUE)
+  }
 ```
 Now, load the data into R using `read_csv`:
-
 
 ```{r echo=TRUE, message=FALSE, results='hide'}
 library(tidyverse)
@@ -85,7 +88,16 @@ __Troubleshooting__:
 
 - If R doesn’t find your file: Click **Session → Set working directory → To source file location**. Avoid using `setwd()` — hardcoding directories can cause problems!
 
-### Explore the data
+### Understanding the Data
+
+Let's explore the data. It consists of four files, which vary in structure, unit of observation, etc. This is on purpose because then you can learn all the concepts required in this tutorial.
+ 
+- `streams.csv`: number of streams (`streams`) for an `artist` in a given `country` on a given day (`date`)
+- `weather.csv`: for each day and country, the average temperature (`_temp`) and sun hours (`_sun`)
+- `socials.csv`: for every `artist` and day (`date`), this data lists social media metrics (e.g., on `platform` TikTok, a `metric` followers is observed and has the `value` 458352)
+- `playlists.csv`: for each week `iso_week` and `artist`, the data lists the number of `playlists` an artist was listed on on Spotify.
+
+### Now it's your turn: Explore the data yourself!
 
 We can now explore the data using the strategies introduced in earlier tutorials.
 
@@ -118,7 +130,7 @@ glimpse(playlists)
 
 In this section, we will deepen our understanding of key R functions that are essential for data engineering. We will focus on numerical functions, advanced string cleaning, and working with time-based data. Each concept will be demonstrated with examples from our datasets.
 
-## Applying base R functions in `tidyverse`
+## 1A) Applying base R functions in `tidyverse`
 
 Before diving into more advanced transformations, let’s start by applying **base R functions** inside `dplyr` operations. In `mutate()` and `summarize()`, you can use **any** function from base R—not just `mean()`, `min()`, or `max()`. This is useful when operationalizing new variables, performing custom transformations, or computing statistics on groups.
 
@@ -139,7 +151,6 @@ streams %>%
     sd_streams = sd(streams, na.rm = TRUE)  # Standard deviation
     
   )
-  
 ```
 
 Want to go further? **Any function that works on a vector can be used here**—for example:
@@ -164,25 +175,40 @@ library(dplyr)
 streams %>%
   group_by(date) %>%
   mutate(
-    rank_streams = rank(-streams),  # Higher streams = lower rank (1st place)
-    rank_streams_ties = rank(-streams, ties.method = "min")  # Handles ties
-  ) %>%
+    rank_streams = rank(-streams)  # Higher streams = lower rank (1st place)
+   ) %>%
   arrange(date, rank_streams) %>%
   select(date, artist, streams, rank_streams) %>%
   head(10)
 ```
 
 💡 **Other useful ranking functions**:
+
 - `row_number(x)`: Assigns unique sequential numbers without ties.
 
-Using these functions, we can **track trends over time** and understand which artists are **consistently ranking high** in streams. 
+Using these functions, we can **create trend variables** (e.g., running from 1 to N, for all observations of an artist). Using this variable in a regression model, for example, could help us understand streaming trends by country.
 
+#### Example: Create a trend variable & estimate a linear regression
+
+```{r}
+streams = streams %>% group_by(artist) %>% arrange(artist, date) %>% mutate(trend = row_number()) %>% ungroup()
+head(streams,15)
+
+# overall trend
+m <- lm(streams ~ 1 + trend, data = streams)
+summary(m)
+
+# by country
+m2 <- lm(streams ~ 1 + trend*country, data = streams)
+summary(m2)
+```
 
 ### Dealing with Unique Values: Removing Duplicates and Counting Distinct Entries  
 
 When working with data, we often need to **remove duplicate values** or **count unique occurrences**. Whether we're filtering artist names, cleaning up datasets, or summarizing trends, **uniqueness matters**.  
 
 In `tidyverse`, we have a few tools to help:  
+
 - `unique()` **kicks out duplicate values** from a vector or data frame.  
 - `distinct()` (from `dplyr`) removes duplicate rows from a data frame.  
 - `n_distinct()` **counts** the number of unique values in a column.  
@@ -207,12 +233,13 @@ streams %>%
 ```
 
 
-## Advanced Cleaning: Using Regular Expressions
+## 1B) Advanced Cleaning: Using Regular Expressions
 
 Regular expressions (**regex**) allow us to search for patterns in text, making it easier to clean and filter data. In R, we use:  
 
-- **`grepl()`** → Detect patterns in text (**Find something**)  
-- **`gsub()`** → Replace matched patterns with new values (**Replace something**)  
+- **`grepl(x, y)`** → detect whether y contains x (evaluates to `TRUE` or `FALSE`)
+- **`grep(x, y, value = T)`** &rarr; detect whether y contains x (& returns the search results)
+- **`gsub(x, z, y)`** → replace matched patterns (x) with new values (z)
 
 ### Common Regex Search Patterns
 
@@ -227,10 +254,10 @@ Regular expressions (**regex**) allow us to search for patterns in text, making 
 
 Use `grepl()` to **detect whether a pattern exists** in a column. It returns **TRUE/FALSE**, making it useful for filtering data.  
 
-#### Example: Identify artists with "DJ" in their name  
+#### Example: Identify artists with "Beat" in their name  
 ```{r}
 streams %>%
-  filter(grepl("DJ", artist)) %>%
+  filter(grepl("Beat", artist)) %>%
   select(artist) %>%
   distinct()
 ```
@@ -257,6 +284,9 @@ streams %>%
   filter(grepl("Band$", artist)) %>%
   select(artist) %>%
   distinct()
+
+# alternative, using grep()
+streams %>% pull(artist) %>% grep("Band$", ., value=T) %>% unique()
 ```
 
 
@@ -264,44 +294,140 @@ streams %>%
 
 Use `gsub()` to **modify text by replacing matched patterns**.
 
-#### Example: Clean up underscores in artist names (replace `_` with space)  
+#### Example: Clean up spaces in artist names (replace with nothing)  
 ```{r}
-streams <- streams %>%
-  mutate(artist_clean = gsub("_", " ", artist))
+streams %>%
+  mutate(artist_clean = gsub(" ", "", artist))
 ```
 
 #### Example: Remove numbers from artist names  
+
 ```{r}
-streams <- streams %>%
-  mutate(artist_clean = gsub("[0-9]", "", artist))
+streams %>% 
+  mutate(artist_clean = gsub("\\d", "", artist))
 ```
 
-## Dealing with Time
+## 1C) Dealing with Time
 
-### Last Value Carried Forward (`na.locf`)
+Time-related data comes in many forms—years, months, days, hours, minutes, and seconds—each with its own quirks. In R, handling time efficiently requires careful attention to **conversion, formatting, and interpretation**. Whether you're working with timestamps, durations, or calendar-based data, understanding how to manipulate and analyze time correctly is crucial for avoiding errors and ensuring meaningful insights.  
 
-In time-series data, missing values can be imputed using the last observed value (LOCF). This is useful for forward-filling missing entries. The function is available in the `zoo` package. Please install it if it is unavailable (`install.packages('zoo')`).
+In this subsection, we’ll cover:  
+1. **Converting character data to date/time formats**  
+2. **Switching between different time units (e.g., minutes to hours, days to weeks)**  
+3. **Accounting for the time properties of your data (e.g., time zones, missing values, and irregular intervals)**  
 
-#### Example: Fill missing number of playlists
+With `dplyr` and supporting packages like `lubridate`, `ISOweek` and `zoo`, R provides powerful tools for working with time in a structured and intuitive way. Let’s dive in!
+
+Tip: ensure you've all these packages installed.
+
+```r
+install.packages(c('lubridate','ISOweek','zoo'))
+```
+
+### Conversion between data formats
+
+Working with dates and times in R can be tricky, especially when data isn't stored in a standard format. Raw datasets often contain date values as **character strings**, which need to be converted into proper date-time objects for analysis. For example, you might encounter dates stored as `"20250104"` (YYYYMMDD) instead of the more commonly recognized `"2025-01-04"` (YYYY-MM-DD).  
+
+To work effectively with dates, we need to **recode and standardize** them into a format R can recognize. This allows for easier filtering, grouping, and aggregation—essential when analyzing trends over time, such as weekly sales or monthly user activity.  
+
+#### Example: Convert a string to a date
+
+```{r}
+library(lubridate)
+bad_dates = c('20250104')
+
+good_date = as.Date(bad_dates, format='%Y%m%d') # using base R
+good_date
+
+good_date2 = lubridate::ymd(bad_dates) # alternative using lubridate
+good_date2
+```
+### Switching between date formats
+
+#### Example: Convert date to week and extract the year
+
+`week(date)` from **lubridate** gives the **week number (1-53)** based on the Gregorian calendar, starting on January 1st. In contrast, `ISOweek(date)` follows the **ISO 8601 standard**, where weeks start on **Monday**, and **Week 1** is the first week with at least four days in the new year. `ISOweek` also includes the year (`YYYY-Www`) and may be more appropriate when you need **full weeks with exactly seven days**.
+
+```{r}
+library(lubridate)
+
+streams <- streams %>%
+  mutate(
+    week = week(date),
+    week2 = ISOweek::ISOweek(date),
+    month = month(date),
+    year = year(date)
+  )
+
+streams %>% select(date, week, week2, month, year) %>% head(10)
+```
+
+
+#### Example: Aggregate streams by month (take mean value here; "average" per day in a week)
+
+Aggregating data over different time frames helps us see trends, patterns, and long-term changes more clearly. It’s also useful when combining datasets with different time levels—for example, if one dataset has daily data and another has weekly data, it makes sense to convert both to the same time unit. Aggregation also helps when **there are missing values**; instead of struggling with incomplete daily data, taking the **average per week** gives a more reliable view.  
+
+Using higher time units can also **smooth out random ups and downs**, making trends easier to spot, **reduce the amount of data to process**, and match real-world reporting, like weekly sales reports or monthly budgets. The best level of aggregation depends on the question you’re trying to answer and how complete your data is.
+
+```{r}
+monthly_streams <- streams %>%
+  group_by(year, month, artist) %>%
+  summarize(total_streams = mean(streams, na.rm = TRUE))
+
+monthly_streams %>% head(10)
+```
+
+### Dealing with time properties of data
+
+In time series data, some missing values (**NAs**) can be reasonably estimated rather than left blank. Instead of treating them as unknown, we can make **plausible assumptions** based on how the data typically behaves. Looking at the dataset, we see missing values in both the **price** and **playlists** columns.  
+
+For **prices**, a good assumption is that they remain the same until updated. This approach, called **last observation carried forward (LOCF)**, means we can fill missing values with the **last observed value**. For example, on **2025-01-03**, the price is missing, but since it was **1.1** on **2025-01-02**, we assume it stayed the same.  
+
+```{r}
+
+tmp_dates=seq(from=as.Date('2025-01-01'), length.out=10, by='1 day')
+
+sim_data= tibble(date=tmp_dates, price = c(1.20,1.10,NA,1.10,1.5,1.5,NA, NA, 1.4, 1.3),
+                 playlists = c(30,20,NA,10,NA, NA, 30, 40, NA, NA))
+sim_data
+```
+
+#### Example: Fill missing prices using Last Value Carried Forward (`na.locf`)
+
+```{r}
+library(zoo)
+sim_data = sim_data %>% mutate(prices_imputed = zoo::na.locf(price, na.rm=F))
+sim_data
+```
+
+#### Example: Fill missing playlist stats using Linear Interpolation (`na.approx`)
+
+For **playlists**, a better approach is **linear interpolation**, which estimates values by assuming a smooth change over time. Instead of leaving **2025-01-04** blank, we can calculate its value as the midpoint between **2025-01-03 (10)** and **2025-01-07 (30)**, which gives **15**.  
+
+```{r}
+library(zoo)
+sim_data = sim_data %>% mutate(playlists_imputed = zoo::na.approx(playlists, na.rm=F))
+sim_data
+```
+
+#### Example: Application to our data (using `na.approx`)
+
+When imputing missing values, always **group by the right variables** before applying functions like `na.locf()`. If you forget to `group_by(artist, country)`, missing stream counts might get filled across **different artists or countries**, leading to completely **nonsensical data**. At the same time, **don’t forget to ungroup()** afterward—otherwise, later operations might still be applied within each group, causing unexpected results. Grouping is powerful, but if used carelessly, it can seriously mess up your data!
 
 ```{r}
 library(zoo)
 
-# Let's create a few missing observations
-set.seed(1234)
-streams <- streams %>% ungroup() %>% mutate(streams=ifelse(runif(n())<.3,NA, streams)) %>% arrange(artist,country,date)
-
 # This snippet fills these observations, by carrying the "last observation (that's not NA) forward"
 streams <- streams %>%
   group_by(artist, country) %>%
-  mutate(streams_filled = na.locf(streams, na.rm = FALSE))
+  mutate(streams_filled = na.approx(streams, na.rm = FALSE))
 ```
 
-### Lags and Leads
+#### Lead and lags, changes
 
-Lags help compare values with previous observations, while leads look ahead.
+Other useful variables in time series analysis are **lags** and **leads**. **Lags** shift past values forward (`lag()`), helping us compare a current value to a previous one, while **leads** shift future values backward (`lead()`), allowing us to see what comes next. For example, if a song had **5,000 streams on Monday** and **5,500 on Tuesday**, a lag would bring Monday’s value into Tuesday’s row, making comparisons easier. In the next example, we’ll use lags to track how streams change over time.
 
-#### Example: Compute daily change in streams
+#### Example: Create lags and compute daily change in streams
 
 ```{r}
 streams <- streams %>%
@@ -312,151 +438,12 @@ streams <- streams %>%
     daily_change = streams_filled - lag_streams
   )
 
-streams %>% arrange(artist,country,date) %>% head(10)
+streams %>% arrange(artist,country,date) %>% select(artist, country, date, streams, lag_streams, daily_change) %>% head(10)
 ```
 
-### Creating Counters
-
-Sometimes we need to generate row numbers or observation counters.
-
-#### Example: Assign an index to each artist's entries
-
-```{r}
-streams <- streams %>%
-  group_by(artist, country) %>%
-  mutate(entry_number = row_number())
-
-streams %>% select(date, artist, country, entry_number) %>% arrange(artist, country, date) %>% head(10)
-```
-
-### Conversion with Dates
-
-Date manipulation is critical for aggregating data by weeks, months, or years.
-
-#### Example: Convert date to week and extract the year
-
-```{r}
-library(lubridate)
-
-streams <- streams %>%
-  mutate(
-    week = isoweek(date),
-    month = month(date),
-    year = year(date)
-  )
-
-streams %>% select(date, week, month, year) %>% head(10)
-```
-
-### Week to Month & Month to Date Conversion
-
-Aggregating data by different time frames helps in trend analysis.
-
-#### Example: Aggregate streams by month
-
-```{r}
-monthly_streams <- streams %>%
-  group_by(year, month, artist) %>%
-  summarize(total_streams = sum(streams, na.rm = TRUE))
-
-monthly_streams %>% head(10)
-```
-
-This concludes **Part 1** of our tutorial. In the next part, we will apply these techniques in real-world marketing case studies!
-
-
-
-Here's the refined **Merging Data** section with a more balanced discussion on `full_join()`, plus an explanation of `merge()` from base R and when to use or avoid it.  
-
-## Merging Data: Combining Multiple Data Sources  
-
-In real-world analysis, data is often stored in separate tables. To get meaningful insights, we need to merge datasets based on shared keys. The `dplyr` package provides efficient functions for this, making it easy to combine and manipulate data.
-
-### Understanding Join Types  
-
-Joins allow us to merge two datasets by matching values in a **key column**. Here’s an overview of different join types:
-
-![Common Join Types](https://raw.githubusercontent.com/rstudio/cheatsheets/main/joins.png)  
-
-| Join Type  | Keeps All Rows From | Drops Rows? |
-|------------|--------------------|-------------|
-| **Left Join (`left_join()`)** | Left table | No |
-| **Inner Join (`inner_join()`)** | Only matching rows | Yes |
-| **Right Join (`right_join()`)** | Right table | No |
-| **Full Join (`full_join()`)** | Both tables (fills missing values) | No |
-
-The **left join is the default choice** in most cases because it keeps all rows from the left dataset and only adds matching values from the right. Inner joins should be used with caution because they remove rows that do not have a match.
-
-
-### What Are Keys in a Join?  
-
-To merge data correctly, we need **keys**—columns that uniquely identify records in each dataset.  
-
-- **Single key**: Merging by a single column like `"date"`.  
-- **Composite key**: Merging by multiple columns like `"date"` and `"artist"`.  
-
-Without defining a proper key, the merge may not work as expected, or it may introduce duplicate rows.
-
-### Examples of Joins in Action
-
-#### Example: Left Join (Recommended)  
-
-Merging `streams` with `playlists`, keeping all rows from `streams`.  
-
-```{r}
-# For this exercise, let's add a week column that we can merge on
-streams <- streams %>% mutate(week=ISOweek::ISOweek(date))
-
-merged_data <- streams %>%
-  left_join(playlists, by = c("artist" = "artist", 
-                              "week"="iso_week"))  # Keeps all stream data, adds playlist info.
-
-# Note: here we specify that "week" in the LEFT data frame (streams) is matched on the "iso_week" column in the RIGHT data frame (playlists). 
-
-head(merged_data)
-```
-
-Why use a left join?  
-- All streaming data remains intact.  
-- Playlist data is added where available, but missing values appear if no match is found.  
-- This is useful when missing data in playlists should not remove streaming records.
-
-#### Example: Inner Join (Only Matching Rows)  
-Keeps only rows where a match exists in both `streams` and `socials`.  
-
-```{r}
-tiktok_followers = socials %>% filter(platform=='TikTok'  & metric == 'followers')
-
-merged_data <- streams %>%
-  inner_join(tiktok_followers, by = c("date", "artist"))  # Match by both columns
-
-# rename value column
-merged_data = merged_data %>% mutate(tiktok_followers = value) %>% select(-platform, -metric, -value)
-
-head(merged_data)
-```
-
-Things to keep in mind:  
-- Rows are removed if an artist has streams but no corresponding social media data on that date. 
-- This join is only useful when seeking to analyze cases where **both datasets** must have relevant information.
-
-Note: Before `dplyr`, R users relied on the `merge()` function from base R. It works similarly but is less readable and much slower. In other words: please use `tidyverse`/`dplyr`.
-
-### Key Takeaways  
-
-- **Use `left_join()` as the default** because it keeps all rows from the left dataset.  
-- **Be cautious with `inner_join()`**, as it removes rows with no match.  
-- **`merge()` is a base R alternative**, but `left_join()` is preferred for readability and efficiency.  
-
-For more details, check out the official **dplyr cheatsheet** on joins:  
-[Joins Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/joins.png)  
-
-## Pivoting Data: Reshaping from Long to Wide and Wide to Long  
+## 1D) Pivoting Data: Reshaping from Long to Wide and Wide to Long  
 
 Data is often stored in **different formats**, depending on the analysis needs. Sometimes, we need to **widen** a dataset to make it easier to read, and other times, we need to **lengthen** it to perform certain operations. The `tidyr` package in `tidyverse` provides **pivoting functions** to reshape data efficiently.  
-
-
-### Wide vs. Long Format
 
 - **Wide format**: Each row represents a single entity, with multiple columns for different variables.  
 - **Long format**: Each observation is in its own row, with a single column for values and an **additional column indicating the variable type**.  
@@ -465,7 +452,6 @@ Data is often stored in **different formats**, depending on the analysis needs. 
 |--------|------------------|--------------|
 | **Wide** | One row per date, multiple columns for weather indicator by country | `weather.csv` |
 | **Long** | One row per artist-date-country combination, a column for streams | `streams.csv` |
-
 
 ### From Wide to Long: `pivot_longer()`  
 
@@ -486,12 +472,12 @@ Key arguments in `pivot_longer()`:
 This transformation makes it easier to filter, group, and analyze structured data.  
 
 #### Example: Make `weather` data long by country
+
 The `weather` dataset stores temperature data **by country** in long format. We want to convert it into wide format, with one row per `date` and separate columns for each country’s temperature.
 
 ```{r}
 long_weather <- weather %>%
   pivot_longer(cols = ends_with('temp'), names_to = "name", values_to = "temperature") %>% separate(name, into = c('country','variable'), sep='_') %>% select(date, country, temperature)
-
 
 head(long_weather)
 ```
@@ -511,11 +497,6 @@ head(long_weather)
 | 2024-01-01 | DE      | 14.3        |
 | 2024-01-02 | BE      | 11.4        |
 | 2024-01-02 | DE      | 8.7         |
-
-📌 **Why use `pivot_longer()`?**  
-
-- Makes data **tidier** for filtering, grouping, and visualization.  
-- Essential for **ggplot2** and **time-series analysis**, where values should be in a single column.
 
 
 ### From Long to Wide: `pivot_wider()`
@@ -562,23 +543,322 @@ head(wide_weather)
 | 2024-01-01 | 11.6   | 14.3   |
 | 2024-01-02 | 11.4   | 8.7    |
 
-
-📌 Why use `pivot_wider()`?
-
-- Makes the dataset **easier to read** when working with multiple categories.  
-- Useful when preparing data for **visualizations or modeling**.
-
-### Key Takeaways
-
-- Use `pivot_wider()` when you need **one row per entity** with multiple value columns.  
-- Use `pivot_longer()` when you need **one row per observation**, making it easier for analysis.  
-- Pivoting is **reversible**—you can always reshape data back if needed.  
-
 For more details, check out the **tidyverse cheatsheet on pivoting**:  
-[tidyr Pivoting Cheatsheet](https://tidyr.tidyverse.org/reference/pivot_longer.html)  
+[tidyr Pivoting Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf)  
+
+## 1E) Merging Data: Combining Multiple Data Sources  
+
+In real-world analysis, data is often stored in separate tables. To get meaningful insights, we need to merge datasets based on shared keys. The `dplyr` package provides efficient functions for this, making it easy to combine and manipulate data.
+
+Joins allow us to merge two datasets by matching values in a **key column**. Here’s an overview of different join types:
+
+### Join types
+
+![Common Join Types](https://miro.medium.com/v2/resize:fit:720/format:webp/1*BNPpk-XQwNQaHzkIWDyOjQ.png)  
+
+__Here, we will focus on the most important ones:__
+
+| Join Type  | Keeps All Rows From | Drops Rows? |
+|------------|--------------------|-------------|
+| **Left Join (`left_join()`)** | Left table | No |
+| **Inner Join (`inner_join()`)** | Only matching rows | Yes |
+| **Right Join (`right_join()`)** | Right table | No |
+| **Full Join (`full_join()`)** | Both tables (fills missing values) | No |
+
+The **left join is the default choice** in most cases because it keeps all rows from the left dataset and only adds matching values from the right. Inner joins should be used with caution because they remove rows that do not have a match.
 
 
-# Part 2: Case studies and Exercises
+### What Are Keys in a Join?  
+
+To merge data correctly, we need **keys**—columns that uniquely identify records in each dataset.  
+
+- **Single key**: Merging by a single column like `"date"`.  
+- **Composite key**: Merging by multiple columns like `"date"` and `"artist"`.  
+
+Without defining a proper key, the merge may not work as expected, or it may introduce duplicate rows.
+
+### Examples of Joins in Action
+
+#### Example: Left Join (Recommended)  
+
+Merging `streams` with `playlists`, keeping all rows from `streams`.  
+
+```{r}
+# For this exercise, let's add a week column that we can merge on
+streams <- streams %>% mutate(week=ISOweek::ISOweek(date))
+
+merged_data <- streams %>%
+  left_join(playlists, by = c("artist" = "artist", 
+                              "week"="iso_week"))  # Keeps all stream data, adds playlist info.
+
+# Note: here we specify that "week" in the LEFT data frame (streams) is matched on the "iso_week" column in the RIGHT data frame (playlists). 
+
+head(merged_data)
+```
+
+__Why use a left join?__
+
+- All streaming data remains intact.  
+- Playlist data is added where available, but missing values appear if no match is found.  
+- This is useful when missing data in playlists should not remove streaming records.
+
+#### Example: Inner Join (Only Matching Rows)  
+Keeps only rows where a match exists in both `streams` and `socials`.  
+
+```{r}
+tiktok_followers = socials %>% filter(platform=='TikTok'  & metric == 'followers')
+
+merged_data <- streams %>%
+  inner_join(tiktok_followers, by = c("date", "artist"))  # Match by both columns
+
+# rename value column
+merged_data = merged_data %>% mutate(tiktok_followers = value) %>% select(-platform, -metric, -value)
+
+head(merged_data)
+```
+
+Things to keep in mind:  
+
+- Rows are removed if an artist has streams but no corresponding social media data on that date. 
+- This join is only useful when seeking to analyze cases where **both datasets** must have relevant information.
+
+Note: Before `dplyr`, R users relied on the `merge()` function from base R. It works similarly but is less readable and much slower. In other words: please use `tidyverse`/`dplyr`.
+
+For more details, check out the official **dplyr cheatsheet** on joins:  
+[Joins Cheatsheet](https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf)  
 
 
 
+## **You've Made It! 🎉** 
+
+Congratulations! You've tackled the **fundamentals of working with time in R**, from handling messy date formats to computing lags and filling in missing values. Now, it's time to put your skills to the test with a **real-world challenge**—one that reflects the types of problems you’d face in data analysis.  
+
+
+# Part 2: Case study and Exercises
+
+Before any meaningful analysis can happen, data needs to be **cleaned, structured, and prepared**—a process that often takes up more time than the actual modeling. In real-world marketing analytics, raw datasets are rarely ready for immediate use. Instead, they come in different formats, with missing values, misaligned timeframes, and inconsistencies that need to be resolved before drawing any conclusions.  
+
+In this case study, you'll work with **four datasets**—`streams.csv`, `weather.csv`, `socials.csv`, and `playlists.csv`—to assemble a dataset ready for analysis. This involves **aggregating time-based data**, handling **missing values**, and merging **different data sources** in a way that ensures consistency.  
+
+Throughout this process, you’ll need to make **critical decisions**: Should streams be **summed or averaged** at the weekly level? How do you ensure **all artists and countries are accounted for**? What’s the best way to **impute missing data**? These choices impact the quality and reliability of your final dataset.  
+
+Once the data is structured, you’ll take it further—**visualizing trends** and **running artist-specific regressions**. This is an opportunity to apply what you’ve learned and gain experience with **the kinds of data challenges analysts deal with every day**.  
+
+💡 **A few things to keep in mind:**  
+- Follow the **setup-ITO structure** to keep your workflow organized.  
+- Work in an `.R` file and **save your final dataset** as `final.csv`.  
+- Think carefully about your approach—there’s no single correct answer, but some methods are more appropriate than others.  
+
+## Exercise 1: Assemble a Dataset for Analysis
+
+Load the datasets.
+
+💡 **Tips:**  
+- Follow the **setup-ITO structure** to keep your code organized.  
+- Ensure all datasets are properly read into R and inspected for missing values.  
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+library(tidyverse)
+
+# Load data
+streams <- read_csv("streams.csv")
+weather <- read_csv("weather.csv")
+socials <- read_csv("socials.csv")
+playlists <- read_csv("playlists.csv")
+
+# no output so far
+```
+
+---
+
+## Exercise 2: Aggregate Streams to the Weekly Level (ISO Weeks)
+
+Convert daily streams into **weekly aggregates** using **ISO weeks**. Decide whether to use `sum()` or `mean()`.  
+
+💡 **Tip:**  
+- **Summing** makes sense for total streams, while **averaging** is better for daily metrics like average streams per day.
+- Also consider missings!
+
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+library(lubridate)
+
+streams_aggregated <- streams %>%
+  mutate(week = ISOweek::ISOweek(date)) %>%
+  group_by(artist, country, week) %>%
+  summarize(
+    weekly_streams = 7*mean(streams, na.rm = TRUE) # or use mean()
+  )
+```
+
+
+## Exercise 3: Create a Trend Variable
+
+Add a **trend variable** that increases from 1 (for the first week) to the last.  
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+
+streams_aggregated <- streams_aggregated %>%
+  group_by(artist,country) %>% arrange(artist, country, week) %>%
+  mutate(trend = row_number()) %>% ungroup()
+```
+
+## Exercise 4: Create a Complete Data Grid
+
+Ensure that every **artist-country-week** combination is represented, even if no streams were recorded.  
+
+💡 **Tip:**  
+- Use `expand_grid()` to create all possible combinations of artists, countries and dates.
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+
+all_weeks <- unique(streams_aggregated$week)
+all_artists <- unique(streams_aggregated$artist)
+all_countries <- unique(streams_aggregated$country)
+
+complete_data <- expand_grid(artist = all_artists, country = all_countries, week = all_weeks)
+dim(complete_data) # more than 20k rows!
+```
+
+## Exercise 5: Merge Streams Data into the Complete Grid (`complete_data`)
+
+Join the aggregated streams data with the **complete dataset** from Exercise 4.  
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+
+complete_data <- complete_data %>%
+  left_join(streams_aggregated, by = c("artist", "country", "week"))
+```
+
+## Exercise 6: Merge Weather and Social Media Data
+
+- **Pivot `weather` data to long format** (country-level). Aggregate this data to the weekly level. 
+- **Pivot `socials` data to wide format** (artist-level).  
+- **Merge everything** by `week` and the relevant grouping variable.  
+
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+
+# Reshape weather data (long format)
+weather_long <- weather %>%
+  pivot_longer(cols = -date, names_to = "country", values_to = "value") %>%
+  mutate(week = ISOweek::ISOweek(date))
+
+# Aggregate to weekly level
+weather_long_aggregated <- weather_long %>% group_by(week, country) %>% summarize(value=mean(value,na.rm=T))
+
+# Separate country and measures into columns
+weather_long_aggregated = weather_long_aggregated %>% separate(country, into = c('country','measure'), sep='_', convert=T)
+
+# Turn into wide again for temp & sun hours
+weather_long_wide = weather_long_aggregated %>% pivot_wider(id_cols=c('week','country'), names_from='measure', values_from='value')
+
+# Merge weather data
+complete_data <- complete_data %>%
+  left_join(weather_long_wide, by = c("country", "week"))
+
+# Add ISO week to socials data
+socials <- socials %>% mutate(week=ISOweek::ISOweek(date))
+
+# Aggregate to weekly level
+socials_aggregated <- socials %>% group_by(week, artist, platform, metric) %>% summarize(value=mean(value,na.rm=T))
+  
+# Reshape social media data (wide format)
+socials_wide <- socials_aggregated %>%
+  pivot_wider(names_from = c('platform', 'metric'), values_from = 'value')
+
+# Merge social media
+complete_data <- complete_data %>%
+  left_join(socials_wide, by = c("artist", "week"))
+```
+
+
+## Exercise 7 Handle Missing Data
+
+Impute missing values using **`na.locf()`** (last observation carried forward) for stable variables like **temperature** and **`na.approx()`** (linear interpolation) for smoother transitions in metrics like **streams**.  
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+# solution pending
+```
+
+---
+
+## Exercise 8:  Scaling Up I: Generate Stream Plots for Multiple Artists
+
+Generate **line plots** for the first 10 artists and save them using `ggsave()`. Use facet plots to account for streams in different countries.
+
+```r
+# starting code
+library(ggplot2)
+dir.create('plots')
+
+complete_data <- complete_data %>% mutate(week_start = ISOweek::ISOweek2date(paste0(week, '-1')))
+
+artists = unique(streams$artist)
+for (one_artist in artists[1:10]) {
+  filtered_data = complete_data %>% filter(artist==one_artist)
+  
+  # ggplot code here
+}
+```
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+library(ggplot2)
+dir.create('plots')
+
+artists <- unique(complete_data$artist)
+
+complete_data <- complete_data %>% mutate(week_start = ISOweek::ISOweek2date(paste0(week, '-1')))
+
+for (one_artist in artists[1:10]) {
+  plot_data <- complete_data %>% filter(artist == one_artist)
+  
+  p <- ggplot(plot_data, aes(x = week_start, y = weekly_streams)) +
+    geom_line() +
+    facet_wrap(~country) +
+    labs(title = paste("Streams for", one_artist))
+
+  ggsave(paste0("plots/", one_artist, ".png"), plot = p, width = 6, height = 4)
+}
+```
+## Exercise 9: Scaling Up II: Estimate Individual Regression Models
+
+
+Estimate **separate regression models** for the first 10 artists and summarize results.  
+
+
+```r
+# starting code
+
+artists = unique(streams$artist)
+results = lapply(artists[1:10], function(one_artist) {
+  filtered_data = streams %>% filter(artist==one_artist)
+  # estimation code here
+  m <- lm(rnorm(10)~1) # just an example
+  results = tibble(variable = names(m$coefficients),
+                     summary(m)$coefficients)
+  colnames(results) <-    
+     c('variable','estimate','se','t','pval')
+  results = results %>% mutate(artist=one_artist)
+  return(results)
+})
+
+all_results = bind_rows(results)
+```
+
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+# pending
+```
+
+
+## Summary  
+
+Through these exercises, you’ll gain hands-on experience with:  
+- **Aggregating and transforming time-based data**  
+- **Handling missing values appropriately**  
+- **Merging datasets with different time granularities**  
+- **Automating plots and regression analysis for multiple artists**  
+
+This workflow mirrors **real-world data science** challenges, where cleaning and structuring data is just as important as modeling.
+
+Good job!

@@ -63,7 +63,7 @@ class: small-code
 
 ```{r eval=FALSE, include=TRUE}
 library(tidyverse)
-download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip', 'week4_data.zip')
+download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week4/tutorial/data/week4_data.zip', 'week4_data.zip')
 unzip('week4_data.zip', overwrite=TRUE)
 ```
 
