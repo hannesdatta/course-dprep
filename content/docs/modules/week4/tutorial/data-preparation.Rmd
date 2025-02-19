@@ -654,10 +654,11 @@ Once the data is structured, you’ll take it further—**visualizing trends** a
 Load the datasets.
 
 💡 **Tips:**  
+
 - Follow the **setup-ITO structure** to keep your code organized.  
 - Ensure all datasets are properly read into R and inspected for missing values.  
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, include=TRUE, webex.hide='Solutions'}
 library(tidyverse)
 
 # Load data
@@ -666,21 +667,19 @@ weather <- read_csv("weather.csv")
 socials <- read_csv("socials.csv")
 playlists <- read_csv("playlists.csv")
 
-# no output so far
+# No transformation or output generated so far... (i.e., we only have setup and input)
 ```
-
----
 
 ## Exercise 2: Aggregate Streams to the Weekly Level (ISO Weeks)
 
-Convert daily streams into **weekly aggregates** using **ISO weeks**. Decide whether to use `sum()` or `mean()`.  
+Convert daily streams into **weekly aggregates** using **ISO weeks**. Take the `mean()` (so that you have a weekly average, which is still valid in case single observations in a week are missing).
 
 💡 **Tip:**  
-- **Summing** makes sense for total streams, while **averaging** is better for daily metrics like average streams per day.
-- Also consider missings!
+
+- **Summing** would work too, but only if you have complete data. In case you want to still measure "total" streams, you could also take the `mean()*7`.
 
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, include=TRUE, webex.hide='Solutions'}
 library(lubridate)
 
 streams_aggregated <- streams %>%
@@ -694,13 +693,16 @@ streams_aggregated <- streams %>%
 
 ## Exercise 3: Create a Trend Variable
 
-Add a **trend variable** that increases from 1 (for the first week) to the last.  
+Add a **trend variable** that increases from 1 (for the first week) to the last. We can later use this variable in a regression analysis.
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, include=TRUE, webex.hide='Solutions'}
 
 streams_aggregated <- streams_aggregated %>%
   group_by(artist,country) %>% arrange(artist, country, week) %>%
   mutate(trend = row_number()) %>% ungroup()
+
+# Import: group by artist and country; we can then generate row numbers for every day.
+# I have built in a safeguard so that the data will be ordered by week (because, if it's not for some reason, the trend variable will be off).
 ```
 
 ## Exercise 4: Create a Complete Data Grid
@@ -708,9 +710,10 @@ streams_aggregated <- streams_aggregated %>%
 Ensure that every **artist-country-week** combination is represented, even if no streams were recorded.  
 
 💡 **Tip:**  
-- Use `expand_grid()` to create all possible combinations of artists, countries and dates.
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+- Use `expand_grid()` to create all possible combinations of artists, countries and dates. Check R's help to see how the command works (we haven't covered it in the tutorial so far). Just type `?expand.grid` on your console.
+
+```{r eval=T, include=TRUE, webex.hide='Solutions'}
 
 all_weeks <- unique(streams_aggregated$week)
 all_artists <- unique(streams_aggregated$artist)
@@ -724,7 +727,7 @@ dim(complete_data) # more than 20k rows!
 
 Join the aggregated streams data with the **complete dataset** from Exercise 4.  
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+```{r eval=TRUE, include=TRUE, webex.hide='Solutions'}
 
 complete_data <- complete_data %>%
   left_join(streams_aggregated, by = c("artist", "country", "week"))
@@ -732,12 +735,18 @@ complete_data <- complete_data %>%
 
 ## Exercise 6: Merge Weather and Social Media Data
 
-- **Pivot `weather` data to long format** (country-level). Aggregate this data to the weekly level. 
-- **Pivot `socials` data to wide format** (artist-level).  
-- **Merge everything** by `week` and the relevant grouping variable.  
+- Prepare and merge `weather` data
+  - First, create an ISO week column.
+  - Then, aggregate to the weekly level.
+  - Next, turn it back into wide (with `temp` and `sun` as columns)
+  - Finally, you can merge it with `complete_data`.
+- Prepare and merge `socials` data
+  - Add ISO week to socials data
+  - Aggregate to weekly level (week, artist, platform and metric)
+  - Reshape long to wide
+  - Merge!
 
-
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+```{r eval=TRUE, include=TRUE, webex.hide='Solutions'}
 
 # Reshape weather data (long format)
 weather_long <- weather %>%
@@ -775,17 +784,42 @@ complete_data <- complete_data %>%
 
 ## Exercise 7 Handle Missing Data
 
-Impute missing values using **`na.locf()`** (last observation carried forward) for stable variables like **temperature** and **`na.approx()`** (linear interpolation) for smoother transitions in metrics like **streams**.  
+Impute missing values for the following variables: 
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
-# solution pending
+- `sun`: `na.locf()`
+- `temperature`: `na.locf()`
+- `Instagram_comments`: `na.approx()`
+- `Instagram_followers`: `na.approx()`
+- `Snapchat_comments`: `na.approx()`
+- `Snapchat_followers`: `na.approx()`
+- `TikTok_comments`: `na.approx()`
+- `TikTok_followers`: `na.approx()`
+- `X_comments`: `na.approx()`
+- `X_followers`: `na.approx()`
+
+
+```{r eval=TRUE, include=TRUE, webex.hide='Solutions'}
+complete_data %>% group_by(artist, country) %>%
+  arrange(artist, country, week) %>%
+  mutate(sun = na.locf(sun, na.rm=F),
+         temp = na.locf(temp, na.rm=F),
+         Instagram_comments = na.approx(Instagram_comments, na.rm=F),
+         Instagram_followers = na.approx(Instagram_followers, na.rm=F),
+         Snapchat_comments = na.approx(Snapchat_comments, na.rm=F),
+         Snapchat_followers = na.approx(Snapchat_followers, na.rm=F),
+         TikTok_comments = na.approx(TikTok_comments, na.rm=F),
+         TikTok_followers = na.approx(TikTok_followers, na.rm=F),
+         X_comments = na.approx(X_comments, na.rm=F),
+         X_followers = na.approx(X_followers, na.rm=F)) %>%
+  ungroup()
+         
 ```
 
 ---
 
 ## Exercise 8:  Scaling Up I: Generate Stream Plots for Multiple Artists
 
-Generate **line plots** for the first 10 artists and save them using `ggsave()`. Use facet plots to account for streams in different countries.
+Generate **line plots** for the first 10 artists and save them using `ggsave()`. Use facet plots (`facet_wrap()`, see week 1) to also plot streams by different countries.
 
 ```r
 # starting code
@@ -796,7 +830,7 @@ complete_data <- complete_data %>% mutate(week_start = ISOweek::ISOweek2date(pas
 
 artists = unique(streams$artist)
 for (one_artist in artists[1:10]) {
-  filtered_data = complete_data %>% filter(artist==one_artist)
+  plot_data <- complete_data %>% filter(artist == one_artist)
   
   # ggplot code here
 }
@@ -821,35 +855,70 @@ for (one_artist in artists[1:10]) {
   ggsave(paste0("plots/", one_artist, ".png"), plot = p, width = 6, height = 4)
 }
 ```
+
 ## Exercise 9: Scaling Up II: Estimate Individual Regression Models
 
+Estimate **separate regression models** for the first 10 artists and summarize results. Use a loop, as in the code snippet below (later on, you could estimate these models for all `r n_distinct(complete_data$artist)` artists).
 
-Estimate **separate regression models** for the first 10 artists and summarize results.  
+In your regression model, use 
 
+- DV: `log(weekly_streams+1)`
+- Independent variables
+  - country (dummy variable, `as.factor(country)`)
+  - `sun` and `temp` (not log-transformed)
+  - and the log of all social media metrics (`log(x+1)`)
 
 ```r
 # starting code
 
-artists = unique(streams$artist)
+artists = unique(complete_data$artist)
+
 results = lapply(artists[1:10], function(one_artist) {
-  filtered_data = streams %>% filter(artist==one_artist)
+  filtered_data = complete_data %>% filter(artist==one_artist)
   # estimation code here
-  m <- lm(rnorm(10)~1) # just an example
-  results = tibble(variable = names(m$coefficients),
+  
+  m <- lm(rnorm(10)~1, data = filtered_data) # just an example
+  
+  results = data.frame(variable = names(m$coefficients),
                      summary(m)$coefficients)
-  colnames(results) <-    
-     c('variable','estimate','se','t','pval')
-  results = results %>% mutate(artist=one_artist)
-  return(results)
+  colnames(results) <- c('variable','estimate','se','t','pval')
+  results = tibble(results) %>% mutate(artist=one_artist)
+  
 })
 
 all_results = bind_rows(results)
 ```
 
 ```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
-# pending
-```
+artists = unique(complete_data$artist)
 
+results = lapply(artists[1:10], function(one_artist) {
+  filtered_data = complete_data %>% filter(artist==one_artist)
+  
+  m <- lm(log(weekly_streams+1) ~ 1 + 
+                as.factor(country) +
+                sun + temp +
+                log(Instagram_comments+1) + log(Instagram_followers) +
+                log(Snapchat_comments+1) + log(Snapchat_followers) +
+                log(TikTok_comments+1) + log(TikTok_followers) +
+                log(X_comments+1) + log(X_followers), data= filtered_data)
+  results = data.frame(variable = names(m$coefficients),
+                     summary(m)$coefficients)
+  colnames(results) <- c('variable','estimate','se','t','pval')
+  results = tibble(results) %>% mutate(artist=one_artist)
+  return(results)
+})
+
+all_results = bind_rows(results)
+
+# all results now contains the results of all individual regressions;
+# you could now "filter" through - e.g., to create a histogram of the effects of sun!
+
+all_results %>% filter(grepl('sun', variable)) %>%
+  ggplot() + geom_histogram(aes(x = estimate)) + ggtitle('Histogram of the effect of sun hours on followers')
+
+
+```
 
 ## Summary  
 
