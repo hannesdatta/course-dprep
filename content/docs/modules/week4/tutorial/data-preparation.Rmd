@@ -5,6 +5,7 @@ output:
   webexercises::webexercises_default:
     theme: flatly
     highlight: tango
+    toc: true
 ---
 
 
@@ -20,15 +21,18 @@ library(knitr)
 ```
 
 # Introduction
-In this tutorial, we'll take data preparation to the next level by considering a variety of common data issues in the Spotify Top 200 rankings. We'll start off with multiple raw big data sets and end up with a single data frame ready for analysis!
 
- 
+In this tutorial, we'll tackle common data challenges using a simulated music streaming dataset. Starting with multiple raw data sources, we'll clean, transform, and merge them into a single analysis-ready data frame.
+
 ## What You'll Learn in this Tutorial
+
+- Expand your knowledge of R functions (e.g., base functions such as `rank()` or `unique()`, `for` loops and `lapply()`)
 - Merge data sets on one or more indices and understand the different types of joins (inner, left, right join).
 - Handle missing and duplicate values.
-- Handle and preprocess string data (remove characters, splitting).
-- Perform feature engineering.
-- Use R Markdown to document your workflow.
+- Handle and preprocess string data (remove characters, splitting using regular expressions).
+- Operationalize variables and handle pivoting (wide to long, long to wide)
+- Scale workflows (e.g., batch plotting, estimation of linear models, `lm()`)
+- Implement techniques to exemplary case studies often encountered in marketing research
 
 ## Prerequisites
 
@@ -39,368 +43,542 @@ Ready to start? Here's what we recommend you do before going through this tutori
 * [Datacamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
 
 
-## Exploring the Beats: Inside the Spotify Top 200 Data
-[Spotify Charts](https://spotifycharts.com/regional) has listed the daily top 200 most streamed songs by country since 2017. As you can see below, you can use the dropdown menus to change your selection, and clicking in the top right corner returns the data in CSV-format. 
+## Downloading and Exploring the Data
 
-![](./images/spotify-top-200.gif){width=50%}
+Let's explore the data. It consists of four files, which vary in structure, unit of observation, etc. This is on purpose because then you can learn all the concepts required in this tutorial.
+ 
+- `streams.csv`: number of streams (`streams`) for an `artist` in a given `country` on a given day (`date`)
+- `weather.csv`: for each day and country, the average temperature (`_temp`) and sun hours (`_sun`)
+- `socials.csv`: for every `artist` and day (`date`), this data lists social media metrics (e.g., on `platform` TikTok, a `metric` followers is observed and has the `value` 458352)
+- `playlists.csv`: for each week `iso_week` and `artist`, the data lists the number of `playlists` an artist was listed on on Spotify.
 
-For this exercise we have collected the rankings for 2020 which have been split up into 3 separate files: 
-
-#### Streams
-
-| Attribute | Definition | Example | 
-| :---- | :---- | :---- | 
-| song_id | An identifier associated with each song | `22403119` |
-| date | The date on which the ranking was composed | `2020-01-01 00:00:00+00:00` | 
-| popularity | A popularity score between 0 and 100 on a given date | `95` |
-| streams | The total number of streams on Spotify in a country on a given date | `544851` | 
-| country | Country abbreviation | `US` | 
-
-
-#### Songs
-
-| Attribute | Definition | Example | 
-| :---- | :---- | :---- | 
-| song_id | An identifier associated with each song | `22403119` |
-| song_name | The name of the song | `WAP (feat. Megan Thee Stallion)` |
-| artists |  A list of comma-separated artists of the song | `Cardi B,Megan Thee Stallion` | 
-| genres | A list of comma-separated genres of the song | `pop,rap,houston rap,pop,trap queen` |
-
-#### Country Codes 
-
-| Attribute | Definition | Example | 
-| :---- | :---- | :---- | 
-| continent | The continent associated with the country | `North America` |
-| country | The name of the country | `United States of America` | 
-| country_code_2_letter | The two-letter country code | `US` | 
-| country_code_3_letter | The three-letter country code | `USA` | 
-| country_number | The official ISO country code | `840` |
-
-
-
-# Part 1: Downloading and Inspecting the Data 
-## Create a new R project
+### Create a new R project
 1. Open RStudio and create a new project by clicking on `File` -> `New Project` -> `New Directory` -> `New Project`.
 2. Name your project `data-preparation` and save it in a location of your choice.
 3. Add a `data` folder:
 - Option 1 (code): Run `dir.create("data")
 - Option 2 (Manual): Click *New Folder (📁)* in the Files pane  
 
-## Download the data
+### Download the data
 
-Click [here](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
+Click [here](https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 # downloading and unzipping the data
-download.file('https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week4/tutorial/data_without_duplicates.zip', 'data.zip')
-unzip('data.zip', overwrite=TRUE)
+download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/new_week4/content/docs/modules/week4/tutorial/data/week4_data.zip', 'week4_data.zip')
+unzip('week4_data.zip', overwrite=TRUE)
 ```
-Now, load the data into R using `readr`'s `read_csv` and `read_delim` functions:
-
-__Tip:__
-
-*Note that CSV-files are separated by commas (hence the name comma-separated-value!), but they can also be separated by other delimiters (e.g., `;`). Rather than using `read_csv()`, you can use `read_delim()` and explicitly tell R which separation character (`delim=';'`) to use!*
+Now, load the data into R using `read_csv`:
 
 
-```{r}
-#install.packges("readr") # uncomment and run this if you have not installed `readr` package in R
-library(readr)
+```{r echo=TRUE, message=FALSE, results='hide'}
+library(tidyverse)
 
-streams <- read_csv("streams.csv")
-songs <- read_csv("songs.csv")
-country_codes <- read_delim("country_codes.csv", delim = ";")
+streams <- read_csv('streams.csv')
+weather <- read_csv('weather.csv')
+socials <- read_csv('socials.csv')
+playlists <- read_csv('playlists.csv')
+
 ```
-__Troubleshooting__
+
+__Troubleshooting__: 
 
 - If R doesn’t find your file: Click **Session → Set working directory → To source file location**. Avoid using `setwd()` — hardcoding directories can cause problems!
 
-## 📌 Exercise 1: Data Inspection
-Your task is to examine the datasets and identify the following: 
+### Explore the data
 
-1. What is the target unit of analysis? (*The unit of analysis tells us what each row in the dataset represents.*)
-2. Are there any missing values in the columns?
-3. Are there any values that are out of range and do not make sense?
-4. Are "string" values properly encoded?
-5. What are common columns across the three datasets?
+We can now explore the data using the strategies introduced in earlier tutorials.
+
+1. What is the unit of observation? (*The unit of analysis tells us what each row in the dataset represents.*)
+2. Are there any missing values in the columns? Do values make sense?
+3. What are common columns across the datasets that could be used for merging?
 
 __Tips:__
 
 - Take a __look__ at the data using the function `head(streams)`, or `View(streams)`. If you'd like to view more rows with `head`, use `head(streams, 100)` (for, e.g., the first 100 rows). (`tail()` gives you the last rows of the data).
-
-- The command `summary(songs)` or `glimpse(songs)` generates descriptive statistics for all variables in the data. You can also use this command on individual columns (e.g., `summary(streams$date)`).
-
+- The command `summary(playlists)` or `glimpse(playlists)` generates descriptive statistics for all variables in the data. You can also use this command on individual columns (e.g., `summary(playlists$playlists)`).
 - Character or factor columns are best inspected using the `table()` command. These will create frequency tables.
 
-```{r, echo = TRUE, webex.hide = 'Solutions to Exercise 1'}
+```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
 
 # View the first rows of the datasets to get an overview
 head(streams)
-head(songs)
-head(country_codes)
+head(socials)
+head(weather)
+head(playlists)
 
-# 1. Identify target unit of analysis 
-# Ans: The streams data set contains the top 200 songs on given date in a country. 
-
-# 2. Missing values 
-colSums(is.na(streams)) # popularity and song_id have missing values
-colSums(is.na(songs)) # lot of missing values in genres
-colSums(is.na(country_codes))
-
-# 3. Out of range values
-# overall checks 
-summary(streams)
-summary(songs)
-summary(country_codes)
-# You could check more specifically. For e.g. if popularity scores are between 0 and 100 (based on data description)
-summary(streams$popularity)
-
-# 4. Check string formatting
-# Find song names with non-ASCII characters
-non_ascii_songs <- songs %>%
-  filter(!grepl("^[ -~]+$", song_name))
-
-print(non_ascii_songs)
-
-# 5. Common columns
-common_cols1 <- intersect(names(streams), names(songs))
-print(common_cols1) # song_id
-
-common_cols2 <- intersect(names(streams), names(country_codes))
-print(common_cols2) #country
+glimpse(streams)
+glimpse(socials)
+glimpse(weather)
+glimpse(playlists)
 
 ```
 
-# Part 2: Merging 
-In this section, we want to prepare the final dataset by merging the three datasets. The "join" functions from `dplyr` come in handy for this. 
+# Part 1: Expanding our knowledge of R
 
-## 📌 Exercise 2: 
+In this section, we will deepen our understanding of key R functions that are essential for data engineering. We will focus on numerical functions, advanced string cleaning, and working with time-based data. Each concept will be demonstrated with examples from our datasets.
 
-Examine the effect of picking a `left_join`, `right_join`, and `inner_join`, and how that affects the completeness of your data. Strive for a final data frame that captures as much of the original data as possible.
+## Applying base R functions in `tidyverse`
 
-1. Merge the streams data with the songs dataframe. 
-2. Merge the streams data with country_codes dataframe
-3. Export the final data frame as `merged_df.csv` after merging all 3 datasets.
+Before diving into more advanced transformations, let’s start by applying **base R functions** inside `dplyr` operations. In `mutate()` and `summarize()`, you can use **any** function from base R—not just `mean()`, `min()`, or `max()`. This is useful when operationalizing new variables, performing custom transformations, or computing statistics on groups.
 
-__Tips:__
+For now, we'll use **min, mean, and max** to get started. But remember, the same logic applies to **any** function, like `sd()`, `range()`, `var()`, or even custom functions you define.
 
-- Identify common columns across the datasets.
-- Look up the Datacamp tutorials for the syntax for join functions. 
-- To avoid confusion between overlapping column names (e.g., country appears in both `streams.csv` and `country_codes.csv`), you may consider adding suffixes. 
-
-
-```{r, webex.hide = 'Solutions to Exercise 2'}
-df <- streams %>% 
-  inner_join(songs, by = "song_id") %>%
-  left_join(country_codes, by = c("country" = "country_code_2_letter"), suffix = c("_streams", "_cc"))
-
-# Since countries in Oceania are missing in country_codes.csv we use a left join here (otherwise you'd miss out on +/- 139K records)
-
-write_csv(df, "merged_df.csv")
-
-```
-# Part 3: Data Pre-Processing
-
-## 📌 Exercise 3a: Removing Duplicates
-A track can appear in multiple top 200 lists across countries (e.g., both in the Netherlands and in Belgium) for sustained periods of time (e.g., yesterday and today). For that reason, a `song_id` may occur repeatedly within the data frame. Yet it can also happen that exactly the same record appears more than once. For example, the scraper that collected the data in the first place might have run twice which duplicated some of the records, or we accidentally made a copy-paste mistake ourselves. Check whether such duplicates are present in `df` and if so remove them. Export the result as `df_no_duplicates.csv`.
-
-```{r, webex.hide = 'Solutions to Exercise 3a'}
-#input
-df <- read_csv("merged_df.csv")
-
-# transformation
-df <- df %>% filter(!duplicated(df))
-
-# output
-write_csv(df, "df_no_duplicates.csv")
-```
-
-## 📌 Exercise 3b: Data Imputation
-
-In roughly half of the cases, the `popularity` column is missing which turns out to be troublesome once you move towards a model building phase. Therefore, we ask you to impute these missing values by the median popularity score of the country on a given date. Here's a simple example to illustrate: 
-
-| song_name | country | date | popularity | popularity_filled | 
-| :---- | :---- | :---- | :----- | :---- |
-| A | United Kingdom | 01-01-2020 | 91 | 91 |
-| B | United Kingdom | 01-01-2020 | 66 | 66 |
-| C | United Kingdom | 01-01-2020 | `NA` |  **66** |
-| D | United Kingdom | 01-01-2020 | 62 | 62 | 
-| E | United Kingdom | 02-01-2020 | 79 | 79 | 
-| A | Netherlands | 01-01-2020 | 80 | 80 |
-
-The `popularity_filled` column has been added which takes on the value of the `popularity` column if present and otherwise missing data (`NA`) are replaced with their imputed values. In this example, the popularity of song `C` in the United Kingdom has been computed as the median of `{62, 66, 91} = 66`. Note that it does not take into account song `E` in the United Kingdom (different date) and song `A` in the Netherlands (different country).   
-
-Implement this data imputation strategy using the `filter`, `groupby`, and `summarise` functions from the `dplyr` package and the result as `df_imputed.csv`. We recommend first computing the imputation values (for each country across the days), and then replacing missing values in the `popularity` column with their matching counterparts. Evaluate your results in terms of the pros and cons of this approach and try to come up with an alternative imputation strategy (incl. arguments why you prefer that approach).
-
-```{r, webex.hide = 'Solutions to Exercise 3b'}
-# input
-df <- read_csv("df_no_duplicates.csv")
-
-# transformation
-imputation_values <- df %>% filter(!is.na(popularity)) %>% 
-  group_by(country, date) %>% 
-  summarise(popularity_filled = median(popularity))
-
-df_joined <- df %>% left_join(imputation_values, by = c("country" = "country", "date" = "date"))
-
-df <- df_joined %>% mutate(popularity_filled = ifelse(is.na(popularity), popularity_filled, popularity))
-
-# The main disadvantage is that missing records will always be assigned a median popularity score (so never abnormally low or high). Given the sheer amount of missing records, this would highly distort the distribution of the scores.
-# Since the popularity score is country independent and it is either present for all records or not available for any country (or time period), we should find a way to group songs together. For example, if the artist has other songs for which the popularity score is known we could take the median of those scores, or we could look for songs with similar genre tag words.
-
-# output
-write_csv(df, "df_imputed.csv")
-```
-# Part 4: Feature Engineering
-
-## 📌 Exercise 4a: Creating Trend Variable
-
-More likely than not, you have come across the `lm()` (i.e., linear model) function once before during your studies. Then, you also know that a regression model can only interpret numeric data. Categorical fields are typically converted into so-called dummy variables that take on either the value `0` or `1`. In a similar vein, dates are often converted into trend variables as input for a time-series model. For example, in our dataset January the 1st, of 2020 becomes 1 and the 15th of December 2020 (the last entry of `df`) becomes 350. Follow the steps below to create this trend variable for the `date` column of `df`: 
-
-1. Study the [documentation](https://stat.ethz.ch/R-manual/R-devel/library/base/html/seq.Date.html) of the `seq` function to create a sequence of dates (see examples at the bottom of the page).
-2. Create a data frame `dates` with two columns: `date` (i.e., the sequence of dates) and `counter` (i.e., a numeric value between 1 and 350). Tip: you may first need to convert the `dates` column into character format (`as.charcter(date)`).
-3. Merge `df` and `dates` and inspect your results (which type of join do you use?)
-
-
-```{r eval=FALSE, webex.hide = 'Solution Exercise 5'}
-# Step 1
-date <- seq(min(as.Date(df$date)), max(as.Date(df$date)), by = "day")
-
-# Step 2
-counter <- 1:length(date)
-dates <- data.frame(counter=counter, date=date)
-
-# Step 3
-df <- df %>% inner_join(dates, by = "date")
-```
-
-## 📌 Exercise 4b: Creating ranks 
-
-Even though the data frame represents the Spotify top 200 charts, none of the columns indicates the rank of a given track. We can easily derive it from the number of streams, the `date`, and the `country` column. The built-in R function `ranks` returns a vector of ranks for a given input. By default, the lowest digit gets the highest rank (e.g., 1 becomes rank 1), you can reverse the order by adding a minus sign (`-`) in front of the input vector:
+### Compute summary statistics for streaming data
 
 ```{r}
-rank_example = c(4, 9, 3, 2, 1)
-# regular 
-print(rank(rank_example))
-# reversed
-print(rank(-rank_example)) 
-```
+library(dplyr)
 
-Add a `ranking` column to `df` using the `dplyr` package and export the result as `df_ranking.csv`. Although it is unlikely that some tracks have exactly the same number of streams, think about how you will deal with these edge cases (tip: run `?rank` to look up the documentation). Does your ranking always run from 1 to 200? Why is that? Investigate the root cause and fix it! 
-
-```{r eval=FALSE, webex.hide = 'Solution Exercise 4b'}
-# input
-df <- read_csv("df_imputed.csv")
-
-# transformation
-df <- df %>% group_by(country, date) %>%
-  mutate(ranking = rank(-streams, ties.method = "random"))
-
-# The maximum ranking is 400 (rather than 200)
-# Once we inspect one of the listings of df[df$ranking >= 200, ] we find that these records typically have redundant data somewhere hidden in between. For example, for df[(df$date == "2020-05-17") & (df$country == "HK"),] we discover that ranking 59 appears 17 times (!) which can be attributed to missing values `song_id` 
-
-# remove rows without song_id (if you then recreate the ranking column you'll come to the conclusion the maximum ranking has become 200!)
-df <- df %>% filter(!is.na(song_id))
-
-# output
-write_csv(df, "df_ranking.csv")
-```
-# Part 5: Pivoting the Data 
-
-Most tracks are assigned to more than one genre. For example, the famous song "Señorita" by Shawn Mendes and Camilo Cabello is categorized as `pop`, but also as `canadian pop`, `post-teen pop`, `viral pop`, and `dance pop`. The data frame stores these records as a list of comma-separated genres. On a high level, we like to move from this state: 
-
-| song_name | genres | 
-| :----- | :---- | 
-| Señorita | `pop, canadian pop, post-teen pop, viral pop, dance pop` | 
-
-
-To a format in which the columns represent genre tag words and the table values indicate which genre(s) belong to which `song_name`: 
-
-| song_name | k-pop | pop | canadian pop | post-teen pop | viral pop | dance pop | 
-| :----- | :---- | :---- | :---- | :---- | :---- | :---- | 
-| Señorita | 0 | 1 | 1 | 1 | 1 | 1 | 1 |
-| Memories | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
-| Psycho | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-
-
-
-To this end, we first need to separate the `genres` column of `df` into individual genres. We can use the built-in R function `strsplit` for that in the following way (note the double brackets `[[]]` around `1`!): 
-
-
-
-```{r}
-genres_example <- c("pop", "canadian pop", "post-teen pop", "viral pop", "dance pop")
-genres_example_split <- split(genres_example, ",")
-genres_example_split[[1]]
-
-```
-
-After some data wrangling we can transform the data into the following format: 
-
-| song_id | song_genre | 
-| :----- | :---- | 
-| 13594414 | pop | 
-| 13594414 | canadian pop | 
-| 13594414 | post-teen pop | 
-| 13594414 | viral pop | 
-| 13594414 | dance pop | 
-| 13977556 | pop` | 
-
-
-## 📌 Exercise 5: Reshape the data
-As a last step, we use the `pivot_longer()` and `pivot_wider()` functions to change the format of our data frame (see, e.g., [this overview](https://tidyr.tidyverse.org/reference/pivot_longer.html) or these [code snippets](https://dcl-wrangle.stanford.edu/pivot-advanced.html)). We then store the results in `df_reshaped.csv`. 
-
-Following these steps, it's your turn to create a data set, with (a) rows being the dates, (b) columns being the song IDs, and (c) the cells indicating a song's sum of streams.
-
-
-```{r eval=FALSE, webex.hide = 'Solution Exercise 5'}
-# load input
-df <- read_csv("df_ranking.csv")
-
-song_popularity = df %>% pivot_wider(id_cols = date, names_from = 'song_id', values_from = 'streams', values_fn = sum)
-
-# let us look at the columns (--> these are song IDs!)
-colnames(song_popularity)
-
-# let us look at the rows (--> these are dates!)
-song_popularity$date[1:10]
-
-# output
-write_csv(song_popularity, "df_reshaped.csv")
-```
-
-# Conclusion
-
-Congratulations! 🎉 You have successfully navigated the key steps of data preparation and gained hands-on experience with essential data wrangling techniques in R.  Here are the key takeaways from this tutorial:  
-
-**✅ Data Inspection & Cleaning**  
-
-- Loaded and explored raw datasets to understand their structure.
-- Identified missing values, out-of-range values, and encoding issues.
-- Detected and removed duplicate records to ensure data integrity.
-
-
-**✅ Data Merging & Joins**
-
-- Used inner_join(), left_join(), and right_join() to combine datasets and learnt how different join types affect data completeness.
-- Resolved column conflicts by adding suffixes during merging.
+# Compute basic statistics per artist
+streams %>%
+  group_by(artist) %>%
+  summarize(
+    min_streams = min(streams, na.rm = TRUE),
+    mean_streams = mean(streams, na.rm = TRUE),
+    max_streams = max(streams, na.rm = TRUE),
+    sd_streams = sd(streams, na.rm = TRUE)  # Standard deviation
+    
+  )
   
-**✅ Handling Missing Values & Data Imputation**
+```
 
-- Applied imputation techniques to replace missing values using median-based imputation.
-- Discussed pros and cons of different imputation methods and their impact on analysis.
+Want to go further? **Any function that works on a vector can be used here**—for example:
 
-**✅ Feature Engineering & Transformations**
+- `var(streams, na.rm = TRUE)` to calculate variance.
+- `range(streams, na.rm = TRUE)` to get the min and max in one step.
+- `quantile(streams, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)` to get quartiles.
 
-- Created new variables like trend indicators for time-series modeling and ranking.
-- Filtered and processed text-based columns, such as genre extraction.
+💡 **Tip:** You can check out the [Base R Cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf) to explore more functions you can integrate into your `tidyverse` workflows.
 
-**✅ Reshaping Data for Analysis**
+### Ranking: Identifying the Most-Listened-To Artists
 
-- Used pivot_longer() and pivot_wider() to restructure datasets.
+Ranking is **super useful** in our application because we may be interested in identifying **the most-listened-to artist** or tracking changes in ranking over time. Instead of just looking at absolute numbers, ranking allows us to **order values while handling ties**, which is often critical in reporting and analysis.
 
-Great job completing this tutorial! Keep practicing! 🎉  
+The `rank()` function assigns ranks based on the values in a column, with **ties receiving the same rank**. By default, it ranks in ascending order, but using `-x` flips the order to descending. This is particularly useful when working with **streams data**, where we want to **rank artists by their daily streaming count**.
 
-## Support Needed? 
+#### Example: Rank Artists by Streams Per Day
+```{r}
+library(dplyr)
 
-For technical issues outside of scheduled classes, please check the [support section](https://dprep.hannesdatta.com/docs/course/support) on the course website.
+# Rank artists within each day
+streams %>%
+  group_by(date) %>%
+  mutate(
+    rank_streams = rank(-streams),  # Higher streams = lower rank (1st place)
+    rank_streams_ties = rank(-streams, ties.method = "min")  # Handles ties
+  ) %>%
+  arrange(date, rank_streams) %>%
+  select(date, artist, streams, rank_streams) %>%
+  head(10)
+```
+
+💡 **Other useful ranking functions**:
+- `row_number(x)`: Assigns unique sequential numbers without ties.
+
+Using these functions, we can **track trends over time** and understand which artists are **consistently ranking high** in streams. 
+
+
+### Dealing with Unique Values: Removing Duplicates and Counting Distinct Entries  
+
+When working with data, we often need to **remove duplicate values** or **count unique occurrences**. Whether we're filtering artist names, cleaning up datasets, or summarizing trends, **uniqueness matters**.  
+
+In `tidyverse`, we have a few tools to help:  
+- `unique()` **kicks out duplicate values** from a vector or data frame.  
+- `distinct()` (from `dplyr`) removes duplicate rows from a data frame.  
+- `n_distinct()` **counts** the number of unique values in a column.  
+
+#### Example: Get a List of Unique Artists  
+Let’s start simple—getting a list of all the unique artists in our dataset.  
+
+```{r}
+unique_artists <- unique(streams$artist)  # Extract unique artist names
+head(unique_artists, 10)  # Show a preview
+```
+
+You can also use `unique()` inside a `mutate()` statement.
+
+#### Example: Count the Number of Unique Countries
+
+Now, let's count how many different countries appear in our dataset:
+
+```{r}
+streams %>%
+  summarize(num_unique_countries = n_distinct(country))
+```
+
+
+## Advanced Cleaning: Using Regular Expressions
+
+Regular expressions (**regex**) allow us to search for patterns in text, making it easier to clean and filter data. In R, we use:  
+
+- **`grepl()`** → Detect patterns in text (**Find something**)  
+- **`gsub()`** → Replace matched patterns with new values (**Replace something**)  
+
+### Common Regex Search Patterns
+
+| Pattern | Description | Example |
+|---------|------------|---------|
+| `\\d`  | Find **numbers** (`0-9`) | `grepl("\\d", "Song123")` → `TRUE` |
+| `[a-zA-Z]` | Find **letters** (case-sensitive) | `grepl("[a-zA-Z]", "123!")` → `FALSE` |
+| `^word` | Match **beginning** of a string | `grepl("^The", "The Beatles")` → `TRUE` |
+| `word$` | Match **end** of a string | `grepl("Band$", "Jazz Band")` → `TRUE` |
+
+### `grepl()`: Finding Patterns in Text  
+
+Use `grepl()` to **detect whether a pattern exists** in a column. It returns **TRUE/FALSE**, making it useful for filtering data.  
+
+#### Example: Identify artists with "DJ" in their name  
+```{r}
+streams %>%
+  filter(grepl("DJ", artist)) %>%
+  select(artist) %>%
+  distinct()
+```
+
+#### Example: Find artists whose names contain numbers  
+```{r}
+streams %>%
+  filter(grepl("[0-9]", artist)) %>%
+  select(artist) %>%
+  distinct()
+```
+
+#### Example: Find artists starting with "The" (case-insensitive)  
+```{r}
+streams %>%
+  filter(grepl("^The", artist, ignore.case = TRUE)) %>%
+  select(artist) %>%
+  distinct()
+```
+
+#### Example: Find artists ending with "Band"  
+```{r}
+streams %>%
+  filter(grepl("Band$", artist)) %>%
+  select(artist) %>%
+  distinct()
+```
+
+
+### `gsub()`: Replacing Patterns in Text  
+
+Use `gsub()` to **modify text by replacing matched patterns**.
+
+#### Example: Clean up underscores in artist names (replace `_` with space)  
+```{r}
+streams <- streams %>%
+  mutate(artist_clean = gsub("_", " ", artist))
+```
+
+#### Example: Remove numbers from artist names  
+```{r}
+streams <- streams %>%
+  mutate(artist_clean = gsub("[0-9]", "", artist))
+```
+
+## Dealing with Time
+
+### Last Value Carried Forward (`na.locf`)
+
+In time-series data, missing values can be imputed using the last observed value (LOCF). This is useful for forward-filling missing entries. The function is available in the `zoo` package. Please install it if it is unavailable (`install.packages('zoo')`).
+
+#### Example: Fill missing number of playlists
+
+```{r}
+library(zoo)
+
+# Let's create a few missing observations
+set.seed(1234)
+streams <- streams %>% ungroup() %>% mutate(streams=ifelse(runif(n())<.3,NA, streams)) %>% arrange(artist,country,date)
+
+# This snippet fills these observations, by carrying the "last observation (that's not NA) forward"
+streams <- streams %>%
+  group_by(artist, country) %>%
+  mutate(streams_filled = na.locf(streams, na.rm = FALSE))
+```
+
+### Lags and Leads
+
+Lags help compare values with previous observations, while leads look ahead.
+
+#### Example: Compute daily change in streams
+
+```{r}
+streams <- streams %>%
+  group_by(artist, country) %>%
+  arrange(date) %>%
+  mutate(
+    lag_streams = lag(streams_filled),
+    daily_change = streams_filled - lag_streams
+  )
+
+streams %>% arrange(artist,country,date) %>% head(10)
+```
+
+### Creating Counters
+
+Sometimes we need to generate row numbers or observation counters.
+
+#### Example: Assign an index to each artist's entries
+
+```{r}
+streams <- streams %>%
+  group_by(artist, country) %>%
+  mutate(entry_number = row_number())
+
+streams %>% select(date, artist, country, entry_number) %>% arrange(artist, country, date) %>% head(10)
+```
+
+### Conversion with Dates
+
+Date manipulation is critical for aggregating data by weeks, months, or years.
+
+#### Example: Convert date to week and extract the year
+
+```{r}
+library(lubridate)
+
+streams <- streams %>%
+  mutate(
+    week = isoweek(date),
+    month = month(date),
+    year = year(date)
+  )
+
+streams %>% select(date, week, month, year) %>% head(10)
+```
+
+### Week to Month & Month to Date Conversion
+
+Aggregating data by different time frames helps in trend analysis.
+
+#### Example: Aggregate streams by month
+
+```{r}
+monthly_streams <- streams %>%
+  group_by(year, month, artist) %>%
+  summarize(total_streams = sum(streams, na.rm = TRUE))
+
+monthly_streams %>% head(10)
+```
+
+This concludes **Part 1** of our tutorial. In the next part, we will apply these techniques in real-world marketing case studies!
+
+
+
+Here's the refined **Merging Data** section with a more balanced discussion on `full_join()`, plus an explanation of `merge()` from base R and when to use or avoid it.  
+
+## Merging Data: Combining Multiple Data Sources  
+
+In real-world analysis, data is often stored in separate tables. To get meaningful insights, we need to merge datasets based on shared keys. The `dplyr` package provides efficient functions for this, making it easy to combine and manipulate data.
+
+### Understanding Join Types  
+
+Joins allow us to merge two datasets by matching values in a **key column**. Here’s an overview of different join types:
+
+![Common Join Types](https://raw.githubusercontent.com/rstudio/cheatsheets/main/joins.png)  
+
+| Join Type  | Keeps All Rows From | Drops Rows? |
+|------------|--------------------|-------------|
+| **Left Join (`left_join()`)** | Left table | No |
+| **Inner Join (`inner_join()`)** | Only matching rows | Yes |
+| **Right Join (`right_join()`)** | Right table | No |
+| **Full Join (`full_join()`)** | Both tables (fills missing values) | No |
+
+The **left join is the default choice** in most cases because it keeps all rows from the left dataset and only adds matching values from the right. Inner joins should be used with caution because they remove rows that do not have a match.
+
+
+### What Are Keys in a Join?  
+
+To merge data correctly, we need **keys**—columns that uniquely identify records in each dataset.  
+
+- **Single key**: Merging by a single column like `"date"`.  
+- **Composite key**: Merging by multiple columns like `"date"` and `"artist"`.  
+
+Without defining a proper key, the merge may not work as expected, or it may introduce duplicate rows.
+
+### Examples of Joins in Action
+
+#### Example: Left Join (Recommended)  
+
+Merging `streams` with `playlists`, keeping all rows from `streams`.  
+
+```{r}
+# For this exercise, let's add a week column that we can merge on
+streams <- streams %>% mutate(week=ISOweek::ISOweek(date))
+
+merged_data <- streams %>%
+  left_join(playlists, by = c("artist" = "artist", 
+                              "week"="iso_week"))  # Keeps all stream data, adds playlist info.
+
+# Note: here we specify that "week" in the LEFT data frame (streams) is matched on the "iso_week" column in the RIGHT data frame (playlists). 
+
+head(merged_data)
+```
+
+Why use a left join?  
+- All streaming data remains intact.  
+- Playlist data is added where available, but missing values appear if no match is found.  
+- This is useful when missing data in playlists should not remove streaming records.
+
+#### Example: Inner Join (Only Matching Rows)  
+Keeps only rows where a match exists in both `streams` and `socials`.  
+
+```{r}
+tiktok_followers = socials %>% filter(platform=='TikTok'  & metric == 'followers')
+
+merged_data <- streams %>%
+  inner_join(tiktok_followers, by = c("date", "artist"))  # Match by both columns
+
+# rename value column
+merged_data = merged_data %>% mutate(tiktok_followers = value) %>% select(-platform, -metric, -value)
+
+head(merged_data)
+```
+
+Things to keep in mind:  
+- Rows are removed if an artist has streams but no corresponding social media data on that date. 
+- This join is only useful when seeking to analyze cases where **both datasets** must have relevant information.
+
+Note: Before `dplyr`, R users relied on the `merge()` function from base R. It works similarly but is less readable and much slower. In other words: please use `tidyverse`/`dplyr`.
+
+### Key Takeaways  
+
+- **Use `left_join()` as the default** because it keeps all rows from the left dataset.  
+- **Be cautious with `inner_join()`**, as it removes rows with no match.  
+- **`merge()` is a base R alternative**, but `left_join()` is preferred for readability and efficiency.  
+
+For more details, check out the official **dplyr cheatsheet** on joins:  
+[Joins Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/joins.png)  
+
+## Pivoting Data: Reshaping from Long to Wide and Wide to Long  
+
+Data is often stored in **different formats**, depending on the analysis needs. Sometimes, we need to **widen** a dataset to make it easier to read, and other times, we need to **lengthen** it to perform certain operations. The `tidyr` package in `tidyverse` provides **pivoting functions** to reshape data efficiently.  
+
+
+### Wide vs. Long Format
+
+- **Wide format**: Each row represents a single entity, with multiple columns for different variables.  
+- **Long format**: Each observation is in its own row, with a single column for values and an **additional column indicating the variable type**.  
+
+| Format | Example Structure | Example Dataset
+|--------|------------------|--------------|
+| **Wide** | One row per date, multiple columns for weather indicator by country | `weather.csv` |
+| **Long** | One row per artist-date-country combination, a column for streams | `streams.csv` |
+
+
+### From Wide to Long: `pivot_longer()`  
+
+When converting **wide data** to **long format**, we gather multiple columns into key-value pairs. This is useful when variables are spread across columns but should be stored as rows.
+
+Key arguments in `pivot_longer()`:  
+
+1. **`cols`** – Selects which columns to pivot.  
+   - Can specify by name (`c(BE_temp, DE_temp)`) or range (`BE_temp:US_temp`).  
+   - Use `-date` or `!date` to pivot everything except certain columns.  
+
+2. **`names_to`** – Defines where column names will be stored.  
+   - Example: `"country"` if columns like `DE_temp` and `BE_temp` should be labeled by country.  
+
+3. **`values_to`** – Defines where the actual data values go.  
+   - Example: `"temperature"` if numeric values from `DE_temp` and `BE_temp` represent temperature readings.  
+
+This transformation makes it easier to filter, group, and analyze structured data.  
+
+#### Example: Make `weather` data long by country
+The `weather` dataset stores temperature data **by country** in long format. We want to convert it into wide format, with one row per `date` and separate columns for each country’s temperature.
+
+```{r}
+long_weather <- weather %>%
+  pivot_longer(cols = ends_with('temp'), names_to = "name", values_to = "temperature") %>% separate(name, into = c('country','variable'), sep='_') %>% select(date, country, temperature)
+
+
+head(long_weather)
+```
+
+**Before pivoting (wide format)**:
+
+| date       | BE_temp | DE_temp |
+|------------|--------|--------|
+| 2024-01-01 | 11.6   | 14.3   |
+| 2024-01-02 | 11.4   | 8.7    |
+
+**After pivoting (long format)**:
+
+| date       | country | temperature |
+|------------|---------|-------------|
+| 2024-01-01 | BE      | 11.6        |
+| 2024-01-01 | DE      | 14.3        |
+| 2024-01-02 | BE      | 11.4        |
+| 2024-01-02 | DE      | 8.7         |
+
+📌 **Why use `pivot_longer()`?**  
+
+- Makes data **tidier** for filtering, grouping, and visualization.  
+- Essential for **ggplot2** and **time-series analysis**, where values should be in a single column.
+
+
+### From Long to Wide: `pivot_wider()`
+
+When converting **long data** to **wide format**, we spread values across multiple columns, making the dataset easier to read and analyze.
+
+Key arguments in `pivot_wider()`:  
+
+1. **`id_cols`** – Specifies the column(s) that should remain unchanged.  
+   - Example: `"date"` if we want to keep dates as row identifiers while spreading other values.  
+   - If not specified, `pivot_wider()` assumes all non-selected columns should be spread.  
+
+2. **`names_from`** – Defines which column contains the new column names.  
+   - Example: `"country"` if values from `"country"` (`DE`, `BE`, `NL`) should become separate columns.  
+
+3. **`values_from`** – Specifies which column contains the data to be spread across new columns.  
+   - Example: `"temperature"` if we want each country's temperature as its own column.  
+
+This transformation is useful when preparing data for reports, modeling, or visualizations.  
+
+#### Example: Make `long_weather` wide again
+
+```{r}
+wide_weather <- long_weather %>% 
+  pivot_wider(names_from = 'country', values_from = 'temperature')
+
+head(wide_weather)
+```
+
+
+**Before pivoting (long format)**:
+
+| date       | country | temperature |
+|------------|---------|-------------|
+| 2024-01-01 | BE      | 11.6        |
+| 2024-01-01 | DE      | 14.3        |
+| 2024-01-02 | BE      | 11.4        |
+| 2024-01-02 | DE      | 8.7         |
+
+**After pivoting (wide format)**:
+
+| date       | BE_temp | DE_temp |
+|------------|--------|--------|
+| 2024-01-01 | 11.6   | 14.3   |
+| 2024-01-02 | 11.4   | 8.7    |
+
+
+📌 Why use `pivot_wider()`?
+
+- Makes the dataset **easier to read** when working with multiple categories.  
+- Useful when preparing data for **visualizations or modeling**.
+
+### Key Takeaways
+
+- Use `pivot_wider()` when you need **one row per entity** with multiple value columns.  
+- Use `pivot_longer()` when you need **one row per observation**, making it easier for analysis.  
+- Pivoting is **reversible**—you can always reshape data back if needed.  
+
+For more details, check out the **tidyverse cheatsheet on pivoting**:  
+[tidyr Pivoting Cheatsheet](https://tidyr.tidyverse.org/reference/pivot_longer.html)  
+
+
+# Part 2: Case studies and Exercises
+
+
 
