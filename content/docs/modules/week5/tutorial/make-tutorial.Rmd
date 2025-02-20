@@ -1,48 +1,63 @@
 ---
 title: "Pipeline Building & Automation"
 author: ""
-output: html_document
+date: "Last updated: 19 February 2025"
+output:  
+  webexercises::webexercises_default:
+    theme: flatly
+    highlight: tango
+    toc: true
 ---
+
+<style>
+table {
+  width: auto !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-*When working on large-scale data intensive projects, it's important to define a project pipeline and automate it end to end so that you don't have to manually produce your research results but you can just sit back and relax and have the computer do the the job for you. In this tutorial, you learn how to organize your files and directories and set-up a makefile that executes your whole project with just a single command!*
-
-*Updated 26 September 2023* 
-
-__The solutions to the exercises and an FAQ are at the end of this document.__
-
 ---
 
-### Prerequisites
+# Getting started
 
-* Get familiar with the shell/terminal/command line
-  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; Mac &amp; Windows) 
-  * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
+When working on large-scale data intensive projects, it's important to define a project pipeline and automate it end to end so that you don't have to manually produce your research results but you can just sit back and relax and have the computer do the the job for you. In this tutorial, you learn how to organize your files and directories and set-up a makefile that executes your whole project with just a single command!
 
+## Learning Objectives
 
---- 
-
-### Learning Objectives
 * Learn how to organize your project with a coherent directory structure
 * Conceive your project as a pipeline
 * Separate your code into smaller chunks (each one with inputs, transformations and outputs)
 * Automate workflows and make them reproducible using make
 
-\
 
-### 1. Getting Started
+__The solutions to the exercises and an FAQ are at the end of this document.__
 
-#### 1.1 Installation
-We will use make to automate the execution of our projects with a "single click", so that our entire work flow is reproducible. Before you proceed, make sure you have fulfilled the prerequisites and installed the required software: 
-* Head over to Tilburg Science Hub and follow the [make installation](https://tilburgsciencehub.com/get/make) for either Windows, Mac or Linux. Verify whether you installed make successfully by typing `make` in the terminal. 
-* Also, make sure you can call R from the command prompt. On Mac and Linux, R is available from the command line by default. Windows user can follow the steps at the bottom of [this](https://tilburgsciencehub.com/get/r) page.
 
-\
+## Prerequisites and Installation
 
-#### 1.2 Running files manually
+* Get familiar with the shell/terminal/command line
+  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; Mac &amp; Windows) 
+  * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
+* Install `make`
+  * We will use make to automate the execution of our projects with a "single click", so that our entire work flow is reproducible. Before you proceed, please install make ([Windows](https://tilburgsciencehub.com/get/make) users only - Mac/Linux already have it!).
+* Verify whether you installed make successfully  
+  * type `make` in the terminal, and confirm with your `enter` key
+  * if the computer replies: `make: *** No targets specified and no makefile found.  Stop.` - that means it is *properly installed*!
+* Verify you can call R from the command prompt
+    - On Mac and Linux, R is available from the command line by default. 
+    - Windows users have to add the installation path of R to their environment variable `path`
+    - To do so, please follow the steps at the bottom of [this](https://tilburgsciencehub.com/get/r) page.
+
+# Part 1: The Power of Automation
+
+## 1.1 Running files manually
 In this tutorial, we're going to create a make file that downloads, loads, transforms, and exports data from [Inside Airbnb](http://insideairbnb.com/index.html). The website provides a visual overview of the amount, availability, and spread of rooms listed on Airbnb across a city, as well as an approximation of the number of bookings and occupancy rate, and the number of listings per host. Moreover, the website publicly shares listings, calendar, neighbourhood and reviews data of various popular Airbnb destinations.  
 
 **Exercise 1**  
@@ -55,9 +70,9 @@ The lesson learned here is that we cannot only run R scripts from within RStudio
 
 \
 
-### 2. Make-files
+## 1.2 Automation with `makefiles`
 
-#### 2.1 What are makefiles?
+### 1.2.1 What are makefiles?
 
 Makefiles are instructions (“rules”) for a computer on how to build “stuff”. Think of makefiles as a recipe you may know from cooking (“Baking a cake: First, take some flour, then add milk […]") - but then for computers.
 
@@ -67,7 +82,7 @@ Researchers can use makefiles to define rules how individual components (e.g., c
 
 \
 
-#### 2.2 Rules 
+### 1.2.2 Rules (or "recipes")
 
 A rule in a makefile generally looks like this:
 
@@ -93,6 +108,8 @@ plot_all.pdf: run_Antwerp.R
 
 \
 
+### 1.2.3 Implementing a Simple Makefile
+
 **Exercise 2**  
 
 1. Create a new makefile (tip: if you're on a Mac or Linux machine, use `touch makefile` in your terminal; Windows users can open a new file in an editor and save it (without file extension!) as `makefile`). Open the `makefile` in a text editor. Add the two lines above and save the changes. Open your terminal and run `make`. What happens?  
@@ -102,9 +119,9 @@ plot_all.pdf: run_Antwerp.R
 
 \
 
-### 3. Modularization & Directory Structure
+# Part 2: Modularization & Directory Structure
 
-#### 3.1 Modularizing Code
+## 2.1 Modularizing Code
 So far, we have defined a simple makefile that checks whether `plot_all.pdf` is present and if not it runs the R script. For each minor change, such as changing one of the areas in the plot, it runs the entire script from top to bottom. This costs unnecessary compute resources because the listings and reviews data have already been downloaded and preprocessed. In practice, you therefore often want to split up a large file into multiple *modules* so that you only need to run those modules that contain changes. 
 
 In the figure below we impose a flow diagram structure in which the `run_Antwerp` script has been split up in five separate R modules: 
@@ -126,7 +143,7 @@ In the figure below we impose a flow diagram structure in which the `run_Antwerp
 
 \
 
-#### 3.2 Phony targets
+## 2.2 Phony targets
 The targets we have seen so far refer to output files (e.g., `aggregated_df.csv`). Sometimes, it’s not practical to generate outputs. We call these targets "phony targets". Let's consider the following makefile: 
 
 ```
@@ -159,7 +176,7 @@ Switch back to the other directory, add the `all` phony target to your makefile,
 
 \
 
-#### 3.3 Directory Structure
+## 2.3 Directory Structure
 Part of building a proper data pipeline is having a directory structure in place. Up to this point, we did not explicitly tell you where or how to save your files so you probably stored all source and output files in a single folder. Especially for larger projects this tends to become messy, so instead we recommend having a structured mechanism in place for your file storage, which we explain below.
 
 To start, let’s assume we’re working on a project, called `my_project`. Let us create that directory somewhere on our computer, preferably not in the cloud (i.e., not in a Dropbox or Google Drive folder). Inside this folder you find the following subdirectories: 
@@ -222,9 +239,9 @@ Tip: add `Rscript -e "dir.create('data')"` as a command above `download.R` in th
 
 \
 
-### 4. Advanced Commands
+# Part 3: Advanced Commands
 
-#### 4.1 Variables
+## 3.1 Variables
 
 Writing long file paths, such as `../../gen/temp/aggregated_df.csv` is cumbersome and prone to errors. Therefore, you can clean up your makefiles using variables like this: 
 ```
@@ -244,7 +261,7 @@ Adapt your makefile from exercise 7 such that repetitive paths are replaced by v
 \
 
 
-#### 4.2 Multiple makefiles
+## 3.2 Multiple makefiles
 
 Up to now, we have created a single makefile stored in the root directory that triggers the entire workflow. For clarity and structure reasons, however, it is recommended to have a makefile in both the `data-preparation` and `analysis` subfolder. This also makes referencing file paths to the files more straightforward. 
 
@@ -286,7 +303,7 @@ Create another makefile in the root directory, copy the contents from above, and
 
 \
 
-#### 4.3 Cleaning data
+## 3.3 Cleaning data
 Like the `all` phony target generates all files, another convention is to have a `clean` target that removes all generated folders and files. This way, you can easily clean up your directory and run `make` again to build up all files from scratch. The code snippet below removes the `data` and `gen` folders as well as their contents.
 
 ```
@@ -300,7 +317,7 @@ Add the `clean` phony target to the makefile located in the root directory. Then
 
 \
 
-### 5. Makefiles Solutions
+## 3.4 Makefiles Solutions
 
 If you've worked through the entire set of exercises, this is how the final makefiles should look like:
 
@@ -358,11 +375,11 @@ $(OUTPUT)/plot_all.pdf: $(TEMP)/aggregated_df.csv plot_all.R
 ```
 \
 
-### 6. FAQ
+# FAQ
 
 Creating a make workflow that runs from start to finish is an iterative process of trial and error. Here are a few pointers to debug your makefiles.
 
-*1. Is `make` properly installed?*
+## 1. Is `make` properly installed?*
 
   To run makefiles, you have to have `make` installed on your system. So if you see a message like this... `'make' is not recognized as an internal or external command, operable program or batch file.`.
 
@@ -370,7 +387,7 @@ Creating a make workflow that runs from start to finish is an iterative process 
 
 \
 
-*2. Does your code run without make?*
+## 2. Does your code run without make?*
 
   There are two things that can go wrong when working with makefiles. Either there's a problem with the `makefile` itself, or there's a problem with the code that the `makefile` executes.
 
@@ -383,7 +400,7 @@ Creating a make workflow that runs from start to finish is an iterative process 
 
 \
 
-*3. Is your `makefile` structured properly?*
+## 3. Is your `makefile` structured properly?*
 
   One of the most common mistakes in a `makefile` is to not adhere to the syntax:
 
