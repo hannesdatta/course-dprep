@@ -36,8 +36,8 @@ enableGitInfo = true
   
   Course_Deadline_Project = "Monday, 24 March 2025 (23:59)" #Sunday, 13 October 2024 (23.59)" 
 
-  Course_Exam_Mainsit = "tba" # "Monday, 14 October 2024"
-  Course_Exam_Resit = "tba" # "Monday, 16 December 2024"
+  Course_Exam_Mainsit = "Thursday, 3 April 2025" # "Monday, 14 October 2024"
+  Course_Exam_Resit = "Friday, 27 June 2025" # "Monday, 16 December 2024"
   
   Datacamp_Link = "https://www.datacamp.com/groups/shared_links/1da903ac900a217d264a771211c0f5ea3fd66f58dbe718c412db79744c1e57f5"
 
