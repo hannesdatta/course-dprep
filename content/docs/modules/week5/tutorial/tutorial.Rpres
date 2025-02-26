@@ -10,21 +10,28 @@ autosize: true
 }
 </style>
 
-Before we get started
+Before we get started I
 =====================
 
-- Last "content" week
-- Exam
+- Last "content" week 
+- Exam organization
   - registration via Osiris!
-  - check example questions on the course website
-- Today's material...
-  - slide deck available on the [site](https://dprep.hannesdatta.com/docs/modules/week5/tutorial/make-tutorial/)!
-  - [download the `make` cheatsheet](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/images/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
+  - 3rd examination opportunity: likely after the summer; date unknown still
+- Exam preparation
+  - example questions on the course website (plus update to be released 3 March + solutions)
+  - extra Q&A after the break: __10 March, 12.45-13.45__ (online, link on Canvas); prep well!
+
+Before we get started I
+=====================
+
+- slide deck available on the [site](https://dprep.hannesdatta.com/docs/modules/week5/tutorial/make-tutorial/)!
+- [download the `make` cheatsheet](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/images/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
+
 
 Where we are heading today
 ==========
 
-__Let's describe our toolstack...__
+__Let's describe our tool stack...__
 
 - We use **Git/GitHub** to collaborate on code
   - versioning of files - frequent commits
@@ -34,29 +41,41 @@ __Let's describe our toolstack...__
   - Rmarkdown & plotting
   - `tidyverse` & data preparation, setup + ITO
 - But... process is still *quite manual*
-  - how to "run" code? (e.g., order, all code files?)
+  - how to "run" code? (e.g., in which order, which files?)
 
 __Today, we learn how to automate projects.__
 
-Automation tools
+Automation tools I
 ========
 incremental: true
 
 - Many automation tools on the market
-- Originally designed to automate software builds
-- Launches "other" software programs (e.g., R), mostly on the terminal/command prompt
+  - Originally designed to automate software builds
+  - Some software-specific (e.g., `target` in R)
+  - Others are software- and OS-independent: launch other software programs (e.g., R) via the terminal/command prompt
 - We use `make`
-  - probably one of the oldest ones on the market
+  - software- and OS-independent 
   - free/open source, widely used
+  - probably one of the oldest ones on the market
   
-Demonstration
-==========
+  
+Automation tools II
+========
 
-__I'll show you the basic functions of `make` in one of my projects.__
+How to __use__ automation tools?
 
-1. Directory structure
-2. Look at "makefile" and its rules (more later)
-3. Run `make -n`, `make`
+- (1) Right from the start of the project
+  - goal: at every iteration of your project, *automate* all steps
+  - motivation: safe time when having to re-run code, reduce mistakes
+  - tips: 
+      - at the beginning, can be no more than just running one script!
+      - keep on updating `make`/automation throughout
+- (2) Automate an existing project (__today's focus__)
+  - goal: *automate* an existing project
+  - main challenge: figure out dependencies & test
+  - tips: 
+      - start with automating *first* script, and run
+      - continuously automate next steps
 
 DO: Verify make and R are properly installed
 =======
@@ -83,6 +102,20 @@ download.file('https://gist.githubusercontent.com/hannesdatta/1f764090ae3ebfaabe
 1. __Open the file__ `run_antwerp.R` in RStudio to check out the code - can you run the first few lines? Does it work?
 2. Try __running the file from the terminal__, by typing `Rscript run_antwerp.R`. What happens?
 3. Try using this command instead: `R --vanilla < run_antwerp.R` - what difference does it make?
+
+What we will do
+==========
+
+- We will automate each step in this research project
+- At every iteration, we will run step 1, then step 1 + 2, then step 1 + 2 + 3.
+- Formally, the __make workflow__ is:
+  - 1) delete all temporary/input files
+  - 2) run `script_X.R` from the command line - does it run & build what is expected?
+  - 3) write a `make` "recipe" to automate step 2
+  - 4) preview what make would do - fix if needed (`make -n`)
+  - 5) run make
+- Repeat make flow, for the next step of the project.
+
 
 Understanding `run_antwerp.R`
 =====
