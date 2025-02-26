@@ -21,14 +21,13 @@ Before we get started I
   - example questions on the course website (plus update to be released 3 March + solutions)
   - extra Q&A after the break: __10 March, 12.45-13.45__ (online, link on Canvas); prep well!
 
-Before we get started I
+Before we get started II
 =====================
 
 - slide deck available on the [site](https://dprep.hannesdatta.com/docs/modules/week5/tutorial/make-tutorial/)!
-- [download the `make` cheatsheet](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/images/tsh_make_cheatsheet.pdf) from Tilburg Science Hub
+- [download the `make` cheatsheet](https://dprep.hannesdatta.com/docs/exam/)
 
-
-Where we are heading today
+Motivation
 ==========
 
 __Let's describe our tool stack...__
@@ -38,16 +37,15 @@ __Let's describe our tool stack...__
   - issues, branches and pull requests
   - management via project board
 - We have learnt how to **explore data and engineer datasets**
-  - Rmarkdown & plotting
-  - `tidyverse` & data preparation, setup + ITO
-- But... process is still *quite manual*
-  - how to "run" code? (e.g., in which order, which files?)
+  - Rmarkdown & plotting using `ggplot2`
+  - `tidyverse` & data preparation/engineering, setup + ITO
+- But... process is still **quite manual**: how to "run" code (e.g., in which order, which files)?
 
 __Today, we learn how to automate projects.__
 
 Automation tools I
 ========
-incremental: true
+
 
 - Many automation tools on the market
   - Originally designed to automate software builds
@@ -65,94 +63,305 @@ Automation tools II
 How to __use__ automation tools?
 
 - (1) Right from the start of the project
-  - goal: at every iteration of your project, *automate* all steps
+  - goal: at every iteration of your project, *automate* current and previous steps
   - motivation: safe time when having to re-run code, reduce mistakes
   - tips: 
       - at the beginning, can be no more than just running one script!
       - keep on updating `make`/automation throughout
 - (2) Automate an existing project (__today's focus__)
-  - goal: *automate* an existing project
-  - main challenge: figure out dependencies & test
+  - main challenge: figure out dependencies (what to run first?) & test
   - tips: 
       - start with automating *first* script, and run
       - continuously automate next steps
 
-DO: Verify make and R are properly installed
+Preview of what's to come
+=====
+
+1. Part 1: Check whether `make` is properly installed
+2. Part 2: Checking out our example project for today
+3. Part 3: Automate this example project (in eight smaller "sub" chapters)
+4. Part 4: Recap/wrapping up
+
+
+Part 1: Verify make and R are properly installed (DO)
 =======
 
 __If you can't run `make` and `Rscript` from your terminal, you won't be able to proceed.__
 
 1. Verify __`make`__ is properly installed
   - open the terminal/command prompt and type `make` (enter). 
-  - See this? `make: *** No targets specified` -- then it is __correctly installed__!
+  - See this? 
+  
+  ```bash
+  make: *** No targets specified
+  ```
+    ...then it is __correctly installed__!
+    
 2. Verify you can run `Rscript` from the terminal/command prompt
-  - type `Rscript` (enter). 
-  - See output starting with `Usage: Rscript [options] file [args]`...? -- then you are *all set*!
+  - type `Rscript` (followed by enter). 
+  - See output starting with...
+  
+  ```bash
+  Usage: Rscript [options] file [args]
+  ```
+  
+    ...then you are *all set*!
 
-Do: Getting familiar with today's data/practice project
+Part 2: Getting familiar with today's data/practice project I
 ========
 class: small-code
 
 Today's project is based on a prototype project using Airbnb data. Please __download the source code now__ (run code below).
 
 ```{r}
-download.file('https://gist.githubusercontent.com/hannesdatta/1f764090ae3ebfaabe7a91ea4b971c3d/raw/2df12443cd144141dedb866967cbe985b97052f5/run_antwerp.R', 'run_antwerp.R')
+download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week5/tutorial/workflow.zip', 'workflow_in_class.zip')
+unzip('workflow_in_class.zip')
 ```
 
-1. __Open the file__ `run_antwerp.R` in RStudio to check out the code - can you run the first few lines? Does it work?
-2. Try __running the file from the terminal__, by typing `Rscript run_antwerp.R`. What happens?
-3. Try using this command instead: `R --vanilla < run_antwerp.R` - what difference does it make?
+1. __Open the file__ `run.txt` and check out the running instructions.
+2. Run the "first step" of this project (`download.R`)
+  - run __manually in RStudio__. Does it work?
+  - try __running the file from the terminal__, by typing `Rscript download.R`. What happens?
+  - try using this command instead: `R --vanilla < download.R`. What difference does it make?
 
-What we will do
-==========
 
-- We will automate each step in this research project
-- At every iteration, we will run step 1, then step 1 + 2, then step 1 + 2 + 3.
+Part 2: Getting familiar with today's data/practice project II
+=======
+
+We will __automate each step__ in this research project
+
+![](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week5/tutorial/images/dependencies_Antwerp.png)
+
+
+Part 2: The make workflow
+=======
+
+- At every iteration of our automation (also in this tutorial), we will run step 1, then step 1 + 2, then step 1 + 2 + 3.
 - Formally, the __make workflow__ is:
   - 1) delete all temporary/input files
   - 2) run `script_X.R` from the command line - does it run & build what is expected?
-  - 3) write a `make` "recipe" to automate step 2
+  - 3) write a `make` "recipe" to automate step 2 [&rarr; __next slide__]
   - 4) preview what make would do - fix if needed (`make -n`)
   - 5) run make
-- Repeat make flow, for the next step of the project.
+- __Repeat make workflow__ for the next step of the project.
 
 
-Understanding `run_antwerp.R`
-=====
-
-- One script that prepares and analyzes data
-- But: in reality, our project will consist of *multiple code snippets*
-  - ...and each of these code snippets depends on other code snippets and data
-  - ...and feature nicely structured ITO-blocks (remember?)
-<br>
-
-__We will now gradually "modularize" (split in multiple code files) and automate our project, using `make`.__
-
-Writing our first make recipe
+Part 2: Writing a "make recipe" I
 =====
 
 - To automate projects, we will write a `makefile` and put it in the root of our project directory
-- A `makefile` consists of one or multiple "recipes"
-  - what to build? (filenames!)
-  - what are prerequisites, dependencies? (also files)
-  - how to build it? (a command to execute stuff)
+- A `makefile` consists of one or __"recipes"__
+  - what to build? (a list of file names, separated by spaces)
+  - what are prerequisites, dependencies? (also files, separated by spaces)
+  - how to build it? (a command that could also be run manually on the terminal, to execute stuff)
 
-DO: Writing our first make recipe
+Part 2: Writing a "make recipe" II
+=====
+
+- Example:
+
+  ```bash
+  output.csv: input.csv script.R
+        Rscript script.R
+  ```
+- In our own words...
+  1. check whether `input.csv` and `script.R` have been updated lately
+  2. If updated since last time it was run? &rarr; Run `script.R`, which builds `output.csv`
+  3. If either `input.csv` or `script.R` do not exist &rarr; find another recipe that instructs how to build these
+
+
+Part 3
+=====
+
+We now start automating the entire project.
+
+3.1 DO: Writing our first make recipe
 ==============
 
-- Create a new file, called `makefile` (no extension)
-- Paste the code below and save (use a __tab__ to indent `R --vanilla` or `Rscript`...)
-- Then type `make` on terminal. What happens?
+- Create a new file in VS Code, called `makefile` (no extension, i.e., not `makefile.txt`)
+- Open the `makefile` and type the code below. 
 
 ```
-plot_all.pdf: run_Antwerp.R
-  R --vanilla < run_Antwerp.R
+listings.csv reviews.csv: download.R
+    R --vanilla < download.R
 ```
 
-DO: Running make again
+__Important:__ Use a __tab__ to indent the second line: `R --vanilla` or `Rscript`...! __NO__ spaces.
+
+- Go to your terminal. 
+  - Type `make -n ` and confirm with enter. What happens?
+  - Type `make`  and confirm with enter. What happens?
+
+3.1 Recap: The make workflow
+=====
+
+- 1) delete all temporary/input files
+- 2) run `script_X.R` from the command line - does it run & build what is expected?
+- 3) write a `make` "recipe" to automate the next step
+- 4) preview what make would do - fix if needed (`make -n`)
+- 5) run make
+
+__Repeat make workflow__ for the next step of the project.
+
+3.2 DO: Let's write a "rule" to delete temporary files
+====
+
+__When working with `make`, it's handy to keep our project tidy (i.e., get right of "old" files automatically)__.
+
+- Open the `makefile` again and enter a next recipe (put below what was done earlier).
+
+```
+wipe: 
+    R -e "unlink('*.csv')"
+
+```
+
+__Important:__ Use a __tab__ to indent the second line! __NO__ spaces.
+
+- Go to your terminal. 
+  - Type `make -n ` (enter), and then `make` (enter).  What happens at every step?
+  - Type `make wipe -n ` (enter), and then `make wipe` (enter).  What happens at every step?
+
+3.3 Recap: The make workflow
+=====
+
+- 1) delete all temporary/input files
+- 2) run `script_X.R` from the command line - does it run & build what is expected?
+- 3) write a `make` "recipe" to automate the next step
+- 4) preview what make would do - fix if needed (`make -n`)
+- 5) run make
+
+*Repeat make workflow__ for the next step of the project.*
+
+__QUESTION:__ What's our next move?!
+
+
+3.3 DO: Let's write a "rule" for clean.R
+====
+
+- Reflect:
+  - what to build? (a list of file names, separated by spaces)
+      - *tip:* check output files in `clean.R`
+  - what are prerequisites, dependencies? (also files, separated by spaces)
+      - *tip:* check input files in `clean.R` + also use file name of current script
+  - how to build it? (a command that could also be run manually on the terminal, to execute stuff)
+      - *tip:** check how we ran other `.R` files from the terminal.
+
+- Put the new rule *below* what has been written earlier. Try to run: `make -n`, `make`. what happens?
+- Put the new rule *above* everything that has been written earlier. Try to run: `make -n`, `make`. what happens?
+
+3.3 Solution
+====
+
+
+```bash
+aggregated_df.csv: clean.R reviews.csv listings.csv
+    Rscript clean.R
+
+listings.csv reviews.csv: download.R
+    R --vanilla < download.R
+    
+wipe: 
+    R -e "unlink('*.csv')"
+```
+
+3.4 DO: Let's write a "rule" for pivot.table.R
+====
+
+- Reflect:
+  - what to build? (a list of file names, separated by spaces)
+      - *tip:* check output files in `clean.R`
+  - what are prerequisites, dependencies? (also files, separated by spaces)
+      - *tip:* check input files in `clean.R` + also use file name of current script
+  - how to build it? (a command that could also be run manually on the terminal, to execute stuff)
+      - *tip:** check how we ran other `.R` files from the terminal.
+
+- Write the rule below all the code you've written in the `makefile` earlier.
+- Then, run make: `make -n`,  `make`. 
+
+3.4 The "first rule" I
+==============
+
+- Make will __only__ run the very first rule it encounters, plus all the "other" rules it needs to run to execute that very first rule.
+- Example 1 (in pseudo code): will only build `data1`
+
+```bash
+data1: fileA
+  run fileA
+data2: fileB data1
+  run fileB
+```
+
+- Example 2 (in pseudo code): wants to build `data2`: requires & builds `data1`, then builds `data2`.
+
+```bash
+data2: fileB data1
+  run fileB
+data1: fileA
+  run fileA
+
+```
+
+3.4 The "first rule" II
+==============
+
+- You can easily mess up what's the "first" rule in a `makefile`.
+- Therefore, we sometimes introduce a "fake" recipe that simply says what the final product of our pipeline is.
+- We can then put this on top, as an extra rule.
+- Example 1b (building on example 1, which didn't work earlier)
+
+```bash
+first_rule: data2
+
+data1: fileA
+  run fileA
+data2: fileB data1
+  run fileB
+```
+
+3.5 DO: Let's write two more rules
+====
+
+- Goal: automate `plot_all.R` and `plot_antwerp.R`
+
+- Reflect:
+  - what to build? (a list of file names, separated by spaces)
+      - *tip:* check output files in `clean.R`
+  - what are prerequisites, dependencies? (also files, separated by spaces)
+      - *tip:* check input files in `clean.R` + also use file name of current script
+  - how to build it? (a command that could also be run manually on the terminal, to execute stuff)
+      - *tip:** check how we ran other `.R` files from the terminal.
+- Please consider implementing a `first rule`, similar to how I've just shown you (`first_rule: ...`)
+- Run make: `make -n`,  `make` at every iteration.
+
+
+3.5 Solution
+====
+
+
+```bash
+first_rule: plot_all.pdf plot_antwerp.pdf
+
+plot_all.pdf: aggregated_df.csv plot_all.R
+    Rscript plot_all.R
+    
+plot_antwerp.pdf: pivot_table.csv plot_antwerp.R
+    Rscript plot_antwerp.R
+    
+aggregated_df.csv: clean.R reviews.csv listings.csv
+    Rscript clean.R
+
+listings.csv reviews.csv: download.R
+    R --vanilla < download.R
+    
+wipe: 
+    R -e "unlink('*.csv')"
+```
+
+3.6 DO: Changing source code & re-running make
 ======
 
-__Let us now change something in the source code of `run_antwerp.R`, e.g., change `Universiteitsbuurt` to `Stadspark  to experience a `make` workflow.__
+__Let us now change something in the source code of `plot_antwerp.R`, e.g., change `Universiteitsbuurt` to `Stadspark  to experience a `make` workflow.__
 
 - Type `make -n` (preview what will have to be done)
 - Type `make` (to run the pipeline)
@@ -160,50 +369,17 @@ __Let us now change something in the source code of `run_antwerp.R`, e.g., chang
 
 __Last step really important and often forgotten in projects.__
 
-DO: Cleaning up the project directory
+3.7 DO: Updating our cleaning rule
 =====
 
-When working with `make`, it's handy to keep our project tidy (i.e., get right of "old" files automatically).
+Do we need to update our cleaning rule to wipe "more" temporary files? 
 
-Try implementing such a `clean` rule in `make`:
-
-```
-clean:
-  R -e "unlink('*.pdf')"
-```
-
-1. Run the rule by typing `make clean`. What happens? 
+1. Run the rule by typing `make wipe`. What happens? 
 2. Do we need to add more file extensions? Just add some lines and try again!
-3. Does this code snippet feature ITO building blocks?
+3. Does this make recipe feature ITO building blocks?
 4. What does `R -e` do?
 
-Towards modularization 
-=======
-
-- We ultimately will have to split our project in [separate files](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/week5/tutorial/images/dependencies_Antwerp.png). (Why?)
-
-![](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week5/tutorial/images/dependencies_Antwerp.png)
-
-__How?__ split up code, implement setup + ITO, write `makefile` rule, test rule. Step-by-step.
-
-Demonstration: ITO and make for download.R
-=====
-
-- Dependencies: only itself, `download.R`
-- Targets: `listings.csv` and `reviews.csv`
-- How to execute: `Rscript download.R`
-<br><br>
-- Define one global rule on top of the `makefile` to be able to run it.
-
-Do: Let's continue splitting up our project and trying to automate it
-=====
-
-![](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week5/tutorial/images/dependencies_Antwerp.png)
-
-__How?__ split up code, implement ITO, write `makefile` rule, test rule. Step-by-step.
-
-
-Getting the directories right
+3.8 Getting the directories right
 =====
 
 - We now should have a fully automated pipeline. 
@@ -212,18 +388,14 @@ Getting the directories right
 - __Do:__
   - Create a `src` code directory and move source code files there
   - Use code to create a `gen` directory in an R file (preferably run early on)
-  - Change directory names in output files in `.R` files
+  - Update all directory names in the `.R` files
   - At each step, verify whether `make` still runs.
-  
-If we have time left...
-======
 
-- I could clone one of your team repositories and 
-  - try automating the first few steps...
-  - contributing my code via a pull request.
 
-Let's take a step back...
+Part 4: Reflection I
 ====
+
+__Let's take a step back...__
 
 - Make is the final software package we cover in this course
 - Like always in coding, take __one step at a time.__
@@ -232,7 +404,7 @@ Let's take a step back...
 - Make "accompanies" your coding, and constantly allows you to check whether you've done things right.
 - Can become a great timesaver in your career!
 
-Reflection
+Part 4: Reflection II
 =====
 
 - You've covered it all - congrats!
@@ -249,8 +421,8 @@ Next steps
 
 - Three more coaching sessions
   - one today (on campus)
-  - two more (week 6 on site, and end of week 7 - online; attendance optional)
-  - will create breakout rooms online
+  - two more (week 6 + week 7 - online; attendance optional)
 - Exam preparation
-  - in final lecture (beginning of week 7)
+  - Q&A on March 10 (beginning of week 6)
+  - second Q&A in final lecture (end of week 7)
 - Any questions?

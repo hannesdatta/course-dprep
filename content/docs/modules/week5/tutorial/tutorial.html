@@ -798,21 +798,21 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Before we get started</h3>
+<h3>Before we get started I</h3>
 <div class="slideContent" >
 <ul>
-<li>Last &ldquo;content&rdquo; week</li>
-<li>Exam
+<li>Last &ldquo;content&rdquo; week </li>
+<li>Exam organization
 
 <ul>
 <li>registration via Osiris!</li>
-<li>check example questions on the course website</li>
+<li>3rd examination opportunity: likely after the summer; date unknown still</li>
 </ul></li>
-<li>Today&#39;s material&hellip;
+<li>Exam preparation
 
 <ul>
-<li>slide deck available on the <a href="https://dprep.hannesdatta.com/docs/modules/week5/tutorial/make-tutorial/">site</a>!</li>
-<li><a href="https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/images/tsh_make_cheatsheet.pdf">download the <code>make</code> cheatsheet</a> from Tilburg Science Hub</li>
+<li>example questions on the course website (plus update to be released 3 March + solutions)</li>
+<li>extra Q&amp;A after the break: <strong>10 March, 12.45-13.45</strong> (online, link on Canvas); prep well!</li>
 </ul></li>
 </ul>
 
@@ -820,9 +820,20 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Where we are heading today</h3>
+<h3>Before we get started II</h3>
 <div class="slideContent" >
-<p><strong>Let&#39;s describe our toolstack&hellip;</strong></p>
+<ul>
+<li>slide deck available on the <a href="https://dprep.hannesdatta.com/docs/modules/week5/tutorial/make-tutorial/">site</a>!</li>
+<li><a href="https://dprep.hannesdatta.com/docs/exam/">download the <code>make</code> cheatsheet</a></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Motivation</h3>
+<div class="slideContent" >
+<p><strong>Let&#39;s describe our tool stack&hellip;</strong></p>
 
 <ul>
 <li>We use <strong>Git/GitHub</strong> to collaborate on code
@@ -835,14 +846,10 @@ hljs.initHighlightingOnLoad();
 <li>We have learnt how to <strong>explore data and engineer datasets</strong>
 
 <ul>
-<li>Rmarkdown &amp; plotting</li>
-<li><code>tidyverse</code> &amp; data preparation, setup + ITO</li>
+<li>Rmarkdown &amp; plotting using <code>ggplot2</code></li>
+<li><code>tidyverse</code> &amp; data preparation/engineering, setup + ITO</li>
 </ul></li>
-<li>But&hellip; process is still <em>quite manual</em>
-
-<ul>
-<li>how to &ldquo;run&rdquo; code? (e.g., order, all code files?)</li>
-</ul></li>
+<li>But&hellip; process is still <strong>quite manual</strong>: how to &ldquo;run&rdquo; code (e.g., in which order, which files)?</li>
 </ul>
 
 <p><strong>Today, we learn how to automate projects.</strong></p>
@@ -851,17 +858,22 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Automation tools</h3>
+<h3>Automation tools I</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Many automation tools on the market</li>
-<li class="fragment">Originally designed to automate software builds</li>
-<li class="fragment">Launches &ldquo;other&rdquo; software programs (e.g., R), mostly on the terminal/command prompt</li>
-<li class="fragment">We use <code>make</code>
+<li>Many automation tools on the market
 
 <ul>
-<li class="fragment">probably one of the oldest ones on the market</li>
-<li class="fragment">free/open source, widely used</li>
+<li>Originally designed to automate software builds</li>
+<li>Some software-specific (e.g., <code>target</code> in R)</li>
+<li>Others are software- and OS-independent: launch other software programs (e.g., R) via the terminal/command prompt</li>
+</ul></li>
+<li>We use <code>make</code>
+
+<ul>
+<li>software- and OS-independent </li>
+<li>free/open source, widely used</li>
+<li>probably one of the oldest ones on the market</li>
 </ul></li>
 </ul>
 
@@ -869,89 +881,149 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Demonstration</h3>
+<h3>Automation tools II</h3>
 <div class="slideContent" >
-<p><strong>I&#39;ll show you the basic functions of <code>make</code> in one of my projects.</strong></p>
+<p>How to <strong>use</strong> automation tools?</p>
 
+<ul>
+<li>(1) Right from the start of the project
+
+<ul>
+<li>goal: at every iteration of your project, <em>automate</em> current and previous steps</li>
+<li>motivation: safe time when having to re-run code, reduce mistakes</li>
+<li>tips: 
+
+<ul>
+<li>at the beginning, can be no more than just running one script!</li>
+<li>keep on updating <code>make</code>/automation throughout</li>
+</ul></li>
+</ul></li>
+<li>(2) Automate an existing project (<strong>today&#39;s focus</strong>)
+
+<ul>
+<li>main challenge: figure out dependencies (what to run first?) &amp; test</li>
+<li>tips: 
+
+<ul>
+<li>start with automating <em>first</em> script, and run</li>
+<li>continuously automate next steps</li>
+</ul></li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Preview of what&#x27;s to come</h3>
+<div class="slideContent" >
 <ol>
-<li>Directory structure</li>
-<li>Look at &ldquo;makefile&rdquo; and its rules (more later)</li>
-<li>Run <code>make -n</code>, <code>make</code></li>
+<li>Part 1: Check whether <code>make</code> is properly installed</li>
+<li>Part 2: Checking out our example project for today</li>
+<li>Part 3: Automate this example project (in eight smaller &ldquo;sub&rdquo; chapters)</li>
+<li>Part 4: Recap/wrapping up</li>
 </ol>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>DO: Verify make and R are properly installed</h3>
+<h3>Part 1: Verify make and R are properly installed (DO)</h3>
 <div class="slideContent" >
 <p><strong>If you can&#39;t run <code>make</code> and <code>Rscript</code> from your terminal, you won&#39;t be able to proceed.</strong></p>
 
 <ol>
-<li>Verify <strong><code>make</code></strong> is properly installed
+<li><p>Verify <strong><code>make</code></strong> is properly installed</p>
 
 <ul>
 <li>open the terminal/command prompt and type <code>make</code> (enter). </li>
-<li>See this? <code>make: *** No targets specified</code> &ndash; then it is <strong>correctly installed</strong>!</li>
-</ul></li>
-<li>Verify you can run <code>Rscript</code> from the terminal/command prompt
+<li>See this? </li>
+</ul>
+
+<pre><code class="bash">make: *** No targets specified
+</code></pre>
+
+<p>&hellip;then it is <strong>correctly installed</strong>!</p></li>
+<li><p>Verify you can run <code>Rscript</code> from the terminal/command prompt</p>
 
 <ul>
-<li>type <code>Rscript</code> (enter). </li>
-<li>See output starting with <code>Usage: Rscript [options] file [args]</code>&hellip;? &ndash; then you are <em>all set</em>!</li>
-</ul></li>
+<li>type <code>Rscript</code> (followed by enter). </li>
+<li>See output starting with&hellip;</li>
+</ul>
+
+<pre><code class="bash">Usage: Rscript [options] file [args]
+</code></pre>
+
+<p>&hellip;then you are <em>all set</em>!</p></li>
 </ol>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Do: Getting familiar with today&#x27;s data&#x2F;practice project</h3>
+<h3>Part 2: Getting familiar with today&#x27;s data&#x2F;practice project I</h3>
 <div class="slideContent small-code" >
 <p>Today&#39;s project is based on a prototype project using Airbnb data. Please <strong>download the source code now</strong> (run code below).</p>
 
-<pre><code class="r">download.file(&#39;https://gist.githubusercontent.com/hannesdatta/1f764090ae3ebfaabe7a91ea4b971c3d/raw/2df12443cd144141dedb866967cbe985b97052f5/run_antwerp.R&#39;, &#39;run_antwerp.R&#39;)
+<pre><code class="r">download.file(&#39;https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week5/tutorial/workflow.zip&#39;, &#39;workflow_in_class.zip&#39;)
+unzip(&#39;workflow_in_class.zip&#39;)
 </code></pre>
 
 <ol>
-<li><strong>Open the file</strong> <code>run_antwerp.R</code> in RStudio to check out the code - can you run the first few lines? Does it work?</li>
-<li>Try <strong>running the file from the terminal</strong>, by typing <code>Rscript run_antwerp.R</code>. What happens?</li>
-<li>Try using this command instead: <code>R --vanilla &lt; run_antwerp.R</code> - what difference does it make?</li>
+<li><strong>Open the file</strong> <code>run.txt</code> and check out the running instructions.</li>
+<li>Run the &ldquo;first step&rdquo; of this project (<code>download.R</code>)
+
+<ul>
+<li>run <strong>manually in RStudio</strong>. Does it work?</li>
+<li>try <strong>running the file from the terminal</strong>, by typing <code>Rscript download.R</code>. What happens?</li>
+<li>try using this command instead: <code>R --vanilla &lt; download.R</code>. What difference does it make?</li>
+</ul></li>
 </ol>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Understanding `run_antwerp.R`</h3>
-<div class="slideContent" >
-<ul>
-<li>One script that prepares and analyzes data</li>
-<li>But: in reality, our project will consist of <em>multiple code snippets</em>
+<h3>Part 2: Getting familiar with today&#x27;s data&#x2F;practice project II</h3>
+<div class="mediaInline slideContent" >
+<p>We will <strong>automate each step</strong> in this research project</p>
 
-<ul>
-<li>&hellip;and each of these code snippets depends on other code snippets and data</li>
-<li>&hellip;and feature nicely structured ITO-blocks (remember?)
-<br></li>
-</ul></li>
-</ul>
-
-<p><strong>We will now gradually &ldquo;modularize&rdquo; (split in multiple code files) and automate our project, using <code>make</code>.</strong></p>
+<p><img src="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week5/tutorial/images/dependencies_Antwerp.png" alt=""/></p>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Writing our first make recipe</h3>
+<h3>Part 2: The make workflow</h3>
+<div class="slideContent" >
+<ul>
+<li>At every iteration of our automation (also in this tutorial), we will run step 1, then step 1 + 2, then step 1 + 2 + 3.</li>
+<li>Formally, the <strong>make workflow</strong> is:
+
+<ul>
+<li>1) delete all temporary/input files</li>
+<li>2) run <code>script_X.R</code> from the command line - does it run &amp; build what is expected?</li>
+<li>3) write a <code>make</code> &ldquo;recipe&rdquo; to automate step 2 [&rarr; <strong>next slide</strong>]</li>
+<li>4) preview what make would do - fix if needed (<code>make -n</code>)</li>
+<li>5) run make</li>
+</ul></li>
+<li><strong>Repeat make workflow</strong> for the next step of the project.</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Part 2: Writing a &quot;make recipe&quot; I</h3>
 <div class="slideContent" >
 <ul>
 <li>To automate projects, we will write a <code>makefile</code> and put it in the root of our project directory</li>
-<li>A <code>makefile</code> consists of one or multiple &ldquo;recipes&rdquo;
+<li>A <code>makefile</code> consists of one or <strong>&ldquo;recipes&rdquo;</strong>
 
 <ul>
-<li>what to build? (filenames!)</li>
-<li>what are prerequisites, dependencies? (also files)</li>
-<li>how to build it? (a command to execute stuff)</li>
+<li>what to build? (a list of file names, separated by spaces)</li>
+<li>what are prerequisites, dependencies? (also files, separated by spaces)</li>
+<li>how to build it? (a command that could also be run manually on the terminal, to execute stuff)</li>
 </ul></li>
 </ul>
 
@@ -959,25 +1031,306 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>DO: Writing our first make recipe</h3>
+<h3>Part 2: Writing a &quot;make recipe&quot; II</h3>
 <div class="slideContent" >
 <ul>
-<li>Create a new file, called <code>makefile</code> (no extension)</li>
-<li>Paste the code below and save (use a <strong>tab</strong> to indent <code>R --vanilla</code> or <code>Rscript</code>&hellip;)</li>
-<li>Then type <code>make</code> on terminal. What happens?</li>
+<li><p>Example:</p>
+
+<pre><code class="bash">output.csv: input.csv script.R
+    Rscript script.R
+</code></pre></li>
+<li><p>In our own words&hellip;</p>
+
+<ol>
+<li>check whether <code>input.csv</code> and <code>script.R</code> have been updated lately</li>
+<li>If updated since last time it was run? &rarr; Run <code>script.R</code>, which builds <code>output.csv</code></li>
+<li>If either <code>input.csv</code> or <code>script.R</code> do not exist &rarr; find another recipe that instructs how to build these</li>
+</ol></li>
 </ul>
 
-<pre><code>plot_all.pdf: run_Antwerp.R
-  R --vanilla &lt; run_Antwerp.R
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Part 3</h3>
+<div class="slideContent" >
+<p>We now start automating the entire project.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.1 DO: Writing our first make recipe</h3>
+<div class="slideContent" >
+<ul>
+<li>Create a new file in VS Code, called <code>makefile</code> (no extension, i.e., not <code>makefile.txt</code>)</li>
+<li>Open the <code>makefile</code> and type the code below. </li>
+</ul>
+
+<pre><code>listings.csv reviews.csv: download.R
+    R --vanilla &lt; download.R
+</code></pre>
+
+<p><strong>Important:</strong> Use a <strong>tab</strong> to indent the second line: <code>R --vanilla</code> or <code>Rscript</code>&hellip;! <strong>NO</strong> spaces.</p>
+
+<ul>
+<li>Go to your terminal. 
+
+<ul>
+<li>Type <code>make -n</code> and confirm with enter. What happens?</li>
+<li>Type <code>make</code>  and confirm with enter. What happens?</li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.1 Recap: The make workflow</h3>
+<div class="slideContent" >
+<ul>
+<li>1) delete all temporary/input files</li>
+<li>2) run <code>script_X.R</code> from the command line - does it run &amp; build what is expected?</li>
+<li>3) write a <code>make</code> &ldquo;recipe&rdquo; to automate the next step</li>
+<li>4) preview what make would do - fix if needed (<code>make -n</code>)</li>
+<li>5) run make</li>
+</ul>
+
+<p><strong>Repeat make workflow</strong> for the next step of the project.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.2 DO: Let&#x27;s write a &quot;rule&quot; to delete temporary files</h3>
+<div class="slideContent" >
+<p><strong>When working with <code>make</code>, it&#39;s handy to keep our project tidy (i.e., get right of &ldquo;old&rdquo; files automatically)</strong>.</p>
+
+<ul>
+<li>Open the <code>makefile</code> again and enter a next recipe (put below what was done earlier).</li>
+</ul>
+
+<pre><code>wipe: 
+    R -e &quot;unlink(&#39;*.csv&#39;)&quot;
+
+</code></pre>
+
+<p><strong>Important:</strong> Use a <strong>tab</strong> to indent the second line! <strong>NO</strong> spaces.</p>
+
+<ul>
+<li>Go to your terminal. 
+
+<ul>
+<li>Type <code>make -n</code> (enter), and then <code>make</code> (enter).  What happens at every step?</li>
+<li>Type <code>make wipe -n</code> (enter), and then <code>make wipe</code> (enter).  What happens at every step?</li>
+</ul></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.3 Recap: The make workflow</h3>
+<div class="slideContent" >
+<ul>
+<li>1) delete all temporary/input files</li>
+<li>2) run <code>script_X.R</code> from the command line - does it run &amp; build what is expected?</li>
+<li>3) write a <code>make</code> &ldquo;recipe&rdquo; to automate the next step</li>
+<li>4) preview what make would do - fix if needed (<code>make -n</code>)</li>
+<li>5) run make</li>
+</ul>
+
+<p><em>Repeat make workflow__ for the next step of the project.</em></p>
+
+<p><strong>QUESTION:</strong> What&#39;s our next move?!</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.3 DO: Let&#x27;s write a &quot;rule&quot; for clean.R</h3>
+<div class="slideContent" >
+<ul>
+<li><p>Reflect:</p>
+
+<ul>
+<li>what to build? (a list of file names, separated by spaces)
+
+<ul>
+<li><em>tip:</em> check output files in <code>clean.R</code></li>
+</ul></li>
+<li>what are prerequisites, dependencies? (also files, separated by spaces)
+
+<ul>
+<li><em>tip:</em> check input files in <code>clean.R</code> + also use file name of current script</li>
+</ul></li>
+<li>how to build it? (a command that could also be run manually on the terminal, to execute stuff)
+
+<ul>
+<li><em>tip:</em>* check how we ran other <code>.R</code> files from the terminal.</li>
+</ul></li>
+</ul></li>
+<li><p>Put the new rule <em>below</em> what has been written earlier. Try to run: <code>make -n</code>, <code>make</code>. what happens?</p></li>
+<li><p>Put the new rule <em>above</em> everything that has been written earlier. Try to run: <code>make -n</code>, <code>make</code>. what happens?</p></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.3 Solution</h3>
+<div class="slideContent" >
+<pre><code class="bash">aggregated_df.csv: clean.R reviews.csv listings.csv
+    Rscript clean.R
+
+listings.csv reviews.csv: download.R
+    R --vanilla &lt; download.R
+
+wipe: 
+    R -e &quot;unlink(&#39;*.csv&#39;)&quot;
 </code></pre>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>DO: Running make again</h3>
+<h3>3.4 DO: Let&#x27;s write a &quot;rule&quot; for pivot.table.R</h3>
 <div class="slideContent" >
-<p><strong>Let us now change something in the source code of <code>run_antwerp.R</code>, e.g., change <code>Universiteitsbuurt</code> to <code>Stadspark  to experience a</code>make workflow.</strong></p>
+<ul>
+<li><p>Reflect:</p>
+
+<ul>
+<li>what to build? (a list of file names, separated by spaces)
+
+<ul>
+<li><em>tip:</em> check output files in <code>clean.R</code></li>
+</ul></li>
+<li>what are prerequisites, dependencies? (also files, separated by spaces)
+
+<ul>
+<li><em>tip:</em> check input files in <code>clean.R</code> + also use file name of current script</li>
+</ul></li>
+<li>how to build it? (a command that could also be run manually on the terminal, to execute stuff)
+
+<ul>
+<li><em>tip:</em>* check how we ran other <code>.R</code> files from the terminal.</li>
+</ul></li>
+</ul></li>
+<li><p>Write the rule below all the code you&#39;ve written in the <code>makefile</code> earlier.</p></li>
+<li><p>Then, run make: <code>make -n</code>,  <code>make</code>. </p></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.4 The &quot;first rule&quot; I</h3>
+<div class="slideContent" >
+<ul>
+<li>Make will <strong>only</strong> run the very first rule it encounters, plus all the &ldquo;other&rdquo; rules it needs to run to execute that very first rule.</li>
+<li>Example 1 (in pseudo code): will only build <code>data1</code></li>
+</ul>
+
+<pre><code class="bash">data1: fileA
+  run fileA
+data2: fileB data1
+  run fileB
+</code></pre>
+
+<ul>
+<li>Example 2 (in pseudo code): wants to build <code>data2</code>: requires &amp; builds <code>data1</code>, then builds <code>data2</code>.</li>
+</ul>
+
+<pre><code class="bash">data2: fileB data1
+  run fileB
+data1: fileA
+  run fileA
+
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.4 The &quot;first rule&quot; II</h3>
+<div class="slideContent" >
+<ul>
+<li>You can easily mess up what&#39;s the &ldquo;first&rdquo; rule in a <code>makefile</code>.</li>
+<li>Therefore, we sometimes introduce a &ldquo;fake&rdquo; recipe that simply says what the final product of our pipeline is.</li>
+<li>We can then put this on top, as an extra rule.</li>
+<li>Example 1b (building on example 1, which didn&#39;t work earlier)</li>
+</ul>
+
+<pre><code class="bash">first_rule: data2
+
+data1: fileA
+  run fileA
+data2: fileB data1
+  run fileB
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.5 DO: Let&#x27;s write two more rules</h3>
+<div class="slideContent" >
+<ul>
+<li><p>Goal: automate <code>plot_all.R</code> and <code>plot_antwerp.R</code></p></li>
+<li><p>Reflect:</p>
+
+<ul>
+<li>what to build? (a list of file names, separated by spaces)
+
+<ul>
+<li><em>tip:</em> check output files in <code>clean.R</code></li>
+</ul></li>
+<li>what are prerequisites, dependencies? (also files, separated by spaces)
+
+<ul>
+<li><em>tip:</em> check input files in <code>clean.R</code> + also use file name of current script</li>
+</ul></li>
+<li>how to build it? (a command that could also be run manually on the terminal, to execute stuff)
+
+<ul>
+<li><em>tip:</em>* check how we ran other <code>.R</code> files from the terminal.</li>
+</ul></li>
+</ul></li>
+<li><p>Please consider implementing a <code>first rule</code>, similar to how I&#39;ve just shown you (<code>first_rule: ...</code>)</p></li>
+<li><p>Run make: <code>make -n</code>,  <code>make</code> at every iteration.</p></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.5 Solution</h3>
+<div class="slideContent" >
+<pre><code class="bash">first_rule: plot_all.pdf plot_antwerp.pdf
+
+plot_all.pdf: aggregated_df.csv plot_all.R
+    Rscript plot_all.R
+
+plot_antwerp.pdf: pivot_table.csv plot_antwerp.R
+    Rscript plot_antwerp.R
+
+aggregated_df.csv: clean.R reviews.csv listings.csv
+    Rscript clean.R
+
+listings.csv reviews.csv: download.R
+    R --vanilla &lt; download.R
+
+wipe: 
+    R -e &quot;unlink(&#39;*.csv&#39;)&quot;
+</code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>3.6 DO: Changing source code &amp; re-running make</h3>
+<div class="slideContent" >
+<p><strong>Let us now change something in the source code of <code>plot_antwerp.R</code>, e.g., change <code>Universiteitsbuurt</code> to <code>Stadspark  to experience a</code>make workflow.</strong></p>
 
 <ul>
 <li>Type <code>make -n</code> (preview what will have to be done)</li>
@@ -991,20 +1344,14 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>DO: Cleaning up the project directory</h3>
+<h3>3.7 DO: Updating our cleaning rule</h3>
 <div class="slideContent" >
-<p>When working with <code>make</code>, it&#39;s handy to keep our project tidy (i.e., get right of &ldquo;old&rdquo; files automatically).</p>
-
-<p>Try implementing such a <code>clean</code> rule in <code>make</code>:</p>
-
-<pre><code>clean:
-  R -e &quot;unlink(&#39;*.pdf&#39;)&quot;
-</code></pre>
+<p>Do we need to update our cleaning rule to wipe &ldquo;more&rdquo; temporary files? </p>
 
 <ol>
-<li>Run the rule by typing <code>make clean</code>. What happens? </li>
+<li>Run the rule by typing <code>make wipe</code>. What happens? </li>
 <li>Do we need to add more file extensions? Just add some lines and try again!</li>
-<li>Does this code snippet feature ITO building blocks?</li>
+<li>Does this make recipe feature ITO building blocks?</li>
 <li>What does <code>R -e</code> do?</li>
 </ol>
 
@@ -1012,45 +1359,7 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Towards modularization </h3>
-<div class="mediaInline slideContent" >
-<ul>
-<li>We ultimately will have to split our project in <a href="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/week5/tutorial/images/dependencies_Antwerp.png">separate files</a>. (Why?)</li>
-</ul>
-
-<p><img src="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week5/tutorial/images/dependencies_Antwerp.png" alt=""/></p>
-
-<p><strong>How?</strong> split up code, implement setup + ITO, write <code>makefile</code> rule, test rule. Step-by-step.</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Demonstration: ITO and make for download.R</h3>
-<div class="slideContent" >
-<ul>
-<li>Dependencies: only itself, <code>download.R</code></li>
-<li>Targets: <code>listings.csv</code> and <code>reviews.csv</code></li>
-<li>How to execute: <code>Rscript download.R</code>
-<br><br></li>
-<li>Define one global rule on top of the <code>makefile</code> to be able to run it.</li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Do: Let&#x27;s continue splitting up our project and trying to automate it</h3>
-<div class="mediaInline slideContent" >
-<p><img src="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/modules/week5/tutorial/images/dependencies_Antwerp.png" alt=""/></p>
-
-<p><strong>How?</strong> split up code, implement ITO, write <code>makefile</code> rule, test rule. Step-by-step.</p>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Getting the directories right</h3>
+<h3>3.8 Getting the directories right</h3>
 <div class="slideContent" >
 <ul>
 <li>We now should have a fully automated pipeline. </li>
@@ -1060,7 +1369,7 @@ hljs.initHighlightingOnLoad();
 <ul>
 <li>Create a <code>src</code> code directory and move source code files there</li>
 <li>Use code to create a <code>gen</code> directory in an R file (preferably run early on)</li>
-<li>Change directory names in output files in <code>.R</code> files</li>
+<li>Update all directory names in the <code>.R</code> files</li>
 <li>At each step, verify whether <code>make</code> still runs.</li>
 </ul></li>
 </ul>
@@ -1069,23 +1378,10 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>If we have time left...</h3>
+<h3>Part 4: Reflection I</h3>
 <div class="slideContent" >
-<ul>
-<li>I could clone one of your team repositories and 
+<p><strong>Let&#39;s take a step back&hellip;</strong></p>
 
-<ul>
-<li>try automating the first few steps&hellip;</li>
-<li>contributing my code via a pull request.</li>
-</ul></li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>Let&#x27;s take a step back...</h3>
-<div class="slideContent" >
 <ul>
 <li>Make is the final software package we cover in this course</li>
 <li>Like always in coding, take <strong>one step at a time.</strong>
@@ -1102,7 +1398,7 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Reflection</h3>
+<h3>Part 4: Reflection II</h3>
 <div class="slideContent" >
 <ul>
 <li>You&#39;ve covered it all - congrats!</li>
@@ -1129,13 +1425,13 @@ hljs.initHighlightingOnLoad();
 
 <ul>
 <li>one today (on campus)</li>
-<li>two more (week 6 on site, and end of week 7 - online; attendance optional)</li>
-<li>will create breakout rooms online</li>
+<li>two more (week 6 + week 7 - online; attendance optional)</li>
 </ul></li>
 <li>Exam preparation
 
 <ul>
-<li>in final lecture (beginning of week 7)</li>
+<li>Q&amp;A on March 10 (beginning of week 6)</li>
+<li>second Q&amp;A in final lecture (end of week 7)</li>
 </ul></li>
 <li>Any questions?</li>
 </ul>
