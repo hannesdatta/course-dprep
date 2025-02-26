@@ -37,9 +37,6 @@ When working on large-scale data intensive projects, it's important to define a 
 * Automate workflows and make them reproducible using make
 
 
-__The solutions to the exercises and an FAQ are at the end of this document.__
-
-
 ## Prerequisites and Installation
 
 * Get familiar with the shell/terminal/command line
@@ -106,7 +103,6 @@ plot_all.pdf: run_Antwerp.R
   R --vanilla < run_Antwerp.R
 ```
 
-\
 
 ### 1.2.3 Implementing a Simple Makefile
 
@@ -114,10 +110,17 @@ plot_all.pdf: run_Antwerp.R
 
 1. Create a new makefile (tip: if you're on a Mac or Linux machine, use `touch makefile` in your terminal; Windows users can open a new file in an editor and save it (without file extension!) as `makefile`). Open the `makefile` in a text editor. Add the two lines above and save the changes. Open your terminal and run `make`. What happens?  
 2. Type `make` again. What does it say, why is that?  
-3. On line 74 and 85 change the `Universiteitsbuurt` column to `Stadspark` and save the file. Run `make -n` (to preview the changes) and then type `make` to actually do it. Does it run this time, why?
+3. On line 64 and 75 change the `Universiteitsbuurt` column to `Stadspark` and save the file. Run `make -n` (to preview the changes) and then type `make` to actually do it. Does it run this time, why?
 
 
-\
+
+```{markdown, webex.hide = 'Solution to Exercise 2'}
+
+1. You probably got the following error: `make: *** No targets specified and no makefile found.  Stop.`. This is because command (in line 2 of the makefile) required to build the target needs to be indented with a tab ("start with a tab"), not spaces. Modify that line by adding a tab instead and re-run. 
+2. Now `make` should run without any issues. It will execute the command in the makefile and create the `plot_all.pdf` file. 
+3. `make` detects changes in the source code to build the target (plot_all.pdf) and therefore it runs the **entire** file again. This is not computationally efficient as the data has already been downloaded and cleaned. We will address this in the next exercise.
+
+```
 
 # Part 2: Modularization & Directory Structure
 
@@ -136,12 +139,30 @@ In the figure below we impose a flow diagram structure in which the `run_Antwerp
 
 
 **Exercise 3**    
-1. Split up the full R script into the 5 separate scripts according to the diagram and definitions above. The sections indicated by comments (e.g., ### CLEAN DATA) serve as potential split-off points.   
-2. Check if all scripts run without issues. If not, make the necessary changes (tip: check if the libraries are imported at the top of each file).  
-3. Redefine the dependencies in make for the targets `reviews.csv`, `listings.csv`, `aggregated_df.csv`, `pivot_table.csv`, `plot_Antwerp.pdf`, and `plot_all.pdf` so that workflow dependencies are triggered like a chain reaction. For example, `plot_all.pdf` requires `aggregated.pdf.csv` to be there which in turn requires `listings.csv`, `reviews.csv` and `clean.R`. Use the figure above to identify the prerequisites and command files. 
-4. Now run `make -n` and `make` and see what happens. Does it work as expected? Indeed, make only runs the first target by default; next we show you how to use phony targets so that it executes all commands!
+a. Split up the full R script into the 5 separate scripts according to the diagram and definitions above. The sections indicated by comments (e.g., ### CLEAN DATA) serve as potential split-off points.   
+b. Check if all scripts run without issues. If not, make the necessary changes (tip: check if the libraries are imported at the top of each file).  
+c. Redefine the dependencies in make for the targets `reviews.csv`, `listings.csv`, `aggregated_df.csv`, `pivot_table.csv`, `plot_Antwerp.pdf`, and `plot_all.pdf` so that workflow dependencies are triggered like a chain reaction. For example, `plot_all.pdf` requires `aggregated.pdf.csv` to be there which in turn requires `listings.csv`, `reviews.csv` and `clean.R`. Use the figure above to identify the prerequisites and command files. 
+d. Delete the targets that were built in the last iteration. Now run `make -n` and `make` and see what happens. Does it work as expected? 
 
-\
+```{makefile, webex.hide = 'Solution to Exercise 3c'}
+listings.csv reviews.csv: download.R
+	R --vanilla < download.R
+
+aggregated_df.csv: clean.R
+	R --vanilla < clean.R
+	
+pivot_table.csv: pivot_table.R
+	R --vanilla < pivot_table.R
+	
+plot_Antwerp.pdf: plot_Antwerp.R
+	R --vanilla < plot_Antwerp.R
+	
+plot_all.pdf: plot_all.R
+	R --vanilla < plot_all.R
+```
+```{markdown, webex.hide = 'Solution to Exercise 3d'}
+You will see that `make` only builds the first target by default. Next we show you how to use phony targets so that it executes all commands!
+```
 
 ## 2.2 Phony targets
 The targets we have seen so far refer to output files (e.g., `aggregated_df.csv`). Sometimes, it’s not practical to generate outputs. We call these targets "phony targets". Let's consider the following makefile: 
@@ -158,23 +179,56 @@ two:
 
 Neither `one` and `two` are output files; they are phony targets that create two text files. The phony target `all` at the top calls both targets. Think of it as a "meta rule" to build it all!
 
-\
 
 **Exercise 4**  
-Create another directory and add a makefile with the same contents as above. Run `make` and see what happens. Then remove all text files and run `make one`, what happens this time? 
+Create another directory (let's call it "test-phony") and add a makefile with the same contents as above (make sure to add tabs instead of space before the commands used to build targets!). Change your working directory to this folder `test-phony` annd run `make` and see what happens. Then remove all text files and run `make one`, what happens this time? 
 
+```{markdown, webex.hide = 'Solution to Exercise 4'}
+When you first run `make` it builds the two targets `one.txt` and `two.txt` files in the directory. Next, when you run `make one`, it builds the target called "one" and creates the `one.txt` file alone.
+```
 
 We can apply the same principle and add the following `all` target to our makefile:
 ```
 all: plot_Antwerp.pdf plot_all.pdf aggregated_df.csv pivot_table.csv listings.csv reviews.csv
 ```
+**Exercise 5a**  
+Switch back to the other directory, add the `all` phony target to your makefile, and run `make`. What happens? Does it create all targets this time? 
 
-\
+```{markdown, webex.hide = 'Solution to Exercise 5a'}
+After updating the first line with all the targets as specified above, when you run `make` it will fail to build the first target `plot_Antwerp.pdf` and renders the following error message:
 
-**Exercise 5**  
-Switch back to the other directory, add the `all` phony target to your makefile, and run `make`. What happens? Does it create all targets this time? Would it make a difference if you left the four csv files in the all target, why is that? 
+**Error: 'pivot_table.csv' does not exist in current working directory**
 
-\
+This is because it is missing a key prerequisite pivot_table.csv. So order of the targets matters! To fix this, you need to change the order of the targets in the `all` phony target and your updated makefile should look like this:
+
+```
+
+```{makefile, webex.hide = 'Makefile solution to Exercise 5a'}
+all: listings.csv reviews.csv aggregated_df.csv pivot_table.csv plot_Antwerp.pdf plot_all.pdf
+
+listings.csv reviews.csv: download.R
+	R --vanilla < download.R
+
+aggregated_df.csv: clean.R
+	R --vanilla < clean.R
+	
+pivot_table.csv: pivot_table.R
+	R --vanilla < pivot_table.R
+	
+plot_Antwerp.pdf: plot_Antwerp.R
+	R --vanilla < plot_Antwerp.R
+	
+plot_all.pdf: plot_all.R
+	R --vanilla < plot_all.R
+
+```
+
+**Exercise 5b**  
+Would it make a difference if you left the four csv files in the all target, why is that? Delete all the targets built in the last iteration and run `make` again. What happens this time?
+
+```{markdown, webex.hide = 'Solution to Exercise 5b'}
+Yes, it would make a difference. If you list the four CSV files (reviews.csv, listings.csv, aggregated_df.csv, pivot_table.csv) under `all` targets, `make` will explicitly check them, and if any are missing or outdated, it will rebuild them and all subsequent dependencies. If the CSV files are already present and up-to-date, make will skip them and proceed to build the next targets (plot_Antwerp.pdf and plot_all.pdf), if necessary. If you do not include them under `all`, `make` might skip rebuilding them, even if they are missing, because no rule explicitly requires them as a starting point and the workflow breaks due to missing dependencies.
+``` 
 
 ## 2.3 Directory Structure
 Part of building a proper data pipeline is having a directory structure in place. Up to this point, we did not explicitly tell you where or how to save your files so you probably stored all source and output files in a single folder. Especially for larger projects this tends to become messy, so instead we recommend having a structured mechanism in place for your file storage, which we explain below.
@@ -230,14 +284,51 @@ Generated files are stored in the gen folder of your main project: `my_project/g
   
 Tip: keep in mind that all file paths are relative to the current storage location. For example, from `download.R` inside `src/data-preparation` to the `data` folder requires two steps back and one change of directories (i.e., `../../data`).
   
-\
 
 **Exercise 7**  
 Not only the file paths in the R scripts changed by moving the files to different directories, but also the relative paths in the make file are no longer up to date. Make the necessary changes to the targets, commands, and prerequisites and then try running `make -n` to see whether it works as expected.
 
-Tip: add `Rscript -e "dir.create('data')"` as a command above `download.R` in the makefile so that it first creates the data folder before it tries to store the downloaded data there. If you forget to do this and you didn't create the folder manually, it will throw an error once it attempts to save a file in the unknown folder. Do the same for the `gen/temp` and `gen/output` subfolders.
+Tip: Add `Rscript -e "dir.create('data')"` as a command above `download.R` in the makefile so that it first creates the data folder before it tries to store the downloaded data there. If you forget to do this and you didn't create the folder manually, it will throw an error once it attempts to save a file in the unknown folder. Do the same for the `gen/temp` and `gen/output` subfolders.
 
-\
+```{makefile, webex.hide = 'Solution to Exercise 7'}
+# Main target
+all: dirs data/listings.csv data/reviews.csv gen/temp/aggregated_df.csv gen/temp/pivot_table.csv gen/output/plot_Antwerp.pdf gen/output/plot_all.pdf
+
+# Create necessary directories using Rscript
+dirs: data_dir temp_dir output_dir
+
+data_dir:
+	Rscript -e "if (!dir.exists('data')) dir.create('data', recursive = TRUE)"
+
+temp_dir:
+	Rscript -e "if (!dir.exists('gen/temp')) dir.create('gen/temp', recursive = TRUE)"
+
+output_dir:
+	Rscript -e "if (!dir.exists('gen/output')) dir.create('gen/output', recursive = TRUE)"
+
+# Step 1: Download data
+data/listings.csv data/reviews.csv: src/data-preparation/download.R 
+	Rscript src/data-preparation/download.R
+
+# Step 2: Clean data
+gen/temp/aggregated_df.csv: src/data-preparation/clean.R ../../data/listings.csv ../../data/reviews.csv 
+	Rscript src/data-preparation/clean.R
+
+# Step 3: Create pivot table
+gen/temp/pivot_table.csv: src/analysis/pivot_table.R ../../gen/temp/aggregated_df.csv 
+	Rscript src/analysis/pivot_table.R
+
+# Step 4: Plot Antwerp
+gen/output/plot_Antwerp.pdf: src/analysis/plot_Antwerp.R ../../gen/temp/pivot_table.csv 
+	Rscript src/analysis/plot_Antwerp.R
+
+# Step 5: Plot All
+gen/output/plot_all.pdf: src/analysis/plot_all.R ../../gen/temp/aggregated_df.csv 
+	Rscript src/analysis/plot_all.R
+```
+For better structure, we can define the creation of directories as a separate target ('dirs') as shown above. 
+
+
 
 # Part 3: Advanced Commands
 
@@ -248,18 +339,54 @@ Writing long file paths, such as `../../gen/temp/aggregated_df.csv` is cumbersom
 TEMP = ../../gen/temp
 DATA = ../../data
 
-$(TEMP)/aggregated_df.csv: $(DATA)/listings.csv $(DATA)/reviews.csv clean.R
+gen/temp/aggregated_df.csv: $(DATA)/listings.csv $(DATA)/reviews.csv clean.R
     R --vanilla < clean.R
 ```
 In other words, you specify the file path as a variable at the top (e.g., `TEMP = ...`) after which you can reference it with `$(VARIABLE)`. 
 
-\
+
 
 **Exercise 8**  
 Adapt your makefile from exercise 7 such that repetitive paths are replaced by variables.
 
-\
+```{makefile, webex.hide = 'Solution to Exercise 8'}
+# Main target
+all: dirs data/listings.csv data/reviews.csv gen/temp/aggregated_df.csv gen/temp/pivot_table.csv gen/output/plot_Antwerp.pdf gen/output/plot_all.pdf
 
+# Create necessary directories using Rscript
+dirs: data_dir temp_dir output_dir
+
+data_dir:
+	Rscript -e "if (!dir.exists('data')) dir.create('data', recursive = TRUE)"
+
+temp_dir:
+	Rscript -e "if (!dir.exists('gen/temp')) dir.create('gen/temp', recursive = TRUE)"
+
+output_dir:
+	Rscript -e "if (!dir.exists('gen/output')) dir.create('gen/output', recursive = TRUE)"
+
+DATA = ../../data
+TEMP = ../../gen/temp
+# Step 1: Download data
+data/listings.csv data/reviews.csv: src/data-preparation/download.R 
+	Rscript src/data-preparation/download.R
+
+# Step 2: Clean data
+gen/temp/aggregated_df.csv: src/data-preparation/clean.R $(DATA)/listings.csv $(DATA)/reviews.csv 
+	Rscript src/data-preparation/clean.R
+
+# Step 3: Create pivot table
+gen/temp/pivot_table.csv: src/analysis/pivot_table.R $(TEMP)/aggregated_df.csv 
+	Rscript src/analysis/pivot_table.R
+
+# Step 4: Plot Antwerp
+gen/output/plot_Antwerp.pdf: src/analysis/plot_Antwerp.R $(TEMP)/pivot_table.csv 
+	Rscript src/analysis/plot_Antwerp.R
+
+# Step 5: Plot All
+gen/output/plot_all.pdf: src/analysis/plot_all.R $(TEMP)/aggregated_df.csv 
+	Rscript src/analysis/plot_all.R
+```
 
 ## 3.2 Multiple makefiles
 
@@ -278,11 +405,75 @@ Therefore, we create two makefiles so that you end up with the following file st
   - makefile
 ```
 
-**Exercise 10**   
-Create the makefile in `src/analysis` and `src/data-preparation`, copy the related make commands from the makefile in the root directory, and add an `all` phony target to both makefiles. Don't forget to include the `R -e "dir.create('directory_name')"` commands!
+**Exercise 9a**   
+Create the makefile in `src/data-preparation`, copy the related make commands from the makefile in the root directory, and add an `all` phony target to both makefiles. Don't forget to include the `R -e "dir.create('directory_name')"` commands and double check relative paths! Change your working directory to `src/data-preparation` to test this makefile by running `make`.
 
-**Exercise 11**  
+```{makefile, webex.hide = 'Solution to Exercise 9a'}
+DATA = ../../data
+TEMP = ../../gen/temp
+
+# Main target
+all: dirs $(DATA)/listings.csv $(DATA)/reviews.csv $(TEMP)/aggregated_df.csv
+# Create necessary directories using Rscript
+dirs: data_dir temp_dir output_dir
+
+data_dir:
+	Rscript -e "if (!dir.exists('../../data')) dir.create('../../data', recursive = TRUE)"
+
+temp_dir:
+	Rscript -e "if (!dir.exists('../../gen/temp')) dir.create('../../gen/temp', recursive = TRUE)"
+
+output_dir:
+	Rscript -e "if (!dir.exists('../../gen/output')) dir.create('../../gen/output', recursive = TRUE)"
+
+# Step 1: Download data
+$(DATA)/listings.csv $(DATA)/reviews.csv: download.R 
+	Rscript download.R
+
+# Step 2: Clean data
+$(TEMP)/aggregated_df.csv: $(DATA)/listings.csv $(DATA)/reviews.csv clean.R 
+	Rscript clean.R
+```
+
+**Exercise 9b**   
+
+Create the makefile in `src/analysis`, copy the related make commands from the makefile in the root directory, and add an `all` phony target to both makefiles. Don't forget to include the `R -e "dir.create('directory_name')"` commands and double check relative paths! Change your working directory to `src/analysis` to test this makefile by running `make`.
+
+```{makefile, webex.hide = 'Solution to Exercise 9b'}
+DATA = ../../data
+TEMP = ../../gen/temp
+OUTPUT = ../../gen/output
+# Main target
+all: dirs $(TEMP)/pivot_table.csv $(OUTPUT)/plot_Antwerp.pdf $(OUTPUT)/plot_all.pdf
+
+# Create necessary directories using Rscript
+dirs: temp_dir output_dir
+
+temp_dir:
+	Rscript -e "if (!dir.exists('../../gen/temp')) dir.create('../../gen/temp', recursive = TRUE)"
+
+output_dir:
+	Rscript -e "if (!dir.exists('../../gen/output')) dir.create('../../gen/output', recursive = TRUE)"
+
+# Create pivot table
+$(TEMP)/pivot_table.csv: $(TEMP)/aggregated_df.csv pivot_table.R
+	Rscript pivot_table.R
+
+# Plot Antwerp
+$(OUTPUT)/plot_Antwerp.pdf: $(TEMP)/pivot_table.csv plot_Antwerp.R
+	Rscript plot_Antwerp.R
+
+# Plot All
+$(OUTPUT)/plot_all.pdf: $(TEMP)/aggregated_df.csv plot_all.R
+	Rscript plot_all.R
+```
+
+**Exercise 10**  
 Run `make -n` in `src/analysis` and `src/data-preparation` separately and see whether it works as expected. Then, manually remove the `data` and `gen` folders and try to regenerate all files. How many times do you have to run `make`? 
+
+```{markdown, webex.hide = 'Solution to Exercise 10'}
+You have to run make twice. First, go to `src/data-preparation` and run `make; then switch to `src/analysis` and run make to complete the workflow.
+```
 
 While having multiple makefiles creates structure and clarity, you don't want to run `make` in each and every folder (especially if the number of subfolders grows). Fortunately, you can have a makefile in your root directory that triggers other makefiles. Here's how the syntax looks like in our case: 
 
@@ -298,10 +489,20 @@ analysis: data-preparation
 
 There are two phony targets (`data-preparation` and `analysis`), each with the `make -C` command and a reference to the folder in which the makefile is stored.
 
-**Exercise 12**  
+**Exercise 11**  
 Create another makefile in the root directory, copy the contents from above, and run `make` again. Does it work as expected? How many times do you have to run `make` this time?
+Tip:  Don't forget to add `tabs` before the commands in the makefile!
+```{makefile, webex.hide = 'Solution to Exercise 11'}
+all: analysis data-preparation
 
-\
+data-preparation:
+	make -C src/data-preparation
+
+analysis: data-preparation
+	make -C src/analysis
+
+```
+This time, you only have to run `make` once from the root directory to trigger the entire workflow!
 
 ## 3.3 Cleaning data
 Like the `all` phony target generates all files, another convention is to have a `clean` target that removes all generated folders and files. This way, you can easily clean up your directory and run `make` again to build up all files from scratch. The code snippet below removes the `data` and `gen` folders as well as their contents.
@@ -312,17 +513,10 @@ clean:
 	R -e "unlink('gen', recursive = TRUE)"
 ```
 
-**Exercise 13**  
+**Exercise 12**  
 Add the `clean` phony target to the makefile located in the root directory. Then, run `make clean` to trigger it. Does it work as expected? Finally, run `make` again to generate the temporary files and plots again.
 
-\
-
-## 3.4 Makefiles Solutions
-
-If you've worked through the entire set of exercises, this is how the final makefiles should look like:
-
-*root folder*
-```
+```{makefile, webex.hide = 'Solution to Exercise 12'}
 all: analysis data-preparation
 
 data-preparation:
@@ -336,45 +530,6 @@ clean:
 	R -e "unlink('gen', recursive = TRUE)"
 ```
 
-*src/data-preparation*
-```
-DATA = ../../data
-TEMP = ../../gen/temp
-
-all: $(DATA)/listings.csv $(DATA)/reviews.csv $(TEMP)/aggregated_df.csv
-
-../../data/reviews.csv: download.R
-  R --vanilla < download.R
-
-../../data/listings.csv: download.R
-  R -e "dir.create('../../data', recursive = TRUE)"
-  R --vanilla < download.R
-
-../../gen/temp/aggregated_df.csv: ../../data/listings.csv ../../data/reviews.csv  clean.R
-  R -e "dir.create('../../gen/temp', recursive = TRUE)"
-	R --vanilla < clean.R
-```
-
-*src/analysis*
-```
-DATA = ../../data
-TEMP = ../../gen/temp
-OUTPUT = = ../../gen/output
-
-all: $(TEMP)/pivot_table.csv $(OUTPUT)/plot_Antwerp.pdf $(OUTPUT)/plot_all.pdf
-
-$(TEMP)/pivot_table.csv: $(TEMP)/aggregated_df.csv pivot_table.R
-  R -e "dir.create('../../gen/output', recursive = TRUE)"
-  R --vanilla < pivot_table.R
-
-$(OUTPUT)/plot_Antwerp.pdf: $(TEMP)/pivot_table.csv plot_antwerp.R
-  R --vanilla < plot_antwerp.R
-
-$(OUTPUT)/plot_all.pdf: $(TEMP)/aggregated_df.csv plot_all.R
-  R --vanilla < plot_all.R
-```
-\
-
 # FAQ
 
 Creating a make workflow that runs from start to finish is an iterative process of trial and error. Here are a few pointers to debug your makefiles.
@@ -385,7 +540,7 @@ Creating a make workflow that runs from start to finish is an iterative process 
 
   ...head over to Tilburg Science Hub [to see how to install `make`](https://tilburgsciencehub.com/get/make).
 
-\
+
 
 ## 2. Does your code run without make?*
 
