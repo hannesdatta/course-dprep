@@ -22,32 +22,138 @@ This exam consists of __open and closed (multiple-choice) questions__. You can f
 
 *Note: the number of questions depends on the points awarded to each question. The instructions during the final exam may slightly vary, so make sure to still read it accordingly.*
 
-1. Please download the [`datasets.RData` workspace](../datasets.RData) file from the exam cover page and open it in RStudio. Please answer the following questions using the objects in this R workspace.
-    1. Please use the dataset stored in `data1`. Using `dplyr`, reshape this dataset from wide to long, and store it in a new object, called `q1`. Paste the code snippet with the solution below.
-    2. Please use the dataset stored in `data2`. Using `dplyr`, please create an aggregated dataset, taking an average of `variable1` and `variable2` for all users in the data (i.e., you obtain a dataset with the number of rows equal to the number of users in the data).
-    3. Please take a look at `data3`. Please propose which data preparation steps are necessary to clean this data.
-    ```
-    # Solution:
-    library(tidyverse)
-    q1 <- data1 %>%
-      pivot_longer(cols = starts_with("X202"),
-      names_prefix='X', 
-      names_to = "year", 
-      values_to = "review_score")
-    
-    q2 <- data2 %>% group_by(user_id) %>% 
-       summarize(mean_var1=mean(variable1), mean_var2=mean(variable2))
+Q1. Please download the [`netflix_data`](../netflix_data.csv) file from the exam cover page and open it in RStudio. Please answer the following questions using this data.
 
-    # q3:
-    summary(q3)
+- `show_id`: content identifier
+- `title`: Title name 
+- `country_of_origin`: Country of production
+- `viewership_country`: Country where the content's viewership data is recorded
+- `date`: Date of recording data
+- `genres`: Genres the content is classified into 
+- `type`: Type of content ("Movie" or "TV Show")
+- `season_count`: Number of seasons 
+- `release_date`: Date when the content was released on Netflix 
+- `show_rating`: Average rating given to the content 
+- `viewership_count`: Number of viewers for the content
 
-    # There are missing observations for price and number_of_reviews;
-    # these cases could either be deleted or set to the sample average.
 
-    # In addition, host_response_rate is a character column, but should
-    # be converted to a numeric column. In so doing, it's important to 
-    # drop the %-sign, and also decide what to do with the NA.
-    ```
+1.1. **Handing missing values**: 
+
+a. Which columns in the dataset contain missing values, and how many missing values does each column have?
+
+b. Check for patterns in the missing values for the column `season_count` depending on show type. Do these missing values need to be imputed? Why or why not?
+
+c. There are missing values in both `show_rating` and `viewership_count`. Justify and use appropriate strategy to impute missing values and add a column that indicates whether the values have been interpolated or not.
+
+**Solution:**
+```
+library(dplyr)
+library(zoo)
+
+# a. Count missing values per column
+na_summary <- netflix_data %>%
+  summarise(across(everything(), ~sum(is.na(.))))
+
+# b. Inspecting season count missing values 
+season_missing_check <- netflix_data %>%
+  group_by(type) %>%
+  summarise(missing_seasons = sum(is.na(season_count)), total_shows = n())
+# All the movies have NA for season count which makes sense so no need to impute them. 
+
+c. # We can use linear interpolation for show_rating as ratings gradually change over time. `viewership_count` column can be interpolated using Last Observation Carried Forward as they should be relatively stable. 
+
+# Store original NA locations
+netflix_data <- netflix_data %>%
+  mutate(
+    was_na_show_rating = is.na(show_rating), 
+    was_na_viewership = is.na(viewership_count)
+  )
+
+# Apply interpolation (grouped by `show_id` and `viewership_country`)
+netflix_data <- netflix_data %>%
+  group_by(show_id, viewership_country) %>%
+  mutate(
+    show_rating = na.approx(show_rating, na.rm = FALSE),  # Linear interpolation
+    viewership_count = na.locf(viewership_count, na.rm = FALSE)  # Last observed value carried forward
+  ) %>%
+  ungroup()
+
+# Create interpolation indicator (TRUE if the value was NA before but now has a value)
+netflix_data <- netflix_data %>%
+  mutate(
+    is_interpolated_show_rating = was_na_show_rating & !is.na(show_rating),
+    is_interpolated_viewership = was_na_viewership & !is.na(viewership_count)
+  ) %>%
+  select(-was_na_show_rating, -was_na_viewership)  # Drop temp columns
+
+
+```
+
+1.2. **Using Regular Expressions:** Some shows are belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains Action genre and 0 otherwise. 
+
+**Solution:**
+```
+netflix_data <- netflix_data %>%
+  mutate(is_action = ifelse(grepl("Action", genres, ignore.case = TRUE), 1, 0))
+
+table(netflix_data$is_action)
+```
+
+1.3. **Reshaping data**
+
+a. Let's say we want to analyze how viewership for a specific show (SHOW_10) varies across different countries over time. Subset the viewership data for this show and convert the data to wide format. 
+
+**Solution:**
+```
+show_10_data <- netflix_data %>%
+  filter(show_id == "SHOW_10") %>%
+  select(date, viewership_country, viewership_count)
+
+# Convert to wide format
+show_10_wide <- show_10_data %>%
+  pivot_wider(
+    names_from = viewership_country, 
+    values_from = viewership_count, 
+    names_prefix = "viewership_"
+  )
+
+```
+
+1.4. **Estimation and Plotting at Scale**: Please estimate a linear regression to examine the impact of a show being listed in the Action genre on viewership for different viewership countries. Use a for loop to estimate at scale.
+
+```
+library(ggplot2)
+
+countries <- unique(netflix_data$viewership_country)
+
+effect_sizes <- data.frame(viewership_country = character(), estimate = numeric(), stringsAsFactors = FALSE)
+
+# Loop through each country and estimate regression
+for (country in countries) {
+  
+  # Filter data for the current country
+  country_data <- netflix_data %>%
+    filter(viewership_country == country, !is.na(is_action), !is.na(viewership_count))
+  
+  # Run the regression model
+  model <- lm(viewership_count ~ is_action, data = country_data)
+  
+  # Get the coefficient for is_action
+  beta_1 <- coef(model)["is_action"]
+  
+  # Store the result
+  effect_sizes <- rbind(effect_sizes, data.frame(viewership_country = country, estimate = beta_1))
+}
+
+# Plot the effect sizes
+ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), y = estimate, fill = estimate)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(title = "Effect of Action Genre on Viewership by Country",
+       x = "Country",
+       y = "Effect Size (Coefficient of is_action)") +
+  theme_minimal()
+```
 
 2. Imagine you have just enrolled as a thesis student, and you receive the following email from your advisor. Submit your PDF document, and provide a conclusion on the suitability of the explored data for the research question.
 
