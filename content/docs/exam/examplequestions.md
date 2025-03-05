@@ -22,7 +22,7 @@ This exam consists of __open and closed (multiple-choice) questions__. You can f
 
 *Note: the number of questions depends on the points awarded to each question. The instructions during the final exam may slightly vary, so make sure to still read it accordingly.*
 
-Q1. Please download the [`netflix_data`](../netflix_data.csv) file from the exam cover page and open it in RStudio. Please answer the following questions using this data.
+Q1. Please download the [`netflix_data`](../netflix_data.csv.zip) file from the exam cover page and open it in RStudio. Please answer the following questions using this data.
 
 - `show_id`: content identifier
 - `title`: Title name 
