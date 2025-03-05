@@ -1,0 +1,106 @@
+---
+title: "Spotify Streaming Analysis: Pre and Post Pandemic"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(readr)
+library(knitr)
+library(scales)
+```
+
+# Introduction
+
+This report explores the effect of the COVID-19 pandemic on Spotify music consumption. The dataset contains daily streaming numbers across multiple artists and countries from January 2019 to December 2021. The goal is to assess whether there was a noticeable impact on streaming trends after March 2020.
+
+# Load Data
+
+```{r}
+# Load the dataset
+spotify_data <- read_csv("spotify_data.csv")
+head(spotify_data)
+# View basic structure
+str(spotify_data)
+```
+
+# Data Exploration
+
+## Summary Statistics
+
+```{r}
+# Summary of streaming numbers
+summary(spotify_data$streams)
+
+# Check for missing values
+colSums(is.na(spotify_data))
+```
+## Streaming Trends Over Time
+
+```{r}
+# Aggregate streams per day
+daily_streams <- spotify_data %>%
+  group_by(date, pandemic_period) %>%
+  summarize(total_streams = sum(streams), .groups = 'drop')
+
+# Plot daily streaming trends
+ggplot(daily_streams, aes(x = date, y = total_streams, color = pandemic_period)) +
+  geom_line() +
+  labs(title = "Daily Spotify Streams Over Time",
+       x = "Date",
+       y = "Total Streams",
+       color = "Pandemic Period") +
+  theme_minimal() +
+  scale_y_continuous(labels = comma)
+```
+
+## Comparing Pre-Pandemic and Post-Pandemic Streaming
+
+```{r}
+# Average streams before and after the pandemic
+stream_comparison <- spotify_data %>%
+  group_by(pandemic_period) %>%
+  summarize(avg_streams = mean(streams), .groups = 'drop')
+
+# Print comparison table
+kable(stream_comparison, caption = "Comparison of Streaming Activity Before and After March 2020")
+```
+
+# Country-wise Analysis
+
+```{r}
+
+daily_country_streams <- spotify_data %>%
+  group_by(date, country, pandemic_period) %>%
+  summarize(daily_streams = sum(streams), .groups = "drop")
+
+country_streams <- daily_country_streams %>%
+  group_by(country, pandemic_period) %>%
+  summarize(avg_daily_streams = mean(daily_streams), .groups = "drop")
+
+# Print summary
+summary(country_streams)
+
+
+
+# Plot streams by country
+ggplot(country_streams, aes(x = country, y = avg_daily_streams, fill = pandemic_period)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Average Daily Streams by Country (Pre vs. Post Pandemic)",
+       x = "Country",
+       y = "Average Daily Streams",
+       fill = "Pandemic Period") +
+  theme_minimal() +
+  scale_y_continuous(labels = comma)
+
+```
+
+# Conclusion
+
+We see a sharp decline in daily streams after pandemic. Also, the average streams decline post-pandemic for both US and UK.
+
