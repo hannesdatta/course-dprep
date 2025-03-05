@@ -89,7 +89,7 @@ netflix_data <- netflix_data %>%
 
 ```
 
-1.2. **Using Regular Expressions:** Some shows are belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains Action genre and 0 otherwise. 
+1.2. **Using Regular Expressions:** Some shows belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains "Action" genre and 0 otherwise. 
 
 **Solution:**
 ```
@@ -119,7 +119,7 @@ show_10_wide <- show_10_data %>%
 
 ```
 
-1.4. **Estimation and Plotting at Scale**: Please estimate a linear regression to examine the impact of a show being listed in the Action genre on viewership for different viewership countries. Use a for loop to estimate at scale.
+1.4. **Estimation and Plotting at Scale**: Please estimate a linear regression to examine the impact of a show being listed as "Action" genre on viewership for different viewership countries. Use a for loop to estimate at scale.
 
 **Solution:**
 
