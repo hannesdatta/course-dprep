@@ -146,20 +146,21 @@ d. Delete the targets that were built in the last iteration. Now run `make -n` a
 
 ```{makefile, webex.hide = 'Solution to Exercise 3c'}
 listings.csv reviews.csv: download.R
-	R --vanilla < download.R
+	Rscript download.R
 
-aggregated_df.csv: clean.R
-	R --vanilla < clean.R
-	
-pivot_table.csv: pivot_table.R
-	R --vanilla < pivot_table.R
-	
-plot_Antwerp.pdf: plot_Antwerp.R
-	R --vanilla < plot_Antwerp.R
-	
-plot_all.pdf: plot_all.R
-	R --vanilla < plot_all.R
+aggregated_df.csv: listings.csv reviews.csv clean.R
+	Rscript clean.R
+
+pivot_table.csv: aggregated_df.csv pivot_table.R
+	Rscript pivot_table.R
+
+plot_all.pdf: aggregated_df.csv plot_all.R
+	Rscript plot_all.R
+
+plot_Antwerp.pdf: pivot_table.csv plot_antwerp.R
+	Rscript plot_antwerp.R
 ```
+
 ```{markdown, webex.hide = 'Solution to Exercise 3d'}
 You will see that `make` only builds the first target by default. Next we show you how to use phony targets so that it executes all commands!
 ```
