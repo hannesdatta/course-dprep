@@ -887,6 +887,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li class="fragment">Versioning can be powerful!
 
 <ul>
+<li class="fragment"><code>git log</code> to see recent commits</li>
 <li class="fragment">delete stuff that isn&#39;t needed (&ldquo;housekeeping&rdquo;), roll back when you want (<code>git checkout COMMITID -b branch</code>)</li>
 <li class="fragment">Oh no, not authenticated! (browser authentication works best)</li>
 <li class="fragment">Oh no! Can&#39;t push! (pull first!)</li>
@@ -904,7 +905,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li class="fragment">Ready to use Git/versioning in a business setting
 
 <ul>
-<li class="fragment">clone repositories</li>
+<li class="fragment">clone repositories, switch brandes (<code>git switch BRANCHNAME</code> or <code>git checkout BRANCHNAME</code>)</li>
 <li class="fragment">Know what to version, and what not</li>
 <li class="fragment">Use <code>.gitignore</code> (and know what it CANNOT do)</li>
 <li class="fragment">Work together using issues, feature branches &amp; pull requests (PRs)/merge requests</li>
@@ -928,7 +929,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 <ul>
 <li class="fragment">ability to quickly produce clean documents to share!</li>
-<li class="fragment">uh&hellip; but how to run it with make?</li>
+<li class="fragment">uh&hellip; but how to run it with make? (tip: <code>R -e &#39;rmarkdown::render(input = &quot;test_render.Rmd&quot;, output_file = &quot;test_render.html&quot;)&#39;</code>)</li>
 <li class="fragment"><strong>verify you can render markdown documents to HTML and PDF!</strong></li>
 </ul></li>
 <li class="fragment">Doing data quality checks?
@@ -936,6 +937,7 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <ul>
 <li class="fragment">getting back to your data supplier if needed!</li>
 <li class="fragment">reporting summary statistics (<code>summary</code>, <code>table</code>, <code>dplyr</code> for summary stats by group)</li>
+<li class="fragment">plotting with <code>ggplot2</code></li>
 </ul></li>
 <li class="fragment">Use RMarkdown when it is <em>useful</em> (i.e., to produce a doc, slides; NOT for data cleaning)</li>
 </ul>
@@ -1004,10 +1006,9 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Common mistakes w&#x2F; make</h3>
 <div class="slideContent" >
 <ul>
-<li>Wrong: One &ldquo;all&rdquo; rule with all targets as prerequisites</li>
-<li>Wrong: Incomplete dependencies</li>
-<li>Wrong: Multiple Rscript execution commands per recipe</li>
-<li>Correct: one &ldquo;entry&rdquo; rule on top, referencing the <em>final</em> output(s)</li>
+<li>Wrong: One &ldquo;all&rdquo; rule with all targets as prerequisites (correct: final products/files to be built)</li>
+<li>Wrong: Incomplete dependencies (correct: all input files + own source code per recipe)</li>
+<li>Wrong: Multiple Rscript execution commands per recipe (correct: write separate rules)</li>
 <li>Gradually build your makefile. <strong>Go in baby steps!</strong></li>
 <li>Happy to take a look at your repositories now - anyone?</li>
 </ul>
@@ -1030,19 +1031,14 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li>it&#39;s amazing to see you learn &amp; grow!
 
 <ul>
-<li>that feeling you get when your code runs&hellip;!</li>
-<li>I can talk to you as &ldquo;members of my own development team&rdquo;</li>
-<li>I&#39;ve witnessed you &ldquo;seeing code and feeling what it does!&rdquo;</li>
-</ul></li>
-<li>different levels
-
-<ul>
-<li>many started R from scratch; some could program but still were challenged with make and GitHub</li>
+<li>responded very well to overhauled engineering tutorial :)</li>
+<li>can talk to you as &ldquo;members of my own development team&rdquo;!</li>
+<li>many started R from scratch; some could program but still were challenged with make and GitHub!</li>
 </ul></li>
 <li>we&#39;ve seen a lot: different projects, data sets, tools, &ldquo;way of doing things&rdquo;, way of coding, videos, websites</li>
 </ul>
 
-<p>My recommendation: take time to let it sink in. And trust in my choice of teaching you this. <strong>Your hard work will pay off.</strong></p>
+<p>My recommendation: <strong>take time to let it sink in.</strong> And trust in my choice of teaching you this. <strong>Your hard work will pay off.</strong></p>
 
 </div>
 
@@ -1051,13 +1047,13 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Looking ahead: During your studies (I)</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Gradually implement across classes or projects
+<li class="fragment"><strong>Selectively</strong> implement across classes or projects
 
 <ul>
 <li class="fragment">e.g., some projects just benefit from better directory structure, while others may need &ldquo;more&rdquo;</li>
 <li class="fragment">risk of &ldquo;losing&rdquo; the skill (!)</li>
 </ul></li>
-<li class="fragment">Realize it takes time to learn
+<li class="fragment">Realize it takes time to learn (and debug!)
 
 <ul>
 <li class="fragment">it took me years to become proficient</li>
@@ -1080,9 +1076,8 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li class="fragment">Build your job market profile
 
 <ul>
-<li class="fragment">e.g., have a Hugo website with your CV</li>
-<li class="fragment">e.g., &ldquo;pin&rdquo; your best repositories (but don&#39;t call them <code>dprep-team-X</code>; remember, you&#39;re a marketer!)</li>
 <li class="fragment">have a compelling about page on GitHub</li>
+<li class="fragment">&ldquo;pin&rdquo; your best repositories (but don&#39;t call them <code>dprep-team-X</code>; remember)</li>
 </ul></li>
 </ul>
 
@@ -1126,17 +1121,11 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li>Deadline for project coming up next week!
 
 <ul>
-<li>remember: <strong>make it work</strong> on different computers and operating systems</li>
+<li>remember: <strong>test it</strong> on different computers and operating systems</li>
 <li><strong>do not use</strong> absolute paths!</li>
 <li>verify data can be downloaded smoothly</li>
-<li>test <code>make</code> thoroughly (demonstration if we have the time)</li>
-<li>don&#39;t test any assumptions - this is about a running workflow, not about research methods!</li>
-</ul></li>
-<li>Exam preparation
-
-<ul>
-<li><a href="https://dprep.hannesdatta.com/docs/exam/">https://dprep.hannesdatta.com/docs/exam/</a></li>
-<li><a href="https://dprep.hannesdatta.com/docs/exam/examplequestions/">https://dprep.hannesdatta.com/docs/exam/examplequestions/</a></li>
+<li>test <code>make</code> thoroughly</li>
+<li>avoid testing any statistical assumptions - this is about a running workflow, not about research methods!</li>
 </ul></li>
 </ul>
 
@@ -1144,13 +1133,13 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Exam planning </h3>
+<h3>Exam planning (I)</h3>
 <div class="slideContent" >
 <ul>
 <li>Organization
 
 <ul>
-<li>14 October (time?; 3 hours)</li>
+<li>3 April (time tba; 3 hours)</li>
 <li>On campus, using <strong>TestVision</strong></li>
 </ul></li>
 <li>Software &amp; materials
@@ -1159,13 +1148,9 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li>access to R/RStudio, Git, make</li>
 <li>no access to the internet</li>
 <li>I&#39;m making selecting resources available on the instruction page - <a href="https://github.com/hannesdatta/course-dprep/raw/master/content/docs/exam/cheatsheets-exam.zip">check them out here</a></li>
+<li>package installation: I will test the exam on Thu next week; if a package is not installed (yet), I will include installation instructions on the exam.</li>
 </ul></li>
-<li>How to prepare?
-
-<ul>
-<li>familiarize yourselves with how TestVision works (link on Canvas)</li>
-<li>let&#39;s look at <a href="https://dprep.hannesdatta.com/docs/exam/examplequestions/">some questions now</a></li>
-</ul></li>
+<li>familiarize yourselves with how TestVision works (link on Canvas + will show here) + review <a href="https://dprep.hannesdatta.com/docs/exam/examplequestions/">example questions</a> (next slides&hellip;)</li>
 </ul>
 
 </div>
@@ -1175,15 +1160,15 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <h3>Learning goals, distribution of points + tips (I)</h3>
 <div class="slideContent" >
 <ul>
-<li>100 points in total, 9 questions</li>
+<li>100 points in total, about 9 questions</li>
 <li><p>Mix of open and closed questions</p></li>
 <li><p>LG 1: Use R to clean and transform data for analysis [synthesis; <strong>20% of points</strong>]</p>
 
 <ul>
-<li>know core concepts and corresponding code in <code>tidyverse</code>/<code>dplyr</code>: e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions) </li>
+<li>know core concepts and corresponding code in <code>tidyverse</code>/<code>dplyr</code>: e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions, dealing with time, pivoting) </li>
 <li>become fast in coding - no time to &ldquo;look up&rdquo; these commands elaborately</li>
 <li>open <code>.Rdata</code>, submit code and/or submit saved <code>.Rdata</code> file.</li>
-<li>many &ldquo;small&rdquo; questions</li>
+<li>several &ldquo;smaller&rdquo; questions</li>
 <li>I simulated the data</li>
 </ul></li>
 </ul>
@@ -1203,8 +1188,8 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li>LG 3: Use Git/GitHub for versioning files and collaboration on privately-shared and publicly-available (open science) GitHub repositories [application; <strong>30% of points</strong>]
 
 <ul>
-<li>question type: download zipped repository</li>
-<li>Be prepared to work with Git Bash (e.g., <code>git checkout</code>, <code>git merge</code>, <code>git add</code>, etc.)</li>
+<li>question type: download a zipped repository</li>
+<li>Be prepared to work with Git Bash (e.g., <code>git checkout</code>, <code>git merge</code>, <code>git add</code>, <code>git status</code>, <code>git log</code>, <code>git branch</code>, etc.)</li>
 <li>download git repository, unzip, do your commits, zip again and submit as a zipfile</li>
 <li>know how to make commits with commit messages, create branches, switch branches, etc.</li>
 </ul></li>
@@ -1214,13 +1199,14 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Learning goals, distribution of points + tips (II)</h3>
+<h3>Learning goals, distribution of points + tips (III)</h3>
 <div class="slideContent" >
 <ul>
 <li>LG 4: Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps) [comprehension; <strong>15% of points</strong>]
 
 <ul>
-<li>except &ldquo;new&rdquo;/unseen data</li>
+<li>inspect &ldquo;new&rdquo;/unseen data</li>
+<li>covering <code>ggplot2</code> for data visualization</li>
 <li>When handing in documents, check what I require (for <code>.Rmd</code>, I sometimes ask for rendered <code>.pdf</code> documents - does it work on your computer?)</li>
 </ul></li>
 <li>LG 5: Make
@@ -1236,10 +1222,10 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Some tips for your exam</h3>
+<h3>Learning goals, distribution of points + tips (IV)</h3>
 <div class="slideContent" >
 <ul>
-<li class="fragment">Work on a joint cheat sheet (link to be shared on Canvas) - deadline this Friday, 3pm</li>
+<li class="fragment">Work on a joint cheat sheet (link has been shared on Canvas) - deadline one week before the exam</li>
 <li class="fragment">Be prepared to download data sets from Testvision (<code>.Rdata</code>) - on the Cover page of the exam or in a specific question on the exam.</li>
 </ul>
 
@@ -1253,14 +1239,14 @@ https://docs.google.com/spreadsheets/d/1Tf9oypJhAlDN4m9JTKYzt66dvmiLdBewF3coWpe9
 <li><p>Course evaluation has been immensely important to this course</p>
 
 <ul>
-<li>this semester: switched order of sessions, revised GitHub tutorial/onboarding</li>
-<li>last semester: new data set, coaching sessions with breakout groups on campus and online</li>
+<li>this semester: overhauled all tutorials (e.g., ggplot in week 2, advanced engineering in week 4)</li>
+<li>last semester: switched order of sessions, revised GitHub tutorial/onboarding, new data sets, coaching sessions with breakout groups on campus and online</li>
 </ul></li>
 <li><p>Course evaluation has been critical to my career</p>
 
 <ul>
 <li>Without my past evaluations, I wouldn&#39;t be teaching to you today</li>
-<li>I will look at all comments. </li>
+<li>I will look at all comments. Based on student feedback, we now have Q&amp;A for setups &amp; additional Q&amp;As towards the end of the course.</li>
 <li><strong>Scores are most important to show importance of this course</strong></li>
 </ul></li>
 <li><p>You will be invited via <a href="https://app.evalytics.nl/#/login">Evalytics</a> at the end of the week</p></li>

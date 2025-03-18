@@ -81,6 +81,7 @@ incremental: true
   - Seems to put a lot of structure on stuff, did it work out?
   - Recall how to work together -- team <-> individual
 - Versioning can be powerful!
+  - `git log` to see recent commits
   - delete stuff that isn't needed ("housekeeping"), roll back when you want (`git checkout COMMITID -b branch`)
   - Oh no, not authenticated! (browser authentication works best)
   - Oh no! Can't push! (pull first!)
@@ -91,7 +92,7 @@ Lessons learnt #1: Versioning and Project Management with Git(Hub) (II)
 incremental: true
 
 - Ready to use Git/versioning in a business setting
-  - clone repositories
+  - clone repositories, switch brandes (`git switch BRANCHNAME` or `git checkout BRANCHNAME`)
   - Know what to version, and what not
   - Use `.gitignore` (and know what it CANNOT do)
   - Work together using issues, feature branches & pull requests (PRs)/merge requests
@@ -105,11 +106,12 @@ incremental: true
 
 - RMarkdown! (mixing code with reporting)
   - ability to quickly produce clean documents to share!
-  - uh... but how to run it with make?
+  - uh... but how to run it with make? (tip: `R -e 'rmarkdown::render(input = "test_render.Rmd", output_file = "test_render.html")'`)
   - __verify you can render markdown documents to HTML and PDF!__
 - Doing data quality checks?
   - getting back to your data supplier if needed!
   - reporting summary statistics (`summary`, `table`, `dplyr` for summary stats by group)
+  - plotting with `ggplot2`
 - Use RMarkdown when it is *useful* (i.e., to produce a doc, slides; NOT for data cleaning)
 
 Lessons learnt #3: Data Engineering
@@ -143,10 +145,9 @@ incremental: true
 Common mistakes w/ make
 ==========
 
-- Wrong: One "all" rule with all targets as prerequisites
-- Wrong: Incomplete dependencies
-- Wrong: Multiple Rscript execution commands per recipe
-- Correct: one "entry" rule on top, referencing the *final* output(s)
+- Wrong: One "all" rule with all targets as prerequisites (correct: final products/files to be built)
+- Wrong: Incomplete dependencies (correct: all input files + own source code per recipe)
+- Wrong: Multiple Rscript execution commands per recipe (correct: write separate rules)
 - Gradually build your makefile. __Go in baby steps!__
 - Happy to take a look at your repositories now - anyone?
 
@@ -155,27 +156,26 @@ Any other questions about your projects?
 
 __We can address them now!__
 
+
 Reflection about the course
 ========================================================
 
 - it's amazing to see you learn & grow!
-  - that feeling you get when your code runs...!
-  - I can talk to you as "members of my own development team"
-  - I've witnessed you "seeing code and feeling what it does!"
-- different levels
-  - many started R from scratch; some could program but still were challenged with make and GitHub
+  - responded very well to overhauled engineering tutorial :)
+  - can talk to you as "members of my own development team"!
+  - many started R from scratch; some could program but still were challenged with make and GitHub!
 - we've seen a lot: different projects, data sets, tools, "way of doing things", way of coding, videos, websites
 
-My recommendation: take time to let it sink in. And trust in my choice of teaching you this. __Your hard work will pay off.__
+My recommendation: __take time to let it sink in.__ And trust in my choice of teaching you this. __Your hard work will pay off.__
 
 Looking ahead: During your studies (I)
 ========================================================
 incremental: true
 
-- Gradually implement across classes or projects
+- __Selectively__ implement across classes or projects
   - e.g., some projects just benefit from better directory structure, while others may need "more"
   - risk of "losing" the skill (!)
-- Realize it takes time to learn
+- Realize it takes time to learn (and debug!)
   - it took me years to become proficient
   - onboard team members to "your" way of working
 
@@ -186,10 +186,9 @@ incremental: true
 - Use for thesis!
   - but, be aware your skills are *so* fresh, your professor likely has never heard about it! --> use, teach, show how productive you are!
 - Build your job market profile
-  - e.g., have a Hugo website with your CV
-  - e.g., "pin" your best repositories (but don't call them `dprep-team-X`; remember, you're a marketer!)
   - have a compelling about page on GitHub
-
+  - "pin" your best repositories (but don't call them `dprep-team-X`; remember)
+  
 Looking ahead: During your studies (III)
 ========================================================
 incremental: true
@@ -214,41 +213,37 @@ Next steps: Submissions and preparing for the exam
 ========================================================
 
 - Deadline for project coming up next week!
-  - remember: __make it work__ on different computers and operating systems
+  - remember: __test it__ on different computers and operating systems
   - __do not use__ absolute paths!
   - verify data can be downloaded smoothly
-  - test `make` thoroughly (demonstration if we have the time)
-  - don't test any assumptions - this is about a running workflow, not about research methods!
-- Exam preparation
-  - https://dprep.hannesdatta.com/docs/exam/
-  - https://dprep.hannesdatta.com/docs/exam/examplequestions/
+  - test `make` thoroughly
+  - avoid testing any statistical assumptions - this is about a running workflow, not about research methods!
 
 
-Exam planning 
+Exam planning (I)
 =============
 
 - Organization
-  - 14 October (time?; 3 hours)
+  - 3 April (time tba; 3 hours)
   - On campus, using __TestVision__
 - Software & materials
   - access to R/RStudio, Git, make
   - no access to the internet
   - I'm making selecting resources available on the instruction page - [check them out here](https://github.com/hannesdatta/course-dprep/raw/master/content/docs/exam/cheatsheets-exam.zip)
-- How to prepare?
-  - familiarize yourselves with how TestVision works (link on Canvas)
-  - let's look at [some questions now](https://dprep.hannesdatta.com/docs/exam/examplequestions/)
+  - package installation: I will test the exam on Thu next week; if a package is not installed (yet), I will include installation instructions on the exam.
+- familiarize yourselves with how TestVision works (link on Canvas + will show here) + review [example questions](https://dprep.hannesdatta.com/docs/exam/examplequestions/) (next slides...)
 
 Learning goals, distribution of points + tips (I)
 ==========
 
-- 100 points in total, 9 questions
+- 100 points in total, about 9 questions
 - Mix of open and closed questions
 
 - LG 1: Use R to clean and transform data for analysis [synthesis; __20% of points__]
-   - know core concepts and corresponding code in `tidyverse`/`dplyr`: e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions) 
+   - know core concepts and corresponding code in `tidyverse`/`dplyr`: e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions, dealing with time, pivoting) 
    - become fast in coding - no time to "look up" these commands elaborately
    - open `.Rdata`, submit code and/or submit saved `.Rdata` file.
-   - many "small" questions
+   - several "smaller" questions
    - I simulated the data
 
 Learning goals, distribution of points + tips (II)
@@ -257,16 +252,17 @@ Learning goals, distribution of points + tips (II)
 - LG 2: Use GitHub for managing empirical research projects  [evaluation; __10% of points__]
   - conceptual questions on GitHub issues, project boards, Scrum, etc.
 - LG 3: Use Git/GitHub for versioning files and collaboration on privately-shared and publicly-available (open science) GitHub repositories [application; __30% of points__]
-  - question type: download zipped repository
-  - Be prepared to work with Git Bash (e.g., `git checkout`, `git merge`, `git add`, etc.)
+  - question type: download a zipped repository
+  - Be prepared to work with Git Bash (e.g., `git checkout`, `git merge`, `git add`, `git status`, `git log`, `git branch`, etc.)
   - download git repository, unzip, do your commits, zip again and submit as a zipfile
   - know how to make commits with commit messages, create branches, switch branches, etc.
   
-Learning goals, distribution of points + tips (II)
+Learning goals, distribution of points + tips (III)
 ========== 
 
 - LG 4: Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps) [comprehension; __15% of points__]
-    - except "new"/unseen data
+    - inspect "new"/unseen data
+    - covering `ggplot2` for data visualization
     - When handing in documents, check what I require (for `.Rmd`, I sometimes ask for rendered `.pdf` documents - does it work on your computer?)
 - LG 5: Make
   - Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines [application; __25% of points__]
@@ -274,11 +270,11 @@ Learning goals, distribution of points + tips (II)
   - Complete a few smaller tasks: run, correct and develop new `make` workflow
 
 
-Some tips for your exam
-=======
+Learning goals, distribution of points + tips (IV)
+========== 
 incremental: true
 
-- Work on a joint cheat sheet (link to be shared on Canvas) - deadline this Friday, 3pm
+- Work on a joint cheat sheet (link has been shared on Canvas) - deadline one week before the exam
 - Be prepared to download data sets from Testvision (`.Rdata`) - on the Cover page of the exam or in a specific question on the exam.
 
 
@@ -286,12 +282,12 @@ Next steps: Official course evaluation
 ========================================================
 
 - Course evaluation has been immensely important to this course
-  - this semester: switched order of sessions, revised GitHub tutorial/onboarding
-  - last semester: new data set, coaching sessions with breakout groups on campus and online
+  - this semester: overhauled all tutorials (e.g., ggplot in week 2, advanced engineering in week 4)
+  - last semester: switched order of sessions, revised GitHub tutorial/onboarding, new data sets, coaching sessions with breakout groups on campus and online
   
 - Course evaluation has been critical to my career
   - Without my past evaluations, I wouldn't be teaching to you today
-  - I will look at all comments. 
+  - I will look at all comments. Based on student feedback, we now have Q&A for setups & additional Q&As towards the end of the course.
   - __Scores are most important to show importance of this course__
 
 - You will be invited via [Evalytics](https://app.evalytics.nl/#/login) at the end of the week
