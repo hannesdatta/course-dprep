@@ -247,8 +247,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -259,7 +260,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -545,7 +546,7 @@ display: none;
 
 <h1 class="title toc-ignore">Pipeline Building &amp; Automation</h1>
 <h4 class="author"></h4>
-<h4 class="date">Last updated: 19 February 2025</h4>
+<h4 class="date">Last updated: 10 March 2025</h4>
 
 </div>
 
@@ -840,19 +841,19 @@ that were built in the last iteration. Now run <code>make -n</code> and
 Solution to Exercise 3c
 </button>
 <div class="sourceCode" id="cb4"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="dv">listings.csv reviews.csv:</span><span class="dt"> download.R</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; download.R</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="er">    </span>Rscript download.R</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="dv">aggregated_df.csv:</span><span class="dt"> clean.R</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; clean.R</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>    </span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="dv">pivot_table.csv:</span><span class="dt"> pivot_table.R</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; pivot_table.R</span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>    </span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="dv">plot_Antwerp.pdf:</span><span class="dt"> plot_Antwerp.R</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; plot_Antwerp.R</span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>    </span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="dv">plot_all.pdf:</span><span class="dt"> plot_all.R</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; plot_all.R</span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="dv">aggregated_df.csv:</span><span class="dt"> listings.csv reviews.csv clean.R</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="er">    </span>Rscript clean.R</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="dv">pivot_table.csv:</span><span class="dt"> aggregated_df.csv pivot_table.R</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="er">    </span>Rscript pivot_table.R</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="dv">plot_all.pdf:</span><span class="dt"> aggregated_df.csv plot_all.R</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="er">    </span>Rscript plot_all.R</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="dv">plot_Antwerp.pdf:</span><span class="dt"> pivot_table.csv plot_antwerp.R</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="er">    </span>Rscript plot_antwerp.R</span></code></pre></div>
 </div>
 <div class="webex-solution">
 <button>
@@ -893,7 +894,11 @@ Solution to Exercise 4
 </div>
 <p>We can apply the same principle and add the following
 <code>all</code> target to our makefile:</p>
-<pre><code>all: plot_Antwerp.pdf plot_all.pdf aggregated_df.csv pivot_table.csv listings.csv reviews.csv</code></pre>
+<pre><code>all: plot_Antwerp.pdf plot_all.pdf</code></pre>
+<p>Note that you do <strong>not</strong> have to add
+<code>aggregated_df.csv pivot_table.csv listings.csv reviews.csv</code>
+to the <code>all</code> rule - as we have previously defined how to
+build these files in separate &quot;recipes&quot;/rules.</p>
 <p><strong>Exercise 5a</strong><br />
 Switch back to the other directory, add the <code>all</code> phony
 target to your makefile, and run <code>make</code>. What happens? Does
@@ -912,22 +917,22 @@ Solution to Exercise 5a
 <button>
 Makefile solution to Exercise 5a
 </button>
-<div class="sourceCode" id="cb10"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> listings.csv reviews.csv aggregated_df.csv pivot_table.csv plot_Antwerp.pdf plot_all.pdf</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> plot_Antwerp.pdf plot_all.pdf</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="dv">listings.csv reviews.csv:</span><span class="dt"> download.R</span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; download.R</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="er">    </span>Rscript download.R</span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="dv">aggregated_df.csv:</span><span class="dt"> clean.R</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; clean.R</span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    </span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="dv">pivot_table.csv:</span><span class="dt"> pivot_table.R</span></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; pivot_table.R</span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>    </span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="dv">plot_Antwerp.pdf:</span><span class="dt"> plot_Antwerp.R</span></span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; plot_Antwerp.R</span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>    </span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="dv">plot_all.pdf:</span><span class="dt"> plot_all.R</span></span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="er">    </span>R --vanilla &lt; plot_all.R</span></code></pre></div>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="dv">aggregated_df.csv:</span><span class="dt"> listings.csv reviews.csv clean.R</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="er">    </span>Rscript clean.R</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="dv">pivot_table.csv:</span><span class="dt"> aggregated_df.csv pivot_table.R</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="er">    </span>Rscript pivot_table.R</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="dv">plot_all.pdf:</span><span class="dt"> aggregated_df.csv plot_all.R</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="er">    </span>Rscript plot_all.R</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="dv">plot_Antwerp.pdf:</span><span class="dt"> pivot_table.csv plot_antwerp.R</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="er">    </span>Rscript plot_antwerp.R</span></code></pre></div>
 </div>
 <p><strong>Exercise 5b</strong><br />
 Would it make a difference if you left the four csv files in the all
@@ -1045,49 +1050,42 @@ above <code>download.R</code> in the makefile so that it first creates
 the data folder before it tries to store the downloaded data there. If
 you forget to do this and you didn&#39;t create the folder manually, it will
 throw an error once it attempts to save a file in the unknown folder. Do
-the same for the <code>gen/temp</code> and <code>gen/output</code>
-subfolders.</p>
+the same for the <code>gen/temp</code> and <code>gen/output</code> sub
+folders.</p>
 <div class="webex-solution">
 <button>
 Solution to Exercise 7
 </button>
-<div class="sourceCode" id="cb14"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Main target</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> dirs data/listings.csv data/reviews.csv gen/temp/aggregated_df.csv gen/temp/pivot_table.csv gen/output/plot_Antwerp.pdf gen/output/plot_all.pdf</span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># Create necessary directories using Rscript</span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="dv">dirs:</span><span class="dt"> data_dir temp_dir output_dir</span></span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="dv">data_dir:</span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;data&#39;)) dir.create(&#39;data&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="dv">temp_dir:</span></span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;gen/temp&#39;)) dir.create(&#39;gen/temp&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="dv">output_dir:</span></span>
-<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;gen/output&#39;)) dir.create(&#39;gen/output&#39;, recursive = TRUE)&quot;</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># Main target</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> gen/output/plot_Antwerp.pdf gen/output/plot_all.pdf</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># Step 1: Download data</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="dv">data/listings.csv data/reviews.csv:</span><span class="dt"> src/data-preparation/download.R </span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;data&#39;)&quot;</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>    Rscript src/data-preparation/download.R</span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co"># Step 2: Clean data</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="dv">gen/temp/aggregated_df.csv:</span><span class="dt"> src/data-preparation/clean.R data/listings.csv data/reviews.csv </span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;gen/temp/&#39;, recursive = T)&quot;</span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a>    Rscript src/data-preparation/clean.R</span>
 <span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co"># Step 1: Download data</span></span>
-<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="dv">data/listings.csv data/reviews.csv:</span><span class="dt"> src/data-preparation/download.R </span></span>
-<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="er">    </span>Rscript src/data-preparation/download.R</span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co"># Step 3: Create pivot table</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="dv">gen/temp/pivot_table.csv:</span><span class="dt"> src/analysis/pivot_table.R gen/temp/aggregated_df.csv </span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="er">    </span>Rscript src/analysis/pivot_table.R</span>
 <span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co"># Step 2: Clean data</span></span>
-<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="dv">gen/temp/aggregated_df.csv:</span><span class="dt"> src/data-preparation/clean.R ../../data/listings.csv ../../data/reviews.csv </span></span>
-<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="er">    </span>Rscript src/data-preparation/clean.R</span>
-<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a></span>
-<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a><span class="co"># Step 3: Create pivot table</span></span>
-<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a><span class="dv">gen/temp/pivot_table.csv:</span><span class="dt"> src/analysis/pivot_table.R ../../gen/temp/aggregated_df.csv </span></span>
-<span id="cb14-26"><a href="#cb14-26" tabindex="-1"></a><span class="er">    </span>Rscript src/analysis/pivot_table.R</span>
-<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a></span>
-<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a><span class="co"># Step 4: Plot Antwerp</span></span>
-<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a><span class="dv">gen/output/plot_Antwerp.pdf:</span><span class="dt"> src/analysis/plot_Antwerp.R ../../gen/temp/pivot_table.csv </span></span>
-<span id="cb14-30"><a href="#cb14-30" tabindex="-1"></a><span class="er">    </span>Rscript src/analysis/plot_Antwerp.R</span>
-<span id="cb14-31"><a href="#cb14-31" tabindex="-1"></a></span>
-<span id="cb14-32"><a href="#cb14-32" tabindex="-1"></a><span class="co"># Step 5: Plot All</span></span>
-<span id="cb14-33"><a href="#cb14-33" tabindex="-1"></a><span class="dv">gen/output/plot_all.pdf:</span><span class="dt"> src/analysis/plot_all.R ../../gen/temp/aggregated_df.csv </span></span>
-<span id="cb14-34"><a href="#cb14-34" tabindex="-1"></a><span class="er">    </span>Rscript src/analysis/plot_all.R</span></code></pre></div>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co"># Step 4: Plot Antwerp</span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="dv">gen/output/plot_Antwerp.pdf:</span><span class="dt"> src/analysis/plot_Antwerp.R gen/temp/pivot_table.csv </span></span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;gen/output&#39;, recursive = T)&quot;</span></span>
+<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a>    Rscript src/analysis/plot_Antwerp.R</span>
+<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a><span class="co"># Step 5: Plot All</span></span>
+<span id="cb14-26"><a href="#cb14-26" tabindex="-1"></a><span class="dv">gen/output/plot_all.pdf:</span><span class="dt"> src/analysis/plot_all.R gen/temp/aggregated_df.csv </span></span>
+<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;gen/output&#39;, recursive = T)&quot;</span></span>
+<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a>    Rscript src/analysis/plot_all.R</span>
+<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a>    </span></code></pre></div>
 </div>
-<p>For better structure, we can define the creation of directories as a
-separate target (&#39;dirs&#39;) as shown above.</p>
 </div>
 </div>
 <div id="part-3-advanced-commands" class="section level1">
@@ -1095,14 +1093,15 @@ separate target (&#39;dirs&#39;) as shown above.</p>
 <div id="variables" class="section level2">
 <h2>3.1 Variables</h2>
 <p>Writing long file paths, such as
-<code>../../gen/temp/aggregated_df.csv</code> is cumbersome and prone to
+<code>gen/temp/aggregated_df.csv</code> is cumbersome and prone to
 errors. Therefore, you can clean up your makefiles using variables like
 this:</p>
-<pre><code>TEMP = ../../gen/temp
-DATA = ../../data
+<pre><code>TEMP = gen/temp
+DATA = data
+SRC = src/data-preparation
 
-gen/temp/aggregated_df.csv: $(DATA)/listings.csv $(DATA)/reviews.csv clean.R
-    R --vanilla &lt; clean.R</code></pre>
+$(TEMP)/aggregated_df.csv: $(DATA)/listings.csv $(DATA)/reviews.csv $(SRC)/clean.R
+    R --vanilla &lt; $(SRC)/clean.R</code></pre>
 <p>In other words, you specify the file path as a variable at the top
 (e.g., <code>TEMP = ...</code>) after which you can reference it with
 <code>$(VARIABLE)</code>.</p>
@@ -1113,42 +1112,40 @@ replaced by variables.</p>
 <button>
 Solution to Exercise 8
 </button>
-<div class="sourceCode" id="cb16"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Main target</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> dirs data/listings.csv data/reviews.csv gen/temp/aggregated_df.csv gen/temp/pivot_table.csv gen/output/plot_Antwerp.pdf gen/output/plot_all.pdf</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co"># Create necessary directories using Rscript</span></span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="dv">dirs:</span><span class="dt"> data_dir temp_dir output_dir</span></span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="dv">data_dir:</span></span>
-<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;data&#39;)) dir.create(&#39;data&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="dv">temp_dir:</span></span>
-<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;gen/temp&#39;)) dir.create(&#39;gen/temp&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="dv">output_dir:</span></span>
-<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;gen/output&#39;)) dir.create(&#39;gen/output&#39;, recursive = TRUE)&quot;</span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Define directories</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="dt">OUTPUT</span> <span class="ch">=</span><span class="st"> gen/output</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="dt">TEMP</span> <span class="ch">=</span><span class="st"> gen/temp</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="dt">DATA</span> <span class="ch">=</span><span class="st"> data</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="dt">SRC_ANALYSIS</span> <span class="ch">=</span><span class="st"> src/analysis</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="dt">SRC_DATAPREP</span> <span class="ch">=</span><span class="st"> src/data-preparation</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co"># Main target</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="dt">/plot_Antwerp.pdf </span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="dt">/plot_all.pdf</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co"># Step 1: Download data</span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="dv">$(DATA)/listings.csv $(DATA)/reviews.csv:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">SRC_DATAPREP</span><span class="ch">)</span><span class="dt">/download.R </span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;</span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="st">&#39;)&quot;</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>    Rscript <span class="ch">$(</span><span class="dt">SRC_DATAPREP</span><span class="ch">)</span>/download.R</span>
 <span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a><span class="dt">DATA</span> <span class="ch">=</span><span class="st"> ../../data</span></span>
-<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a><span class="dt">TEMP</span> <span class="ch">=</span><span class="st"> ../../gen/temp</span></span>
-<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a><span class="co"># Step 1: Download data</span></span>
-<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a><span class="dv">data/listings.csv data/reviews.csv:</span><span class="dt"> src/data-preparation/download.R </span></span>
-<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a><span class="er">    </span>Rscript src/data-preparation/download.R</span>
-<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a><span class="co"># Step 2: Clean data</span></span>
-<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a><span class="dv">gen/temp/aggregated_df.csv:</span><span class="dt"> src/data-preparation/clean.R </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/listings.csv </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/reviews.csv </span></span>
-<span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a><span class="er">    </span>Rscript src/data-preparation/clean.R</span>
-<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a><span class="co"># Step 3: Create pivot table</span></span>
-<span id="cb16-27"><a href="#cb16-27" tabindex="-1"></a><span class="dv">gen/temp/pivot_table.csv:</span><span class="dt"> src/analysis/pivot_table.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv </span></span>
-<span id="cb16-28"><a href="#cb16-28" tabindex="-1"></a><span class="er">    </span>Rscript src/analysis/pivot_table.R</span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a><span class="co"># Step 2: Clean data</span></span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a><span class="dv">$(TEMP)/aggregated_df.csv:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">SRC_DATAPREP</span><span class="ch">)</span><span class="dt">/clean.R </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/listings.csv </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/reviews.csv </span></span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;</span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="st">&#39;, recursive = T)&quot;</span></span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a>    Rscript <span class="ch">$(</span><span class="dt">SRC_DATAPREP</span><span class="ch">)</span>/clean.R</span>
+<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a><span class="co"># Step 3: Create pivot table</span></span>
+<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a><span class="dv">$(TEMP)/pivot_table.csv:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">SRC_ANALYSIS</span><span class="ch">)</span><span class="dt">/pivot_table.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv </span></span>
+<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a><span class="er">    </span>Rscript <span class="ch">$(</span><span class="dt">SRC_ANALYSIS</span><span class="ch">)</span>/pivot_table.R</span>
+<span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a><span class="co"># Step 4: Plot Antwerp</span></span>
+<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a><span class="dv">$(OUTPUT)/plot_Antwerp.pdf:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">SRC_ANALYSIS</span><span class="ch">)</span><span class="dt">/plot_Antwerp.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/pivot_table.csv </span></span>
+<span id="cb16-27"><a href="#cb16-27" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;</span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="st">&#39;, recursive = T)&quot;</span></span>
+<span id="cb16-28"><a href="#cb16-28" tabindex="-1"></a>    Rscript <span class="ch">$(</span><span class="dt">SRC_ANALYSIS</span><span class="ch">)</span>/plot_Antwerp.R</span>
 <span id="cb16-29"><a href="#cb16-29" tabindex="-1"></a></span>
-<span id="cb16-30"><a href="#cb16-30" tabindex="-1"></a><span class="co"># Step 4: Plot Antwerp</span></span>
-<span id="cb16-31"><a href="#cb16-31" tabindex="-1"></a><span class="dv">gen/output/plot_Antwerp.pdf:</span><span class="dt"> src/analysis/plot_Antwerp.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/pivot_table.csv </span></span>
-<span id="cb16-32"><a href="#cb16-32" tabindex="-1"></a><span class="er">    </span>Rscript src/analysis/plot_Antwerp.R</span>
-<span id="cb16-33"><a href="#cb16-33" tabindex="-1"></a></span>
-<span id="cb16-34"><a href="#cb16-34" tabindex="-1"></a><span class="co"># Step 5: Plot All</span></span>
-<span id="cb16-35"><a href="#cb16-35" tabindex="-1"></a><span class="dv">gen/output/plot_all.pdf:</span><span class="dt"> src/analysis/plot_all.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv </span></span>
-<span id="cb16-36"><a href="#cb16-36" tabindex="-1"></a><span class="er">    </span>Rscript src/analysis/plot_all.R</span></code></pre></div>
+<span id="cb16-30"><a href="#cb16-30" tabindex="-1"></a><span class="co"># Step 5: Plot All</span></span>
+<span id="cb16-31"><a href="#cb16-31" tabindex="-1"></a><span class="dv">$(OUTPUT)/plot_all.pdf:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">SRC_ANALYSIS</span><span class="ch">)</span><span class="dt">/plot_all.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv </span></span>
+<span id="cb16-32"><a href="#cb16-32" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;</span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="st">&#39;, recursive = T)&quot;</span></span>
+<span id="cb16-33"><a href="#cb16-33" tabindex="-1"></a>    Rscript <span class="ch">$(</span><span class="dt">SRC_ANALYSIS</span><span class="ch">)</span>/plot_all.R</span>
+<span id="cb16-34"><a href="#cb16-34" tabindex="-1"></a>    </span></code></pre></div>
 </div>
 </div>
 <div id="multiple-makefiles" class="section level2">
@@ -1174,37 +1171,29 @@ Create the makefile in <code>src/data-preparation</code>, copy the
 related make commands from the makefile in the root directory, and add
 an <code>all</code> phony target to both makefiles. Don&#39;t forget to
 include the <code>R -e &quot;dir.create(&#39;directory_name&#39;)&quot;</code> commands
-and double check relative paths! Change your working directory to
-<code>src/data-preparation</code> to test this makefile by running
-<code>make</code>.</p>
+and double check relative paths (these will have to change!). Please
+change your working directory to <code>src/data-preparation</code> to
+test this makefile by running <code>make</code>.</p>
 <div class="webex-solution">
 <button>
 Solution to Exercise 9a
 </button>
-<div class="sourceCode" id="cb18"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="dt">DATA</span> <span class="ch">=</span><span class="st"> ../../data</span></span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a></span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="dt">TEMP</span> <span class="ch">=</span><span class="st"> ../../gen/temp</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># Main target</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> dirs </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/listings.csv </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/reviews.csv </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv</span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># Create necessary directories using Rscript</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="dv">dirs:</span><span class="dt"> data_dir temp_dir output_dir</span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="dv">data_dir:</span></span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;../../data&#39;)) dir.create(&#39;../../data&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="dv">temp_dir:</span></span>
-<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;../../gen/temp&#39;)) dir.create(&#39;../../gen/temp&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a></span>
-<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="dv">output_dir:</span></span>
-<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;../../gen/output&#39;)) dir.create(&#39;../../gen/output&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co"># Step 1: Download data</span></span>
-<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="dv">$(DATA)/listings.csv $(DATA)/reviews.csv:</span><span class="dt"> download.R </span></span>
-<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="er">    </span>Rscript download.R</span>
-<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a></span>
-<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a><span class="co"># Step 2: Clean data</span></span>
-<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a><span class="dv">$(TEMP)/aggregated_df.csv:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/listings.csv </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/reviews.csv clean.R </span></span>
-<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a><span class="er">    </span>Rscript clean.R</span></code></pre></div>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="dt">DATA</span> <span class="ch">=</span><span class="st"> ../../data</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># Main target</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># Step 1: Download data</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="dv">$(DATA)/listings.csv $(DATA)/reviews.csv:</span><span class="dt"> download.R </span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;</span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="st">&#39;)&quot;</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>    Rscript download.R</span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># Step 2: Clean data</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="dv">$(TEMP)/aggregated_df.csv:</span><span class="dt"> clean.R </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/listings.csv </span><span class="ch">$(</span><span class="dt">DATA</span><span class="ch">)</span><span class="dt">/reviews.csv </span></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;</span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="st">&#39;, recursive = T)&quot;</span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a>    Rscript clean.R</span></code></pre></div>
 </div>
 <p><strong>Exercise 9b</strong></p>
 <p>Create the makefile in <code>src/analysis</code>, copy the related
@@ -1218,32 +1207,26 @@ check relative paths! Change your working directory to
 <button>
 Solution to Exercise 9b
 </button>
-<div class="sourceCode" id="cb19"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="dt">DATA</span> <span class="ch">=</span><span class="st"> ../../data</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="dt">TEMP</span> <span class="ch">=</span><span class="st"> ../../gen/temp</span></span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="dt">OUTPUT</span> <span class="ch">=</span><span class="st"> ../../gen/output</span></span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># Main target</span></span>
-<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> dirs </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/pivot_table.csv </span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="dt">/plot_Antwerp.pdf </span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="dt">/plot_all.pdf</span></span>
-<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># Create necessary directories using Rscript</span></span>
-<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="dv">dirs:</span><span class="dt"> temp_dir output_dir</span></span>
-<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a></span>
-<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="dv">temp_dir:</span></span>
-<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;../../gen/temp&#39;)) dir.create(&#39;../../gen/temp&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a></span>
-<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="dv">output_dir:</span></span>
-<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="er">    </span>Rscript -e <span class="st">&quot;if (!dir.exists(&#39;../../gen/output&#39;)) dir.create(&#39;../../gen/output&#39;, recursive = TRUE)&quot;</span></span>
-<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a><span class="co"># Create pivot table</span></span>
-<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="dv">$(TEMP)/pivot_table.csv:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv pivot_table.R</span></span>
-<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="er">    </span>Rscript pivot_table.R</span>
-<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="#cb19-20" tabindex="-1"></a><span class="co"># Plot Antwerp</span></span>
-<span id="cb19-21"><a href="#cb19-21" tabindex="-1"></a><span class="dv">$(OUTPUT)/plot_Antwerp.pdf:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/pivot_table.csv plot_Antwerp.R</span></span>
-<span id="cb19-22"><a href="#cb19-22" tabindex="-1"></a><span class="er">    </span>Rscript plot_Antwerp.R</span>
-<span id="cb19-23"><a href="#cb19-23" tabindex="-1"></a></span>
-<span id="cb19-24"><a href="#cb19-24" tabindex="-1"></a><span class="co"># Plot All</span></span>
-<span id="cb19-25"><a href="#cb19-25" tabindex="-1"></a><span class="dv">$(OUTPUT)/plot_all.pdf:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv plot_all.R</span></span>
-<span id="cb19-26"><a href="#cb19-26" tabindex="-1"></a><span class="er">    </span>Rscript plot_all.R</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="dt">OUTPUT</span> <span class="ch">=</span><span class="st"> ../../gen/output</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="dt">TEMP</span> <span class="ch">=</span><span class="st"> ../../gen/temp</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co"># Main target</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="dt">/plot_Antwerp.pdf </span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="dt">/plot_all.pdf</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co"># Step 3: Create pivot table</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="dv">$(TEMP)/pivot_table.csv:</span><span class="dt"> pivot_table.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv </span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="er">    </span>Rscript pivot_table.R</span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co"># Step 4: Plot Antwerp</span></span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="dv">$(OUTPUT)/plot_Antwerp.pdf:</span><span class="dt"> plot_Antwerp.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/pivot_table.csv </span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;</span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="st">&#39;, recursive = T)&quot;</span></span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a>    Rscript plot_Antwerp.R</span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="co"># Step 5: Plot All</span></span>
+<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="dv">$(OUTPUT)/plot_all.pdf:</span><span class="dt"> plot_all.R </span><span class="ch">$(</span><span class="dt">TEMP</span><span class="ch">)</span><span class="dt">/aggregated_df.csv </span></span>
+<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a><span class="er">    </span>R -e <span class="st">&quot;dir.create(&#39;</span><span class="ch">$(</span><span class="dt">OUTPUT</span><span class="ch">)</span><span class="st">&#39;, recursive = T)&quot;</span></span>
+<span id="cb19-20"><a href="#cb19-20" tabindex="-1"></a>    Rscript plot_all.R</span></code></pre></div>
 </div>
 <p><strong>Exercise 10</strong><br />
 Run <code>make -n</code> in <code>src/analysis</code> and
@@ -1272,11 +1255,12 @@ analysis: data-preparation
 <p>There are two phony targets (<code>data-preparation</code> and
 <code>analysis</code>), each with the <code>make -C</code> command and a
 reference to the folder in which the makefile is stored.</p>
-<p><strong>Exercise 11</strong><br />
-Create another makefile in the root directory, copy the contents from
+<p><strong>Exercise 11</strong></p>
+<p>Create another makefile in the root directory, copy the contents from
 above, and run <code>make</code> again. Does it work as expected? How
-many times do you have to run <code>make</code> this time? Tip: Don&#39;t
-forget to add <code>tabs</code> before the commands in the makefile!</p>
+many times do you have to run <code>make</code> this time?</p>
+<p>Tip: Don&#39;t forget to add <code>tabs</code> before the commands in the
+makefile!</p>
 <div class="webex-solution">
 <button>
 Solution to Exercise 11
