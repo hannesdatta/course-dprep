@@ -1,0 +1,10 @@
+---
+title: "Coding with AI tools"
+format: html
+---
+
+::: {.callout-note"}
+
+This chapter is work-in-progress.
+
+:::

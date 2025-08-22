@@ -1,0 +1,80 @@
+---
+title: "Skills"
+format: html
+---
+
+# The Marketing Analytics Pipeline
+
+
+
+## Overview
+
+data exploring (getting to know and auditing the raw data)
+data preparation (from raw data to data that we can analyze)
+analysis (run analysis)
+deployment
+
+paste pic here
+
+## Exploring Raw Data
+
+What we Build
+
+raw data - ### we explore data
+           ### we plot data
+           
+
+
+derived data - ### we put data to what we analyze
+
+aggregate and further filter
+
+we analyze # --- ...
+final product .
+
+## How we build it
+
+Step by step.
+
+### we run source code
+
+1) Initializing the script/setup
+Loading packages
+Making connections to databases
+Any other global (“main”) parameters (e.g., sample size, prototype flag, etc.)
+2) Input
+Read data (e.g., unstructured/unstructured data, remote/local locations, files or databases)
+3) Transformation
+E.g., filtering, aggregation, merging, transformation, deduplication (more later)
+4) Output
+Store (intermediate) data, figures (e.g., auditing, final)
+
+### we tie things together
+
+(plot)
+
+### 
+
+(then: tutorial: ...)
+
+A primer on code and data
+
+# Meet R
+
+
+
+# Coding with an AI
+
+# Programming concepts – loops, etc.
+
+# Data preparation with R
+
+# Versioning and branching
+
+# Docker and Makefiles
+
+# Going to the Cloud: Virtual Machines and Function Execution
+
+# App Development
+
+<!--# Python bootcamp-->

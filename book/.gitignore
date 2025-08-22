@@ -1,0 +1,8 @@
+.quarto/**
+.DS_Store
+*.tex
+*.log
+/.quarto/
+_book/*
+.Rhistory
+*_files

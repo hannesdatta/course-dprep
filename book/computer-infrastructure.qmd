@@ -1,0 +1,283 @@
+---
+title: "Building Your Tool Stack"
+format: html
+---
+
+## Introduction
+
+When I started my PhD in quantitative marketing, I spent countless hours coding — preparing datasets, building statistical models, and running complex analyses. But while I was learning the technical side of marketing analytics, I wasn’t learning *how to structure my work*. I worked in what I thought was a productive way, but in hindsight it was pure chaos ([here’s proof](https://tilburgsciencehub.com/topics/Automation/Workflows/Starting/principles-of-project-setup-and-workflow-management/structure_phd_2013)). Somehow, I still got published ([Datta et al., 2013](https://doi.org/10.1509%2Fjmr.12.0160)), but the state of my computational infrastructure was a time bomb.
+
+Years later, I can’t find the exact code that prepared the dataset for that paper. I can’t find the final version of the econometric model code either. At the time, I didn’t think this was a big deal — but it meant my work suffered in three important ways.
+
+**Replicability:** I couldn’t reliably reproduce my own results, especially if I came back to the project months later. Even small changes to the data meant I had to start from scratch, repeating every step.
+
+**Reproducibility:** My peers couldn’t easily understand my workflow, which made it nearly impossible for them to implement similar designs to test related effects. Without a clear, documented pipeline, knowledge transfer was minimal.
+
+**Efficiency:** Without a structured setup, making changes was slow and error-prone. Years later, when a colleague asked me for the data, I couldn’t deliver it in a usable form. Documentation was incomplete, and the learning curve to revisit the project was steep.
+
+Why should *you* care? Whether you’re working on your thesis or in a business role, marketing analytics is data-intensive. Your code will change constantly before a project is final. Colleagues will need to look at — and possibly take over — your work. And if you’re collaborating, you’ll need to make sure your workflow is understandable and easy to build upon. Good computational infrastructure is not just a technical nicety; it’s the difference between moving fast and getting stuck.
+
+Investing in good practices pays off quickly. Small efficiency gains — like setting up a clear folder structure, writing reusable code, and automating repetitive steps — compound over time. They reduce the effort needed to return to a project, help you catch mistakes early, and make it easy to hand over work to someone else. They also make sharing and reusing code feasible, whether in a formal package or an internal library.
+
+By contrast, inefficiency creeps in when you waste time waiting for results without planning next steps, forget why you implemented something in a certain way, lose track of data versions, or struggle with undocumented code. These issues don’t just slow you down — they undermine the quality and credibility of your work.
+
+In this chapter, we’ll explore the foundations of computational infrastructure for marketing analytics: the principles, tools, and workflows that keep projects organized, reproducible, and efficient. We’ll start from the ground up, learning how to set up projects so you (and others) can build, iterate, and share insights without losing time — or your sanity.
+
+
+## Building Your Tool Stack: What to Consider
+
+Some of you may never have set up a data project before. Others may have already used software like R, Python, or SPSS to run analyses. But here, we’re doing something different: we’re building the foundation that lets you run projects efficiently, work with others, and reproduce your results long after the first analysis is done. This is your computational infrastructure — the set of tools, practices, and habits that keeps complex projects organized and moving forward.
+
+It’s more than just “having the right software installed.” It’s about structuring your work so you can make changes without breaking everything, share your process so others can understand and reuse it, and avoid the frustration of lost files or undocumented steps. To make this happen, you’ll need a tool stack — from version control and workflow automation to data storage, environment management, and reporting tools. Together, they form the backbone of a professional workflow in marketing analytics.
+
+### People & Habits
+
+Even the best technical setup will fail if the people using it don’t follow good practices. In marketing analytics, projects often involve multiple contributors — whether that’s your thesis partner, colleagues in a company, or future maintainers of your work. Without clear habits, you risk confusion, duplicated effort, or even losing important parts of your project. Good habits reduce misunderstandings, make onboarding new collaborators easier, and ensure that work remains understandable months or years later.
+
+At the core are practices like **code reviews** (having someone else look at your code for clarity and errors), **pull requests** (proposing changes in a controlled way), **issue tracking** (logging tasks, bugs, and ideas), **documentation** (explaining what code does and how to use it), and **naming conventions** (consistent, descriptive names for files, folders, and variables). Together, these habits create a shared language for your team, making collaboration smoother and mistakes easier to spot early.
+Here’s **Plan & Track** in the same two-paragraph style:
+
+
+### Plan & Track
+
+Complex marketing analytics projects involve many moving parts — data sources, code modules, analysis steps, and reporting deadlines. Without a clear way to plan and track these, it’s easy to lose sight of priorities or forget what still needs doing. A good planning and tracking system keeps everyone aligned, makes progress visible, and allows you to break down large tasks into manageable steps. It also helps you adapt when requirements change or unexpected challenges arise.
+
+Key concepts here include **project boards** (visual overviews of tasks, often in columns like “To Do,” “In Progress,” and “Done”), **issue tracking** (logging specific problems or enhancements, each with its own discussion thread), **milestones** (grouping tasks toward a shared goal or deadline), and **labels** (tagging tasks by type, priority, or topic). Tools like **GitHub Projects** or **Trello** make it easy to implement these practices, ensuring that work stays organized and everyone knows what to focus on next.
+
+
+### Code & Environment
+
+Writing code is at the heart of marketing analytics, but the way you manage your coding environment can make or break a project. Without a consistent setup, you risk “it works on my machine” problems, where code runs for one person but fails for another. Over time, package updates or changes to your operating system can silently break old scripts. A well-managed coding environment ensures your work runs consistently, whether you revisit it next week or a collaborator runs it on their computer.
+
+Core elements here include **programming languages** (such as R for data analysis, optionally Python for specialized tasks), **package management** (e.g., `renv` in R to lock exact package versions), and **coding standards** (consistent formatting, indentation, and style rules, often enforced by tools like `styler` or `lintr`). Version control systems like **Git** integrate here as well, enabling you to track code changes over time. Together, these elements make your code portable, reproducible, and easier to maintain.
+
+
+### Data Layer
+
+Your data is the foundation of your analysis — but raw data is rarely ready to use. As projects grow, you’ll need to manage multiple datasets in different formats, sizes, and quality levels. Without a clear system for storing and versioning data, it becomes hard to know which file is the “right” one, how it was created, or whether it matches your latest analysis. Good data management ensures that everyone on the team works from the same source and that changes to data are traceable.
+
+Key components include **data staging folders** (e.g., `raw`, `interim`, `final` to indicate processing stages), **databases** (such as DuckDB or SQLite for efficient queries and joins), and **data versioning tools** (like Git LFS or DVC for large files). Clear **file naming conventions** and **metadata documentation** (descriptions of variables, sources, and processing steps) round out this layer, making it possible to track the lifecycle of every dataset in your project.
+
+### Build & Orchestrate
+
+Many analytics workflows involve multiple steps: importing data, cleaning it, transforming it, running models, and generating reports. Running these steps manually is slow and error-prone, especially when a small change early in the process forces you to repeat everything. An orchestration system automates these steps, running only what’s needed when inputs change and ensuring that the workflow can be executed from start to finish without manual intervention.
+
+Core tools here include workflow managers like **`{targets}`** (R) or **make**, which define dependencies between tasks so that only the necessary parts of the pipeline are re-run. **Continuous integration** systems (like GitHub Actions) can run your pipeline automatically after every change, and **Docker** can containerize your environment so the pipeline runs the same anywhere. This layer keeps your process efficient, reproducible, and easy to hand over.
+
+### Analysis & Modeling
+
+This is where you turn data into insights. But in marketing analytics, analysis isn’t just about running a single model — it’s about iterating, comparing approaches, and testing robustness. Without structure, it’s easy to end up with a tangle of one-off scripts that are hard to understand or repeat. Organizing your analysis work makes it easier to replicate results, share findings, and build on prior work.
+
+Major components include **modeling frameworks** (such as `tidymodels` for machine learning in R, or specialized statistical/causal inference packages), **exploratory data analysis tools** (for visualizing patterns and distributions), and **notebooks** (Quarto or R Markdown) for combining narrative, code, and output in one document. Keeping analyses modular — with reusable functions in separate files — ensures that the modeling process is both transparent and adaptable.
+
+### Reporting & Apps
+
+The final step in your workflow is communicating results. Without a reliable reporting setup, results may be copied manually into slides or documents, introducing errors and making updates tedious. Automated, reproducible reporting ensures that results in your outputs always match the latest data and analysis.
+
+Key tools here include **Quarto** (or R Markdown) for generating dynamic reports in HTML, PDF, or Word, and interactive platforms like **Shiny** or **Streamlit** for building web apps that let others explore your results. Good reporting practices also involve **versioning outputs** alongside your code, and **styling** them for clarity and readability. This layer makes your work accessible, persuasive, and easy to update.
+
+::: {.callout-note title="Tool Stack Overview"}
+
+**People & Habits:** code reviews, PRs, issues, docs, naming conventions
+
+**Plan/Track:** GitHub Projects, Kanban boards
+
+**Code & Env:** R + `{tidyverse}`, optional Python, `renv`, `pre-commit`
+
+**Data Layer:** raw/interim/final folders, DuckDB/SQLite, DVC/Git LFS
+
+**Build/Orchestrate:** `{targets}` or `make`, CI with GitHub Actions, Docker
+
+**Analysis & Modeling:** `{tidymodels}`, stats/causal, notebooks
+
+**Reporting & Apps:** Quarto, Shiny, Streamlit
+:::
+
+
+### Choosing the Right Tool Stack
+
+A **tool stack** is simply the set of tools you use to get your work done — from the software on your computer to the ways you store data, share files, and track changes (known as **version control**). Different projects call for different combinations of tools. A quick school assignment might only need a couple of basics, while a project that takes months and involves several people may need more advanced tools to keep everything organised, reproducible, and running smoothly.
+
+You can think of the tool stack like a menu: you don’t have to “order” everything — just pick what fits your project. For a small project, that might be as simple as using **RStudio** and keeping your files in clearly named folders. For a master’s thesis, you might add **environment management** tools like `renv` to “lock in” your software setup so it doesn’t change unexpectedly, or **automation** tools like `{targets}` so you don’t have to repeat steps by hand. For a large company project, you might go further, adding **Docker** to ensure the work runs the same on any computer, **CI/CD pipelines** (Continuous Integration/Continuous Deployment) to automatically test and update your work, and **cloud storage** to handle very large datasets securely. The goal is to choose tools that solve real problems for your project without adding unnecessary complexity.
+
+| Project Type                 | Characteristics                                                                           | Suggested Tools & Practices                                                                                                                                                                                                                               |
+| ---------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Small / Short-Term**       | Solo work, short deadline, limited data size, low complexity                              | Clear folder structure (`data/raw`, `data/processed`), RStudio, basic Git version control, README file                                                                                                                                                    |
+| **Medium / Thesis-Scale**    | Solo or small team, several months, multiple data sources, moderate complexity            | Git + GitHub (issues, project board), `renv` for environment management, `{targets}` for automation, staged data folders (raw/interim/final), Quarto for reporting                                                                                        |
+| **Large / Long-Term / Team** | Multi-person, multi-year, large datasets, high complexity, needs reproducibility at scale | All of the above **plus** Docker for consistent environments, CI/CD (e.g., GitHub Actions) for automated checks and builds, DVC or Git LFS for large file versioning, databases (DuckDB/SQLite/warehouse), advanced documentation (wiki, CONTRIBUTING.md) |
+
+The right setup is a balance between **coverage** and **simplicity**. Adding more tools can make your workflow more powerful, but also more complex to set up, maintain, and learn. That’s why your tool stack should match the **scope** and **demands** of your project.
+
+- For **small or short-term projects**, like a quick course assignment or exploratory analysis, a clear folder structure, RStudio, and basic Git version control may be enough. This keeps setup time low and avoids over-engineering.
+
+- For **medium-scale projects** — such as a master’s thesis or a several-month consultancy project — it’s worth adding tools that improve reproducibility and save time. Using `renv` locks your package versions, `{targets}` automates your workflow, and staged data folders help keep raw and processed data clearly separated. GitHub’s issues and project boards make it easier to plan and track progress.
+
+- For **large, long-term, or team-based projects**, you need infrastructure that can support multiple people, large datasets, and high reliability. Docker ensures everyone uses the same environment, CI/CD pipelines automatically test and build your work, and data versioning tools like DVC or Git LFS keep track of large or binary files. Databases such as DuckDB or a data warehouse provide fast, consistent access to structured data. Comprehensive documentation — from README files to wikis — helps keep the team aligned over the life of the project.
+
+::: {.callout-note title="When the Tools Outgrew the Team"}
+At a mid-sized marketing analytics department, things started small: two analysts, one database, and a shared folder called “Marketing Projects.” It worked fine at first. Files were named casually (“final_report.xlsx,” “final_report_v2.xlsx,” “really_final.xlsx”), and everyone remembered where things were.
+
+Then the team grew. New hires joined, projects overlapped, and data pipelines became more complex. One analyst spent an entire afternoon trying to figure out why a campaign results file didn’t match the dashboard — only to discover that a colleague had run the pipeline with slightly different settings and saved over the old file. Frustrations grew. Meetings turned into detective sessions: “Which version are you using?” “Who last touched this script?” “Why doesn’t it run on my machine?”
+
+Eventually, leadership realized the issue wasn’t *just* about technology — it was about people and habits. They introduced naming conventions, code review practices, and a simple rule: no file without documentation. Git became the shared “source of truth,” and a weekly stand-up ensured everyone knew who was working on what. It took a few months to adjust, but soon, the same team that once drowned in “really_final.xlsx” was shipping clean, reproducible analyses on schedule. The tools hadn’t changed much — but the way the team used them had.
+:::
+
+## Where Your Work Lives: Local vs. Cloud Setups
+
+Once you’ve decided which tools belong in your stack, the next question is **where those tools — and your data — will actually run**. Some setups work entirely on your own computer (“local”), while others rely on powerful servers you access over the internet (“cloud”). Each approach has its strengths and trade-offs, and in practice, many projects use a mix of both.
+
+### A Short History of Computing Locations
+
+For most of the history of computing, all work was done **locally**. In the early days, that meant mainframe computers in research labs or corporate IT departments, where users interacted via terminals connected to a single machine in the same building. As personal computers became affordable in the 1980s and 1990s, computing moved onto individual desktops and laptops. Your software, data, and processing power all lived on the same machine in front of you. If you wanted to share files, you used floppy disks, CDs, or, later, USB drives. This made people self-sufficient but also isolated — if your machine failed or you ran out of storage, you were stuck.
+
+The next big shift came with the widespread adoption of **computer networks** in the 1990s and 2000s. Office LANs (Local Area Networks) let computers in the same building share files and printers. The rise of the internet connected those networks globally, making it possible to transfer data instantly between machines anywhere in the world. At first, this meant things like email, FTP servers, and shared network drives. But over time, high-speed internet and web technologies opened the door to running software and storing data entirely online.
+
+### The Emergence of the Cloud
+
+This is where the **cloud** emerged. Instead of installing and running everything on your own machine, you could rent computing power, storage, and software from remote servers — accessed through the internet — and pay only for what you used. Cloud services like Amazon Web Services (AWS), Google Cloud, and Microsoft Azure offer vast, scalable resources that can handle workloads far beyond the capacity of a typical laptop. In marketing analytics, the cloud means you can store massive datasets, run heavy computations, collaborate in real time, and access your work from anywhere.
+
+Choosing between local and cloud setups depends on factors like the size of your data, the complexity of your computations, your need for collaboration, and any constraints your organisation has around cost, security, or compliance.
+
+
+::: {.callout-note title="Netflix's Move to the Cloud"}
+When Netflix first started streaming movies in 2007, its computing setup was still rooted in a traditional, local-server model. The company ran its own data centers, storing videos and handling user requests on machines it owned and maintained. This worked — for a while. But as the streaming business took off, demand exploded. More customers meant more simultaneous streams, bigger storage requirements, and heavier computational loads for recommendation algorithms. Scaling up the local infrastructure became expensive, slow, and risky. A single hardware failure could interrupt service for millions.
+
+In 2008, after a major database corruption brought service to a halt for three days, Netflix made a bold decision: move entirely to the cloud. Over the next several years, they migrated their computing and storage to Amazon Web Services (AWS), using services like Amazon S3 for storing video files and Amazon EC2 for processing streaming requests. The cloud allowed Netflix to scale up instantly during peak viewing times (think: new season of Stranger Things) and scale back when demand dropped. It also gave them global reach, delivering video from servers located close to viewers around the world. Today, Netflix streams to over 200 million subscribers without running its own data centers — a shift made possible by cloud computing.
+:::
+
+### Evolving Analytics Setups in Marketing
+
+Well, you’re probably not running a streaming service like Netflix or an online store like bol.com — you’re doing analytics. That means your infrastructure needs are different. You’re not serving millions of simultaneous customers, but you *are* working with data that needs to be cleaned, analysed, shared, and sometimes scaled up to answer bigger questions. Over the years, the way this work is organised in marketing has changed dramatically.
+
+Early analytics setups were almost entirely **manual**: analysts exported data from transactional systems into spreadsheets, cleaned and merged them by hand, and built charts and pivot tables. This approach was flexible for small datasets but error-prone, slow, and hard to reproduce. Sharing meant emailing files back and forth, leading to version confusion (“final\_v2\_reallyfinal.xlsx”).
+
+As datasets grew in size and scope — think point-of-sale transactions, customer surveys, and loyalty program data — analytics moved into **centralized business intelligence (BI) systems**. Marketing teams worked with IT to pull structured reports from data warehouses. While this improved consistency, it often created bottlenecks: analysts depended on IT to make changes, and workflows were still rigid.
+
+The rise of **statistical programming** in R, SAS, and later Python introduced more automation and reproducibility. Analysts could directly connect to databases, transform data programmatically, and document each step in code. In marketing research, this meant faster segmentation analyses, predictive models, and econometric studies — but often these scripts still lived on individual machines, limiting collaboration.
+
+In the past decade, many organisations have shifted toward **collaborative, code-based, and automated workflows**. Version control systems like **Git**, workflow orchestration tools (e.g., `{targets}` in R or **Airflow** in Python), and reproducible reporting tools (**Quarto**, **R Markdown**) allow marketing analytics teams to work together on the same codebase, share methods, and re-run analyses end-to-end. Increasingly, these setups are paired with **cloud-based data platforms** (Snowflake, BigQuery) and scalable compute environments that allow real-time dashboards, large-scale model training, and integration with customer-facing applications.
+
+More recently, **AI-assisted coding** tools (e.g., GitHub Copilot, ChatGPT Code Interpreter) have begun to change how analysts write code, troubleshoot errors, and generate documentation. These tools don’t replace the need for analytical thinking — but they can speed up repetitive tasks, suggest functions you may not know, and even draft first versions of analysis pipelines or reports. Combined with low-code and no-code analytics platforms, AI-assisted tooling is making sophisticated analysis accessible to a wider range of users.
+
+Today, there is no one-size-fits-all setup. Some marketing teams still work mainly in spreadsheets; others run fully automated pipelines with daily model updates feeding into personalisation systems. The key is choosing the setup that matches the **scale**, **speed**, and **collaboration needs** of the project — and ensuring it’s maintainable as your marketing analytics capability grows. The newest challenge is **balancing human expertise with automation**: using AI and advanced tooling to accelerate work without losing oversight, quality, or interpretability.
+
+```{mermaid}
+timeline
+    title Evolution of Marketing Analytics Setups
+    section Manual
+      1980s–1990s: Spreadsheets for analysis (Excel, Lotus 1-2-3)
+      1990s–2000s: Data exports from transactional systems, manual cleaning, emailed files
+    section Centralized BI
+      2000s: Data warehouses with IT-managed reporting
+      2005–2010: BI tools (Business Objects, Cognos, Tableau) for standardized dashboards
+    section Code-Based
+      2005–2010: Statistical programming in R, SAS, later Python
+      2010–2015: Direct database connections, scripted ETL, reproducible workflows
+    section Collaborative & Automated
+      2010–2015: Git for version control, shared codebases, basic workflow automation
+      2015–2020: Workflow managers ({targets}, Airflow), R Markdown for reproducible reporting
+    section Cloud-Enabled
+      2015–2020: Cloud data platforms (Snowflake, BigQuery), scalable compute
+      2020–2025: Quarto for publishing, real-time dashboards, automated model updates, customer-facing integration
+    section AI-Enhanced
+      2022–2025: AI-assisted coding (GitHub Copilot, ChatGPT), low/no-code analytics, integration of MLOps into marketing workflows
+```
+
+## Making it Practical - How to Get Set Up
+
+We’ll begin by setting up your analytics environment **locally** — on your own computer.  
+Starting local is the best way to learn how the pieces fit together: how to install software, where files live, and how tools talk to each other. Once you’ve mastered that, moving to a cloud setup is much easier. Working locally also means you can start immediately, without cloud accounts, extra costs, or internet dependency.
+
+At this stage, our focus is purely on **getting the tools installed**. We’ll use them in later chapters.
+
+### Core Tools to Install/Get Access To
+
+1. **R** — The main language we’ll use for analytics.
+   Download: [https://cran.r-project.org/](https://cran.r-project.org/)
+   *Why it matters:* R is a powerful language for data analysis, statistics, and visualization. It’s widely used in marketing analytics and has thousands of packages to handle everything from cleaning data to building predictive models.
+
+2. **RStudio** — An Integrated Development Environment (IDE) that makes working with R easier.
+   Download: [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
+   *Why it matters:* RStudio gives you a clean workspace, code editor, data viewer, and project management in one place. It’s where you’ll write and run most of your R code.
+
+3. **Git** — Tracks changes to your code and lets you revert or collaborate safely.
+   Download: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+   *Why it matters:* Git acts like a time machine for your code. If something breaks or you make a mistake, you can roll back to earlier versions. It also makes collaboration easier by merging changes from multiple people.
+
+4. **GitHub** — An online service for hosting Git repositories.
+   Sign up: [https://github.com/](https://github.com/)
+   *Why it matters:* GitHub stores your projects in the cloud. With GitHub, you can review your work, suggest changes, and contribute. It’s also where you’ll back up your code and track issues or to-do items for your project.
+
+5. **GitHub Student Developer Pack** — Free tools and benefits for students.
+   Get it: [https://education.github.com/pack](https://education.github.com/pack) (requires proof of student status)
+   *Why it matters:* The pack gives you free access to premium tools (including GitHub Copilot) and services you might otherwise have to pay for. It’s a great way to explore more advanced tools early without cost.
+
+6. **GitHub Copilot** — An AI assistant for coding.
+   Get it: [https://github.com/features/copilot](https://github.com/features/copilot) (free with Student Developer Pack)
+   *Why it matters:* Copilot can suggest code, help debug errors, and even write documentation. It’s not a substitute for understanding your work, but it can save time, especially for repetitive tasks or when learning new functions.
+
+7. **Make** — A tool for automating multi-step workflows.
+   Download: [https://gnuwin32.sourceforge.net/packages/make.htm](https://gnuwin32.sourceforge.net/packages/make.htm) (Windows) or use your system’s package manager (Mac/Linux).
+   *Why it matters:* Make lets you define a series of steps (data cleaning, analysis, report generation) and run them with a single command. It only re-runs the steps that need updating, saving you time and avoiding mistakes.
+
+8. **Visual Studio Code (VS Code)** — A flexible code editor that works with many languages.
+   Download: [https://code.visualstudio.com/](https://code.visualstudio.com/)
+   *Why it matters:* While RStudio is great for R, VS Code is a versatile, modern editor for working with other languages (like Python, SQL, or JavaScript) and integrating different parts of a project. It’s especially useful if you work on mixed-technology projects.
+
+### How They Connect
+
+Once you’ve installed these tools, they form an ecosystem that works together to make your analytics projects smoother and more reproducible.
+
+You’ll write most of your R code in **RStudio**, which is powered by the R language you installed. **Git** runs in the background to track every change you make to your files, and **GitHub** acts as the online home for your projects, so you can share them or collaborate with others. The **GitHub Student Developer Pack** gives you free upgrades, including **GitHub Copilot**, an AI coding assistant that can suggest functions, help debug, and even scaffold your project setup.
+
+When you need to automate multi-step processes — like cleaning data, running analyses, and generating reports — **Make** ties everything together, only re-running what’s necessary. For projects that include more than R (e.g., Python scripts, SQL queries, or JavaScript for dashboards), **Visual Studio Code** becomes your all-purpose editor. You can add extensions in VS Code for R, Python, GitHub Copilot, Docker, and many other tools, so all parts of your workflow live in one place.
+
+Finally, making **R discoverable from your command line** means you can run R scripts directly from your terminal or from automation tools like Make — no need to open RStudio first. This small setup step makes your environment much more flexible and automation-friendly.
+
+### Setup Checklist
+
+::: {.callout-tip title="📋 First-Time Setup To-Do List"}
+
+* **Install R** from [https://cran.r-project.org/](https://cran.r-project.org/).
+* **Install RStudio** from [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/).
+* **Install Git** from [https://git-scm.com/downloads](https://git-scm.com/downloads).
+* **Create a GitHub account** at [https://github.com/](https://github.com/).
+* **Apply for the GitHub Student Developer Pack** at [https://education.github.com/pack](https://education.github.com/pack).
+* **Enable GitHub Copilot** once your Student Pack is approved: [https://github.com/features/copilot](https://github.com/features/copilot).
+* **Install Make**
+
+  * **Mac:** comes preinstalled (check with `make --version`).
+  * **Windows:** install via [https://gnuwin32.sourceforge.net/packages/make.htm](https://gnuwin32.sourceforge.net/packages/make.htm).
+  * **Linux:** use your package manager (`sudo apt install make`).
+* **Install Visual Studio Code** from [https://code.visualstudio.com/](https://code.visualstudio.com/).
+* **Add key extensions in VS Code**:
+
+  * R language support (`R Language` extension by Yuki Ueda)
+  * Python (if needed)
+  * GitHub Copilot
+  * Docker (if needed)
+* **Make R discoverable from the command line**:
+
+  * **Mac:** Add `export PATH="/Library/Frameworks/R.framework/Resources:$PATH"` to your `~/.zshrc` or `~/.bash_profile`, then restart terminal.
+  * **Windows:** Add R’s `bin` folder to your PATH (Control Panel → System → Advanced system settings → Environment Variables).
+* **Test your setup**:
+
+  * In a terminal, run:
+
+    ```bash
+    R --version
+    git --version
+    make --version
+    ```
+  * Open VS Code and confirm extensions are working.
+:::
+
+## Closing Thoughts
+
+Now that your basic setup is in place, it’s easy to fall into the trap of thinking you should just keep adding more tools until you have “the ultimate stack.” But more is not always better. Every extra piece of infrastructure — whether it’s **Docker** (a tool that packages up your code and its environment so it runs exactly the same anywhere), a **cloud data warehouse** (e.g., Snowflake, BigQuery, designed to store and query massive datasets), or a **CI/CD pipeline** (*Continuous Integration / Continuous Deployment*, which automatically tests and deploys code when changes are made) — comes with trade-offs. These tools can be powerful, but they also bring learning curves, maintenance work, and the potential for day-to-day friction.
+
+In small projects, those costs can outweigh the benefits. A quick campaign analysis for a client might only need a well-organized local project tracked with Git. In contrast, a multi-year **customer lifetime value** model for a global retailer might justify containerization with Docker, automated testing and deployment via CI/CD, and scalable compute in the cloud. The real skill in marketing analytics isn’t *owning* the most advanced stack — it’s knowing when to go **light** and when to go **heavy**.
+
+The tools you’ve just installed give you a solid foundation: R and RStudio for analysis, Git and GitHub for version control, Make for automation, VS Code for multi-language work, and GitHub Copilot for AI-assisted coding. As we move forward, you’ll learn how to extend them, connect them, and — equally important — when to resist the temptation to over-complicate. New trends like **low-code analytics platforms** (tools that let you build analyses with minimal coding), AI-assisted development, and the integration of **MLOps** (machine learning operations, applying DevOps principles to ML workflows) into marketing analytics will keep expanding what’s possible. But the best analysts will be those who make deliberate, thoughtful choices.
+
+Your goal isn’t to build the *biggest* stack — it’s to build the *right* one for the job at hand, and to use it to deliver clear, reliable, and timely insights.

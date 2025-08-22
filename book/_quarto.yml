@@ -1,0 +1,59 @@
+project:
+  type: book
+book:
+  title: "Marketing Analytics: A Modern Toolkit"
+  author: "Hannes Datta"
+  chapters:
+    - index.qmd  
+#    - syllabus.qmd
+    - computer-infrastructure.qmd
+    - analyticspipeline.qmd
+    - programming-concepts.qmd
+    - project-management-version-control.qmd
+    - pipeline-building.qmd
+    #- meet-r.qmd
+    #- coding-with-ai.qmd
+    - part: "Appendix"
+      chapters:
+      - coding-with-ai.qmd
+      - r-introduction.qmd
+      - r-markdown.qmd
+      - r-ggplot.qmd
+      - r-data-wrangling.qmd
+      - git-cheatsheet.qmd
+      - make-cheatsheet.qmd
+##    - theory.qmd
+#    - practicals.qmd
+#  chapters:
+#    - index.qmd
+#    - 01-intro.qmd
+#    - 02-methods.qmd
+#    - 03-results.qmd
+  page-navigation: true
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    toc-depth: 2
+    number-depth: 2
+    #split-level: 2   # split TOC by heading depth
+    code-fold: show
+
+bibliography: references.bib
+csl: apa.csl
+#format:
+#  html:
+#    toc: true
+#    number-sections: true
+#    code-fold: show
+#  pdf:
+#    documentclass: scrbook
+#  epub:
+#    cover-image: images/cover.png
+#bibliography: references.bib
+#csl: apa.csl
+execute:
+  echo: true
+  warning: false
+  message: false

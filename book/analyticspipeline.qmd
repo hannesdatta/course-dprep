@@ -1,0 +1,211 @@
+---
+title: "Marketing Analytics Pipeline"
+format: html
+---
+
+## Overview
+
+By now, you’ve set up your computer, installed the necessary software, and built the basic tool stack. That’s the foundation — but the real question is: what do you actually do with these tools?
+
+Marketing analytics projects are where everything comes together. Firms and researchers create value by turning raw, messy data into insights that improve decisions. Whether it’s a company adjusting prices, a retailer mining customer reviews, or a student writing a thesis, the pattern is similar: explore the data, prepare it carefully, analyze it, and deploy the results so others can use them.
+
+::: {.callout-note title="Marketing Analytics Projects (Examples)"}
+
+* **Price Intelligence at Coolblue**
+  By scraping competitor websites daily and integrating the data into a pricing dashboard, Coolblue can dynamically adjust its offers. This pipeline prevents revenue loss from being underpriced and helps capture market share when competitors raise prices.
+
+* **Review Mining at Bol.com**
+  Customer reviews contain signals about product quality, delivery issues, and consumer preferences. Bol.com can process thousands of reviews, classify them (e.g., by sentiment or topic), and feed the results into dashboards that improve supplier negotiations and customer trust.
+
+* **Ad Effectiveness in Small & Medium Firms**
+  A local SME running online ad campaigns can link spend data from Google Ads with sales from its webshop. By building a pipeline that tracks conversions and calculates ROI in near real-time, firms avoid wasting budget and learn which campaigns truly drive sales.
+
+* **Thesis Projects at Tilburg University**
+  Even at the student level, projects can be complex: merging messy datasets from multiple sources, cleaning and transforming variables, and ensuring results are reproducible. The same principles used in professional environments apply here — a well-structured pipeline helps turn an overwhelming mess of files into a coherent, defensible piece of research.
+
+:::
+
+## From Projects to Pipelines
+
+At first glance, marketing analytics projects may seem very different — pricing at Coolblue, review mining at Bol.com, or a student thesis. But if you look closer, they all share the same **flow**. Each begins with raw, messy data and then passes through a series of stages until the results can be used to create value.
+
+These stages form a **pipeline**. In a pipeline, the output of one step becomes the input of the next. This makes your work easier to organize, more reproducible, and far less chaotic than jumping around with scattered scripts or spreadsheets.
+
+The main stages of a pipeline are:
+
+### 1. Data Exploration
+
+This is where you *get to know* your data. You inspect raw datasets, check their structure, and perform basic audits:
+
+* How many rows and columns are there?
+* Are there missing values or strange outliers?
+* Does the data make sense given what you know about the context (e.g., sales can’t be negative)?
+
+Exploration helps you build intuition and confidence before making big changes.
+
+### 2. Data Preparation
+
+In this stage, you move from “raw” to “ready.” Preparation involves cleaning, filtering, merging, and reshaping the data so it can be analyzed. Typical tasks include:
+
+* Removing duplicates
+* Handling missing values
+* Aggregating data at the right level (e.g., weekly sales instead of daily transactions)
+* Combining multiple sources into one coherent dataset
+
+Good preparation ensures that later analyses rest on solid ground.
+
+### 3. Analysis
+
+Now comes the core of the project: analyzing the prepared data to generate insights. Depending on your project, this could mean:
+
+* Running regressions or predictive models
+* Conducting experiments (e.g., A/B tests)
+* Building descriptive statistics and visualizations
+* Identifying patterns, trends, or causal effects
+
+Analysis is what turns prepared data into *knowledge*.
+
+### 4. Deployment
+
+Finally, results must be made useful to others. Deployment takes different forms depending on the audience:
+
+* A dashboard for managers
+* A report for stakeholders
+* A published thesis or article
+* Even code packaged into a tool or app
+
+Deployment ensures that your work has **impact** beyond your own computer.
+
+::: {.callout-note title="Summary"}
+A pipeline connects all these stages:
+
+1. **Data Exploration** – “getting to know and auditing the raw data”
+2. **Data Preparation** – “from raw data to data that we can analyze”
+3. **Analysis** – applying models, tests, and visualizations to create insights
+4. **Deployment** – delivering results in a useful format
+
+Data flows step by step, each stage building on the previous one, until it creates value for managers, customers, or researchers.
+:::
+
+
+## Pipeline Components
+
+So far, we’ve talked about pipelines: the way a project flows step by step from raw data to final results. To really understand how to *build and manage* a pipeline, it’s helpful to think about the **main components** that make up any analytics project.
+
+Why bother? Because different types of project materials should be treated differently. For example, you might want to roll back to an earlier version of your cleaned dataset. But if each dataset is hundreds of gigabytes large, keeping every version quickly becomes impossible. (In one of our projects, each dataset was about 500 GB, and after 50 versions, that added up to 25 TB of storage!)
+
+The better way is to separate out your project into components, each with its own “rules of the game.” In almost every project, you’ll come across the following three:
+
+### 1. Raw Data
+
+Raw data is the **starting point of every project**. These are the datasets you collected, scraped, or received from a company.
+
+* Raw data is usually messy: you may have missing values, inconsistent formats, or even multiple deliveries of data over time.
+* The key rule here: you **never delete** raw data. You keep it exactly as it arrived, even if it looks ugly. Why? Because it’s your “ground truth” — if something goes wrong later, you can always go back and check what the data originally looked like.
+* Over time, you may add new raw datasets (say, new months of transaction logs), but you still keep the old ones untouched.
+
+Think of raw data like the ingredients in your kitchen. If you accidentally burn a sauce, you’ll want to start over from the original tomatoes — not from the half-finished dish.
+
+
+### 2. Source Code
+
+Source code is the **set of instructions** you write to process the raw data and carry out your analyses.
+
+Each script usually does three things[^1]:
+
+  1. **Loads** some input data or arguments (e.g., “read this CSV file”),
+  2. **Performs operations** (e.g., clean missing values, merge tables, estimate a model),
+  3. **Saves results** into new files.
+  
+Imagine you’re cooking and tweaking a recipe. You don’t need to store every half-finished sauce you ever made. You just need the raw ingredients and a record of which steps you took. That’s exactly what your source code does.
+
+
+[^1]: Because your code is the “recipe” for the whole project, it’s critical to use **version control** (e.g., Git - see one of the later chapters in this book). That way, you can always roll back to earlier versions of your code — without needing to save endless versions of your data files.
+
+
+::: {.callout-note title="The Setup–ITO principle"}
+
+Almost every script follows the same simple structure:
+
+1. **Setup**  
+   Get everything ready to run.  
+   - Load the necessary packages (e.g., `tidyverse`, `data.table`)  
+   - Connect to databases or APIs  
+   - Define global parameters (e.g., sample size, test vs. production mode)  
+
+2. **Input**  
+   Bring the data into your script.  
+   - Read files (CSV, Excel, JSON, …) from local or remote locations  
+   - Query databases  
+   - Handle both structured and unstructured data sources  
+
+3. **Transformation**  
+   Apply operations to turn messy input into something useful.  
+   - Cleaning (e.g., remove duplicates, handle missing values)  
+   - Filtering, aggregating, merging  
+   - Feature engineering or other data transformations  
+
+4. **Output**  
+   Save and document the results.  
+   - Store cleaned datasets or intermediate results  
+   - Generate audit files (e.g., logs, counts of rows)  
+   - Produce analysis-ready tables and figures  
+
+Keeping this pattern in mind makes your scripts more **organized, reproducible, and predictable** — both for yourself and anyone else reading your code later.
+
+:::
+
+
+### 3. Generated Files
+
+Generated files are the **outputs that result from running your source code**. These can take many forms:
+
+* **Prepared datasets** (clean, merged, ready-to-analyze tables),
+* **Analysis outputs** (statistical models, regression tables, or figures),
+* **Audit files** (logs that confirm the pipeline ran correctly — e.g., number of rows before and after cleaning),
+* **Temporary files** (intermediate steps that help your workflow run smoothly, but aren’t meant to last).
+
+Here’s the important part: you usually don’t need to keep all of these forever. Since they can be recreated from raw data + source code, many generated files are only stored temporarily. This keeps your project tidy and saves storage space.
+
+Think of generated files as the meals you cook. They’re important — you want to eat them or share them — but you don’t need to freeze and keep every version you ever made. You can always make them again if you have the ingredients and the recipe.
+
+::: {.callout-note title="Why Separate Components?"}
+
+By breaking a project into these three components — raw data, source code, and generated files — you:
+
+* Avoid wasting storage on endless file versions,
+* Gain flexibility to roll back to earlier stages,
+* Make it easier for others (and future-you) to reproduce your work.
+
+In short: separating components is what makes marketing analytics projects **manageable, reproducible, and professional**.
+
+:::
+
+## Why Pipelines Matter
+
+At first, you might wonder: *why spend time building a pipeline at all?* Wouldn’t it be faster to just write a script, clean some data, and make a figure?
+
+That might work for a one-off assignment. But real marketing analytics projects are rarely that simple. They often involve **large, messy data**, multiple team members, and analyses that need to be **reproduced** or **updated** later. A pipeline solves these challenges by giving your project a clear structure.
+
+Here are some of the main benefits:
+
+### 1. Reproducibility
+
+A well-structured pipeline means that you (or someone else) can rerun the entire project from start to finish and get the *same* results. This is essential in research and industry — especially when decisions (or publications) depend on your findings.
+
+### 2. Efficiency
+
+Pipelines save time when working with complex data. For example, you don’t need to repeat the same cleaning steps manually every time. Once the pipeline is in place, updating your results (say, when new sales data comes in) can be as simple as pressing a button.
+
+### 3. Collaboration
+
+When projects are broken into steps (exploration → preparation → analysis → reporting), it’s easier for teams to split the work. One person can focus on preparing the data, another on modeling, and another on visualization — all without stepping on each other’s toes.
+
+### 4. Scalability
+
+Today’s small dataset may be tomorrow’s massive one. Pipelines let you move from running things on your laptop to running them on a server or in the cloud with minimal changes. The same structure applies whether you’re cleaning survey data from 100 people or millions of product reviews from bol.com.
+
+### 5. Transparency and Auditing
+
+Pipelines create a “paper trail.” Every step — from raw input to final figure — is documented. This makes it easy to check where errors came from, or to explain to a manager, co-author, or reviewer *exactly how* you got your results.
+

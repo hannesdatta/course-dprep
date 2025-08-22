@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 7d0cc3c0-3b5e-4db4-8010-a8066d22eb66
+      url: 'https://dprep-book.hannesdatta.com'

@@ -1,0 +1,10 @@
+---
+title: "Pipelines, Automation, and CI/CD"
+format: html
+---
+
+::: {.callout-note"}
+
+This chapter is work-in-progress.
+
+:::

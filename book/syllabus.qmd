@@ -1,0 +1,69 @@
+---
+title: "Course Syllabus"
+format: html
+---
+
+## Assessment
+
+- [Team project](/docs/project) (40%, out of which 8% are based on students' individual contribution, measured by [self- and peer assessment](/docs/project/grading))
+- [Computer exam](/docs/exam) (60%)
+
+<!--
+[^2]: Students use a web app to monitor their progress on the course's learning goals by "ticking off" items from a to-do list (e.g., "I have installed Python," "I have finished Tutorial X," etc.). The instructor can use the app to learn which topics to highlight during live streams. Students, in turn, can use the app to see how far others in the class have already proceeded, giving them direct feedback on their performance.
+
+[^3]: In particular, students regularly monitor their progress on the course's learning goals. At least one evaluation per course week is required to obtain points on this component of the course grade.
+-->
+
+### Passing requirements
+
+Students pass this course if
+- the final course grade (i.e., the weighted average of the following two components: (1) the group project, and (2) the exam; weights indicated above) is ≥ 5.5, and
+- the exam grade is higher than or equal to 5.0 (≥ 5.0).
+
+Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
+
+### Resit policy
+
+
+- If students have a grade lower than 5.0 on the exam, they cannot pass this course.
+  - Required action: Students will have to take the [exam resit](/docs/exam).
+- If students are not part of a team, they cannot obtain a grade for the team project and hence cannot pass this course.
+  - Required action: Re-enroll in this course's next edition, and ensure you are part of a team.
+- If students have an exam grade higher or equal to 5.0 but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.
+  - Required action: Correct team project based on the course coordinator's grading report, and hand it in again within two weeks after publication of the final grades in this course (submission on Canvas). Only students who fail the team project can have their projects re-graded.
+- Students who have passed the course, but wish to retake the exam, can take the exam resit. The last exam grade counts. Grades for the team project are retained. In other words, the resit exam still counts for 60% of the final course grade.
+- Students who fail the exam and wish to re-take the course in the subsequent semester can *retain* their assignment grades. 
+<!-- upon approval of the course coordinator (grades remain valid for the *next* edition of the course).-->
+
+### Bonus points
+
+The course is designed as an open education course, with all of its source code publicly available at [the course's GitHub repository](https://github.com/hannesdatta/course-dprep). Students can earn bonus points for contributing to the course in the form of source code (e.g., to provide solutions for assignments, to write a tutorial for a new package, for debugging code, for maintaining the course's issue board, etc.). Some contributions may also qualify for publication at [Tilburg Science Hub](https://tilburgsciencehub.com) (see also [here](https://github.com/tilburgsciencehub/website) for the platform's GitHub repository).
+
+Bonus points are awareded to motivate students and reward excellence (e.g., students showing a performance exceeding the normally expected learning outcomes of the course). The award of bonus points can only lead to a mark-up of a sufficient grade, not of an insufficient grade. Moreover, the mark-up is not higher than 0.5 points and is only be awarded once at the level of the final grade. 
+
+Each award of a bonus point is accompanied by an individualized argumentation (i.e. for each student). The award of bonus points is used sparsingly.
+
+# Code of Conduct
+
+- Please always use English as the default language so that non-Dutch speakers can follow the conversations, even if it concerns topics not directly related to the class (e.g., during breaks).
+- Please head over the course's [support section](support) to solve problems or get in touch with the instructor.
+- Stay up-to-date by checking this website, Canvas, and watch out for updates on Hannes' social media channels.
+- Be on time, and start on time
+- Feel invited to provide informal feedback!
+- It's totally fine calling the instructor by his first name. 
+- When meeting on Zoom, please turn on your camera, which will facilitate interaction with the course instructor and other students.
+
+
+{{< hint info >}}
+__We value diversity and inclusion__
+
+We do our best to embrace diversity and stimulate integration in this course. We encourage students to be proud of their background (e.g., ethnicity, nationality), personal interest (e.g., hobbies), or any other thing that characterizes them. 
+
+Two ways in which students can bring in *their perspective* is 
+
+- choosing with whom to collaborate (e.g., purposefully bring in people of diverse backgrounds or technical skill levels to a team), and 
+- choosing which topic to work on in the team project (e.g., spending sufficient time getting to know each other, creating a safe space, and being open to work on topics off the mainstream).
+
+Curious to learn more? Check out [Tilburg's Diversity & Inclusion Policy](https://www.tilburguniversity.edu/about/working/gender-policy), and learn how Tilburg [supports student diversity](https://www.tilburguniversity.edu/students/studying/campus/diversity). Also feel invited to talk to the course coordinator at any point in time!
+
+{{< /hint >}}

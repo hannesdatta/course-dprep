@@ -1,0 +1,80 @@
+---
+title: "Introduction"
+format: html
+---
+
+
+# Welcome in the World of Marketing Analytics
+
+This book is the result of more than six years of lecture notes, project work, and hands-on experience in setting up data analytics environments — recently overhauled to reflect today’s tools, practices, and even AI-assisted workflows. To make that update happen, we worked closely with ChatGPT as a writing and structuring partner, drafting, refining, and reorganising material so it’s both relevant and immediately usable. All examples, insights, and perspectives are our own.
+
+Whether you’re running an academic study, preparing a paper for submission, or delivering analytics in a business setting, you’ll face the same recurring challenges: messy, inconsistent data; tools that don’t “talk” to each other; and projects that are hard to reproduce months later. In our own work — from scraping Spotify data for music consumption research to building large-scale retail panel datasets — we’ve learned that these problems aren’t solved by “just knowing R” or “just knowing Excel.” They’re solved by combining **coding**, **collaboration**, and **automation** into a professional workflow.
+
+This book shows you how to structure your projects so they can be understood, extended, and reproduced — by you, your collaborators, or anyone else — whether you revisit them in a week or five years later. We’ll walk through the tools and practices that make this possible, using examples inspired by real marketing analytics and data science projects.
+
+## Who This Book Is For
+This book is for university students who want to professionalise the way they work with data — whether in academic research, marketing analytics, or other data-driven fields. It draws heavily on examples and practices developed within the Marketing Analytics program at the Tilburg School of Economics and Management (TiSEM), but the tools and workflows are applicable far beyond that context.
+
+It will be especially valuable if you:
+
+- Already have basic familiarity with R and want to integrate it into a more organised, reproducible workflow.
+- Would like to work with complex datasets that require cleaning, transformation, and integration from multiple sources.
+- Need to collaborate on data projects, whether in research teams or professional analytics settings.
+- Want to adopt automation and reproducibility practices to save time and reduce errors.
+<!--- You are open to getting to know your computer inside out should be open to installing and configuring software on your own computer (Windows, macOS, or Linux). While a powerful machine (16 GB RAM or more) is recommended for large datasets, the principles in this book apply regardless of hardware.
+--> 
+
+::: {.callout title="A Note for Beginners"}
+
+If you have **never written code before**, you can still work through this book — but you will need to plan **considerable extra time** for learning the basics. Pair your reading with beginner-friendly R resources and set aside dedicated study hours to build foundational skills in parallel.
+
+Likewise, if you are seeking a purely *statistical* or *theoretical* treatment of analytics without touching code or workflows, you will not get the most out of this material — our focus is on **doing** analytics in a structured, professional way, not just understanding concepts.
+:::
+
+## What to Expect 
+
+Think of this book as a **guided build**. We’ll start by assembling your personal toolkit — the essential software and services that will make your analytics work smoother, faster, and easier to reproduce. You’ll meet R as your main data analysis companion, but also learn how to connect it with version control, automation tools, and even AI-assisted coding.
+
+From there, we’ll move into **core programming concepts** and hands-on **data preparation** — the gritty but rewarding work of turning messy, inconsistent inputs into analysis-ready datasets. Along the way, you’ll explore how to collaborate effectively using GitHub, manage project versions without chaos, and introduce lightweight automation so your workflow can run on autopilot.
+
+To give you a preview, here’s the path we’ll follow:
+
+* **Building Your Tool Stack** – Choosing, installing, and connecting the essential software for analytics work.
+* **Meet R** – Your main language for data analysis, with examples tailored to marketing analytics problems.
+* **Coding with an AI** – Using tools like GitHub Copilot to speed up coding, spot errors, and explore new solutions.
+* **Programming Concepts** – Core ideas like loops, functions, and conditionals explained with hands-on examples.
+* **Data Preparation with R** – Techniques for cleaning, transforming, and combining datasets so they’re ready for analysis.
+* **Versioning and Branching** – Using Git and GitHub to track changes, collaborate, and manage different project versions.
+* **Docker and Makefiles** – Scaling your workflow with containerisation and automation tools for reproducibility.
+
+By the time you finish, you won’t just have learned a set of tools — you’ll have a way of working that you can carry into research, business, or any data-driven career.
+
+## Why This Matters
+
+At first glance, things like version control, automation, and “connecting tools” might sound like something only big tech companies care about. But in reality, the need for these skills shows up very quickly — even in small student projects.
+
+**1. The Solo Project That Gets Messy Fast**
+Imagine you’re writing your MSc thesis and decide to analyse product pricing from bol.com. Every week, you download a new file and save it somewhere on your laptop: `data1.csv`, `data_new.csv`, `data_final.csv`. Your R scripts multiply too: `clean.R`, `clean_new.R`, `clean_final_v2.R`. A month later, your supervisor asks for an extra figure — but you can’t remember which version produced the results in your draft. You spend hours retracing steps instead of doing new analysis.
+
+**2. Working in a Small Team**
+Now imagine your first role after graduation, at a local marketing analytics agency in the Netherlands. You and two colleagues are working for the same client, but on different parts of the same data project. Without version control (like Git) and clear workflows, you might overwrite each other’s changes, lose track of who did what, or waste time redoing work that’s already been done. A shared, structured way of working means you can actually *work together* without creating chaos.
+
+**3. Scaling Up Inside a Growing Company**
+A few years later, you join Coolblue to help analyse customer behaviour across their entire webshop. Your code now runs on a company server every night, automatically pulling in new data, running the analysis, and updating dashboards for the marketing team each morning. Here, automation isn’t about fancy pipelines — it’s simply about making sure the process runs on its own, the same way every time, without you clicking buttons. If the setup is fragile or disorganised, one small error can break the whole thing and delay important decisions.
+
+From a single thesis project to a growing business, the challenges change — but the solution is the same: a professional, reproducible way of working that keeps your projects running smoothly, no matter how big they get. That’s exactly what you’ll learn in this book.
+
+## About the Author
+
+**dr. Hannes Datta** is an Associate Professor at Tilburg University. He develops advanced econometric models to support managerial decision-making and public policy in areas like **digital media consumption** (e.g., streaming services, digital TV), **branding**, and **retailing**. His research appears in top journals including *Journal of Marketing*, *Journal of Marketing Research*, and *Marketing Science*, and has been featured in national and international news.
+
+<!--
+- **Roshini Sudhaharan** is a lecturer and researcher in the Marketing Department at Tilburg University, specialising in **data preparation**, **workflow management**, and **causal inference techniques**. She is an active contributor to open education and develops materials for modernising research workflows with cutting-edge tools.
+-->
+
+
+::: {.callout-note title="Author's Note"}
+
+This book grew out of lecture notes we’ve developed over more than six years for Data Preparation & Programming Skills at Tilburg University. Over time, we realized the material needed a substantial update to reflect new tools, practices, and ways of working in marketing analytics. To make that update happen, we worked together with ChatGPT as a writing and structuring assistant — helping to draft, refine, and reorganize sections so the content is both up-to-date and accessible. 
+:::
+<!--All final content, examples, and perspectives are our own.-->
