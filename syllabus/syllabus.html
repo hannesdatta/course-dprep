@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Hannes Datta">
+<meta name="dcterms.date" content="2025-08-15">
+
+<title>Data Preparation &amp; Programming Skills (328059-M-6)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="syllabus_files/libs/clipboard/clipboard.min.js"></script>
+<script src="syllabus_files/libs/quarto-html/quarto.js"></script>
+<script src="syllabus_files/libs/quarto-html/popper.min.js"></script>
+<script src="syllabus_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="syllabus_files/libs/quarto-html/anchor.min.js"></script>
+<link href="syllabus_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="syllabus_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="syllabus_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="syllabus_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="syllabus_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Preparation &amp; Programming Skills (328059-M-6)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Hannes Datta </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 15, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="syllabus" class="level1">
+<h1>Syllabus</h1>
+<section id="course-description" class="level2">
+<h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
+<p>Whether you’re an experienced academic or just starting with coding, small ad-hoc fixes only work for small projects. In a thesis, research project, or analytics role, you’ll face messy multi-source datasets, versioning challenges, and the need for reproducibility. This course — and the accompanying book <em>Data Preparation &amp; Programming Skills</em> — shows you how to professionalise your way of working so your projects are structured, reproducible, and future-proof.</p>
+<p>The increasing complexity of data (e.g., scraped from the Internet)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and analytics (e.g., requiring high-performance computing) demands a <strong>novel way of working</strong> to efficiently manage empirical marketing research projects. In this course, you will:<br>
+1. <strong>Code</strong> – Develop your coding skills in R/RStudio.<br>
+2. <strong>Collaborate</strong> – Work together using Git/GitHub.<br>
+3. <strong>Automate</strong> – Build end-to-end, reproducible research pipelines.</p>
+<p>These three principles — <em>code–collaborate–automate</em> — are applied across the full research workflow (data exploration, preparation, analysis, and reporting), with a special focus on engineering datasets from complex raw sources and disseminating findings in innovative formats (e.g., Markdown documents or apps).</p>
+<section id="learning-goals" class="level3">
+<h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
+<p>After successful completion of this course, you will be able to:</p>
+<ul>
+<li>Use GitHub (or similar tools) for managing empirical research projects (e.g., Issues and Project Boards)</li>
+<li>Use Git/GitHub (or similar tools) for versioning files and collaborating on privately-shared and publicly-available (open science) code repositories</li>
+<li>Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)</li>
+<li>Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)</li>
+<li>Use Workflow Management Tools to create and run portable, automated, and reproducible data pipelines</li>
+</ul>
+<p><br> <img style="width:75%" src="dprep_framework.png"></p>
+</section>
+<section id="positioning-of-the-course-in-the-study-program" class="level3">
+<h3 class="anchored" data-anchor-id="positioning-of-the-course-in-the-study-program">Positioning of the course in the study program</h3>
+<p>The course is instructed to MSc students in the <strong>Marketing Analytics (TiSEM)</strong> program. Seats are also offered to interested Research Master and PhD students.</p>
+<p>This course zooms in on ways to professionalize working on empirical research projects. Rather than focusing on one particular aspect of the research workflow (like collecting data or only conducting an analysis), this course <em>connects</em> all components of the research workflow. Along the way, students learn how to write better code (in R, especially concerning preparing complex data for analysis), collaborate in teams (using GitHub), and automate their research workflows (using the automation tool <code>make</code>).</p>
+<p>Students are recommended to follow this course before embarking on thesis projects. Research Master and Ph.D.&nbsp;students are advised to take this course early on, as it will likely provide them with many tools that will help them conduct their research efficiently.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Enrollment Information for Students *Not* Part of the Marketing Analytics Program">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Enrollment Information for Students <em>Not</em> Part of the Marketing Analytics Program
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Interested Research Master or PhD students</strong> are encouraged to apply for a seat.</p>
+<ul>
+<li><strong>Tilburg University students</strong>: Enrollment is possible with the approval of the instructor and your program coordinator. Please notify the course coordinator by <strong>15 August 2025</strong>.<br>
+</li>
+<li><strong>External students</strong>: You are welcome to audit this course. For admission, email a <strong>brief research statement</strong>, your <strong>motivation</strong> for joining, and your <strong>CV</strong> by <strong>15 August 2025</strong>.</li>
+</ul>
+<p><strong>Notification:</strong> Eligible candidates will be informed by <strong>22 August 2025</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<ul>
+<li>The course is instructed to MSc students in the Marketing Analytics (TiSEM) program.</li>
+<li>Preparation material is available, and students need to have acquired working knowledge in R before the start of the course. Novices may further benefit from following other courses at Tilburg University in which R is used.</li>
+<li>Students can use their own computer for the duration of this course (Windows, Mac, or Linux). Android/Chromebook/iOS devices are not supported. We recommend laptop with 16 GB+ of RAM as we work with larger data sets requiring preprocessing capacity. The exam is held on campus, using Windows computers. Mac and Linux users are advised to practice on the on-campus computers before the exam.</li>
+</ul>
+</section>
+<section id="teaching-format" class="level2">
+<h2 class="anchored" data-anchor-id="teaching-format">Teaching format</h2>
+<ul>
+<li>Blended (a mix of online/offline lectures and tutorials, and online/offline coaching sessions)</li>
+<li>Combination of self-paced tutorials (e.g., using R Notebooks or pre-recorded clips), and interactive live streams for feedback and coaching</li>
+<li>Learn state-of-the-art tools popular among scientists, marketing analysts, and data scientists (e.g., R, GitHub, <code>make</code>)</li>
+<li>Open education &amp; open science (all material is open; publicly accessible course page that stays with you, even after the end of the course)</li>
+</ul>
+</section>
+<section id="assessment" class="level2">
+<h2 class="anchored" data-anchor-id="assessment">Assessment</h2>
+<ul>
+<li><a href="./docs/project">Team project</a> (40%, out of which 8% are based on students’ individual contribution, measured by self- and peer assessment. <!--](/docs/project/grading))--></li>
+<li><a href="./docs/exam">Computer exam</a> (60%, 120 minutes)</li>
+</ul>
+<!--The specification matrix for this course can be [downloaded here](../specification_tables_dprep.pdf). This matrix gives an overview of all the learning goals and their weights in each graded component of the course (i.e., in the final exam, team project and Pulse). -->
+<!--
+[^2]: Students use a web app to monitor their progress on the course's learning goals by "ticking off" items from a to-do list (e.g., "I have installed Python," "I have finished Tutorial X," etc.). The instructor can use the app to learn which topics to highlight during live streams. Students, in turn, can use the app to see how far others in the class have already proceeded, giving them direct feedback on their performance.
+
+[^3]: In particular, students regularly monitor their progress on the course's learning goals. At least one evaluation per course week is required to obtain points on this component of the course grade.
+-->
+<section id="passing-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="passing-requirements">Passing requirements</h3>
+<p>Students pass this course if - the final course grade (i.e., the weighted average of the following two components: (1) the group project, and (2) the exam; weights indicated above) is ≥ 5.5, and - the exam grade is higher than or equal to 5.0 (≥ 5.0).</p>
+<p>Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).</p>
+</section>
+<section id="resit-policy" class="level3">
+<h3 class="anchored" data-anchor-id="resit-policy">Resit policy</h3>
+<ul>
+<li>If students have a grade lower than 5.0 on the exam, they cannot pass this course.
+<ul>
+<li>Required action: Students will have to take the exam resit.</li>
+</ul></li>
+<li>If students are not part of a team, they cannot obtain a grade for the team project and hence cannot pass this course.
+<ul>
+<li>Required action: Re-enroll in this course’s next edition, and ensure you are part of a team.</li>
+</ul></li>
+<li>If students have an exam grade higher or equal to 5.0 but fail the team project (after SPA correction), their total course grade may be lower than 5.5, and hence students fail this course.
+<ul>
+<li>Required action: Correct team project based on the course coordinator’s grading report, and hand it in again within two weeks after publication of the final grades in this course (submission on Canvas). Only students who fail the team project can have their projects re-graded.</li>
+</ul></li>
+<li>Students who have passed the course, but wish to retake the exam, can take the exam resit. The last exam grade counts. Grades for the team project are retained. In other words, the resit exam still counts for 60% of the final course grade.</li>
+<li>Students who fail the exam and wish to re-take the course in the subsequent semester can <em>retain</em> their assignment grades. <!-- upon approval of the course coordinator (grades remain valid for the *next* edition of the course).--></li>
+</ul>
+<!--
+### Bonus points
+
+The course is designed as an open education course, with all of its source code publicly available at [the course's GitHub repository](https://github.com/hannesdatta/course-dprep). Students can earn bonus points for contributing to the course in the form of source code (e.g., to provide solutions for assignments, to write a tutorial for a new package, for debugging code, for maintaining the course's issue board, etc.). Some contributions may also qualify for publication at [Tilburg Science Hub](https://tilburgsciencehub.com) (see also [here](https://github.com/tilburgsciencehub/website) for the platform's GitHub repository).
+
+Bonus points are awareded to motivate students and reward excellence (e.g., students showing a performance exceeding the normally expected learning outcomes of the course). The award of bonus points can only lead to a mark-up of a sufficient grade, not of an insufficient grade. Moreover, the mark-up is not higher than 0.5 points and is only be awarded once at the level of the final grade. 
+
+Each award of a bonus point is accompanied by an individualized argumentation (i.e. for each student). The award of bonus points is used sparsingly.
+
+-->
+</section>
+</section>
+<section id="code-of-conduct" class="level2">
+<h2 class="anchored" data-anchor-id="code-of-conduct">Code of Conduct</h2>
+<ul>
+<li>Please always use English as the default language so that non-Dutch speakers can follow the conversations, even if it concerns topics not directly related to the class (e.g., during breaks).</li>
+<li>Please head over the course’s <a href="support">support section</a> to solve problems or get in touch with the instructor.</li>
+<li>Stay up-to-date by checking this website, Canvas, and watch out for updates on Hannes’ social media channels.</li>
+<li>Be on time, and start on time</li>
+<li>Feel invited to provide informal feedback!</li>
+<li>It’s totally fine calling the instructor by his first name.</li>
+<li>When meeting on Zoom, please turn on your camera, which will facilitate interaction with the course instructor and other students.</li>
+</ul>
+</section>
+<section id="instructor" class="level2">
+<h2 class="anchored" data-anchor-id="instructor">Instructor</h2>
+<p>This course is instructed by <a href="https://hannesdatta.com">dr. Hannes Datta</a>, Associate Professor at the Marketing Department of Tilburg University and <a href="https://www.linkedin.com/in/roshinisudhaharan/">Msc. Roshini Sudhaharan</a>, Junior Lecturer at the Marketing Department of Tilburg Univeristy.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Join Hannes’ professional network on <a href="https://www.linkedin.com/in/hannes-datta/">LinkedIn</a>, subscribe to his <a href="https://youtube.com/c/hannesdatta">YouTube Channel</a>, and start following him on <a href="https://github.com/hannesdatta">GitHub</a> and <a href="https://twitter.com/hannesdatta">Twitter</a> to stay up-to-date!</p>
+</div>
+</div>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For example, see the data sections in these papers: <a href="http://tiu.nu/spotify">Building a user panel of music consumption from Spotify</a>, <a href="https://journals.sagepub.com/doi/10.1177/00222437211058102">Preparing a panel data set on electronics sales and marketing mix activities across thousands of brands</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

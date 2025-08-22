@@ -1,0 +1,8 @@
+---
+title: "Course AI"
+format: html
+---
+
+This course makes use of tilburg.ai's __chatbot platform__. The chatbot has been trained on course materials and has been designed to be your daily companion. It not only knows about all the to do's in this course, but is also made "time-aware" - try asking, for example, what you need to do __today__, and it will start giving you practical advise.
+
+Head over to [chatbot.tilburg.ai](https://chatbot.tilburg.ai) right now. Don't see the course chatbot? Sign up with the [invite link](https://chatbot.tilburg.ai/private/invite?token=a0f226d9-7913-4ece-a125-965e4fc04829).

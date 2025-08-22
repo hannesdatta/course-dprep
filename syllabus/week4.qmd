@@ -1,0 +1,46 @@
+---
+title: "Week 4) Engineering data sets"
+format: html
+---
+
+<!--__Obtain business and data understanding, and explore data in R__-->
+
+__Learning Goals__
+
+- Apply data wrangling techniques using the Tidyverse to clean, transform, and prepare datasets for analysis.
+- Structure R scripts into modular components (setup, input, transformation, output) to facilitate reproducibility and automation.
+- Implement common data operations (e.g., merging, aggregating, reshaping) and integrate basic programming concepts in R.
+- Develop new variables and features (feature engineering) to enhance the analysis and understanding of datasets.
+
+__Preparation before class__
+
+- Please read [chapter 5](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit"
+
+
+__Tutorial__
+
+- Tutorial <!-- (view [slides](tutorial/tutorial.html), view [complete tutorial](tutorial/data-preparation.html))
+-->
+
+__Coaching session__
+
+- Work on your team goals for this course week (see coaching #3 on your workplan).
+
+
+__After the lecture__
+
+- After-class exercises (to be shared on Canvas) <!-- ([View](tutorial/data-preparation.html), [Download; right click - download file as](tutorial/data-preparation.Rmd))-->
+<!--- [Reading: Data preparation process and challenges](https://www.topbots.com/data-preparation-for-machine-learning/)
+-->
+- Optional (for students that need extra guidance in developing R skills):
+    - [DataCamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
+    - [DataCamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+    - [DataCamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+
+<!--
+{{% hint info %}}
+__Having a hard time with Datacamp, or seeking to practice more?__
+
+Then check [this material on manipulating data using `dplyr` and `tidyr`](https://cengel.github.io/R-data-wrangling/)!
+{{% /hint %}}
+-->

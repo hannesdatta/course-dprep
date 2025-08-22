@@ -1,0 +1,62 @@
+---
+title: "Preparation before the course starts"
+format: html
+
+---
+
+It’s important to spend some time *before the first class* installing the required software and familiarizing yourself with R and RStudio.
+
+## Essential setup before the first class
+
+**1) Install R and RStudio**
+
+Throughout the course, we will use R — a powerful, open-source toolbox for handling and analyzing large datasets. One of R’s greatest strengths is its active community, which continuously develops and shares new packages to extend its functionality.
+
+* Follow these [setup instructions](http://tilburgsciencehub.com/topics/Computer-Setup/software-installation/RStudio/r/) to install R and RStudio.
+
+## Setup that can be done in the first week of the course
+
+
+**2) Get premium access to Datacamp**
+
+Some tutorials in this course use Datacamp content.
+
+* Follow these [steps to obtain free premium access via Tilburg University](https://www.datacamp.com/groups/shared_links/2208462be4921d61c8b59fa4c7fa8187bb9d09969572bd7b92ecf58095b0fefb).
+
+
+**3) Install a code editor**
+
+A good editor will make your work much easier.
+
+* We recommend [Visual Studio Code](https://code.visualstudio.com) for editing text and code.
+
+**4) Create a GitHub account and install Git**
+
+Git is a version control tool — think of it as a combination of Dropbox (for unlimited, free rollbacks to previous file versions) and a messaging platform (to collaborate with team members).
+
+* Sign up at [GitHub.com](https://github.com).
+* Install Git by following these [setup instructions](http://tilburgsciencehub.com/topics/Automation/version-control/start-git/git/).
+* Install the [GitHub CLI](https://cli.github.com/) on your computer.
+
+::: {.callout-note title="Tip: Choose a professional GitHub username"}
+Select a username you can also use in your professional profile (e.g., *firstname.lastname*). You will likely share your GitHub profile when applying for jobs.
+:::
+
+**5) Install `make`**
+
+We will use **Make** to automate workflows — not to compile software, but to manage and reproduce the different steps in your data pipelines (e.g., preparing and analyzing data).
+
+* Follow this [installation guide](https://tilburgsciencehub.com/topics/Automation/automation-tools/Makefiles/make/).
+
+
+
+
+::: {.callout-note title="Follow useful tutorials"}
+
+On top of just installing software, we recommend following a few tutorials -- particularly if you're starting out with coding or feel uncomfortable using the terminal/command line.
+
+- __New to R?__ Please follow [this Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) at Datacamp.com.
+- __Never worked with the command line/bash/terminal?__ Then please develop your command line (Windows) / terminal (Mac) skills. Check out the [Datacamp tutorial - first chapter only](https://www.datacamp.com/courses/introduction-to-shell). Mac users and those using a Unix terminal can also check out [this presentation about the command line / terminal](https://generalassembly.github.io/prework/cl).
+- __New to GitHub?__ Then we suggest [this training](https://github.com/skills/introduction-to-github) to familiarize yourself with it (60 minutes).
+
+:::

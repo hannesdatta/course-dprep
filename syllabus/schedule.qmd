@@ -1,0 +1,60 @@
+---
+title: "Schedule"
+format: html
+---
+
+
+The course runs for a duration of seven weeks. Each week starts with self-study material (typically a recorded lecture, podcast, or reading), a tutorial with exercises/activities, and team coaching sessions. Gradually, you will develop your coding skills, enabling you to work productively on your [team project](../project).
+
+
+::: {.callout-note title="Please bring your laptop to class."}
+Lectures and tutorials are not always scheduled in computer rooms, so please bring your computer & charger along with you.
+:::
+
+| Week  | Date         | Time           | Location   | Content                                      | Given by           |
+|-------|--------------|----------------|------------|----------------------------------------------| -------------------|
+| 0     |              |                |            | Preparation before the course starts
+| 1     | Mon 25 Aug   | 11:45–12:30    | Cube 217   | Q&A to help fix installation issues (optional) | Sudhaharan |             
+|       |              | 12:45–15:30    | Cube 217   | Opening lecture & R Bootcamp                 | Datta |
+| 2     | Mon 01 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Exploring data with RMarkdown      | Datta/Torralba-Flores |
+|       |              | 14:45–16:30    | TZ 9       | Team coaching 1                              | Sudhaharan |
+| 3     | Mon 08 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Version control using GitHub       | Datta/Torralba-Flores |
+|       |              | 12:45–14:30    | Cube 217   | Team coaching 2                              | Sudhaharan |
+| 4     | Mon 15 Sep   | 10:45–12:30    | GZ 104     | Tutorial: Engineering Datasets               | Datta/Torralba-Flores |
+|       | Wed 17 Sep   | 10:45–12:45    | Cube 217   | Team coaching 3                              | Sudhaharan |
+| 5     | Mon 22 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Pipeline automation                | Datta/Torralba-Flores |
+|       |              | 12:45–14:30    | Cube 217   | Team coaching 4                              | Sudhaharan |
+| 6     | Mon 29 Sep   | 16:45–17:30    | Online     | Online Q&A on example questions              | Datta |
+|       | Wed 01 Oct   | 14:45–16:30    | Online     | Team coaching 5                              | Sudhaharan |
+| 6     | Mon 06 Oct   | 08:45–10:30    | Cube 216   | Closing lecture                              | Datta |
+|       | Fri 10 Oct   | 14:45–16:30    | Online     | Team coaching 6                              | Sudhaharan |
+
+<!--| |  | 10.45-12:30 | On-campus | Guest lecture: SQL & Big Query by [Springbok Agency](https://springbokagency.com)-->
+
+::: {.callout-note title="Check official Tilburg's Scheduling Information regularly"}
+- The schedule above is subject to change. For updates, please check your official course schedule at MyTimetable (https://rooster.uvt.nl)
+:::
+
+<!--
+
+::: {.callout-note title="Enrollment Information for Students *Not* Part of the Marketing Analytics Program"}
+
+__Tips__
+
+- Login credentials for the live streams will be made available on the *Canvas page of this course for students from Tilburg University*, and via email to remaining students.
+- If recordings are made, you will find them on the Canvas page of the course, shared with students enrolled at Tilburg University. Some videos may also be posted on Hannes' YouTube channel. [Subscribe to it now](http://www.youtube.com/c/hannesdatta?sub_confirmation=1) to stay up-to-date!
+- If code is shared, you will typically find it on [Hannes' GitHub Gists](https://gist.github.com/hannesdatta).
+:::
+-->
+<!--
+{{< hint info >}}
+__Links to recordings__
+
+- [Open Science Boost - Hannes' playlist with videos on how to boost research efficiency](https://www.youtube.com/playlist?list=PLdDbyJQwReWgG0JCkRFmg4o-Wo8WvSB4r)
+- We're continuously adding new content to [Tilburg Science Hub](https://tilburgsciencehub.com), so bookmark the page and check for updates frequently!
+- Recorded sessions from previous editions of the course
+  - Three sessions with student teams during the first project week: https://youtu.be/CLpBwDTL5Xg
+  - Background information on why not to version your data, and how to efficiently collaborate using GitHub Issues and the project board: https://youtu.be/pe-Zzu8s0So
+
+{{< /hint >}}
+-->

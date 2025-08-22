@@ -1,0 +1,15 @@
+---
+title: "Week 6) Project phase"
+format: html
+---
+
+<!--__Obtain business and data understanding, and explore data in R__-->
+
+__Learning Goals__
+
+- Implement all skills in your team projects
+
+
+__Coaching session (online, optional)__
+
+- Work on your team goals for this course week (see coaching #5 on your workplan)

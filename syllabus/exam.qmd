@@ -1,0 +1,51 @@
+---
+title: "exam"
+format: html
+---
+
+
+
+Project
+========================================================
+
+- build a __research pipeline__
+  - download data - prepare for analysis - run analysis - report
+  - based on public data from Yelp and IMDb, specifics see [course page]((https://dprep.hannesdatta.com/docs/project/data/)
+- team requirements
+  - five persons (mix expertise if possible), register on Canvas by early next week (not less - change of dropout is high!)
+  - you can keep previous grade (repeater) - still register on Canvas (!)
+- evaluation
+  - self- and peer assessment (own versus team performance)
+  - grading rubric available on the course website
+
+Project coaching
+========================================================
+
+- teams meet on campus 
+  - during scheduled coaching class hours
+  - except in the last two weeks (online feedback in breakout rooms)
+- coach (Roshini) meets all teams for a check-in moment (first 45m); then walks around and addresses (remaining) questions
+
+Tutorials
+========================================================
+
+- four __key__ tutorials
+  - explore new data using RMarkdown 
+  - learn how to collaborate on code using GitHub
+  - prepare datasets for analysis
+  - automate workflows using `make`
+- build skills using courses on [datacamp.com]() (get access - see links on site and Canvas) and Software Carpentry
+
+<br>
+__skill building requires time, effort *and* (human!) feedback__, but is highly valued on the job market
+
+
+Grading
+========================================================
+
+- Team project (40%)
+  - with self- and peer assessment
+  - hand in via GitHub
+- Computer exam (60%) on campus, no internet
+  - mix of open (free-flowing answers) and closed questions (multiple choice)
+  - elaborate [preview of exam + example questions](https://dprep.hannesdatta.com/docs/exam) available on the course website

@@ -1,0 +1,31 @@
+---
+title: "Week 2) Exploring data with RMarkdown"
+format: html
+---
+
+<!--__Obtain business and data understanding, and explore data in R__-->
+
+__Learning Goals__
+
+- Explore, manipulate, and filter data sets in R, including reading data from text files and modifying data frames.
+- Create and manage various data types in R, such as vectors, matrices, and data frames.
+- Apply basic programming concepts, generate summary statistics, and create plots in R.
+- Assess data quality, perform calculations, and produce RMarkdown documents in HTML or PDF formats.
+
+__Preparation before class__
+
+- Please read [chapters 2-3](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit"
+
+__Tutorial__
+
+- Exploring Data with RMarkdown <!--(view [slides](tutorial/tutorial.html), view [complete tutorial](tutorial/intro-to-r.html))-->
+
+__Coaching session__
+
+__After the lecture__
+
+
+- Please work through the RMarkdown part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (chapters 6-7: plotting with `ggplot2` and getting started with R Markdown)
+- Optional (for students needing more practice with R/RStudio): 
+  - Develop your R skills by working on the [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3) course
+

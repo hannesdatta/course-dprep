@@ -1,0 +1,53 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Data Preparation & Programming Skills (328059-M-6)"
+  author: "Hannes Datta & Roshini Sudhaharan"
+  chapters:
+    - index.qmd
+    - schedule.qmd
+    - chatbot.qmd
+    - part: "Weekly modules"
+      chapters:
+      - week0-prep.qmd
+      - week1-r.qmd
+      - week2.qmd
+      - week3.qmd
+      - week4.qmd
+      - week5.qmd
+      - week6.qmd
+      - week7.qmd
+    - part: "Team project"
+      chapters:
+      - project/index.qmd
+      - project/data.qmd
+      - project/workplan.qmd
+      - project/grading.qmd
+    - part: "Exam"
+      chapters:
+      - exam/_index.qmd
+  search: true
+  sidebar:
+    style: floating     # sticky sidebar with chapter list
+  page-navigation: true # next/previous buttons
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    toc: true           # per-page table of contents (right side)
+    toc-depth: 3
+    code-copy: true
+    number-sections: false
+    df-print: paged
+  pdf:
+    toc: true
+    number-sections: true
+    number-depth: 2
+    documentclass: report
+
+# bibliography: references.bib   # optional
+# csl: apa.csl                 # add if you have a CSL

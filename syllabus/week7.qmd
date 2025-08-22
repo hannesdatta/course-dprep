@@ -1,0 +1,20 @@
+---
+title: "Week 7) Project phase and final course week"
+format: html
+---
+
+<!--__Obtain business and data understanding, and explore data in R__-->
+
+__Learning Goals__
+
+- Complete your team projects
+- Know what to expect for the exam
+- Reflect upon learning goals of this course 
+
+__Lecture__
+- Course summary and exam preparation <!-- ([slides](slides.html))
+-->
+
+__Coaching session (online, optional)__
+
+- Work on your team goals for this course week (see coaching #6 on your workplan).
