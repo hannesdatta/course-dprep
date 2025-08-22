@@ -113,7 +113,7 @@ DO: Download and open the dataset!
 - Download the data to your computer
 
 ```{r}
-download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/master/content/docs/modules/week4/regional-global-daily-latest.csv", "streams.csv")
+download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/main/material/tutorials/r-bootcamp/streams.csv", "streams.csv")
 ```
 
 - Load the data into R using the tidyverse `read_csv()` function
@@ -237,6 +237,7 @@ __Let's try it out!__
 Next steps
 ========================================================
 
-- Complete this tutorial at Data Carpenetry's R for Social Scientists (link see course website, chapters 1-4)
+- Complete this tutorial at Data Carpenetry's R for Social Scientists (link see Canvas, chapters 1-4)
 - Form and register teams! (remember: __mix__ skills!)
-- Review course material/course website
+- Review course material on Canvas
+- Read chapters 1-2 of "Marketing Analytics: A Modern Toolkit" (Intro & Toolstack), if not done yet
