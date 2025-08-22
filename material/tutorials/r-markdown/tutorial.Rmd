@@ -42,7 +42,7 @@ Optional (for starting R users):
 
 [Google’s COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/) helped governments and researchers understand how the pandemic affected daily life and the economy. The data showed *daily percentage changes* in visits to different places, compared to the same day of the week before COVID-19 (January 3 – February 6, 2020).  
 
-<img src="mobility_icons.png" width="50%">
+<img src="media/mobility_icons.png" width="50%">
 
 The data includes six place categories:  
 
