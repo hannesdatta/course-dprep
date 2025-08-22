@@ -1,0 +1,241 @@
+---
+title: "Tutorial (week 1) - R Bootcamp"
+subtitle: "Data Preparation and Programming Skills (2025/2026)"
+author: "Hannes Datta"
+date: "last-modified"
+format: 
+    beamer:
+      theme: metropolis
+      colortheme: seahorse
+---
+
+## Structure of this tutorial
+
+Based on [https://datacarpentry.org/r-socialsci/](https://datacarpentry.org/r-socialsci/) (chapters 1-4)
+
+- In-class part: Introduction to R and starting with data and data wrangling  
+  *This part features **selected** issues.*  
+
+- After class: please complete chapters 1-4 [at your own pace](https://datacarpentry.org/r-socialsci/).
+
+---
+
+## Introduction to R
+
+::: incremental
+- What is R? What is RStudio?
+- Why learn R?
+  - no point and clicking (good!)
+  - great for reproducibility
+  - interdisciplinary & extensible
+  - supports all data formats
+  - can produce high-quality graphics
+  - has a large community
+  - it's free, open-source and cross-platform!
+  - works even in the cloud!
+- But... can be geeky + many ways to do the "same thing" (-> confusing!), e.g., `data.table` vs. `dplyr`
+
+:::
+
+---
+
+## DO: Creating a new project
+
+- Under the *File menu*, click on *New project*, choose *New directory*, then *New project*
+- Enter a *name for this new folder* and choose a *convenient location* (e.g., `~/data-carpentry`)
+- Click on *Create project*
+- Create a *new file* where we will type our scripts: File > New File > R script → Save as *script.R*
+
+---
+
+## The RStudio Interface
+
+::: incremental
+- four panes: source code, console, environment/history, files
+- setting and checking working directories (`setwd()` and `getwd()`)
+- relative vs. absolute directories, use of `here()`
+:::
+
+---
+
+## DO: Organize working directory
+
+- Directory structure (for tutorial; different structures used later)
+
+![](https://datacarpentry.org/r-socialsci/fig/rstudio_project_files.jpeg){width=50%}
+
+```{r}
+dir.create("data") # continue w/ other directories
+```
+
+* Can you come up with other ways to create a folder/directory structure?
+
+---
+
+## Interacting with R
+
+:::incremental
+
+* Running code (ctrl + R, buttons, top-down)
+* Installing additional packages (`install.packages()`)
+* DO: Let's verify package `tidyverse` is installed!
+
+:::
+
+---
+
+## Using R
+
+:::incremental
+
+* as a calculator
+* variable assignment
+* calculating with variables
+* \= vs. ==
+* functions
+
+  * using functions (e.g., `round()`)
+  * getting help on functions
+  * what functions exist? → [cheat sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
+* vectors and data types (`c(1,2,3)`, `c("Berlin", "Barcelona")`, `NA`)
+* subsetting vectors
+
+:::
+
+---
+
+## DO: A bit of practice
+
+1. Assign values to `rooms`: 1, 2, 1, 8
+2. Use `max()` to calculate the maximum
+3. Add `NA` → 1, 2, 1, 8, NA
+4. Recalculate max & check help with `?max`
+5. Return the 3rd value of `rooms`
+6. Count rooms ≥ 2 (hint: `length()` + subsetting)
+
+---
+
+## Starting with data
+
+* Individual values vs. "holding data" (rows, columns)
+* Difference between Excel & R? Each column = same data type!
+* Here: music streaming data
+
+---
+
+## DO: Download and open the dataset!
+
+```{r echo=TRUE, eval=TRUE}
+download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/main/material/tutorials/r-bootcamp/streams.csv", "streams.csv")
+```
+
+```{r echo=TRUE, eval=TRUE}
+library(tidyverse)
+streams <- read_csv('streams.csv', skip=1)
+```
+
+---
+
+```{r echo=TRUE, eval=FALSE}
+streams
+head(streams)
+view(streams)
+nrow(streams)
+summary(streams)
+```
+
+---
+
+## Working with data from a table
+
+::: incremental
+
+* `$column_name` (e.g., `streams$Artist`)
+* Use tab completion
+* Convert variables with `as.factor()`
+* Preview: using dates!
+
+:::
+
+
+## `dplyr` 101: select()
+
+```{r echo=TRUE, eval=TRUE}
+streams %>% select(`Track Name`)
+```
+
+---
+
+## `dplyr` 101: filter()
+
+```{r echo=TRUE, eval=TRUE}
+streams %>% filter(`Track Name` == "Pepas")
+```
+
+---
+
+## `dplyr` 101: mutate()
+
+```{r echo=TRUE, eval=TRUE}
+streams <- streams %>% mutate(weekly_streams = Streams * 7)
+streams %>% select(`Track Name`, Streams, weekly_streams)
+```
+
+---
+
+## `dplyr` 101: group_by() + summarize()
+
+```{r echo=TRUE, eval=TRUE}
+streams %>% group_by(Artist) %>%
+  summarize(total_streams = sum(Streams))
+```
+
+---
+
+## `dplyr` 101: arrange()
+
+```{r echo=TRUE, eval=TRUE}
+streams %>% group_by(Artist) %>%
+  summarize(total_streams = sum(Streams)) %>%
+  arrange(desc(total_streams))
+```
+
+---
+
+## `dplyr` 101: count()
+
+```{r echo=TRUE, eval=TRUE}
+streams %>% count(Streams > 1E6)
+```
+
+---
+
+## DO: Let's practice!
+
+1. Show only Artist + Track Name (`select()`)
+2. Show all observations by Lil Nas X (`filter()`)
+3. Sum up streams by artist (`group_by()` + `summarize()`)
+4. Sort descending (`arrange()`)
+
+Tip: see the [dplyr cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+---
+
+## Writing a code file
+
+* Prototype in RStudio
+* For production: run via terminal
+
+```bash
+R --vanilla < filename.R
+Rscript filename.R
+```
+
+---
+
+## Next steps
+
+* Complete tutorial at Data Carpentry (ch. 1–4)
+* Form and register teams (mix skills!)
+* Review Canvas material
+* Read chapters 1–2 of *Marketing Analytics: A Modern Toolkit*
