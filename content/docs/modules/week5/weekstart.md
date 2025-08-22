@@ -1,5 +1,0 @@
----
-draft: true
----
-
-Dear students -
