@@ -4,7 +4,7 @@ format: html
 ---
 
 
-The course runs for a duration of seven weeks. Each week starts with self-study material (typically a recorded lecture, podcast, or reading), a tutorial with exercises/activities, and team coaching sessions. Gradually, you will develop your coding skills, enabling you to work productively on your [team project](../project).
+The course runs for a duration of seven weeks. Each week starts with self-study material (typically a recorded lecture, podcast, or reading), a tutorial with exercises/activities, and team coaching sessions. Gradually, you will develop your coding skills, enabling you to work productively on your team project.
 
 
 ::: {.callout-note title="Please bring your laptop to class."}
@@ -15,7 +15,7 @@ Lectures and tutorials are not always scheduled in computer rooms, so please bri
 |-------|--------------|----------------|------------|----------------------------------------------| -------------------|
 | 0     |              |                |            | Preparation before the course starts
 | 1     | Mon 25 Aug   | 11:45–12:30    | Cube 217   | Q&A to help fix installation issues (optional) | Sudhaharan |             
-|       |              | 12:45–15:30    | Cube 217   | Opening lecture & R Bootcamp                 | Datta |
+|       |              | 12:45–15:30    | Cube 217   | Opening lecture & R Bootcamp                 | Datta/Torralba-Flores |
 | 2     | Mon 01 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Exploring data with RMarkdown      | Datta/Torralba-Flores |
 |       |              | 14:45–16:30    | TZ 9       | Team coaching 1                              | Sudhaharan |
 | 3     | Mon 08 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Version control using GitHub       | Datta/Torralba-Flores |

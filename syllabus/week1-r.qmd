@@ -14,8 +14,8 @@ __Learning Goals__
 
 __Preparation before class__
 
-- Please complete the software installation (see Preparation before the course starts)
-- Please read [chapter 1](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit"
+- Please complete the software installation (see &rarr; Preparation before the course starts)
+- Please read [chapters 1-2 of "Marketing Analytics: A Modern Toolkit"](https://dprep-book.hannesdatta.com/)
 
 __Opening lecture and R bootcamp__
 
@@ -25,8 +25,8 @@ __Opening lecture and R bootcamp__
 __After the lecture__
 
 - Exercises after class (please complete [chapters 1-4 in R for Social Scientists](https://datacarpentry.org/r-socialsci/) at your own pace; about 4-5 hours)
-- Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
-
+<!--- Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
+-->
 <!--
 - Readings
   - [Data Selection and Procurement](https://doi.org/10.1287/mksc.1110.0650) [^1]

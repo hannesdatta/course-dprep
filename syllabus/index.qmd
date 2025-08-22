@@ -12,15 +12,15 @@ author: Hannes Datta
 
 Marketing analytics projects — whether for a thesis, a research study, or an analytics role — often involve messy, multi-source datasets, complex analyses, and the need for reproducibility. Small ad-hoc fixes might work for simple tasks, but they quickly break down in these larger, more demanding settings. Today’s datasets (e.g., scraped from the Internet)[^1] and advanced analytics (e.g., requiring high-performance computing) demand a structured, professional way of working.
 
+[^1]: See, for example, the data sections in [Building a user panel of music consumption from Spotify](http://tiu.nu/spotify) and [Preparing a panel data set on electronics sales and marketing mix activities across thousands of brands](https://journals.sagepub.com/doi/10.1177/00222437211058102).
+
 This course introduces three core principles to help you manage your marketing analytics projects efficiently:
 
-1. **Code** – Build strong coding skills in R/RStudio.
-2. **Collaborate** – Work effectively with others using Git/GitHub.
-3. **Automate** – Create end-to-end, reproducible research pipelines.
+1.  **Code** – Build strong coding skills in R/RStudio.
+2.  **Collaborate** – Work effectively with others using Git/GitHub.
+3.  **Automate** – Create end-to-end, reproducible research pipelines.
 
 These principles — *code, collaborate, automate* — are applied across the full research workflow: data exploration, preparation, analysis, and reporting. You’ll also learn how to engineer datasets from complex raw sources and share your findings in innovative formats, such as Markdown documents or interactive apps.
-
-[^1]: See, for example, the data sections in [Building a user panel of music consumption from Spotify](http://tiu.nu/spotify) and [Preparing a panel data set on electronics sales and marketing mix activities across thousands of brands](https://journals.sagepub.com/doi/10.1177/00222437211058102).
 
 ### Learning goals
 
@@ -59,10 +59,8 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ## Teaching format
 
--   Blended (a mix of online/offline lectures and tutorials, and online/offline coaching sessions)
--   Combination of self-paced tutorials (e.g., using R Notebooks or pre-recorded clips), and interactive live streams for feedback and coaching
+-   Blended learning: a mix of lecturers, tutorials and coaching sessions, mostly on-campus, and sometimes online or prerecorded
 -   Learn state-of-the-art tools popular among scientists, marketing analysts, and data scientists (e.g., R, GitHub, `make`)
--   Open education & open science (all material is open; publicly accessible course page that stays with you, even after the end of the course)
 
 ## Assessment
 
@@ -81,10 +79,10 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ### Passing requirements
 
-Students pass this course if 
+Students pass this course if
 
-- the final course grade (i.e., the weighted average of the following two components: (1) the group project, and (2) the exam; weights indicated above) is ≥ 5.5, and 
-- the exam grade is higher than or equal to 5.0 (≥ 5.0).
+-   the final course grade (i.e., the weighted average of the following two components: (1) the group project, and (2) the exam; weights indicated above) is ≥ 5.5, and
+-   the exam grade is higher than or equal to 5.0 (≥ 5.0).
 
 Final course grades are rounded to multiples of half points (e.g., 6, 6.5, 7, etc.).
 
@@ -124,11 +122,11 @@ Each award of a bonus point is accompanied by an individualized argumentation (i
 
 ## Instructors
 
-This course is instructed by 
+This course is instructed by
 
-- [dr. Hannes Datta](https://hannesdatta.com), Associate Professor at the Marketing Department of Tilburg University (course coordinator),
-- [Roshini Sudhaharan, MSc.](https://www.linkedin.com/in/roshinisudhaharan/), Junior Lecturer at the Marketing Department of Tilburg University, and
-- Javier Torralba Flores, PhD student at the Marketing Department of Tilburg University.
+-   [dr. Hannes Datta](https://hannesdatta.com), Associate Professor at the Marketing Department of Tilburg University (**course coordinator & lectures**),
+-   Javier Torralba Flores, PhD student at the Marketing Department of Tilburg University (**tutorials**), and
+-   [Roshini Sudhaharan, MSc.](https://www.linkedin.com/in/roshinisudhaharan/), Junior Lecturer at the Marketing Department of Tilburg University (**team project and coaching sessions**).
 
 ::: {.callout-note title=""}
 Join Hannes' professional network on [LinkedIn](https://www.linkedin.com/in/hannes-datta/), subscribe to his [YouTube Channel](https://youtube.com/c/hannesdatta), and start following him on [GitHub](https://github.com/hannesdatta).
