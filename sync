@@ -1,8 +1,0 @@
-git checkout master
-git checkout dev content/_index.md
-git checkout dev config.toml
-git checkout dev netlify.toml
-git checkout dev readme.md
-git checkout dev themes/book/assets/_defaults.scss
-git commit -m 'use dev version of syllabus'
-git checkout dev
