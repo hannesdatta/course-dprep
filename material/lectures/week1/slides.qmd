@@ -7,6 +7,7 @@ format:
     beamer:
       theme: metropolis
       colortheme: seahorse
+      linkcolor: blue
 
 ---
 
@@ -76,7 +77,7 @@ If you haven't done so, please check out the **Canvas page** for this course:
 - Imagine your dream job — what’s it going to be?
 :::
 
----
+--- 
 
 ## Motivation for course (I)
 
@@ -91,17 +92,7 @@ If you haven't done so, please check out the **Canvas page** for this course:
 - Couldn’t find code that prepped the dataset
 - Couldn’t find code of the econometric model that eventually got published
 
----
-
-## What was so bad about it?
-
-- **Replicability**  
-  Couldn’t replicate results later
-- **Reproducibility**  
-  Peers couldn’t understand/implement my workflow
-- **Efficiency**  
-  - Changes required rerunning everything from scratch  
-  - Years later, a colleague asked for data &rarr; it wasn’t documented
+&rarr; lack of __replicability__, __reproducibility__, and __efficiency__
 
 ---
 
@@ -112,45 +103,68 @@ If you haven't done so, please check out the **Canvas page** for this course:
 - Team members/colleagues need to read and reuse your code
 - Learning “good practices” takes time, but…  
 
-<br>
 &rarr; even small **efficiency** gains pay off quickly
 
 ---
 
-## What’s efficient?
+## Efficient vs. Not Efficient
 
-::: incremental
-- Prototype the “final research pipeline” early, refine later
-- Reduce setup costs when returning to a project
-- Catch coding mistakes faster
-- Collaborate by rotating tasks
-- Share/reuse code (e.g., via packages)
-- Get feedback from others
-:::
+| **Efficient when…** | **Not efficient when…** |
+|---------------------|-------------------------|
+| - Prototype the “final pipeline” early, then refine | - Wait passively for results or data prep |
+| - Returning to a project feels low-effort | - Forget how things were done (and why) |
+| - Mistakes are caught quickly | - Get distracted while waiting |
+| - Tasks can be rotated across teammates | - Work gets lost in undocumented code |
+| - Code and results are reusable (e.g., via packages) | - Data and files go missing |
+| - Feedback from others improves the workflow | - Endless “final_final.xlsx” versions appear |
 
 ---
 
-## What’s not efficient?
+## So what’s the solution?
 
-::: incremental
-- Waiting (for results or data prep)
-- Getting distracted while waiting
-- Forgetting how things were done (and why)
-- Losing data
-- Using undocumented code
-:::
+You need a **tool stack**: the __practices__, __tools__, and __habits__ that keep projects organized, reproducible, and efficient.
+
+- **People & Habits** – docs, naming conventions, code reviews  
+- **Plan & Track** – boards, milestones, issues (GitHub Projects, Trello)  
+- **Code & Environment** – R (+ tidyverse), Git, renv, coding standards  
+- **Data Layer** – raw / temp / final folders, DuckDB/SQLite 
+- **Build & Orchestrate** – make/automation, GitHub Actions, Docker  
+- **Analysis & Modeling** – `fixest`, `lm`, ...  
+- **Reporting & Apps** – Quarto, Shiny, Flask, Streamlit
+
+---
+
+## Choosing the Right Tool Stack
+
+- **Small / Short-term projects**  
+  - Solo work, low complexity  
+  - Tools: clear folder structure, RStudio, Git, README  
+  - Setup: local (laptop only)  
+
+- **Medium / Thesis-scale projects**  
+  - multi-person, weeks, multiple data sources  
+  - Tools: GitHub (issues/boards), `make`, Quarto  
+  - Setup: mostly local, with optional cloud storage/sharing  
+
+- **Large / Team projects**  
+  - Multi-person, multi-months, large datasets  
+  - Tools: all of the above + Docker, CI/CD, databases
+  - Setup: hybrid — local development + cloud for compute & data  
+
+&rarr; **Rule of thumb**: Start simple → add tools (and cloud) when projects grow.
+
 
 ---
 
 ## Course objectives
 
-- Develop coding skills
+- **Develop coding skills**
   - Use R to clean and transform data for analysis (e.g., dataset engineering, week 4)
   - Use R for reporting and plotting (e.g., RMarkdown, week1)
-- Collaborate on code/projects
+- **Collaborate on coding projects**
   - Document with unlimited version history
   - Examples: [a research article](https://github.com/hannesdatta/brand-equity-journal-of-marketing), [spotify-playlist-clustering](https://github.com/hannesdatta/spotify-playlist-clustering), [this class](https://github.com/hannesdatta/course-dprep)
-- Automate pipelines
+- **Automate pipelines**
   - Create portable, automated, reproducible data pipelines
   - Examples: [text mining pipeline](https://tilburgsciencehub.com/practice/pipeline-automation), [project templates](https://tilburgsciencehub.com/examples/reproducible-workflow-airbnb/)
 
