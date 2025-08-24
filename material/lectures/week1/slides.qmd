@@ -7,17 +7,18 @@ format:
     beamer:
       theme: metropolis
       colortheme: seahorse
+
 ---
 
 ## Welcome to dPrep!
 
 We're about to start with the first lecture of this class.
 
-If you haven't done so, please:
+If you haven't done so, please check out the **Canvas page** for this course:
 
-- explore the **course page** at [https://dprep.hannesdatta.com](https://dprep.hannesdatta.com)
-- complete the [**software installation**](https://dprep.hannesdatta.com/docs/modules/prep/)
-- my slides are available here: [week 1 slides](https://dprep.hannesdatta.com/docs/modules/week1)
+- explore the *course syllabus*
+- complete the *software installation* (see "preparation before this class on Canvas)
+- check out my slides on the *modules* page
 
 <!--
 - drafted this course for a very long time
@@ -31,25 +32,29 @@ If you haven't done so, please:
 
 ## Agenda
 
-- Part 1 (10.45–11.45)
-  - Meeting each other!
+- Part 1 (12.45–13.45)
+  - Meeting each other
   - Motivation for the course
   - Course framework and learning goals
   - Agenda and practical arrangements
 - Break
-- Part 2 (12.00–13.30/13.45): R Bootcamp on your laptops
+- Part 2 (14.00–15.30/15.45): R Bootcamp on your laptops
 
 ---
 
 ## Disclaimer
 
 ::: incremental
-- Minimal slides – use Ctrl/Cmd + / – to zoom in/out in your browser
-- Sessions are recorded (no editing, please remind me to post)
-- You will have to invest a lot of time and energy
 - Mix of lectures, teamwork and self-study — all are necessary
-- Consider me your coach, not your distant professor
-- Slow me down (yes, that’s needed!)
+  - I do the lectures and course coordination
+  - Javier Torralba Flores will help you master the tutorial sessions
+  - Roshini Sudhaharan will coach you on the team projects
+- About me
+  - I record my lectures and post them on Canvas (remind me if I miss to post one--or forget to start the recording)
+  - Consider me your coach, not your 'distant professor'
+  - Slow me down (yes, that’s needed!)
+- You will have to invest a lot of time and energy
+
 :::
 
 ---
@@ -57,20 +62,17 @@ If you haven't done so, please:
 ## Research and teaching (all openly available)
 
 - Research on digital media and branding: [hannesdatta.com](https://hannesdatta.com)
-- **Tilburg Science Hub**: [tilburgsciencehub.com](https://tilburgsciencehub.com)
-- Tilburg.ai: [tilburg.ai](https://tilburg.ai)
 - Teaching: [thesis supervision](https://thesis.hannesdatta.com), [oDCM](https://odcm.hannesdatta.com)
-- YouTube: [youtube.com/c/hannesdatta](https://youtube.com/c/hannesdatta)  
-  LinkedIn: [linkedin.com/in/hannesdatta](https://linkedin.com/in/hannesdatta)
-- Public code: [github.com/hannesdatta](https://github.com/hannesdatta)
+- AI and open science: [tilburg.ai](https://tilburg.ai), [tilburgsciencehub.com](https://tilburgsciencehub.com)
+- Socials: [Youtube](https://youtube.com/c/hannesdatta), [LinkedIn](https://linkedin.com/in/hannesdatta), [GitHub](https://github.com/hannesdatta)
 
 ---
 
-## Getting to know your programming skills...
+## Getting to know you
 
 ::: incremental
-- Who’s ever used R? (Share your wildest R moment!)
 - Ever wrangled with messy data? How did you clean it? Did you team up or go solo?
+- What programming languages do you know--if at all? Who’s ever used R?
 - Imagine your dream job — what’s it going to be?
 :::
 
@@ -99,7 +101,7 @@ If you haven't done so, please:
   Peers couldn’t understand/implement my workflow
 - **Efficiency**  
   - Changes required rerunning everything from scratch  
-  - Years later, a colleague asked for data → it wasn’t documented
+  - Years later, a colleague asked for data &rarr; it wasn’t documented
 
 ---
 
@@ -109,14 +111,16 @@ If you haven't done so, please:
 - You will change code *continuously*
 - Team members/colleagues need to read and reuse your code
 - Learning “good practices” takes time, but…  
-- Even small **efficiency** gains pay off quickly
+
+<br>
+&rarr; even small **efficiency** gains pay off quickly
 
 ---
 
 ## What’s efficient?
 
 ::: incremental
-- Prototype the “final pipeline” early, refine later
+- Prototype the “final research pipeline” early, refine later
 - Reduce setup costs when returning to a project
 - Catch coding mistakes faster
 - Collaborate by rotating tasks
@@ -134,63 +138,21 @@ If you haven't done so, please:
 - Forgetting how things were done (and why)
 - Losing data
 - Using undocumented code
-- Becoming frustrated, feeling lost
 :::
 
 ---
 
-## Course objectives (I): Develop coding skills
+## Course objectives
 
-1. Use R to clean and transform data for analysis  
-   → e.g., [tidyverse/dplyr tutorial](https://dprep.hannesdatta.com/docs/modules/week4/tutorial/tutorial.html)
-
-2. Use R for reports and apps  
-   - Write reports in [RMarkdown](https://dprep.hannesdatta.com/docs/modules/week3/tutorial/intro-to-r.html)  
-   - Build [Shiny apps](https://tilburgsciencehub.com/try/shiny-app)
-
----
-
-## Course objectives (II): Collaborate on projects (GitHub)
-
-1. Collaborate on code/projects  
-   - Example: [issues page](https://github.com/tilburgsciencehub/website/issues)
-
-2. Document with unlimited version history  
-   - Roll back, clean up freely
-
-Examples:  
-- [brand-equity-journal-of-marketing](https://github.com/hannesdatta/brand-equity-journal-of-marketing)  
-- [spotify-playlist-clustering](https://github.com/hannesdatta/spotify-playlist-clustering)  
-- [this class](https://github.com/hannesdatta/course-dprep)
-
----
-
-## Course objectives (III): Automate pipelines
-
-- Create portable, automated, reproducible data pipelines
-
-Examples:  
-- [text mining pipeline](https://tilburgsciencehub.com/practice/pipeline-automation)  
-- [project templates](https://tilburgsciencehub.com/examples/reproducible-workflow-airbnb/)
-
----
-
-## Tips & tricks
-
-- Familiarize yourself with course site (Canvas only for admin stuff)
-- Early weeks are toughest, but skills build quickly
-- Stick with the same group, mix skill levels
-- Collaborate and help each other
-
----
-
-## Course structure
-
-- **Skill building (weeks 1–5):**  
-  - Tutorials (Hannes), coaching (Roshini), self-study
-- **Project phase (weeks 2–7):**  
-  - Apply skills in a team project  
-  - Build custom pipelines using blocks/snippets
+- Develop coding skills
+  - Use R to clean and transform data for analysis (e.g., dataset engineering, week 4)
+  - Use R for reporting and plotting (e.g., RMarkdown, week1)
+- Collaborate on code/projects
+  - Document with unlimited version history
+  - Examples: [a research article](https://github.com/hannesdatta/brand-equity-journal-of-marketing), [spotify-playlist-clustering](https://github.com/hannesdatta/spotify-playlist-clustering), [this class](https://github.com/hannesdatta/course-dprep)
+- Automate pipelines
+  - Create portable, automated, reproducible data pipelines
+  - Examples: [text mining pipeline](https://tilburgsciencehub.com/practice/pipeline-automation), [project templates](https://tilburgsciencehub.com/examples/reproducible-workflow-airbnb/)
 
 ---
 
@@ -200,104 +162,89 @@ Examples:
 
 ---
 
-## Course website
+## Course structure I: Lectures and web clips
 
-Visit [https://dprep.hannesdatta.com](https://dprep.hannesdatta.com)!
+- provide __theory and context__...
+- in the form of 
+  - lectures, 
+  - recorded webclips, and 
+  - a *new* book (&rarr; [https://dprep-book.hannesdatta.com](https://dprep-book.hannesdatta.com)) (new chapters will be published during the course)
 
-- Public & open
-- Canvas only for:
-  - announcements  
-  - team sign-ups  
-  - project submissions  
-
----
-
-## Project
-
-- Build a **research pipeline**: download → prep → analyze → report
-- Data: Yelp + IMDb (see [course page](https://dprep.hannesdatta.com/docs/project/data/))
-- Teams: 5 people (mix expertise), register by next week
-- Evaluation:  
-  - self- & peer assessment  
-  - rubric on course site
+<br>
+key responsibility: __Hannes Datta__
 
 ---
 
-## Project coaching
-
-- Teams meet on campus during scheduled hours
-- Last 2 weeks: online feedback in breakout rooms
-- Coach (Roshini): first 45m check-in, then supports teams individually
-
----
-
-## Tutorials
+## Course structure II: Tutorials
 
 - Four **key** tutorials:
-  - Explore data with RMarkdown  
+  - Explore data with RMarkdown & plotting with `gagplot2`
   - Collaborate with GitHub  
   - Prepare datasets  
   - Automate workflows with `make`
 - Plus Datacamp + Software Carpentry modules
+- Structure of each tutorial
+  - overview of "important topics"
+  - discussion how to solve and accompanying you to learn coding to solve questions
+  - solutions posted after tutorials
+
+<br> 
+Key responsibility: __Javier Torralba Flores__
 
 ---
 
-## Grading
+## Course structure III: Team project
 
-- Team project (40%) → via GitHub, peer assessment  
-- Computer exam (60%) → on campus, no internet  
+- implementing everything you've learnt in __a research project__ (raw data → data prep → analysis → report)
+  - Data: Yelp or IMDb
+  - Teams: 4- (max!)-5 students (mix expertise), __register on Canvas__ by next week
+- Coaching sessions
+  - Teams meet on campus during *scheduled hours*
+  - Last 2 weeks of the course: *online* feedback in breakout rooms
+  - Coach: first 45m check-in with each team, then supports teams individually
+- Evaluation:  
+  - standardized evaluation rubric on Canvas
+  - self- & peer assessment to up/downweigh grades, depending on individual contribution
+
+<br>
+Key responsibility: __Roshini Sudhaharan__
+
+---
+
+## Assessment
+
+- Computer exam (60%, 120 minutes) → on campus, no internet  
   - Mix of open + closed questions  
-  - [Preview + examples](https://dprep.hannesdatta.com/docs/exam) available
+  - Example questions will be shared on Canvas; exam Q&A in week 6 and week 7
+- Team project (40%) → via GitHub, self- and peer assessment  
+
+
+## Tips & tricks
+
+- Familiarize yourself with this course (e.g., syllabus) on Canvas
+- Early weeks are toughest, but skills build quickly
+- Stick with the same group, mix skill levels
+- Collaborate and help each other
+- Recall that coding can be frustrating & tiring (take breaks, get our support - DO NOT just rely on ChatGPT) &rarr; quick feedback loops in the first weeks
+
+&rarr; __Quick support?__ Make use of our chatbot: [chatbot.tilburg.ai](https://chatbot.tilburg.ai) + invite link!  
 
 ---
 
-## Brain-dead by coding
+## Getting in touch with us
 
-- Coding can be frustrating, tiring
-- Take breaks, run, reset
-- Learn from mistakes
-- Use cheat sheets + support section  
-→ Quick feedback loops in the first weeks
-
----
-
-## Getting support
-
-- Course chatbot: [dprep.tilburgai.nl](https://dprep.tilburgai.nl)  
-- WhatsApp (fastest): +31 13 466 8938  
-- Email (slower)  
-- Support section on course site  
-
-![WhatsApp](wa_qr.jpeg)
-
----
-
-## What’s in for you?
-
-::: incremental
-- Enhanced data analysis skills
-- Competitive advantage: R + GitHub + automation
-- Efficient collaboration (project mgmt)
-- Reproducible workflows
-- Opportunities for future projects in Tilburg & beyond
-:::
-
----
-
-## Success factors
-
-At the end of this course, what would make you say:
-
-**“This was actually worth it…!!!”**
-
----
+- __Javier Torralba Flores__ (tutorials) - via email
+- __Roshini Sudhaharan__ (coaching, project, sign-up) - via email
+- __Hannes Datta__ (course coordination, lectures, book + all remaining questions) - WhatsApp (+31134668938; email)
+  
+![Scan QR to get Hannes' contact information right now](wa_qr.jpeg){width=50% height=50%}
 
 ## Next steps
 
-- Find a group by week 2 (4–5 students, mix skills)  
-- Get Datacamp access: [Enroll](https://dprep.hannesdatta.com/docs/course/support/datacamp/)  
-- Complete [software installation](https://dprep.hannesdatta.com/docs/modules/prep)  
+- Find a group by week 2 (4–5 students, mix skills!)  
+- Get Datacamp access: [enroll](link see Canvas)  
 - Get GitHub Education Pack  
+- Complete software installation
 
 <br><br>
 
