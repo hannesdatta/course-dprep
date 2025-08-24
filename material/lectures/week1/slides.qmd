@@ -242,9 +242,9 @@ Key responsibility: __Roshini Sudhaharan__
 ## Next steps
 
 - Find a group by week 2 (4–5 students, mix skills!)  
-- Get Datacamp access: [enroll](link see Canvas)  
-- Get GitHub Education Pack  
-- Complete software installation
+- Complete software installation & obtain licenses (includes premium Datacamp access, GitHub Education Pack)
+- Please read [chapters 1-2 of “Marketing Analytics: A Modern Toolkit”](https://dprep-book.hannesdatta.com)
+- Most up-to-date info: Canvas &rarr; (weekly) modules
 
 <br><br>
 
