@@ -5,7 +5,7 @@ format: html
 
 ## Introduction
 
-When I started my PhD in quantitative marketing, I spent countless hours coding — preparing datasets, building statistical models, and running complex analyses. But while I was learning the technical side of marketing analytics, I wasn’t learning *how to structure my work*. I worked in what I thought was a productive way, but in hindsight it was pure chaos ([here’s proof](https://tilburgsciencehub.com/topics/Automation/Workflows/Starting/principles-of-project-setup-and-workflow-management/structure_phd_2013)). Somehow, I still got published ([Datta et al., 2013](https://doi.org/10.1509%2Fjmr.12.0160)), but the state of my computational infrastructure was a time bomb.
+When I started my PhD in quantitative marketing, I spent countless hours coding — preparing datasets, building statistical models, and running complex analyses. But while I was learning the technical side of marketing analytics, I wasn’t learning *how to structure my work*. I worked in what I thought was a productive way, but in hindsight it was pure chaos ([here’s proof](https://rawcdn.githack.com/tilburgsciencehub/website/0e71e9b387ee125aaff8043892cee076d3019284/content/topics/Automation/Workflows/principles-of-project-setup-and-workflow-management/structure_phd_2013.html#D:/Datta/Dropbox/PhD/Revision)). Somehow, I still got published ([Datta et al., 2013](https://doi.org/10.1509%2Fjmr.12.0160)), but the state of my computational infrastructure was a time bomb.
 
 Years later, I can’t find the exact code that prepared the dataset for that paper. I can’t find the final version of the econometric model code either. At the time, I didn’t think this was a big deal — but it meant my work suffered in three important ways.
 
