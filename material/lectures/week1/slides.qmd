@@ -83,7 +83,7 @@ If you haven't done so, please check out the **Canvas page** for this course:
 
 - Did my PhD in quantitative marketing
 - Coded a lot (data prep, modeling), but didn’t *learn how to structure my work*
-- Created a [complete chaos](https://tilburgsciencehub.com/topics/Automation/Workflows/Starting/principles-of-project-setup-and-workflow-management/structure_phd_2013) (but still [got published](https://doi.org/10.1509%2Fjmr.12.0160))
+- Created a [complete chaos](https://rawcdn.githack.com/tilburgsciencehub/website/0e71e9b387ee125aaff8043892cee076d3019284/content/topics/Automation/Workflows/principles-of-project-setup-and-workflow-management/structure_phd_2013.html#D:/Datta/Dropbox/PhD/Revision) (but still [got published](https://doi.org/10.1509%2Fjmr.12.0160))
 
 ---
 
