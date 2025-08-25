@@ -1,6 +1,6 @@
 ---
 title: "Data exploration with RMarkdown and ggplot2 (dPrep)"
-date: "Last updated: 4 February 2025"
+date: "Last updated: 25 August 2025"
 output:  
   webexercises::webexercises_default:
     theme: flatly  # Use a modern Bootstrap theme (e.g., cosmo, yeti, flatly)
@@ -12,12 +12,40 @@ output:
 
 ```{r setup, include=FALSE}
 #output: webexercises::webexercises_default
+show_solutions = FALSE
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(tidyverse)
 library(webexercises)
 library(knitr)
 
+hide <- function (button_text = "Solution", visible=show_solutions) 
+{
+  if (visible==T) {  
+  rmd <- !is.null(getOption("knitr.in.progress"))
+    if (rmd) {
+        paste0("\n<div class='webex-solution'><button>", button_text, 
+            "</button>\n")
+    }
+    else {
+        paste0("\n::: {.callout-note collapse='true'}\n## ", 
+            button_text, "\n\n")
+    }
+}
+}
+
+unhide <- function (visible=show_solutions) 
+{
+    if (visible==T) {
+    rmd <- !is.null(getOption("knitr.in.progress"))
+    if (rmd) {
+        "\n</div>\n"
+    }
+    else {
+        "\n:::\n\n"
+    }
+    }
+}
 ```
 
 # Introduction
@@ -77,9 +105,6 @@ As you go through the tutorial, you'll apply the skills you've learned in the pr
   - Create visualizations (bar plots, time series plots)  
   - Format your findings in **RMarkdown** (HTML or PDF reports)  
 
-## Support Needed? 
-
-For technical issues outside of scheduled classes, please check the [support section](https://dprep.hannesdatta.com/docs/course/support) on the course website.
 
 ------
 
@@ -137,7 +162,7 @@ __Tips:__
 \
 
 
-```{r, webex.hide = 'Solutions for Exercise 1'}
+```{r, webex.hide = 'Solutions for Exercise 1',include=show_solutions}
 head(mobility)
 
 summary(mobility)
@@ -155,7 +180,7 @@ Suppose you want to extract data for the **Netherlands as a whole** (excluding r
 
 Once you've created this filtered dataset, generate a **summary** using `summary()` and check for missing values. What do you notice?
 
-```{r, echo = TRUE, webex.hide = 'Solutions to Exercise 2'}
+```{r, echo = TRUE, webex.hide = 'Solutions to Exercise 2', include=show_solutions}
 # hint: when sub_region_1 and sub_region_2 are NA, 
 # the data pertains to the whole of The Netherlands.
 filtered_df <- mobility %>% filter(is.na(sub_region_1) & is.na(sub_region_2))
@@ -175,7 +200,7 @@ __3a:__ The dataset reports percentage changes in visits compared to a **baselin
 - Use `summary()` to check the range of values. What do you find?  
 
 
-```{r, webex.hide = 'Solutions to Exercise 3a'}
+```{r, webex.hide = 'Solutions to Exercise 3a', include=show_solutions}
 # Exploring the range
 summary(mobility$retail_and_recreation_percent_change_from_baseline)
 
@@ -222,7 +247,7 @@ There's also a way to delete columns: rather than selecting (`country_region_cod
 
 Please delete the columns `country_region_code`, `metro_area`, `iso_3166_2_code` and `census_fips_code` from the data. How many columns do you end up with?
 
-```{r, echo = TRUE, webex.hide = 'Solutions to Exercise 4', message = FALSE}
+```{r, echo = TRUE, webex.hide = 'Solutions to Exercise 4', message = FALSE, include=show_solutions}
 # Good solution
 # ------------- 
 
@@ -274,7 +299,7 @@ Please:
 - Rename `sub_region_1` and `sub_region_2` by `province` and `city`, respectively. 
 - Change the very long column names (e.g., `retail_and_recreation_percent_change_from_baseline`) to `retail_and_recreation`. 
 
-```{r, webex.hide = 'Solution to Exercise 5'}
+```{r, webex.hide = 'Solution to Exercise 5', include=show_solutions}
 # First use the rename function to rename sub_region_1 & sub_region_2. 
 mobility_updated <- mobility %>% rename(province = sub_region_1,
                                 city = sub_region_2,
@@ -296,7 +321,7 @@ mobility_updated2 <- mobility %>% rename(province = sub_region_1,
 ```
 
 
-```{r, webex.hide = 'Bad solution', eval = FALSE}
+```{r, webex.hide = 'Bad solution', eval = FALSE, include = show_solutions}
 # This solution works but is really not optimal, as the *format* of the input data may change (and hence, render the renamed columns wrong).
 
 # Let's first take copy of our data so we don't run it on the "real one".
@@ -366,7 +391,7 @@ E.g.,
 mutate(rowMeans(cbind(col1, col2, col3)))
 ```
 
-```{r, webex.hide = 'Solution to Exercise 7', eval = FALSE}
+```{r, webex.hide = 'Solution to Exercise 7', eval = FALSE, include= show_solutions}
 
 mobility_updated <- mobility_updated %>%
   mutate(avg_mobility = rowMeans(cbind(
@@ -384,7 +409,7 @@ mobility_updated <- mobility_updated %>% mutate(avg_mobility2 = rowMeans(select(
 
 ```
 
-```{r, webex.hide = 'Incorrect solutions to Exercise 7', eval = FALSE}
+```{r, webex.hide = 'Incorrect solutions to Exercise 7', eval = FALSE, include = show_solutions}
 mobility_updated <- mobility_updated %>% mutate(avg_mobility_wrong = (retail_and_recreation + grocery_and_pharmacy + parks + transit_stations + workplaces + residential)/7)
 
 # While this looks easy to implement (a mean is the sum, divided by the number of data points) - it's incorrect! Sometimes, columns are NA, and hence "drop" out of the data set. Plus: even if these values were ignored, then the average wouldn't be an average of 7 columns, but of fewer!
@@ -425,7 +450,7 @@ Create three new datasets: `country`, `province`, and `city` from `mobility`, ba
 
 To filter missing values (`NA`), use `is.na(column)`, which checks if a column is empty.  
 
-```{r, webex.hide = 'Solution to Exercise 8'}
+```{r, webex.hide = 'Solution to Exercise 8', include = show_solutions}
 country <- mobility_updated %>% filter(is.na(city) & is.na(province))
 province <- mobility_updated %>% filter(is.na(city) & !is.na(province))
 city <- mobility_updated %>% filter(!is.na(city))
@@ -454,7 +479,7 @@ inspect_data <- function(df) {
 }
 ```
 
-```{r eval=TRUE, webex.hide = 'Solution to Exercise 9'}
+```{r eval=TRUE, webex.hide = 'Solution to Exercise 9', include = show_solutions}
 
 inspect_data <- function(df) {
   cat("Generating descriptive statistics...\n\n")
@@ -530,7 +555,7 @@ Let's assume that we want to replace missing values in the `province` and `city`
 Please implement this for all columns: `retail_and_recreation`, `grocery_and_pharmacy`, `parks`, `transit_stations`, `workplaces`, `residential`.
 
 
-```{r, webex.hide = 'Solution to Exercise 10'}
+```{r, webex.hide = 'Solution to Exercise 10', include = show_solutions}
 # Replace missing values in `province` dataset with column means
 province <- province %>%
   mutate(
@@ -556,7 +581,7 @@ city <- city %>%
 ```
 
 
-```{r, webex.hide = 'Alternative (Efficient!) Solution to Exercise 10'}
+```{r, webex.hide = 'Alternative (Efficient!) Solution to Exercise 10', include = show_solutions}
 # You could also use the following code - which has a lot of benefits as you don't have to write down all column names over and over again.
 # Can you read and understand this code?
 
@@ -654,7 +679,7 @@ Please create a time series chart, in which you plot the time spent at __home__ 
 
 Now, let’s **compare two trends in the same plot**—time spent at **home** (`residential`) vs. at **work** (`workplaces`).  
 
-```{r, webex.hide = 'Solution to Exercise 11'}
+```{r, webex.hide = 'Solution to Exercise 11', include = show_solutions}
 
 province %>% filter(province == 'North Brabant') %>% ggplot() +
   geom_line(aes(x = date, y = residential, color = "Residential")) +
@@ -743,7 +768,7 @@ Tips:
 - Adjust colors, titles, and labels for clarity.  
 
 
-```{r, webex.hide = 'Solution to Exercise 12'}
+```{r, webex.hide = 'Solution to Exercise 12', include = show_solutions}
 
 province_summary %>% ggplot(aes(x = place_category, y = avg_mobility_change, fill = place_category)) +
   geom_col(position = "dodge") +
