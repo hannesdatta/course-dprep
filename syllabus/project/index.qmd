@@ -50,6 +50,13 @@ During the course, you will have the opportunity to meet up with the course inst
 
 <!--Originally 26 March 2021, 6pm; extended to 2 April 2021, 6pm.-->
 
+### Permitted Level of AI Use
+
+__Level of AI allowed for this assignment:__ AI-assisted idea generation and structuring (Level 3 on AI Index Tilburg University)
+
+- You are allowed to use generative AI tools to develop or refine initial ideas, materials, paraphrasing, structures, or outlines. This includes generating code, e.g., for R.
+- Failing to declare AI use, or using AI beyond what is allowed in the syllabus, may be considered fraud and will be reported to the Examination Board.
+- Mandatory for students: For this assignment, please keep a simple “logbook” documenting which AI tools you have used and for what purposes. Submit this logbook with the assignment (e.g., as a PDF). Examiners may inspect the logbook at any time. Failing to declare AI use, or using AI beyond what is allowed in the syllabus, may be considered fraud and will be reported to the Examination Board.
 
 
 <!--

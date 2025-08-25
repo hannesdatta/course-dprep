@@ -7,6 +7,9 @@ format:
     beamer:
       theme: metropolis
       colortheme: seahorse
+      code-overflow: wrap
+      code-font-size: 0.8em
+
 ---
 
 ## Structure of this tutorial
@@ -126,7 +129,9 @@ dir.create("data") # continue w/ other directories
 ## DO: Download and open the dataset!
 
 ```{r echo=TRUE, eval=TRUE}
-download.file("https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/main/material/tutorials/r-bootcamp/streams.csv", "streams.csv")
+#| code-overflow: wrap
+filename = "https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/main/material/tutorials/r-bootcamp/streams.csv"
+download.file(filename, "streams.csv")
 ```
 
 ```{r echo=TRUE, eval=TRUE}

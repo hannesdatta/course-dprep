@@ -225,6 +225,14 @@ Key responsibility: __Roshini Sudhaharan__
 
 ---
 
+## Course structure III: Team project (AI Use)
+
+__Level of AI allowed for this assignment:__ AI-assisted idea generation and structuring (Level 3 on AI Index Tilburg University)
+
+- You are allowed to use generative AI tools to develop or refine initial ideas, materials, paraphrasing, structures, or outlines. __This includes generating code, e.g., for R.__
+- Failing to declare AI use, or using AI beyond what is allowed in the syllabus, may be considered fraud and will be reported to the Examination Board.
+- Keep a simple “logbook” documenting which AI tools you have used and for what purposes. 
+
 ## Assessment
 
 - Computer exam (60%, 120 minutes) → on campus, no internet  
