@@ -3,8 +3,82 @@ title: "Coding with AI tools"
 format: html
 ---
 
-::: {.callout-note"}
+::: {.callout-note}
 
 This chapter is work-in-progress.
 
 :::
+
+## Introduction
+
+Artificial intelligence is rapidly changing how we write and learn code. Tools like ChatGPT, GitHub Copilot, and other large language model (LLM) assistants can now generate code, explain syntax, and even suggest solutions as you type. For students in marketing analytics, this creates both an opportunity and a challenge. The opportunity lies in learning and working faster; the challenge is ensuring that your work remains reliable, transparent, and reproducible.
+
+This chapter introduces three main ways AI can support your programming journey: as a teacher, as a coding assistant, and as a professional productivity tool. Along the way, we also highlight the limitations of AI coding tools and the responsibilities you still hold as an analyst.
+
+## AI as a Teacher
+
+Imagine you are learning how to use `ggplot2` for the first time. You type:
+
+```r
+ggplot(customers, aes(x = purchases, y = churned)) +
+  geom_point()
+````
+
+But you don’t understand what `aes()` does, or how to change the axis labels. Instead of spending hours in documentation, you can ask ChatGPT:
+
+*“In ggplot2, what does aes() mean, and how can I label the x-axis?”*
+
+The AI might reply with a simple explanation, code examples, and suggestions for variations. Used this way, AI functions like an on-demand tutor, available 24/7. You can ask it to:
+
+* Explain error messages in plain English.
+* Compare two functions and tell you when to use each.
+* Show an example of a concept in a marketing analytics context.
+
+**Caution:** AI-generated explanations may be oversimplified or incomplete. Always cross-check with reliable sources (like R documentation or this book). Still, for many students, AI provides a faster, more conversational way of learning.
+
+## AI as a Coding Assistant
+
+Sometimes you know what you want to do, but not exactly how to write it. Suppose you want to calculate churn rates by segment. You can prompt ChatGPT with:
+
+*“Write R code with dplyr to calculate churn rate by customer segment.”*
+
+The AI may generate:
+
+```r
+customers %>%
+  group_by(segment) %>%
+  summarise(churn_rate = mean(churned))
+```
+
+This is exactly what you need. Instead of searching online or guessing syntax, you receive a working solution in seconds.
+
+Other times, AI can help by **refactoring** your code:
+
+* Turning a long loop into a cleaner `lapply()` call.
+* Simplifying a sequence of steps into a function.
+* Suggesting better names for variables.
+
+GitHub Copilot takes this further by suggesting code as you type. For example, if you start writing a function to clean reviews, Copilot may autocomplete the cleaning steps based on patterns it has seen in millions of repositories. This can save time and spark ideas. In professional settings, such tools are used to generate boilerplate code (e.g., reading multiple CSV files), write documentation and comments, or speed up repetitive tasks in `dplyr` or `ggplot2`.
+
+**Caution:** AI-generated code is not always correct. It may assume a different data structure than the one you are using, or use a package you haven’t loaded. Always run and test the code, and don’t copy-paste blindly.
+
+
+
+## Limitations, Responsibilities, and Practical Advice
+
+AI coding tools are powerful, but they are not magic bullets. They can generate helpful code and explanations, but they also introduce new responsibilities for you as an analyst.
+
+* **Accuracy:** AI sometimes produces code that looks correct but fails when run. Always test and debug.
+* **Over-reliance:** If you let AI do the thinking for you, you may not develop your own coding skills.
+* **Reproducibility:** Copy-pasting results without documenting prompts or adapting code undermines transparency.
+* **Bias in training data:** AI tools may suggest outdated or suboptimal methods.
+
+Used wisely, however, these tools can accelerate both learning and productivity. For students of marketing analytics, the following practices make AI most effective:
+
+1. Treat AI as a **teacher**: ask it to explain code, concepts, or error messages in plain language.
+2. Use it as a **coding assistant**: generate snippets, refactor loops, or recall package syntax.
+3. Always **verify outputs**: test the code and check that it fits your dataset.
+4. Stay **transparent**: note when and how you used AI so others can understand and reproduce your work.
+
+AI will not replace learning to code, but it can accelerate it. Tools like ChatGPT and GitHub Copilot can act as tutors and assistants, helping you learn faster and work more efficiently. The key is to remain critical: understand what the code is doing, test it carefully, and document your process. The principles of good programming—reproducibility, clarity, and transparency—remain the same, no matter how much AI helps along the way.
+

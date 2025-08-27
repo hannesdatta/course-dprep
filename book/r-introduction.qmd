@@ -3,8 +3,84 @@ title: "R - A Gentle Introduction"
 format: html
 ---
 
-::: {.callout-note"}
+::: {.callout-note}
 
 This chapter is work-in-progress.
 
 :::
+
+## What is R and Why Use It?
+
+R is a programming language widely used in data science, statistics, and increasingly in marketing analytics. It is free, open source, and supported by a vibrant community of users. With R, you can analyze survey data, model churn in subscription businesses, scrape product reviews, and create high-quality visualizations.
+
+On its own, R looks like a command-line interface, but most people use it through **RStudio**. RStudio is an integrated development environment (IDE) that provides a script editor, a console for running code, a viewer for data objects, and a pane for plots and files. This makes RStudio the natural starting point for most analysts.  
+
+Why R for marketing analytics?  
+- It is **reproducible**: your analysis is saved in code and can be re-run.  
+- It is **powerful**: thousands of packages extend R to nearly every analytics task.  
+- It is **visual**: `ggplot2` and related packages produce professional plots.  
+- It is **community-driven**: most questions you encounter already have answers online.  
+
+R may look intimidating at first, but with a few habits and the right packages (especially the tidyverse), it becomes a manageable and even enjoyable tool.  
+
+
+## Getting Started  
+
+### Projects
+
+In RStudio, it is best to organize your work as a **project**. A project is simply a folder that contains your data, scripts, and outputs. By creating a project, RStudio automatically sets the “working directory” to that folder, so your code can refer to files relative to it.  
+
+For example, instead of writing:  
+
+```r
+customers <- read_csv("/Users/YourName/Desktop/data/customers.csv")
+````
+
+you can place the file in your project’s `data/` folder and write:
+
+```r
+customers <- read_csv("data/customers.csv")
+```
+
+This makes your scripts portable and easier to share.
+
+### Working with Data
+
+Most marketing analytics projects revolve around manipulating data frames: customer records, transaction logs, or campaign responses.
+
+The **dplyr** package (part of the tidyverse) makes data wrangling readable and consistent. After installing it once with `install.packages("tidyverse")`, load it in each session:
+
+```r
+library(dplyr)
+```
+
+Now you can:
+
+```r
+# Filter rows
+filter(customers, purchases > 3)
+
+# Select columns
+select(customers, id, churned)
+
+# Create a new variable
+mutate(customers, log_purchases = log(purchases))
+
+# Summarise by group
+customers %>%
+  group_by(churned) %>%
+  summarise(avg_purchases = mean(purchases))
+```
+
+The `%>%` symbol is the **pipe**: it passes data from one step to the next, making code easier to read than deeply nested function calls.
+
+
+## Running and Saving Code
+
+You can type code directly into the console, but for real work you should save it in a script (`.R`). Scripts can be run line by line in RStudio, or all at once from the terminal:
+
+```bash
+Rscript analysis.R
+```
+
+For reports that mix code and explanation, use R Markdown (`.Rmd`) or Quarto (`.qmd`). These formats weave text, code, and results together—ideal for homework, project reports, or professional deliverables.
