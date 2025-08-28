@@ -14,7 +14,7 @@ __Learning Goals__
 
 __Preparation before class__
 
-- Please read [chapters 2-3](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit"
+- Please read [chapters 3-4](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit" (and optionally the Appendix: Coding with AI tools, R - Markdown, R - ggplot2)
 
 __Tutorial__
 

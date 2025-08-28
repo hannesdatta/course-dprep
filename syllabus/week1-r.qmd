@@ -15,7 +15,7 @@ __Learning Goals__
 __Preparation before class__
 
 - Please complete the software installation (see &rarr; Preparation before the course starts)
-- Please read [chapters 1-2 of "Marketing Analytics: A Modern Toolkit"](https://dprep-book.hannesdatta.com/)
+- Please read [chapters 1-2 of "Marketing Analytics: A Modern Toolkit"](https://dprep-book.hannesdatta.com/) (and optionally the Appendix: R - A Gentle Introduction)
 
 __Opening lecture and R bootcamp__
 

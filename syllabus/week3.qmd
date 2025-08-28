@@ -16,7 +16,7 @@ __Learning Goals__
 __Preparation before class__
 
 - Improve your knowledge about [Shell/Bash in this Datacamp tutorial](https://www.datacamp.com/courses/introduction-to-shell) (first chapter only, "manipulating files and directories")
-- Please read [chapter 4](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit"
+- Please read [chapters 5-6](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit" (and optionally the Appendix: Working with the terminal, Git - Cheatsheet)
 
 __Tutorial__
 

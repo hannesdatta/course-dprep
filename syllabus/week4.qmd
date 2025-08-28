@@ -14,7 +14,7 @@ __Learning Goals__
 
 __Preparation before class__
 
-- Please read [chapter 5](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit"
+- Please read [chapter 7](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit"  (and optionally from the Appendix: "SQL")
 
 
 __Tutorial__
