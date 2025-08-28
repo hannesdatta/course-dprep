@@ -26,7 +26,6 @@ book:
       - make-cheatsheet.qmd
       - terminal.qmd
       - databases.qmd
-    
 ##    - theory.qmd
 #    - practicals.qmd
 #  chapters:
@@ -44,16 +43,20 @@ format:
     number-depth: 2
     #split-level: 2   # split TOC by heading depth
     code-fold: show
-
+  pdf:
+    toc: true
+    number-sections: true
+    toc-depth: 2
+    number-depth: 2
+    mermaid: false
+    
 bibliography: references.bib
 csl: apa.csl
-#format:
 #  html:
 #    toc: true
 #    number-sections: true
 #    code-fold: show
-#  pdf:
-#    documentclass: scrbook
+
 #  epub:
 #    cover-image: images/cover.png
 #bibliography: references.bib
