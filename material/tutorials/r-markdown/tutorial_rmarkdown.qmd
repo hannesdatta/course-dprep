@@ -1,0 +1,110 @@
+---
+title: "RMarkdown Tutorial"
+format: 
+  beamer:
+    theme: metropolis
+    colortheme: seahorse
+    linkcolor: blue
+editor: visual
+---
+
+## Who am I?
+
+-   **Javier Torralba**, PhD candidate in Quantitative Marketing
+    -   MSc Data Science and Society
+    -   BSc Economics
+    -   Originally from Guatemala
+    -   Huge NFL fan, happy to chat about last night's games in the break!
+
+## Tutorial 2: RMarkdown
+
+-   Goals for today
+    -   Understand RMarkdown structure
+    -   Load, inspect, clean, and transform data
+    -   Create first plots with **ggplot2**
+
+
+## General tips for these tutorials
+
+-   Use the cheat-sheets posted on Canvas
+-   ChatGPT can be helpful! But don't rely on it, specially because you don't have access to it on the exam.
+    -   Be smart about how you use it. Check out the [class textbook](https://dprep-book.hannesdatta.com/coding-with-ai.html).
+-   Practice a lot!
+-   Solutions posted after the tutorial. Make sure you try yourself first before looking at solutions.
+
+## Part 0: RMarkdown
+
+-   What is RMarkdown?
+-   How is it different from RStudio, VSCode, R, Python?
+
+## ITO Principle
+- **Input**: bring data into your script
+  - Read CSV, JSON, Excel, etc.
+- **Transformation**: Apply operations to turn messy input into something useful
+  - Cleaning
+  - Filtering
+  - Feature engineering, data transformations
+- **Output**: Save documents and results
+  - Store cleaned datasets
+  - Save figures
+
+# Part 1: Loading and inspecting data
+
+## Loading the data!
+
+-   Why should we inspect the data?
+-   Inspect dataset
+    -   `head()`\
+    -   `summary()`\
+    -   `table()`\
+-   Bonus tip: if size allows, scroll through the table.
+-   What are things we can tell about the data?
+    -   Column names?\
+    -   Observations? Variables?
+
+# Part 2: Data cleaning and transformation
+
+## Why would we want to clean data?
+
+-   Why would we want to clean data?
+-   What sort of things would we want to clean in the data?
+
+## Data cleaning and transformations
+
+**Important functions:** can you tell what they do?
+
+-   What do these functions do, does anyone know?
+-   `select()`
+-   `filter()`
+-   `mutate()`
+-   `group_by()`
+-   `summarise()`
+-   `rename()`
+
+## What are functions?
+
+-   Why would we want to create our own functions? `my_new_function <- function()` `{`
+
+`}`
+
+# Part 3: Data visualizations with ggplot2
+
+## What can you visualize with ggplot?
+
+![](ggplot_example.png)
+
+## Why visualize?
+
+-   Plots = patterns at a glance
+-   Raw data is hard to understand. Visualizations make it easy.
+-   You can create all sorts of visualizations using ggplot!
+    -   Maps
+    -   Versatile charts
+
+Structure of a ggplot:
+
+ggplot(data) + aes(x,y) + geom\_\*()
+
+## Note when working with ggplot
+
+-   You will almost always have to wrangle data before creating a plot. So make sure you're comfortable with that!
