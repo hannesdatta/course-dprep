@@ -9,7 +9,9 @@ book:
     - computer-infrastructure.qmd
     - analyticspipeline.qmd
     - programming-concepts.qmd
-    - project-management-version-control.qmd
+    - project-management.qmd
+    - version-control.qmd
+    - data-engineering.qmd
     - pipeline-building.qmd
     #- meet-r.qmd
     #- coding-with-ai.qmd
@@ -22,6 +24,9 @@ book:
       - r-data-wrangling.qmd
       - git-cheatsheet.qmd
       - make-cheatsheet.qmd
+      - terminal.qmd
+      - databases.qmd
+    
 ##    - theory.qmd
 #    - practicals.qmd
 #  chapters:

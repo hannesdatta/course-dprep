@@ -1,0 +1,10 @@
+---
+title: "Working with the Terminal"
+format: html
+---
+
+::: {.callout-note}
+
+This chapter is work-in-progress.
+
+:::
