@@ -1,0 +1,25 @@
+---
+title: "Self- and peer assessment"
+format: html
+---
+
+Team project grades may be adjusted up or down based on each student’s individual contribution to the group’s work. To inform these adjustments, we use peer assessments in which students score themselves and their teammates on aspects such as the quantity and quality of their work.
+
+::: {.callout-note title="Calculating students' individual contribution to the team project"}
+
+1. __Peer assessment__: Each student scores themselves and their teammates on five questions (scale 1 = lowest, 5 = highest):
+    - Did the student take initiative and show responsibility?
+    - Did the student work well with others in the team?
+    - Was the student reliable in meeting agreements and deadlines?
+    - How would you rate the amount of work delivered (quantity)?
+    - How would you rate the standard of work delivered (quality)?
+
+2. __Individual average__: For each student, we calculate the average score across all five questions and all raters ("How did team members rate the student?").
+
+3. __Team average__: We then calculate the overall team average (the mean of all students’ scores within that team) ("What was the overall team effort?").
+
+4. __Relative contribution__: Each student’s score is compared to the team average. This gives the self- and peer assessment score (`SPA score`), which reflects whether someone contributed more, less, or about the same as the team overall ("How did the student perform, relative to the overall team effort?"
+
+5. __Final adjustment__: The team project grade is determined by both the overall team result (80%). Individual contributions, as reflected in the SPA scores, influence the remaining 20%. Instructors use these scores as input when determining final individual grades, but the ultimate decision rests with the instructors. Mathematically, the starting point for computing individual grades is `teamscore * 80% + 20% * team average * spa score`.
+
+:::
