@@ -21,13 +21,13 @@ Lectures and tutorials are not always scheduled in computer rooms, so please bri
 | 3     | Mon 08 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Version control using GitHub       | Datta/Torralba-Flores |
 |       |              | 12:45–14:30    | Cube 217   | Team coaching 2                              | Sudhaharan |
 | 4     | Mon 15 Sep   | 10:45–12:30    | GZ 104     | Tutorial: Engineering Datasets               | Datta/Torralba-Flores |
-|       | Wed 17 Sep   | 10:45–12:45    | Cube 217   | Team coaching 3                              | Sudhaharan |
+|       |              | 12:45–14:30    | TZ 9   | Team coaching 3                              | Sudhaharan |
 | 5     | Mon 22 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Pipeline automation                | Datta/Torralba-Flores |
 |       |              | 12:45–14:30    | Cube 217   | Team coaching 4                              | Sudhaharan |
 | 6     | Mon 29 Sep   | 16:45–17:30    | Online     | Online Q&A on example questions              | Datta |
 |       | Wed 01 Oct   | 14:45–16:30    | Online     | Team coaching 5                              | Sudhaharan |
 | 6     | Mon 06 Oct   | 08:45–10:30    | Cube 216   | Closing lecture                              | Datta |
-|       | Fri 10 Oct   | 14:45–16:30    | Online     | Team coaching 6                              | Sudhaharan |
+|       | Wed 08 Oct   | 10:45–12:30    | Online     | Team coaching 6                              | Sudhaharan |
 
 <!--| |  | 10.45-12:30 | On-campus | Guest lecture: SQL & Big Query by [Springbok Agency](https://springbokagency.com)-->
 
