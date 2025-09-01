@@ -45,7 +45,7 @@ During the course, you will have the opportunity to meet up with the course inst
 
 ### Deadline & submission
 - The submitted repository on Github classroom is the team project that will be graded.
-- Deadline: tba
+- Deadline: 10 October, 2025 (23:59)
 <!--{{< param "Course_Deadline_Project" >}}-->
 
 <!--Originally 26 March 2021, 6pm; extended to 2 April 2021, 6pm.-->
