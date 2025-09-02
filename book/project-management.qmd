@@ -3,4 +3,280 @@ title: "Project Management"
 format: html
 ---
 
-This chapter is work-in-progress.
+## Introduction
+
+Analytics projects are more than just crunching data or writing code. They often involve teams of people, a mix of tasks (data collection, modeling, writing), and deadlines that can be hard to manage. Without some structure, it’s easy to lose track of what needs doing, who is responsible, or whether the team is actually moving forward.
+
+Common problems include:
+
+* **Scope creep**: projects expand endlessly as new ideas are added.
+* **Missed deadlines**: nobody knows exactly what should be finished by when.
+* **Unclear responsibilities**: tasks are duplicated, forgotten, or done at the last minute.
+
+Good project management is the antidote. It does not have to be complicated — in fact, it works best when it is light-touch and easy to use. The aim is not to drown you in process, but to help you:
+
+* Make work **transparent**: everyone can see what’s going on.
+* Ensure **accountability**: each task has a clear owner.
+* Support **reproducibility**: a well-documented project log helps others follow what you did.
+
+Think of project management as the scaffolding around your analytics work. It provides structure and stability, so you can focus on the actual content of your project without losing control of the process.
+
+::: {.callout title="When Project Management Goes Wrong"}
+A student team sets out to analyze customer churn. At first, enthusiasm is high: data is collected, scripts are written, slides are drafted.  
+
+But soon problems pile up:  
+
+- Two students code the same model without realizing it.  
+- A deadline is missed because nobody was tracking progress.  
+- Important files are lost in email threads.  
+- The final report feels rushed, with key parts unfinished.  
+
+The project technically *gets done*, but the process is messy, stressful, and inefficient.  
+
+With even a simple project board and regular check-ins, the team could have avoided most of these issues.
+:::
+
+
+## Scrum in Industry 
+
+### Agile Principles
+
+Traditional project management often relies on detailed plans set out at the very beginning: timelines, milestones, and task lists that assume the world won’t change. In analytics, however, the world *always* changes. New data becomes available, models fail, deadlines shift, or new questions arise. A rigid plan quickly becomes outdated.
+
+Agile methods were designed to deal with exactly this kind of uncertainty. Instead of one large project plan, Agile emphasizes **iteration** and **adaptation**:
+
+* **Work in small steps**: deliver a piece of value (e.g., a cleaned dataset, a preliminary model) instead of waiting until the very end.
+* **Stay flexible**: be ready to adjust when new requirements or obstacles appear.
+* **Make progress visible**: ensure everyone knows what has been done, what is being worked on, and what remains.
+
+Agile is not a single tool, but a mindset. It encourages teams to focus on outcomes, learn from feedback, and keep moving forward even when circumstances change. In industry, Agile principles are most often implemented through **Scrum**, a specific framework that provides roles, events, and tools to support this way of working.
+
+### Scrum Framework 
+
+Scrum is the most widely used Agile framework in industry. The name comes from rugby: a *scrum* is a formation where players lock together and push forward as one. The metaphor captures the essence of Scrum: it is not about individuals working in isolation, but about a team advancing together through close coordination and short bursts of effort.
+
+Scrum organizes teamwork around **roles**, **events**, and **artifacts**.
+
+#### Roles in Scrum
+
+Every Scrum project has three key roles, each with distinct responsibilities:
+
+* **Product Owner**
+
+  * Responsible for the *what*: deciding which features, analyses, or deliverables are most important.
+  * Maintains the **product backlog** (the master list of all tasks).
+  * Example in analytics: in a company, this could be a marketing manager who defines which customer segments should be analyzed first. In a student project, it might be the team lead who ensures the project stays aligned with course requirements.
+
+* **Scrum Master**
+
+  * Responsible for the *how*: making sure the team follows Scrum principles.
+  * Removes obstacles that block progress (e.g., access to data, missing tools).
+  * Example: in a corporate setting, this might be a data engineering lead who clears technical roadblocks. In a student team, the “Scrum Master” role might rotate among members to keep meetings focused.
+
+* **Development Team**
+
+  * Responsible for the *work*: actually executing tasks — writing code, cleaning data, building models, preparing reports.
+  * Self-organizing: the team decides how to split and tackle tasks.
+  * Example: in a research project, the development team could include students handling different tasks (data scraping, modeling, report writing).
+
+
+#### Events in Scrum
+
+Scrum uses a series of recurring events to structure time and communication. These keep the team aligned and ensure regular progress.
+
+1. **Sprint Planning**
+
+   * Happens at the start of each sprint.
+   * The product owner prioritizes the backlog, and the team decides which items they can realistically complete in the sprint.
+   * The result is a **sprint backlog** (the subset of tasks for this cycle).
+
+2. **Daily Stand-Up (Daily Scrum)**
+
+   * A 15-minute meeting where each team member answers three questions:
+
+     1. What did I do yesterday?
+     2. What will I do today?
+     3. What obstacles are in my way?
+   * Keeps everyone aware of progress and blockers.
+   * Example: in a data project, one student might say, *“I finished cleaning the customer data yesterday, today I’ll run the first churn models, but I still need the latest transaction file to continue.”*
+
+3. **Sprint Review**
+
+   * Held at the end of the sprint.
+   * The team demonstrates what they accomplished (the “increment”).
+   * Stakeholders provide feedback.
+   * Example: an analytics team might present an early dashboard to managers, who then suggest improvements for the next sprint.
+
+4. **Sprint Retrospective**
+
+   * After the sprint review, the team reflects on the process itself.
+   * Questions include: What went well? What could be improved? What will we do differently next time?
+   * Example: students might decide that their meetings are too long and agree to stick to 30 minutes in the next sprint.
+
+Together, these events create a predictable rhythm: plan (sprint planning) → execute (development work supported by daily stand-ups) → review (sprint review) → reflect (retrospective) → and then plan again.
+
+
+#### Artifacts in Scrum
+
+Scrum defines three key artifacts that help teams manage and track their work.
+
+__Product backlog__
+
+The product backlog is the comprehensive, prioritized list of everything the project could deliver. It serves as a central “wish list” that brings together all planned features, tasks, and improvements. Items on the backlog can range from large, high-level goals to small, technical steps. For example, in an analytics project the backlog might include broad items like *“scrape reviews from Amazon”* or *“test logistic regression model”*, but also more practical tasks such as *“prepare presentation slides”*. By keeping all potential work in one place, the backlog ensures that nothing is forgotten and that priorities can be revisited as the project evolves. In practice, many teams manage this backlog visually on a **Kanban-style project board**, where items are written on cards and gradually moved across columns (e.g., *backlog → to do → in progress → done*) as work progresses.
+
+
+__Sprint backlog__
+
+The sprint backlog is the subset of items selected from the product backlog for the current sprint. Whereas the product backlog might contain dozens of tasks, the sprint backlog defines the smaller set of items the team commits to delivering within a short cycle. For instance, a student analytics team might choose ten tasks for a two-week sprint: clean a dataset, run a first model, and draft an introduction for the report. On a project board, the sprint backlog corresponds to the tasks sitting in the *to do* column at the start of a sprint. As the sprint unfolds, those tasks should steadily move through *in progress* and eventually to *done*.
+
+
+::: {.callout title="Project Boards (Kanban)"}
+A **project board** is a visual tool to manage workflow.  
+
+- Columns usually include: *backlog → to do → in progress → done*.  
+- Each task is represented by a card that moves across columns as work progresses.  
+- Tools: Trello, Notion, GitHub Projects, Jira.  
+
+Boards make the project transparent: at a glance, the whole team sees what has been finished, what is underway, and what remains.  
+:::
+
+
+__Increment__
+
+The increment is the tangible outcome of the sprint — the piece of work that is finished and ready to be used, even if it is not the final product. In analytics, an increment might be a cleaned dataset, a functioning regression model, or a first set of visualizations. Each increment should be a meaningful step forward that could, in principle, be shared with stakeholders. At the level of the board, increments are reflected by completed cards in the *done* column. Each of those cards typically represents an **issue**: a discrete, well-defined unit of work with a clear deliverable and an assigned owner. Issues are small enough to complete within hours, but significant enough to contribute to the overall project. In industry, they are often managed in Jira or GitHub; in smaller projects, issues will play the same role of tracking tasks, decisions, and progress.
+
+::: {.callout-tip title="Issues (To-Do’s)"}
+An **issue** is a small, discrete unit of work — the building block of your project.  
+
+- Should be clear and concrete (not vague).  
+- Should have a deliverable, an assignee, and ideally take only a few hours.  
+- Should not stay open forever — close it once the task is complete.  
+
+Good issues double as documentation: they tell the story of what was done, which obstacles occurred, and how they were solved. In tools like GitHub or Jira, issues can be linked to code or documents for full traceability.  
+
+**Example issue**  
+
+- Title: *Clean customer dataset (Q2 2024)*  
+- Description: Remove duplicates, handle missing values, and standardize column names.  
+- Deliverable: `clean_customers.csv` stored in `/data/processed/`  
+- Assignee: Alex  
+- Label: `data-cleaning`, `priority-high`  
+:::
+
+
+
+#### Scrum Cycle
+
+A sprint usually lasts two weeks, but the key is its repetitive rhythm:
+
+1. Plan the sprint (sprint planning).
+2. Execute daily progress (with daily stand-ups).
+3. Deliver a usable increment (sprint review).
+4. Reflect and improve (retrospective).
+
+And then: repeat.
+
+Here’s a simplified diagram of this cycle:
+
+```{mermaid}
+flowchart LR
+    A[Product Backlog] --> B[Sprint Planning]
+    B --> C[Sprint Backlog]
+    C --> D[Development Work]
+    D --> E[Daily Stand-Up]
+    D --> F[Sprint Review]
+    F --> G[Increment]
+    G --> H[Retrospective]
+    H --> A
+```
+
+This structure may seem heavy for small projects, but its strength lies in keeping everyone aligned and creating steady progress through short, visible cycles.
+
+
+## Adapting Scrum for Analytics Projects
+
+While the full Scrum framework is widely used in industry, it is often too heavy for small analytics teams. Student groups or research collaborations do not need a dedicated Product Owner, Scrum Master, or daily stand-ups to be effective. What they do need are the **principles** that make Scrum work: break projects into small units, make progress visible, and work in short cycles with regular reflection.
+
+### Principles
+
+In practice, adapting Scrum for analytics projects means focusing on three ingredients:
+
+* **Issues as building blocks**
+  Every task is broken down into a discrete issue: *“clean dataset,” “estimate first regression,” “draft results section.”* Issues are concrete, have a clear deliverable, and are assigned to one person. They should be small enough to complete in hours or days, not weeks. Over time, the collection of issues becomes a living history of the project, documenting decisions, obstacles, and solutions.
+
+* **Project boards as the backbone**
+  Issues live on a Kanban-style project board. At the start of a cycle, a handful of issues are selected from the *backlog* and placed in the *to do* column. As the project unfolds, issues move to *in progress* and eventually to *done*. The board is the team’s shared “radar screen” — at a glance, anyone can see progress, priorities, and bottlenecks.
+
+* **Short, repeating cycles**
+  Instead of long, open-ended work phases, the project runs in short iterations. Each cycle produces a usable increment: a cleaned dataset, a working model, or a draft report section. Cycles are anchored by quick check-ins (weekly or bi-weekly), where the board is reviewed, issues are reassigned or reprioritized, and new ideas are logged in the backlog.
+
+### The Scrum-Inspired Cycle
+
+The adapted cycle for analytics projects follows a simple rhythm:
+
+1. **Team check-in**
+
+   * Review the project board: *done → in progress → to do*.
+   * Re-prioritize tasks and assign new issues.
+   * If relevant, merge or review code and drafts together.
+   * Set the next meeting date.
+
+2. **Individual work**
+
+   * Work on assigned issues.
+   * Help unblock teammates if they are stuck.
+   * Review each other’s code or drafts to save time in the next meeting.
+   * Got new ideas? Write them up as issues and place them in the backlog.
+
+3. **Repeat until deadline**
+
+   * Each cycle delivers an increment and keeps the project on track.
+
+By focusing on **issues, boards, and short cycles**, analytics teams capture the *spirit* of Scrum — transparency, accountability, and iteration — without the overhead of formal roles or daily ceremonies. This lightweight adaptation makes teamwork more structured, less stressful, and ultimately more productive.
+
+
+::: {.callout-tip title="Adapting Scrum for Student Projects"}
+Scrum in its full form can feel heavy for small analytics teams.Do you really need a Product Owner, Scrum Master, daily stand-ups, and retrospectives? Probably not.  
+
+In most smaller-scale projects such as student projects, we **adapt Scrum** to fit our context: 
+
+- Break down the project into small, well-defined *issues*.  
+- Organize them on a simple *project board* (backlog → to do → in progress → done).  
+- Work in short cycles with regular *team check-ins* instead of daily stand-ups.  
+- Focus on producing *usable increments* (a cleaned dataset, a draft model, a section of the report).  
+
+The goal is to keep the spirit of Scrum — transparency, iteration, reflection — while stripping away unnecessary overhead.  
+:::
+
+
+## Team Collaboration, Pitfalls & Best Practices
+
+Even with boards and issues in place, the success of a project depends on how well the team collaborates. Scrum emphasizes teamwork, and in adapted form this means finding routines that make work flow smoothly without adding unnecessary overhead.
+
+### Team collaboration
+
+In analytics projects, roles are usually informal and flexible. One student may take the lead on coding, another on data cleaning, and another on writing the report. Sometimes a project lead emerges to coordinate deadlines and keep the board up to date. These roles can shift from week to week, and that is fine — what matters is that responsibilities are clear at any given moment.
+
+Communication routines help the team stay aligned. A short check-in at the start of each week ensures everyone knows what is expected, while asynchronous updates (e.g., posting progress in a shared chat or commenting on GitHub issues) keep others informed between meetings. The golden rule: avoid scattering communication across too many channels. Instead of juggling email, WhatsApp, Teams, and Zoom, try to centralize decisions and discussions on the project’s board and issues. That way, your documentation and communication stay in the same place.
+
+### Pitfalls
+Even simple systems can fail if the team doesn’t use them consistently. One common mistake is neglecting the board: tasks get completed but cards are never updated, so the board no longer reflects reality. Another problem is unclear ownership: when an issue isn’t assigned to anyone, it may be duplicated or forgotten entirely. Over-engineering is another danger — adding too many columns, labels, or complex workflows turns the board itself into a burden. Finally, without short cycles, teams often fall into last-minute panic, rushing to complete everything right before the deadline.
+
+
+::: {.callout-tip title="Best Practices for Team Collaboration"}
+- **Keep it simple**: a four-column board (*backlog → to do → in progress → done*) is usually enough.  
+- **Assign ownership**: every issue should have a clear assignee.  
+- **Review regularly**: use check-ins to update the board and re-prioritize tasks.  
+- **Centralize communication**: keep decisions in issues rather than scattered across chats and emails.  
+- **Celebrate increments**: acknowledge small wins (like a cleaned dataset or a working plot) to maintain motivation.  
+:::
+
+## From One Project to Professional Habit
+
+Learning project management is not just about getting through a course assignment. The same skills and habits carry over into professional life. Many companies use Scrum or related Agile methods to manage product development, IT services, and analytics teams. Knowing how to work with issues, boards, and short cycles will make you a stronger team member in internships, jobs, and future research collaborations.
+
+The key is to strike a balance between **structure** and **flexibility**. Too little structure, and projects descend into chaos — duplicated work, forgotten deadlines, and last-minute stress. Too much structure, and the process becomes an end in itself, with more time spent updating the system than doing the work. The sweet spot is a lightweight routine: boards to make tasks visible, issues to clarify responsibilities, and regular check-ins to keep everyone aligned.
+
+Finally, remember that project management is not about bureaucracy; it is about **supporting collaboration**. Used well, these tools free up mental space: instead of worrying who is doing what, you can focus on analysis, interpretation, and creativity. That is the real payoff of adopting Scrum-inspired practices in analytics projects.
+
+

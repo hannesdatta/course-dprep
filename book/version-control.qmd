@@ -1,6 +1,515 @@
 ---
 title: "Version Control"
 format: html
+number-depth: 2
 ---
 
-This chapter is work-in-progress.
+## Introduction
+
+Analytics projects evolve constantly. Code is tested and revised, datasets are updated, and reports change as new insights emerge. Without a structured system, it quickly becomes unclear which version of a file is the latest, who made which change, or how to go back if something breaks. This not only causes frustration within teams but also makes it nearly impossible to reproduce results later.  
+
+**Version control** offers a solution. Instead of overwriting files or creating endless “final” versions, version control tools keep a full history of changes. This history shows how a project developed over time and makes it possible to roll back to earlier states when needed. In team settings, version control also enables collaboration: different people can work on the same project without stepping on each other’s toes.  
+
+The industry standard for version control is **Git**, an open-source tool originally built for managing large software projects. On its own, Git runs locally on your computer. To collaborate, most teams use a cloud-based platform such as **GitHub** (or alternatives like GitLab and Bitbucket). These platforms make it easy to share your work, coordinate contributions, and keep everything synchronized.  
+
+This connects directly to the previous chapter. We saw how **issues** and **project boards** provide structure at the management level — they define what should be done, in which order, and by whom. Version control adds the technical backbone: it captures the actual evolution of the project, so future team members (or even you, six months later) can understand what happened, when, and why. Together, project management tools and version control systems create both transparency and reproducibility, ensuring that projects do not just get done, but can also be understood, trusted, and extended.  
+
+
+## Core Concepts in Git & GitHub
+
+Before using Git in practice, it is important to understand the basic concepts. These ideas form the mental model that will guide you once you start typing commands or clicking buttons.
+
+### Git vs. GitHub
+
+At the core, **Git** is a version control system that runs locally on your computer. It tracks changes to files and stores them in a structured history. You can use Git entirely on your own, without ever connecting to the internet.
+
+**GitHub**, by contrast, is an online platform built on top of Git. It provides cloud storage for Git repositories, making collaboration possible. In addition, GitHub offers features that go beyond plain version control: project boards, issues, pull requests, and integrations for testing or deploying code. Think of Git as the engine, and GitHub as the vehicle that makes it useful for teams. Alternatives to GitHub include GitLab and Bitbucket, which work in very similar ways.
+
+### Repositories
+
+A **repository** (or *repo*) is the central object in Git. It is essentially a folder whose contents are tracked by Git. Inside a repository, Git maintains the complete history of the project: every file, every change, every version.
+
+On GitHub, repositories also come with metadata and social features. Each repository usually contains a `README.md` file (a short description of the project), and GitHub displays tabs for browsing code, opening issues, reviewing pull requests, and organizing tasks on project boards. Repositories can be public (visible to everyone) or private (restricted to your team).
+
+### Commits and History
+
+Changes in Git are saved as **commits**. A commit is like a snapshot: it records the state of the repository at a given moment in time. Each commit has a short message attached to it, which explains what was changed and why. By reviewing the commit history, you can see how the project evolved and who contributed which part.
+
+Commits are what make Git powerful. Instead of overwriting old versions of files, you add new commits to the history. That way, nothing is ever lost — you can always go back to a previous version or compare different points in time.
+
+::: {.callout-note title="Saving vs. Committing"}
+It is easy to confuse *saving* with *committing*, but they are very different:  
+
+- **Saving**: writes changes to your local file (just like hitting “Save” in Word or RStudio). Nobody else sees it, and Git does not record it.  
+
+- **Committing**: records a snapshot of the file in Git’s history. The commit becomes part of the permanent project timeline and can later be shared with others.  
+
+Think of saving as “keep it on my desk” and committing as “publish it to the project logbook.”  
+:::
+
+### Branches and Pull Requests
+
+In Git, you don’t have to do all your work directly on the main version of the project. You can create a **branch** — a parallel line of development where you can try new ideas safely. Once you are satisfied with the changes, the branch can be merged back into the main project.
+
+On GitHub, this process is usually managed through a **pull request** (PR). A pull request is a proposal to merge changes from one branch into another. It allows teammates to review the code, discuss potential issues, and ensure everything works before the changes are integrated. Pull requests are a key mechanism for collaboration, quality control, and accountability.
+
+### Remote Collaboration
+
+When working in teams, you will often switch between the local version of a repository on your computer and the remote version on GitHub. The two most important actions are:
+
+* **Pulling**: bringing the latest changes from the remote repository into your local copy.
+* **Pushing**: sending your local changes to the remote repository so others can see them.
+
+Other commands, such as **clone** (downloading a repository for the first time) or **fetch** (checking for new branches or updates without merging them yet), round out the picture. Together, these actions keep everyone’s local and remote repositories in sync.
+
+::: {.callout-warning title="Pull vs. Pull Request (Don’t Confuse Them!)"}
+These two terms sound similar but mean very different things:  
+
+- **Pulling changes**  
+  - Means *bringing the latest version of the project* from GitHub (or another online platform) down to your own computer.  
+  - You do this when you want to make sure you are working with the most recent files.  
+
+- **Pull Request (PR)**  
+  - Is a *proposal to add changes* into a shared project on GitHub.  
+  - It lets your teammates review your work before it becomes part of the main version.  
+  - Think of it as raising your hand: *“I’d like to contribute these changes — can we add them?”*  
+
+__Remember:__ *pulling* = receive updates & *pull request* = propose updates.  
+:::
+
+
+## Setting up Git
+
+Git is one of the most powerful tools for collaboration and reproducibility. But it only works once it has been set up properly. Without careful setup, you may run into endless frustrations: pushes to GitHub are rejected, you cannot synchronize your work with others, or GitHub does not recognize who you are.
+
+### Authentication
+
+Setting up Git is not just about convenience — it is about **trust**. GitHub (or any other hosting platform) needs to be sure about your identity every time you connect. Without that guarantee, it cannot allow you to send or receive changes. Proper setup ensures that your local computer can talk to GitHub securely, reliably, and without constant interruptions.
+
+There are three main ways to authenticate with GitHub:
+
+1. GitHub CLI (`gh auth`)
+2. SSH keys
+3. HTTPS tokens
+
+Each has its own strengths. Let’s explore them in order.
+
+
+#### GitHub CLI: The Modern Default
+
+The easiest and most modern way to authenticate with GitHub is through the **GitHub CLI** tool. Once installed, it gives you a command called `gh` that extends Git with GitHub-specific features.
+
+Instead of copying tokens or configuring keys manually, you simply type:
+
+```bash
+gh auth login
+```
+
+This command guides you through a one-time setup: it asks whether you want to use HTTPS or SSH (behind the scenes), opens a browser window where you log into GitHub, and stores a secure credential on your computer. From then on, you can push and pull without worrying about passwords or tokens.
+
+**Why it matters:**
+
+* You authenticate once, then forget about it.
+* It lowers the barrier for getting started.
+* It works consistently across Windows, macOS, and Linux.
+
+For most users today, `gh auth` is the recommended starting point.
+
+
+#### SSH Keys: Secure and Seamless
+
+While the GitHub CLI is convenient, many experienced users prefer **SSH keys**. SSH (Secure Shell) creates a cryptographic link between your computer and GitHub. You generate a pair of keys:
+
+* A **private key** that stays on your computer (never shared).
+* A **public key** that you upload to GitHub.
+
+When you connect, GitHub checks that the private key on your machine matches the public key it has on file. If they match, you are logged in automatically — no password, no token.
+
+This setup may feel technical at first, but once configured it is seamless. Every push and pull happens securely without extra prompts. SSH is also more reliable for automation (e.g., running scripts that need to fetch code from GitHub).
+
+::: {.callout title="SSH Keys: How They Work"}
+- **Generate** a key pair on your computer (usually with `ssh-keygen`).  
+- **Install** the public key on GitHub under your account settings.  
+- **Keep** the private key secret — it never leaves your machine.  
+- **Connect**: when you push to GitHub, the two keys are matched.  
+
+Why it matters: SSH keys establish trust once, and then remove the need to type tokens or passwords again.  
+:::
+
+**Why it matters:**
+
+* Strong cryptographic security.
+* No repeated logins.
+* Works well for power users and automation.
+
+If you plan to use Git heavily, setting up SSH is worth the effort.
+
+#### HTTPS: The Traditional Option
+
+Before GitHub CLI and SSH became standard, many users connected to GitHub over **HTTPS**. The process is simple: every time you push or pull, GitHub asks for a credential. Since GitHub has phased out direct password access, you now use a **personal access token**.
+
+A personal access token is like a long, random password you generate once on GitHub’s website. You copy this token and use it when prompted. Git stores it securely on your machine, so you may only need to enter it occasionally.
+
+**Why it matters:**
+
+* HTTPS works everywhere, even in restrictive environments (e.g., corporate networks).
+* It requires no extra setup beyond creating a token.
+* But: it is less seamless than SSH or GitHub CLI, and you may end up re-entering tokens more often.
+
+For occasional users or environments where SSH is blocked, HTTPS with tokens remains a reliable fallback.
+
+::: {.callout-note title="Which Method Should You Use?"}
+
+* **Start with GitHub CLI (`gh auth`)**: easiest and most straightforward.
+* **Move to SSH keys** if you plan to use Git regularly or need automation.
+* **Keep HTTPS in mind** as a backup for specific environments.
+
+In practice, most professionals eventually settle on SSH, but GitHub CLI has made the first step into version control dramatically easier. The key point is not which method you choose, but that you configure authentication properly — once this trust relationship is established, Git will work smoothly.
+
+:::
+
+### Working with Repositories
+
+Once authentication is in place, the next step is to decide *where your work will live*. In Git, everything happens inside a **repository** (or *repo*). A repository is more than just a folder: it is a folder with memory. It keeps track of how the contents evolve over time, creating a versioned history that you can always revisit.
+
+#### Creating a New Repository
+
+When you start a new project, you usually begin by creating a new repository. This can happen in two ways:
+
+1. **Online, on GitHub** – press “New repository,” give it a name, and decide if it should be public or private. GitHub then creates an empty project space in the cloud.
+2. **Locally, on your computer** – initialize a folder with Git (`git init`). This turns the folder into a repository, ready to track changes. You can later connect it to GitHub if you want to collaborate.
+
+Creating a repository defines the *scope* of your project. Everything inside the repo will be tracked; everything outside is invisible to Git.
+
+#### Cloning an Existing Repository
+
+Often, you don’t start from scratch but join an existing project. In that case, you **clone** the repository from GitHub. Cloning downloads a full copy of the project onto your computer, including its complete history. It also creates a live connection between your local copy and the shared version on GitHub, ensuring that everyone works from the same timeline.
+
+#### Forking a Repository
+
+A third option is **forking**. Forking creates your own independent copy of a repository on GitHub. This is useful if you want to experiment freely without affecting the original project, or if you plan to contribute to an open-source project. Later, if your changes prove useful, you can suggest them back to the original repository through a pull request.
+
+::: {.callout-warning title="Forks vs. Direct Collaboration"}
+There are two main ways of contributing to a GitHub project:  
+
+- **Direct push (collaborator)**: you have permission to push branches directly to the original repository. This is how most team projects work.  
+
+- **Fork + Pull Request (external contributor)**: if you are *not* a collaborator, you create your own fork (a personal copy on GitHub). You make changes there, and then open a pull request to suggest merging them back into the original project.  
+
+:::
+
+
+#### Anatomy of a Repository
+
+Every repository has a few key parts:
+
+* A `README.md` file that introduces the project.
+* A hidden `.git` folder (created when you initialize Git) that stores the entire version history.
+* On GitHub: tabs for browsing code, opening issues, reviewing pull requests, and managing project boards.
+
+Together, these elements make the repository both a container for your work and a logbook of how it develops.
+
+::: {.callout-note title="Create, Clone, or Fork?"}
+There are three main ways to start working with a repository:  
+
+- **Create** → Start a brand-new project. Either initialize a repo on your computer or create it directly on GitHub.  
+- **Clone** → Join an existing project. You download its entire history and keep it connected to the shared version.  
+- **Fork** → Make your own independent copy of someone else’s project on GitHub. You can experiment freely and later suggest changes back.  
+
+Think of it like this:  
+
+- *Create* = begin something new.  
+- *Clone* = join what already exists.  
+- *Fork* = branch off into your own direction.  
+:::
+
+### Using Git in Practice
+
+Git is a **command-line tool** at heart. That means you interact with it by typing commands instead of clicking buttons. Most users run Git through:
+
+* **The terminal / command line** (macOS, Linux) or **Git Bash** (Windows). This is the “native” way of using Git and gives you full control. Typical commands are shown in the next section of this chapter.
+
+* **GitHub.com**. The web interface is where you browse repositories, open issues, create project boards, and review pull requests. You rarely edit code directly on GitHub (except small fixes) — most work happens locally, but GitHub is the hub for collaboration.
+
+* **Integrated tools**. Many editors (RStudio, VS Code, PyCharm) include Git panels. These let you click buttons for staging, committing, and pushing, while Git still runs under the hood.
+
+Different interfaces, same workflow: make changes locally, record them in Git, and sync them with GitHub so the whole team stays aligned.
+
+::: {.callout-tip title="Don’t Like the Terminal? Use a GUI"}
+Git is a command-line tool at heart, but many editors and apps provide a graphical interface:  
+
+- **RStudio**: integrates Git into projects with buttons for staging, committing, and pushing.  
+- **Visual Studio Code**: has a built-in Git panel for all common tasks.  
+- **GitHub Desktop**: a standalone app that provides a simple, beginner-friendly interface.  
+
+These tools don’t replace Git — they run Git commands under the hood. But they can make the workflow feel less intimidating if you prefer clicking over typing.  
+:::
+
+## Everyday Git Workflow
+
+Once Git is set up and a repository is created, the day-to-day workflow follows a repeating rhythm. Each cycle has a clear purpose: update your project, branch off, make changes, record them, share them, and finally integrate them back into the main project.
+
+### Prepare to Work
+
+The first step before doing anything is to **synchronize** your computer with the shared project on GitHub. In Git lingo, this is called **pulling**:
+
+```bash
+git pull origin main
+```
+
+This command says: “Update my local `main` branch with the latest changes from GitHub.” If you skip this step, you risk editing outdated files and running into conflicts later.
+
+You can also check which branch you are currently on:
+
+```bash
+git status
+```
+
+By default, you’ll be on the `main` branch. But you should avoid editing directly here.
+
+### Branching for New Work
+
+A **branch** is a safe space to work on a feature or fix without disturbing the main line of development. For example, suppose you want to clean customer data. Create and switch to a branch called `feature-clean-data`:
+
+```bash
+git checkout -b feature-clean-data
+```
+
+* `git checkout` moves you between branches.
+* `-b` creates a new branch if it does not yet exist.
+
+From now on, your changes will only affect this branch until you decide to merge them back.
+
+::: {.callout-important title="Main vs. Development Branches"}
+- The **`main` branch** is the working version of your project. It should always run without errors and represent the stable state of the work.  
+
+- All **new features or fixes** should be developed on **separate branches**.  
+  - Example: `feature-clean-data`, `fix-bug-plot`, `update-readme`.  
+  - Once finished and reviewed, these branches are merged back into `main`.  
+
+Treat `main` as the “public face” of the project. Development happens elsewhere, so the main branch remains reliable at all times.  
+:::
+
+
+### Make and Record Changes
+
+Edit your code, adjust datasets, or update documentation. Git quietly tracks what has changed, but nothing is permanent until you **stage** and **commit** it.
+
+```bash
+# Stage files for inclusion
+git add cleaned_data.csv analysis.R  
+
+# Commit to the project history
+git commit -m "Clean dataset: removed duplicates and standardized column names"
+```
+
+This pair of commands is the heartbeat of Git:
+
+* `git add` marks files for inclusion in the next snapshot.
+* `git commit` records the snapshot permanently, with a short message explaining the change.
+
+Good commit messages keep the project history understandable: “Fix typo in README” is more helpful than “misc changes.”
+
+### Share and Collaborate
+
+Once you’ve committed your work, you need to share it with others. This is called a **push**:
+
+```bash
+git push origin feature-clean-data
+```
+
+* `origin` is Git’s shorthand for the remote repository on GitHub.
+* `feature-clean-data` is the branch you’re sending.
+
+After pushing, your branch appears on GitHub. From there, you can open a **pull request (PR)** — a proposal to merge your branch back into `main`. A pull request creates a space for teammates to review and discuss your work.
+
+### Review, Merge, and Integrate
+
+When your branch is ready, it must be merged into `main`. There are two ways this happens:
+
+* **On GitHub**: via a pull request, where others review and approve before merging.
+* **Locally**: by running a merge command yourself.
+
+Suppose you’re on `main` and want to merge the feature branch you just finished:
+
+```bash
+git checkout main        # switch back to main
+git pull origin main     # make sure main is up to date
+git merge feature-clean-data
+```
+
+* `git merge` integrates the work from your branch into `main`.
+* If changes conflict (e.g., you and a teammate edited the same line differently), Git will pause and ask you to resolve the conflict before completing the merge.
+
+Once merged, push the updated `main` branch back to GitHub:
+
+```bash
+git push origin main
+```
+
+Now the project is up to date, and everyone can pull the newest version.
+
+### Repeat the Cycle
+
+The workflow repeats for every new piece of work:
+
+1. `git pull origin main` → start fresh with the latest version.
+2. `git checkout -b new-branch` → branch off safely.
+3. Edit files → `git add` → `git commit -m "message"`.
+4. `git push origin new-branch` → share your branch.
+5. Open a pull request → review → `git merge` → `git push origin main`.
+
+This loop is simple, but it is the foundation of every professional Git project.
+
+
+## Handling Conflicts, Rollbacks, and Ignoring Files
+
+Even with the best workflow, problems arise: histories diverge, mistakes are made, or unwanted files sneak into the repository. Git provides tools to deal with each of these situations.
+
+### Merge Conflicts
+
+A **merge conflict** happens when Git cannot automatically combine two versions of the same file. This usually occurs when two people edit the same line differently.
+
+Example:
+
+* On your branch, line 20 of `analysis.R` says:
+
+```r
+price_log <- log(price)
+```
+
+* On a teammate’s branch, the same line says:
+
+```r
+price_sqrt <- sqrt(price)
+```
+
+When you try to merge, Git stops and highlights the conflict:
+
+```r
+<<<<<<< HEAD
+price_log <- log(price)
+=======
+price_sqrt <- sqrt(price)
+>>>>>>> feature-new-transform
+```
+
+Your job is to manually edit the file to the version you want, then mark it as resolved:
+
+```bash
+git add analysis.R
+git commit -m "Resolve conflict in price transformation"
+```
+
+Conflicts aren’t errors — they are Git’s way of asking for human judgment.
+
+### Viewing History
+
+To understand how a conflict or bug arose, inspect the history with `git log`:
+
+```bash
+git log --oneline --graph --decorate
+```
+
+This shows a compact visual history of commits and merges. It helps you trace which changes were made, when, and by whom.
+
+### Rolling Back
+
+Mistakes are inevitable. Git makes it possible to undo them safely.
+
+* **Discard uncommitted changes** in a file:
+
+```bash
+git checkout -- analysis.R
+```
+
+* **Undo the last commit** but keep your edits:
+
+```bash
+git reset --soft HEAD~1
+```
+
+* **Revert a commit** (make a new commit that undoes a previous one):
+
+```bash
+git revert <commit-hash>
+```
+
+* **Restore an older version of a file**:
+
+```bash
+git checkout <commit-hash> -- analysis.R
+```
+
+These tools make experimentation safe: even if you break something, you can always go back.
+
+
+### Keeping the Repository Clean with `.gitignore`
+
+Not every file belongs in version control. Temporary files, large datasets, or machine-specific settings can clutter the history and make collaboration harder. Git uses a file called `.gitignore` to keep these out.
+
+A `.gitignore` file lists patterns of files or folders that Git should simply skip. For example:
+
+```text
+# Ignore temporary files
+*.log
+*.tmp
+
+# Ignore datasets
+/data/*
+*.csv
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+```
+
+Once added to `.gitignore`, these files stay local to your computer — they are never pushed to GitHub. This keeps the repository lean, avoids conflicts over machine-specific files, and prevents sensitive or bulky data from being shared by mistake.
+
+
+### The Safety Net
+
+Merge conflicts, rollbacks, and `.gitignore` are all part of Git’s safety net:
+
+* Conflicts remind you to coordinate when histories diverge.
+* Rollback commands let you recover from mistakes.
+* `.gitignore` prevents irrelevant files from entering the history in the first place.
+
+Together, they make Git a reliable partner for experimentation. You can work boldly, knowing that whatever happens, you have a way back.
+
+## Common Pitfalls & Best Practices
+
+Even with a solid workflow, Git has a way of tripping people up. The most common mistake is forgetting to synchronize before starting work. If you don’t pull the latest changes, you risk editing outdated files, which almost guarantees conflicts later. Another recurring issue is sloppy commit messages. When the history is filled with vague entries like “fixed stuff” or “update,” nobody — including your future self — will understand what happened.
+
+A related habit is editing directly on the `main` branch. While it may feel faster, it undermines stability: the one version of the project that should always work ends up broken, and the whole team suffers. Similar trouble arises when people push large data files or machine-specific clutter into the repository. Not only does this bloat the project, it also makes collaboration harder. That is why `.gitignore` exists — it keeps logs, datasets, and temporary files where they belong: on your machine, not in version control.
+
+Conflicts are another point where many get stuck. It is tempting to ignore them or hope they go away, but Git will not let you proceed until you resolve them. Conflicts are not errors; they are prompts for a conversation. They force you to stop and decide what the correct version of the project should be.
+
+Over time, you learn to anticipate these pitfalls and develop good habits. Always pull before starting. Branch often, and treat `main` as sacred. Write short but descriptive commit messages that tell the story of your work. Push regularly so teammates can see what you are doing. Keep `.gitignore` tidy and up to date. And when conflicts appear, see them not as disasters but as opportunities to clarify decisions.
+
+With these practices, Git shifts from being a source of frustration to becoming a powerful ally. It helps you maintain a stable project, collaborate smoothly, and preserve a reliable history of your work. Combined with the project management tools from the previous chapter, you now have both the organizational scaffolding and the technical backbone to manage analytics projects like a professional.
+
+::: {.callout-tip title="Best Practices for Everyday Git"}
+- **Pull first**: always synchronize with the remote before starting new work.  
+- **Branch often**: create a new branch for each feature or fix, and merge only when it’s ready.  
+- **Commit clearly**: write short, descriptive commit messages (“Clean dataset: removed duplicates”) instead of vague ones.  
+- **Push regularly**: don’t hoard changes on your computer — share them so others can see and review.  
+- **Use `.gitignore`**: keep logs, datasets, and temporary files out of version control.  
+- **Resolve conflicts carefully**: take time to understand what each version does before deciding.  
+- **Keep `main` clean**: treat it as the “working version” that should always run.  
+:::
+
+
+## Building Reliable Analytics Projects
+
+Across the last chapters we moved from **how to manage work** to **how to preserve it**. Project management gave us structure, while version control gave us memory. Together, they form the foundation for professional analytics projects.
+
+From Scrum we borrowed the principle of working in short cycles. By using project boards and issues, we made teamwork transparent: everyone can see what needs to be done, who is doing it, and what is already finished. This light structure helps teams focus, avoid duplication, and adapt quickly when new questions arise.
+
+Git then added the technical backbone. Every change to a project can be recorded, traced, and if necessary undone. Branches make it possible to experiment safely; commits preserve a diary of what happened; and pull requests create a space for discussion and review. Authentication, repositories, and workflows may feel technical at first, but together they ensure that projects do not just get done — they can be trusted, shared, and extended.
+
+The combination is powerful. Issues describe *what should happen*. Commits and branches record *what actually happened*. Boards and pull requests connect these two perspectives, linking planning with execution. When conflicts arise, the system forces decisions into the open rather than letting them fester unnoticed. And with `.gitignore`, teams keep repositories lean and focused on code, not clutter.
+
+For analytics, this matters deeply. Projects in this field are complex, messy, and often collaborative. Without scaffolding, they easily collapse into chaos: duplicated work, broken scripts, missing data, or unreproducible results. With the practices we have covered, projects become easier to manage and more robust. They are not only completed but also documented in a way that future teammates — or even your future self — can understand.
+
+In short, project management and version control are not just tools. They are habits that shape how teams think about their work. Adopt them early, practice them often, and they will repay you with smoother collaboration, less stress, and more reliable outcomes.
