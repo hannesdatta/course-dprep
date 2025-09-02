@@ -3,8 +3,184 @@ title: "Working with the Terminal"
 format: html
 ---
 
-::: {.callout-note}
+The terminal is the most direct way to communicate with your computer. Instead of clicking through folders or menus, you type commands that the system executes immediately. For analysts, this matters because many of the tools we use — Git, reproducible pipelines, cloud servers — run most naturally from the command line. The terminal complements graphical interfaces: you don’t stop using GUIs, but the terminal opens possibilities that point-and-click tools cannot match.
 
-This chapter is work-in-progress.
+Linux-style commands are the universal standard. They work on macOS and Linux out of the box, and they are the same commands you’ll encounter on servers or cloud platforms. On Windows, the built-in Command Prompt and PowerShell use different commands (e.g., `dir` instead of `ls`). To avoid confusion, we recommend installing **Git Bash** or using **Windows Subsystem for Linux (WSL)**. This gives you the same environment as macOS and Linux, ensuring that examples in this book will work on your system.
+
+
+## Getting Started
+
+### Working Directory
+
+When you open the terminal, you are placed in a specific location on your computer’s file system, called the **current directory**. Everything you do — creating folders, running scripts, using Git — happens relative to where you are.
+
+To see *where you are*, type:
+
+```bash
+pwd
+```
+
+This prints the working directory. On macOS/Linux or WSL you might see `/Users/alex/projects/analytics`; on Windows Git Bash you’ll see something like `/c/Users/Alex/projects/analytics`.
+
+To see *what’s inside* the current directory, type:
+
+```bash
+ls
+```
+
+This lists all files and folders. Add `-l` for details (permissions, size, timestamps) or `-a` to show hidden files (like `.gitignore`).
+
+s
+::: {.callout-note title="What Is a Working Directory?"}
+The **working directory** is the folder your terminal is currently “looking at.”  
+- All commands you run apply to this location.  
+- If you create a file, it appears here.  
+- If you run a script, it runs relative to this folder.  
+
+You can always check your current working directory with:  
+
+```bash
+pwd
+````
+
+Think of it as the terminal’s “point of view” on your file system.
+:::
+
+
+### Moving Around
+
+You move between folders with `cd`, short for *change directory*.
+
+* **Into** a folder:
+
+```bash
+cd data
+```
+
+* **Up one level** (parent folder):
+
+```bash
+cd ..
+```
+
+* **Back to your home directory**:
+
+```bash
+cd ~
+```
+
+* **Absolute path** (from the root of your system):
+
+```bash
+cd /Users/alex/projects/analytics
+```
+
+* **Relative path** (shorter, depends on current location):
+
+```bash
+cd ../analytics
+```
+
+Relative paths are handy for quick navigation; absolute paths are unambiguous and reliable.
+
+### Creating and Managing Folders
+
+Make a new directory called `results`:
+
+```bash
+mkdir results
+```
+
+Create multiple levels at once:
+
+```bash
+mkdir -p output/figures
+```
+
+Rename or move files/folders:
+
+```bash
+mv draft.txt final.txt
+mv results output/
+```
+
+Remove files or folders:
+
+```bash
+rm oldfile.txt
+rm -r oldfolder
+```
+
+⚠️ Be careful: `rm` deletes permanently — there is no recycle bin. The `-r` flag is required to delete directories.
+
+
+### Putting It Together
+
+A typical navigation sequence might look like this:
+
+```bash
+pwd
+# /Users/alex/projects
+
+ls
+# analytics  data  report.docx
+
+cd analytics
+pwd
+# /Users/alex/projects/analytics
+
+cd ..
+ls
+# analytics  data  report.docx
+```
+
+You check where you are, move into `analytics`, confirm the new location, then step back with `cd ..`.
+
+
+::: {.callout-tip title="Windows Users: Command Differences"}
+
+* **PowerShell / Command Prompt** use different commands:
+
+  * `dir` instead of `ls`
+  * `cd ..` works the same
+  * `mkdir` works the same
+  * `del` instead of `rm`
+
+* **Git Bash or WSL** give you Linux-style commands (`ls`, `rm`, etc.), which match this book and most tutorials.
+
+👉 For consistency, we recommend using **Git Bash** (ships with Git for Windows) or **Windows Subsystem for Linux (WSL)**. This way, your commands will look the same as on macOS/Linux.
+:::
+
+::: {.callout-tip title="Inspecting and Combining Commands"}
+The terminal is especially useful for inspecting files and combining commands.
+
+* **Quick inspections**:
+
+  * `cat file.txt` shows the full contents.
+  * `less file.txt` lets you scroll.
+  * `head -n 5 data.csv` shows the first five lines.
+  * `tail -n 5 data.csv` shows the last five.
+  * `grep "error" logfile.txt` searches for text inside a file.
+
+* **Combining commands**:
+
+  * A pipe (`|`) passes the output of one command into another.
+
+    * Example: `grep "error" logfile.txt | wc -l` counts the number of errors.
+  * Redirection (`>`) saves output to a new file.
+
+    * Example: `head -n 5 data.csv > preview.csv` creates a smaller file with just the first five lines.
+
+This philosophy of chaining steps together is the same one you already know from R (`%>%`) or Python (method chaining).
 
 :::
+
+
+## The Bigger Picture
+
+Most Git commands (`git add`, `git commit`, `git push`, `git pull`) are run in the terminal. Beyond Git, the terminal allows you to automate repetitive tasks with small shell scripts (`.sh` files). As projects grow, reproducible pipelines (e.g., with Make or Docker) rely heavily on the command line. Learning the basics early pays off in flexibility later.
+
+
+The terminal is powerful, but also unforgiving. A command like `rm -rf` can delete entire directories instantly. Use tab completion and the arrow keys to save time and reduce typos. When you find yourself repeating the same steps, write them into a script so you can rerun them reliably.
+
+The terminal is the **lingua franca** of computing. Once you know the basic commands, you can work on any system: your laptop, a remote server, or a cloud environment. The same skills scale from small projects to massive data pipelines. Learning the terminal is not about memorizing every command — it is about becoming fluent in the common language that underlies modern analytics workflows.

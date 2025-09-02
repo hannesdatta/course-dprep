@@ -176,20 +176,6 @@ A sprint usually lasts two weeks, but the key is its repetitive rhythm:
 
 And then: repeat.
 
-Here’s a simplified diagram of this cycle:
-
-```{mermaid}
-flowchart LR
-    A[Product Backlog] --> B[Sprint Planning]
-    B --> C[Sprint Backlog]
-    C --> D[Development Work]
-    D --> E[Daily Stand-Up]
-    D --> F[Sprint Review]
-    F --> G[Increment]
-    G --> H[Retrospective]
-    H --> A
-```
-
 This structure may seem heavy for small projects, but its strength lies in keeping everyone aligned and creating steady progress through short, visible cycles.
 
 
