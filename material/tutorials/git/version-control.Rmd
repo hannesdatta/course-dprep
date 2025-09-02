@@ -17,6 +17,37 @@ if (!requireNamespace("webexercises")) {
 } else {
   library(webexercises)
 }
+
+show_solutions=FALSE
+
+hide <- function (button_text = "Solution", visible=show_solutions) 
+{
+  if (visible==T) {  
+  rmd <- !is.null(getOption("knitr.in.progress"))
+    if (rmd) {
+        paste0("\n<div class='webex-solution'><button>", button_text, 
+            "</button>\n")
+    }
+    else {
+        paste0("\n::: {.callout-note collapse='true'}\n## ", 
+            button_text, "\n\n")
+    }
+}
+}
+
+unhide <- function (visible=show_solutions) 
+{
+    if (visible==T) {
+    rmd <- !is.null(getOption("knitr.in.progress"))
+    if (rmd) {
+        "\n</div>\n"
+    }
+    else {
+        "\n:::\n\n"
+    }
+    }
+}
+
 ```
 
 ```{css, echo=FALSE}
@@ -99,8 +130,10 @@ In summary, we can say that:
 
 \
 
-**Let's try it out!**  
+**Let's try it out!**
 Create a [GitHub account](https://github.com/join?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home) (we recommend using your university email!), log in, and navigate towards the [course repository](https://github.com/hannesdatta/course-dprep). Browse through the files and get a feeling for all the tabs and buttons (no worries: you can't break anything :-). Try to get an answer for each of the questions:
+
+**Exercise 1**
 
 1. Who is the creator of the repository? What happens once you click on his username? 
 2. When was the repository last updated? 
@@ -110,18 +143,16 @@ Create a [GitHub account](https://github.com/join?ref_cta=Sign+up&ref_loc=header
 6. What happens once you switch to another branch? (e.g., `dev`)
 7. Can you find a way to see how the first version (also known as "first commit") of the repository looked like? 
  
-`r hide("Click here to see the solutions")`
-1. Hannes Datta - You go to his personal page!
-2. The most recent update can be seen underneath "Go to file".
-3. These are the commit messages for the most recent change made in that folder or file.
-4. Content --> docs --> tutorials
-5. Starring a repository makes it viewable on your stars page, which makes it easier to find a repository again at a later time.
-6. You see the overview of the repository for that branch and the changes relative to the main branch.
-7. One way is to click on the total number of commits and browse all the way to the first commit. A more convenient alternative could be to go to insights --> network. Here, you can see an overview of all changes made to the repository, what was done and by who.
-`r unhide()`
+```{r, webex.hide = 'Solutions',include=show_solutions}
+# 1. Hannes Datta - You go to his personal page!
+# 2. The most recent update can be seen underneath "Go to file".
+# 3. These are the commit messages for the most recent change made in that folder or file.
+# 4. Material --> tutorials
+# 5. Starring a repository makes it viewable on your stars page, which makes it easier to find a repository again at a later time.
+# 6. You see the overview of the repository for that branch and the changes relative to the main branch.
+# 7. One way is to click on the total number of commits and browse all the way to the first commit. A more convenient alternative could be to go to insights --> network. Here, you can see an overview of all changes made to the repository, what was done and by who.
+```
 
-\
- 
 #### 1.3 Create a New Repository
 
 In this step-by-step tutorial, we're going to create a new repository and copy it to our local computer. Note that [GitHub](https://desktop.github.com/), [RStudio](https://jennybc.github.io/2014-05-12-ubc/ubc-r/session03_git.html#learngit) and [VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview) also allow you to directly work with Git, yet we recommend sticking to the command line as it helps you to get a better understanding of how all concepts fit together.  
@@ -324,9 +355,10 @@ Once you click on 11 commits here, it shows a chronologically ordered list of al
 ![](./images/commit_history.png){width=50%}
 
 **Let's try it out! When was the first commit on the dev branch and what was done?**
-`r hide("Click here to see the solution")`
-The first commit was on 2 September 2020 and was called "Initialize dev"
-`r unhide()`
+
+```{r, webex.hide = 'Solutions',include=show_solutions}
+#The first commit was on 2 September 2020 and was called "Initialize dev"
+```
 
 We can access the same list of commits through our terminal. `cd` into the respective Git directory and run `git log` to view the log of the project's history. Every time, you press the space bar it moves down the list (so you see older commit messages).  Log entries are shown most recent first, and look like this:
 
@@ -641,9 +673,6 @@ It can be daunting to get started using Git commands. But there's help:
 Further Learning:
 
 * [Simple Guide to Forks in GitHub and Git](https://www.dataschool.io/simple-guide-to-forks-in-github-and-git)
-
 * [Guide for Reproducible Research](https://the-turing-way.netlify.app/reproducible-research/vcs.html)
-
 * [Git official documentation](https://git-scm.com/doc)
-
 * [Free Git Pro book](https://git-scm.com/book/en/v2)
