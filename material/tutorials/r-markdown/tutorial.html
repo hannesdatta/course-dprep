@@ -1165,7 +1165,7 @@ etc.)</strong></li>
 <p><strong>One set of data points</strong></p>
 <p>We’ll start by plotting <strong>percentage changes in park
 visits</strong> over time using <code>geom_line()</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> country, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> parks)) <span class="sc">+</span></span>
 <span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
