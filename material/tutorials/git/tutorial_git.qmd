@@ -21,28 +21,23 @@ editor: visual
 # IMPORTANT NOTE
 
 -   Make sure you read chapters 5 and 6 of the text book.
--   We only cover **some** excercises from the tutorial in class. Please complete the rest of the excercises on your own.
+-   We only cover **some** exercises from the tutorial in class. Please complete the rest of the exercises on your own.
 -   Have questions and I'm taking too long to arrive? Try out our [chatbot.](https://chatbot.tilburg.ai/private/invite?token=eda28565-ecaa-4ef0-ab01-208bdd2144ae) It is trained with the material for today's class and likely issues you will face.
 
-# Introduction to GitHub
+# Introduction to Git and GitHub
 
--   What is Git?
--   What is GitHub?
+-   **Git**: A **version control system** that tracks changes to files over time, allowing you to revert to previous versions, collaborate, and manage code efficiently.
+-   **GitHub**: A **hosting service** for Git repositories, providing tools for collaboration, issue tracking, and project management.
 
-# Introduction to GitHub
+# Tutorial: Exercise 1
 
--   What is Git? version control system, the tool that tracks changes to our files over time.
--   What is GitHub? hosting service for projects that use Git.
+-   Visit the [course repository](https://github.com/hannesdatta/course-dprep)
+-   Who is the creator of the repository? What happens once you click on his username?
+-   Where can you find the `tutorial` folder?
+-   What happens once you switch to another branch? (e.g., `dev`)
+-   Can you find a way to see previous versions of how the repository looked like?
 
-# Tutorial: Excercise 1
-
-- Visit the [course repository](https://github.com/hannesdatta/course-dprep) 
-- Who is the creator of the repository? What happens once you click on his username? 
-- Where can you find the `tutorial` folder? 
-- What happens once you switch to another branch? (e.g., `dev`) 
-- Can you find a way to see previous versions of how the repository looked like?
-
-# Excercise 2: Creating a repository
+# Exercise 2: Creating a repository
 
 -   Create a repository on GitHub
 -   Go to + sign on your account
@@ -51,23 +46,17 @@ editor: visual
 -   Save repository and edit the read me file
     -   Commit the changes
 
-# Excercise 2: cloning your repository
+# Exercise 2: Cloning your repository
 
 -   Clone the repository using '`git clone` <link-to-your-repo>'
     -   Make sure you save it in the folder for this tutorial
 -   Checkout that the folder exists in your machine!
 
-# Important git commands
+# Important Git commands
 
--   `git status`
--   `git add`
--   `git commit`
-
-# Important git commands
-
--   `git status` (overview of un-tracked files)
--   `git add` (adding changes to the staging area)
--   `git commit` (saving a version of our document to the repo)
+-   `git status`: Shows the status of your working directory (e.g., untracked or modified files).
+-   `git add`: Adds changes to the **staging area**, preparing them for commit.
+-   `git commit`: Saves a snapshot of the staged changes to the repository's history.
 
 # Exercise 2: adding and committing
 
@@ -83,16 +72,16 @@ editor: visual
 
 # Excercise 4: logs
 
--   Remove `my_answers.txt` in your machine. 
--   Look up the hash of the commit which had the file using `git log`
--   Run `git checkout <SHA>` (where SHA is the hash from git log) and inspect your directory. Is the `my_answers.txt` there again?
+-   Remove `my_answers.txt` in your machine.
+-   Look up the **commit ID** (a unique identifier for each commit, also called a **hash**) of the commit that included the file using `git log`.
+-   Run `git checkout <commit-ID>` (where `<commit-ID>` is the hash from `git log`) and inspect your directory. Is the `my_answers.txt` file restored?
 
-# Exercise 5: GitIgnore
+# Exercise 5: Using `.gitignore`
 
 -   Create a new file called `my_secret_key.txt`
 -   `cd` into version-control-exercises. Type touch `.gitignore`
 -   In the .gitignore file, type `my_secret_key.txt` and save it.
--   Add `my_secret_ket.txt` to the staging area, commit the changes and push to the GitHub repository. Is the `my_secret_key.txt` in the GitHub repository?
+-   Add and commit the `.gitignore` file, then push to the GitHub repository. Is the `my_secret_key.txt` file excluded from the repository?
 
 # Excercise 6: working with branches
 
