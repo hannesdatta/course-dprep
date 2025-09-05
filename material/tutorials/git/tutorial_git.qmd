@@ -9,85 +9,96 @@ editor: visual
 ---
 
 # Learning goals
-- Understand and apply basic Git commands 
-- Set up repositories in GitHub
-  - Create branches
-  - Commit changes
-  - Resolve conflicts
-- Collaborate on GitHub projects
-- Restore previous versions of work and manage content using .gitignore
+
+-   Understand and apply basic Git commands
+-   Set up repositories in GitHub
+    -   Create branches
+    -   Commit changes
+    -   Resolve conflicts
+-   Collaborate on GitHub projects
+-   Restore previous versions of work and manage content using `.gitignore`
 
 # IMPORTANT NOTE
-- Make sure you read chapters 5 and 6 of the text book.
-- We only cover **some** excercises from the tutorial in class. Please complete the rest of the excercises on your own.
-- Have questions and I'm taking too long to arrive? Try out our [chatbot.](https://chatbot.tilburg.ai/private/invite?token=eda28565-ecaa-4ef0-ab01-208bdd2144ae) It is trained with the material for today's class and likely issues you will face. 
 
-
-# Introduction to GitHub
-- What is Git?
-- What is GitHub?
+-   Make sure you read chapters 5 and 6 of the text book.
+-   We only cover **some** excercises from the tutorial in class. Please complete the rest of the excercises on your own.
+-   Have questions and I'm taking too long to arrive? Try out our [chatbot.](https://chatbot.tilburg.ai/private/invite?token=eda28565-ecaa-4ef0-ab01-208bdd2144ae) It is trained with the material for today's class and likely issues you will face.
 
 # Introduction to GitHub
-- What is Git? version control system, the tool that tracks changes to our files over time.
-- What is GitHub? hosting service for projects that use Git.
+
+-   What is Git?
+-   What is GitHub?
+
+# Introduction to GitHub
+
+-   What is Git? version control system, the tool that tracks changes to our files over time.
+-   What is GitHub? hosting service for projects that use Git.
 
 # Tutorial: Excercise 1
-Visit the [course repository](https://github.com/hannesdatta/course-dprep)
+
+- Visit the [course repository](https://github.com/hannesdatta/course-dprep) 
 - Who is the creator of the repository? What happens once you click on his username? 
 - Where can you find the `tutorial` folder? 
-- What happens once you switch to another branch? (e.g., `dev`)
+- What happens once you switch to another branch? (e.g., `dev`) 
 - Can you find a way to see previous versions of how the repository looked like?
 
 # Excercise 2: Creating a repository
-- Create a repository on GitHub
-- Go to + sign on your account
-  - Give it the name "version-control-exercises"
-  - Add a readme file
-- Save repository and edit the read me file
-  - Commit the changes
-  
+
+-   Create a repository on GitHub
+-   Go to + sign on your account
+    -   Give it the name "version-control-exercises"
+    -   Add a readme file
+-   Save repository and edit the read me file
+    -   Commit the changes
+
 # Excercise 2: cloning your repository
-- Clone the repository using 'git clone <link-to-your-repo>'
-  - Make sure you save it in the folder for this tutorial
-- Checkout that the folder exists in your machine! 
+
+-   Clone the repository using '`git clone` <link-to-your-repo>'
+    -   Make sure you save it in the folder for this tutorial
+-   Checkout that the folder exists in your machine!
 
 # Important git commands
-- git status
-- git add
-- git commit 
+
+-   `git status`
+-   `git add`
+-   `git commit`
 
 # Important git commands
-- git status (overview of un-tracked files)
-- git add (adding changes to the staging area)
-- git commit (saving a version of our document to the repo)
+
+-   `git status` (overview of un-tracked files)
+-   `git add` (adding changes to the staging area)
+-   `git commit` (saving a version of our document to the repo)
 
 # Exercise 2: adding and committing
-- Create a new my_answers.txt in your machine
-- Commit the changes to your GitHub repo!
-- Check out GitHub, are your changes there?
+
+-   Create a new `my_answers.txt` in your machine
+-   Commit the changes to your GitHub repo!
+-   Check out GitHub, are your changes there?
 
 # Exercise 2: pushing your changes
-- Push your changes onto your repo! 
-- git push origin main
-- Now check out GitHub, your changes should be there!
+
+-   Push your changes onto your repo!
+-   `git push origin main`
+-   Now check out GitHub, your changes should be there!
 
 # Excercise 4: logs
-- Remove my_answers.txt
-- Look up the hash of the commit which had the file usign git log
-- Run git checkout <SHA> and inspect your directory. Is the my_answers.txt there again?
+
+-   Remove `my_answers.txt` in your machine. 
+-   Look up the hash of the commit which had the file using `git log`
+-   Run `git checkout <SHA>` (where SHA is the hash from git log) and inspect your directory. Is the `my_answers.txt` there again?
 
 # Exercise 5: GitIgnore
-- Create a new file called my_secret_key.txt
-- cd into version-control-exercises. Type touch .gitignore 
-- In the .gitignore file, type my_secret_key.txt and save it. 
-- Add my_secret_ket.txt to the staging area, commit the changes and push to the GitHub repository. Is the my_secret_key.txt in the GitHub repository? 
+
+-   Create a new file called `my_secret_key.txt`
+-   `cd` into version-control-exercises. Type touch `.gitignore`
+-   In the .gitignore file, type `my_secret_key.txt` and save it.
+-   Add `my_secret_ket.txt` to the staging area, commit the changes and push to the GitHub repository. Is the `my_secret_key.txt` in the GitHub repository?
 
 # Excercise 6: working with branches
-- Create a new branch called 'dev' and switch to it 
-  - Tip: use git checkout -b <branch-name>, which creates a new branch
-- Create a new text file my_notes.txt
-- Add all files to staging area and commit changes. Comment "add notes file" in the commit.
-- Run git log on the dev branch. What does it say?
-- Switch to the main branch and run git log. What is the most recent commit message? Why?
 
-
+-   Create a new branch called '`dev`' and switch to it
+    -   Tip: use `git checkout -b <branch-name>`, which creates a new branch
+-   Create a new text file `my_notes.txt`
+-   Add all files to staging area and commit changes. Comment "add notes file" in the commit.
+-   Run `git log` on the dev branch. What does it say?
+-   Switch to the main branch and run `git log`. What is the most recent commit message? Why?
