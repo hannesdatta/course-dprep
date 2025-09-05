@@ -21,7 +21,7 @@ editor: visual
 # IMPORTANT NOTE
 
 -   Make sure you read chapters 5 and 6 of the text book.
--   We only cover **some** excercises from the tutorial in class. Please complete the rest of the excercises on your own.
+-   We only cover **some** exercises from the tutorial in class. Please complete the rest of the exercises on your own.
 -   Have questions and I'm taking too long to arrive? Try out our [chatbot.](https://chatbot.tilburg.ai/private/invite?token=eda28565-ecaa-4ef0-ab01-208bdd2144ae) It is trained with the material for today's class and likely issues you will face.
 
 # Introduction to GitHub
@@ -34,15 +34,15 @@ editor: visual
 -   What is Git? version control system, the tool that tracks changes to our files over time.
 -   What is GitHub? hosting service for projects that use Git.
 
-# Tutorial: Excercise 1
+# Tutorial: Exercise 1
 
-- Visit the [course repository](https://github.com/hannesdatta/course-dprep) 
-- Who is the creator of the repository? What happens once you click on his username? 
-- Where can you find the `tutorial` folder? 
-- What happens once you switch to another branch? (e.g., `dev`) 
-- Can you find a way to see previous versions of how the repository looked like?
+-   Visit the [course repository](https://github.com/hannesdatta/course-dprep)
+-   Who is the creator of the repository? What happens once you click on his username?
+-   Where can you find the `tutorial` folder?
+-   What happens once you switch to another branch? (e.g., `dev`)
+-   Can you find a way to see previous versions of how the repository looked like?
 
-# Excercise 2: Creating a repository
+# Exercise 2: Creating a repository
 
 -   Create a repository on GitHub
 -   Go to + sign on your account
@@ -51,7 +51,7 @@ editor: visual
 -   Save repository and edit the read me file
     -   Commit the changes
 
-# Excercise 2: cloning your repository
+# Exercise 2: cloning your repository
 
 -   Clone the repository using '`git clone` <link-to-your-repo>'
     -   Make sure you save it in the folder for this tutorial
@@ -81,22 +81,22 @@ editor: visual
 -   `git push origin main`
 -   Now check out GitHub, your changes should be there!
 
-# Excercise 4: logs
+# Exercise 4: logs
 
--   Remove `my_answers.txt` in your machine. 
+-   Remove `my_answers.txt` in your machine.
 -   Look up the hash of the commit which had the file using `git log`
 -   Run `git checkout <SHA> -- my_answers.txt` (where SHA is the hash from git log) and inspect your directory. Is the `my_answers.txt` there again?
 
 # Exercise 5: GitIgnore
 
 -   Create a new file called `my_secret_key.txt`
--   `cd` into version-control-exercises. 
-  - Type `touch .gitignore` for macOs
-  - Type `echo. > .gitignore` for PC
+-   `cd` into version-control-exercises.
+-   Type `touch .gitignore` for macOs
+-   Type `echo. > .gitignore` for PC
 -   In the .gitignore file, type `my_secret_key.txt` and save it.
 -   Add `my_secret_ket.txt` to the staging area, commit the changes and push to the GitHub repository. Is the `my_secret_key.txt` in the GitHub repository?
 
-# Excercise 6: working with branches
+# Exercise 6: working with branches
 
 -   Create a new branch called '`dev`' and switch to it
     -   Tip: use `git checkout -b <branch-name>`, which creates a new branch
