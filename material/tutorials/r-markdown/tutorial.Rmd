@@ -536,6 +536,7 @@ Missing values can impact analysis, so let’s first **identify how many are mis
 ```{r}
 columns <- c('retail_and_recreation', 'grocery_and_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential')
 
+library(knitr)
 missing_summary <- bind_rows(
   country %>% summarise(across(all_of(columns), ~ mean(is.na(.)) * 100)) %>% mutate(subset = "country"),
   province %>% summarise(across(all_of(columns), ~ mean(is.na(.)) * 100)) %>% mutate(subset = "province"),
@@ -717,7 +718,7 @@ __Example: Visits to Different Places__
 Let's create a bar chart showing the **average mobility change** across different locations using the `country` data set.  
 
 ```{r}
-library(ggplot2)
+library(tidyverse)
 library(dplyr)
 
 # Pivot the country dataset to long format
