@@ -85,12 +85,14 @@ editor: visual
 
 -   Remove `my_answers.txt` in your machine. 
 -   Look up the hash of the commit which had the file using `git log`
--   Run `git checkout <SHA>` (where SHA is the hash from git log) and inspect your directory. Is the `my_answers.txt` there again?
+-   Run `git checkout <SHA> -- my_answers.txt` (where SHA is the hash from git log) and inspect your directory. Is the `my_answers.txt` there again?
 
 # Exercise 5: GitIgnore
 
 -   Create a new file called `my_secret_key.txt`
--   `cd` into version-control-exercises. Type touch `.gitignore`
+-   `cd` into version-control-exercises. 
+  - Type `touch .gitignore` for macOs
+  - Type `echo. > .gitignore` for PC
 -   In the .gitignore file, type `my_secret_key.txt` and save it.
 -   Add `my_secret_ket.txt` to the staging area, commit the changes and push to the GitHub repository. Is the `my_secret_key.txt` in the GitHub repository?
 
