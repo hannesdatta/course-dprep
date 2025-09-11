@@ -120,7 +120,7 @@ Once you know what you want your dataset to look like, the question becomes: *ho
 
 Think of these as the **toolbox of the analyst**. Each operation has its purpose, and together they allow you to shape, refine, and harmonize raw information into something that is not only analyzable, but also meaningful.
 
----
+
 
 ### Cleaning and Auditing
 
@@ -144,7 +144,7 @@ In marketing analytics, privacy is always a concern. Names, addresses, and email
 **Validation checks**
 Finally, before moving on, analysts should ask: *do these numbers make sense?* Do weekly totals of transactions add up to the monthly numbers reported by accounting? Are there negative prices lurking in the dataset? Validation is the last inspection before the data can be trusted.
 
----
+
 
 ### Aggregation
 
@@ -180,7 +180,7 @@ Take a simple example.
 
 By designing the right summaries, aggregation doesn’t just reduce data—it enriches it with new, analytically useful variables.
 
----
+
 
 ### Merging and Integration
 
@@ -193,8 +193,6 @@ The mechanism for combining data is the **join**. Each type of join handles mism
 * A **full join** keeps everything, leaving blanks where no match is found.
 
 For example, consider weekly transaction totals and weekly weather data. If we inner join them, regions or weeks missing in one source disappear entirely. If we use a left join, we keep all transaction weeks, even if weather is unavailable. Each choice has consequences: we might sacrifice completeness for precision, or vice versa. The analyst must decide deliberately, based on the research question.
-
----
 
 ### Reshaping and Pivoting
 
@@ -222,7 +220,7 @@ Take campaign impressions.
 
 Neither format is superior. Analysts pivot between them depending on the task. Long format is often required for regressions, while wide format simplifies comparisons in a dashboard. Recognizing and controlling these representations prevents confusion and allows the same data to serve multiple purposes.
 
----
+
 
 ### Working with Time and Text
 
@@ -256,7 +254,7 @@ This example illustrates a larger point: an analysis-ready dataset is not found,
 
 The operations we have discussed—cleaning, aggregating, merging, reshaping—are concepts. They describe *what* analysts need to do, not necessarily *how* they should do it. To put these ideas into practice, we rely on software ecosystems that provide efficient and reliable ways of working with data. While each ecosystem has its own syntax, they all serve the same goal: helping analysts transform raw inputs into analysis-ready datasets.
 
----
+
 
 ### R: `dplyr` and `data.table`
 
@@ -295,7 +293,7 @@ Many firms expect analysts to have at least a working knowledge of SQL, because 
 
 SQL also has the advantage of **reproducibility**: queries can be saved and rerun at any time, ensuring that the same subset of data can be regenerated. For collaborative environments, this makes SQL indispensable.
 
----
+
 
 ### Beyond the Basics: Databases and Modern Data Platforms
 
@@ -323,7 +321,7 @@ The proliferation of options can feel overwhelming, but the principle remains si
 
 For the analyst, the key is not to master every platform, but to understand their roles. Whether you write queries in PostgreSQL, explore JSON documents in MongoDB, or summarize terabytes of impressions in Snowflake, the same concepts apply: cleaning, aggregating, merging, reshaping. The tools evolve, but the logic of data engineering remains constant.
 
----
+
 
 ### Good Practices
 
