@@ -544,105 +544,10 @@ display: none;
 
 
 <h1 class="title toc-ignore">Engineering data sets</h1>
-<h4 class="date">Last updated: 19 February 2025</h4>
+<h4 class="date">Last updated: 12 September 2025</h4>
 
 </div>
 
-<div id="TOC">
-<ul>
-<li><a href="#introduction" id="toc-introduction">Introduction</a>
-<ul>
-<li><a href="#what-youll-learn-in-this-tutorial" id="toc-what-youll-learn-in-this-tutorial">What You&#39;ll Learn in this
-Tutorial</a></li>
-<li><a href="#prerequisites" id="toc-prerequisites">Prerequisites</a>
-<ul>
-<li><a href="#create-a-new-r-project" id="toc-create-a-new-r-project">Create a new R project</a></li>
-<li><a href="#download-the-data" id="toc-download-the-data">Download the
-data</a></li>
-<li><a href="#understanding-the-data" id="toc-understanding-the-data">Understanding the Data</a></li>
-<li><a href="#now-its-your-turn-explore-the-data-yourself" id="toc-now-its-your-turn-explore-the-data-yourself">Now it&#39;s your turn:
-Explore the data yourself!</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#part-1-expanding-our-knowledge-of-r" id="toc-part-1-expanding-our-knowledge-of-r">Part 1: Expanding our
-knowledge of R</a>
-<ul>
-<li><a href="#a-applying-base-r-functions-in-tidyverse" id="toc-a-applying-base-r-functions-in-tidyverse">1A) Applying base R
-functions in <code>tidyverse</code></a>
-<ul>
-<li><a href="#compute-summary-statistics-for-streaming-data" id="toc-compute-summary-statistics-for-streaming-data">Compute summary
-statistics for streaming data</a></li>
-<li><a href="#ranking-identifying-the-most-listened-to-artists" id="toc-ranking-identifying-the-most-listened-to-artists">Ranking:
-Identifying the Most-Listened-To Artists</a></li>
-<li><a href="#dealing-with-unique-values-removing-duplicates-and-counting-distinct-entries" id="toc-dealing-with-unique-values-removing-duplicates-and-counting-distinct-entries">Dealing
-with Unique Values: Removing Duplicates and Counting Distinct
-Entries</a></li>
-</ul></li>
-<li><a href="#b-advanced-cleaning-using-regular-expressions" id="toc-b-advanced-cleaning-using-regular-expressions">1B) Advanced
-Cleaning: Using Regular Expressions</a>
-<ul>
-<li><a href="#common-regex-search-patterns" id="toc-common-regex-search-patterns">Common Regex Search
-Patterns</a></li>
-<li><a href="#grepl-finding-patterns-in-text" id="toc-grepl-finding-patterns-in-text"><code>grepl()</code>: Finding
-Patterns in Text</a></li>
-<li><a href="#gsub-replacing-patterns-in-text" id="toc-gsub-replacing-patterns-in-text"><code>gsub()</code>: Replacing
-Patterns in Text</a></li>
-</ul></li>
-<li><a href="#c-dealing-with-time" id="toc-c-dealing-with-time">1C)
-Dealing with Time</a>
-<ul>
-<li><a href="#conversion-between-data-formats" id="toc-conversion-between-data-formats">Conversion between data
-formats</a></li>
-<li><a href="#switching-between-date-formats" id="toc-switching-between-date-formats">Switching between date
-formats</a></li>
-<li><a href="#dealing-with-time-properties-of-data" id="toc-dealing-with-time-properties-of-data">Dealing with time
-properties of data</a></li>
-</ul></li>
-<li><a href="#d-pivoting-data-reshaping-from-long-to-wide-and-wide-to-long" id="toc-d-pivoting-data-reshaping-from-long-to-wide-and-wide-to-long">1D)
-Pivoting Data: Reshaping from Long to Wide and Wide to Long</a>
-<ul>
-<li><a href="#from-wide-to-long-pivot_longer" id="toc-from-wide-to-long-pivot_longer">From Wide to Long:
-<code>pivot_longer()</code></a></li>
-<li><a href="#from-long-to-wide-pivot_wider" id="toc-from-long-to-wide-pivot_wider">From Long to Wide:
-<code>pivot_wider()</code></a></li>
-</ul></li>
-<li><a href="#e-merging-data-combining-multiple-data-sources" id="toc-e-merging-data-combining-multiple-data-sources">1E) Merging
-Data: Combining Multiple Data Sources</a>
-<ul>
-<li><a href="#join-types" id="toc-join-types">Join types</a></li>
-<li><a href="#what-are-keys-in-a-join" id="toc-what-are-keys-in-a-join">What Are Keys in a Join?</a></li>
-<li><a href="#examples-of-joins-in-action" id="toc-examples-of-joins-in-action">Examples of Joins in
-Action</a></li>
-</ul></li>
-<li><a href="#youve-made-it" id="toc-youve-made-it"><strong>You&#39;ve Made
-It! 🎉</strong></a></li>
-</ul></li>
-<li><a href="#part-2-case-study-and-exercises" id="toc-part-2-case-study-and-exercises">Part 2: Case study and
-Exercises</a>
-<ul>
-<li><a href="#exercise-1-assemble-a-dataset-for-analysis" id="toc-exercise-1-assemble-a-dataset-for-analysis">Exercise 1: Assemble
-a Dataset for Analysis</a></li>
-<li><a href="#exercise-2-aggregate-streams-to-the-weekly-level-iso-weeks" id="toc-exercise-2-aggregate-streams-to-the-weekly-level-iso-weeks">Exercise
-2: Aggregate Streams to the Weekly Level (ISO Weeks)</a></li>
-<li><a href="#exercise-3-create-a-trend-variable" id="toc-exercise-3-create-a-trend-variable">Exercise 3: Create a Trend
-Variable</a></li>
-<li><a href="#exercise-4-create-a-complete-data-grid" id="toc-exercise-4-create-a-complete-data-grid">Exercise 4: Create a
-Complete Data Grid</a></li>
-<li><a href="#exercise-5-merge-streams-data-into-the-complete-grid-complete_data" id="toc-exercise-5-merge-streams-data-into-the-complete-grid-complete_data">Exercise
-5: Merge Streams Data into the Complete Grid
-(<code>complete_data</code>)</a></li>
-<li><a href="#exercise-6-merge-weather-and-social-media-data" id="toc-exercise-6-merge-weather-and-social-media-data">Exercise 6:
-Merge Weather and Social Media Data</a></li>
-<li><a href="#exercise-7-handle-missing-data" id="toc-exercise-7-handle-missing-data">Exercise 7 Handle Missing
-Data</a></li>
-<li><a href="#exercise-8-scaling-up-i-generate-stream-plots-for-multiple-artists" id="toc-exercise-8-scaling-up-i-generate-stream-plots-for-multiple-artists">Exercise
-8: Scaling Up I: Generate Stream Plots for Multiple Artists</a></li>
-<li><a href="#exercise-9-scaling-up-ii-estimate-individual-regression-models" id="toc-exercise-9-scaling-up-ii-estimate-individual-regression-models">Exercise
-9: Scaling Up II: Estimate Individual Regression Models</a></li>
-<li><a href="#summary" id="toc-summary">Summary</a></li>
-</ul></li>
-</ul>
-</div>
 
 <style>
 table {
@@ -651,46 +556,77 @@ margin-left: auto;
 margin-right: auto;
 }
 </style>
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>In this tutorial, we&#39;ll tackle common data challenges using a
-simulated music streaming dataset. Starting with multiple raw data
-sources, we&#39;ll clean, transform, and merge them into a single
-analysis-ready data frame.</p>
-<div id="what-youll-learn-in-this-tutorial" class="section level2">
-<h2>What You&#39;ll Learn in this Tutorial</h2>
+<div id="welcome" class="section level1">
+<h1>🚀 Welcome</h1>
+<p>In this tutorial you’ll learn to <strong>clean, transform, and merge
+data</strong> into a single analysis-ready dataset.</p>
+<hr />
+<div id="roadmap" class="section level2">
+<h2>🗺️ Roadmap</h2>
+<p>Here’s the path we’ll follow:</p>
+<p><strong>Part 1 - Setup</strong> - Download and explore the data for
+this tutorial.</p>
+<p><strong>Part 2 – Building Skills</strong></p>
 <ul>
-<li>Expand your knowledge of R functions (e.g., base functions such as
-<code>rank()</code> or <code>unique()</code>)</li>
-<li>Handle missing and duplicate values.</li>
-<li>Handle and preprocess string data (remove characters, splitting
-using regular expressions).</li>
-<li>Operationalize variables and handle pivoting (wide to long, long to
-wide)</li>
-<li>Merge data sets on one or more indices and understand the different
-types of joins (inner, left, right join).</li>
-<li>Scale workflows (e.g., batch plotting, estimation of linear models,
-<code>lm()</code>)</li>
-<li>Implement techniques to exemplary case studies often encountered in
-marketing research</li>
+<li><strong>2A. Base R functions in tidyverse</strong> → summary stats,
+ranking, uniqueness<br />
+</li>
+<li><strong>2B. Advanced cleaning</strong> → regex for string data<br />
+</li>
+<li><strong>2C. Working with time</strong> → dates, weeks, missing
+values, lags &amp; leads<br />
+</li>
+<li><strong>2D. Pivoting</strong> → reshape between long ↔︎ wide
+formats<br />
+</li>
+<li><strong>2E. Merging</strong> → joins (left, inner, full)</li>
 </ul>
+<p><strong>Part 3 – Case Study &amp; Exercises</strong></p>
+<ul>
+<li>Assemble a complete artist–country–week dataset<br />
+</li>
+<li>Aggregate to weekly level<br />
+</li>
+<li>Add trend variables<br />
+</li>
+<li>Merge in weather &amp; socials<br />
+</li>
+<li>Handle missing data<br />
+</li>
+<li>Scale up with loops: plots &amp; regressions</li>
+</ul>
+<p><strong>IMPORTANT:</strong> Recall that all of these concepts are
+covered in the accompanying textbook, available at <a href="https://dprep-book.hannesdatta.com" class="uri">https://dprep-book.hannesdatta.com</a>. Please complete the
+reading of the corresponding chapter (&quot;data engineering &amp;
+databases&quot;) before working on this tutorial.</p>
+<!--
+## What You'll Learn in this Tutorial
+
+- Expand your knowledge of R functions (e.g., base functions such as `rank()` or `unique()`)
+- Handle missing and duplicate values.
+- Handle and preprocess string data (remove characters, splitting using regular expressions).
+- Operationalize variables and handle pivoting (wide to long, long to wide)
+- Merge data sets on one or more indices and understand the different types of joins (inner, left, right join).
+- Scale workflows (e.g., batch plotting, estimation of linear models, `lm()`)
+- Implement techniques to exemplary case studies often encountered in marketing research
+-->
 <!--
 , `for` loops and `lapply()`-->
+<!--
+## Prerequisites
+
+Ready to start? Here's what we recommend you do before going through this tutorial.
+
+* [Datacamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
+* [Datacamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+* [Datacamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+-->
 </div>
-<div id="prerequisites" class="section level2">
-<h2>Prerequisites</h2>
-<p>Ready to start? Here&#39;s what we recommend you do before going through
-this tutorial.</p>
-<ul>
-<li><a href="https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1">Datacamp
-Introduction to Tidyverse</a> (chapter 1 and 3)</li>
-<li><a href="https://datacamp.com/courses/cleaning-data-in-r">Datacamp
-Cleaning Data in R</a> (chapter 1 and 2)</li>
-<li><a href="https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1">Datacamp
-Joining Data with dplyr</a> (chapter 1 and 2)</li>
-</ul>
-<div id="create-a-new-r-project" class="section level3">
-<h3>Create a new R project</h3>
+</div>
+<div id="part-1-getting-started" class="section level1">
+<h1>Part 1: Getting Started</h1>
+<div id="create-a-new-r-project" class="section level2">
+<h2>Create a new R project</h2>
 <ol style="list-style-type: decimal">
 <li>Open RStudio and create a new project by clicking on
 <code>File</code> -&gt; <code>New Project</code> -&gt;
@@ -705,15 +641,15 @@ location of your choice.</li>
 pane</li>
 </ul>
 </div>
-<div id="download-the-data" class="section level3">
-<h3>Download the data</h3>
-<p>Click <a href="https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week4/tutorial/data/week4_data.zip">here</a>
+<div id="download-the-data" class="section level2">
+<h2>Download the data</h2>
+<p>Click <a href="https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/week4_data.zip">here</a>
 to manually download the dataset. Alternatively, run the following R
 code to download and unzip the file automatically:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># downloading and unzipping the data</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">&#39;week4_data.zip&#39;</span>)) {</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="st">&#39;https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week4/tutorial/data/week4_data.zip&#39;</span>, <span class="st">&#39;week4_data.zip&#39;</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">unzip</span>(<span class="st">&#39;week4_data.zip&#39;</span>, <span class="at">overwrite=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">&#39;downloaded_data.zip&#39;</span>)) {</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="st">&#39;https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/week4_data.zip&#39;</span>, <span class="st">&#39;downloaded_data.zip&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">unzip</span>(<span class="st">&#39;downloaded_data.zip&#39;</span>, <span class="at">overwrite=</span><span class="cn">TRUE</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  }</span></code></pre></div>
 <p>Now, load the data into R using <code>read_csv</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -729,8 +665,8 @@ directory → To source file location</strong>. Avoid using
 <code>setwd()</code> — hardcoding directories can cause problems!</li>
 </ul>
 </div>
-<div id="understanding-the-data" class="section level3">
-<h3>Understanding the Data</h3>
+<div id="understanding-the-data" class="section level2">
+<h2>Understanding the Data</h2>
 <p>Let&#39;s explore the data. It consists of four files, which vary in
 structure, unit of observation, etc. This is on purpose because then you
 can learn all the concepts required in this tutorial.</p>
@@ -749,8 +685,8 @@ observed and has the <code>value</code> 458352)</li>
 an artist was listed on on Spotify.</li>
 </ul>
 </div>
-<div id="now-its-your-turn-explore-the-data-yourself" class="section level3">
-<h3>Now it&#39;s your turn: Explore the data yourself!</h3>
+<div id="now-its-your-turn-explore-the-data-yourself" class="section level2">
+<h2>Now it&#39;s your turn: Explore the data yourself!</h2>
 <p>We can now explore the data using the strategies introduced in
 earlier tutorials.</p>
 <ol style="list-style-type: decimal">
@@ -775,32 +711,16 @@ columns (e.g., <code>summary(playlists$playlists)</code>).</li>
 <li>Character or factor columns are best inspected using the
 <code>table()</code> command. These will create frequency tables.</li>
 </ul>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># View the first rows of the datasets to get an overview</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">head</span>(streams)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">head</span>(socials)</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">head</span>(weather)</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="fu">head</span>(playlists)</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="fu">glimpse</span>(streams)</span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="fu">glimpse</span>(socials)</span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="fu">glimpse</span>(weather)</span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="fu">glimpse</span>(playlists)</span></code></pre></div>
 </div>
 </div>
-</div>
-</div>
-<div id="part-1-expanding-our-knowledge-of-r" class="section level1">
-<h1>Part 1: Expanding our knowledge of R</h1>
+<div id="part-2-expanding-our-knowledge-of-r" class="section level1">
+<h1>Part 2: Expanding our knowledge of R</h1>
 <p>In this section, we will deepen our understanding of key R functions
 that are essential for data engineering. We will focus on numerical
 functions, advanced string cleaning, and working with time-based data.
 Each concept will be demonstrated with examples from our datasets.</p>
 <div id="a-applying-base-r-functions-in-tidyverse" class="section level2">
-<h2>1A) Applying base R functions in <code>tidyverse</code></h2>
+<h2>2A) Applying base R functions in <code>tidyverse</code></h2>
 <p>Before diving into more advanced transformations, let’s start by
 applying <strong>base R functions</strong> inside <code>dplyr</code>
 operations. In <code>mutate()</code> and <code>summarize()</code>, you
@@ -814,18 +734,18 @@ function, like <code>sd()</code>, <code>range()</code>,
 <code>var()</code>, or even custom functions you define.</p>
 <div id="compute-summary-statistics-for-streaming-data" class="section level3">
 <h3>Compute summary statistics for streaming data</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># Compute basic statistics per artist</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  <span class="fu">group_by</span>(artist) <span class="sc">%&gt;%</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>    <span class="at">min_streams =</span> <span class="fu">min</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>    <span class="at">mean_streams =</span> <span class="fu">mean</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>    <span class="at">max_streams =</span> <span class="fu">max</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>    <span class="at">sd_streams =</span> <span class="fu">sd</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Standard deviation</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>    </span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># Compute basic statistics per artist</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="fu">group_by</span>(artist) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>    <span class="at">min_streams =</span> <span class="fu">min</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>    <span class="at">mean_streams =</span> <span class="fu">mean</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>    <span class="at">max_streams =</span> <span class="fu">max</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>    <span class="at">sd_streams =</span> <span class="fu">sd</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Standard deviation</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>    </span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 107 × 5
 ##    artist               min_streams mean_streams max_streams sd_streams
 ##    &lt;chr&gt;                      &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;
@@ -869,17 +789,17 @@ the order to descending. This is particularly useful when working with
 their daily streaming count</strong>.</p>
 <div id="example-rank-artists-by-streams-per-day" class="section level4">
 <h4>Example: Rank Artists by Streams Per Day</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co"># Rank artists within each day</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>    <span class="at">rank_streams =</span> <span class="fu">rank</span>(<span class="sc">-</span>streams)  <span class="co"># Higher streams = lower rank (1st place)</span></span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>   ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="fu">arrange</span>(date, rank_streams) <span class="sc">%&gt;%</span></span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>  <span class="fu">select</span>(date, artist, streams, rank_streams) <span class="sc">%&gt;%</span></span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co"># Rank artists within each day</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>    <span class="at">rank_streams =</span> <span class="fu">rank</span>(<span class="sc">-</span>streams)  <span class="co"># Higher streams = lower rank (1st place)</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>   ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>  <span class="fu">arrange</span>(date, rank_streams) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>  <span class="fu">select</span>(date, artist, streams, rank_streams) <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 4
 ## # Groups:   date [1]
 ##    date       artist            streams rank_streams
@@ -907,8 +827,8 @@ understand streaming trends by country.</p>
 <div id="example-create-a-trend-variable-estimate-a-linear-regression" class="section level4">
 <h4>Example: Create a trend variable &amp; estimate a linear
 regression</h4>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>streams <span class="ot">=</span> streams <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(artist) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(artist, date) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">trend =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">head</span>(streams,<span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>streams <span class="ot">=</span> streams <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(artist) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(artist, date) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">trend =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">head</span>(streams,<span class="dv">15</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 15 × 5
 ##    date       artist              country streams trend
 ##    &lt;date&gt;     &lt;chr&gt;               &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt;
@@ -927,9 +847,9 @@ regression</h4>
 ## 13 2024-01-04 10 Beats to Phoenix BE            0    13
 ## 14 2024-01-04 10 Beats to Phoenix DE          292    14
 ## 15 2024-01-04 10 Beats to Phoenix NL            0    15</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># overall trend</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(streams <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> trend, <span class="at">data =</span> streams)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># overall trend</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(streams <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> trend, <span class="at">data =</span> streams)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = streams ~ 1 + trend, data = streams)
@@ -949,9 +869,9 @@ regression</h4>
 ##   (31293 observations deleted due to missingness)
 ## Multiple R-squared:  0.01387,    Adjusted R-squared:  0.01386 
 ## F-statistic:  1470 on 1 and 104529 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># by country</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(streams <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> trend<span class="sc">*</span>country, <span class="at">data =</span> streams)</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># by country</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(streams <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> trend<span class="sc">*</span>country, <span class="at">data =</span> streams)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = streams ~ 1 + trend * country, data = streams)
@@ -1001,8 +921,8 @@ unique values in a column.</li>
 <h4>Example: Get a List of Unique Artists</h4>
 <p>Let’s start simple—getting a list of all the unique artists in our
 dataset.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>unique_artists <span class="ot">&lt;-</span> <span class="fu">unique</span>(streams<span class="sc">$</span>artist)  <span class="co"># Extract unique artist names</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">head</span>(unique_artists, <span class="dv">10</span>)  <span class="co"># Show a preview</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>unique_artists <span class="ot">&lt;-</span> <span class="fu">unique</span>(streams<span class="sc">$</span>artist)  <span class="co"># Extract unique artist names</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">head</span>(unique_artists, <span class="dv">10</span>)  <span class="co"># Show a preview</span></span></code></pre></div>
 <pre><code>##  [1] &quot;10 Beats to Phoenix&quot;  &quot;10 Notes to Wolves&quot;   &quot;30 Minutes to Mirage&quot;
 ##  [4] &quot;30 Minutes to Rebels&quot; &quot;30 Minutes to Saints&quot; &quot;30 Ways to Storm&quot;    
 ##  [7] &quot;40 Days to Rebels&quot;    &quot;40 Miles to Storm&quot;    &quot;60 Notes to Echo&quot;    
@@ -1014,8 +934,8 @@ statement.</p>
 <h4>Example: Count the Number of Unique Countries</h4>
 <p>Now, let&#39;s count how many different countries appear in our
 dataset:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_unique_countries =</span> <span class="fu">n_distinct</span>(country))</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_unique_countries =</span> <span class="fu">n_distinct</span>(country))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##   num_unique_countries
 ##                  &lt;int&gt;
@@ -1024,7 +944,7 @@ dataset:</p>
 </div>
 </div>
 <div id="b-advanced-cleaning-using-regular-expressions" class="section level2">
-<h2>1B) Advanced Cleaning: Using Regular Expressions</h2>
+<h2>2B) Advanced Cleaning: Using Regular Expressions</h2>
 <p>Regular expressions (<strong>regex</strong>) allow us to search for
 patterns in text, making it easier to clean and filter data. In R, we
 use:</p>
@@ -1082,10 +1002,10 @@ exists</strong> in a column. It returns <strong>TRUE/FALSE</strong>,
 making it useful for filtering data.</p>
 <div id="example-identify-artists-with-beat-in-their-name" class="section level4">
 <h4>Example: Identify artists with &quot;Beat&quot; in their name</h4>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Beat&quot;</span>, artist)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">select</span>(artist) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Beat&quot;</span>, artist)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">select</span>(artist) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 1
 ##   artist             
 ##   &lt;chr&gt;              
@@ -1094,10 +1014,10 @@ making it useful for filtering data.</p>
 </div>
 <div id="example-find-artists-whose-names-contain-numbers" class="section level4">
 <h4>Example: Find artists whose names contain numbers</h4>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;[0-9]&quot;</span>, artist)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="fu">select</span>(artist) <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;[0-9]&quot;</span>, artist)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>  <span class="fu">select</span>(artist) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 15 × 1
 ##    artist              
 ##    &lt;chr&gt;               
@@ -1119,10 +1039,10 @@ making it useful for filtering data.</p>
 </div>
 <div id="example-find-artists-starting-with-the-case-insensitive" class="section level4">
 <h4>Example: Find artists starting with &quot;The&quot; (case-insensitive)</h4>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;^The&quot;</span>, artist, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">select</span>(artist) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;^The&quot;</span>, artist, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>  <span class="fu">select</span>(artist) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 1
 ##   artist    
 ##   &lt;chr&gt;     
@@ -1132,18 +1052,18 @@ making it useful for filtering data.</p>
 </div>
 <div id="example-find-artists-ending-with-band" class="section level4">
 <h4>Example: Find artists ending with &quot;Band&quot;</h4>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Band$&quot;</span>, artist)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">select</span>(artist) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Band$&quot;</span>, artist)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>  <span class="fu">select</span>(artist) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 1
 ##   artist      
 ##   &lt;chr&gt;       
 ## 1 Riders Band 
 ## 2 Rockets Band
 ## 3 Wolves Band</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># alternative, using grep()</span></span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>streams <span class="sc">%&gt;%</span> <span class="fu">pull</span>(artist) <span class="sc">%&gt;%</span> <span class="fu">grep</span>(<span class="st">&quot;Band$&quot;</span>, ., <span class="at">value=</span>T) <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># alternative, using grep()</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>streams <span class="sc">%&gt;%</span> <span class="fu">pull</span>(artist) <span class="sc">%&gt;%</span> <span class="fu">grep</span>(<span class="st">&quot;Band$&quot;</span>, ., <span class="at">value=</span>T) <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Riders Band&quot;  &quot;Rockets Band&quot; &quot;Wolves Band&quot;</code></pre>
 </div>
 </div>
@@ -1153,8 +1073,8 @@ making it useful for filtering data.</p>
 patterns</strong>.</p>
 <div id="example-clean-up-spaces-in-artist-names-replace-with-nothing" class="section level4">
 <h4>Example: Clean up spaces in artist names (replace with nothing)</h4>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">artist_clean =</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;&quot;</span>, artist))</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">artist_clean =</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;&quot;</span>, artist))</span></code></pre></div>
 <pre><code>## # A tibble: 135,824 × 6
 ##    date       artist              country streams trend artist_clean    
 ##    &lt;date&gt;     &lt;chr&gt;               &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;           
@@ -1172,8 +1092,8 @@ patterns</strong>.</p>
 </div>
 <div id="example-remove-numbers-from-artist-names" class="section level4">
 <h4>Example: Remove numbers from artist names</h4>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">artist_clean =</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d&quot;</span>, <span class="st">&quot;&quot;</span>, artist))</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>streams <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">artist_clean =</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d&quot;</span>, <span class="st">&quot;&quot;</span>, artist))</span></code></pre></div>
 <pre><code>## # A tibble: 135,824 × 6
 ##    date       artist              country streams trend artist_clean       
 ##    &lt;date&gt;     &lt;chr&gt;               &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;              
@@ -1192,7 +1112,7 @@ patterns</strong>.</p>
 </div>
 </div>
 <div id="c-dealing-with-time" class="section level2">
-<h2>1C) Dealing with Time</h2>
+<h2>2C) Dealing with Time</h2>
 <p>Time-related data comes in many forms—years, months, days, hours,
 minutes, and seconds—each with its own quirks. In R, handling time
 efficiently requires careful attention to <strong>conversion,
@@ -1211,7 +1131,7 @@ zones, missing values, and irregular intervals)</strong></p>
 provides powerful tools for working with time in a structured and
 intuitive way. Let’s dive in!</p>
 <p>Tip: ensure you&#39;ve all these packages installed.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&#39;lubridate&#39;</span>,<span class="st">&#39;ISOweek&#39;</span>,<span class="st">&#39;zoo&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&#39;lubridate&#39;</span>,<span class="st">&#39;ISOweek&#39;</span>,<span class="st">&#39;zoo&#39;</span>))</span></code></pre></div>
 <div id="conversion-between-data-formats" class="section level3">
 <h3>Conversion between data formats</h3>
 <p>Working with dates and times in R can be tricky, especially when data
@@ -1226,14 +1146,14 @@ easier filtering, grouping, and aggregation—essential when analyzing
 trends over time, such as weekly sales or monthly user activity.</p>
 <div id="example-convert-a-string-to-a-date" class="section level4">
 <h4>Example: Convert a string to a date</h4>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>bad_dates <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;20250104&#39;</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>good_date <span class="ot">=</span> <span class="fu">as.Date</span>(bad_dates, <span class="at">format=</span><span class="st">&#39;%Y%m%d&#39;</span>) <span class="co"># using base R</span></span>
-<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a>good_date</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>bad_dates <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;20250104&#39;</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>good_date <span class="ot">=</span> <span class="fu">as.Date</span>(bad_dates, <span class="at">format=</span><span class="st">&#39;%Y%m%d&#39;</span>) <span class="co"># using base R</span></span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>good_date</span></code></pre></div>
 <pre><code>## [1] &quot;2025-01-04&quot;</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>good_date2 <span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(bad_dates) <span class="co"># alternative using lubridate</span></span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>good_date2</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>good_date2 <span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(bad_dates) <span class="co"># alternative using lubridate</span></span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>good_date2</span></code></pre></div>
 <pre><code>## [1] &quot;2025-01-04&quot;</code></pre>
 </div>
 </div>
@@ -1249,17 +1169,17 @@ the <strong>ISO 8601 standard</strong>, where weeks start on
 with at least four days in the new year. <code>ISOweek</code> also
 includes the year (<code>YYYY-Www</code>) and may be more appropriate
 when you need <strong>full weeks with exactly seven days</strong>.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a>    <span class="at">week =</span> <span class="fu">week</span>(date),</span>
-<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>    <span class="at">week2 =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek</span>(date),</span>
-<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">month</span>(date),</span>
-<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">year</span>(date)</span>
-<span id="cb37-9"><a href="#cb37-9" tabindex="-1"></a>  )</span>
-<span id="cb37-10"><a href="#cb37-10" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="#cb37-11" tabindex="-1"></a>streams <span class="sc">%&gt;%</span> <span class="fu">select</span>(date, week, week2, month, year) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a>    <span class="at">week =</span> <span class="fu">week</span>(date),</span>
+<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a>    <span class="at">week2 =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek</span>(date),</span>
+<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">month</span>(date),</span>
+<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">year</span>(date)</span>
+<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a>  )</span>
+<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" tabindex="-1"></a>streams <span class="sc">%&gt;%</span> <span class="fu">select</span>(date, week, week2, month, year) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 5
 ##    date        week week2    month  year
 ##    &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
@@ -1291,12 +1211,12 @@ of data to process</strong>, and match real-world reporting, like weekly
 sales reports or monthly budgets. The best level of aggregation depends
 on the question you’re trying to answer and how complete your data
 is.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>monthly_streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, artist) <span class="sc">%&gt;%</span></span>
-<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_streams =</span> <span class="fu">mean</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>monthly_streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, artist) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_streams =</span> <span class="fu">mean</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;year&#39;, &#39;month&#39;. You can override using the
 ## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>monthly_streams <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>monthly_streams <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 4
 ## # Groups:   year, month [1]
 ##     year month artist               total_streams
@@ -1328,11 +1248,11 @@ the <strong>last observed value</strong>. For example, on
 <strong>2025-01-03</strong>, the price is missing, but since it was
 <strong>1.1</strong> on <strong>2025-01-02</strong>, we assume it stayed
 the same.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>tmp_dates<span class="ot">=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="fu">as.Date</span>(<span class="st">&#39;2025-01-01&#39;</span>), <span class="at">length.out=</span><span class="dv">10</span>, <span class="at">by=</span><span class="st">&#39;1 day&#39;</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>sim_data<span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">date=</span>tmp_dates, <span class="at">price =</span> <span class="fu">c</span>(<span class="fl">1.20</span>,<span class="fl">1.10</span>,<span class="cn">NA</span>,<span class="fl">1.10</span>,<span class="fl">1.5</span>,<span class="fl">1.5</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">1.4</span>, <span class="fl">1.3</span>),</span>
-<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>                 <span class="at">playlists =</span> <span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">20</span>,<span class="cn">NA</span>,<span class="dv">10</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
-<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a>sim_data</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>tmp_dates<span class="ot">=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="fu">as.Date</span>(<span class="st">&#39;2025-01-01&#39;</span>), <span class="at">length.out=</span><span class="dv">10</span>, <span class="at">by=</span><span class="st">&#39;1 day&#39;</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a>sim_data<span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">date=</span>tmp_dates, <span class="at">price =</span> <span class="fu">c</span>(<span class="fl">1.20</span>,<span class="fl">1.10</span>,<span class="cn">NA</span>,<span class="fl">1.10</span>,<span class="fl">1.5</span>,<span class="fl">1.5</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">1.4</span>, <span class="fl">1.3</span>),</span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a>                 <span class="at">playlists =</span> <span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">20</span>,<span class="cn">NA</span>,<span class="dv">10</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a>sim_data</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 3
 ##    date       price playlists
 ##    &lt;date&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -1349,14 +1269,14 @@ the same.</p>
 <div id="example-fill-missing-prices-using-last-value-carried-forward-na.locf" class="section level4">
 <h4>Example: Fill missing prices using Last Value Carried Forward
 (<code>na.locf</code>)</h4>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;zoo&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     as.Date, as.Date.numeric</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>sim_data <span class="ot">=</span> sim_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prices_imputed =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(price, <span class="at">na.rm=</span>F))</span>
-<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>sim_data</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>sim_data <span class="ot">=</span> sim_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prices_imputed =</span> zoo<span class="sc">::</span><span class="fu">na.locf</span>(price, <span class="at">na.rm=</span>F))</span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>sim_data</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 4
 ##    date       price playlists prices_imputed
 ##    &lt;date&gt;     &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;
@@ -1380,9 +1300,9 @@ change over time. Instead of leaving <strong>2025-01-04</strong> blank,
 we can calculate its value as the midpoint between <strong>2025-01-03
 (10)</strong> and <strong>2025-01-07 (30)</strong>, which gives
 <strong>15</strong>.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
-<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a>sim_data <span class="ot">=</span> sim_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">playlists_imputed =</span> zoo<span class="sc">::</span><span class="fu">na.approx</span>(playlists, <span class="at">na.rm=</span>F))</span>
-<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a>sim_data</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>sim_data <span class="ot">=</span> sim_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">playlists_imputed =</span> zoo<span class="sc">::</span><span class="fu">na.approx</span>(playlists, <span class="at">na.rm=</span>F))</span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a>sim_data</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 5
 ##    date       price playlists prices_imputed playlists_imputed
 ##    &lt;date&gt;     &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;             &lt;dbl&gt;
@@ -1409,12 +1329,12 @@ to completely <strong>nonsensical data</strong>. At the same time,
 operations might still be applied within each group, causing unexpected
 results. Grouping is powerful, but if used carelessly, it can seriously
 mess up your data!</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
-<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a></span>
-<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a><span class="co"># This snippet fills these observations, by carrying the &quot;last observation (that&#39;s not NA) forward&quot;</span></span>
-<span id="cb52-4"><a href="#cb52-4" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
-<span id="cb52-5"><a href="#cb52-5" tabindex="-1"></a>  <span class="fu">group_by</span>(artist, country) <span class="sc">%&gt;%</span></span>
-<span id="cb52-6"><a href="#cb52-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">streams_filled =</span> <span class="fu">na.approx</span>(streams, <span class="at">na.rm =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" tabindex="-1"></a><span class="co"># This snippet fills these observations, by carrying the &quot;last observation (that&#39;s not NA) forward&quot;</span></span>
+<span id="cb51-4"><a href="#cb51-4" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
+<span id="cb51-5"><a href="#cb51-5" tabindex="-1"></a>  <span class="fu">group_by</span>(artist, country) <span class="sc">%&gt;%</span></span>
+<span id="cb51-6"><a href="#cb51-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">streams_filled =</span> <span class="fu">na.approx</span>(streams, <span class="at">na.rm =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
 </div>
 <div id="lead-and-lags-changes" class="section level4">
 <h4>Lead and lags, changes</h4>
@@ -1430,15 +1350,15 @@ next example, we’ll use lags to track how streams change over time.</p>
 </div>
 <div id="example-create-lags-and-compute-daily-change-in-streams" class="section level4">
 <h4>Example: Create lags and compute daily change in streams</h4>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
-<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>  <span class="fu">group_by</span>(artist, country) <span class="sc">%&gt;%</span></span>
-<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb53-4"><a href="#cb53-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb53-5"><a href="#cb53-5" tabindex="-1"></a>    <span class="at">lag_streams =</span> <span class="fu">lag</span>(streams_filled),</span>
-<span id="cb53-6"><a href="#cb53-6" tabindex="-1"></a>    <span class="at">daily_change =</span> streams_filled <span class="sc">-</span> lag_streams</span>
-<span id="cb53-7"><a href="#cb53-7" tabindex="-1"></a>  )</span>
-<span id="cb53-8"><a href="#cb53-8" tabindex="-1"></a></span>
-<span id="cb53-9"><a href="#cb53-9" tabindex="-1"></a>streams <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(artist,country,date) <span class="sc">%&gt;%</span> <span class="fu">select</span>(artist, country, date, streams, lag_streams, daily_change) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a>  <span class="fu">group_by</span>(artist, country) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb52-4"><a href="#cb52-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb52-5"><a href="#cb52-5" tabindex="-1"></a>    <span class="at">lag_streams =</span> <span class="fu">lag</span>(streams_filled),</span>
+<span id="cb52-6"><a href="#cb52-6" tabindex="-1"></a>    <span class="at">daily_change =</span> streams_filled <span class="sc">-</span> lag_streams</span>
+<span id="cb52-7"><a href="#cb52-7" tabindex="-1"></a>  )</span>
+<span id="cb52-8"><a href="#cb52-8" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="#cb52-9" tabindex="-1"></a>streams <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(artist,country,date) <span class="sc">%&gt;%</span> <span class="fu">select</span>(artist, country, date, streams, lag_streams, daily_change) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 6
 ## # Groups:   artist, country [1]
 ##    artist              country date       streams lag_streams daily_change
@@ -1457,7 +1377,7 @@ next example, we’ll use lags to track how streams change over time.</p>
 </div>
 </div>
 <div id="d-pivoting-data-reshaping-from-long-to-wide-and-wide-to-long" class="section level2">
-<h2>1D) Pivoting Data: Reshaping from Long to Wide and Wide to Long</h2>
+<h2>2D) Pivoting Data: Reshaping from Long to Wide and Wide to Long</h2>
 <p>Data is often stored in <strong>different formats</strong>, depending
 on the analysis needs. Sometimes, we need to <strong>widen</strong> a
 dataset to make it easier to read, and other times, we need to
@@ -1538,10 +1458,10 @@ structured data.</p>
 country</strong> in long format. We want to convert it into wide format,
 with one row per <code>date</code> and separate columns for each
 country’s temperature.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>long_weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span></span>
-<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">ends_with</span>(<span class="st">&#39;temp&#39;</span>), <span class="at">names_to =</span> <span class="st">&quot;name&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;temperature&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">separate</span>(name, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;country&#39;</span>,<span class="st">&#39;variable&#39;</span>), <span class="at">sep=</span><span class="st">&#39;_&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(date, country, temperature)</span>
-<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" tabindex="-1"></a><span class="fu">head</span>(long_weather)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>long_weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">ends_with</span>(<span class="st">&#39;temp&#39;</span>), <span class="at">names_to =</span> <span class="st">&quot;name&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;temperature&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">separate</span>(name, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;country&#39;</span>,<span class="st">&#39;variable&#39;</span>), <span class="at">sep=</span><span class="st">&#39;_&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(date, country, temperature)</span>
+<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" tabindex="-1"></a><span class="fu">head</span>(long_weather)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   date       country temperature
 ##   &lt;date&gt;     &lt;chr&gt;         &lt;dbl&gt;
@@ -1641,10 +1561,10 @@ temperature as its own column.</li>
 modeling, or visualizations.</p>
 <div id="example-make-long_weather-wide-again" class="section level4">
 <h4>Example: Make <code>long_weather</code> wide again</h4>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>wide_weather <span class="ot">&lt;-</span> long_weather <span class="sc">%&gt;%</span> </span>
-<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&#39;country&#39;</span>, <span class="at">values_from =</span> <span class="st">&#39;temperature&#39;</span>)</span>
-<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="#cb57-4" tabindex="-1"></a><span class="fu">head</span>(wide_weather)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a>wide_weather <span class="ot">&lt;-</span> long_weather <span class="sc">%&gt;%</span> </span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&#39;country&#39;</span>, <span class="at">values_from =</span> <span class="st">&#39;temperature&#39;</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" tabindex="-1"></a><span class="fu">head</span>(wide_weather)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##   date          DE    BE    NL    US
 ##   &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1716,7 +1636,7 @@ Pivoting Cheatsheet</a></p>
 </div>
 </div>
 <div id="e-merging-data-combining-multiple-data-sources" class="section level2">
-<h2>1E) Merging Data: Combining Multiple Data Sources</h2>
+<h2>2E) Merging Data: Combining Multiple Data Sources</h2>
 <p>In real-world analysis, data is often stored in separate tables. To
 get meaningful insights, we need to merge datasets based on shared keys.
 The <code>dplyr</code> package provides efficient functions for this,
@@ -1792,16 +1712,16 @@ it may introduce duplicate rows.</p>
 <h4>Example: Left Join (Recommended)</h4>
 <p>Merging <code>streams</code> with <code>playlists</code>, keeping all
 rows from <code>streams</code>.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a><span class="co"># For this exercise, let&#39;s add a week column that we can merge on</span></span>
-<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week=</span>ISOweek<span class="sc">::</span><span class="fu">ISOweek</span>(date))</span>
-<span id="cb59-3"><a href="#cb59-3" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="#cb59-4" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
-<span id="cb59-5"><a href="#cb59-5" tabindex="-1"></a>  <span class="fu">left_join</span>(playlists, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;artist&quot;</span> <span class="ot">=</span> <span class="st">&quot;artist&quot;</span>, </span>
-<span id="cb59-6"><a href="#cb59-6" tabindex="-1"></a>                              <span class="st">&quot;week&quot;</span><span class="ot">=</span><span class="st">&quot;iso_week&quot;</span>))  <span class="co"># Keeps all stream data, adds playlist info.</span></span>
-<span id="cb59-7"><a href="#cb59-7" tabindex="-1"></a></span>
-<span id="cb59-8"><a href="#cb59-8" tabindex="-1"></a><span class="co"># Note: here we specify that &quot;week&quot; in the LEFT data frame (streams) is matched on the &quot;iso_week&quot; column in the RIGHT data frame (playlists). </span></span>
-<span id="cb59-9"><a href="#cb59-9" tabindex="-1"></a></span>
-<span id="cb59-10"><a href="#cb59-10" tabindex="-1"></a><span class="fu">head</span>(merged_data)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="co"># For this exercise, let&#39;s add a week column that we can merge on</span></span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week=</span>ISOweek<span class="sc">::</span><span class="fu">ISOweek</span>(date))</span>
+<span id="cb58-3"><a href="#cb58-3" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
+<span id="cb58-5"><a href="#cb58-5" tabindex="-1"></a>  <span class="fu">left_join</span>(playlists, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;artist&quot;</span> <span class="ot">=</span> <span class="st">&quot;artist&quot;</span>, </span>
+<span id="cb58-6"><a href="#cb58-6" tabindex="-1"></a>                              <span class="st">&quot;week&quot;</span><span class="ot">=</span><span class="st">&quot;iso_week&quot;</span>))  <span class="co"># Keeps all stream data, adds playlist info.</span></span>
+<span id="cb58-7"><a href="#cb58-7" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" tabindex="-1"></a><span class="co"># Note: here we specify that &quot;week&quot; in the LEFT data frame (streams) is matched on the &quot;iso_week&quot; column in the RIGHT data frame (playlists). </span></span>
+<span id="cb58-9"><a href="#cb58-9" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="#cb58-10" tabindex="-1"></a><span class="fu">head</span>(merged_data)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
 ## # Groups:   artist, country [6]
 ##   date       artist country streams trend week  week2 month  year streams_filled
@@ -1828,15 +1748,15 @@ streaming records.</li>
 <h4>Example: Inner Join (Only Matching Rows)</h4>
 <p>Keeps only rows where a match exists in both <code>streams</code> and
 <code>socials</code>.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>tiktok_followers <span class="ot">=</span> socials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(platform<span class="sc">==</span><span class="st">&#39;TikTok&#39;</span>  <span class="sc">&amp;</span> metric <span class="sc">==</span> <span class="st">&#39;followers&#39;</span>)</span>
-<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
-<span id="cb61-4"><a href="#cb61-4" tabindex="-1"></a>  <span class="fu">inner_join</span>(tiktok_followers, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;date&quot;</span>, <span class="st">&quot;artist&quot;</span>))  <span class="co"># Match by both columns</span></span>
-<span id="cb61-5"><a href="#cb61-5" tabindex="-1"></a></span>
-<span id="cb61-6"><a href="#cb61-6" tabindex="-1"></a><span class="co"># rename value column</span></span>
-<span id="cb61-7"><a href="#cb61-7" tabindex="-1"></a>merged_data <span class="ot">=</span> merged_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">tiktok_followers =</span> value) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>platform, <span class="sc">-</span>metric, <span class="sc">-</span>value)</span>
-<span id="cb61-8"><a href="#cb61-8" tabindex="-1"></a></span>
-<span id="cb61-9"><a href="#cb61-9" tabindex="-1"></a><span class="fu">head</span>(merged_data)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>tiktok_followers <span class="ot">=</span> socials <span class="sc">%&gt;%</span> <span class="fu">filter</span>(platform<span class="sc">==</span><span class="st">&#39;TikTok&#39;</span>  <span class="sc">&amp;</span> metric <span class="sc">==</span> <span class="st">&#39;followers&#39;</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
+<span id="cb60-4"><a href="#cb60-4" tabindex="-1"></a>  <span class="fu">inner_join</span>(tiktok_followers, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;date&quot;</span>, <span class="st">&quot;artist&quot;</span>))  <span class="co"># Match by both columns</span></span>
+<span id="cb60-5"><a href="#cb60-5" tabindex="-1"></a></span>
+<span id="cb60-6"><a href="#cb60-6" tabindex="-1"></a><span class="co"># rename value column</span></span>
+<span id="cb60-7"><a href="#cb60-7" tabindex="-1"></a>merged_data <span class="ot">=</span> merged_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">tiktok_followers =</span> value) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>platform, <span class="sc">-</span>metric, <span class="sc">-</span>value)</span>
+<span id="cb60-8"><a href="#cb60-8" tabindex="-1"></a></span>
+<span id="cb60-9"><a href="#cb60-9" tabindex="-1"></a><span class="fu">head</span>(merged_data)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
 ## # Groups:   artist, country [6]
 ##   date       artist country streams trend week  week2 month  year streams_filled
@@ -1876,8 +1796,8 @@ the test with a <strong>real-world challenge</strong>—one that reflects
 the types of problems you’d face in data analysis.</p>
 </div>
 </div>
-<div id="part-2-case-study-and-exercises" class="section level1">
-<h1>Part 2: Case study and Exercises</h1>
+<div id="part-3-case-study-and-exercises" class="section level1">
+<h1>Part 3: Case study and Exercises</h1>
 <p>Before any meaningful analysis can happen, data needs to be
 <strong>cleaned, structured, and prepared</strong>—a process that often
 takes up more time than the actual modeling. In real-world marketing
@@ -1921,53 +1841,6 @@ organized.<br />
 <li>Ensure all datasets are properly read into R and inspected for
 missing values.</li>
 </ul>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a></span>
-<span id="cb63-3"><a href="#cb63-3" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb63-4"><a href="#cb63-4" tabindex="-1"></a>streams <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;streams.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 135824 Columns: 4
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr  (2): artist, country
-## dbl  (1): streams
-## date (1): date
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;weather.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 365 Columns: 9
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## dbl  (8): DE_temp, BE_temp, NL_temp, US_temp, DE_sun, BE_sun, NL_sun, US_sun
-## date (1): date
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a>socials <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;socials.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 267072 Columns: 5
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr  (3): artist, platform, metric
-## dbl  (1): value
-## date (1): date
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>playlists <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;playlists.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 4494 Columns: 3
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (2): iso_week, artist
-## dbl (1): playlists
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="co"># No transformation or output generated so far... (i.e., we only have setup and input)</span></span></code></pre></div>
-</div>
 </div>
 <div id="exercise-2-aggregate-streams-to-the-weekly-level-iso-weeks" class="section level2">
 <h2>Exercise 2: Aggregate Streams to the Weekly Level (ISO Weeks)</h2>
@@ -1981,38 +1854,12 @@ in a week are missing).</p>
 complete data. In case you want to still measure &quot;total&quot; streams, you
 could also take the <code>mean()*7</code>.</li>
 </ul>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb72-2"><a href="#cb72-2" tabindex="-1"></a></span>
-<span id="cb72-3"><a href="#cb72-3" tabindex="-1"></a>streams_aggregated <span class="ot">&lt;-</span> streams <span class="sc">%&gt;%</span></span>
-<span id="cb72-4"><a href="#cb72-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek</span>(date)) <span class="sc">%&gt;%</span></span>
-<span id="cb72-5"><a href="#cb72-5" tabindex="-1"></a>  <span class="fu">group_by</span>(artist, country, week) <span class="sc">%&gt;%</span></span>
-<span id="cb72-6"><a href="#cb72-6" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb72-7"><a href="#cb72-7" tabindex="-1"></a>    <span class="at">weekly_streams =</span> <span class="dv">7</span><span class="sc">*</span><span class="fu">mean</span>(streams, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># or use mean()</span></span>
-<span id="cb72-8"><a href="#cb72-8" tabindex="-1"></a>  )</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;artist&#39;, &#39;country&#39;. You can override using
-## the `.groups` argument.</code></pre>
-</div>
 </div>
 <div id="exercise-3-create-a-trend-variable" class="section level2">
 <h2>Exercise 3: Create a Trend Variable</h2>
 <p>Add a <strong>trend variable</strong> that increases from 1 (for the
 first week) to the last. We can later use this variable in a regression
 analysis.</p>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" tabindex="-1"></a>streams_aggregated <span class="ot">&lt;-</span> streams_aggregated <span class="sc">%&gt;%</span></span>
-<span id="cb74-2"><a href="#cb74-2" tabindex="-1"></a>  <span class="fu">group_by</span>(artist,country) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(artist, country, week) <span class="sc">%&gt;%</span></span>
-<span id="cb74-3"><a href="#cb74-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trend =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
-<span id="cb74-4"><a href="#cb74-4" tabindex="-1"></a></span>
-<span id="cb74-5"><a href="#cb74-5" tabindex="-1"></a><span class="co"># Import: group by artist and country; we can then generate row numbers for every day.</span></span>
-<span id="cb74-6"><a href="#cb74-6" tabindex="-1"></a><span class="co"># I have built in a safeguard so that the data will be ordered by week (because, if it&#39;s not for some reason, the trend variable will be off).</span></span></code></pre></div>
-</div>
 </div>
 <div id="exercise-4-create-a-complete-data-grid" class="section level2">
 <h2>Exercise 4: Create a Complete Data Grid</h2>
@@ -2025,31 +1872,12 @@ of artists, countries and dates. Check R&#39;s help to see how the command
 works (we haven&#39;t covered it in the tutorial so far). Just type
 <code>?expand.grid</code> on your console.</li>
 </ul>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a>all_weeks <span class="ot">&lt;-</span> <span class="fu">unique</span>(streams_aggregated<span class="sc">$</span>week)</span>
-<span id="cb75-2"><a href="#cb75-2" tabindex="-1"></a>all_artists <span class="ot">&lt;-</span> <span class="fu">unique</span>(streams_aggregated<span class="sc">$</span>artist)</span>
-<span id="cb75-3"><a href="#cb75-3" tabindex="-1"></a>all_countries <span class="ot">&lt;-</span> <span class="fu">unique</span>(streams_aggregated<span class="sc">$</span>country)</span>
-<span id="cb75-4"><a href="#cb75-4" tabindex="-1"></a></span>
-<span id="cb75-5"><a href="#cb75-5" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">artist =</span> all_artists, <span class="at">country =</span> all_countries, <span class="at">week =</span> all_weeks)</span>
-<span id="cb75-6"><a href="#cb75-6" tabindex="-1"></a><span class="fu">dim</span>(complete_data) <span class="co"># more than 20k rows!</span></span></code></pre></div>
-<pre><code>## [1] 22684     3</code></pre>
-</div>
 </div>
 <div id="exercise-5-merge-streams-data-into-the-complete-grid-complete_data" class="section level2">
 <h2>Exercise 5: Merge Streams Data into the Complete Grid
 (<code>complete_data</code>)</h2>
 <p>Join the aggregated streams data with the <strong>complete
 dataset</strong> from Exercise 4.</p>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span></span>
-<span id="cb77-2"><a href="#cb77-2" tabindex="-1"></a>  <span class="fu">left_join</span>(streams_aggregated, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;artist&quot;</span>, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;week&quot;</span>))</span></code></pre></div>
-</div>
 </div>
 <div id="exercise-6-merge-weather-and-social-media-data" class="section level2">
 <h2>Exercise 6: Merge Weather and Social Media Data</h2>
@@ -2070,44 +1898,6 @@ Solutions
 <li>Merge!</li>
 </ul></li>
 </ul>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" tabindex="-1"></a><span class="co"># Reshape weather data (long format)</span></span>
-<span id="cb78-2"><a href="#cb78-2" tabindex="-1"></a>weather_long <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span></span>
-<span id="cb78-3"><a href="#cb78-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>date, <span class="at">names_to =</span> <span class="st">&quot;country&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb78-4"><a href="#cb78-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek</span>(date))</span>
-<span id="cb78-5"><a href="#cb78-5" tabindex="-1"></a></span>
-<span id="cb78-6"><a href="#cb78-6" tabindex="-1"></a><span class="co"># Aggregate to weekly level</span></span>
-<span id="cb78-7"><a href="#cb78-7" tabindex="-1"></a>weather_long_aggregated <span class="ot">&lt;-</span> weather_long <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(week, country) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">value=</span><span class="fu">mean</span>(value,<span class="at">na.rm=</span>T))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;week&#39;. You can override using the
-## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a><span class="co"># Separate country and measures into columns</span></span>
-<span id="cb80-2"><a href="#cb80-2" tabindex="-1"></a>weather_long_aggregated <span class="ot">=</span> weather_long_aggregated <span class="sc">%&gt;%</span> <span class="fu">separate</span>(country, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;country&#39;</span>,<span class="st">&#39;measure&#39;</span>), <span class="at">sep=</span><span class="st">&#39;_&#39;</span>, <span class="at">convert=</span>T)</span>
-<span id="cb80-3"><a href="#cb80-3" tabindex="-1"></a></span>
-<span id="cb80-4"><a href="#cb80-4" tabindex="-1"></a><span class="co"># Turn into wide again for temp &amp; sun hours</span></span>
-<span id="cb80-5"><a href="#cb80-5" tabindex="-1"></a>weather_long_wide <span class="ot">=</span> weather_long_aggregated <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">id_cols=</span><span class="fu">c</span>(<span class="st">&#39;week&#39;</span>,<span class="st">&#39;country&#39;</span>), <span class="at">names_from=</span><span class="st">&#39;measure&#39;</span>, <span class="at">values_from=</span><span class="st">&#39;value&#39;</span>)</span>
-<span id="cb80-6"><a href="#cb80-6" tabindex="-1"></a></span>
-<span id="cb80-7"><a href="#cb80-7" tabindex="-1"></a><span class="co"># Merge weather data</span></span>
-<span id="cb80-8"><a href="#cb80-8" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span></span>
-<span id="cb80-9"><a href="#cb80-9" tabindex="-1"></a>  <span class="fu">left_join</span>(weather_long_wide, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;week&quot;</span>))</span>
-<span id="cb80-10"><a href="#cb80-10" tabindex="-1"></a></span>
-<span id="cb80-11"><a href="#cb80-11" tabindex="-1"></a><span class="co"># Add ISO week to socials data</span></span>
-<span id="cb80-12"><a href="#cb80-12" tabindex="-1"></a>socials <span class="ot">&lt;-</span> socials <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week=</span>ISOweek<span class="sc">::</span><span class="fu">ISOweek</span>(date))</span>
-<span id="cb80-13"><a href="#cb80-13" tabindex="-1"></a></span>
-<span id="cb80-14"><a href="#cb80-14" tabindex="-1"></a><span class="co"># Aggregate to weekly level</span></span>
-<span id="cb80-15"><a href="#cb80-15" tabindex="-1"></a>socials_aggregated <span class="ot">&lt;-</span> socials <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(week, artist, platform, metric) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">value=</span><span class="fu">mean</span>(value,<span class="at">na.rm=</span>T))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;week&#39;, &#39;artist&#39;, &#39;platform&#39;. You can
-## override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a><span class="co"># Reshape social media data (wide format)</span></span>
-<span id="cb82-2"><a href="#cb82-2" tabindex="-1"></a>socials_wide <span class="ot">&lt;-</span> socials_aggregated <span class="sc">%&gt;%</span></span>
-<span id="cb82-3"><a href="#cb82-3" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(<span class="st">&#39;platform&#39;</span>, <span class="st">&#39;metric&#39;</span>), <span class="at">values_from =</span> <span class="st">&#39;value&#39;</span>)</span>
-<span id="cb82-4"><a href="#cb82-4" tabindex="-1"></a></span>
-<span id="cb82-5"><a href="#cb82-5" tabindex="-1"></a><span class="co"># Merge social media</span></span>
-<span id="cb82-6"><a href="#cb82-6" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span></span>
-<span id="cb82-7"><a href="#cb82-7" tabindex="-1"></a>  <span class="fu">left_join</span>(socials_wide, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;artist&quot;</span>, <span class="st">&quot;week&quot;</span>))</span></code></pre></div>
-</div>
 </div>
 <div id="exercise-7-handle-missing-data" class="section level2">
 <h2>Exercise 7 Handle Missing Data</h2>
@@ -2124,41 +1914,6 @@ Solutions
 <li><code>X_comments</code>: <code>na.approx()</code></li>
 <li><code>X_followers</code>: <code>na.approx()</code></li>
 </ul>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" tabindex="-1"></a>complete_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(artist, country) <span class="sc">%&gt;%</span></span>
-<span id="cb83-2"><a href="#cb83-2" tabindex="-1"></a>  <span class="fu">arrange</span>(artist, country, week) <span class="sc">%&gt;%</span></span>
-<span id="cb83-3"><a href="#cb83-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sun =</span> <span class="fu">na.locf</span>(sun, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-4"><a href="#cb83-4" tabindex="-1"></a>         <span class="at">temp =</span> <span class="fu">na.locf</span>(temp, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-5"><a href="#cb83-5" tabindex="-1"></a>         <span class="at">Instagram_comments =</span> <span class="fu">na.approx</span>(Instagram_comments, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-6"><a href="#cb83-6" tabindex="-1"></a>         <span class="at">Instagram_followers =</span> <span class="fu">na.approx</span>(Instagram_followers, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-7"><a href="#cb83-7" tabindex="-1"></a>         <span class="at">Snapchat_comments =</span> <span class="fu">na.approx</span>(Snapchat_comments, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-8"><a href="#cb83-8" tabindex="-1"></a>         <span class="at">Snapchat_followers =</span> <span class="fu">na.approx</span>(Snapchat_followers, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-9"><a href="#cb83-9" tabindex="-1"></a>         <span class="at">TikTok_comments =</span> <span class="fu">na.approx</span>(TikTok_comments, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-10"><a href="#cb83-10" tabindex="-1"></a>         <span class="at">TikTok_followers =</span> <span class="fu">na.approx</span>(TikTok_followers, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-11"><a href="#cb83-11" tabindex="-1"></a>         <span class="at">X_comments =</span> <span class="fu">na.approx</span>(X_comments, <span class="at">na.rm=</span>F),</span>
-<span id="cb83-12"><a href="#cb83-12" tabindex="-1"></a>         <span class="at">X_followers =</span> <span class="fu">na.approx</span>(X_followers, <span class="at">na.rm=</span>F)) <span class="sc">%&gt;%</span></span>
-<span id="cb83-13"><a href="#cb83-13" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 22,684 × 15
-##    artist      country week  weekly_streams trend   sun  temp Instagram_comments
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;              &lt;dbl&gt;
-##  1 10 Beats t… BE      2024…         23582.     1  5.87  12.6            268948.
-##  2 10 Beats t… BE      2024…         18361      2  5.82  12.7            272486.
-##  3 10 Beats t… BE      2024…         12335.     3  6.72  16.3            276559.
-##  4 10 Beats t… BE      2024…         18779.     4  6.43  16.8            280275.
-##  5 10 Beats t… BE      2024…         11993.     5  7.29  17.5            284042.
-##  6 10 Beats t… BE      2024…         12023.     6  6.95  17.4            287862 
-##  7 10 Beats t… BE      2024…         17969      7  6.77  17.5            291993 
-##  8 10 Beats t… BE      2024…         53596.     8  7.26  18.9            296186.
-##  9 10 Beats t… BE      2024…         20325.     9  7.26  20.0            300070 
-## 10 10 Beats t… BE      2024…         11753     10  7.34  20.8            304335.
-## # ℹ 22,674 more rows
-## # ℹ 7 more variables: Instagram_followers &lt;dbl&gt;, Snapchat_comments &lt;dbl&gt;,
-## #   Snapchat_followers &lt;dbl&gt;, TikTok_comments &lt;dbl&gt;, TikTok_followers &lt;dbl&gt;,
-## #   X_comments &lt;dbl&gt;, X_followers &lt;dbl&gt;</code></pre>
-</div>
 <hr />
 </div>
 <div id="exercise-8-scaling-up-i-generate-stream-plots-for-multiple-artists" class="section level2">
@@ -2168,40 +1923,18 @@ Artists</h2>
 save them using <code>ggsave()</code>. Use facet plots
 (<code>facet_wrap()</code>, see week 1) to also plot streams by
 different countries.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" tabindex="-1"></a><span class="co"># starting code</span></span>
-<span id="cb85-2"><a href="#cb85-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb85-3"><a href="#cb85-3" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;plots&#39;</span>)</span>
-<span id="cb85-4"><a href="#cb85-4" tabindex="-1"></a></span>
-<span id="cb85-5"><a href="#cb85-5" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week_start =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek2date</span>(<span class="fu">paste0</span>(week, <span class="st">&#39;-1&#39;</span>)))</span>
-<span id="cb85-6"><a href="#cb85-6" tabindex="-1"></a></span>
-<span id="cb85-7"><a href="#cb85-7" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(streams<span class="sc">$</span>artist)</span>
-<span id="cb85-8"><a href="#cb85-8" tabindex="-1"></a><span class="cf">for</span> (one_artist <span class="cf">in</span> artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]) {</span>
-<span id="cb85-9"><a href="#cb85-9" tabindex="-1"></a>  plot_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist <span class="sc">==</span> one_artist)</span>
-<span id="cb85-10"><a href="#cb85-10" tabindex="-1"></a>  </span>
-<span id="cb85-11"><a href="#cb85-11" tabindex="-1"></a>  <span class="co"># ggplot code here</span></span>
-<span id="cb85-12"><a href="#cb85-12" tabindex="-1"></a>}</span></code></pre></div>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb86-2"><a href="#cb86-2" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;plots&#39;</span>)</span>
-<span id="cb86-3"><a href="#cb86-3" tabindex="-1"></a></span>
-<span id="cb86-4"><a href="#cb86-4" tabindex="-1"></a>artists <span class="ot">&lt;-</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
-<span id="cb86-5"><a href="#cb86-5" tabindex="-1"></a></span>
-<span id="cb86-6"><a href="#cb86-6" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week_start =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek2date</span>(<span class="fu">paste0</span>(week, <span class="st">&#39;-1&#39;</span>)))</span>
-<span id="cb86-7"><a href="#cb86-7" tabindex="-1"></a></span>
-<span id="cb86-8"><a href="#cb86-8" tabindex="-1"></a><span class="cf">for</span> (one_artist <span class="cf">in</span> artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]) {</span>
-<span id="cb86-9"><a href="#cb86-9" tabindex="-1"></a>  plot_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist <span class="sc">==</span> one_artist)</span>
-<span id="cb86-10"><a href="#cb86-10" tabindex="-1"></a>  </span>
-<span id="cb86-11"><a href="#cb86-11" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_data, <span class="fu">aes</span>(<span class="at">x =</span> week_start, <span class="at">y =</span> weekly_streams)) <span class="sc">+</span></span>
-<span id="cb86-12"><a href="#cb86-12" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb86-13"><a href="#cb86-13" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span></span>
-<span id="cb86-14"><a href="#cb86-14" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;Streams for&quot;</span>, one_artist))</span>
-<span id="cb86-15"><a href="#cb86-15" tabindex="-1"></a></span>
-<span id="cb86-16"><a href="#cb86-16" tabindex="-1"></a>  <span class="fu">ggsave</span>(<span class="fu">paste0</span>(<span class="st">&quot;plots/&quot;</span>, one_artist, <span class="st">&quot;.png&quot;</span>), <span class="at">plot =</span> p, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
-<span id="cb86-17"><a href="#cb86-17" tabindex="-1"></a>}</span></code></pre></div>
-</div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a><span class="co"># starting code</span></span>
+<span id="cb62-2"><a href="#cb62-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb62-3"><a href="#cb62-3" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;plots&#39;</span>)</span>
+<span id="cb62-4"><a href="#cb62-4" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week_start =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek2date</span>(<span class="fu">paste0</span>(week, <span class="st">&#39;-1&#39;</span>)))</span>
+<span id="cb62-6"><a href="#cb62-6" tabindex="-1"></a></span>
+<span id="cb62-7"><a href="#cb62-7" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(streams<span class="sc">$</span>artist)</span>
+<span id="cb62-8"><a href="#cb62-8" tabindex="-1"></a><span class="cf">for</span> (one_artist <span class="cf">in</span> artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]) {</span>
+<span id="cb62-9"><a href="#cb62-9" tabindex="-1"></a>  plot_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist <span class="sc">==</span> one_artist)</span>
+<span id="cb62-10"><a href="#cb62-10" tabindex="-1"></a>  </span>
+<span id="cb62-11"><a href="#cb62-11" tabindex="-1"></a>  <span class="co"># ggplot code here</span></span>
+<span id="cb62-12"><a href="#cb62-12" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="exercise-9-scaling-up-ii-estimate-individual-regression-models" class="section level2">
 <h2>Exercise 9: Scaling Up II: Estimate Individual Regression
@@ -2219,55 +1952,24 @@ artists and summarize results. Use a loop, as in the code snippet below
 <li>and the log of all social media metrics (<code>log(x+1)</code>)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a><span class="co"># starting code</span></span>
-<span id="cb87-2"><a href="#cb87-2" tabindex="-1"></a></span>
-<span id="cb87-3"><a href="#cb87-3" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
-<span id="cb87-4"><a href="#cb87-4" tabindex="-1"></a></span>
-<span id="cb87-5"><a href="#cb87-5" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">lapply</span>(artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="cf">function</span>(one_artist) {</span>
-<span id="cb87-6"><a href="#cb87-6" tabindex="-1"></a>  filtered_data <span class="ot">=</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist<span class="sc">==</span>one_artist)</span>
-<span id="cb87-7"><a href="#cb87-7" tabindex="-1"></a>  <span class="co"># estimation code here</span></span>
-<span id="cb87-8"><a href="#cb87-8" tabindex="-1"></a>  </span>
-<span id="cb87-9"><a href="#cb87-9" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>)<span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> filtered_data) <span class="co"># just an example</span></span>
-<span id="cb87-10"><a href="#cb87-10" tabindex="-1"></a>  </span>
-<span id="cb87-11"><a href="#cb87-11" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">names</span>(m<span class="sc">$</span>coefficients),</span>
-<span id="cb87-12"><a href="#cb87-12" tabindex="-1"></a>                     <span class="fu">summary</span>(m)<span class="sc">$</span>coefficients)</span>
-<span id="cb87-13"><a href="#cb87-13" tabindex="-1"></a>  <span class="fu">colnames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;variable&#39;</span>,<span class="st">&#39;estimate&#39;</span>,<span class="st">&#39;se&#39;</span>,<span class="st">&#39;t&#39;</span>,<span class="st">&#39;pval&#39;</span>)</span>
-<span id="cb87-14"><a href="#cb87-14" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tibble</span>(results) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">artist=</span>one_artist)</span>
-<span id="cb87-15"><a href="#cb87-15" tabindex="-1"></a>  </span>
-<span id="cb87-16"><a href="#cb87-16" tabindex="-1"></a>})</span>
-<span id="cb87-17"><a href="#cb87-17" tabindex="-1"></a></span>
-<span id="cb87-18"><a href="#cb87-18" tabindex="-1"></a>all_results <span class="ot">=</span> <span class="fu">bind_rows</span>(results)</span></code></pre></div>
-<div class="webex-solution">
-<button>
-Solutions
-</button>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
-<span id="cb88-2"><a href="#cb88-2" tabindex="-1"></a></span>
-<span id="cb88-3"><a href="#cb88-3" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">lapply</span>(artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="cf">function</span>(one_artist) {</span>
-<span id="cb88-4"><a href="#cb88-4" tabindex="-1"></a>  filtered_data <span class="ot">=</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist<span class="sc">==</span>one_artist)</span>
-<span id="cb88-5"><a href="#cb88-5" tabindex="-1"></a>  </span>
-<span id="cb88-6"><a href="#cb88-6" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(weekly_streams<span class="sc">+</span><span class="dv">1</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> </span>
-<span id="cb88-7"><a href="#cb88-7" tabindex="-1"></a>                <span class="fu">as.factor</span>(country) <span class="sc">+</span></span>
-<span id="cb88-8"><a href="#cb88-8" tabindex="-1"></a>                sun <span class="sc">+</span> temp <span class="sc">+</span></span>
-<span id="cb88-9"><a href="#cb88-9" tabindex="-1"></a>                <span class="fu">log</span>(Instagram_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(Instagram_followers) <span class="sc">+</span></span>
-<span id="cb88-10"><a href="#cb88-10" tabindex="-1"></a>                <span class="fu">log</span>(Snapchat_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(Snapchat_followers) <span class="sc">+</span></span>
-<span id="cb88-11"><a href="#cb88-11" tabindex="-1"></a>                <span class="fu">log</span>(TikTok_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(TikTok_followers) <span class="sc">+</span></span>
-<span id="cb88-12"><a href="#cb88-12" tabindex="-1"></a>                <span class="fu">log</span>(X_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(X_followers), <span class="at">data=</span> filtered_data)</span>
-<span id="cb88-13"><a href="#cb88-13" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">names</span>(m<span class="sc">$</span>coefficients),</span>
-<span id="cb88-14"><a href="#cb88-14" tabindex="-1"></a>                     <span class="fu">summary</span>(m)<span class="sc">$</span>coefficients)</span>
-<span id="cb88-15"><a href="#cb88-15" tabindex="-1"></a>  <span class="fu">colnames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;variable&#39;</span>,<span class="st">&#39;estimate&#39;</span>,<span class="st">&#39;se&#39;</span>,<span class="st">&#39;t&#39;</span>,<span class="st">&#39;pval&#39;</span>)</span>
-<span id="cb88-16"><a href="#cb88-16" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tibble</span>(results) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">artist=</span>one_artist)</span>
-<span id="cb88-17"><a href="#cb88-17" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb88-18"><a href="#cb88-18" tabindex="-1"></a>})</span>
-<span id="cb88-19"><a href="#cb88-19" tabindex="-1"></a></span>
-<span id="cb88-20"><a href="#cb88-20" tabindex="-1"></a>all_results <span class="ot">=</span> <span class="fu">bind_rows</span>(results)</span>
-<span id="cb88-21"><a href="#cb88-21" tabindex="-1"></a></span>
-<span id="cb88-22"><a href="#cb88-22" tabindex="-1"></a><span class="co"># all results now contains the results of all individual regressions;</span></span>
-<span id="cb88-23"><a href="#cb88-23" tabindex="-1"></a><span class="co"># you could now &quot;filter&quot; through - e.g., to create a histogram of the effects of sun!</span></span>
-<span id="cb88-24"><a href="#cb88-24" tabindex="-1"></a></span>
-<span id="cb88-25"><a href="#cb88-25" tabindex="-1"></a>all_results <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&#39;sun&#39;</span>, variable)) <span class="sc">%&gt;%</span></span>
-<span id="cb88-26"><a href="#cb88-26" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&#39;Histogram of the effect of sun hours on followers&#39;</span>)</span></code></pre></div>
-</div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="co"># starting code</span></span>
+<span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
+<span id="cb63-4"><a href="#cb63-4" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">lapply</span>(artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="cf">function</span>(one_artist) {</span>
+<span id="cb63-6"><a href="#cb63-6" tabindex="-1"></a>  filtered_data <span class="ot">=</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist<span class="sc">==</span>one_artist)</span>
+<span id="cb63-7"><a href="#cb63-7" tabindex="-1"></a>  <span class="co"># estimation code here</span></span>
+<span id="cb63-8"><a href="#cb63-8" tabindex="-1"></a>  </span>
+<span id="cb63-9"><a href="#cb63-9" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>)<span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> filtered_data) <span class="co"># just an example</span></span>
+<span id="cb63-10"><a href="#cb63-10" tabindex="-1"></a>  </span>
+<span id="cb63-11"><a href="#cb63-11" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">names</span>(m<span class="sc">$</span>coefficients),</span>
+<span id="cb63-12"><a href="#cb63-12" tabindex="-1"></a>                     <span class="fu">summary</span>(m)<span class="sc">$</span>coefficients)</span>
+<span id="cb63-13"><a href="#cb63-13" tabindex="-1"></a>  <span class="fu">colnames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;variable&#39;</span>,<span class="st">&#39;estimate&#39;</span>,<span class="st">&#39;se&#39;</span>,<span class="st">&#39;t&#39;</span>,<span class="st">&#39;pval&#39;</span>)</span>
+<span id="cb63-14"><a href="#cb63-14" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tibble</span>(results) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">artist=</span>one_artist)</span>
+<span id="cb63-15"><a href="#cb63-15" tabindex="-1"></a>  </span>
+<span id="cb63-16"><a href="#cb63-16" tabindex="-1"></a>})</span>
+<span id="cb63-17"><a href="#cb63-17" tabindex="-1"></a></span>
+<span id="cb63-18"><a href="#cb63-18" tabindex="-1"></a>all_results <span class="ot">=</span> <span class="fu">bind_rows</span>(results)</span></code></pre></div>
 </div>
 <div id="summary" class="section level2">
 <h2>Summary</h2>
