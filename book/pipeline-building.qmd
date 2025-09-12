@@ -3,8 +3,410 @@ title: "Pipelines, Automation, and CI/CD"
 format: html
 ---
 
-::: {.callout-note"}
+## Introduction
 
-This chapter is work-in-progress.
+Earlier in this book ("Marketing Analytics Pipeline"), we learned how to give structure to a project: setting up folders for **raw data**, **source code**, and **generated outputs**, and splitting the work into **stages** such as *data preparation*, *analysis*, and *reporting*. That structure is a solid foundation for professional work.
 
+But structure alone is not enough. The process of *running* a project is still often:
+
+* manual (you remember the order of scripts),
+* error-prone (you forget a step), and
+* inefficient (you rerun everything, even if only one file has changed).
+
+That’s where **automation** comes in. Automation means teaching the computer the “recipe” of your project, so it knows:
+
+* **what** should be built (e.g., a cleaned dataset or a report),
+* **what** it depends on (e.g., raw data, prior outputs, or scripts), and
+* **how** to build it (e.g., run an R or Python script, unzip a file, render a report).
+
+Instead of you keeping a mental checklist, the computer checks which parts of your project are up to date, and only reruns the stages that actually need to change.
+
+::: {.callout-tip}
+
+### Why automation matters
+
+* **Saves time**: reruns only the parts of your project that have changed.
+* **Avoids mistakes**: the computer remembers the correct order for you.
+* **Builds trust**: results can be reproduced easily, even months later.
+* **Scales up**: the same logic works for small student projects and large professional pipelines.
+
+:::
+
+Think of automation like following a cooking recipe. You don’t want to bake the entire cake from scratch every time you add one more strawberry on top. You just want to update the decoration stage, while keeping the rest intact.
+
+In this chapter, we’ll take your structured project and make it **come alive**:
+
+* We’ll explore the general concept of **rules** and how they connect stages together.
+* We’ll walk through an **automation story** in a marketing analytics project, showing how each stage builds on the next.
+* We’ll collect **good practices** for reliable, easy-to-maintain pipelines.
+* Finally, we’ll look ahead at how professionals take this further with **workflow managers**, **Docker**, and **CI/CD systems**.
+
+::: {.callout-note}
+
+### For the less technical reader
+
+Don’t worry if terms like *Rscript* or *command line* sound intimidating. You don’t need to master them right away. The important idea is that your project can be described as a set of **rules**, and once those rules are written down, the computer will handle the execution for you.
+:::
+
+
+## What is Automation?
+
+Automation is about teaching the computer how to **re-run your project systematically**, so you don’t have to remember the order of scripts or decide what needs to be re-executed. Instead, you describe your project as a set of **rules** that connect the different **stages** of your workflow.
+
+### The Anatomy of a Rule
+
+Every rule has three ingredients:
+
+* **Target** – the file or object you want to create (for example, a cleaned dataset, a model output, or a PDF report).
+* **Prerequisites** – the files or scripts the target depends on (for example, raw data, intermediate outputs, or the script that does the cleaning).
+* **Command** – the action to create the target (for example, unzip data, run a Python script, run an R script, or render a Quarto report).
+
+Rules describe both **what to build** and **when to rebuild it**. If the target is missing or older than one of its prerequisites, the command is run; otherwise, nothing happens.
+
+::: {.callout-note}
+Think of rules as contracts. They say: *“If you give me these ingredients (prerequisites), I’ll produce this result (target) by following this procedure (command).”*
+:::
+
+### How Rules Feed Together
+
+A single rule isn’t very powerful. But once you connect them, you get a **pipeline**:
+
+* The **data preparation stage** produces a cleaned dataset.
+* The **analysis stage** consumes that dataset and produces model results.
+* The **reporting stage** consumes the model results and produces plots and reports.
+
+Outputs of one stage become inputs for the next. The computer follows the chain of rules and decides which stages to re-run.
+
+```{mermaid}
+graph TD
+    A[Raw Transactions] --> B[Clean Transactions]
+    C[Campaign Logs] --> D[Clean Campaigns]
+    B --> E[Merge Data]
+    D --> E[Merge Data]
+    E --> F[Weekly Aggregates]
+    F --> G[Regression Model]
+    F --> H[Elasticity Model]
+    G --> I[Model Comparison]
+    H --> I[Model Comparison]
+    I --> J[Plots]
+    I --> K[Report]
+    I --> L[Slides]
+```
+
+This diagram shows how the **marketing analytics project** flows from raw inputs all the way to final reports.
+
+### Examples of Execution
+
+The power of automation lies in **selective re-execution**:
+
+* **Full pipeline run**
+  * If you start from scratch (e.g., after wiping outputs), every stage — from raw transactions to slides — will run.
+* **Partial run after data update**
+  * A new campaign log arrives. The computer sees that `campaigns.csv` is newer than the merged dataset, so it rebuilds the **data preparation stage**, then continues with analysis and reporting. The transaction cleaning step is skipped.
+* **Partial run after analysis code change**
+  * You change the regression model code. The system re-runs the **analysis stage** (model estimation and comparison) and the **reporting stage**, but skips all of data preparation.
+* **Tiny run after report edit**
+  * You fix a typo in the paper template. Only the **reporting stage** is rebuilt. Models and datasets remain untouched.
+
+::: {.callout-tip}
+
+### Key takeaway
+
+Automation doesn’t mean rerunning *everything*. It means rerunning *exactly what is necessary* to keep all outputs consistent with their inputs.
+:::
+
+
+## Automation in Practice
+
+Let’s now see how automation works when applied to a real project. We will continue with our **marketing analytics example**: studying the effect of advertising campaigns on product sales. In Chapter 2, we already broke the project into stages — *data preparation*, *analysis*, and *reporting*. Automation takes those stages and connects them into a living, breathing pipeline.
+
+### Data Preparation Stage
+
+Every project starts with raw input files. In our case, that means two main datasets: a file of all product transactions and a log of advertising campaigns. Neither is immediately ready for analysis.
+
+The first rules of our pipeline describe how to turn these raw files into something useful. One rule says: *“Take the raw transactions file and run the cleaning script; the output should be a cleaned transactions file.”* Another rule does the same for the campaign logs. A third rule merges the two cleaned files, producing a single dataset that ties sales to campaigns. Finally, we aggregate everything at the weekly level, producing the dataset that analysis will consume.
+
+```{mermaid}
+flowchart LR
+    A[Raw Transactions] --> B[Clean Transactions]
+    C[Campaign Logs] --> D[Clean Campaigns]
+    B --> E[Merge Datasets]
+    D --> E[Merge Datasets]
+    E --> F[Weekly Aggregates]
+```
+
+Notice how these rules are chained: the merge can only happen once both cleaning rules are finished, and aggregation can only happen once merging is complete. Each rule’s output is the next rule’s input.
+
+### Analysis Stage
+
+With a weekly dataset in hand, we can move on to analysis. Automation allows us to describe exactly which models we want to estimate.
+
+```{mermaid}
+flowchart TD
+    F[Weekly Aggregates] --> G[Baseline Regression]
+    F --> H[Extended Regression]
+    G --> I[Model Comparison]
+    H --> I[Model Comparison]
+```
+
+One rule estimates a **baseline regression model** of weekly sales on campaign spend. Another rule estimates an **extended model**, perhaps adding interaction terms or control variables.
+
+Once those models are estimated, a final rule compares them. It takes the outputs of the two model rules as its prerequisites, and produces a comparison file that summarizes which model fits better. Again, the logic is clear: you cannot compare models before you have actually run them.
+
+### Reporting Stage
+
+The final stage of the pipeline produces outputs for human consumption. Here, rules transform model comparison results into figures, tables, and written reports.
+
+```{mermaid}
+flowchart LR
+    I[Model Comparison] --> J[Generate Plots]
+    I --> K[Paper Draft]
+    I --> L[Slides]
+```
+
+One rule generates a set of plots that visualize estimated elasticities across campaigns. Another rule renders a Quarto paper draft, inserting both the plots and numerical results into a professional report. A final rule creates a slide deck for a management presentation.
+
+These reporting rules depend directly on the analysis outputs. If the underlying data or models change, the reporting stage automatically re-runs, ensuring your communication always reflects the latest results.
+
+### Flow of Re-execution
+
+The magic of automation lies in how the computer decides what to re-run. You don’t tell it *“run script A, then B, then C.”* Instead, it checks which files are outdated and triggers only the necessary rules.
+
+```{mermaid}
+sequenceDiagram
+    participant You
+    participant Pipeline
+    You->>Pipeline: Add new campaign log
+    Pipeline->>Pipeline: Detect outdated merged dataset
+    Pipeline->>Pipeline: Re-run data prep → analysis → reporting
+    Note right of Pipeline: Transactions unchanged → skipped
+```
+
+* **New data arrives**: Suppose a new campaign log is added. The computer sees that the merged dataset is outdated and re-runs the **data preparation stage**. Because the cleaned data has changed, it then re-runs the analysis and reporting stages too. The transaction cleaning step is skipped since the transactions file did not change.
+* **Analysis code changes**: Imagine you tweak the regression model. Only the **analysis stage** (model estimation and comparison) and the **reporting stage** are re-run. Data preparation is skipped entirely.
+* **Report edit**: If you correct a typo in the Quarto paper, only the report is rebuilt. The models and data remain as they were.
+* **Full rebuild**: If you wipe all generated files, the system re-runs the entire pipeline from raw transactions all the way to final slides.
+
+Automation in practice means you don’t waste time or mental energy figuring out which scripts to run. The computer takes care of sequencing and checking, letting you focus on what matters: understanding the data and interpreting the results.
+
+Automation turns your structured project into a pipeline you can trust. When you change something, you immediately see how it flows through the rest of the project — and you can be confident that nothing has been overlooked.
+
+
+
+## Good Practices & Tips
+
+Automation can feel magical once it works: change one thing, and your project updates itself. But a pipeline is only as strong as the practices you use to maintain it. Without discipline, rules become inconsistent, file paths break, and sooner or later someone (often your future self) will get lost. Let’s look at some practices that keep pipelines **reliable, readable, and reproducible**.
+
+### Keep It Clean
+
+One of the simplest but most important habits is to build in a way to **wipe your project clean**. Imagine deleting all generated files in the `gen/` folder and asking the computer to rebuild everything from scratch. If the pipeline succeeds, you know every dependency is properly captured. If it fails, you’ve uncovered a hidden manual step or a missing rule.
+
+Think of this as a “stress test” for your project. A pipeline that can only run when half of yesterday’s files are still lying around is not a trustworthy pipeline. You want the confidence that, if needed, the entire project can be rebuilt from zero — whether by you on a new laptop, or by a colleague who just cloned your repository.
+
+### Preview Before You Leap
+
+Most automation tools allow you to do a “dry run.” In Make, for example, this is `make -n`. Instead of actually executing commands, the tool tells you which steps *would* run. This preview is invaluable. It’s like having a rehearsal before the main performance: you can check that the right files are being rebuilt and spot typos in file paths or missing dependencies before wasting time on long computations.
+
+Especially in large projects where some steps take hours to run, this habit saves enormous amounts of time and frustration.
+
+
+### Rebuild Regularly
+
+Another good practice is to **rebuild your pipeline completely on a regular basis**, even when you don’t strictly need to. Why? Because it reveals weaknesses. Maybe you had forgotten that a dataset was prepared by hand in Excel, or that a figure was tweaked manually outside the pipeline. Regular full rebuilds flush out these inconsistencies and force you to capture all transformations in rules.
+
+It might feel redundant when everything works, but it’s the best insurance policy you can buy for reproducibility.
+
+
+### Think Small: One Script, One Transformation
+
+A common mistake is to dump all code into a single, monolithic script. Automation works best when you break the project into **small, modular steps**. One script should do one transformation. For example:
+
+* Script A cleans transactions.
+* Script B cleans campaign logs.
+* Script C merges them.
+* Script D aggregates to weeks.
+
+Each script becomes a rule in the pipeline, with clear inputs and outputs. If you later need to change only the aggregation, you don’t waste time re-cleaning everything. Modularity also makes debugging easier: when something breaks, you know exactly which step caused it.
+
+
+### Organize Directories Thoughtfully
+
+Directory hygiene matters. Keeping raw data, source code, and generated outputs in separate places reduces mistakes. Raw data in `data/` stays untouched, code lives in `src/`, and generated outputs go into `gen/` with further subfolders for `temp/` (intermediate scratch files) and `output/` (final results).
+
+This makes your pipeline **self-documenting**. If someone else opens your project, they immediately see where to look for data, code, and results. And for the computer, it makes it easy to track which files belong to which stage of the pipeline.
+
+
+### Write for Portability
+
+Projects are rarely tied to just one computer. You might switch from your laptop to a university server, or share your repository with a colleague. That’s why it’s crucial to use **relative paths** (like `../../data/transactions.csv`) instead of absolute paths (like `C:/Users/Hannes/Documents/transactions.csv`). Relative paths make sure the pipeline runs no matter where the project folder is located.
+
+Portability is also about avoiding assumptions: don’t hard-code machine-specific details, don’t depend on files saved on your Desktop, and don’t rely on manual copy-pasting. The more self-contained your project, the easier it travels.
+
+
+### Structure Pipelines for Readability
+
+As pipelines grow, the makefile (or equivalent) can become long and hard to parse. One way to keep things tidy is to use a **root file** that orchestrates the entire project, and stage-specific files inside folders like `src/dataprep/` or `src/analysis/`. The root file simply points to each stage.
+
+This way, you don’t drown in dozens of rules all in one place. Each stage is a self-contained module, and the root connects the modules together. It’s like having chapters in a book rather than one endless scroll of text.
+
+
+::: {.callout-note}
+### Summary: Good Practices  
+
+- **Keep It Clean**: include a wipe rule and rebuild from scratch to test reproducibility.  
+- **Preview Before You Leap**: use dry runs to see what would execute before running.  
+- **Rebuild Regularly**: flush out hidden dependencies and manual steps.  
+- **Think Small: One Script, One Transformation**: keep scripts modular and manageable.  
+- **Organize Directories Thoughtfully**: separate raw, source, temp, and output files.  
+- **Write for Portability**: rely on relative paths and avoid machine-specific details.  
+- **Structure Pipelines for Readability**: use a root pipeline file plus stage-specific files for clarity.  
+:::  
+
+
+## Future Directions
+
+So far, we’ve focused on automating pipelines on your own computer. This already gives you huge benefits: reproducibility, efficiency, and less room for mistakes. But professional data science projects — especially in marketing analytics — rarely stop there. Teams often need to run larger, more complex pipelines, share them across collaborators, and even deploy them into production. Let’s look at three important directions in which automation can evolve: **workflow managers**, **containers with Docker**, and **continuous integration/continuous deployment (CI/CD)**.
+
+
+### Workflow Managers
+
+Imagine your project has dozens of scripts, with data flowing back and forth in complicated ways. A simple makefile works, but it can quickly get hard to track. This is where **workflow managers** come in.
+
+Workflow managers do the same thing as the rules you already know — they connect targets, prerequisites, and commands — but they add extra features:
+
+* They let you **visualize your pipeline** as a directed acyclic graph (DAG), so you can literally see which steps depend on which.
+* They can **schedule tasks**, for example to run every morning at 3am.
+* They can **monitor execution**, telling you when a step fails or how long it took.
+
+Examples include `targets` or `drake` in R, and `Prefect`, `Airflow`, or `Luigi` in Python.
+
+```{mermaid}
+flowchart TD
+    A[Raw Data] --> B[Cleaned Data]
+    B --> C[Weekly Aggregates]
+    C --> D1[Model 1]
+    C --> D2[Model 2]
+    D1 --> E[Comparison]
+    D2 --> E[Comparison]
+    E --> F[Dashboard]
+```
+
+::: {.callout-tip}
+
+### Why workflow managers matter
+
+They give you a “control tower” for your project. You don’t just know *what* will run — you can see *how* it all fits together.
+:::
+
+
+### Containers with Docker
+
+Another challenge is that pipelines don’t run in a vacuum. Your computer has its own mix of R packages, Python libraries, and system tools. Your colleague’s computer (or the university server) may have a different setup. Suddenly, code that works for you fails elsewhere.
+
+**Docker** solves this by creating a **container**: a lightweight, self-contained environment that bundles together the exact versions of R, Python, and system libraries your project needs.
+
+Think of a Docker container as a “portable lab.” If you can run your pipeline in the container on your laptop, your colleague can run it in exactly the same way on theirs. It eliminates the infamous *“but it works on my machine”* problem.
+
+```{mermaid}
+flowchart LR
+    A[Your Code] --> B[Docker Container]
+    B --> C1[Your Laptop]
+    B --> C2[Colleague's Laptop]
+    B --> C3[Cloud Server]
+```
+
+::: {.callout-note}
+
+### Key benefit of Docker
+
+Docker makes your pipeline **portable and reproducible**, no matter where it is executed.
+:::
+
+
+### CI/CD and Deployment Pipelines
+
+Now imagine your project isn’t just for you and a colleague. Suppose your marketing analytics pipeline needs to run automatically every week, pulling in the newest campaign data, re-estimating the models, and updating a dashboard for managers. Running this manually would defeat the whole point of automation.
+
+This is where **continuous integration/continuous deployment (CI/CD)** comes in. CI/CD tools such as GitHub Actions, GitLab CI/CD, or Azure Pipelines let you:
+
+* **Trigger pipelines automatically** (for example, whenever you push new code to GitHub, or every night at midnight).
+* **Run pipelines on shared servers**, not just your laptop.
+* **Deploy outputs** — a report, a dashboard, or even a machine learning model — so that end users always see the latest version.
+
+In practice, a marketing analytics pipeline might be set up like this:
+
+* Step 1: CI/CD system pulls the latest transaction and campaign data.
+* Step 2: It runs the data preparation and analysis stages inside a Docker container.
+* Step 3: It builds plots, updates a Quarto report, and deploys the results to a dashboard that managers can view.
+
+```{mermaid}
+sequenceDiagram
+    participant GitHub
+    participant CI/CD
+    participant Docker
+    participant Dashboard
+    GitHub->>CI/CD: Code pushed / Schedule triggered
+    CI/CD->>Docker: Run pipeline inside container
+    Docker->>CI/CD: Return outputs
+    CI/CD->>Dashboard: Publish updated report
+```
+
+::: {.callout-tip}
+
+### Why CI/CD matters
+
+CI/CD takes the burden off your shoulders. You don’t need to remember to rerun the pipeline. The system does it for you — reliably, on time, and in a reproducible environment.
+:::
+
+
+### Putting It All Together
+
+Workflow managers, Docker, and CI/CD are not separate worlds. They complement one another:
+
+* Workflow managers keep complex pipelines **organized and visualized**.
+* Docker ensures the pipeline runs the same way on any machine.
+* CI/CD automates the triggering and deployment of the pipeline in collaborative or production environments.
+
+Together, they transform a pipeline from a **personal productivity tool** into a **professional-grade system** that scales across teams and organizations.
+
+
+In short: once you are comfortable with automation on your laptop, you can look forward to these tools as natural next steps. They allow you to handle bigger projects, collaborate seamlessly, and deliver results that are always up to date.
+
+::: {.callout-note}
+
+### Summary
+
+* **Workflow managers** = visualize, schedule, and monitor pipelines.
+* **Docker** = portability and reproducibility across machines.
+* **CI/CD** = automatic re-execution and deployment when code or data change.
+:::
+
+## Conclusion
+
+Pipelines are more than just a convenient way of organizing files — they are the backbone of modern marketing analytics. Earlier in this book (Chapter 2), we learned how to set up a project with clear stages: data preparation, analysis, and reporting. In this chapter, we went one step further by introducing **automation**: rules that connect those stages, decide what needs to be re-run, and ensure that outputs always stay consistent with their inputs.
+
+We saw how automation works in practice:
+
+* A change in raw data triggers the data preparation stage and everything downstream.
+* A change in analysis code re-runs only the analysis and reporting stages.
+* A change in the report re-runs just the reporting stage.
+* A full wipe forces the entire pipeline to rebuild.
+
+This selective re-execution is what makes pipelines so powerful: they are efficient, reliable, and transparent.
+
+Along the way, we explored **good practices** — from keeping a clean rule and modularizing scripts, to organizing directories thoughtfully and writing portable paths. These habits are what turn automation from a quick hack into a sustainable way of working.
+
+Finally, we looked ahead at how pipelines evolve in professional settings:
+
+* **Workflow managers** to handle complexity and visualize dependencies.
+* **Docker** to guarantee reproducibility across machines.
+* **CI/CD systems** to automate execution and deployment whenever code or data change.
+
+Together, these tools transform pipelines from something personal into something collaborative and scalable.
+
+::: {.callout-tip}
+
+### Key takeaway
+
+Start simple: automate small pieces of your project, test them, and gradually expand. Over time, your pipeline will grow into a system you can trust — one that not only saves you time but also makes your work more reproducible, collaborative, and impactful.
 :::
