@@ -643,12 +643,12 @@ pane</li>
 </div>
 <div id="download-the-data" class="section level2">
 <h2>Download the data</h2>
-<p>Click <a href="https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/week4_data.zip">here</a>
+<p>Click <a href="https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/raw_data/week4_data.zip">here</a>
 to manually download the dataset. Alternatively, run the following R
 code to download and unzip the file automatically:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># downloading and unzipping the data</span></span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">&#39;downloaded_data.zip&#39;</span>)) {</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="st">&#39;https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/week4_data.zip&#39;</span>, <span class="st">&#39;downloaded_data.zip&#39;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="st">&#39;https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/raw_data/week4_data.zip&#39;</span>, <span class="st">&#39;downloaded_data.zip&#39;</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">unzip</span>(<span class="st">&#39;downloaded_data.zip&#39;</span>, <span class="at">overwrite=</span><span class="cn">TRUE</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  }</span></code></pre></div>
 <p>Now, load the data into R using <code>read_csv</code>:</p>
@@ -2184,22 +2184,22 @@ different countries.</p>
 Solutions
 </button>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb101-2"><a href="#cb101-2" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;plots&#39;</span>)</span>
-<span id="cb101-3"><a href="#cb101-3" tabindex="-1"></a></span>
-<span id="cb101-4"><a href="#cb101-4" tabindex="-1"></a>artists <span class="ot">&lt;-</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
-<span id="cb101-5"><a href="#cb101-5" tabindex="-1"></a></span>
-<span id="cb101-6"><a href="#cb101-6" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week_start =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek2date</span>(<span class="fu">paste0</span>(week, <span class="st">&#39;-1&#39;</span>)))</span>
-<span id="cb101-7"><a href="#cb101-7" tabindex="-1"></a></span>
-<span id="cb101-8"><a href="#cb101-8" tabindex="-1"></a><span class="cf">for</span> (one_artist <span class="cf">in</span> artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]) {</span>
-<span id="cb101-9"><a href="#cb101-9" tabindex="-1"></a>  plot_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist <span class="sc">==</span> one_artist)</span>
-<span id="cb101-10"><a href="#cb101-10" tabindex="-1"></a>  </span>
-<span id="cb101-11"><a href="#cb101-11" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_data, <span class="fu">aes</span>(<span class="at">x =</span> week_start, <span class="at">y =</span> weekly_streams)) <span class="sc">+</span></span>
-<span id="cb101-12"><a href="#cb101-12" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb101-13"><a href="#cb101-13" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span></span>
-<span id="cb101-14"><a href="#cb101-14" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;Streams for&quot;</span>, one_artist))</span>
-<span id="cb101-15"><a href="#cb101-15" tabindex="-1"></a></span>
-<span id="cb101-16"><a href="#cb101-16" tabindex="-1"></a>  <span class="fu">ggsave</span>(<span class="fu">paste0</span>(<span class="st">&quot;plots/&quot;</span>, one_artist, <span class="st">&quot;.png&quot;</span>), <span class="at">plot =</span> p, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
-<span id="cb101-17"><a href="#cb101-17" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb101-2"><a href="#cb101-2" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;plots&#39;</span>)</span></code></pre></div>
+<pre><code>## Warning in dir.create(&quot;plots&quot;): &#39;plots&#39; already exists</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" tabindex="-1"></a>artists <span class="ot">&lt;-</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
+<span id="cb103-2"><a href="#cb103-2" tabindex="-1"></a></span>
+<span id="cb103-3"><a href="#cb103-3" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week_start =</span> ISOweek<span class="sc">::</span><span class="fu">ISOweek2date</span>(<span class="fu">paste0</span>(week, <span class="st">&#39;-1&#39;</span>)))</span>
+<span id="cb103-4"><a href="#cb103-4" tabindex="-1"></a></span>
+<span id="cb103-5"><a href="#cb103-5" tabindex="-1"></a><span class="cf">for</span> (one_artist <span class="cf">in</span> artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]) {</span>
+<span id="cb103-6"><a href="#cb103-6" tabindex="-1"></a>  plot_data <span class="ot">&lt;-</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist <span class="sc">==</span> one_artist)</span>
+<span id="cb103-7"><a href="#cb103-7" tabindex="-1"></a>  </span>
+<span id="cb103-8"><a href="#cb103-8" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_data, <span class="fu">aes</span>(<span class="at">x =</span> week_start, <span class="at">y =</span> weekly_streams)) <span class="sc">+</span></span>
+<span id="cb103-9"><a href="#cb103-9" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb103-10"><a href="#cb103-10" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span></span>
+<span id="cb103-11"><a href="#cb103-11" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;Streams for&quot;</span>, one_artist))</span>
+<span id="cb103-12"><a href="#cb103-12" tabindex="-1"></a></span>
+<span id="cb103-13"><a href="#cb103-13" tabindex="-1"></a>  <span class="fu">ggsave</span>(<span class="fu">paste0</span>(<span class="st">&quot;plots/&quot;</span>, one_artist, <span class="st">&quot;.png&quot;</span>), <span class="at">plot =</span> p, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
+<span id="cb103-14"><a href="#cb103-14" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 <div id="exercise-9-scaling-up-ii-estimate-individual-regression-models" class="section level2">
@@ -2218,54 +2218,54 @@ artists and summarize results. Use a loop, as in the code snippet below
 <li>and the log of all social media metrics (<code>log(x+1)</code>)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" tabindex="-1"></a><span class="co"># starting code</span></span>
-<span id="cb102-2"><a href="#cb102-2" tabindex="-1"></a></span>
-<span id="cb102-3"><a href="#cb102-3" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
-<span id="cb102-4"><a href="#cb102-4" tabindex="-1"></a></span>
-<span id="cb102-5"><a href="#cb102-5" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">lapply</span>(artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="cf">function</span>(one_artist) {</span>
-<span id="cb102-6"><a href="#cb102-6" tabindex="-1"></a>  filtered_data <span class="ot">=</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist<span class="sc">==</span>one_artist)</span>
-<span id="cb102-7"><a href="#cb102-7" tabindex="-1"></a>  <span class="co"># estimation code here</span></span>
-<span id="cb102-8"><a href="#cb102-8" tabindex="-1"></a>  </span>
-<span id="cb102-9"><a href="#cb102-9" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>)<span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> filtered_data) <span class="co"># just an example</span></span>
-<span id="cb102-10"><a href="#cb102-10" tabindex="-1"></a>  </span>
-<span id="cb102-11"><a href="#cb102-11" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">names</span>(m<span class="sc">$</span>coefficients),</span>
-<span id="cb102-12"><a href="#cb102-12" tabindex="-1"></a>                     <span class="fu">summary</span>(m)<span class="sc">$</span>coefficients)</span>
-<span id="cb102-13"><a href="#cb102-13" tabindex="-1"></a>  <span class="fu">colnames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;variable&#39;</span>,<span class="st">&#39;estimate&#39;</span>,<span class="st">&#39;se&#39;</span>,<span class="st">&#39;t&#39;</span>,<span class="st">&#39;pval&#39;</span>)</span>
-<span id="cb102-14"><a href="#cb102-14" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tibble</span>(results) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">artist=</span>one_artist)</span>
-<span id="cb102-15"><a href="#cb102-15" tabindex="-1"></a>  </span>
-<span id="cb102-16"><a href="#cb102-16" tabindex="-1"></a>})</span>
-<span id="cb102-17"><a href="#cb102-17" tabindex="-1"></a></span>
-<span id="cb102-18"><a href="#cb102-18" tabindex="-1"></a>all_results <span class="ot">=</span> <span class="fu">bind_rows</span>(results)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" tabindex="-1"></a><span class="co"># starting code</span></span>
+<span id="cb104-2"><a href="#cb104-2" tabindex="-1"></a></span>
+<span id="cb104-3"><a href="#cb104-3" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
+<span id="cb104-4"><a href="#cb104-4" tabindex="-1"></a></span>
+<span id="cb104-5"><a href="#cb104-5" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">lapply</span>(artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="cf">function</span>(one_artist) {</span>
+<span id="cb104-6"><a href="#cb104-6" tabindex="-1"></a>  filtered_data <span class="ot">=</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist<span class="sc">==</span>one_artist)</span>
+<span id="cb104-7"><a href="#cb104-7" tabindex="-1"></a>  <span class="co"># estimation code here</span></span>
+<span id="cb104-8"><a href="#cb104-8" tabindex="-1"></a>  </span>
+<span id="cb104-9"><a href="#cb104-9" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>)<span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> filtered_data) <span class="co"># just an example</span></span>
+<span id="cb104-10"><a href="#cb104-10" tabindex="-1"></a>  </span>
+<span id="cb104-11"><a href="#cb104-11" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">names</span>(m<span class="sc">$</span>coefficients),</span>
+<span id="cb104-12"><a href="#cb104-12" tabindex="-1"></a>                     <span class="fu">summary</span>(m)<span class="sc">$</span>coefficients)</span>
+<span id="cb104-13"><a href="#cb104-13" tabindex="-1"></a>  <span class="fu">colnames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;variable&#39;</span>,<span class="st">&#39;estimate&#39;</span>,<span class="st">&#39;se&#39;</span>,<span class="st">&#39;t&#39;</span>,<span class="st">&#39;pval&#39;</span>)</span>
+<span id="cb104-14"><a href="#cb104-14" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tibble</span>(results) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">artist=</span>one_artist)</span>
+<span id="cb104-15"><a href="#cb104-15" tabindex="-1"></a>  </span>
+<span id="cb104-16"><a href="#cb104-16" tabindex="-1"></a>})</span>
+<span id="cb104-17"><a href="#cb104-17" tabindex="-1"></a></span>
+<span id="cb104-18"><a href="#cb104-18" tabindex="-1"></a>all_results <span class="ot">=</span> <span class="fu">bind_rows</span>(results)</span></code></pre></div>
 <div class="webex-solution">
 <button>
 Solutions
 </button>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
-<span id="cb103-2"><a href="#cb103-2" tabindex="-1"></a></span>
-<span id="cb103-3"><a href="#cb103-3" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">lapply</span>(artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="cf">function</span>(one_artist) {</span>
-<span id="cb103-4"><a href="#cb103-4" tabindex="-1"></a>  filtered_data <span class="ot">=</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist<span class="sc">==</span>one_artist)</span>
-<span id="cb103-5"><a href="#cb103-5" tabindex="-1"></a>  </span>
-<span id="cb103-6"><a href="#cb103-6" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(weekly_streams<span class="sc">+</span><span class="dv">1</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> </span>
-<span id="cb103-7"><a href="#cb103-7" tabindex="-1"></a>                <span class="fu">as.factor</span>(country) <span class="sc">+</span></span>
-<span id="cb103-8"><a href="#cb103-8" tabindex="-1"></a>                sun <span class="sc">+</span> temp <span class="sc">+</span></span>
-<span id="cb103-9"><a href="#cb103-9" tabindex="-1"></a>                <span class="fu">log</span>(Instagram_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(Instagram_followers) <span class="sc">+</span></span>
-<span id="cb103-10"><a href="#cb103-10" tabindex="-1"></a>                <span class="fu">log</span>(Snapchat_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(Snapchat_followers) <span class="sc">+</span></span>
-<span id="cb103-11"><a href="#cb103-11" tabindex="-1"></a>                <span class="fu">log</span>(TikTok_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(TikTok_followers) <span class="sc">+</span></span>
-<span id="cb103-12"><a href="#cb103-12" tabindex="-1"></a>                <span class="fu">log</span>(X_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(X_followers), <span class="at">data=</span> filtered_data)</span>
-<span id="cb103-13"><a href="#cb103-13" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">names</span>(m<span class="sc">$</span>coefficients),</span>
-<span id="cb103-14"><a href="#cb103-14" tabindex="-1"></a>                     <span class="fu">summary</span>(m)<span class="sc">$</span>coefficients)</span>
-<span id="cb103-15"><a href="#cb103-15" tabindex="-1"></a>  <span class="fu">colnames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;variable&#39;</span>,<span class="st">&#39;estimate&#39;</span>,<span class="st">&#39;se&#39;</span>,<span class="st">&#39;t&#39;</span>,<span class="st">&#39;pval&#39;</span>)</span>
-<span id="cb103-16"><a href="#cb103-16" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tibble</span>(results) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">artist=</span>one_artist)</span>
-<span id="cb103-17"><a href="#cb103-17" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb103-18"><a href="#cb103-18" tabindex="-1"></a>})</span>
-<span id="cb103-19"><a href="#cb103-19" tabindex="-1"></a></span>
-<span id="cb103-20"><a href="#cb103-20" tabindex="-1"></a>all_results <span class="ot">=</span> <span class="fu">bind_rows</span>(results)</span>
-<span id="cb103-21"><a href="#cb103-21" tabindex="-1"></a></span>
-<span id="cb103-22"><a href="#cb103-22" tabindex="-1"></a><span class="co"># all results now contains the results of all individual regressions;</span></span>
-<span id="cb103-23"><a href="#cb103-23" tabindex="-1"></a><span class="co"># you could now &quot;filter&quot; through - e.g., to create a histogram of the effects of sun!</span></span>
-<span id="cb103-24"><a href="#cb103-24" tabindex="-1"></a></span>
-<span id="cb103-25"><a href="#cb103-25" tabindex="-1"></a>all_results <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&#39;sun&#39;</span>, variable)) <span class="sc">%&gt;%</span></span>
-<span id="cb103-26"><a href="#cb103-26" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&#39;Histogram of the effect of sun hours on followers&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" tabindex="-1"></a>artists <span class="ot">=</span> <span class="fu">unique</span>(complete_data<span class="sc">$</span>artist)</span>
+<span id="cb105-2"><a href="#cb105-2" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="#cb105-3" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">lapply</span>(artists[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="cf">function</span>(one_artist) {</span>
+<span id="cb105-4"><a href="#cb105-4" tabindex="-1"></a>  filtered_data <span class="ot">=</span> complete_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(artist<span class="sc">==</span>one_artist)</span>
+<span id="cb105-5"><a href="#cb105-5" tabindex="-1"></a>  </span>
+<span id="cb105-6"><a href="#cb105-6" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(weekly_streams<span class="sc">+</span><span class="dv">1</span>) <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> </span>
+<span id="cb105-7"><a href="#cb105-7" tabindex="-1"></a>                <span class="fu">as.factor</span>(country) <span class="sc">+</span></span>
+<span id="cb105-8"><a href="#cb105-8" tabindex="-1"></a>                sun <span class="sc">+</span> temp <span class="sc">+</span></span>
+<span id="cb105-9"><a href="#cb105-9" tabindex="-1"></a>                <span class="fu">log</span>(Instagram_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(Instagram_followers) <span class="sc">+</span></span>
+<span id="cb105-10"><a href="#cb105-10" tabindex="-1"></a>                <span class="fu">log</span>(Snapchat_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(Snapchat_followers) <span class="sc">+</span></span>
+<span id="cb105-11"><a href="#cb105-11" tabindex="-1"></a>                <span class="fu">log</span>(TikTok_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(TikTok_followers) <span class="sc">+</span></span>
+<span id="cb105-12"><a href="#cb105-12" tabindex="-1"></a>                <span class="fu">log</span>(X_comments<span class="sc">+</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">log</span>(X_followers), <span class="at">data=</span> filtered_data)</span>
+<span id="cb105-13"><a href="#cb105-13" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">names</span>(m<span class="sc">$</span>coefficients),</span>
+<span id="cb105-14"><a href="#cb105-14" tabindex="-1"></a>                     <span class="fu">summary</span>(m)<span class="sc">$</span>coefficients)</span>
+<span id="cb105-15"><a href="#cb105-15" tabindex="-1"></a>  <span class="fu">colnames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;variable&#39;</span>,<span class="st">&#39;estimate&#39;</span>,<span class="st">&#39;se&#39;</span>,<span class="st">&#39;t&#39;</span>,<span class="st">&#39;pval&#39;</span>)</span>
+<span id="cb105-16"><a href="#cb105-16" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tibble</span>(results) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">artist=</span>one_artist)</span>
+<span id="cb105-17"><a href="#cb105-17" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb105-18"><a href="#cb105-18" tabindex="-1"></a>})</span>
+<span id="cb105-19"><a href="#cb105-19" tabindex="-1"></a></span>
+<span id="cb105-20"><a href="#cb105-20" tabindex="-1"></a>all_results <span class="ot">=</span> <span class="fu">bind_rows</span>(results)</span>
+<span id="cb105-21"><a href="#cb105-21" tabindex="-1"></a></span>
+<span id="cb105-22"><a href="#cb105-22" tabindex="-1"></a><span class="co"># all results now contains the results of all individual regressions;</span></span>
+<span id="cb105-23"><a href="#cb105-23" tabindex="-1"></a><span class="co"># you could now &quot;filter&quot; through - e.g., to create a histogram of the effects of sun!</span></span>
+<span id="cb105-24"><a href="#cb105-24" tabindex="-1"></a></span>
+<span id="cb105-25"><a href="#cb105-25" tabindex="-1"></a>all_results <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&#39;sun&#39;</span>, variable)) <span class="sc">%&gt;%</span></span>
+<span id="cb105-26"><a href="#cb105-26" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&#39;Histogram of the effect of sun hours on followers&#39;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="summary" class="section level2">

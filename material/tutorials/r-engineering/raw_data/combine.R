@@ -98,7 +98,6 @@ simulate_streams <- function(temp, sun, social_followers, social_comments, playl
 streams <- streams %>% left_join(extra_covariates, by = c('artist','country','date'))
 
 # Apply simulation over all rows
-# Apply simulation over all rows
 streams2 <- streams %>%
   mutate(
     day_index = as.numeric(date - min(date) + 1),
@@ -123,13 +122,15 @@ print(head(streams2))
 # Generate some missings
 
 # Create missing data
+print(nrow(streams))
 streams2 <- streams2 %>% mutate(is_NA = runif(n())<.06)
-streams2 <- streams2 %>% group_by(artist, date) %>% mutate(is_missing = first(runif(1)<.02)) %>% ungroup()
-streams2 <- streams2 %>% group_by(date) %>% mutate(is_missing2 = first(runif(1)<.1)) %>% ungroup()
+streams2 <- streams2 %>% mutate(week =ISOweek::ISOweek(date))
+streams2 <- streams2 %>% group_by(artist, week) %>% mutate(is_missing = first(runif(1)<.02)) %>% ungroup()
+streams2 <- streams2 %>% group_by(week) %>% mutate(is_missing2 = first(runif(1)<.1)) %>% ungroup()
 
 streams2 = streams2 %>% mutate(streams = ifelse(is_NA==T, NA, streams))
-streams2 = streams2 %>% filter(!is_missing & !is_missing2) %>% select(-is_missing, -is_missing2, -is_NA)
-
+streams2 = streams2 %>% filter(!is_missing & !is_missing2) %>% select(-is_missing, -is_missing2, -is_NA, -week)
+print(nrow(streams2))
 
 # Save to CSV
 write_csv(streams2, "streams.csv")

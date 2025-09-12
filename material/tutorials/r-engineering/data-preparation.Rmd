@@ -126,12 +126,12 @@ Ready to start? Here's what we recommend you do before going through this tutori
 
 ## Download the data
 
-Click [here](https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/week4_data.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
+Click [here](https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/raw_data/week4_data.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
 
 ```{r eval=TRUE, include=TRUE}
 # downloading and unzipping the data
 if (!file.exists('downloaded_data.zip')) {
-  download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/week4_data.zip', 'downloaded_data.zip')
+  download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/raw_data/week4_data.zip', 'downloaded_data.zip')
   unzip('downloaded_data.zip', overwrite=TRUE)
   }
 ```
