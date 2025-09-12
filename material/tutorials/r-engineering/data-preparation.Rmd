@@ -1,11 +1,12 @@
 ---
 title: "Engineering data sets"
-date: "Last updated: 19 February 2025"
+date: "Last updated: 12 September 2025"
 output:  
   webexercises::webexercises_default:
     theme: flatly
     highlight: tango
-    toc: true
+    toc: false
+
 ---
 
 <style>
@@ -25,12 +26,71 @@ library(tidyverse)
 library(webexercises)
 library(knitr)
 
+show_solutions = FALSE
+
+hide <- function (button_text = "Solution", visible=show_solutions) 
+{
+  if (visible==T) {  
+  rmd <- !is.null(getOption("knitr.in.progress"))
+    if (rmd) {
+        paste0("\n<div class='webex-solution'><button>", button_text, 
+            "</button>\n")
+    }
+    else {
+        paste0("\n::: {.callout-note collapse='true'}\n## ", 
+            button_text, "\n\n")
+    }
+}
+}
+
+unhide <- function (visible=show_solutions) 
+{
+    if (visible==T) {
+    rmd <- !is.null(getOption("knitr.in.progress"))
+    if (rmd) {
+        "\n</div>\n"
+    }
+    else {
+        "\n:::\n\n"
+    }
+    }
+}
+
 ```
 
-# Introduction
+# 🚀 Welcome
 
-In this tutorial, we'll tackle common data challenges using a simulated music streaming dataset. Starting with multiple raw data sources, we'll clean, transform, and merge them into a single analysis-ready data frame.
+In this tutorial you’ll learn to **clean, transform, and merge data** into a single analysis-ready dataset.
 
+---
+
+## 🗺️ Roadmap
+
+Here’s the path we’ll follow:
+
+**Part 1 - Setup**
+- Download and explore the data for this tutorial.
+
+**Part 2 – Building Skills**
+
+- **2A. Base R functions in tidyverse** → summary stats, ranking, uniqueness  
+- **2B. Advanced cleaning** → regex for string data  
+- **2C. Working with time** → dates, weeks, missing values, lags & leads  
+- **2D. Pivoting** → reshape between long ↔ wide formats  
+- **2E. Merging** → joins (left, inner, full)
+
+**Part 3 – Case Study & Exercises**
+
+- Assemble a complete artist–country–week dataset  
+- Aggregate to weekly level  
+- Add trend variables  
+- Merge in weather & socials  
+- Handle missing data  
+- Scale up with loops: plots & regressions  
+
+__IMPORTANT:__ Recall that all of these concepts are covered in the accompanying textbook, available at https://dprep-book.hannesdatta.com. Please complete the reading of the corresponding chapter ("data engineering & databases") before working on this tutorial.
+
+<!--
 ## What You'll Learn in this Tutorial
 
 - Expand your knowledge of R functions (e.g., base functions such as `rank()` or `unique()`)
@@ -40,10 +100,11 @@ In this tutorial, we'll tackle common data challenges using a simulated music st
 - Merge data sets on one or more indices and understand the different types of joins (inner, left, right join).
 - Scale workflows (e.g., batch plotting, estimation of linear models, `lm()`)
 - Implement techniques to exemplary case studies often encountered in marketing research
-
+-->
 <!--
 , `for` loops and `lapply()`-->
 
+<!--
 ## Prerequisites
 
 Ready to start? Here's what we recommend you do before going through this tutorial.
@@ -51,9 +112,11 @@ Ready to start? Here's what we recommend you do before going through this tutori
 * [Datacamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
 * [Datacamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
 * [Datacamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+-->
 
+# Part 1: Getting Started
 
-### Create a new R project
+## Create a new R project
 
 1. Open RStudio and create a new project by clicking on `File` -> `New Project` -> `New Directory` -> `New Project`.
 2. Name your project `data-preparation` and save it in a location of your choice.
@@ -61,15 +124,15 @@ Ready to start? Here's what we recommend you do before going through this tutori
 - Option 1 (code): Run `dir.create("data")
 - Option 2 (Manual): Click *New Folder (📁)* in the Files pane  
 
-### Download the data
+## Download the data
 
-Click [here](https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week4/tutorial/data/week4_data.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
+Click [here](https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/week4_data.zip) to manually download the dataset. Alternatively, run the following R code to download and unzip the file automatically: 
 
 ```{r eval=TRUE, include=TRUE}
 # downloading and unzipping the data
-if (!file.exists('week4_data.zip')) {
-  download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/master/content/docs/modules/week4/tutorial/data/week4_data.zip', 'week4_data.zip')
-  unzip('week4_data.zip', overwrite=TRUE)
+if (!file.exists('downloaded_data.zip')) {
+  download.file('https://github.com/hannesdatta/course-dprep/raw/refs/heads/main/material/tutorials/r-engineering/week4_data.zip', 'downloaded_data.zip')
+  unzip('downloaded_data.zip', overwrite=TRUE)
   }
 ```
 Now, load the data into R using `read_csv`:
@@ -88,7 +151,7 @@ __Troubleshooting__:
 
 - If R doesn’t find your file: Click **Session → Set working directory → To source file location**. Avoid using `setwd()` — hardcoding directories can cause problems!
 
-### Understanding the Data
+## Understanding the Data
 
 Let's explore the data. It consists of four files, which vary in structure, unit of observation, etc. This is on purpose because then you can learn all the concepts required in this tutorial.
  
@@ -97,7 +160,7 @@ Let's explore the data. It consists of four files, which vary in structure, unit
 - `socials.csv`: for every `artist` and day (`date`), this data lists social media metrics (e.g., on `platform` TikTok, a `metric` followers is observed and has the `value` 458352)
 - `playlists.csv`: for each week `iso_week` and `artist`, the data lists the number of `playlists` an artist was listed on on Spotify.
 
-### Now it's your turn: Explore the data yourself!
+## Now it's your turn: Explore the data yourself!
 
 We can now explore the data using the strategies introduced in earlier tutorials.
 
@@ -111,7 +174,7 @@ __Tips:__
 - The command `summary(playlists)` or `glimpse(playlists)` generates descriptive statistics for all variables in the data. You can also use this command on individual columns (e.g., `summary(playlists$playlists)`).
 - Character or factor columns are best inspected using the `table()` command. These will create frequency tables.
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+```{r, webex.hide = 'Solutions',include=show_solutions}
 
 # View the first rows of the datasets to get an overview
 head(streams)
@@ -126,11 +189,11 @@ glimpse(playlists)
 
 ```
 
-# Part 1: Expanding our knowledge of R
+# Part 2: Expanding our knowledge of R
 
 In this section, we will deepen our understanding of key R functions that are essential for data engineering. We will focus on numerical functions, advanced string cleaning, and working with time-based data. Each concept will be demonstrated with examples from our datasets.
 
-## 1A) Applying base R functions in `tidyverse`
+## 2A) Applying base R functions in `tidyverse`
 
 Before diving into more advanced transformations, let’s start by applying **base R functions** inside `dplyr` operations. In `mutate()` and `summarize()`, you can use **any** function from base R—not just `mean()`, `min()`, or `max()`. This is useful when operationalizing new variables, performing custom transformations, or computing statistics on groups.
 
@@ -233,7 +296,7 @@ streams %>%
 ```
 
 
-## 1B) Advanced Cleaning: Using Regular Expressions
+## 2B) Advanced Cleaning: Using Regular Expressions
 
 Regular expressions (**regex**) allow us to search for patterns in text, making it easier to clean and filter data. In R, we use:  
 
@@ -307,7 +370,7 @@ streams %>%
   mutate(artist_clean = gsub("\\d", "", artist))
 ```
 
-## 1C) Dealing with Time
+## 2C) Dealing with Time
 
 Time-related data comes in many forms—years, months, days, hours, minutes, and seconds—each with its own quirks. In R, handling time efficiently requires careful attention to **conversion, formatting, and interpretation**. Whether you're working with timestamps, durations, or calendar-based data, understanding how to manipulate and analyze time correctly is crucial for avoiding errors and ensuring meaningful insights.  
 
@@ -441,7 +504,7 @@ streams <- streams %>%
 streams %>% arrange(artist,country,date) %>% select(artist, country, date, streams, lag_streams, daily_change) %>% head(10)
 ```
 
-## 1D) Pivoting Data: Reshaping from Long to Wide and Wide to Long  
+## 2D) Pivoting Data: Reshaping from Long to Wide and Wide to Long  
 
 Data is often stored in **different formats**, depending on the analysis needs. Sometimes, we need to **widen** a dataset to make it easier to read, and other times, we need to **lengthen** it to perform certain operations. The `tidyr` package in `tidyverse` provides **pivoting functions** to reshape data efficiently.  
 
@@ -546,7 +609,7 @@ head(wide_weather)
 For more details, check out the **tidyverse cheatsheet on pivoting**:  
 [tidyr Pivoting Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf)  
 
-## 1E) Merging Data: Combining Multiple Data Sources  
+## 2E) Merging Data: Combining Multiple Data Sources  
 
 In real-world analysis, data is often stored in separate tables. To get meaningful insights, we need to merge datasets based on shared keys. The `dplyr` package provides efficient functions for this, making it easy to combine and manipulate data.
 
@@ -634,7 +697,7 @@ For more details, check out the official **dplyr cheatsheet** on joins:
 Congratulations! You've tackled the **fundamentals of working with time in R**, from handling messy date formats to computing lags and filling in missing values. Now, it's time to put your skills to the test with a **real-world challenge**—one that reflects the types of problems you’d face in data analysis.  
 
 
-# Part 2: Case study and Exercises
+# Part 3: Case study and Exercises
 
 Before any meaningful analysis can happen, data needs to be **cleaned, structured, and prepared**—a process that often takes up more time than the actual modeling. In real-world marketing analytics, raw datasets are rarely ready for immediate use. Instead, they come in different formats, with missing values, misaligned timeframes, and inconsistencies that need to be resolved before drawing any conclusions.  
 
@@ -658,7 +721,7 @@ Load the datasets.
 - Follow the **setup-ITO structure** to keep your code organized.  
 - Ensure all datasets are properly read into R and inspected for missing values.  
 
-```{r eval=T, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, webex.hide = 'Solutions',include=show_solutions}
 library(tidyverse)
 
 # Load data
@@ -679,7 +742,7 @@ Convert daily streams into **weekly aggregates** using **ISO weeks**. Take the `
 - **Summing** would work too, but only if you have complete data. In case you want to still measure "total" streams, you could also take the `mean()*7`.
 
 
-```{r eval=T, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, webex.hide = 'Solutions',include=show_solutions}
 library(lubridate)
 
 streams_aggregated <- streams %>%
@@ -695,7 +758,7 @@ streams_aggregated <- streams %>%
 
 Add a **trend variable** that increases from 1 (for the first week) to the last. We can later use this variable in a regression analysis.
 
-```{r eval=T, include=TRUE, webex.hide='Solutions'}
+```{r eval = T, webex.hide = 'Solutions',include=show_solutions}
 
 streams_aggregated <- streams_aggregated %>%
   group_by(artist,country) %>% arrange(artist, country, week) %>%
@@ -713,7 +776,7 @@ Ensure that every **artist-country-week** combination is represented, even if no
 
 - Use `expand_grid()` to create all possible combinations of artists, countries and dates. Check R's help to see how the command works (we haven't covered it in the tutorial so far). Just type `?expand.grid` on your console.
 
-```{r eval=T, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, webex.hide = 'Solutions',include=show_solutions}
 
 all_weeks <- unique(streams_aggregated$week)
 all_artists <- unique(streams_aggregated$artist)
@@ -727,7 +790,7 @@ dim(complete_data) # more than 20k rows!
 
 Join the aggregated streams data with the **complete dataset** from Exercise 4.  
 
-```{r eval=TRUE, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, webex.hide = 'Solutions',include=show_solutions}
 
 complete_data <- complete_data %>%
   left_join(streams_aggregated, by = c("artist", "country", "week"))
@@ -746,7 +809,7 @@ complete_data <- complete_data %>%
   - Reshape long to wide
   - Merge!
 
-```{r eval=TRUE, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, webex.hide = 'Solutions',include=show_solutions}
 
 # Reshape weather data (long format)
 weather_long <- weather %>%
@@ -798,7 +861,7 @@ Impute missing values for the following variables:
 - `X_followers`: `na.approx()`
 
 
-```{r eval=TRUE, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, webex.hide = 'Solutions',include=show_solutions}
 complete_data %>% group_by(artist, country) %>%
   arrange(artist, country, week) %>%
   mutate(sun = na.locf(sun, na.rm=F),
@@ -836,7 +899,7 @@ for (one_artist in artists[1:10]) {
 }
 ```
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+```{r eval=T, webex.hide = 'Solutions',include=show_solutions}
 library(ggplot2)
 dir.create('plots')
 
@@ -889,7 +952,7 @@ results = lapply(artists[1:10], function(one_artist) {
 all_results = bind_rows(results)
 ```
 
-```{r eval=FALSE, include=TRUE, webex.hide='Solutions'}
+```{r eval=F, webex.hide = 'Solutions',include=show_solutions}
 artists = unique(complete_data$artist)
 
 results = lapply(artists[1:10], function(one_artist) {
