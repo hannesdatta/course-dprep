@@ -8,9 +8,28 @@ format:
     linkcolor: blue
 editor: visual
 ---
+# Today's tutorial
+- Back to R but maintain working with Git/GitHub. 
+  - Part 1: expanding our knowledge of R
+      - applying functions, advanced cleaning, dealing with time, merging data, pivoting
+  - Part 2: selection of tutorial exercises. 
+
+# Goals for today
+- What we've covered earlier in this course
+  - Basic wrangling/transformations (can you name a few examples?)
+  - Structure scripts in three blocks -- required to automate workflow later (input, transformation, output)
+- __Now:__ zoom in on more advanced ways to transform data
+
+# Today's data:
+- Massive, "big" data on music streaming
+  - `streams.csv`: artist streams, daily
+  - `weather.csv`: weather data for four countries
+  - `socials.csv`: social media stats
+  - `playlists.csv`: playlist statistics
 
 # Download data
-- Go to this week's tutorial and copy the following:
+
+-   Go to this week's tutorial and copy the following:
 
 ```{r eval=FALSE, echo=TRUE}
 if (!file.exists('downloaded_data.zip')) {
@@ -20,9 +39,10 @@ if (!file.exists('downloaded_data.zip')) {
   }
 ```
 
-- We will work with these data sets
+-   We will work with these data sets
 
 # Load the data and explore it!
+
 ```{r eval=FALSE, echo=TRUE}
 library(tidyverse)
 
@@ -31,22 +51,28 @@ weather <- read_csv('weather.csv')
 socials <- read_csv('socials.csv')
 playlists <- read_csv('playlists.csv')
 ```
+
 - What is the unit of observation?
 - Are there any missing values?
 - Common columns across data sets?
+- We have used:
+  - exploring data (`head`, `View()`, `summary()`, `table()`, `dim()`
+  -  wrangling with tidyverse/dplyr: `group_by()`, `summarize()`, `mutate()`, `filter()`, `select()`, `arrange()`, `count()`
 
-# Important functions!
-**Important functions:** can you tell what they do?
-
--   What do these functions do, does anyone know?
--   `select()`
--   `filter()`
--   `mutate()`
--   `group_by()`
--   `summarise()`
--   `rename()`
+# Expanding our R knowldege
+- But... what about more complex operations?
+  - custom summary statistics? ranking? &rarr; create charts 
+  - removing duplicates? &rarr; for data auditing
+  - complex text searches? &rarr; find artists
+  - dealing with time series data? &rarr; replace missings
+  - reshaping data? &rarr; bring data into the right shape for analysis
+  - merging multiple data sets? &rarr; build "final" data set
+  
+# Example: mutate and working with dates
+- If we run a regression analysis, and we want to account for time, how should the data look like?
 
 # Example: mutate and working with dates
+
 ```{r eval=FALSE, echo=TRUE}
 # Example 1: mutate and working with dates
 library(lubridate)
@@ -64,7 +90,11 @@ streams %>%
   head(10)
 ```
 
-# Example: Filling missing data 
+# Example: Filling missing data
+- If we have missing data and we want to impute it, how can we do that? And how should we do it?
+
+# Example: Filling missing data
+
 ```{r eval=FALSE, echo=TRUE}
 tmp_dates=seq(from=as.Date('2025-01-01'),
               length.out=10, by='1 day')
@@ -77,6 +107,7 @@ sim_data= tibble(date=tmp_dates,
 ```
 
 # Example: Filling missing data
+
 ```{r eval=FALSE, echo=TRUE}
 library(zoo)
 
@@ -85,7 +116,12 @@ sim_data = sim_data %>%
 sim_data
 ```
 
+# Example, pivot longer & pivot wider
+- What is meant by pivot longer and pivot wider?
+- Why would we want to do these things?
+
 # Example: Pivot longer
+
 ```{r eval=FALSE, echo=TRUE}
 long_weather <- weather %>%
   pivot_longer(cols = ends_with('temp'), 
@@ -100,6 +136,7 @@ head(long_weather)
 ```
 
 # Example: Pivot wider
+
 ```{r eval=FALSE, echo=TRUE}
 wide_weather <- long_weather %>% 
   pivot_wider(names_from = 'country', 
@@ -108,8 +145,13 @@ wide_weather <- long_weather %>%
 head(wide_weather)
 ```
 
+# Example: merging data
+- Big companies have loads of different data, in different tables
+- They need to combine different data sets to analyze the data they need
+- How does merging work?
 
 # Example: merging data
+
 ```{r eval=FALSE, echo=TRUE}
 # For this exercise, let's add a week column that we can merge on
 streams <- streams %>%
@@ -129,31 +171,36 @@ head(merged_data)
 ```
 
 # Let's do some exercises, Exercise 1 & 2
-- Load the data
-- Convert daily streams into weekly aggregates using ISO weeks. Take the mean().
+
+-   Load the data
+-   Convert daily streams into weekly aggregates using ISO weeks. Take the mean().
 
 # Exercise 3:Add a trend variable
-- Add a trend variable that increases from 1 (for the first week) to the last.
+
+-   Add a trend variable that increases from 1 (for the first week) to the last.
 
 # Exercise 4: Create a Complete Data Grid
-- Ensure that every artist-country-week combination is represented, even if no streams were recorded.
+
+-   Ensure that every artist-country-week combination is represented, even if no streams were recorded.
 
 # Exercise 5: Merge Streams Data into the Complete Grid (complete_data)
-- Join the previous dataset with the complete data set from exercise 4. 
+
+-   Join the previous dataset with the complete data set from exercise 4.
 
 # Exercise 6: Merge Weather and Social Media data
-- Prepare merge weather data
-  - First, create an ISO week column.
-  - Then, aggregate to the weekly level.
-  - Next, turn it back into wide (with temp and sun as columns)
-  - Finally, you can merge it with complete_data.
-- Prepare and merge socials data
-  - Add ISO week to socials data
-  - Aggregate to weekly level (week, artist, platform and metric)
-  - Reshape long to wide
-  - Merge!
-  
-# Complete at home
-- Exercises 6 through 9, complete at home! 
 
+-   Prepare merge weather data
+    -   First, create an ISO week column.
+    -   Then, aggregate to the weekly level.
+    -   Next, turn it back into wide (with temp and sun as columns)
+    -   Finally, you can merge it with complete_data.
+-   Prepare and merge socials data
+    -   Add ISO week to socials data
+    -   Aggregate to weekly level (week, artist, platform and metric)
+    -   Reshape long to wide
+    -   Merge!
+
+# Complete at home
+
+-   Exercises 6 through 9, complete at home!
 
