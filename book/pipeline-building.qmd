@@ -118,7 +118,7 @@ Automation doesn’t mean rerunning *everything*. It means rerunning *exactly wh
 
 ## Automation in Practice
 
-Let’s now see how automation works when applied to a real project. We will continue with our **marketing analytics example**: studying the effect of advertising campaigns on product sales. In Chapter 2, we already broke the project into stages — *data preparation*, *analysis*, and *reporting*. Automation takes those stages and connects them into a living, breathing pipeline.
+Let’s now see how automation works when applied to a real project. We will continue with our **marketing analytics example**: studying the effect of advertising campaigns on product sales. In Chapter 2, we already broke the project into stages — *data preparation*, *analysis*, and *reporting*. Automation takes those stages and connects them into a "living" pipeline.
 
 ### Data Preparation Stage
 
@@ -205,10 +205,11 @@ Think of this as a “stress test” for your project. A pipeline that can only 
 
 ### Preview Before You Leap
 
-Most automation tools allow you to do a “dry run.” In Make, for example, this is `make -n`. Instead of actually executing commands, the tool tells you which steps *would* run. This preview is invaluable. It’s like having a rehearsal before the main performance: you can check that the right files are being rebuilt and spot typos in file paths or missing dependencies before wasting time on long computations.
+Most automation tools allow you to do a “dry run.”[^1] Instead of actually executing commands, the tool tells you which steps *would* run. This preview is invaluable. It’s like having a rehearsal before the main performance: you can check that the right files are being rebuilt and spot typos in file paths or missing dependencies before wasting time on long computations.
 
 Especially in large projects where some steps take hours to run, this habit saves enormous amounts of time and frustration.
 
+[^1]: In `make`, a popular automation tool, you can "dry-run" your workflow with the command `make -n`.
 
 ### Rebuild Regularly
 
