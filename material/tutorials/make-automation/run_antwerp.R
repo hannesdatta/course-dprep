@@ -1,6 +1,6 @@
 # Load packages
 library(tidyverse)
-library(reshape2)
+library(ggplot2)
 
 # DOWNLOAD DATA 
 
@@ -48,7 +48,7 @@ write_csv(df_grouped, "aggregated_df.csv")
 df <- read_csv("aggregated_df.csv")
 
 ## create pivot table 
-df_pivot <- df %>% reshape2::dcast(date ~ neighbourhood, fun.aggregate = sum, value.var = "num_reviews")
+df_pivot <- df %>%  pivot_wider(id_cols=date, names_from = neighbourhood, values_from = num_reviews)
 
 ## export results
 write_csv(df_pivot, "pivot_table.csv")
@@ -60,19 +60,27 @@ write_csv(df_pivot, "pivot_table.csv")
 df_pivot <- read_csv("pivot_table.csv")
 
 pdf("plot_Antwerp.pdf")
-plot(x = df_pivot$date, 
-     y = df_pivot$Universiteitsbuurt, 
-     col = "red", 
-     type = "l", 
-     xlab = "",
-     ylab = "Total number of reviews", 
-     main = "Effect of COVID-19 pandemic on Airbnb review count")
+library(tidyverse)
 
+df_pivot <- read_csv("pivot_table.csv")
 
-lines(df_pivot$date, df_pivot$`Sint-Andries`, col="blue")
-lines(df_pivot$date, df_pivot$`Centraal Station`, col="green")
+pdf("plot_Antwerp.pdf")
 
-legend("topleft", c("Universiteitsbuurt", "Sint Andries", "Centraal Station"), fill=c("red", "blue", "green"))
+ggplot(df_pivot, aes(x = date)) +
+  geom_line(aes(y = Universiteitsbuurt, color = "Universiteitsbuurt"), linewidth = 1) +
+  geom_line(aes(y = `Sint-Andries`, color = "Sint-Andries"), linewidth = 1) +
+  geom_line(aes(y = `Centraal Station`, color = "Centraal Station"), linewidth = 1) +
+  labs(
+    x = "",
+    y = "Total number of reviews",
+    title = "Effect of COVID-19 pandemic on Airbnb review count",
+    color = "Neighborhood"
+  ) +
+  scale_color_manual(values = c("Universiteitsbuurt" = "red",
+                                "Sint-Andries" = "blue",
+                                "Centraal Station" = "green")) +
+  theme_minimal()
+
 dev.off()
 
 # PLOT ALL
@@ -85,10 +93,14 @@ df_groupby <- df %>% group_by(date) %>% summarise(num_reviews = sum(num_reviews)
 
 ## plot the chart and store the visualisation.
 pdf("plot_all.pdf")
-plot(x = df_groupby$date, 
-     y = df_groupby$num_reviews, 
-     type = "l", 
-     xlab = "",
-     ylab = "Total number of reviews", 
-     main = "Effect of COVID-19 pandemic on Airbnb review count")
+
+ggplot(df_groupby, aes(x = date, y = num_reviews)) +
+  geom_line(color = "black", size = 1) +
+  labs(
+    x = "",
+    y = "Total number of reviews",
+    title = "Effect of COVID-19 pandemic on Airbnb review count"
+  ) +
+  theme_minimal()
+
 dev.off()

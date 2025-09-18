@@ -1,12 +1,12 @@
 ---
 title: "Pipeline Building & Automation"
 author: ""
-date: "Last updated: 10 March 2025"
+date: "Last updated: 18 September 2025"
 output:  
   webexercises::webexercises_default:
     theme: flatly
     highlight: tango
-    toc: true
+    toc: false
 ---
 
 <style>
@@ -27,7 +27,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Getting started
 
-When working on large-scale data intensive projects, it's important to define a project pipeline and automate it end to end so that you don't have to manually produce your research results but you can just sit back and relax and have the computer do the the job for you. In this tutorial, you learn how to organize your files and directories and set-up a makefile that executes your whole project with just a single command!
+Imagine you're following a recipe to bake a cake. You don't want to mix the batter every time you need a slice—you want to bake it once and enjoy it whenever you like. **Automation with `make` works the same way!** It lets you define a "recipe" for your project so the computer can rebuild your results automatically whenever something changes.
+
+In this tutorial, you'll learn how to:
+
+- Organize your project files and directories.
+- Set up a `makefile` to run your entire project with **one command**.
+
+> **Why this matters**: No more manually rerunning code! `make` saves you time and ensures your results are always up to date.
 
 ## Learning Objectives
 
@@ -39,9 +46,6 @@ When working on large-scale data intensive projects, it's important to define a 
 
 ## Prerequisites and Installation
 
-* Get familiar with the shell/terminal/command line
-  * [DataCamp Introduction to Shell](https://datacamp.com/courses/introduction-to-shell) (chapter 1; Mac &amp; Windows) 
-  * [How To Use The Command Line](https://generalassembly.github.io/prework/cl/#/) (optional - only for Mac users)
 * Install `make`
   * We will use make to automate the execution of our projects with a "single click", so that our entire work flow is reproducible. Before you proceed, please install make ([Windows](https://tilburgsciencehub.com/get/make) users only - Mac/Linux already have it!).
 * Verify whether you installed make successfully  
@@ -58,7 +62,7 @@ When working on large-scale data intensive projects, it's important to define a 
 In this tutorial, we're going to create a make file that downloads, loads, transforms, and exports data from [Inside Airbnb](http://insideairbnb.com/index.html). The website provides a visual overview of the amount, availability, and spread of rooms listed on Airbnb across a city, as well as an approximation of the number of bookings and occupancy rate, and the number of listings per host. Moreover, the website publicly shares listings, calendar, neighbourhood and reviews data of various popular Airbnb destinations.  
 
 **Exercise 1**  
-As as starting point for this tutorial, we use [source code](https://gist.github.com/hannesdatta/1f764090ae3ebfaabe7a91ea4b971c3d) of an empirical project on the Airbnb housing market in Antwerp.
+As as starting point for this tutorial, we use [source code](https://github.com/hannesdatta/course-dprep/raw/main/material/tutorials/make-automation/run_antwerp.R) of an empirical project on the Airbnb housing market in Antwerp.
 
 1. Download the source code as `run_Antwerp.R`, open the file in RStudio, and run it. What output files does it return?
 2. Makefiles trigger scripts (e.g., R files) from the terminal and therefore it is important to know how to do so. Open the terminal and navigate to the location where the R script is stored. Then, run `R --vanilla < run_Antwerp.R` to execute the same file but this time from the terminal (depending on your installation you may need to run `Rscript run_Antwerp.R` instead). 
@@ -127,22 +131,70 @@ plot_all.pdf: run_Antwerp.R
 ## 2.1 Modularizing Code
 So far, we have defined a simple makefile that checks whether `plot_all.pdf` is present and if not it runs the R script. For each minor change, such as changing one of the areas in the plot, it runs the entire script from top to bottom. This costs unnecessary compute resources because the listings and reviews data have already been downloaded and preprocessed. In practice, you therefore often want to split up a large file into multiple *modules* so that you only need to run those modules that contain changes. 
 
-In the figure below we impose a flow diagram structure in which the `run_Antwerp` script has been split up in five separate R modules: 
+### Visualizing the Workflow
+The figure below shows how the `run_Antwerp` script is split into five modules, each with a specific role:
 
-* `download.R` = downloads the raw listings and review data from Inside Airbnb.
-* `clean.R` = merges, preprocesses, and aggregates the data into a dataframe and writes it to `aggregated_df.csv`.
-* `pivot_table.R` = generates a pivot table in which the columns are the city neighborhoods.
-* `plot_all.R` = aggregate the number of reviews across all neighborhoods and create a plot.
-* `plot_Antwerp.R` = create a line chart for three neighborhoods in Antwerp (Universiteitsbuurt, Sint Andries, Centraal Station).
+- **`download.R`**: Downloads raw listings and review data from [Inside Airbnb](http://insideairbnb.com).
+- **`clean.R`**: Merges, preprocesses, and aggregates the data into `aggregated_df.csv`.
+- **`pivot_table.R`**: Generates a pivot table with city neighborhoods as columns.
+- **`plot_all.R`**: Aggregates reviews across all neighborhoods and creates a plot.
+- **`plot_Antwerp.R`**: Creates a line chart for three neighborhoods in Antwerp.
 
 ![](./images/dependencies_Antwerp.png){width=50%}
 
+> **Why this matters**: Splitting your code into modules makes it easier to update and debug. `make` ensures only the necessary steps are rerun when changes are made!
 
-**Exercise 3**    
-a. Split up the full R script into the 5 separate scripts according to the diagram and definitions above. The sections indicated by comments (e.g., ### CLEAN DATA) serve as potential split-off points.   
-b. Check if all scripts run without issues. If not, make the necessary changes (tip: check if the libraries are imported at the top of each file).  
-c. Redefine the dependencies in make for the targets `reviews.csv`, `listings.csv`, `aggregated_df.csv`, `pivot_table.csv`, `plot_Antwerp.pdf`, and `plot_all.pdf` so that workflow dependencies are triggered like a chain reaction. For example, `plot_all.pdf` requires `aggregated.pdf.csv` to be there which in turn requires `listings.csv`, `reviews.csv` and `clean.R`. Use the figure above to identify the prerequisites and command files. 
-d. Delete the targets that were built in the last iteration. Now run `make -n` and `make` and see what happens. Does it work as expected? 
+
+**Exercise 3: Splitting and Organizing Your Code**
+
+Let's break this into smaller steps to make it easier!
+
+#### Step 1: Split the R script into modules
+- Open `run_Antwerp.R` in RStudio.
+- Copy the code under `### DOWNLOAD DATA` into a new file called `download.R`.
+- Save `download.R` in the `src/data-preparation/` folder.
+
+Repeat this process for the other sections:
+- `### CLEAN DATA` → `clean.R` (save in `src/data-preparation/`)
+- `### PIVOT TABLE` → `pivot_table.R` (save in `src/analysis/`)
+- `### PLOT ALL` → `plot_all.R` (save in `src/analysis/`)
+- `### PLOT ANTWERP` → `plot_Antwerp.R` (save in `src/analysis/`)
+
+> **Tip**: Make sure each new file includes the necessary library imports at the top!
+
+#### Step 2: Check if the scripts run
+- Open each script in RStudio and run it to ensure there are no errors.
+
+#### Step 3: Define dependencies in the makefile
+Update your makefile to include the following rules:
+
+```makefile
+# Download raw data
+listings.csv reviews.csv: download.R
+	Rscript download.R
+
+# Clean and aggregate data
+aggregated_df.csv: listings.csv reviews.csv clean.R
+	Rscript clean.R
+
+# Create pivot table
+pivot_table.csv: aggregated_df.csv pivot_table.R
+	Rscript pivot_table.R
+
+# Generate plots
+plot_all.pdf: aggregated_df.csv plot_all.R
+	Rscript plot_all.R
+
+plot_Antwerp.pdf: pivot_table.csv plot_Antwerp.R
+	Rscript plot_Antwerp.R
+```
+
+#### Step 4: Test your makefile
+- Delete the files generated in the last iteration (`reviews.csv`, `listings.csv`, `aggregated_df.csv`, `pivot_table.csv`, `plot_Antwerp.pdf`, `plot_all.pdf`).
+- Run `make -n` to preview the commands.
+- Run `make` to execute the commands.
+
+> **Check**: Does it work as expected? If not, double-check your file paths and dependencies.
 
 ```{makefile, webex.hide = 'Solution to Exercise 3c'}
 listings.csv reviews.csv: download.R
