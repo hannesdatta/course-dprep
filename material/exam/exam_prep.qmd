@@ -1,0 +1,281 @@
+---
+title: "Data Preparation & Programming Skills - Exam Preparation"
+author: "Hannes Datta"
+date: 2025-09-25
+format:
+  pdf:
+    code-overflow: wrap   # or scroll (wrap works better in PDF)
+    toc: true        # for PDF
+    toc_depth: 3
+    number-sections: true  # nice if you want numbered headings
+    number-depth: 2
+  html:
+    code-overflow: wrap
+
+---
+
+# Introduction
+
+The course content will be tested in the form of a computer exam, taken on campus (120 minutes for 328059-M-6). Students that take the exam of the (discontinued) 3 ECTS version of this course are asked to consult the preparation material from the previous semester.
+
+
+## Exam format
+
+- Computer exam in [TestVision](https://TilburgU.testvision.nl/online/kandidaten), taking place on campus
+- Closed book (i.e., no internet access), except that selected course material[^1] can be downloaded for use during the exam via the exam's instruction page
+
+[^1]: Students will be able to download ["cheatsheets"](cheatsheets-exam.zip) from the exam's introduction page.
+
+## Two examination opportunities per academic year
+
+Students enrolled in the course “Data Preparation and Programming Skills” can choose to take the on-campus computer exam during a maximum of two out of four examination opportunities per academic year.
+
+## Working on the exam
+- Communication with anybody about the exam content is strictly prohibited.
+- Students must not mention their names or student numbers in any of the submitted files, except when being explicitly asked to do so. This is to ensure the exam can be graded anonymously.
+
+# Exam Content
+
+- The exam consists of __open (i.e., open text answers or file uploads)__ and __closed (multiple-choice, ranking, matching) questions__, structured along the learning goals of this course.
+- Cognitive skills that will be tested are knowledge, comprehension, analysis, application, synthesis and evaluation.
+- The content for each particular learning goal will come from the (a) tutorials, and (b) the book[^2].
+- Total number of points to obtain on the exam are 120 - think of 1 point per "minute of work" on the exam (it will help you prioritize)
+- The table below will describe which questions to expect, from which source (per learning goal of the course)
+
+[^2]: https://dprep-book.hannesdatta.com/
+
+| No. | Learning goal | Question type | Questions based on tutorials | Questions based on book |
+|-----|---------------|-----------|-------------------|--------------------------|
+| 1   | Use R to clean and transform data for analysis | Synthesis | 20P on engineering tutorial | 4P (1Q), ch. 7 |
+| 2   | Use GitHub for managing empirical research projects | Eval. | | 12P (4Q), ch. 1-2, 5 |
+| 3   | Use Git/GitHub for versioning files and collaboration | Appl. & Eval. | 24P on GitHub tutorial  | 12P (4Q), ch. 5-6 |
+| 4   | Use R for generating automatic reports | Compreh. & Appli. | 10P on Rmarkdown tutorial | 8P (2-3Q), ch. 4  |
+| 5   | Use Workflow Management Tools | Appl. & Eval. | 24P on Make tutorial  | 6P (2Q), ch. 3, 8 |
+
+
+## Learning Goal 1
+
+*Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)*
+
+### Examplary question based on tutorials (20P on the exam)
+
+::: callout
+This question will always ask you to download a data set, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments).
+:::
+
+Please download the [`netflix_data`](../netflix_data.csv.zip) file from the exam cover page and open it in RStudio. 
+
+- `show_id`: content identifier
+- `title`: Title name 
+- `country_of_origin`: Country of production
+- `viewership_country`: Country where the content's viewership data is recorded
+- `date`: Date of recording data
+- `genres`: Genres the content is classified into 
+- `type`: Type of content ("Movie" or "TV Show")
+- `season_count`: Number of seasons 
+- `release_date`: Date when the content was released on Netflix 
+- `show_rating`: Average rating given to the content 
+- `viewership_count`: Number of viewers for the content
+
+Please answer the following questions using this data.
+
+#### Q1.1: Handing missing values
+
+a. Which columns in the dataset contain missing values, and how many missing values does each column have?
+
+b. Check for patterns in the missing values for the column `season_count` depending on show type. Do these missing values need to be imputed? Why or why not?
+
+c. There are missing values in both `show_rating` and `viewership_count`. Justify and use appropriate strategy to impute missing values and add a column that indicates whether the values have been interpolated or not.
+
+**Solution:**
+```
+library(dplyr)
+library(zoo)
+
+# a. Count missing values per column
+na_summary <- netflix_data %>%
+  summarise(across(everything(), ~sum(is.na(.))))
+
+# b. Inspecting season count missing values 
+season_missing_check <- netflix_data %>%
+  group_by(type) %>%
+  summarise(missing_seasons = sum(is.na(season_count)), total_shows = n())
+# All the movies have NA for season count which makes sense so no need to impute them. 
+
+c. # We can use linear interpolation for show_rating as ratings gradually change over time. `viewership_count` column can be interpolated using Last Observation Carried Forward as they should be relatively stable. 
+
+# Store original NA locations
+netflix_data <- netflix_data %>%
+  mutate(
+    was_na_show_rating = is.na(show_rating), 
+    was_na_viewership = is.na(viewership_count)
+  )
+
+# Apply interpolation (grouped by `show_id` and `viewership_country`)
+netflix_data <- netflix_data %>%
+  group_by(show_id, viewership_country) %>%
+  mutate(
+    show_rating = na.approx(show_rating, na.rm = FALSE),  # Linear interpolation
+    viewership_count = na.locf(viewership_count, na.rm = FALSE)  # Last observed value carried forward
+  ) %>%
+  ungroup()
+
+# Create interpolation indicator (TRUE if the value was NA before but now has a value)
+netflix_data <- netflix_data %>%
+  mutate(
+    is_interpolated_show_rating = was_na_show_rating & !is.na(show_rating),
+    is_interpolated_viewership = was_na_viewership & !is.na(viewership_count)
+  ) %>%
+  select(-was_na_show_rating, -was_na_viewership)  # Drop temp columns
+
+
+```
+
+#### Q1.2: Using Regular Expressions
+
+Some shows belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains "Action" genre and 0 otherwise. 
+
+**Solution:**
+```
+netflix_data <- netflix_data %>%
+  mutate(is_action = ifelse(grepl("Action", genres, ignore.case = TRUE), 1, 0))
+
+table(netflix_data$is_action)
+```
+
+#### Q1.3: Using Regular Expressions
+
+Let's say we want to analyze how viewership for a specific show (SHOW_10) varies across different countries over time. Subset the viewership data for this show and convert the data to wide format. 
+
+**Solution:**
+```
+show_10_data <- netflix_data %>%
+  filter(show_id == "SHOW_10") %>%
+  select(date, viewership_country, viewership_count)
+
+# Convert to wide format
+show_10_wide <- show_10_data %>%
+  pivot_wider(
+    names_from = viewership_country, 
+    values_from = viewership_count, 
+    names_prefix = "viewership_"
+  )
+
+```
+
+#### Q1.4: Estimation and Plotting at Scale
+
+Please estimate a linear regression to examine the impact of a show being listed as "Action" genre on viewership for different viewership countries. Use a for loop to estimate at scale.
+
+**Solution:**
+
+```
+library(ggplot2)
+
+countries <- unique(netflix_data$viewership_country)
+
+effect_sizes <- data.frame(viewership_country = character(), estimate = numeric(), stringsAsFactors = FALSE)
+
+# Loop through each country and estimate regression
+for (country in countries) {
+  
+  # Filter data for the current country
+  country_data <- netflix_data %>%
+    filter(viewership_country == country, !is.na(is_action), !is.na(viewership_count))
+  
+  # Run the regression model
+  model <- lm(viewership_count ~ is_action, data = country_data)
+  
+  # Get the coefficient for is_action
+  beta_1 <- coef(model)["is_action"]
+  
+  # Store the result
+  effect_sizes <- rbind(effect_sizes, data.frame(viewership_country = country, estimate = beta_1))
+}
+
+# Plot the effect sizes
+ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), y = estimate, fill = estimate)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(title = "Effect of Action Genre on Viewership by Country",
+       x = "Country",
+       y = "Effect Size (Coefficient of is_action)") +
+  theme_minimal()
+```
+
+### Examplary question based on book (4P on the exam)
+
+::: callout
+Questions based on book, chapter 7.
+:::
+
+*example questions will follow here*
+
+
+
+## Learning Goal 2
+
+*Use GitHub for managing empirical research projects (e.g., GitHub Issues and Project Boards)*
+
+
+## Learning Goal 3
+
+*Use Git/GitHub for versioning files and collaborating on privately-shared and publicly-available (open science) GitHub repositories*
+
+- Git/GitBash (e.g., work on a repository using `git` commands)
+  
+## Learning Goal 4
+
+*Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)*
+
+- Generate RMarkdown documents
+  
+## Learning Goal 5
+
+*Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines*
+
+- Automate an existing workflow using make, or debug existing makefiles
+  
+
+# Preparing for the exam
+
+## Ideas for developing your proficiency
+
+- Please work through the example questions and tutorials. While this has been difficult when you did it for the first time, can you do it on your own now?
+- Share with each other the (public) links to your teams' GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
+  - Can you run the workflows of others?
+  - If make does not work - try to fix the makefiles!
+  - Work on the project of others (e.g., by creating a new feature branch, improving code, committing to your fork, and making a PR) - "receiving teams": revise the work of others and integrate the PRs.
+  - Add "deployment" steps in your forks, e.g., by adding an app to somebody's regression, or adding a regression to somebody's app
+- Create your own, end-to-end GitHub workflow using the publicly available AirBnB data that teams could use for their projects. Fork that repository and collaboratively work on it with everyone!
+- Familiarize yourself with [Tilburg Science Hub](https://tilburgsciencehub.com)
+  - Work through tutorials
+  - Integrate new building blocks into your projects
+  - Clone the examples and extend them
+
+Above all, see this exam preparation *not* as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.
+
+## Familiarize yourself with TestVision
+
+- [Take a practice test](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2) to familiarize yourself with TestVision!
+- Learn [more about TestVision](https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision)
+
+## Technical tips & beyond
+
+- Verify that you are familiar with the on-campus computers so that you know how to use them (e.g., Windows, how to open RStudio, how to navigate on the command prompt, how to set working directories, etc.)
+- Know how to zip and unzip files
+- Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)
+- File and code management
+  - Rename files from TestVision (e.g., `download.csv`, `download.rdata`, `download.zip`) for clarity and organization.
+  - Sort renamed files into separate folders to prevent confusion.
+  - Revise your code before submission, so that you ensure it runs from top to bottom without problems.
+  - Do not mention your name or student number in your code.
+- Working with data
+  - Familiarize yourself with opening .RData files and accessing their contents, as outlined in [YaRrr](https://bookdown.org/ndphillips/YaRrr/rdata-files.html).
+  - For Git repository submissions, zip the entire folder containing the repository before uploading to ensure completeness.
+- Setting the working directory in R (preferred method):
+    - Create a new .R file and save it in the folder where your data files are downloaded.
+    - Set the working directory to this location via `Session -> Set Working Directory -> To Source File Location`.
+- Local package installation
+  - Practice installing packages locally, especially since internet access will not be available during the exam.
+  - Test local package installation with [package_test.zip](package_test.zip) by unzipping and running `install_packages.R` via `RScript install_packages.R` after navigating to the correct directory.
