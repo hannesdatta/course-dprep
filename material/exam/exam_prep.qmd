@@ -574,13 +574,13 @@ Imagine you have just enrolled as a thesis student, and you receive the followin
 
 > Dear (name of student),
 > 
-> I really look forward to working with you on this exciting dataset, capturing the consumption of music on Spotify. I scraped it from spotifycharts.com a while ago. Please download this [`data.zip`](../data.zip), which contains a stripped-down version of an RMarkdown file and the data. 
+> I really look forward to working with you on this exciting dataset, capturing the consumption of music on Spotify. I scraped it from spotifycharts.com a while ago. Please download this  [`spotify_data.zip`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify_data.zip), which contains the data in a CSV file. 
 > 
-> As a starting point, please explore the data set using RMarkdown. I’d love to learn more about the data myself (haven’t looked into it yet) - maybe you can figure out a way to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption?
+> As a starting point, please explore the data set using RMarkdown. I’d love to learn more about the data myself (haven’t looked into it yet). Can you create a plot with `ggplot2` to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption (streams)?
 > 
-> Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to explore and do some minor data preparations) visible so I can learn from it!
+> Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to explore and do some minor data preparations and create the plot) visible so I can learn from it (and grade it!)...!
 
-**Solution:** Available at (../q2-spotify-sol.Rmd) (for a sample RMarkdown exploring the data).
+**Solution:** Available for [download](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.Rmd) (for a sample RMarkdown exploring the data).
 
 
 ### Exemplary question based on book (8P on the exam)

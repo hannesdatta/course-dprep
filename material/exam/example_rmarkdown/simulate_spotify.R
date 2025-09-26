@@ -26,12 +26,23 @@ spotify_data <- data.frame(
   streams = round(runif(n, min = 1000, max = 500000), 0)  # Random stream numbers
 )
 
-# Introduce a pandemic effect starting in March 2020
+# Introduce a gradual pandemic effect starting in March 2020
+pandemic_start <- as.Date("2020-03-01")
+gradual_weeks <- 6   # number of weeks for drop to fully set in
+min_factor <- 0.90    # final stable multiplier (e.g., 10% drop)
+
 spotify_data <- spotify_data %>%
   mutate(
-    pandemic_period = if_else(date >= as.Date("2020-03-01"), "After Pandemic", "Before Pandemic"),
-    # Simulate a slight drop in streams after the pandemic starts
-    streams = if_else(pandemic_period == "After Pandemic", streams * runif(n(), 0.8, 1), streams)
+    weeks_since_pandemic = as.numeric(difftime(date, pandemic_start, units = "weeks")),
+    weeks_since_pandemic = pmax(0, weeks_since_pandemic),  # no negatives
+    # Build decay factor: linearly interpolate from 1.0 to min_factor over gradual_weeks
+    drop_factor = if_else(
+      date < pandemic_start, 
+      1,
+      pmax(min_factor, 1 - (1 - min_factor) * pmin(weeks_since_pandemic, gradual_weeks) / gradual_weeks)
+    ),
+    # Apply gradual decline
+    streams = round(streams * drop_factor, 0)
   )
 
 # Save the simulated data to CSV for analysis
