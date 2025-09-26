@@ -440,48 +440,31 @@ As part of these tasks, you will need to perform a range of Git operations cover
 
 #### Q3.1
 
-Please [download and unzip the research pipeline](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/practice_workflow.zip) of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
 
-Q3.1a) Please run make as is. Then, fix any errors that prevents make from knowing it is "up-to-date" (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).
+Please download the [`git_repository.zip`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_repository.zip) file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here. 
 
-Q3.1b) The make pipeline is not properly configured (i.e., one call to all scripts, rather than subsequent "built recipes" that tie all source code files together). Please fix the makefile such that the entire project is being built and that all dependencies are correctly defined. (10P)
+> Dear (name of student),
+>
+> Tilburg University is working toward publishing not only papers, but also the code that generated the results. This is a key step for open science, as it allows others to reproduce findings. In the attachment (download here), you will find a zipped Git repository of my empirical project. Admittedly, it is not very well structured (for instance, directory structures are missing), but it does include a common R file (`run.R`) that simulates demo data and ties the different parts of the project together.
+>
+> Starting from `run.R`, please apply your learnings from dPrep and submit a link to a new repository in which you:
+>
+> - Separate the workflow into individual files for the main steps of the project (e.g., simulate data, see `run.R` for ideas),  
+> - Separate source code from generated files by using dedicated folders,  
+> - Add a proper README in Markdown format (`.md` file),  
+> - Exclude files that should not be versioned by using `.gitignore`,  
+> - Remove `run.R` and replace it with a proper makefile for the project, and  
+> - Throughout the process, make frequent commits with clear commit messages.  
+>
+> I look forward to seeing your work, submitted as a clean, zipped Git repository, which you can upload below.
 
-Q3.2b) You may recall the value of creating subdirectories to structure your project. Create the necessary subdirectories and update your makefile so that it works on this new directory structure. (5P)
 
-**Requirements/tips:**
+**Solution:** Please [download the solution here](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_solution.zip).
 
-- Recall make is always executing the "first" recipe it encounters.
-- If you need to create new directories from within R, you can use `dir.create('directory_name')`.
-- Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in RStudio, it may happen that some of the installed packages cannot be found.
 
-**Solutions:**
 
-Q3.1a) The target `logit_model.csv` was not set correctly.`analysis_and_report.R` creates a file called `logit_model_summary.csv`. Hence, `make` will be looking for a file called `logit_model.csv`, which is never created. Therefore, it will not "know" it is "up-to-date".
-      
-Q3.1b) See below.
 
-      ```
-      # Makefile to automate the email marketing analysis
 
-      # An overarching "all" rule that requests the final output files
-      all: logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv
-
-      # Rule to create the processed dataset
-      processed_email_data.csv: data_process.R
-            Rscript data_process.R # Use Rscript to run the R file
-
-      # Rule to generate final output files; depends on processed data and analysis script
-      logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv: processed_email_data.csv analysis_and_report.R
-            Rscript analysis_and_report.R
-
-      # Clean rule to remove generated files
-      clean:
-            R -e "unlink('*.csv')"
-            R -e "unlink('*.png')"
-
-      ```
-      
-Q3.1c) Temporary files (i.e., `processed_email_data.csv`) need to be stored in `temp`. All source code needs to be stored in `src`, and the final output files need to be put into `output`. [See here for all modified source files](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/practice_workflow_solution.zip) (which includes the `.R` scripts - see file directories and commands to create new directories!).
 
 ### Exemplary question based on book (12P on the exam)
 
@@ -612,6 +595,7 @@ C) Because maintaining an untouched source ensures a trustworthy reference point
 D) Because most statistical models require only raw data
 
 **Correct Answer: C**
+
 **Explanation:** The principle is to **never overwrite raw data**. An untouched version acts as a “source of truth” that analysts can always return to, protecting credibility and avoiding irreversible mistakes.
 
 #### Q4.3 (Comprehension)
@@ -697,33 +681,69 @@ D) Neither, because reproducibility depends only on statistical modeling
 
 *Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines*
 
--   Automate an existing workflow using make, or debug existing makefiles
+
+::: callout
+In this type of question, you will work with **automation using `make`**, based on the `make` tutorial in the course. Typical tasks include:
+
+* **Automate a workflow**: take a project that currently runs from a single script, split it into smaller steps, and connect them with a Makefile.
+* **Debug a Makefile**: fix issues such as
+
+  * the wrong rule on top,
+  * missing or incorrect prerequisites (e.g., too few, too many prerequisites, prerequisites with wrong files names),
+  * targets not updating when inputs change.
+* **Enhance a project**: reorganize files (e.g., move scripts into subdirectories) and adapt the Makefile so everything runs correctly.
+
+Recall to use `make` and `make -n` to run (or preview) workflows.
+
+:::
+
 
 ### Exemplary question based on tutorial (24P)
 
-
 #### Q5.1
 
-Please download the [`github_repository.zip`](../github_repository.zip) file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here. 
+Please [download and unzip the research pipeline](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_make/practice_workflow.zip) of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
 
-> Dear (name of student),
->
-> Tilburg University is working toward publishing not only papers, but also the code that generated the results. This is a key step for open science, as it allows others to reproduce findings. In the attachment (download here), you will find a zipped Git repository of my empirical project. Admittedly, it is not very well structured (for instance, directory structures are missing), but it does include a common R file (`run.R`) that simulates demo data and ties the different parts of the project together.
->
-> Starting from `run.R`, please apply your learnings from dPrep and submit a link to a new repository in which you:
->
-> - Separate the workflow into individual files for the main steps of the project (e.g., simulate data, see `run.R` for ideas),  
-> - Separate source code from generated files by using dedicated folders,  
-> - Add a proper README in Markdown format (`.md` file),  
-> - Exclude files that should not be versioned by using `.gitignore`,  
-> - Remove `run.R` and replace it with a proper makefile for the project, and  
-> - Throughout the process, make frequent commits with clear commit messages.  
->
-> I look forward to seeing your work, submitted as a clean, zipped Git repository, which you can upload below.
+Q5.1a) Please run make as is. Then, fix any errors that prevents make from knowing it is "up-to-date" (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).
 
+Q5.1b) The make pipeline is not properly configured (i.e., one call to all scripts, rather than subsequent "built recipes" that tie all source code files together). Please fix the makefile such that the entire project is being built and that all dependencies are correctly defined. (10P)
 
-**Solution:** See ../practice_github_workflow-sol-latest.zip.
+Q5.1c) You may recall the value of creating subdirectories to structure your project. Create the necessary subdirectories and update your makefile so that it works on this new directory structure. (5P)
 
+**Requirements/tips:**
+
+- Recall make is always executing the "first" recipe it encounters.
+- If you need to create new directories from within R, you can use `dir.create('directory_name')`.
+- Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in RStudio, it may happen that some of the installed packages cannot be found.
+
+**Solutions:**
+
+Q5.1a) The target `logit_model.csv` was not set correctly.`analysis_and_report.R` creates a file called `logit_model_summary.csv`. Hence, `make` will be looking for a file called `logit_model.csv`, which is never created. Therefore, it will not "know" it is "up-to-date".
+      
+Q5.1b) See below.
+
+      ```
+      # Makefile to automate the email marketing analysis
+
+      # An overarching "all" rule that requests the final output files
+      all: logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv
+
+      # Rule to create the processed dataset
+      processed_email_data.csv: data_process.R
+            Rscript data_process.R # Use Rscript to run the R file
+
+      # Rule to generate final output files; depends on processed data and analysis script
+      logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv: processed_email_data.csv analysis_and_report.R
+            Rscript analysis_and_report.R
+
+      # Clean rule to remove generated files
+      clean:
+            R -e "unlink('*.csv')"
+            R -e "unlink('*.png')"
+
+      ```
+      
+Q5.1c) Temporary files (i.e., `processed_email_data.csv`) need to be stored in `temp`. All source code needs to be stored in `src`, and the final output files need to be put into `output`. [See here for all modified source files](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_make/practice_workflow_solution.zip) (which includes the `.R` scripts - see file directories and commands to create new directories!).
 
 ### Exemplary questions based on book (6P on the exam)
 
@@ -877,6 +897,11 @@ D) They make pipelines less reproducible by adding unnecessary complexity
 
 This section provides information that will help you prepare well for the exam.
 
+## Cheatsheets
+
+Students will have access to **official cheatsheets** during the exam. These cover the main tools used in this course—**R**, **make**, and **Git**—and are the same ones provided throughout the tutorials. Cheatsheets from previous years can already be downloaded [here](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.zip). Ahead of the exam, there will be a short Q&A session where you can suggest additional cheat sheet ideas to the instructor; the final set of official cheatsheets will then be compiled and published.
+
+In addition, the class will have the opportunity to prepare **one collective cheatsheet**. This is typically best drafted in Google Docs, so all students can contribute ideas. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.
 
 ## Ideas for developing your proficiency
 
@@ -905,25 +930,28 @@ The exact cover page for this year’s exam will be made available on Canvas in 
 ![](dprep_part1.png)
 ![](dprep_part2.png)
 
-## Technical tips & beyond
 
--   Verify that you are familiar with the on-campus computers so that you know how to use them (e.g., Windows, how to open RStudio, how to navigate on the command prompt, how to set working directories, etc.)
--   Know how to zip and unzip files
--   Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)
--   File and code management
-    -   Rename files from TestVision (e.g., `download.csv`, `download.rdata`, `download.zip`) for clarity and organization.
-    -   Sort renamed files into separate folders to prevent confusion.
-    -   Revise your code before submission, so that you ensure it runs from top to bottom without problems.
-    -   Do not mention your name or student number in your code.
--   Working with data
-    -   Familiarize yourself with opening .RData files and accessing their contents, as outlined in [YaRrr](https://bookdown.org/ndphillips/YaRrr/rdata-files.html).
-    -   For Git repository submissions, zip the entire folder containing the repository before uploading to ensure completeness.
--   Setting the working directory in R (preferred method):
-    -   Create a new .R file and save it in the folder where your data files are downloaded.
-    -   Set the working directory to this location via `Session -> Set Working Directory -> To Source File Location`.
--   Local package installation
-    -   Practice installing packages locally, especially since internet access will not be available during the exam.
-    -   Test local package installation with [package_test.zip](package_test.zip) by unzipping and running `install_packages.R` via `RScript install_packages.R` after navigating to the correct directory.
+## Technical Tips & Beyond
+
+* **Get familiar with the exam environment**: practice using Windows, opening RStudio, navigating with the command prompt, and setting working directories.
+* **Know how to zip and unzip files** so you can upload or submit repositories without issues.
+* **Use and prepare cheatsheets**:
+  * Official R, make, and Git cheatsheets will be provided (previous versions can be downloaded [here](https://tilburgsciencehub.com/cheatsheets)).
+  * Printed cheatsheets are not allowed.
+* **File and code management**:
+  * You must not use network drives to store your data. Please choose a local folder such as `C:\Users\<YOUR-U-NUMBER>\Downloads`.
+  * Organize downloaded files into separate folders (e.g., by question), to avoid confusion.
+  * Revise code before submission to ensure it runs cleanly from top to bottom.
+  * Do **not** include your name or student number anywhere in files, folders, or code (grading is anonymous).
+  * Be comfortable opening `.RData` files and exploring their contents (see [YaRrr guide](https://bookdown.org/ndphillips/YaRrr/rdata-files.html)).
+  * For Git repositories, always zip the **entire folder** before uploading.
+* **Setting working directories**:
+  * In R, save a new `.R` file in your data folder and set the working directory via `Session → Set Working Directory → To Source File Location` (preferred method).
+  * Be able to locate your working directory in all programs (R, Jupyter Notebook, VS Code, Explorer, Command Prompt, Git Bash).
+* **Local package installation**:
+  * Practice installing packages locally, since internet access will not be available.
+  * Test with [package_test.zip](package_test.zip): unzip and run `RScript install_packages.R` from the correct directory.
+* **Save time on exam day**: before the exam officially starts, open the required software (e.g., RStudio, Jupyter Notebook) and set working directories so you can begin immediately.
 
 # Inspection
 
