@@ -70,10 +70,13 @@ This section provides example questions, organized by the learning goals of the 
 ### Exemplary question based on tutorials (20P on the exam)
 
 ::: callout
-This question will always ask you to download a data set, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments).
+This question will always ask you to download data sets stored in a zipped `.RData` file, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments starting with #).
 :::
 
-Please download the [`netflix_data`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.csv.zip) file from the exam cover page and open it in RStudio.
+Please download the [`netflix_data`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip) file, containing an `.RData` environment that itself contains R objects (datasets). 
+
+
+__`netflix_data`:__
 
 -   `show_id`: content identifier
 -   `title`: Title name
@@ -91,7 +94,7 @@ Please answer the following questions using this data.
 
 #### Q1.1: Handing missing values
 
-a.  Which columns in the dataset contain missing values, and how many missing values does each column have?
+a.  Which columns in the dataset contain missing values, and how many missing values does each column have? 
 
 b.  Check for patterns in the missing values for the column `season_count` depending on show type. Do these missing values need to be imputed? Why or why not?
 
@@ -100,7 +103,7 @@ c.  There are missing values in both `show_rating` and `viewership_count`. Justi
 **Solution:**
 
 ```         
-library(dplyr)
+library(tidyverse)
 library(zoo)
 
 # a. Count missing values per column
@@ -113,7 +116,10 @@ season_missing_check <- netflix_data %>%
   summarise(missing_seasons = sum(is.na(season_count)), total_shows = n())
 # All the movies have NA for season count which makes sense so no need to impute them. 
 
-c. # We can use linear interpolation for show_rating as ratings gradually change over time. `viewership_count` column can be interpolated using Last Observation Carried Forward as they should be relatively stable. 
+c. # We can use linear interpolation for show_rating as 
+# ratings gradually change over time. `viewership_count` column 
+# can be interpolated using Last Observation Carried Forward as they
+# should be relatively stable. 
 
 # Store original NA locations
 netflix_data <- netflix_data %>%
@@ -127,11 +133,13 @@ netflix_data <- netflix_data %>%
   group_by(show_id, viewership_country) %>%
   mutate(
     show_rating = na.approx(show_rating, na.rm = FALSE),  # Linear interpolation
-    viewership_count = na.locf(viewership_count, na.rm = FALSE)  # Last observed value carried forward
+    viewership_count = na.locf(viewership_count, na.rm = FALSE)  
+    # Last observed value carried forward
   ) %>%
   ungroup()
 
-# Create interpolation indicator (TRUE if the value was NA before but now has a value)
+# Create interpolation indicator 
+# (TRUE if the value was NA before but now has a value)
 netflix_data <- netflix_data %>%
   mutate(
     is_interpolated_show_rating = was_na_show_rating & !is.na(show_rating),
@@ -185,7 +193,8 @@ library(ggplot2)
 
 countries <- unique(netflix_data$viewership_country)
 
-effect_sizes <- data.frame(viewership_country = character(), estimate = numeric(), stringsAsFactors = FALSE)
+effect_sizes <- data.frame(viewership_country = character(), 
+estimate = numeric(), stringsAsFactors = FALSE)
 
 # Loop through each country and estimate regression
 for (country in countries) {
@@ -201,11 +210,13 @@ for (country in countries) {
   beta_1 <- coef(model)["is_action"]
   
   # Store the result
-  effect_sizes <- rbind(effect_sizes, data.frame(viewership_country = country, estimate = beta_1))
+  effect_sizes <- rbind(effect_sizes, 
+  data.frame(viewership_country = country, estimate = beta_1))
 }
 
 # Plot the effect sizes
-ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), y = estimate, fill = estimate)) +
+ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), 
+y = estimate, fill = estimate)) +
   geom_bar(stat = "identity") +
   coord_flip() +
   labs(title = "Effect of Action Genre on Viewership by Country",
