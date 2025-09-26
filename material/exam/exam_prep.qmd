@@ -73,7 +73,7 @@ This section provides example questions, organized by the learning goals of the 
 This question will always ask you to download a data set, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments).
 :::
 
-Please download the [`netflix_data`](../netflix_data.csv.zip) file from the exam cover page and open it in RStudio.
+Please download the [`netflix_data`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.csv.zip) file from the exam cover page and open it in RStudio.
 
 -   `show_id`: content identifier
 -   `title`: Title name

@@ -71,4 +71,8 @@ netflix_data <- expand.grid(
 cor(netflix_data$show_rating, netflix_data$viewership_count, use = "complete.obs")
 
 # Save datasets
-write.csv(netflix_data, "netflix_data.csv", row.names = FALSE)
+#write.csv(netflix_data, "netflix_data.csv", row.names = FALSE)
+
+save(netflix_data, file = 'netflix_data.RData')
+zip('netflix_data.zip', files = 'netflix_data.RData')
+unlink('netflix_data.RData')
