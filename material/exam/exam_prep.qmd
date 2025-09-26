@@ -53,7 +53,7 @@ The table below outlines the types of questions you can expect, along with their
 | No. | Learning goal | Question type | Questions based on tutorials | Questions based on book |
 |-------------|-------------|-------------|-------------|--------------------|
 | 1 | Use R to clean and transform data for analysis | Synthesis | 20P on engineering tutorial | 4P (1Q), ch. 7 |
-| 2 | Use GitHub for managing empirical research projects | Eval. |  | 12P (4Q), ch. 1-2, 5 |
+| 2 | Use GitHub for managing empirical research projects | Eval. |  | 12P (4Q), ch. 2, 5 |
 | 3 | Use Git/GitHub for versioning files and collaboration | Appl. & Eval. | 24P on GitHub tutorial | 12P (4Q), ch. 6 |
 | 4 | Use R for generating automatic reports | Compreh. & Appli. | 10P on Rmarkdown tutorial | 8P (2-3Q), ch. 4 |
 | 5 | Use Workflow Management Tools | Appl. & Eval. | 24P on Make tutorial | 6P (2Q), ch. 3, 8 |
@@ -310,7 +310,7 @@ D)  Use relational databases for structured data, NoSQL systems for semi-structu
 ### Exemplary question based on book (12P on the exam)
 
 ::: callout
-These questions will be based on chapters 1-2, and 5.
+These questions will be based on chapters 2 and 5.
 :::
 
 #### Q2.1 (based on chapter 2)
@@ -425,14 +425,22 @@ D) It is harmless, because complexity in the board does not affect collaboration
 ### Exemplary question based on tutorials (24P on the exam)
 
 ::: callout
-This question will always ask you to download a Git repository to your computer (first unzip the zip file, then navigate to the directory in your favorite prompt like Git Bash). You will then have to answer questions pertaining to that Git repository.
+This type of question will always require you to download a Git repository to your computer. First, unzip the file and navigate to the directory using your preferred terminal (e.g., Git Bash). You will then answer questions related to the repository, either in text boxes or through multiple-choice questions directly in TestVision. Finally, you will be asked to re-zip the repository and upload it, so we can verify which commands you executed.
+
+As part of these tasks, you will need to perform a range of Git operations covered in the tutorials, such as:
+
+* Creating and switching between branches (`git branch`, `git checkout`, `git branch -l`)
+* Tracking and committing changes (`git add`, `git commit -m "commit message"`, `git status`)
+* Creating and using a `.gitignore` file
+* Rolling back changes
+* Viewing commit history (`git log`)
+* Merging branches (`git merge`)
+
 :::
 
 #### Q3.1
 
-Please download and unzip the research pipeline of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
-
-<!-- (../practice_workflow.zip)  -->
+Please [download and unzip the research pipeline](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/practice_workflow.zip) of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
 
 Q3.1a) Please run make as is. Then, fix any errors that prevents make from knowing it is "up-to-date" (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).
 
@@ -472,7 +480,8 @@ Q3.1b) See below.
             R -e "unlink('*.png')"
 
       ```
-Q3.1c) Temporary files (i.e., `processed_email_data.csv`) need to be stored in `temp`. All source code needs to be stored in `src`, and the final output files need to be put into `output`. [See here for all modified source files](../practice_workflow_solution.zip) (which includes the `.R` scripts - see file directories and commands to create new directories!).
+      
+Q3.1c) Temporary files (i.e., `processed_email_data.csv`) need to be stored in `temp`. All source code needs to be stored in `src`, and the final output files need to be put into `output`. [See here for all modified source files](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/practice_workflow_solution.zip) (which includes the `.R` scripts - see file directories and commands to create new directories!).
 
 ### Exemplary question based on book (12P on the exam)
 
@@ -551,6 +560,13 @@ D) It is valid, because Git automatically merges any differences in the backgrou
 *Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)*
 
 ### Exemplary questions based on tutorial (10P)
+
+
+::: callout
+In this type of exam question, you will create an **RMarkdown document** in RStudio and submit it as a **rendered PDF** with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with `ggplot2`. 
+
+The aim is to assess not only whether you can recall commands, but whether you can structure and document a small data workflow in a clear and reproducible way.
+:::
 
 #### Q4.1
 

@@ -36,3 +36,4 @@ spotify_data <- spotify_data %>%
 
 # Save the simulated data to CSV for analysis
 write.csv(spotify_data, "spotify_data.csv", row.names = FALSE)
+zip('spotify_data.zip', 'spotify_data.csv')
