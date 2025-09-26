@@ -580,7 +580,7 @@ Imagine you have just enrolled as a thesis student, and you receive the followin
 > 
 > Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to explore and do some minor data preparations and create the plot) visible so I can learn from it (and grade it!)...!
 
-**Solution:** Available for [download](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.Rmd) (for a sample RMarkdown exploring the data).
+**Solution:** Available for [download as `Rmd`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.Rmd) and [rendered `.pdf` - recall, you will have to submit it as a rendered PDF document!](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.pdf).
 
 
 ### Exemplary question based on book (8P on the exam)
