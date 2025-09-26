@@ -11,84 +11,95 @@ format:
     number-depth: 2
   html:
     code-overflow: wrap
-
 ---
 
 # Introduction
 
-The course content will be tested in the form of a computer exam, taken on campus (120 minutes for 328059-M-6). Students that take the exam of the (discontinued) 3 ECTS version of this course are asked to consult the preparation material from the previous semester.
+## Overview
 
+The exam for this course is a **120-minute on-campus computer exam** (course code 328059-M-6), taken in [TestVision](https://TilburgU.testvision.nl/online/kandidaten). It is a __closed-book exam with no internet access__, though students may download selected cheat sheets from the exam’s introduction page. 
 
-## Exam format
+Students taking the discontinued 3 ECTS version should prepare using the exam material from the previous semester.
 
-- Computer exam in [TestVision](https://TilburgU.testvision.nl/online/kandidaten), taking place on campus
-- Closed book (i.e., no internet access), except that selected course material[^1] can be downloaded for use during the exam via the exam's instruction page
+Key points to keep in mind:
 
-[^1]: Students will be able to download ["cheatsheets"](cheatsheets-exam.zip) from the exam's introduction page.
+* four exam dates are offered each academic year, of which students may take part in at most two.
+* only the official exam “cheatsheets” are permitted; no other resources or communication tools are allowed.
+* communication with others about the exam is strictly forbidden.
+* do not include your name or student number in submitted files unless explicitly asked, to ensure anonymous grading.
 
-## Two examination opportunities per academic year
+## Exam Format
 
-Students enrolled in the course “Data Preparation and Programming Skills” can choose to take the on-campus computer exam during a maximum of two out of four examination opportunities per academic year.
+The exam consists of a mix of **open questions** (requiring open-text answers or file uploads) and **closed questions** (such as multiple-choice, ranking, or matching). These questions are organized according to the **learning goals of the course**, and the content for each learning goal will be drawn from both the **tutorials** and the **course book[^2]**.
 
-## Working on the exam
-- Communication with anybody about the exam content is strictly prohibited.
-- Students must not mention their names or student numbers in any of the submitted files, except when being explicitly asked to do so. This is to ensure the exam can be graded anonymously.
+The exam is worth a total of **120 points**, corresponding to roughly one point per minute of work. This design should help you pace yourself and prioritize your effort during the exam.
 
-# Exam Content
+In terms of cognitive skills, the exam does not stop at testing factual recall. Instead, it follows **Bloom’s taxonomy of learning objectives**, which means you will be assessed across different levels of thinking:
 
-- The exam consists of __open (i.e., open text answers or file uploads)__ and __closed (multiple-choice, ranking, matching) questions__, structured along the learning goals of this course.
-- Cognitive skills that will be tested are knowledge, comprehension, analysis, application, synthesis and evaluation.
-- The content for each particular learning goal will come from the (a) tutorials, and (b) the book[^2].
-- Total number of points to obtain on the exam are 120 - think of 1 point per "minute of work" on the exam (it will help you prioritize)
-- The table below will describe which questions to expect, from which source (per learning goal of the course)
+* **Knowledge & Comprehension** – recalling key concepts and demonstrating understanding of methods and ideas.
+* **Application** – using techniques or code you have learned in tutorials and lectures to solve new problems.
+* **Analysis** – breaking down complex tasks (e.g., a dataset or research workflow) into their component parts and reasoning about them.
+* **Synthesis** – combining different elements (e.g., data, code, and interpretation) to produce a coherent result.
+* **Evaluation** – critically judging the suitability of an approach or comparing alternative solutions.
+
+Together, these levels ensure that the exam does not merely check whether you *remember* material, but also whether you can *apply, integrate, and evaluate* it in realistic scenarios.
 
 [^2]: https://dprep-book.hannesdatta.com/
 
-| No. | Learning goal | Question type | Questions based on tutorials | Questions based on book |
-|-----|---------------|-----------|-------------------|--------------------------|
-| 1   | Use R to clean and transform data for analysis | Synthesis | 20P on engineering tutorial | 4P (1Q), ch. 7 |
-| 2   | Use GitHub for managing empirical research projects | Eval. | | 12P (4Q), ch. 1-2, 5 |
-| 3   | Use Git/GitHub for versioning files and collaboration | Appl. & Eval. | 24P on GitHub tutorial  | 12P (4Q), ch. 5-6 |
-| 4   | Use R for generating automatic reports | Compreh. & Appli. | 10P on Rmarkdown tutorial | 8P (2-3Q), ch. 4  |
-| 5   | Use Workflow Management Tools | Appl. & Eval. | 24P on Make tutorial  | 6P (2Q), ch. 3, 8 |
+## Overview of Questions
 
+The table below outlines the types of questions you can expect, along with their sources for each learning goal of the course.
+
+| No. | Learning goal | Question type | Questions based on tutorials | Questions based on book |
+|-------------|-------------|-------------|-------------|--------------------|
+| 1 | Use R to clean and transform data for analysis | Synthesis | 20P on engineering tutorial | 4P (1Q), ch. 7 |
+| 2 | Use GitHub for managing empirical research projects | Eval. |  | 12P (4Q), ch. 1-2, 5 |
+| 3 | Use Git/GitHub for versioning files and collaboration | Appl. & Eval. | 24P on GitHub tutorial | 12P (4Q), ch. 6 |
+| 4 | Use R for generating automatic reports | Compreh. & Appli. | 10P on Rmarkdown tutorial | 8P (2-3Q), ch. 4 |
+| 5 | Use Workflow Management Tools | Appl. & Eval. | 24P on Make tutorial | 6P (2Q), ch. 3, 8 |
+
+
+# Example Questions
+
+This section provides example questions, organized by the learning goals of the course. Supporting materials (e.g., datasets or zip files for practice) can be downloaded via the provided links in each subsection. During the exam, such downloads will be made available directly in TestVision (e.g., on the introduction page of the exam, or within specific questions).
 
 ## Learning Goal 1
 
 *Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)*
 
-### Examplary question based on tutorials (20P on the exam)
+### Exemplary question based on tutorials (20P on the exam)
 
 ::: callout
 This question will always ask you to download a data set, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments).
 :::
 
-Please download the [`netflix_data`](../netflix_data.csv.zip) file from the exam cover page and open it in RStudio. 
+Please download the [`netflix_data`](../netflix_data.csv.zip) file from the exam cover page and open it in RStudio.
 
-- `show_id`: content identifier
-- `title`: Title name 
-- `country_of_origin`: Country of production
-- `viewership_country`: Country where the content's viewership data is recorded
-- `date`: Date of recording data
-- `genres`: Genres the content is classified into 
-- `type`: Type of content ("Movie" or "TV Show")
-- `season_count`: Number of seasons 
-- `release_date`: Date when the content was released on Netflix 
-- `show_rating`: Average rating given to the content 
-- `viewership_count`: Number of viewers for the content
+-   `show_id`: content identifier
+-   `title`: Title name
+-   `country_of_origin`: Country of production
+-   `viewership_country`: Country where the content's viewership data is recorded
+-   `date`: Date of recording data
+-   `genres`: Genres the content is classified into
+-   `type`: Type of content ("Movie" or "TV Show")
+-   `season_count`: Number of seasons
+-   `release_date`: Date when the content was released on Netflix
+-   `show_rating`: Average rating given to the content
+-   `viewership_count`: Number of viewers for the content
 
 Please answer the following questions using this data.
 
 #### Q1.1: Handing missing values
 
-a. Which columns in the dataset contain missing values, and how many missing values does each column have?
+a.  Which columns in the dataset contain missing values, and how many missing values does each column have?
 
-b. Check for patterns in the missing values for the column `season_count` depending on show type. Do these missing values need to be imputed? Why or why not?
+b.  Check for patterns in the missing values for the column `season_count` depending on show type. Do these missing values need to be imputed? Why or why not?
 
-c. There are missing values in both `show_rating` and `viewership_count`. Justify and use appropriate strategy to impute missing values and add a column that indicates whether the values have been interpolated or not.
+c.  There are missing values in both `show_rating` and `viewership_count`. Justify and use appropriate strategy to impute missing values and add a column that indicates whether the values have been interpolated or not.
 
 **Solution:**
-```
+
+```         
 library(dplyr)
 library(zoo)
 
@@ -128,15 +139,15 @@ netflix_data <- netflix_data %>%
   ) %>%
   select(-was_na_show_rating, -was_na_viewership)  # Drop temp columns
 
-
 ```
 
 #### Q1.2: Using Regular Expressions
 
-Some shows belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains "Action" genre and 0 otherwise. 
+Some shows belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains "Action" genre and 0 otherwise.
 
 **Solution:**
-```
+
+```         
 netflix_data <- netflix_data %>%
   mutate(is_action = ifelse(grepl("Action", genres, ignore.case = TRUE), 1, 0))
 
@@ -145,10 +156,11 @@ table(netflix_data$is_action)
 
 #### Q1.3: Using Regular Expressions
 
-Let's say we want to analyze how viewership for a specific show (SHOW_10) varies across different countries over time. Subset the viewership data for this show and convert the data to wide format. 
+Let's say we want to analyze how viewership for a specific show (SHOW_10) varies across different countries over time. Subset the viewership data for this show and convert the data to wide format.
 
 **Solution:**
-```
+
+```         
 show_10_data <- netflix_data %>%
   filter(show_id == "SHOW_10") %>%
   select(date, viewership_country, viewership_count)
@@ -160,7 +172,6 @@ show_10_wide <- show_10_data %>%
     values_from = viewership_count, 
     names_prefix = "viewership_"
   )
-
 ```
 
 #### Q1.4: Estimation and Plotting at Scale
@@ -169,7 +180,7 @@ Please estimate a linear regression to examine the impact of a show being listed
 
 **Solution:**
 
-```
+```         
 library(ggplot2)
 
 countries <- unique(netflix_data$viewership_country)
@@ -203,79 +214,738 @@ ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), y = estimate
   theme_minimal()
 ```
 
-### Examplary question based on book (4P on the exam)
+### Exemplary questions based on book (4P on the exam)
 
 ::: callout
 Questions based on book, chapter 7.
 :::
 
-*example questions will follow here*
+#### Q1.5
 
+You are tasked with building a dataset to study the **effect of advertising on customer churn**. Which of the following dataset designs would best synthesize the principles described in *Marketing Analytics: A Modern Toolkit*?
 
+A)  One row per ad impression with variables for user ID, timestamp, and product purchased
+B)  One row per customer per day with variables for total impressions, purchases, and weather in that region
+C)  One row per customer per week with aggregated ad exposure, total purchases, and churn status (flagged if no purchases in 90 days)\*
+D)  One row per region per month with variables for average basket size and average temperature
+
+**Correct Answer: C**
+
+**Explanation:**
+
+-   **C is correct** because *Marketing Analytics: A Modern Toolkit* emphasizes aligning the dataset’s **unit of analysis** with the research question. Studying churn requires customer-level information, while churn is often defined over a fixed period (e.g., 90 days), making a weekly structure appropriate. It also reflects operationalization (defining churn as a flag) and aggregation (summing exposures and purchases).
+-   A is incorrect because per-impression data is too granular and does not capture churn.
+-   B is incorrect because daily customer-level data introduces unnecessary noise, and churn is not measured at the daily level.
+-   D is incorrect because region–month aggregation ignores individual-level churn dynamics.
+
+#### Q1.6
+
+You discover that your marketing dataset contains missing user IDs, duplicate transactions, and inconsistent date formats. Which **sequence of operations** reflects a sound data engineering workflow consistent with *Marketing Analytics: A Modern Toolkit*?
+
+A)  Aggregate → Merge → Reshape → Clean
+B)  Clean → Standardize → Aggregate → Merge → Reshape
+C)  Merge → Aggregate → Clean → Anonymize
+D)  Reshape → Clean → Aggregate → Merge
+
+**Correct Answer: B**
+
+**Explanation:**
+
+-   **B is correct** because the book stresses that analysts must first **clean and standardize** raw inputs (handle duplicates, fix missing values, align formats). Only then should they **aggregate** to the proper unit of analysis, **merge** sources on shared keys, and finally **reshape** into the long or wide formats needed for analysis or reporting.
+-   A is flawed because aggregating before cleaning may preserve errors.
+-   C merges too early, propagating inconsistencies.
+-   D reshapes before cleaning, which contradicts the principle of first ensuring validity and consistency.
+
+#### Q1.7
+
+Imagine you need the same dataset for both a **regression model** and a **marketing dashboard**. How should you structure and prepare the data to meet both needs?
+
+A)  Store everything in long format, since models and dashboards both require this
+B)  Store everything in wide format, since models and dashboards both require this
+C)  Prepare a core dataset at the correct unit of analysis, and reshape into long or wide format depending on the task
+D)  Duplicate all sources: one version in long format and one in wide format, maintained separately
+
+**Correct Answer: C**
+
+**Explanation:**
+
+-   **C is correct** because *Marketing Analytics: A Modern Toolkit* highlights that the **same derived dataset** can serve multiple purposes if it is first harmonized at the right unit of analysis. Analysts can then pivot between **long format** (suitable for regressions) and **wide format** (suitable for dashboards).
+-   A is incorrect because dashboards typically need wide data, not long.
+-   B is incorrect because regressions usually expect long data.
+-   D is inefficient and risks divergence across duplicated datasets, which the book warns against.
+
+#### Q1.8
+
+You are asked to recommend a **data platform strategy** for a firm with diverse marketing data: structured transactions, semi-structured web logs, and terabytes of ad impression data. Which option best reflects the trade-offs described in *Marketing Analytics: A Modern Toolkit*?
+
+A)  Use only relational databases like PostgreSQL because they enforce structure and consistency for all data types
+B)  Use only NoSQL databases like MongoDB because they are more flexible for all business needs
+C)  Store everything in cloud warehouses like Snowflake, regardless of cost or structure
+D)  Use relational databases for structured data, NoSQL systems for semi-structured data, and cloud warehouses for scalability—choosing platforms based on data type and scale
+
+**Correct Answer: D**
+
+**Explanation:**
+
+-   **D is correct** because the book explains that different platforms serve **different roles**: relational databases excel with structured transactional data, NoSQL handles semi-structured or network data, and cloud warehouses offer scalability for massive datasets. The recommended approach is to **choose the right tool for the right type of data**, not a one-size-fits-all solution.
+-   A is too rigid, as relational systems struggle with unstructured/semi-structured data.
+-   B is too broad, as NoSQL sacrifices consistency and standardization.
+-   C ignores the book’s caution about matching platforms to context, not just scale.
 
 ## Learning Goal 2
 
 *Use GitHub for managing empirical research projects (e.g., GitHub Issues and Project Boards)*
+
+### Exemplary question based on book (12P on the exam)
+
+::: callout
+These questions will be based on chapters 1-2, and 5.
+:::
+
+#### Q2.1 (based on chapter 2)
+
+A student argues that every project should include **Docker, CI/CD pipelines, and a cloud warehouse** because “more tools always make a project better.” Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate this claim?
+
+A) Agree, because advanced tools always increase efficiency regardless of project size
+B) Agree, because cloud and automation are universally recommended best practices
+C) Disagree, because the book stresses that tools add complexity and should be matched to project scope and needs
+D) Disagree, because small projects should avoid all infrastructure beyond RStudio
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* emphasizes that “more is not always better.” Tools like Docker and CI/CD add learning costs and maintenance overhead. They are valuable for large, long-term projects but unnecessary for small, quick tasks. A is wrong because advanced tools may reduce efficiency in small projects. B is wrong because best practices must be adapted, not applied universally. D is wrong because small projects still benefit from basics like version control and folder structure.
+
+#### Q2.2 (based on chapter 2)
+
+Two thesis students disagree on environment management. One says, *“We don’t need renv; if a package updates, we’ll just install the new version.”* The other says, *“renv is essential, because without it our results may change unpredictably.”* Which evaluation best aligns with *Marketing Analytics: A Modern Toolkit*?
+
+A) The first student is right, because updating packages ensures you always use the most recent, reliable code
+B) Both students are equally right, since package management is optional
+C) The second student is right, because the book stresses reproducibility depends on locking package versions
+D) Neither is right, since reproducibility is not affected by package management
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* explains that reproducibility requires code to run the same across time and machines. Tools like renv lock package versions, avoiding “it worked then, but not now” issues. A is wrong because constant updates can break old code. B is wrong because package management is not optional for reproducibility. D is wrong because package versions directly affect whether results can be replicated.
+
+#### Q2.3 (based on chapter 2)
+
+Your marketing team is debating whether to store intermediate datasets as separate files (“raw,” “data-prep,” “analysis”) or overwrite data at each step to save storage. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate these two approaches?
+
+A) Overwriting is best, since it minimizes clutter and storage costs
+B) Keeping staged folders is better, because it preserves reproducibility and traceability of data transformations
+C) Both approaches are equally valid, since storage concerns outweigh reproducibility issues
+D) Neither approach is useful; data should always be pulled directly from the original source
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* recommends staged data (“raw,” “data-prep,” “analysis”) to preserve the lineage of transformations. This ensures traceability, avoids confusion about which dataset is “correct,” and supports reproducibility. A is wrong because storage is cheap compared to the cost of lost reproducibility. C is wrong because traceability is more important than minor storage concerns. D is wrong because raw sources alone don’t provide cleaned, analysis-ready data.
+
+#### Q2.4 (based on chapter 2)
+
+A mid-sized marketing team is considering whether to rely on **local setups** or fully migrate to the **cloud**. Which evaluation best reflects the guidance in *Marketing Analytics: A Modern Toolkit*?
+
+A) Always choose local setups, because they are simpler and cheaper
+B) Always choose cloud setups, because they are modern and scalable
+C) Choose based on project demands: local for small projects and learning, cloud for scalability, collaboration, and large data
+D) Avoid mixing local and cloud, because hybrid approaches cause inconsistency
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* describes trade-offs between local and cloud setups. Local is suitable for small projects or learning, while cloud is better for large-scale, collaborative, or computationally heavy projects. Many teams use hybrid solutions. A is wrong because local alone cannot handle scalability. B is wrong because cloud is not always necessary or cost-effective. D is wrong because hybrid approaches are practical and often optimal.
+
+#### Q2.5 (based on chapter 5)
+
+A student team insists on adopting the **full Scrum framework** (Product Owner, Scrum Master, daily stand-ups, retrospectives) for their two-week class project. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate this decision?
+
+A) It is the best approach, since the full Scrum framework guarantees productivity in all projects
+B) It is necessary, because project boards and issues cannot function without formal roles
+C) It is excessive, because small analytics projects benefit more from lightweight adaptations of Scrum than from its full overhead
+D) It is inappropriate, because Scrum principles are designed only for software engineering, not analytics
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* notes that smaller analytics teams should **adapt Scrum** by using boards, issues, and short cycles rather than implementing every role and ceremony. A is wrong because there is no “one size fits all.” B is wrong because boards and issues can function informally. D is wrong because Scrum principles apply beyond software, including analytics.
+
+#### Q2.6 (based on chapter 5)
+
+A research group wants to manage their tasks using email and chat threads, arguing that “boards and issues are too much overhead.” How should this be evaluated according to *Marketing Analytics: A Modern Toolkit*?
+
+A) It is reasonable, since lightweight tools like email are more efficient than formal boards
+B) It is acceptable, provided that team members document progress individually in shared folders
+C) It is problematic, because scattering communication across multiple channels reduces transparency and reproducibility
+D) It is effective, because agile teams rely more on conversation than on written artifacts
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because the book emphasizes **centralizing communication in issues and boards**, ensuring transparency, traceability, and shared understanding. A is wrong because email creates fragmentation. B is wrong because scattered folder notes lack integration. D misinterprets Agile — while conversation matters, artifacts like boards are essential for documentation and accountability.
+
+#### Q2.7 (based on chapter 5)
+
+A manager argues that **long, open-ended work phases** are better than short cycles, since they allow deeper focus without interruptions. What evaluation does *Marketing Analytics: A Modern Toolkit* suggest?
+
+A) Agree, because fewer check-ins mean less wasted time on meetings
+B) Disagree, because long cycles risk last-minute panic and reduced adaptability, whereas short cycles improve accountability and steady progress
+C) Agree, because analytics projects rarely change scope once started
+D) Disagree, because retrospectives alone are sufficient for adaptability, regardless of cycle length
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because the book highlights that **short, repeating cycles** (with regular check-ins and increments) prevent last-minute rushes, improve visibility, and keep teams adaptable. A is wrong because fewer meetings can create blind spots. C is wrong because analytics projects are dynamic. D is wrong because retrospectives without short cycles delay improvements.
+
+#### Q2.8 (based on chapter 5)
+
+A student team designs a **project board with 12 columns, dozens of labels, and complex workflows**, claiming this will maximize precision. How should their setup be evaluated in light of *Marketing Analytics: A Modern Toolkit*?
+
+A) It is optimal, since detailed boards ensure no task is ever forgotten
+B) It is risky, because over-engineering the board can make the system itself burdensome and reduce efficiency
+C) It is required, since project boards only function with highly granular categorization
+D) It is harmless, because complexity in the board does not affect collaboration outcomes
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because the book explicitly warns against **over-engineering boards**, noting that too much complexity makes them harder to use and can undermine the very efficiency they are meant to support. A is wrong because detail can overwhelm rather than help. C is wrong because simple four-column boards (backlog → to do → in progress → done) are often sufficient. D is wrong because board complexity directly influences team collaboration quality.
 
 
 ## Learning Goal 3
 
 *Use Git/GitHub for versioning files and collaborating on privately-shared and publicly-available (open science) GitHub repositories*
 
-- Git/GitBash (e.g., work on a repository using `git` commands)
-  
+### Exemplary question based on tutorials (24P on the exam)
+
+::: callout
+This question will always ask you to download a Git repository to your computer (first unzip the zip file, then navigate to the directory in your favorite prompt like Git Bash). You will then have to answer questions pertaining to that Git repository.
+:::
+
+#### Q3.1
+
+Please download and unzip the research pipeline of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
+
+<!-- (../practice_workflow.zip)  -->
+
+Q3.1a) Please run make as is. Then, fix any errors that prevents make from knowing it is "up-to-date" (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).
+
+Q3.1b) The make pipeline is not properly configured (i.e., one call to all scripts, rather than subsequent "built recipes" that tie all source code files together). Please fix the makefile such that the entire project is being built and that all dependencies are correctly defined. (10P)
+
+Q3.2b) You may recall the value of creating subdirectories to structure your project. Create the necessary subdirectories and update your makefile so that it works on this new directory structure. (5P)
+
+**Requirements/tips:**
+
+- Recall make is always executing the "first" recipe it encounters.
+- If you need to create new directories from within R, you can use `dir.create('directory_name')`.
+- Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in RStudio, it may happen that some of the installed packages cannot be found.
+
+**Solutions:**
+
+Q3.1a) The target `logit_model.csv` was not set correctly.`analysis_and_report.R` creates a file called `logit_model_summary.csv`. Hence, `make` will be looking for a file called `logit_model.csv`, which is never created. Therefore, it will not "know" it is "up-to-date".
+      
+Q3.1b) See below.
+
+      ```
+      # Makefile to automate the email marketing analysis
+
+      # An overarching "all" rule that requests the final output files
+      all: logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv
+
+      # Rule to create the processed dataset
+      processed_email_data.csv: data_process.R
+            Rscript data_process.R # Use Rscript to run the R file
+
+      # Rule to generate final output files; depends on processed data and analysis script
+      logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv: processed_email_data.csv analysis_and_report.R
+            Rscript analysis_and_report.R
+
+      # Clean rule to remove generated files
+      clean:
+            R -e "unlink('*.csv')"
+            R -e "unlink('*.png')"
+
+      ```
+Q3.1c) Temporary files (i.e., `processed_email_data.csv`) need to be stored in `temp`. All source code needs to be stored in `src`, and the final output files need to be put into `output`. [See here for all modified source files](../practice_workflow_solution.zip) (which includes the `.R` scripts - see file directories and commands to create new directories!).
+
+### Exemplary question based on book (12P on the exam)
+
+::: callout
+These questions will be based on chapter 6.
+:::
+
+#### Q3.2
+
+A student argues that using **Git locally without GitHub** is sufficient for team projects, since Git already tracks the full history of changes. Based on *Marketing Analytics: A Modern Toolkit*, how should this claim be evaluated?
+
+A) It is correct, because Git alone provides all the functionality teams need
+B) It is partially correct, but without GitHub or similar platforms collaboration becomes cumbersome and less transparent
+C) It is wrong, because Git cannot track history without being connected to GitHub
+D) It is wrong, because GitHub is the only way to use version control effectively
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because Git can indeed track history locally, but *Marketing Analytics: A Modern Toolkit* emphasizes that platforms like GitHub add collaboration features (issues, pull requests, project boards, cloud sync) that make teamwork efficient and transparent. A is incomplete, since Git alone doesn’t scale well for collaboration. C is wrong, because Git tracks history even offline. D is wrong, because GitHub is not the only option (GitLab, Bitbucket also work).
+
+#### Q3.3
+
+A team frequently edits files directly on the **main branch** because they feel branching “slows things down.” How should this practice be evaluated?
+
+A) It is acceptable, because small teams don’t need branching discipline
+B) It is efficient, because avoiding branches reduces unnecessary overhead
+C) It is risky, because main should remain stable while features are developed on branches
+D) It is unnecessary, because merge conflicts only happen in large projects
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* stresses that **main must remain clean and stable**. Branching isolates new work, preventing broken or experimental code from contaminating the working version. A is wrong, since even small teams benefit from branching. B is wrong because short-term speed undermines long-term stability. D is wrong because conflicts can arise in any project, regardless of size.
+
+#### Q3.4
+
+One teammate prefers writing commit messages like “update” or “fixed stuff,” claiming that “the details are in the code anyway.” How should this be judged according to *Marketing Analytics: A Modern Toolkit*?
+
+A) It is fine, because code itself tells the full story of changes
+B) It is acceptable for small commits but not for larger ones
+C) It is problematic, because vague commit messages harm the usefulness of Git’s history for collaboration and reproducibility
+D) It is required, since Git automatically adds details from diffs anyway
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because the book highlights that **clear, descriptive commit messages** are essential for making the project history understandable for teammates and your future self. A is wrong because code diffs alone are not always clear. B is wrong because even small commits should carry meaning. D is wrong because Git does not replace commit messages with diffs automatically.
+
+#### Q3.5
+
+During setup, a student decides to skip configuring **.gitignore**, reasoning that “more files in the repository means more transparency.” How should this decision be evaluated?
+
+A) It is correct, because everything should be tracked for maximum reproducibility
+B) It is incorrect, because including temporary files, datasets, or machine-specific files clutters the repo and hinders collaboration
+C) It is acceptable, because .gitignore is only needed for very large software projects
+D) It is beneficial, because GitHub automatically filters out irrelevant files anyway
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* stresses that **.gitignore keeps repositories clean**, avoiding bloat, conflicts, and accidental sharing of irrelevant or sensitive files. A is wrong, because too much tracking reduces clarity. C is wrong, since .gitignore is critical for all project sizes. D is wrong, because GitHub does not automatically filter files.
+
+#### Q3.6
+
+A colleague suggests skipping **pulling before starting work**, saying it “only matters if two people edit the same file at the same time.” How should this suggestion be evaluated?
+
+A) It is harmless, because conflicts can always be resolved later
+B) It is efficient, because it avoids unnecessary downloads from GitHub
+C) It is flawed, because failing to pull first risks working on outdated files and almost guarantees conflicts
+D) It is valid, because Git automatically merges any differences in the background
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because the book stresses **always pull first** to synchronize with the remote repository before starting work. This minimizes conflicts and ensures you are building on the latest version. A is wrong, since conflicts are harder to fix after the fact. B is wrong, because pulls are lightweight and prevent bigger problems. D is wrong, because Git requires manual resolution for conflicts.
+
+
 ## Learning Goal 4
 
 *Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)*
 
-- Generate RMarkdown documents
-  
+### Exemplary questions based on tutorial (10P)
+
+#### Q4.1
+
+Imagine you have just enrolled as a thesis student, and you receive the following email from your advisor. Submit your PDF document, and provide a conclusion on the suitability of the explored data for the research question.
+
+> Dear (name of student),
+> 
+> I really look forward to working with you on this exciting dataset, capturing the consumption of music on Spotify. I scraped it from spotifycharts.com a while ago. Please download this [`data.zip`](../data.zip), which contains a stripped-down version of an RMarkdown file and the data. 
+> 
+> As a starting point, please explore the data set using RMarkdown. I’d love to learn more about the data myself (haven’t looked into it yet) - maybe you can figure out a way to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption?
+> 
+> Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to explore and do some minor data preparations) visible so I can learn from it!
+
+**Solution:** Available at (../q2-spotify-sol.Rmd) (for a sample RMarkdown exploring the data).
+
+
+### Exemplary question based on book (8P on the exam)
+
+::: callout
+These questions will be based on chapter 4.
+:::
+
+#### Q4.1 (Comprehension)
+
+Which of the following best captures the distinction between **reproducibility** and **replicability** as described in *Marketing Analytics: A Modern Toolkit*?
+
+A) Reproducibility checks whether insights generalize across contexts; replicability checks whether conclusions hold under alternative methods
+B) Reproducibility is about rerunning the same analysis with the same data; replicability is about getting similar results when applying the same analysis to new data
+C) Reproducibility means results remain robust to alternative models; replicability means results remain interpretable across audiences
+D) Reproducibility refers to file organization; replicability refers to dataset quality
+
+**Correct Answer: B**
+
+**Explanation:** The book defines **reproducibility** as rerunning the same analysis on the same data and obtaining the same results, and **replicability** as achieving similar results when applying the same analysis to new data.
+
+#### Q4.2 (Comprehension)
+
+Why does the book emphasize **keeping raw data raw** in marketing analytics projects?
+
+A) Because raw data files are smaller than processed ones
+B) Because cleaning raw data directly makes analysis faster
+C) Because maintaining an untouched source ensures a trustworthy reference point if errors occur later
+D) Because most statistical models require only raw data
+
+**Correct Answer: C**
+**Explanation:** The principle is to **never overwrite raw data**. An untouched version acts as a “source of truth” that analysts can always return to, protecting credibility and avoiding irreversible mistakes.
+
+#### Q4.3 (Comprehension)
+
+According to *Marketing Analytics: A Modern Toolkit*, what is the main risk of writing **clever but dense code** instead of clear code?
+
+A) Clever code usually runs more slowly
+B) Clever code makes debugging impossible in R
+C) Clever code cannot be executed outside RStudio
+D) Clever code is harder for collaborators to understand, maintain, and extend
+
+**Correct Answer: D**
+
+**Explanation:** The book stresses that while clever code may be fun, clarity is more valuable. Code that is easy to read and understand supports collaboration, long-term maintenance, and reproducibility.
+
+#### Q4.4 (Comprehension)
+
+Why are **scripts, R Markdown, and Quarto** considered essential formats for saving code, not just results?
+
+A) Because they automatically detect and remove coding errors
+B) Because they integrate raw data directly into cleaned outputs
+C) Because they preserve the chain of analysis, making results reproducible and updateable
+D) Because they prevent data from being overwritten during cleaning
+
+**Correct Answer: C**
+
+**Explanation:** The book emphasizes that these formats allow analysts to **regenerate results** and update analyses with new data, ensuring that outputs are not isolated artifacts but linked to the underlying code and process.
+
+#### Q4.5 (Application)
+
+You are analyzing campaign response data and decide to immediately implement a **complex deep learning model**. The model takes days to tune and performs poorly. Based on the principles in *Marketing Analytics: A Modern Toolkit*, what should you have done first?
+
+A) Used conditionals to automatically rerun the model until accuracy improved
+B) Started with a simple baseline model such as logistic regression, then refined if needed
+C) Written code in a single long script to ensure all steps are connected
+D) Avoided reproducibility practices to focus on speed
+
+**Correct Answer: B**
+
+**Explanation:** The principle “**Start simple, then improve**” reminds analysts to begin with straightforward, interpretable solutions before experimenting with more complex methods. This ensures clarity, reliability, and efficiency.
+
+#### Q4.6 (Application)
+
+A student receives new customer transaction logs and edits them directly in Excel, overwriting the original file. Later, errors appear and no one can trace the source. How should the student have applied programming principles?
+
+A) By saving results only in final plots and tables
+B) By always keeping a raw, untouched dataset and performing cleaning steps in code
+C) By using more clever one-line commands in Excel
+D) By deleting intermediate files to reduce clutter
+
+**Correct Answer: B**
+
+**Explanation:** The book’s principle “**Keep raw data raw**” means storing untouched source files and carrying out all cleaning programmatically, so the analysis can be reproduced and mistakes traced back.
+
+#### Q4.7 (Application)
+
+While building a churn model for five countries, a student copy-pastes the same block of code five times, changing only the country name. Which programming concept should they apply instead?
+
+A) Data frames
+B) Conditionals
+C) Loops
+D) Factors
+
+**Correct Answer: C**
+
+**Explanation:** The book explains that **loops** eliminate repetitive copy-paste coding by automating tasks across multiple elements (e.g., countries). This makes workflows scalable, clear, and less error-prone.
+
+#### Q4.8 (Application)
+
+Two analysts collaborate on a project. One uses filenames like `final2.csv` and `newfinal_last.csv`, while the other organizes files into `data/raw/`, `data/data-prep/`, and `data/analysis/`. According to the principles in *Marketing Analytics: A Modern Toolkit*, which approach is preferable and why?
+
+A) The first, because ad-hoc naming saves time during analysis
+B) The second, because consistent structure improves navigation, collaboration, and prevents mistakes
+C) Both are equally valid, since filenames don’t affect reproducibility
+D) Neither, because reproducibility depends only on statistical modeling
+
+**Correct Answer: B**
+
+**Explanation:** The principle of **consistency and organization** stresses that a clear folder structure and systematic naming reduce confusion and make collaboration professional and efficient.
+
+
 ## Learning Goal 5
 
 *Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines*
 
-- Automate an existing workflow using make, or debug existing makefiles
-  
+-   Automate an existing workflow using make, or debug existing makefiles
+
+### Exemplary question based on tutorial (24P)
+
+
+#### Q5.1
+
+Please download the [`github_repository.zip`](../github_repository.zip) file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here. 
+
+> Dear (name of student),
+>
+> Tilburg University is working toward publishing not only papers, but also the code that generated the results. This is a key step for open science, as it allows others to reproduce findings. In the attachment (download here), you will find a zipped Git repository of my empirical project. Admittedly, it is not very well structured (for instance, directory structures are missing), but it does include a common R file (`run.R`) that simulates demo data and ties the different parts of the project together.
+>
+> Starting from `run.R`, please apply your learnings from dPrep and submit a link to a new repository in which you:
+>
+> - Separate the workflow into individual files for the main steps of the project (e.g., simulate data, see `run.R` for ideas),  
+> - Separate source code from generated files by using dedicated folders,  
+> - Add a proper README in Markdown format (`.md` file),  
+> - Exclude files that should not be versioned by using `.gitignore`,  
+> - Remove `run.R` and replace it with a proper makefile for the project, and  
+> - Throughout the process, make frequent commits with clear commit messages.  
+>
+> I look forward to seeing your work, submitted as a clean, zipped Git repository, which you can upload below.
+
+
+**Solution:** See ../practice_github_workflow-sol-latest.zip.
+
+
+### Exemplary questions based on book (6P on the exam)
+
+::: callout
+These questions will be based on chapters 3 & 8.
+:::
+
+
+#### Q5.2 (chapter 3)
+
+A team insists on keeping **every single version** of their 500 GB dataset after each cleaning step. As an advisor, how should you evaluate this practice?
+
+A) It is best practice because reproducibility requires storing every version of data
+B) It is inefficient, since reproducibility can be achieved by keeping raw data plus source code that regenerates outputs
+C) It ensures transparency, so it should always be done despite storage costs
+D) It is necessary for scaling pipelines to cloud servers
+
+**Correct Answer: B**
+
+**Explanation:** The book stresses that reproducibility does **not** require saving every intermediate dataset. Instead, storing **raw data** and **source code** is sufficient, since generated files can be recreated. This avoids massive storage waste while preserving reproducibility.
+
+#### Q5.3 (chapter 3)
+
+Suppose a student pipeline skips the **data exploration** stage and goes straight into preparation and analysis. How would you evaluate the credibility of their results?
+
+A) Strong, because skipping exploration accelerates analysis
+B) Weak, because exploration provides necessary audits (e.g., missing values, outliers) to ensure the data makes sense
+C) Neutral, since exploration is optional when datasets come from reliable company sources
+D) Strong, because reproducibility depends only on source code and raw data
+
+**Correct Answer: B**
+
+**Explanation:** According to the book, exploration is critical for credibility. Without it, analysts risk basing analyses on flawed assumptions (e.g., unnoticed outliers, missing values). Exploration builds trust in later steps.
+
+#### Q5.4 (chapter 3)
+
+A firm decides to deploy its results **only as static reports** (e.g., PDFs) rather than dashboards or reusable code. How would you assess this decision from a pipeline perspective?
+
+A) Adequate, since static reports are reproducible and require no extra infrastructure
+B) Limiting, since deployment should maximize usability and impact for different audiences
+C) Optimal, since reports preserve the “final word” of the analysis
+D) Necessary, since dynamic outputs violate the reproducibility principle
+
+**Correct Answer: B**
+
+**Explanation:** The book notes that **deployment is about impact**. While reports may be fine in some contexts, limiting outputs to static formats prevents managers or collaborators from exploring or reusing results. Pipelines should deliver results in **formats that maximize usefulness.**
+
+#### Q5.5 (chapter 3)
+
+Two teams take different approaches:
+
+* Team A treats **generated files** (clean datasets, figures) as permanent, storing all versions.
+* Team B treats generated files as **temporary**, keeping only raw data + source code.
+
+Which approach aligns more closely with the principles in *Marketing Analytics: A Modern Toolkit*?
+
+A) Team A, because generated files are the most valuable artifacts
+B) Team A, because reproducibility depends on storing every output
+C) Team B, because generated files can always be recreated, making pipelines leaner and more scalable
+D) Team B, but only if they also delete raw data after outputs are created
+
+**Correct Answer: C**
+
+**Explanation:** The book highlights that generated files are **recreatable artifacts**, so they do not need to be stored permanently. This separation of raw data, source code, and generated files keeps projects tidy and reproducible without unnecessary storage costs.
+
+#### Q5.6 (chapter 3)
+
+When evaluating a marketing analytics pipeline, which of the following omissions would **most seriously undermine transparency and auditing**?
+
+A) Failing to use .gitignore to filter out temporary files
+B) Not saving final plots in high-resolution formats
+C) Lacking commit messages in the source code version control system
+D) Skipping the deployment stage entirely
+
+**Correct Answer: C**
+
+**Explanation:** While deployment and file management matter, the **ability to audit and understand the code’s evolution** depends critically on version control with meaningful commit messages. Without this, tracing errors or decisions becomes nearly impossible, undermining transparency.
+
+#### Q5.7 (chapter 8)
+
+A student prefers to run each script manually in sequence instead of setting up automation rules. From an evaluation standpoint, what is the main drawback of this approach?
+
+A) It is slower but equally reproducible as automation
+B) It risks human error and inefficiency, since the correct order must be remembered manually
+C) It scales better than automated pipelines when datasets grow larger
+D) It prevents the use of relative file paths
+
+**Correct Answer: B**
+
+**Explanation:** Manual execution makes projects **error-prone** and **inefficient**, since people must remember the correct order of scripts. Automation formalizes dependencies and ensures only necessary steps are re-run, improving reproducibility and efficiency.
+
+#### Q5.8 (chapter 8)
+
+A company maintains a monolithic script that cleans, merges, analyzes, and reports results all at once. How would you evaluate this practice in light of automation principles?
+
+A) Positive, because fewer scripts mean fewer moving parts
+B) Neutral, because automation applies only to raw data handling
+C) Negative, because monolithic scripts undermine modularity, making debugging and selective re-execution difficult
+D) Positive, since monolithic scripts reduce the need for workflow managers
+
+**Correct Answer: C**
+
+**Explanation:** The book recommends “**one script, one transformation**.” Monolithic scripts reduce transparency and make automation inefficient. Modular scripts, by contrast, enable pipelines to re-run only the parts that changed.
+
+#### Q5.9 (chapter 8)
+
+Your team has limited server storage. One proposal is to store **all generated files permanently** to avoid rerunning code. How should you evaluate this?
+
+A) Correct, since generated files are the most important artifacts
+B) Wasteful, since generated files can be recreated from raw data and source code, making permanent storage unnecessary
+C) Risky, since deleting generated files makes reproducibility impossible
+D) Efficient, since it prevents the need for automation
+
+**Correct Answer: B**
+
+**Explanation:** Generated files are **outputs, not primary sources**. The book stresses that reproducibility requires raw data + source code. Keeping every generated file wastes storage and undermines scalability.
+
+#### Q5.10 (chapter 8)
+
+Two teams build pipelines differently:
+
+* Team A uses absolute file paths (e.g., `C:/Users/Anna/data/file.csv`).
+* Team B uses relative paths (e.g., `../data/file.csv`).
+
+Which approach better aligns with good practices, and why?
+
+A) Team A, because absolute paths guarantee accuracy on the analyst’s computer
+B) Team B, because relative paths make pipelines portable across machines and environments
+C) Team A, because absolute paths reduce the risk of overwriting files
+D) Both are equally valid, since path conventions do not affect reproducibility
+
+**Correct Answer: B**
+
+**Explanation:** Portability is key. Relative paths allow pipelines to run on different machines or servers without modification. Absolute paths lock the project to one setup, which undermines collaboration and reproducibility.
+
+#### Q5.11 (chapter 8)
+
+A marketing analytics team considers whether to adopt **workflow managers, Docker, and CI/CD**. Which of the following best evaluates the combined value of these tools?
+
+A) They overlap in functionality, so using all three adds redundancy
+B) They serve distinct but complementary roles: workflow managers organize pipelines, Docker ensures reproducibility across machines, and CI/CD automates deployment
+C) They are only useful for software engineers, not marketing analytics teams
+D) They make pipelines less reproducible by adding unnecessary complexity
+
+**Correct Answer: B**
+
+**Explanation:** The book highlights how these tools **complement each other**: workflow managers for structure and visualization, Docker for portability, and CI/CD for automatic execution and deployment. Together, they professionalize pipelines and scale them across teams.
+
 
 # Preparing for the exam
 
+This section provides information that will help you prepare well for the exam.
+
+
 ## Ideas for developing your proficiency
 
-- Please work through the example questions and tutorials. While this has been difficult when you did it for the first time, can you do it on your own now?
-- Share with each other the (public) links to your teams' GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
-  - Can you run the workflows of others?
-  - If make does not work - try to fix the makefiles!
-  - Work on the project of others (e.g., by creating a new feature branch, improving code, committing to your fork, and making a PR) - "receiving teams": revise the work of others and integrate the PRs.
-  - Add "deployment" steps in your forks, e.g., by adding an app to somebody's regression, or adding a regression to somebody's app
-- Create your own, end-to-end GitHub workflow using the publicly available AirBnB data that teams could use for their projects. Fork that repository and collaboratively work on it with everyone!
-- Familiarize yourself with [Tilburg Science Hub](https://tilburgsciencehub.com)
-  - Work through tutorials
-  - Integrate new building blocks into your projects
-  - Clone the examples and extend them
+-   Please work through the example questions and tutorials. While this has been difficult when you did it for the first time, can you do it on your own now?
+-   Share with each other the (public) links to your teams' GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
+    - Can you run the workflows of others?
+    - If make does not work - try to fix the makefiles!
+    - Work on the project of others (e.g., by creating a new feature branch, improving code, committing to your fork, and making a PR) - "receiving teams": revise the work of others and integrate the PRs.
+    - Add "deployment" steps in your forks, e.g., by adding an app to somebody's regression, or adding a regression to somebody's app
+-   Create your own, end-to-end GitHub workflow using the publicly available AirBnB data that teams could use for their projects. Fork that repository and collaboratively work on it with everyone!
 
 Above all, see this exam preparation *not* as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.
 
 ## Familiarize yourself with TestVision
 
-- [Take a practice test](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2) to familiarize yourself with TestVision!
-- Learn [more about TestVision](https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision)
+- Take the "technical practice exam" - a link will be shared on Canvas; after which you will be able to practice downloaded and uploading files.
+- More practice? TestVision also provides a [generic practice exam](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2)
+- Tilburg University also provides [additional resources about TestVision](https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision)
+
+## TestVision's Introduction Page
+
+Every exam begins with an “introduction” or “cover” page, which contains the official exam instructions. Below, you will find an example of the cover page used in previous years. Please note that the instructions for the actual exam may differ slightly, so it is important to read them carefully.
+
+The exact cover page for this year’s exam will be made available on Canvas in advance, so you will not need to spend time re-reading it when starting your exam. Be sure to review it thoroughly before exam day.
+
+![](dprep_part1.png)
+![](dprep_part2.png)
 
 ## Technical tips & beyond
 
-- Verify that you are familiar with the on-campus computers so that you know how to use them (e.g., Windows, how to open RStudio, how to navigate on the command prompt, how to set working directories, etc.)
-- Know how to zip and unzip files
-- Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)
-- File and code management
-  - Rename files from TestVision (e.g., `download.csv`, `download.rdata`, `download.zip`) for clarity and organization.
-  - Sort renamed files into separate folders to prevent confusion.
-  - Revise your code before submission, so that you ensure it runs from top to bottom without problems.
-  - Do not mention your name or student number in your code.
-- Working with data
-  - Familiarize yourself with opening .RData files and accessing their contents, as outlined in [YaRrr](https://bookdown.org/ndphillips/YaRrr/rdata-files.html).
-  - For Git repository submissions, zip the entire folder containing the repository before uploading to ensure completeness.
-- Setting the working directory in R (preferred method):
-    - Create a new .R file and save it in the folder where your data files are downloaded.
-    - Set the working directory to this location via `Session -> Set Working Directory -> To Source File Location`.
-- Local package installation
-  - Practice installing packages locally, especially since internet access will not be available during the exam.
-  - Test local package installation with [package_test.zip](package_test.zip) by unzipping and running `install_packages.R` via `RScript install_packages.R` after navigating to the correct directory.
+-   Verify that you are familiar with the on-campus computers so that you know how to use them (e.g., Windows, how to open RStudio, how to navigate on the command prompt, how to set working directories, etc.)
+-   Know how to zip and unzip files
+-   Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)
+-   File and code management
+    -   Rename files from TestVision (e.g., `download.csv`, `download.rdata`, `download.zip`) for clarity and organization.
+    -   Sort renamed files into separate folders to prevent confusion.
+    -   Revise your code before submission, so that you ensure it runs from top to bottom without problems.
+    -   Do not mention your name or student number in your code.
+-   Working with data
+    -   Familiarize yourself with opening .RData files and accessing their contents, as outlined in [YaRrr](https://bookdown.org/ndphillips/YaRrr/rdata-files.html).
+    -   For Git repository submissions, zip the entire folder containing the repository before uploading to ensure completeness.
+-   Setting the working directory in R (preferred method):
+    -   Create a new .R file and save it in the folder where your data files are downloaded.
+    -   Set the working directory to this location via `Session -> Set Working Directory -> To Source File Location`.
+-   Local package installation
+    -   Practice installing packages locally, especially since internet access will not be available during the exam.
+    -   Test local package installation with [package_test.zip](package_test.zip) by unzipping and running `install_packages.R` via `RScript install_packages.R` after navigating to the correct directory.
+
+# Inspection
+
+After the exams have been graded, you will have the opportunity to attend the exam inspection. The goals of this inspection are for you to (a) understand how your exam has been graded (i.e., per question), (b) learn from viewing an answer key to a particular question, and (c) verify the answer key has been applied consistently.
+
+The date of the exam inspection will be communicated via Canvas. The review will take place in a computer room on campus.
+
+## Logging in
+
+- Login to [TestVision](https://tiu.nu/testvision) via SurfConext with your Tilburg University account.
+- Select __show results__.
+- Select the relevant exam and enter the password that will be shared with you in class.
+
+## Inspect your exam
+
+### 1) Get an overview of the points obtained
+
+First, we advise you to get a global understanding of how you performed on the exam by checking the "question overview."
+
+![](inspection1.png)
+
+We advise you to zoom in on the questions for which you did not obtain total points.
+
+### 2) Review each question
+
+You can review the grading of each question by clicking on the question number.
+
+- Check the points you have obtained for the question.
+
+![](points.png)
+
+- View the question and read your answer.
+
+- Check our feedback (mostly in writing) by clicking on 'Feedback'. You can view the correct answer by clicking on 'Response model'.
+
+![](feedback.png)
+
+Note that written feedback may not be available for all questions. In that case, compare your answer to the response model/answer key.
+
+### 3) Ask questions
+
+Would you like to ask how the answer key was applied in your case? Ask the instructor that is present during the inspection.
+
+### 4) File a written request for review
+
+Any unresolved questions? Then __file a request for review__.
+
+- Do so for each question by entering a comment in the designated comment box on TestVision, which is located below each question.
+
+![](commentbox.png)
+
+- When adding a request for review, please __briefly__ argue why you believe you deserve (more) points for the specific question. In your request, refer as much as possible to the answer key.
