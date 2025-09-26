@@ -1,0 +1,187 @@
+---
+title: "Automating with Make"
+author: "Javier Torralba" 
+format: 
+  beamer:
+    theme: metropolis
+    colortheme: seahorse
+    linkcolor: blue
+editor: visual
+---
+
+# Today's tutorial
+
+-   Automating data pipelines with Make
+
+# But... Why?
+
+**Let's describe our tool stack...**
+
+-   We use **Git/GitHub** to collaborate on code
+    -   versioning of files - frequent commits
+    -   issues, branches and pull requests
+    -   management via project board
+-   We have learnt how to **explore data and engineer datasets**
+    -   Rmarkdown & plotting using `ggplot2`
+    -   `tidyverse` & data preparation/engineering, setup + ITO
+-   But... process is still **quite manual**: how to "run" code (e.g., in which order, which files)?
+
+# Automation tools
+
+-   Many automation tools on the market
+-   We use `make`
+    -   software- and OS-independent
+    -   free/open source, widely used
+    -   probably one of the oldest ones on the market
+
+# How to work with automation tools?
+
+-   Start early in the project, and start small
+-   Iterate over changes, similar to Hannes's onion coding strategy
+
+# Before we start
+
+1.  Verify **`make`** is properly installed
+
+-   open the terminal/command prompt and type `make` (enter).
+-   See this?
+
+``` bash
+make: *** No targets specified
+```
+
+```         
+...then it is __correctly installed__!
+```
+
+-   Not installed? Check this [link](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
+
+2.  Verify you can run `Rscript` from the terminal/command prompt
+
+-   type `Rscript` (followed by enter).
+-   See output starting with...
+
+``` bash
+Usage: Rscript [options] file [args]
+```
+
+```         
+...then you are *all set*!
+```
+
+# Let's start the tutorial!
+
+-   **Pre-exercises**: Copy the source code [here](https://raw.githubusercontent.com/hannesdatta/course-dprep/main/material/tutorials/make-automation/run_antwerp.R), save it as `run_Antwerp.R` look at the file, understand the structure and how it works.
+
+# Exercise 1:
+
+-   Run `run_Antwerp.R`, understand the structure of the file. How does it look like, how does it work?
+-   Afterwards, open the terminal and run `R --vanilla < run_Antwerp.R`. (You might need to run `Rscript run_Antwerp.R` instead)
+
+# Exercise 1:
+
+-   Lesson: we can run R scripts from the terminal, no need to have R studio open.
+
+# 1.2: Makefiles: intuition
+
+-   Think of makefiles like a cookbook, it is a recipe on how to run the code, how to structure it
+
+# Structure of a makefile:
+
+-   General structure per line:
+
+```         
+targets: prerequisites
+  command to build
+```
+
+-   **Targets**: what you want to build.
+-   **Prerequisites**: what you need to have to run those targets.
+-   **Example**:
+
+```         
+plot_all.pdf: run_Antwerp.R
+  R --vanilla < run_Antwerp.R
+```
+
+# Exercise 2:
+
+-   Create a new makefile (tip: if you're on a Mac or Linux machine, use touch makefile in your terminal; Windows users can open a new file in an editor and save it (without file extension!) as makefile). Open the makefile in a text editor. Add the two lines above and save the changes. Open your terminal and run make. What happens?
+-   Type make again. What does it say, why is that?
+-   On line 64 and 75 change the Universiteitsbuurt column to Stadspark and save the file. Run make -n (to preview the changes) and then type make to actually do it. Does it run this time, why?
+
+# Exercise 2 Solution
+
+-   You probably got the following error: `make: *** No targets specified and no makefile found.  Stop.`. This is because command (in line 2 of the makefile) required to build the target needs to be indented with a tab ("start with a tab"), not spaces. Modify that line by adding a tab instead and re-run.
+-   Now `make` should run without any issues. It will execute the command in the makefile and create the `plot_all.pdf` file.
+-   `make` detects changes in the source code to build the target (plot_all.pdf) and therefore it runs the **entire** file again. This is not computationally efficient as the data has already been downloaded and cleaned. We will address this in the next exercise.
+
+# Visualizing the workflow
+
+-   Check out the RScript you made, does it have this workflow? Modularized code! ![](flow.png)
+
+# What are the issues with just running the make as is now?
+
+```         
+plot_all.pdf: run_Antwerp.R
+  R --vanilla < run_Antwerp.R
+```
+
+# What are the issues with just running the make as is now?
+
+-   Code is not modular
+-   More computationally expensive, need to run everything if something is changed
+-   Messy
+
+# Exercise 3:
+
+-   Follow the steps 1, 2, and 3 of exercise 3 in the tutorial and afterwards we will solve it together.
+-   Hint: we will learn something importnat about how to organize makefiles.
+
+# Exercise 3 lesson:
+
+-   The makefiles will only **build the top target (the first target)** by default.
+-   Therefore we need to learn how to use phony targets
+
+# Exercise 4:
+
+-   Create a new folder, call it phony-test and copy this into a new makefile in that directory:
+
+```         
+all: one two
+
+one:
+    touch one.txt
+
+two:
+    touch two.txt
+```
+
+# Exercise 4 lesson:
+
+-   You can use `all` to indicate what the output should be in makefiles.
+
+```         
+all: final_output_1 final_output_2
+```
+
+# Exercise 5:
+
+-   Try making a new makefile with the following (in our original folder):
+
+```         
+all: plot_Antwerp.pdf plot_all.pdf
+```
+
+-   Would this makefile work? Are we missing something?
+
+# Exercise 5 lesson
+
+-   We need to write the intermediate steps like we were doing before **underneath** the `all` phony target at the top.
+
+# What you will learn in the rest of the tutorial
+
+-   Creating new working directories & working with them
+-   Organizing the structure of the directories
+-   Creating makefiles to guide other makefiles
+-   Creating a function to delete the data you created by running the makefiles
