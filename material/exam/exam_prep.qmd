@@ -1,7 +1,7 @@
 ---
 title: "Data Preparation & Programming Skills - Exam Preparation"
 author: "Hannes Datta"
-date: 2025-09-25
+date: 2025-09-26
 format:
   pdf:
     code-overflow: wrap   # or scroll (wrap works better in PDF)
@@ -12,6 +12,8 @@ format:
   html:
     code-overflow: wrap
 ---
+
+\newpage
 
 # Introduction
 
@@ -58,6 +60,7 @@ The table below outlines the types of questions you can expect, along with their
 | 4 | Use R for generating automatic reports | Compreh. & Appli. | 10P on Rmarkdown tutorial | 8P (2-3Q), ch. 4 |
 | 5 | Use Workflow Management Tools | Appl. & Eval. | 24P on Make tutorial | 6P (2Q), ch. 3, 8 |
 
+\newpage
 
 # Example Questions
 
@@ -892,6 +895,7 @@ D) They make pipelines less reproducible by adding unnecessary complexity
 
 **Explanation:** The book highlights how these tools **complement each other**: workflow managers for structure and visualization, Docker for portability, and CI/CD for automatic execution and deployment. Together, they professionalize pipelines and scale them across teams.
 
+\newpage
 
 # Preparing for the exam
 
@@ -950,8 +954,10 @@ The exact cover page for this year’s exam will be made available on Canvas in 
   * Be able to locate your working directory in all programs (R, Jupyter Notebook, VS Code, Explorer, Command Prompt, Git Bash).
 * **Local package installation**:
   * Practice installing packages locally, since internet access will not be available.
-  * Test with [package_test.zip](package_test.zip): unzip and run `RScript install_packages.R` from the correct directory.
+  * Test with [test-package-installation.zip](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/test-package-installation.zip): unzip and run `RScript install_packages.R` from the correct directory.
 * **Save time on exam day**: before the exam officially starts, open the required software (e.g., RStudio, Jupyter Notebook) and set working directories so you can begin immediately.
+
+\newpage
 
 # Inspection
 
