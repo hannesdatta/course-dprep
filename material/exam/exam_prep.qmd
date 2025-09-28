@@ -1,7 +1,8 @@
 ---
-title: "Data Preparation & Programming Skills - Exam Preparation"
+title: "Exam Preparation"
+subtitle: "Data Preparation & Programming Skills (328059-M-6)"
 author: "Hannes Datta"
-date: 2025-09-26
+date: 2025-09-28
 format:
   pdf:
     code-overflow: wrap   # or scroll (wrap works better in PDF)
@@ -16,6 +17,8 @@ format:
 \newpage
 
 # Introduction
+
+*originally published on 26 September; updated on 28 September, slightly rewriting questions in line with the actual exam & adding the number of points per question)*
 
 ## Overview
 
@@ -77,7 +80,13 @@ This question will always ask you to download data sets stored in a zipped `.RDa
 :::
 
 Please download the [`netflix_data`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip) file, containing an `.RData` environment that itself contains R objects (datasets). 
+To receive points on this question, please create and upload one R file (.R) that performs the task as requested.
 
+Important:
+- Load the data using: load("name_of_the_file.RData") # use the correct file name as per your download
+- Apply the Setup – Input – Transform – Output (S-I-T-O) principles used in class.
+- Submit your work as a clean .R script (NOT RMarkdown). Ensure the code runs top to bottom.
+- Do not include your name or student number anywhere in the code.
 
 __`netflix_data`:__
 
@@ -93,9 +102,7 @@ __`netflix_data`:__
 -   `show_rating`: Average rating given to the content
 -   `viewership_count`: Number of viewers for the content
 
-Please answer the following questions using this data.
-
-#### Q1.1: Handing missing values
+#### Q1.1 (10P)
 
 a.  Which columns in the dataset contain missing values, and how many missing values does each column have? 
 
@@ -152,9 +159,9 @@ netflix_data <- netflix_data %>%
 
 ```
 
-#### Q1.2: Using Regular Expressions
+#### Q1.2 (10P)
 
-Some shows belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains "Action" genre and 0 otherwise.
+a) Some shows belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains "Action" genre and 0 otherwise.
 
 **Solution:**
 
@@ -165,9 +172,7 @@ netflix_data <- netflix_data %>%
 table(netflix_data$is_action)
 ```
 
-#### Q1.3: Using Regular Expressions
-
-Let's say we want to analyze how viewership for a specific show (SHOW_10) varies across different countries over time. Subset the viewership data for this show and convert the data to wide format.
+b) Let's say we want to analyze how viewership for a specific show (SHOW_10) varies across different countries over time. Subset the viewership data for this show and convert the data to wide format.
 
 **Solution:**
 
@@ -185,13 +190,18 @@ show_10_wide <- show_10_data %>%
   )
 ```
 
-#### Q1.4: Estimation and Plotting at Scale
+#### Q1.3 (10P)
 
-Please estimate a linear regression to examine the impact of a show being listed as "Action" genre on viewership for different viewership countries. Use a for loop to estimate at scale.
+a) For one country, estimate a regression of viewership_count on a dummy variable, set to 1 if the show is listed in the "Action" genre.
+
+b) Then, adapt the code to run this regression for all countries using a loop, saving the results (country name, coefficient for dummy variable, p-value) in a table.
+
+c) Save the combined results from (b) as regression_results.csv.
 
 **Solution:**
 
 ```         
+library(tidyve)
 library(ggplot2)
 
 countries <- unique(netflix_data$viewership_country)
@@ -217,16 +227,10 @@ for (country in countries) {
   data.frame(viewership_country = country, estimate = beta_1))
 }
 
-# Plot the effect sizes
-ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), 
-y = estimate, fill = estimate)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  labs(title = "Effect of Action Genre on Viewership by Country",
-       x = "Country",
-       y = "Effect Size (Coefficient of is_action)") +
-  theme_minimal()
+write_csv(effect_sizes, 'regression_results.csv')
 ```
+
+*Note: you can also expect similar questions where you would have to plot at scale, or use wide --> long, long --> wide and imputation transformations (for details, see example questions in engineering tutorial).*
 
 ### Exemplary questions based on book (4P on the exam)
 
@@ -234,7 +238,7 @@ y = estimate, fill = estimate)) +
 Questions based on book, chapter 7.
 :::
 
-#### Q1.5
+#### Q1.4 (4P)
 
 You are tasked with building a dataset to study the **effect of advertising on customer churn**. Which of the following dataset designs would best synthesize the principles described in *Marketing Analytics: A Modern Toolkit*?
 
@@ -252,7 +256,7 @@ D)  One row per region per month with variables for average basket size and aver
 -   B is incorrect because daily customer-level data introduces unnecessary noise, and churn is not measured at the daily level.
 -   D is incorrect because region–month aggregation ignores individual-level churn dynamics.
 
-#### Q1.6
+#### Q1.5 (4P)
 
 You discover that your marketing dataset contains missing user IDs, duplicate transactions, and inconsistent date formats. Which **sequence of operations** reflects a sound data engineering workflow consistent with *Marketing Analytics: A Modern Toolkit*?
 
@@ -270,7 +274,7 @@ D)  Reshape → Clean → Aggregate → Merge
 -   C merges too early, propagating inconsistencies.
 -   D reshapes before cleaning, which contradicts the principle of first ensuring validity and consistency.
 
-#### Q1.7
+#### Q1.6 (4P)
 
 Imagine you need the same dataset for both a **regression model** and a **marketing dashboard**. How should you structure and prepare the data to meet both needs?
 
@@ -288,7 +292,7 @@ D)  Duplicate all sources: one version in long format and one in wide format, ma
 -   B is incorrect because regressions usually expect long data.
 -   D is inefficient and risks divergence across duplicated datasets, which the book warns against.
 
-#### Q1.8
+#### Q1.7 (4P)
 
 You are asked to recommend a **data platform strategy** for a firm with diverse marketing data: structured transactions, semi-structured web logs, and terabytes of ad impression data. Which option best reflects the trade-offs described in *Marketing Analytics: A Modern Toolkit*?
 
@@ -316,7 +320,7 @@ D)  Use relational databases for structured data, NoSQL systems for semi-structu
 These questions will be based on chapters 2 and 5.
 :::
 
-#### Q2.1 (based on chapter 2)
+#### Q2.1 (based on chapter 2) (3P)
 
 A student argues that every project should include **Docker, CI/CD pipelines, and a cloud warehouse** because “more tools always make a project better.” Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate this claim?
 
@@ -329,7 +333,7 @@ D) Disagree, because small projects should avoid all infrastructure beyond RStud
 
 **Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* emphasizes that “more is not always better.” Tools like Docker and CI/CD add learning costs and maintenance overhead. They are valuable for large, long-term projects but unnecessary for small, quick tasks. A is wrong because advanced tools may reduce efficiency in small projects. B is wrong because best practices must be adapted, not applied universally. D is wrong because small projects still benefit from basics like version control and folder structure.
 
-#### Q2.2 (based on chapter 2)
+#### Q2.2 (based on chapter 2) (3P)
 
 Two thesis students disagree on environment management. One says, *“We don’t need renv; if a package updates, we’ll just install the new version.”* The other says, *“renv is essential, because without it our results may change unpredictably.”* Which evaluation best aligns with *Marketing Analytics: A Modern Toolkit*?
 
@@ -342,7 +346,7 @@ D) Neither is right, since reproducibility is not affected by package management
 
 **Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* explains that reproducibility requires code to run the same across time and machines. Tools like renv lock package versions, avoiding “it worked then, but not now” issues. A is wrong because constant updates can break old code. B is wrong because package management is not optional for reproducibility. D is wrong because package versions directly affect whether results can be replicated.
 
-#### Q2.3 (based on chapter 2)
+#### Q2.3 (based on chapter 2) (3P)
 
 Your marketing team is debating whether to store intermediate datasets as separate files (“raw,” “data-prep,” “analysis”) or overwrite data at each step to save storage. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate these two approaches?
 
@@ -355,7 +359,7 @@ D) Neither approach is useful; data should always be pulled directly from the or
 
 **Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* recommends staged data (“raw,” “data-prep,” “analysis”) to preserve the lineage of transformations. This ensures traceability, avoids confusion about which dataset is “correct,” and supports reproducibility. A is wrong because storage is cheap compared to the cost of lost reproducibility. C is wrong because traceability is more important than minor storage concerns. D is wrong because raw sources alone don’t provide cleaned, analysis-ready data.
 
-#### Q2.4 (based on chapter 2)
+#### Q2.4 (based on chapter 2) (3P)
 
 A mid-sized marketing team is considering whether to rely on **local setups** or fully migrate to the **cloud**. Which evaluation best reflects the guidance in *Marketing Analytics: A Modern Toolkit*?
 
@@ -368,7 +372,7 @@ D) Avoid mixing local and cloud, because hybrid approaches cause inconsistency
 
 **Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* describes trade-offs between local and cloud setups. Local is suitable for small projects or learning, while cloud is better for large-scale, collaborative, or computationally heavy projects. Many teams use hybrid solutions. A is wrong because local alone cannot handle scalability. B is wrong because cloud is not always necessary or cost-effective. D is wrong because hybrid approaches are practical and often optimal.
 
-#### Q2.5 (based on chapter 5)
+#### Q2.5 (based on chapter 5) (3P)
 
 A student team insists on adopting the **full Scrum framework** (Product Owner, Scrum Master, daily stand-ups, retrospectives) for their two-week class project. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate this decision?
 
@@ -381,7 +385,7 @@ D) It is inappropriate, because Scrum principles are designed only for software 
 
 **Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* notes that smaller analytics teams should **adapt Scrum** by using boards, issues, and short cycles rather than implementing every role and ceremony. A is wrong because there is no “one size fits all.” B is wrong because boards and issues can function informally. D is wrong because Scrum principles apply beyond software, including analytics.
 
-#### Q2.6 (based on chapter 5)
+#### Q2.6 (based on chapter 5) (3P)
 
 A research group wants to manage their tasks using email and chat threads, arguing that “boards and issues are too much overhead.” How should this be evaluated according to *Marketing Analytics: A Modern Toolkit*?
 
@@ -394,7 +398,7 @@ D) It is effective, because agile teams rely more on conversation than on writte
 
 **Explanation:** C is correct because the book emphasizes **centralizing communication in issues and boards**, ensuring transparency, traceability, and shared understanding. A is wrong because email creates fragmentation. B is wrong because scattered folder notes lack integration. D misinterprets Agile — while conversation matters, artifacts like boards are essential for documentation and accountability.
 
-#### Q2.7 (based on chapter 5)
+#### Q2.7 (based on chapter 5) (3P)
 
 A manager argues that **long, open-ended work phases** are better than short cycles, since they allow deeper focus without interruptions. What evaluation does *Marketing Analytics: A Modern Toolkit* suggest?
 
@@ -407,7 +411,7 @@ D) Disagree, because retrospectives alone are sufficient for adaptability, regar
 
 **Explanation:** B is correct because the book highlights that **short, repeating cycles** (with regular check-ins and increments) prevent last-minute rushes, improve visibility, and keep teams adaptable. A is wrong because fewer meetings can create blind spots. C is wrong because analytics projects are dynamic. D is wrong because retrospectives without short cycles delay improvements.
 
-#### Q2.8 (based on chapter 5)
+#### Q2.8 (based on chapter 5) (3P)
 
 A student team designs a **project board with 12 columns, dozens of labels, and complex workflows**, claiming this will maximize precision. How should their setup be evaluated in light of *Marketing Analytics: A Modern Toolkit*?
 
@@ -441,8 +445,7 @@ As part of these tasks, you will need to perform a range of Git operations cover
 
 :::
 
-#### Q3.1
-
+#### Q3.1 (24P)
 
 Please download the [`git_repository.zip`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_repository.zip) file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here. 
 
@@ -465,17 +468,13 @@ Please download the [`git_repository.zip`](https://github.com/hannesdatta/course
 **Solution:** Please [download the solution here](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_solution.zip).
 
 
-
-
-
-
 ### Exemplary question based on book (12P on the exam)
 
 ::: callout
 These questions will be based on chapter 6.
 :::
 
-#### Q3.2
+#### Q3.2 (3P)
 
 A student argues that using **Git locally without GitHub** is sufficient for team projects, since Git already tracks the full history of changes. Based on *Marketing Analytics: A Modern Toolkit*, how should this claim be evaluated?
 
@@ -488,7 +487,7 @@ D) It is wrong, because GitHub is the only way to use version control effectivel
 
 **Explanation:** B is correct because Git can indeed track history locally, but *Marketing Analytics: A Modern Toolkit* emphasizes that platforms like GitHub add collaboration features (issues, pull requests, project boards, cloud sync) that make teamwork efficient and transparent. A is incomplete, since Git alone doesn’t scale well for collaboration. C is wrong, because Git tracks history even offline. D is wrong, because GitHub is not the only option (GitLab, Bitbucket also work).
 
-#### Q3.3
+#### Q3.3 (3P)
 
 A team frequently edits files directly on the **main branch** because they feel branching “slows things down.” How should this practice be evaluated?
 
@@ -501,7 +500,7 @@ D) It is unnecessary, because merge conflicts only happen in large projects
 
 **Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* stresses that **main must remain clean and stable**. Branching isolates new work, preventing broken or experimental code from contaminating the working version. A is wrong, since even small teams benefit from branching. B is wrong because short-term speed undermines long-term stability. D is wrong because conflicts can arise in any project, regardless of size.
 
-#### Q3.4
+#### Q3.4 (3P)
 
 One teammate prefers writing commit messages like “update” or “fixed stuff,” claiming that “the details are in the code anyway.” How should this be judged according to *Marketing Analytics: A Modern Toolkit*?
 
@@ -514,7 +513,7 @@ D) It is required, since Git automatically adds details from diffs anyway
 
 **Explanation:** C is correct because the book highlights that **clear, descriptive commit messages** are essential for making the project history understandable for teammates and your future self. A is wrong because code diffs alone are not always clear. B is wrong because even small commits should carry meaning. D is wrong because Git does not replace commit messages with diffs automatically.
 
-#### Q3.5
+#### Q3.5 (3P)
 
 During setup, a student decides to skip configuring **.gitignore**, reasoning that “more files in the repository means more transparency.” How should this decision be evaluated?
 
@@ -527,7 +526,7 @@ D) It is beneficial, because GitHub automatically filters out irrelevant files a
 
 **Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* stresses that **.gitignore keeps repositories clean**, avoiding bloat, conflicts, and accidental sharing of irrelevant or sensitive files. A is wrong, because too much tracking reduces clarity. C is wrong, since .gitignore is critical for all project sizes. D is wrong, because GitHub does not automatically filter files.
 
-#### Q3.6
+#### Q3.6 (3P)
 
 A colleague suggests skipping **pulling before starting work**, saying it “only matters if two people edit the same file at the same time.” How should this suggestion be evaluated?
 
@@ -547,14 +546,13 @@ D) It is valid, because Git automatically merges any differences in the backgrou
 
 ### Exemplary questions based on tutorial (10P)
 
-
 ::: callout
 In this type of exam question, you will create an **RMarkdown document** in RStudio and submit it as a **rendered PDF** with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with `ggplot2`. 
 
 The aim is to assess not only whether you can recall commands, but whether you can structure and document a small data workflow in a clear and reproducible way.
 :::
 
-#### Q4.1
+#### Q4.1 (12P)
 
 Imagine you have just enrolled as a thesis student, and you receive the following email from your advisor. Submit your PDF document, and provide a conclusion on the suitability of the explored data for the research question.
 
@@ -562,20 +560,20 @@ Imagine you have just enrolled as a thesis student, and you receive the followin
 > 
 > I really look forward to working with you on this exciting dataset, capturing the consumption of music on Spotify. I scraped it from spotifycharts.com a while ago. Please download this  [`spotify_data.zip`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify_data.zip), which contains the data in a CSV file. 
 > 
-> As a starting point, please explore the data set using RMarkdown. I’d love to learn more about the data myself (haven’t looked into it yet). Can you create a plot with `ggplot2` to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption (streams)?
+> Can you create a plot with `ggplot2` to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption (streams)?
 > 
-> Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to explore and do some minor data preparations and create the plot) visible so I can learn from it (and grade it!)...!
+> Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to generate the plot -- including some minor data preparations) visible so I can learn from it (and grade it!)...!
 
 **Solution:** Available for [download as `Rmd`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.Rmd) and [rendered `.pdf` - recall, you will have to submit it as a rendered PDF document!](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.pdf).
 
 
-### Exemplary question based on book (8P on the exam)
+### Exemplary question based on book (6P on the exam)
 
 ::: callout
 These questions will be based on chapter 4.
 :::
 
-#### Q4.1 (Comprehension)
+#### Q4.1 (3P)
 
 Which of the following best captures the distinction between **reproducibility** and **replicability** as described in *Marketing Analytics: A Modern Toolkit*?
 
@@ -588,7 +586,7 @@ D) Reproducibility refers to file organization; replicability refers to dataset 
 
 **Explanation:** The book defines **reproducibility** as rerunning the same analysis on the same data and obtaining the same results, and **replicability** as achieving similar results when applying the same analysis to new data.
 
-#### Q4.2 (Comprehension)
+#### Q4.2 (3P)
 
 Why does the book emphasize **keeping raw data raw** in marketing analytics projects?
 
@@ -601,7 +599,7 @@ D) Because most statistical models require only raw data
 
 **Explanation:** The principle is to **never overwrite raw data**. An untouched version acts as a “source of truth” that analysts can always return to, protecting credibility and avoiding irreversible mistakes.
 
-#### Q4.3 (Comprehension)
+#### Q4.3 (3P)
 
 According to *Marketing Analytics: A Modern Toolkit*, what is the main risk of writing **clever but dense code** instead of clear code?
 
@@ -614,7 +612,7 @@ D) Clever code is harder for collaborators to understand, maintain, and extend
 
 **Explanation:** The book stresses that while clever code may be fun, clarity is more valuable. Code that is easy to read and understand supports collaboration, long-term maintenance, and reproducibility.
 
-#### Q4.4 (Comprehension)
+#### Q4.4 (3P)
 
 Why are **scripts, R Markdown, and Quarto** considered essential formats for saving code, not just results?
 
@@ -627,7 +625,7 @@ D) Because they prevent data from being overwritten during cleaning
 
 **Explanation:** The book emphasizes that these formats allow analysts to **regenerate results** and update analyses with new data, ensuring that outputs are not isolated artifacts but linked to the underlying code and process.
 
-#### Q4.5 (Application)
+#### Q4.5 (3P)
 
 You are analyzing campaign response data and decide to immediately implement a **complex deep learning model**. The model takes days to tune and performs poorly. Based on the principles in *Marketing Analytics: A Modern Toolkit*, what should you have done first?
 
@@ -640,7 +638,7 @@ D) Avoided reproducibility practices to focus on speed
 
 **Explanation:** The principle “**Start simple, then improve**” reminds analysts to begin with straightforward, interpretable solutions before experimenting with more complex methods. This ensures clarity, reliability, and efficiency.
 
-#### Q4.6 (Application)
+#### Q4.6 (3P)
 
 A student receives new customer transaction logs and edits them directly in Excel, overwriting the original file. Later, errors appear and no one can trace the source. How should the student have applied programming principles?
 
@@ -653,7 +651,7 @@ D) By deleting intermediate files to reduce clutter
 
 **Explanation:** The book’s principle “**Keep raw data raw**” means storing untouched source files and carrying out all cleaning programmatically, so the analysis can be reproduced and mistakes traced back.
 
-#### Q4.7 (Application)
+#### Q4.7 (3P)
 
 While building a churn model for five countries, a student copy-pastes the same block of code five times, changing only the country name. Which programming concept should they apply instead?
 
@@ -666,7 +664,7 @@ D) Factors
 
 **Explanation:** The book explains that **loops** eliminate repetitive copy-paste coding by automating tasks across multiple elements (e.g., countries). This makes workflows scalable, clear, and less error-prone.
 
-#### Q4.8 (Application)
+#### Q4.8 (3P)
 
 Two analysts collaborate on a project. One uses filenames like `final2.csv` and `newfinal_last.csv`, while the other organizes files into `data/raw/`, `data/data-prep/`, and `data/analysis/`. According to the principles in *Marketing Analytics: A Modern Toolkit*, which approach is preferable and why?
 
@@ -679,11 +677,11 @@ D) Neither, because reproducibility depends only on statistical modeling
 
 **Explanation:** The principle of **consistency and organization** stresses that a clear folder structure and systematic naming reduce confusion and make collaboration professional and efficient.
 
-
 ## Learning Goal 5
 
 *Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines*
 
+### Exemplary question based on tutorial (24P)
 
 ::: callout
 In this type of question, you will work with **automation using `make`**, based on the `make` tutorial in the course. Typical tasks include:
@@ -700,10 +698,7 @@ Recall to use `make` and `make -n` to run (or preview) workflows.
 
 :::
 
-
-### Exemplary question based on tutorial (24P)
-
-#### Q5.1
+#### Q5.1 (24P)
 
 Please [download and unzip the research pipeline](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_make/practice_workflow.zip) of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
 
@@ -755,7 +750,7 @@ These questions will be based on chapters 3 & 8.
 :::
 
 
-#### Q5.2 (chapter 3)
+#### Q5.2 (chapter 3) (3P)
 
 A team insists on keeping **every single version** of their 500 GB dataset after each cleaning step. As an advisor, how should you evaluate this practice?
 
@@ -768,7 +763,7 @@ D) It is necessary for scaling pipelines to cloud servers
 
 **Explanation:** The book stresses that reproducibility does **not** require saving every intermediate dataset. Instead, storing **raw data** and **source code** is sufficient, since generated files can be recreated. This avoids massive storage waste while preserving reproducibility.
 
-#### Q5.3 (chapter 3)
+#### Q5.3 (chapter 3) (3P)
 
 Suppose a student pipeline skips the **data exploration** stage and goes straight into preparation and analysis. How would you evaluate the credibility of their results?
 
@@ -781,7 +776,7 @@ D) Strong, because reproducibility depends only on source code and raw data
 
 **Explanation:** According to the book, exploration is critical for credibility. Without it, analysts risk basing analyses on flawed assumptions (e.g., unnoticed outliers, missing values). Exploration builds trust in later steps.
 
-#### Q5.4 (chapter 3)
+#### Q5.4 (chapter 3) (3P)
 
 A firm decides to deploy its results **only as static reports** (e.g., PDFs) rather than dashboards or reusable code. How would you assess this decision from a pipeline perspective?
 
@@ -794,7 +789,7 @@ D) Necessary, since dynamic outputs violate the reproducibility principle
 
 **Explanation:** The book notes that **deployment is about impact**. While reports may be fine in some contexts, limiting outputs to static formats prevents managers or collaborators from exploring or reusing results. Pipelines should deliver results in **formats that maximize usefulness.**
 
-#### Q5.5 (chapter 3)
+#### Q5.5 (chapter 3) (3P)
 
 Two teams take different approaches:
 
@@ -812,7 +807,7 @@ D) Team B, but only if they also delete raw data after outputs are created
 
 **Explanation:** The book highlights that generated files are **recreatable artifacts**, so they do not need to be stored permanently. This separation of raw data, source code, and generated files keeps projects tidy and reproducible without unnecessary storage costs.
 
-#### Q5.6 (chapter 3)
+#### Q5.6 (chapter 3) (3P)
 
 When evaluating a marketing analytics pipeline, which of the following omissions would **most seriously undermine transparency and auditing**?
 
@@ -825,7 +820,7 @@ D) Skipping the deployment stage entirely
 
 **Explanation:** While deployment and file management matter, the **ability to audit and understand the code’s evolution** depends critically on version control with meaningful commit messages. Without this, tracing errors or decisions becomes nearly impossible, undermining transparency.
 
-#### Q5.7 (chapter 8)
+#### Q5.7 (chapter 8) (3P)
 
 A student prefers to run each script manually in sequence instead of setting up automation rules. From an evaluation standpoint, what is the main drawback of this approach?
 
@@ -838,7 +833,7 @@ D) It prevents the use of relative file paths
 
 **Explanation:** Manual execution makes projects **error-prone** and **inefficient**, since people must remember the correct order of scripts. Automation formalizes dependencies and ensures only necessary steps are re-run, improving reproducibility and efficiency.
 
-#### Q5.8 (chapter 8)
+#### Q5.8 (chapter 8) (3P)
 
 A company maintains a monolithic script that cleans, merges, analyzes, and reports results all at once. How would you evaluate this practice in light of automation principles?
 
@@ -851,7 +846,7 @@ D) Positive, since monolithic scripts reduce the need for workflow managers
 
 **Explanation:** The book recommends “**one script, one transformation**.” Monolithic scripts reduce transparency and make automation inefficient. Modular scripts, by contrast, enable pipelines to re-run only the parts that changed.
 
-#### Q5.9 (chapter 8)
+#### Q5.9 (chapter 8) (3P)
 
 Your team has limited server storage. One proposal is to store **all generated files permanently** to avoid rerunning code. How should you evaluate this?
 
@@ -864,7 +859,7 @@ D) Efficient, since it prevents the need for automation
 
 **Explanation:** Generated files are **outputs, not primary sources**. The book stresses that reproducibility requires raw data + source code. Keeping every generated file wastes storage and undermines scalability.
 
-#### Q5.10 (chapter 8)
+#### Q5.10 (chapter 8) (3P)
 
 Two teams build pipelines differently:
 
@@ -882,7 +877,7 @@ D) Both are equally valid, since path conventions do not affect reproducibility
 
 **Explanation:** Portability is key. Relative paths allow pipelines to run on different machines or servers without modification. Absolute paths lock the project to one setup, which undermines collaboration and reproducibility.
 
-#### Q5.11 (chapter 8)
+#### Q5.11 (chapter 8) (3P)
 
 A marketing analytics team considers whether to adopt **workflow managers, Docker, and CI/CD**. Which of the following best evaluates the combined value of these tools?
 

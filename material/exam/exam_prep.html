@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Hannes Datta">
+<meta name="dcterms.date" content="2025-09-26">
 
-<title>Data Preparation &amp; Programming Skills - Exam Preparation</title>
+<title>Exam Preparation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -81,7 +48,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Preparation &amp; Programming Skills - Exam Preparation</h1>
+<h1 class="title">Exam Preparation</h1>
+<p class="subtitle lead">Data Preparation &amp; Programming Skills (328059-M-6)</p>
 </div>
 
 
@@ -95,6 +63,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 26, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -106,42 +80,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>The course content will be tested in the form of a computer exam, taken on campus (120 minutes for 328059-M-6). Students that take the exam of the (discontinued) 3 ECTS version of this course are asked to consult the preparation material from the previous semester.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The exam for this course is a <strong>120-minute on-campus computer exam</strong> (course code 328059-M-6), taken in <a href="https://TilburgU.testvision.nl/online/kandidaten">TestVision</a>. It is a <strong>closed-book exam with no internet access</strong>, though students may download selected cheat sheets from the exam’s introduction page.</p>
+<p>Students taking the discontinued 3 ECTS version should prepare using the exam material from the previous semester.</p>
+<p>Key points to keep in mind:</p>
+<ul>
+<li>four exam dates are offered each academic year, of which students may take part in at most two.</li>
+<li>only the official exam “cheatsheets” are permitted; no other resources or communication tools are allowed.</li>
+<li>communication with others about the exam is strictly forbidden.</li>
+<li>do not include your name or student number in submitted files unless explicitly asked, to ensure anonymous grading.</li>
+</ul>
+</section>
 <section id="exam-format" class="level2">
-<h2 class="anchored" data-anchor-id="exam-format">Exam format</h2>
+<h2 class="anchored" data-anchor-id="exam-format">Exam Format</h2>
+<p>The exam consists of a mix of <strong>open questions</strong> (requiring open-text answers or file uploads) and <strong>closed questions</strong> (such as multiple-choice, ranking, or matching). These questions are organized according to the <strong>learning goals of the course</strong>, and the content for each learning goal will be drawn from both the <strong>tutorials</strong> and the <strong>course book<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></strong>.</p>
+<p>The exam is worth a total of <strong>120 points</strong>, corresponding to roughly one point per minute of work. This design should help you pace yourself and prioritize your effort during the exam.</p>
+<p>In terms of cognitive skills, the exam does not stop at testing factual recall. Instead, it follows <strong>Bloom’s taxonomy of learning objectives</strong>, which means you will be assessed across different levels of thinking:</p>
 <ul>
-<li>Computer exam in <a href="https://TilburgU.testvision.nl/online/kandidaten">TestVision</a>, taking place on campus</li>
-<li>Closed book (i.e., no internet access), except that selected course material<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> can be downloaded for use during the exam via the exam’s instruction page</li>
+<li><strong>Knowledge &amp; Comprehension</strong> – recalling key concepts and demonstrating understanding of methods and ideas.</li>
+<li><strong>Application</strong> – using techniques or code you have learned in tutorials and lectures to solve new problems.</li>
+<li><strong>Analysis</strong> – breaking down complex tasks (e.g., a dataset or research workflow) into their component parts and reasoning about them.</li>
+<li><strong>Synthesis</strong> – combining different elements (e.g., data, code, and interpretation) to produce a coherent result.</li>
+<li><strong>Evaluation</strong> – critically judging the suitability of an approach or comparing alternative solutions.</li>
 </ul>
+<p>Together, these levels ensure that the exam does not merely check whether you <em>remember</em> material, but also whether you can <em>apply, integrate, and evaluate</em> it in realistic scenarios.</p>
 </section>
-<section id="two-examination-opportunities-per-academic-year" class="level2">
-<h2 class="anchored" data-anchor-id="two-examination-opportunities-per-academic-year">Two examination opportunities per academic year</h2>
-<p>Students enrolled in the course “Data Preparation and Programming Skills” can choose to take the on-campus computer exam during a maximum of two out of four examination opportunities per academic year.</p>
-</section>
-<section id="working-on-the-exam" class="level2">
-<h2 class="anchored" data-anchor-id="working-on-the-exam">Working on the exam</h2>
-<ul>
-<li>Communication with anybody about the exam content is strictly prohibited.</li>
-<li>Students must not mention their names or student numbers in any of the submitted files, except when being explicitly asked to do so. This is to ensure the exam can be graded anonymously.</li>
-</ul>
-</section>
-</section>
-<section id="exam-content" class="level1">
-<h1>Exam Content</h1>
-<ul>
-<li>The exam consists of <strong>open (i.e., open text answers or file uploads)</strong> and <strong>closed (multiple-choice, ranking, matching) questions</strong>, structured along the learning goals of this course.</li>
-<li>Cognitive skills that will be tested are knowledge, comprehension, analysis, application, synthesis and evaluation.</li>
-<li>The content for each particular learning goal will come from the (a) tutorials, and (b) the book<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
-<li>Total number of points to obtain on the exam are 120 - think of 1 point per “minute of work” on the exam (it will help you prioritize)</li>
-<li>The table below will describe which questions to expect, from which source (per learning goal of the course)</li>
-</ul>
+<section id="overview-of-questions" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-questions">Overview of Questions</h2>
+<p>The table below outlines the types of questions you can expect, along with their sources for each learning goal of the course.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 19%">
-<col style="width: 14%">
-<col style="width: 25%">
-<col style="width: 34%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 27%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -165,14 +139,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Use GitHub for managing empirical research projects</td>
 <td>Eval.</td>
 <td></td>
-<td>12P (4Q), ch.&nbsp;1-2, 5</td>
+<td>12P (4Q), ch.&nbsp;2, 5</td>
 </tr>
 <tr class="odd">
 <td>3</td>
 <td>Use Git/GitHub for versioning files and collaboration</td>
 <td>Appl. &amp; Eval.</td>
 <td>24P on GitHub tutorial</td>
-<td>12P (4Q), ch.&nbsp;5-6</td>
+<td>12P (4Q), ch.&nbsp;6</td>
 </tr>
 <tr class="even">
 <td>4</td>
@@ -190,22 +164,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+<section id="example-questions" class="level1">
+<h1>Example Questions</h1>
+<p>This section provides example questions, organized by the learning goals of the course. Supporting materials (e.g., datasets or zip files for practice) can be downloaded via the provided links in each subsection. During the exam, such downloads will be made available directly in TestVision (e.g., on the introduction page of the exam, or within specific questions).</p>
 <section id="learning-goal-1" class="level2">
 <h2 class="anchored" data-anchor-id="learning-goal-1">Learning Goal 1</h2>
 <p><em>Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)</em></p>
-<section id="examplary-question-based-on-tutorials-20p-on-the-exam" class="level3">
-<h3 class="anchored" data-anchor-id="examplary-question-based-on-tutorials-20p-on-the-exam">Examplary question based on tutorials (20P on the exam)</h3>
+<section id="exemplary-question-based-on-tutorials-20p-on-the-exam" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-question-based-on-tutorials-20p-on-the-exam">Exemplary question based on tutorials (20P on the exam)</h3>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>This question will always ask you to download a data set, and write <code>.R</code> code to answer questions related to the “data engineering” tutorial. You will submit your (clean!) <code>.R</code> code, providing the solutions (mostly code, but could also be text that you can put in comments).</p>
+<p>This question will always ask you to download data sets stored in a zipped <code>.RData</code> file, and write <code>.R</code> code to answer questions related to the “data engineering” tutorial. You will submit your (clean!) <code>.R</code> code, providing the solutions (mostly code, but could also be text that you can put in comments starting with #).</p>
 </div>
 </div>
 </div>
-<p>Please download the <a href="../netflix_data.csv.zip"><code>netflix_data</code></a> file from the exam cover page and open it in RStudio.</p>
+<p>Please download the <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip"><code>netflix_data</code></a> file, containing an <code>.RData</code> environment that itself contains R objects (datasets).</p>
+<p><strong><code>netflix_data</code>:</strong></p>
 <ul>
 <li><code>show_id</code>: content identifier</li>
 <li><code>title</code>: Title name</li>
@@ -228,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>There are missing values in both <code>show_rating</code> and <code>viewership_count</code>. Justify and use appropriate strategy to impute missing values and add a column that indicates whether the values have been interpolated or not.</p></li>
 </ol>
 <p><strong>Solution:</strong></p>
-<pre><code>library(dplyr)
+<pre><code>library(tidyverse)
 library(zoo)
 
 # a. Count missing values per column
@@ -241,7 +221,10 @@ season_missing_check &lt;- netflix_data %&gt;%
   summarise(missing_seasons = sum(is.na(season_count)), total_shows = n())
 # All the movies have NA for season count which makes sense so no need to impute them. 
 
-c. # We can use linear interpolation for show_rating as ratings gradually change over time. `viewership_count` column can be interpolated using Last Observation Carried Forward as they should be relatively stable. 
+c. # We can use linear interpolation for show_rating as 
+# ratings gradually change over time. `viewership_count` column 
+# can be interpolated using Last Observation Carried Forward as they
+# should be relatively stable. 
 
 # Store original NA locations
 netflix_data &lt;- netflix_data %&gt;%
@@ -255,18 +238,19 @@ netflix_data &lt;- netflix_data %&gt;%
   group_by(show_id, viewership_country) %&gt;%
   mutate(
     show_rating = na.approx(show_rating, na.rm = FALSE),  # Linear interpolation
-    viewership_count = na.locf(viewership_count, na.rm = FALSE)  # Last observed value carried forward
+    viewership_count = na.locf(viewership_count, na.rm = FALSE)  
+    # Last observed value carried forward
   ) %&gt;%
   ungroup()
 
-# Create interpolation indicator (TRUE if the value was NA before but now has a value)
+# Create interpolation indicator 
+# (TRUE if the value was NA before but now has a value)
 netflix_data &lt;- netflix_data %&gt;%
   mutate(
     is_interpolated_show_rating = was_na_show_rating &amp; !is.na(show_rating),
     is_interpolated_viewership = was_na_viewership &amp; !is.na(viewership_count)
   ) %&gt;%
   select(-was_na_show_rating, -was_na_viewership)  # Drop temp columns
-
 </code></pre>
 </section>
 <section id="q1.2-using-regular-expressions" class="level4">
@@ -292,8 +276,7 @@ show_10_wide &lt;- show_10_data %&gt;%
     names_from = viewership_country, 
     values_from = viewership_count, 
     names_prefix = "viewership_"
-  )
-</code></pre>
+  )</code></pre>
 </section>
 <section id="q1.4-estimation-and-plotting-at-scale" class="level4">
 <h4 class="anchored" data-anchor-id="q1.4-estimation-and-plotting-at-scale">Q1.4: Estimation and Plotting at Scale</h4>
@@ -303,7 +286,8 @@ show_10_wide &lt;- show_10_data %&gt;%
 
 countries &lt;- unique(netflix_data$viewership_country)
 
-effect_sizes &lt;- data.frame(viewership_country = character(), estimate = numeric(), stringsAsFactors = FALSE)
+effect_sizes &lt;- data.frame(viewership_country = character(), 
+estimate = numeric(), stringsAsFactors = FALSE)
 
 # Loop through each country and estimate regression
 for (country in countries) {
@@ -319,40 +303,703 @@ for (country in countries) {
   beta_1 &lt;- coef(model)["is_action"]
   
   # Store the result
-  effect_sizes &lt;- rbind(effect_sizes, data.frame(viewership_country = country, estimate = beta_1))
+  effect_sizes &lt;- rbind(effect_sizes, 
+  data.frame(viewership_country = country, estimate = beta_1))
 }
 
 # Plot the effect sizes
-ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), y = estimate, fill = estimate)) +
+ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), 
+y = estimate, fill = estimate)) +
   geom_bar(stat = "identity") +
   coord_flip() +
   labs(title = "Effect of Action Genre on Viewership by Country",
        x = "Country",
        y = "Effect Size (Coefficient of is_action)") +
   theme_minimal()</code></pre>
+</section>
+</section>
+<section id="exemplary-questions-based-on-book-4p-on-the-exam" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-questions-based-on-book-4p-on-the-exam">Exemplary questions based on book (4P on the exam)</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Questions based on book, chapter 7.</p>
+</div>
+</div>
+</div>
+<section id="q1.5" class="level4">
+<h4 class="anchored" data-anchor-id="q1.5">Q1.5</h4>
+<p>You are tasked with building a dataset to study the <strong>effect of advertising on customer churn</strong>. Which of the following dataset designs would best synthesize the principles described in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>One row per ad impression with variables for user ID, timestamp, and product purchased</li>
+<li>One row per customer per day with variables for total impressions, purchases, and weather in that region</li>
+<li>One row per customer per week with aggregated ad exposure, total purchases, and churn status (flagged if no purchases in 90 days)*</li>
+<li>One row per region per month with variables for average basket size and average temperature</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong></p>
 <ul>
-<li>You can expect to work two hours on the exam.</li>
-<li>Expect questions using
+<li><strong>C is correct</strong> because <em>Marketing Analytics: A Modern Toolkit</em> emphasizes aligning the dataset’s <strong>unit of analysis</strong> with the research question. Studying churn requires customer-level information, while churn is often defined over a fixed period (e.g., 90 days), making a weekly structure appropriate. It also reflects operationalization (defining churn as a flag) and aggregation (summing exposures and purchases).</li>
+<li>A is incorrect because per-impression data is too granular and does not capture churn.</li>
+<li>B is incorrect because daily customer-level data introduces unnecessary noise, and churn is not measured at the daily level.</li>
+<li>D is incorrect because region–month aggregation ignores individual-level churn dynamics.</li>
+</ul>
+</section>
+<section id="q1.6" class="level4">
+<h4 class="anchored" data-anchor-id="q1.6">Q1.6</h4>
+<p>You discover that your marketing dataset contains missing user IDs, duplicate transactions, and inconsistent date formats. Which <strong>sequence of operations</strong> reflects a sound data engineering workflow consistent with <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>Aggregate → Merge → Reshape → Clean</li>
+<li>Clean → Standardize → Aggregate → Merge → Reshape</li>
+<li>Merge → Aggregate → Clean → Anonymize</li>
+<li>Reshape → Clean → Aggregate → Merge</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong></p>
 <ul>
-<li>Git/GitBash (e.g., work on a repository using <code>git</code> commands)</li>
-<li>Automate an existing workflow using make, or debug existing makefiles</li>
-<li>Generate RMarkdown documents</li>
-<li>Clean/transform data using dplyr/tidyverse.</li>
-</ul></li>
-<li>Several sections with subquestions (open and closed questions; open questions both in writing or by means of code/file uploads)</li>
+<li><strong>B is correct</strong> because the book stresses that analysts must first <strong>clean and standardize</strong> raw inputs (handle duplicates, fix missing values, align formats). Only then should they <strong>aggregate</strong> to the proper unit of analysis, <strong>merge</strong> sources on shared keys, and finally <strong>reshape</strong> into the long or wide formats needed for analysis or reporting.</li>
+<li>A is flawed because aggregating before cleaning may preserve errors.</li>
+<li>C merges too early, propagating inconsistencies.</li>
+<li>D reshapes before cleaning, which contradicts the principle of first ensuring validity and consistency.</li>
+</ul>
+</section>
+<section id="q1.7" class="level4">
+<h4 class="anchored" data-anchor-id="q1.7">Q1.7</h4>
+<p>Imagine you need the same dataset for both a <strong>regression model</strong> and a <strong>marketing dashboard</strong>. How should you structure and prepare the data to meet both needs?</p>
+<ol type="A">
+<li>Store everything in long format, since models and dashboards both require this</li>
+<li>Store everything in wide format, since models and dashboards both require this</li>
+<li>Prepare a core dataset at the correct unit of analysis, and reshape into long or wide format depending on the task</li>
+<li>Duplicate all sources: one version in long format and one in wide format, maintained separately</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong>C is correct</strong> because <em>Marketing Analytics: A Modern Toolkit</em> highlights that the <strong>same derived dataset</strong> can serve multiple purposes if it is first harmonized at the right unit of analysis. Analysts can then pivot between <strong>long format</strong> (suitable for regressions) and <strong>wide format</strong> (suitable for dashboards).</li>
+<li>A is incorrect because dashboards typically need wide data, not long.</li>
+<li>B is incorrect because regressions usually expect long data.</li>
+<li>D is inefficient and risks divergence across duplicated datasets, which the book warns against.</li>
+</ul>
+</section>
+<section id="q1.8" class="level4">
+<h4 class="anchored" data-anchor-id="q1.8">Q1.8</h4>
+<p>You are asked to recommend a <strong>data platform strategy</strong> for a firm with diverse marketing data: structured transactions, semi-structured web logs, and terabytes of ad impression data. Which option best reflects the trade-offs described in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>Use only relational databases like PostgreSQL because they enforce structure and consistency for all data types</li>
+<li>Use only NoSQL databases like MongoDB because they are more flexible for all business needs</li>
+<li>Store everything in cloud warehouses like Snowflake, regardless of cost or structure</li>
+<li>Use relational databases for structured data, NoSQL systems for semi-structured data, and cloud warehouses for scalability—choosing platforms based on data type and scale</li>
+</ol>
+<p><strong>Correct Answer: D</strong></p>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong>D is correct</strong> because the book explains that different platforms serve <strong>different roles</strong>: relational databases excel with structured transactional data, NoSQL handles semi-structured or network data, and cloud warehouses offer scalability for massive datasets. The recommended approach is to <strong>choose the right tool for the right type of data</strong>, not a one-size-fits-all solution.</li>
+<li>A is too rigid, as relational systems struggle with unstructured/semi-structured data.</li>
+<li>B is too broad, as NoSQL sacrifices consistency and standardization.</li>
+<li>C ignores the book’s caution about matching platforms to context, not just scale.</li>
 </ul>
 </section>
 </section>
-<section id="content" class="level3">
-<h3 class="anchored" data-anchor-id="content">Content</h3>
+</section>
+<section id="learning-goal-2" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goal-2">Learning Goal 2</h2>
+<p><em>Use GitHub for managing empirical research projects (e.g., GitHub Issues and Project Boards)</em></p>
+<section id="exemplary-question-based-on-book-12p-on-the-exam" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-question-based-on-book-12p-on-the-exam">Exemplary question based on book (12P on the exam)</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>These questions will be based on chapters 2 and 5.</p>
+</div>
+</div>
+</div>
+<section id="q2.1-based-on-chapter-2" class="level4">
+<h4 class="anchored" data-anchor-id="q2.1-based-on-chapter-2">Q2.1 (based on chapter 2)</h4>
+<p>A student argues that every project should include <strong>Docker, CI/CD pipelines, and a cloud warehouse</strong> because “more tools always make a project better.” Based on <em>Marketing Analytics: A Modern Toolkit</em>, how should you evaluate this claim?</p>
+<ol type="A">
+<li>Agree, because advanced tools always increase efficiency regardless of project size</li>
+<li>Agree, because cloud and automation are universally recommended best practices</li>
+<li>Disagree, because the book stresses that tools add complexity and should be matched to project scope and needs</li>
+<li>Disagree, because small projects should avoid all infrastructure beyond RStudio</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> emphasizes that “more is not always better.” Tools like Docker and CI/CD add learning costs and maintenance overhead. They are valuable for large, long-term projects but unnecessary for small, quick tasks. A is wrong because advanced tools may reduce efficiency in small projects. B is wrong because best practices must be adapted, not applied universally. D is wrong because small projects still benefit from basics like version control and folder structure.</p>
+</section>
+<section id="q2.2-based-on-chapter-2" class="level4">
+<h4 class="anchored" data-anchor-id="q2.2-based-on-chapter-2">Q2.2 (based on chapter 2)</h4>
+<p>Two thesis students disagree on environment management. One says, <em>“We don’t need renv; if a package updates, we’ll just install the new version.”</em> The other says, <em>“renv is essential, because without it our results may change unpredictably.”</em> Which evaluation best aligns with <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>The first student is right, because updating packages ensures you always use the most recent, reliable code</li>
+<li>Both students are equally right, since package management is optional</li>
+<li>The second student is right, because the book stresses reproducibility depends on locking package versions</li>
+<li>Neither is right, since reproducibility is not affected by package management</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> explains that reproducibility requires code to run the same across time and machines. Tools like renv lock package versions, avoiding “it worked then, but not now” issues. A is wrong because constant updates can break old code. B is wrong because package management is not optional for reproducibility. D is wrong because package versions directly affect whether results can be replicated.</p>
+</section>
+<section id="q2.3-based-on-chapter-2" class="level4">
+<h4 class="anchored" data-anchor-id="q2.3-based-on-chapter-2">Q2.3 (based on chapter 2)</h4>
+<p>Your marketing team is debating whether to store intermediate datasets as separate files (“raw,” “data-prep,” “analysis”) or overwrite data at each step to save storage. Based on <em>Marketing Analytics: A Modern Toolkit</em>, how should you evaluate these two approaches?</p>
+<ol type="A">
+<li>Overwriting is best, since it minimizes clutter and storage costs</li>
+<li>Keeping staged folders is better, because it preserves reproducibility and traceability of data transformations</li>
+<li>Both approaches are equally valid, since storage concerns outweigh reproducibility issues</li>
+<li>Neither approach is useful; data should always be pulled directly from the original source</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> B is correct because <em>Marketing Analytics: A Modern Toolkit</em> recommends staged data (“raw,” “data-prep,” “analysis”) to preserve the lineage of transformations. This ensures traceability, avoids confusion about which dataset is “correct,” and supports reproducibility. A is wrong because storage is cheap compared to the cost of lost reproducibility. C is wrong because traceability is more important than minor storage concerns. D is wrong because raw sources alone don’t provide cleaned, analysis-ready data.</p>
+</section>
+<section id="q2.4-based-on-chapter-2" class="level4">
+<h4 class="anchored" data-anchor-id="q2.4-based-on-chapter-2">Q2.4 (based on chapter 2)</h4>
+<p>A mid-sized marketing team is considering whether to rely on <strong>local setups</strong> or fully migrate to the <strong>cloud</strong>. Which evaluation best reflects the guidance in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>Always choose local setups, because they are simpler and cheaper</li>
+<li>Always choose cloud setups, because they are modern and scalable</li>
+<li>Choose based on project demands: local for small projects and learning, cloud for scalability, collaboration, and large data</li>
+<li>Avoid mixing local and cloud, because hybrid approaches cause inconsistency</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> describes trade-offs between local and cloud setups. Local is suitable for small projects or learning, while cloud is better for large-scale, collaborative, or computationally heavy projects. Many teams use hybrid solutions. A is wrong because local alone cannot handle scalability. B is wrong because cloud is not always necessary or cost-effective. D is wrong because hybrid approaches are practical and often optimal.</p>
+</section>
+<section id="q2.5-based-on-chapter-5" class="level4">
+<h4 class="anchored" data-anchor-id="q2.5-based-on-chapter-5">Q2.5 (based on chapter 5)</h4>
+<p>A student team insists on adopting the <strong>full Scrum framework</strong> (Product Owner, Scrum Master, daily stand-ups, retrospectives) for their two-week class project. Based on <em>Marketing Analytics: A Modern Toolkit</em>, how should you evaluate this decision?</p>
+<ol type="A">
+<li>It is the best approach, since the full Scrum framework guarantees productivity in all projects</li>
+<li>It is necessary, because project boards and issues cannot function without formal roles</li>
+<li>It is excessive, because small analytics projects benefit more from lightweight adaptations of Scrum than from its full overhead</li>
+<li>It is inappropriate, because Scrum principles are designed only for software engineering, not analytics</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> notes that smaller analytics teams should <strong>adapt Scrum</strong> by using boards, issues, and short cycles rather than implementing every role and ceremony. A is wrong because there is no “one size fits all.” B is wrong because boards and issues can function informally. D is wrong because Scrum principles apply beyond software, including analytics.</p>
+</section>
+<section id="q2.6-based-on-chapter-5" class="level4">
+<h4 class="anchored" data-anchor-id="q2.6-based-on-chapter-5">Q2.6 (based on chapter 5)</h4>
+<p>A research group wants to manage their tasks using email and chat threads, arguing that “boards and issues are too much overhead.” How should this be evaluated according to <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>It is reasonable, since lightweight tools like email are more efficient than formal boards</li>
+<li>It is acceptable, provided that team members document progress individually in shared folders</li>
+<li>It is problematic, because scattering communication across multiple channels reduces transparency and reproducibility</li>
+<li>It is effective, because agile teams rely more on conversation than on written artifacts</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> C is correct because the book emphasizes <strong>centralizing communication in issues and boards</strong>, ensuring transparency, traceability, and shared understanding. A is wrong because email creates fragmentation. B is wrong because scattered folder notes lack integration. D misinterprets Agile — while conversation matters, artifacts like boards are essential for documentation and accountability.</p>
+</section>
+<section id="q2.7-based-on-chapter-5" class="level4">
+<h4 class="anchored" data-anchor-id="q2.7-based-on-chapter-5">Q2.7 (based on chapter 5)</h4>
+<p>A manager argues that <strong>long, open-ended work phases</strong> are better than short cycles, since they allow deeper focus without interruptions. What evaluation does <em>Marketing Analytics: A Modern Toolkit</em> suggest?</p>
+<ol type="A">
+<li>Agree, because fewer check-ins mean less wasted time on meetings</li>
+<li>Disagree, because long cycles risk last-minute panic and reduced adaptability, whereas short cycles improve accountability and steady progress</li>
+<li>Agree, because analytics projects rarely change scope once started</li>
+<li>Disagree, because retrospectives alone are sufficient for adaptability, regardless of cycle length</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> B is correct because the book highlights that <strong>short, repeating cycles</strong> (with regular check-ins and increments) prevent last-minute rushes, improve visibility, and keep teams adaptable. A is wrong because fewer meetings can create blind spots. C is wrong because analytics projects are dynamic. D is wrong because retrospectives without short cycles delay improvements.</p>
+</section>
+<section id="q2.8-based-on-chapter-5" class="level4">
+<h4 class="anchored" data-anchor-id="q2.8-based-on-chapter-5">Q2.8 (based on chapter 5)</h4>
+<p>A student team designs a <strong>project board with 12 columns, dozens of labels, and complex workflows</strong>, claiming this will maximize precision. How should their setup be evaluated in light of <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>It is optimal, since detailed boards ensure no task is ever forgotten</li>
+<li>It is risky, because over-engineering the board can make the system itself burdensome and reduce efficiency</li>
+<li>It is required, since project boards only function with highly granular categorization</li>
+<li>It is harmless, because complexity in the board does not affect collaboration outcomes</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> B is correct because the book explicitly warns against <strong>over-engineering boards</strong>, noting that too much complexity makes them harder to use and can undermine the very efficiency they are meant to support. A is wrong because detail can overwhelm rather than help. C is wrong because simple four-column boards (backlog → to do → in progress → done) are often sufficient. D is wrong because board complexity directly influences team collaboration quality.</p>
 </section>
 </section>
-<section id="preparing-for-the-exam" class="level2">
-<h2 class="anchored" data-anchor-id="preparing-for-the-exam">Preparing for the exam</h2>
-<section id="ideas-for-developing-your-proficiency" class="level3">
-<h3 class="anchored" data-anchor-id="ideas-for-developing-your-proficiency">Ideas for developing your proficiency</h3>
+</section>
+<section id="learning-goal-3" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goal-3">Learning Goal 3</h2>
+<p><em>Use Git/GitHub for versioning files and collaborating on privately-shared and publicly-available (open science) GitHub repositories</em></p>
+<section id="exemplary-question-based-on-tutorials-24p-on-the-exam" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-question-based-on-tutorials-24p-on-the-exam">Exemplary question based on tutorials (24P on the exam)</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This type of question will always require you to download a Git repository to your computer. First, unzip the file and navigate to the directory using your preferred terminal (e.g., Git Bash). You will then answer questions related to the repository, either in text boxes or through multiple-choice questions directly in TestVision. Finally, you will be asked to re-zip the repository and upload it, so we can verify which commands you executed.</p>
+<p>As part of these tasks, you will need to perform a range of Git operations covered in the tutorials, such as:</p>
 <ul>
-<li>Please work through the tutorials. While this has been difficult in when you did it for the first time, can you do it on your own now?</li>
+<li>Creating and switching between branches (<code>git branch</code>, <code>git checkout</code>, <code>git branch -l</code>)</li>
+<li>Tracking and committing changes (<code>git add</code>, <code>git commit -m "commit message"</code>, <code>git status</code>)</li>
+<li>Creating and using a <code>.gitignore</code> file</li>
+<li>Rolling back changes</li>
+<li>Viewing commit history (<code>git log</code>)</li>
+<li>Merging branches (<code>git merge</code>)</li>
+</ul>
+</div>
+</div>
+</div>
+<section id="q3.1" class="level4">
+<h4 class="anchored" data-anchor-id="q3.1">Q3.1</h4>
+<p>Please download the <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_repository.zip"><code>git_repository.zip</code></a> file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here.</p>
+<blockquote class="blockquote">
+<p>Dear (name of student),</p>
+<p>Tilburg University is working toward publishing not only papers, but also the code that generated the results. This is a key step for open science, as it allows others to reproduce findings. In the attachment (download here), you will find a zipped Git repository of my empirical project. Admittedly, it is not very well structured (for instance, directory structures are missing), but it does include a common R file (<code>run.R</code>) that simulates demo data and ties the different parts of the project together.</p>
+<p>Starting from <code>run.R</code>, please apply your learnings from dPrep and submit a link to a new repository in which you:</p>
+<ul>
+<li>Separate the workflow into individual files for the main steps of the project (e.g., simulate data, see <code>run.R</code> for ideas),<br>
+</li>
+<li>Separate source code from generated files by using dedicated folders,<br>
+</li>
+<li>Add a proper README in Markdown format (<code>.md</code> file),<br>
+</li>
+<li>Exclude files that should not be versioned by using <code>.gitignore</code>,<br>
+</li>
+<li>Remove <code>run.R</code> and replace it with a proper makefile for the project, and<br>
+</li>
+<li>Throughout the process, make frequent commits with clear commit messages.</li>
+</ul>
+<p>I look forward to seeing your work, submitted as a clean, zipped Git repository, which you can upload below.</p>
+</blockquote>
+<p><strong>Solution:</strong> Please <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_solution.zip">download the solution here</a>.</p>
+</section>
+</section>
+<section id="exemplary-question-based-on-book-12p-on-the-exam-1" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-question-based-on-book-12p-on-the-exam-1">Exemplary question based on book (12P on the exam)</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>These questions will be based on chapter 6.</p>
+</div>
+</div>
+</div>
+<section id="q3.2" class="level4">
+<h4 class="anchored" data-anchor-id="q3.2">Q3.2</h4>
+<p>A student argues that using <strong>Git locally without GitHub</strong> is sufficient for team projects, since Git already tracks the full history of changes. Based on <em>Marketing Analytics: A Modern Toolkit</em>, how should this claim be evaluated?</p>
+<ol type="A">
+<li>It is correct, because Git alone provides all the functionality teams need</li>
+<li>It is partially correct, but without GitHub or similar platforms collaboration becomes cumbersome and less transparent</li>
+<li>It is wrong, because Git cannot track history without being connected to GitHub</li>
+<li>It is wrong, because GitHub is the only way to use version control effectively</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> B is correct because Git can indeed track history locally, but <em>Marketing Analytics: A Modern Toolkit</em> emphasizes that platforms like GitHub add collaboration features (issues, pull requests, project boards, cloud sync) that make teamwork efficient and transparent. A is incomplete, since Git alone doesn’t scale well for collaboration. C is wrong, because Git tracks history even offline. D is wrong, because GitHub is not the only option (GitLab, Bitbucket also work).</p>
+</section>
+<section id="q3.3" class="level4">
+<h4 class="anchored" data-anchor-id="q3.3">Q3.3</h4>
+<p>A team frequently edits files directly on the <strong>main branch</strong> because they feel branching “slows things down.” How should this practice be evaluated?</p>
+<ol type="A">
+<li>It is acceptable, because small teams don’t need branching discipline</li>
+<li>It is efficient, because avoiding branches reduces unnecessary overhead</li>
+<li>It is risky, because main should remain stable while features are developed on branches</li>
+<li>It is unnecessary, because merge conflicts only happen in large projects</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> stresses that <strong>main must remain clean and stable</strong>. Branching isolates new work, preventing broken or experimental code from contaminating the working version. A is wrong, since even small teams benefit from branching. B is wrong because short-term speed undermines long-term stability. D is wrong because conflicts can arise in any project, regardless of size.</p>
+</section>
+<section id="q3.4" class="level4">
+<h4 class="anchored" data-anchor-id="q3.4">Q3.4</h4>
+<p>One teammate prefers writing commit messages like “update” or “fixed stuff,” claiming that “the details are in the code anyway.” How should this be judged according to <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>It is fine, because code itself tells the full story of changes</li>
+<li>It is acceptable for small commits but not for larger ones</li>
+<li>It is problematic, because vague commit messages harm the usefulness of Git’s history for collaboration and reproducibility</li>
+<li>It is required, since Git automatically adds details from diffs anyway</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> C is correct because the book highlights that <strong>clear, descriptive commit messages</strong> are essential for making the project history understandable for teammates and your future self. A is wrong because code diffs alone are not always clear. B is wrong because even small commits should carry meaning. D is wrong because Git does not replace commit messages with diffs automatically.</p>
+</section>
+<section id="q3.5" class="level4">
+<h4 class="anchored" data-anchor-id="q3.5">Q3.5</h4>
+<p>During setup, a student decides to skip configuring <strong>.gitignore</strong>, reasoning that “more files in the repository means more transparency.” How should this decision be evaluated?</p>
+<ol type="A">
+<li>It is correct, because everything should be tracked for maximum reproducibility</li>
+<li>It is incorrect, because including temporary files, datasets, or machine-specific files clutters the repo and hinders collaboration</li>
+<li>It is acceptable, because .gitignore is only needed for very large software projects</li>
+<li>It is beneficial, because GitHub automatically filters out irrelevant files anyway</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> B is correct because <em>Marketing Analytics: A Modern Toolkit</em> stresses that <strong>.gitignore keeps repositories clean</strong>, avoiding bloat, conflicts, and accidental sharing of irrelevant or sensitive files. A is wrong, because too much tracking reduces clarity. C is wrong, since .gitignore is critical for all project sizes. D is wrong, because GitHub does not automatically filter files.</p>
+</section>
+<section id="q3.6" class="level4">
+<h4 class="anchored" data-anchor-id="q3.6">Q3.6</h4>
+<p>A colleague suggests skipping <strong>pulling before starting work</strong>, saying it “only matters if two people edit the same file at the same time.” How should this suggestion be evaluated?</p>
+<ol type="A">
+<li>It is harmless, because conflicts can always be resolved later</li>
+<li>It is efficient, because it avoids unnecessary downloads from GitHub</li>
+<li>It is flawed, because failing to pull first risks working on outdated files and almost guarantees conflicts</li>
+<li>It is valid, because Git automatically merges any differences in the background</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> C is correct because the book stresses <strong>always pull first</strong> to synchronize with the remote repository before starting work. This minimizes conflicts and ensures you are building on the latest version. A is wrong, since conflicts are harder to fix after the fact. B is wrong, because pulls are lightweight and prevent bigger problems. D is wrong, because Git requires manual resolution for conflicts.</p>
+</section>
+</section>
+</section>
+<section id="learning-goal-4" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goal-4">Learning Goal 4</h2>
+<p><em>Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)</em></p>
+<section id="exemplary-questions-based-on-tutorial-10p" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-questions-based-on-tutorial-10p">Exemplary questions based on tutorial (10P)</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In this type of exam question, you will create an <strong>RMarkdown document</strong> in RStudio and submit it as a <strong>rendered PDF</strong> with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with <code>ggplot2</code>.</p>
+<p>The aim is to assess not only whether you can recall commands, but whether you can structure and document a small data workflow in a clear and reproducible way.</p>
+</div>
+</div>
+</div>
+<section id="q4.1" class="level4">
+<h4 class="anchored" data-anchor-id="q4.1">Q4.1</h4>
+<p>Imagine you have just enrolled as a thesis student, and you receive the following email from your advisor. Submit your PDF document, and provide a conclusion on the suitability of the explored data for the research question.</p>
+<blockquote class="blockquote">
+<p>Dear (name of student),</p>
+<p>I really look forward to working with you on this exciting dataset, capturing the consumption of music on Spotify. I scraped it from spotifycharts.com a while ago. Please download this <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify_data.zip"><code>spotify_data.zip</code></a>, which contains the data in a CSV file.</p>
+<p>As a starting point, please explore the data set using RMarkdown. I’d love to learn more about the data myself (haven’t looked into it yet). Can you create a plot with <code>ggplot2</code> to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption (streams)?</p>
+<p>Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to explore and do some minor data preparations and create the plot) visible so I can learn from it (and grade it!)…!</p>
+</blockquote>
+<p><strong>Solution:</strong> Available for <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.Rmd">download as <code>Rmd</code></a> and <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.pdf">rendered <code>.pdf</code> - recall, you will have to submit it as a rendered PDF document!</a>.</p>
+</section>
+</section>
+<section id="exemplary-question-based-on-book-8p-on-the-exam" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-question-based-on-book-8p-on-the-exam">Exemplary question based on book (8P on the exam)</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>These questions will be based on chapter 4.</p>
+</div>
+</div>
+</div>
+<section id="q4.1-comprehension" class="level4">
+<h4 class="anchored" data-anchor-id="q4.1-comprehension">Q4.1 (Comprehension)</h4>
+<p>Which of the following best captures the distinction between <strong>reproducibility</strong> and <strong>replicability</strong> as described in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>Reproducibility checks whether insights generalize across contexts; replicability checks whether conclusions hold under alternative methods</li>
+<li>Reproducibility is about rerunning the same analysis with the same data; replicability is about getting similar results when applying the same analysis to new data</li>
+<li>Reproducibility means results remain robust to alternative models; replicability means results remain interpretable across audiences</li>
+<li>Reproducibility refers to file organization; replicability refers to dataset quality</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> The book defines <strong>reproducibility</strong> as rerunning the same analysis on the same data and obtaining the same results, and <strong>replicability</strong> as achieving similar results when applying the same analysis to new data.</p>
+</section>
+<section id="q4.2-comprehension" class="level4">
+<h4 class="anchored" data-anchor-id="q4.2-comprehension">Q4.2 (Comprehension)</h4>
+<p>Why does the book emphasize <strong>keeping raw data raw</strong> in marketing analytics projects?</p>
+<ol type="A">
+<li>Because raw data files are smaller than processed ones</li>
+<li>Because cleaning raw data directly makes analysis faster</li>
+<li>Because maintaining an untouched source ensures a trustworthy reference point if errors occur later</li>
+<li>Because most statistical models require only raw data</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> The principle is to <strong>never overwrite raw data</strong>. An untouched version acts as a “source of truth” that analysts can always return to, protecting credibility and avoiding irreversible mistakes.</p>
+</section>
+<section id="q4.3-comprehension" class="level4">
+<h4 class="anchored" data-anchor-id="q4.3-comprehension">Q4.3 (Comprehension)</h4>
+<p>According to <em>Marketing Analytics: A Modern Toolkit</em>, what is the main risk of writing <strong>clever but dense code</strong> instead of clear code?</p>
+<ol type="A">
+<li>Clever code usually runs more slowly</li>
+<li>Clever code makes debugging impossible in R</li>
+<li>Clever code cannot be executed outside RStudio</li>
+<li>Clever code is harder for collaborators to understand, maintain, and extend</li>
+</ol>
+<p><strong>Correct Answer: D</strong></p>
+<p><strong>Explanation:</strong> The book stresses that while clever code may be fun, clarity is more valuable. Code that is easy to read and understand supports collaboration, long-term maintenance, and reproducibility.</p>
+</section>
+<section id="q4.4-comprehension" class="level4">
+<h4 class="anchored" data-anchor-id="q4.4-comprehension">Q4.4 (Comprehension)</h4>
+<p>Why are <strong>scripts, R Markdown, and Quarto</strong> considered essential formats for saving code, not just results?</p>
+<ol type="A">
+<li>Because they automatically detect and remove coding errors</li>
+<li>Because they integrate raw data directly into cleaned outputs</li>
+<li>Because they preserve the chain of analysis, making results reproducible and updateable</li>
+<li>Because they prevent data from being overwritten during cleaning</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> The book emphasizes that these formats allow analysts to <strong>regenerate results</strong> and update analyses with new data, ensuring that outputs are not isolated artifacts but linked to the underlying code and process.</p>
+</section>
+<section id="q4.5-application" class="level4">
+<h4 class="anchored" data-anchor-id="q4.5-application">Q4.5 (Application)</h4>
+<p>You are analyzing campaign response data and decide to immediately implement a <strong>complex deep learning model</strong>. The model takes days to tune and performs poorly. Based on the principles in <em>Marketing Analytics: A Modern Toolkit</em>, what should you have done first?</p>
+<ol type="A">
+<li>Used conditionals to automatically rerun the model until accuracy improved</li>
+<li>Started with a simple baseline model such as logistic regression, then refined if needed</li>
+<li>Written code in a single long script to ensure all steps are connected</li>
+<li>Avoided reproducibility practices to focus on speed</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> The principle “<strong>Start simple, then improve</strong>” reminds analysts to begin with straightforward, interpretable solutions before experimenting with more complex methods. This ensures clarity, reliability, and efficiency.</p>
+</section>
+<section id="q4.6-application" class="level4">
+<h4 class="anchored" data-anchor-id="q4.6-application">Q4.6 (Application)</h4>
+<p>A student receives new customer transaction logs and edits them directly in Excel, overwriting the original file. Later, errors appear and no one can trace the source. How should the student have applied programming principles?</p>
+<ol type="A">
+<li>By saving results only in final plots and tables</li>
+<li>By always keeping a raw, untouched dataset and performing cleaning steps in code</li>
+<li>By using more clever one-line commands in Excel</li>
+<li>By deleting intermediate files to reduce clutter</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> The book’s principle “<strong>Keep raw data raw</strong>” means storing untouched source files and carrying out all cleaning programmatically, so the analysis can be reproduced and mistakes traced back.</p>
+</section>
+<section id="q4.7-application" class="level4">
+<h4 class="anchored" data-anchor-id="q4.7-application">Q4.7 (Application)</h4>
+<p>While building a churn model for five countries, a student copy-pastes the same block of code five times, changing only the country name. Which programming concept should they apply instead?</p>
+<ol type="A">
+<li>Data frames</li>
+<li>Conditionals</li>
+<li>Loops</li>
+<li>Factors</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> The book explains that <strong>loops</strong> eliminate repetitive copy-paste coding by automating tasks across multiple elements (e.g., countries). This makes workflows scalable, clear, and less error-prone.</p>
+</section>
+<section id="q4.8-application" class="level4">
+<h4 class="anchored" data-anchor-id="q4.8-application">Q4.8 (Application)</h4>
+<p>Two analysts collaborate on a project. One uses filenames like <code>final2.csv</code> and <code>newfinal_last.csv</code>, while the other organizes files into <code>data/raw/</code>, <code>data/data-prep/</code>, and <code>data/analysis/</code>. According to the principles in <em>Marketing Analytics: A Modern Toolkit</em>, which approach is preferable and why?</p>
+<ol type="A">
+<li>The first, because ad-hoc naming saves time during analysis</li>
+<li>The second, because consistent structure improves navigation, collaboration, and prevents mistakes</li>
+<li>Both are equally valid, since filenames don’t affect reproducibility</li>
+<li>Neither, because reproducibility depends only on statistical modeling</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> The principle of <strong>consistency and organization</strong> stresses that a clear folder structure and systematic naming reduce confusion and make collaboration professional and efficient.</p>
+</section>
+</section>
+</section>
+<section id="learning-goal-5" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goal-5">Learning Goal 5</h2>
+<p><em>Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines</em></p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In this type of question, you will work with <strong>automation using <code>make</code></strong>, based on the <code>make</code> tutorial in the course. Typical tasks include:</p>
+<ul>
+<li><p><strong>Automate a workflow</strong>: take a project that currently runs from a single script, split it into smaller steps, and connect them with a Makefile.</p></li>
+<li><p><strong>Debug a Makefile</strong>: fix issues such as</p>
+<ul>
+<li>the wrong rule on top,</li>
+<li>missing or incorrect prerequisites (e.g., too few, too many prerequisites, prerequisites with wrong files names),</li>
+<li>targets not updating when inputs change.</li>
+</ul></li>
+<li><p><strong>Enhance a project</strong>: reorganize files (e.g., move scripts into subdirectories) and adapt the Makefile so everything runs correctly.</p></li>
+</ul>
+<p>Recall to use <code>make</code> and <code>make -n</code> to run (or preview) workflows.</p>
+</div>
+</div>
+</div>
+<section id="exemplary-question-based-on-tutorial-24p" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-question-based-on-tutorial-24p">Exemplary question based on tutorial (24P)</h3>
+<section id="q5.1" class="level4">
+<h4 class="anchored" data-anchor-id="q5.1">Q5.1</h4>
+<p>Please <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_make/practice_workflow.zip">download and unzip the research pipeline</a> of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading.</p>
+<p>Q5.1a) Please run make as is. Then, fix any errors that prevents make from knowing it is “up-to-date” (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).</p>
+<p>Q5.1b) The make pipeline is not properly configured (i.e., one call to all scripts, rather than subsequent “built recipes” that tie all source code files together). Please fix the makefile such that the entire project is being built and that all dependencies are correctly defined. (10P)</p>
+<p>Q5.1c) You may recall the value of creating subdirectories to structure your project. Create the necessary subdirectories and update your makefile so that it works on this new directory structure. (5P)</p>
+<p><strong>Requirements/tips:</strong></p>
+<ul>
+<li>Recall make is always executing the “first” recipe it encounters.</li>
+<li>If you need to create new directories from within R, you can use <code>dir.create('directory_name')</code>.</li>
+<li>Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in RStudio, it may happen that some of the installed packages cannot be found.</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<p>Q5.1a) The target <code>logit_model.csv</code> was not set correctly.<code>analysis_and_report.R</code> creates a file called <code>logit_model_summary.csv</code>. Hence, <code>make</code> will be looking for a file called <code>logit_model.csv</code>, which is never created. Therefore, it will not “know” it is “up-to-date”.</p>
+<p>Q5.1b) See below.</p>
+<pre><code>  ```
+  # Makefile to automate the email marketing analysis
+
+  # An overarching "all" rule that requests the final output files
+  all: logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv
+
+  # Rule to create the processed dataset
+  processed_email_data.csv: data_process.R
+        Rscript data_process.R # Use Rscript to run the R file
+
+  # Rule to generate final output files; depends on processed data and analysis script
+  logit_model_summary.csv conversion_engagement_plot.png summary_stats.csv: processed_email_data.csv analysis_and_report.R
+        Rscript analysis_and_report.R
+
+  # Clean rule to remove generated files
+  clean:
+        R -e "unlink('*.csv')"
+        R -e "unlink('*.png')"
+
+  ```
+  </code></pre>
+<p>Q5.1c) Temporary files (i.e., <code>processed_email_data.csv</code>) need to be stored in <code>temp</code>. All source code needs to be stored in <code>src</code>, and the final output files need to be put into <code>output</code>. <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_make/practice_workflow_solution.zip">See here for all modified source files</a> (which includes the <code>.R</code> scripts - see file directories and commands to create new directories!).</p>
+</section>
+</section>
+<section id="exemplary-questions-based-on-book-6p-on-the-exam" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-questions-based-on-book-6p-on-the-exam">Exemplary questions based on book (6P on the exam)</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>These questions will be based on chapters 3 &amp; 8.</p>
+</div>
+</div>
+</div>
+<section id="q5.2-chapter-3" class="level4">
+<h4 class="anchored" data-anchor-id="q5.2-chapter-3">Q5.2 (chapter 3)</h4>
+<p>A team insists on keeping <strong>every single version</strong> of their 500 GB dataset after each cleaning step. As an advisor, how should you evaluate this practice?</p>
+<ol type="A">
+<li>It is best practice because reproducibility requires storing every version of data</li>
+<li>It is inefficient, since reproducibility can be achieved by keeping raw data plus source code that regenerates outputs</li>
+<li>It ensures transparency, so it should always be done despite storage costs</li>
+<li>It is necessary for scaling pipelines to cloud servers</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> The book stresses that reproducibility does <strong>not</strong> require saving every intermediate dataset. Instead, storing <strong>raw data</strong> and <strong>source code</strong> is sufficient, since generated files can be recreated. This avoids massive storage waste while preserving reproducibility.</p>
+</section>
+<section id="q5.3-chapter-3" class="level4">
+<h4 class="anchored" data-anchor-id="q5.3-chapter-3">Q5.3 (chapter 3)</h4>
+<p>Suppose a student pipeline skips the <strong>data exploration</strong> stage and goes straight into preparation and analysis. How would you evaluate the credibility of their results?</p>
+<ol type="A">
+<li>Strong, because skipping exploration accelerates analysis</li>
+<li>Weak, because exploration provides necessary audits (e.g., missing values, outliers) to ensure the data makes sense</li>
+<li>Neutral, since exploration is optional when datasets come from reliable company sources</li>
+<li>Strong, because reproducibility depends only on source code and raw data</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> According to the book, exploration is critical for credibility. Without it, analysts risk basing analyses on flawed assumptions (e.g., unnoticed outliers, missing values). Exploration builds trust in later steps.</p>
+</section>
+<section id="q5.4-chapter-3" class="level4">
+<h4 class="anchored" data-anchor-id="q5.4-chapter-3">Q5.4 (chapter 3)</h4>
+<p>A firm decides to deploy its results <strong>only as static reports</strong> (e.g., PDFs) rather than dashboards or reusable code. How would you assess this decision from a pipeline perspective?</p>
+<ol type="A">
+<li>Adequate, since static reports are reproducible and require no extra infrastructure</li>
+<li>Limiting, since deployment should maximize usability and impact for different audiences</li>
+<li>Optimal, since reports preserve the “final word” of the analysis</li>
+<li>Necessary, since dynamic outputs violate the reproducibility principle</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> The book notes that <strong>deployment is about impact</strong>. While reports may be fine in some contexts, limiting outputs to static formats prevents managers or collaborators from exploring or reusing results. Pipelines should deliver results in <strong>formats that maximize usefulness.</strong></p>
+</section>
+<section id="q5.5-chapter-3" class="level4">
+<h4 class="anchored" data-anchor-id="q5.5-chapter-3">Q5.5 (chapter 3)</h4>
+<p>Two teams take different approaches:</p>
+<ul>
+<li>Team A treats <strong>generated files</strong> (clean datasets, figures) as permanent, storing all versions.</li>
+<li>Team B treats generated files as <strong>temporary</strong>, keeping only raw data + source code.</li>
+</ul>
+<p>Which approach aligns more closely with the principles in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
+<ol type="A">
+<li>Team A, because generated files are the most valuable artifacts</li>
+<li>Team A, because reproducibility depends on storing every output</li>
+<li>Team B, because generated files can always be recreated, making pipelines leaner and more scalable</li>
+<li>Team B, but only if they also delete raw data after outputs are created</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> The book highlights that generated files are <strong>recreatable artifacts</strong>, so they do not need to be stored permanently. This separation of raw data, source code, and generated files keeps projects tidy and reproducible without unnecessary storage costs.</p>
+</section>
+<section id="q5.6-chapter-3" class="level4">
+<h4 class="anchored" data-anchor-id="q5.6-chapter-3">Q5.6 (chapter 3)</h4>
+<p>When evaluating a marketing analytics pipeline, which of the following omissions would <strong>most seriously undermine transparency and auditing</strong>?</p>
+<ol type="A">
+<li>Failing to use .gitignore to filter out temporary files</li>
+<li>Not saving final plots in high-resolution formats</li>
+<li>Lacking commit messages in the source code version control system</li>
+<li>Skipping the deployment stage entirely</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> While deployment and file management matter, the <strong>ability to audit and understand the code’s evolution</strong> depends critically on version control with meaningful commit messages. Without this, tracing errors or decisions becomes nearly impossible, undermining transparency.</p>
+</section>
+<section id="q5.7-chapter-8" class="level4">
+<h4 class="anchored" data-anchor-id="q5.7-chapter-8">Q5.7 (chapter 8)</h4>
+<p>A student prefers to run each script manually in sequence instead of setting up automation rules. From an evaluation standpoint, what is the main drawback of this approach?</p>
+<ol type="A">
+<li>It is slower but equally reproducible as automation</li>
+<li>It risks human error and inefficiency, since the correct order must be remembered manually</li>
+<li>It scales better than automated pipelines when datasets grow larger</li>
+<li>It prevents the use of relative file paths</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> Manual execution makes projects <strong>error-prone</strong> and <strong>inefficient</strong>, since people must remember the correct order of scripts. Automation formalizes dependencies and ensures only necessary steps are re-run, improving reproducibility and efficiency.</p>
+</section>
+<section id="q5.8-chapter-8" class="level4">
+<h4 class="anchored" data-anchor-id="q5.8-chapter-8">Q5.8 (chapter 8)</h4>
+<p>A company maintains a monolithic script that cleans, merges, analyzes, and reports results all at once. How would you evaluate this practice in light of automation principles?</p>
+<ol type="A">
+<li>Positive, because fewer scripts mean fewer moving parts</li>
+<li>Neutral, because automation applies only to raw data handling</li>
+<li>Negative, because monolithic scripts undermine modularity, making debugging and selective re-execution difficult</li>
+<li>Positive, since monolithic scripts reduce the need for workflow managers</li>
+</ol>
+<p><strong>Correct Answer: C</strong></p>
+<p><strong>Explanation:</strong> The book recommends “<strong>one script, one transformation</strong>.” Monolithic scripts reduce transparency and make automation inefficient. Modular scripts, by contrast, enable pipelines to re-run only the parts that changed.</p>
+</section>
+<section id="q5.9-chapter-8" class="level4">
+<h4 class="anchored" data-anchor-id="q5.9-chapter-8">Q5.9 (chapter 8)</h4>
+<p>Your team has limited server storage. One proposal is to store <strong>all generated files permanently</strong> to avoid rerunning code. How should you evaluate this?</p>
+<ol type="A">
+<li>Correct, since generated files are the most important artifacts</li>
+<li>Wasteful, since generated files can be recreated from raw data and source code, making permanent storage unnecessary</li>
+<li>Risky, since deleting generated files makes reproducibility impossible</li>
+<li>Efficient, since it prevents the need for automation</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> Generated files are <strong>outputs, not primary sources</strong>. The book stresses that reproducibility requires raw data + source code. Keeping every generated file wastes storage and undermines scalability.</p>
+</section>
+<section id="q5.10-chapter-8" class="level4">
+<h4 class="anchored" data-anchor-id="q5.10-chapter-8">Q5.10 (chapter 8)</h4>
+<p>Two teams build pipelines differently:</p>
+<ul>
+<li>Team A uses absolute file paths (e.g., <code>C:/Users/Anna/data/file.csv</code>).</li>
+<li>Team B uses relative paths (e.g., <code>../data/file.csv</code>).</li>
+</ul>
+<p>Which approach better aligns with good practices, and why?</p>
+<ol type="A">
+<li>Team A, because absolute paths guarantee accuracy on the analyst’s computer</li>
+<li>Team B, because relative paths make pipelines portable across machines and environments</li>
+<li>Team A, because absolute paths reduce the risk of overwriting files</li>
+<li>Both are equally valid, since path conventions do not affect reproducibility</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> Portability is key. Relative paths allow pipelines to run on different machines or servers without modification. Absolute paths lock the project to one setup, which undermines collaboration and reproducibility.</p>
+</section>
+<section id="q5.11-chapter-8" class="level4">
+<h4 class="anchored" data-anchor-id="q5.11-chapter-8">Q5.11 (chapter 8)</h4>
+<p>A marketing analytics team considers whether to adopt <strong>workflow managers, Docker, and CI/CD</strong>. Which of the following best evaluates the combined value of these tools?</p>
+<ol type="A">
+<li>They overlap in functionality, so using all three adds redundancy</li>
+<li>They serve distinct but complementary roles: workflow managers organize pipelines, Docker ensures reproducibility across machines, and CI/CD automates deployment</li>
+<li>They are only useful for software engineers, not marketing analytics teams</li>
+<li>They make pipelines less reproducible by adding unnecessary complexity</li>
+</ol>
+<p><strong>Correct Answer: B</strong></p>
+<p><strong>Explanation:</strong> The book highlights how these tools <strong>complement each other</strong>: workflow managers for structure and visualization, Docker for portability, and CI/CD for automatic execution and deployment. Together, they professionalize pipelines and scale them across teams.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="preparing-for-the-exam" class="level1">
+<h1>Preparing for the exam</h1>
+<p>This section provides information that will help you prepare well for the exam.</p>
+<section id="cheatsheets" class="level2">
+<h2 class="anchored" data-anchor-id="cheatsheets">Cheatsheets</h2>
+<p>Students will have access to <strong>official cheatsheets</strong> during the exam. These cover the main tools used in this course—<strong>R</strong>, <strong>make</strong>, and <strong>Git</strong>—and are the same ones provided throughout the tutorials. Cheatsheets from previous years can already be downloaded <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.zip">here</a>. Ahead of the exam, there will be a short Q&amp;A session where you can suggest additional cheat sheet ideas to the instructor; the final set of official cheatsheets will then be compiled and published.</p>
+<p>In addition, the class will have the opportunity to prepare <strong>one collective cheatsheet</strong>. This is typically best drafted in Google Docs, so all students can contribute ideas. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.</p>
+</section>
+<section id="ideas-for-developing-your-proficiency" class="level2">
+<h2 class="anchored" data-anchor-id="ideas-for-developing-your-proficiency">Ideas for developing your proficiency</h2>
+<ul>
+<li>Please work through the example questions and tutorials. While this has been difficult when you did it for the first time, can you do it on your own now?</li>
 <li>Share with each other the (public) links to your teams’ GitHub repositories. Fork them, clone them to your computers, and then try to run them using <code>make</code> (and reading the readme).
 <ul>
 <li>Can you run the workflows of others?</li>
@@ -361,111 +1008,105 @@ ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), y = estimate
 <li>Add “deployment” steps in your forks, e.g., by adding an app to somebody’s regression, or adding a regression to somebody’s app</li>
 </ul></li>
 <li>Create your own, end-to-end GitHub workflow using the publicly available AirBnB data that teams could use for their projects. Fork that repository and collaboratively work on it with everyone!</li>
-<li>Familiarize yourself with <a href="https://tilburgsciencehub.com">Tilburg Science Hub</a>
-<ul>
-<li>Work through tutorials</li>
-<li>Integrate new building blocks into your projects</li>
-<li>Clone the examples and extend them</li>
-</ul></li>
 </ul>
 <p>Above all, see this exam preparation <em>not</em> as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.</p>
 </section>
-<section id="work-on-the-example-questions" class="level3">
-<h3 class="anchored" data-anchor-id="work-on-the-example-questions">Work on the example questions</h3>
-<p>Please <a href="examplequestions">view the list of example questions here</a>.</p>
-</section>
-<section id="familiarize-yourself-with-testvision" class="level3">
-<h3 class="anchored" data-anchor-id="familiarize-yourself-with-testvision">Familiarize yourself with TestVision</h3>
+<section id="familiarize-yourself-with-testvision" class="level2">
+<h2 class="anchored" data-anchor-id="familiarize-yourself-with-testvision">Familiarize yourself with TestVision</h2>
 <ul>
-<li><a href="https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&amp;taal=2">Take a practice test</a> to familiarize yourself with TestVision!</li>
-<li>Learn <a href="https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision">more about TestVision</a></li>
+<li>Take the “technical practice exam” - a link will be shared on Canvas; after which you will be able to practice downloaded and uploading files.</li>
+<li>More practice? TestVision also provides a <a href="https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&amp;taal=2">generic practice exam</a></li>
+<li>Tilburg University also provides <a href="https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision">additional resources about TestVision</a></li>
 </ul>
 </section>
-<section id="technical-tips-beyond" class="level3">
-<h3 class="anchored" data-anchor-id="technical-tips-beyond">Technical tips &amp; beyond</h3>
+<section id="testvisions-introduction-page" class="level2">
+<h2 class="anchored" data-anchor-id="testvisions-introduction-page">TestVision’s Introduction Page</h2>
+<p>Every exam begins with an “introduction” or “cover” page, which contains the official exam instructions. Below, you will find an example of the cover page used in previous years. Please note that the instructions for the actual exam may differ slightly, so it is important to read them carefully.</p>
+<p>The exact cover page for this year’s exam will be made available on Canvas in advance, so you will not need to spend time re-reading it when starting your exam. Be sure to review it thoroughly before exam day.</p>
+<p><img src="dprep_part1.png" class="img-fluid"> <img src="dprep_part2.png" class="img-fluid"></p>
+</section>
+<section id="technical-tips-beyond" class="level2">
+<h2 class="anchored" data-anchor-id="technical-tips-beyond">Technical Tips &amp; Beyond</h2>
 <ul>
-<li>Verify that you are familiar with the on-campus computers so that you know how to use them (e.g., Windows, how to open RStudio, how to navigate on the command prompt, how to set working directories, etc.)</li>
-<li>Know how to zip and unzip files</li>
-<li>Make use of cheat sheets (e.g., available on this site, or elsewhere) (you can also print them)</li>
-<li>File and code management
+<li><strong>Get familiar with the exam environment</strong>: practice using Windows, opening RStudio, navigating with the command prompt, and setting working directories.</li>
+<li><strong>Know how to zip and unzip files</strong> so you can upload or submit repositories without issues.</li>
+<li><strong>Use and prepare cheatsheets</strong>:
 <ul>
-<li>Rename files from TestVision (e.g., <code>download.csv</code>, <code>download.rdata</code>, <code>download.zip</code>) for clarity and organization.</li>
-<li>Sort renamed files into separate folders to prevent confusion.</li>
-<li>Revise your code before submission, so that you ensure it runs from top to bottom without problems.</li>
-<li>Do not mention your name or student number in your code.</li>
+<li>Official R, make, and Git cheatsheets will be provided (previous versions can be downloaded <a href="https://tilburgsciencehub.com/cheatsheets">here</a>).</li>
+<li>Printed cheatsheets are not allowed.</li>
 </ul></li>
-<li>Working with data
+<li><strong>File and code management</strong>:
 <ul>
-<li>Familiarize yourself with opening .RData files and accessing their contents, as outlined in <a href="https://bookdown.org/ndphillips/YaRrr/rdata-files.html">YaRrr</a>.</li>
-<li>For Git repository submissions, zip the entire folder containing the repository before uploading to ensure completeness.</li>
+<li>You must not use network drives to store your data. Please choose a local folder such as <code>C:\Users\&lt;YOUR-U-NUMBER&gt;\Downloads</code>.</li>
+<li>Organize downloaded files into separate folders (e.g., by question), to avoid confusion.</li>
+<li>Revise code before submission to ensure it runs cleanly from top to bottom.</li>
+<li>Do <strong>not</strong> include your name or student number anywhere in files, folders, or code (grading is anonymous).</li>
+<li>Be comfortable opening <code>.RData</code> files and exploring their contents (see <a href="https://bookdown.org/ndphillips/YaRrr/rdata-files.html">YaRrr guide</a>).</li>
+<li>For Git repositories, always zip the <strong>entire folder</strong> before uploading.</li>
 </ul></li>
-<li>Setting the working directory in R (preferred method):
+<li><strong>Setting working directories</strong>:
 <ul>
-<li>Create a new .R file and save it in the folder where your data files are downloaded.</li>
-<li>Set the working directory to this location via <code>Session -&gt; Set Working Directory -&gt; To Source File Location</code>.</li>
+<li>In R, save a new <code>.R</code> file in your data folder and set the working directory via <code>Session → Set Working Directory → To Source File Location</code> (preferred method).</li>
+<li>Be able to locate your working directory in all programs (R, Jupyter Notebook, VS Code, Explorer, Command Prompt, Git Bash).</li>
 </ul></li>
-<li>Local package installation
+<li><strong>Local package installation</strong>:
 <ul>
-<li>Practice installing packages locally, especially since internet access will not be available during the exam.</li>
-<li>Test local package installation with <a href="package_test.zip">package_test.zip</a> by unzipping and running <code>install_packages.R</code> via <code>RScript install_packages.R</code> after navigating to the correct directory.</li>
+<li>Practice installing packages locally, since internet access will not be available.</li>
+<li>Test with <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/test-package-installation.zip">test-package-installation.zip</a>: unzip and run <code>RScript install_packages.R</code> from the correct directory.</li>
 </ul></li>
+<li><strong>Save time on exam day</strong>: before the exam officially starts, open the required software (e.g., RStudio, Jupyter Notebook) and set working directories so you can begin immediately.</li>
 </ul>
-<!--
-- Verify your software setup (you should be able to produce RMarkdown documents as PDF documents, run `make`, and even run existing Python code on your computer).
--->
-<!--
-
-
-
-
-
-{{< hint info >}}
-
-
-
-
-
-
-
-__Stay up-to-date__
-
-As we develop the exam questions, please keep an eye on the content of this page for important updates (e.g., with regard to the questions asked, any new tips & tricks that will help you to work on the questions, any example questions, etc.)
-
-
-
-
-
-{{< /hint  >}}
-
-
-
-
-
-
-
--->
 </section>
 </section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="inspection" class="level1">
+<h1>Inspection</h1>
+<p>After the exams have been graded, you will have the opportunity to attend the exam inspection. The goals of this inspection are for you to (a) understand how your exam has been graded (i.e., per question), (b) learn from viewing an answer key to a particular question, and (c) verify the answer key has been applied consistently.</p>
+<p>The date of the exam inspection will be communicated via Canvas. The review will take place in a computer room on campus.</p>
+<section id="logging-in" class="level2">
+<h2 class="anchored" data-anchor-id="logging-in">Logging in</h2>
+<ul>
+<li>Login to <a href="https://tiu.nu/testvision">TestVision</a> via SurfConext with your Tilburg University account.</li>
+<li>Select <strong>show results</strong>.</li>
+<li>Select the relevant exam and enter the password that will be shared with you in class.</li>
+</ul>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<section id="inspect-your-exam" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-your-exam">Inspect your exam</h2>
+<section id="get-an-overview-of-the-points-obtained" class="level3">
+<h3 class="anchored" data-anchor-id="get-an-overview-of-the-points-obtained">1) Get an overview of the points obtained</h3>
+<p>First, we advise you to get a global understanding of how you performed on the exam by checking the “question overview.”</p>
+<p><img src="inspection1.png" class="img-fluid"></p>
+<p>We advise you to zoom in on the questions for which you did not obtain total points.</p>
+</section>
+<section id="review-each-question" class="level3">
+<h3 class="anchored" data-anchor-id="review-each-question">2) Review each question</h3>
+<p>You can review the grading of each question by clicking on the question number.</p>
+<ul>
+<li>Check the points you have obtained for the question.</li>
+</ul>
+<p><img src="points.png" class="img-fluid"></p>
+<ul>
+<li><p>View the question and read your answer.</p></li>
+<li><p>Check our feedback (mostly in writing) by clicking on ‘Feedback’. You can view the correct answer by clicking on ‘Response model’.</p></li>
+</ul>
+<p><img src="feedback.png" class="img-fluid"></p>
+<p>Note that written feedback may not be available for all questions. In that case, compare your answer to the response model/answer key.</p>
+</section>
+<section id="ask-questions" class="level3">
+<h3 class="anchored" data-anchor-id="ask-questions">3) Ask questions</h3>
+<p>Would you like to ask how the answer key was applied in your case? Ask the instructor that is present during the inspection.</p>
+</section>
+<section id="file-a-written-request-for-review" class="level3">
+<h3 class="anchored" data-anchor-id="file-a-written-request-for-review">4) File a written request for review</h3>
+<p>Any unresolved questions? Then <strong>file a request for review</strong>.</p>
+<ul>
+<li>Do so for each question by entering a comment in the designated comment box on TestVision, which is located below each question.</li>
+</ul>
+<p><img src="commentbox.png" class="img-fluid"></p>
+<ul>
+<li>When adding a request for review, please <strong>briefly</strong> argue why you believe you deserve (more) points for the specific question. In your request, refer as much as possible to the answer key.</li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -473,8 +1114,7 @@ As we develop the exam questions, please keep an eye on the content of this page
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Students will be able to download <a href="cheatsheets-exam.zip">“cheatsheets”</a> from the exam’s introduction page.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>https://dprep-book.hannesdatta.com/<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>https://dprep-book.hannesdatta.com/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
