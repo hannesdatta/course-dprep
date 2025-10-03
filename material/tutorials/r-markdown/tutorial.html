@@ -545,7 +545,8 @@ display: none;
 
 <h1 class="title toc-ignore">Data exploration with RMarkdown and ggplot2
 (dPrep)</h1>
-<h4 class="date">Last updated: 25 August 2025</h4>
+<h4 class="date">Last updated: 25 August 2025 (+ minor bug fixes, 3
+October 2025)</h4>
 
 </div>
 
@@ -1044,13 +1045,14 @@ code below is quite complex. Try to read it - but we don&#39;t expect you to
 write code like this at this moment!</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>columns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;retail_and_recreation&#39;</span>, <span class="st">&#39;grocery_and_pharmacy&#39;</span>, <span class="st">&#39;parks&#39;</span>, <span class="st">&#39;transit_stations&#39;</span>, <span class="st">&#39;workplaces&#39;</span>, <span class="st">&#39;residential&#39;</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>missing_summary <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  country <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(columns), <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">is.na</span>(.)) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">subset =</span> <span class="st">&quot;country&quot;</span>),</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  province <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(columns), <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">is.na</span>(.)) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">subset =</span> <span class="st">&quot;province&quot;</span>),</span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  city <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(columns), <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">is.na</span>(.)) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">subset =</span> <span class="st">&quot;city&quot;</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(subset)</span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>missing_summary <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>missing_summary <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  country <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(columns), <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">is.na</span>(.)) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">subset =</span> <span class="st">&quot;country&quot;</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  province <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(columns), <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">is.na</span>(.)) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">subset =</span> <span class="st">&quot;province&quot;</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  city <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(columns), <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">is.na</span>(.)) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">subset =</span> <span class="st">&quot;city&quot;</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(subset)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>missing_summary <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <colgroup>
 <col width="8%" />
@@ -1255,7 +1257,7 @@ structure:</p>
 <p>Let&#39;s create a bar chart showing the <strong>average mobility
 change</strong> across different locations using the
 <code>country</code> data set.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co"># Pivot the country dataset to long format</span></span>

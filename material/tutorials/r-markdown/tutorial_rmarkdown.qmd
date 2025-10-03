@@ -23,7 +23,6 @@ editor: visual
     -   Load, inspect, clean, and transform data
     -   Create first plots with **ggplot2**
 
-
 ## General tips for these tutorials
 
 -   Use the cheat-sheets posted on Canvas
@@ -38,15 +37,16 @@ editor: visual
 -   How is it different from RStudio, VSCode, R, Python?
 
 ## ITO Principle
-- **Input**: bring data into your script
-  - Read CSV, JSON, Excel, etc.
-- **Transformation**: Apply operations to turn messy input into something useful
-  - Cleaning
-  - Filtering
-  - Feature engineering, data transformations
-- **Output**: Save documents and results
-  - Store cleaned datasets
-  - Save figures
+
+-   **Input**: bring data into your script
+    -   Read CSV, JSON, Excel, etc.
+-   **Transformation**: Apply operations to turn messy input into something useful
+    -   Cleaning
+    -   Filtering
+    -   Feature engineering, data transformations
+-   **Output**: Save documents and results
+    -   Store cleaned datasets
+    -   Save figures
 
 # Part 1: Loading and inspecting data
 
@@ -91,7 +91,9 @@ editor: visual
 
 ## What can you visualize with ggplot?
 
+<!--
 ![](ggplot_example.png)
+-->
 
 ## Why visualize?
 
