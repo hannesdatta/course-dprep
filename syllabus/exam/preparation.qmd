@@ -1,0 +1,61 @@
+---
+title: "Preparation & Tips"
+format: html
+---
+
+## Cheatsheets
+
+Students will have access to **official cheatsheets** during the exam. These cover the main tools used in this course—**R**, **make**, and **Git**—and are the same ones provided throughout the tutorials. Cheatsheets from previous years can already be downloaded [here](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.zip). Ahead of the exam, there will be a short Q&A session where you can suggest additional cheat sheet ideas to the instructor; the final set of official cheatsheets will then be compiled and published.
+
+In addition, the class will have the opportunity to prepare **one collective cheatsheet**. This is typically best drafted in Google Docs, so all students can contribute ideas. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.
+
+## Ideas for developing your proficiency
+
+-   Please work through the example questions and tutorials. While this has been difficult when you did it for the first time, can you do it on your own now?
+-   Share with each other the (public) links to your teams' GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
+    - Can you run the workflows of others?
+    - If make does not work - try to fix the makefiles!
+    - Work on the project of others (e.g., by creating a new feature branch, improving code, committing to your fork, and making a PR) - "receiving teams": revise the work of others and integrate the PRs.
+    - Add "deployment" steps in your forks, e.g., by adding an app to somebody's regression, or adding a regression to somebody's app
+-   Create your own, end-to-end GitHub workflow using the publicly available AirBnB data that teams could use for their projects. Fork that repository and collaboratively work on it with everyone!
+
+Above all, see this exam preparation *not* as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.
+
+## Familiarize yourself with TestVision
+
+- Take the "technical practice exam" - a link will be shared on Canvas; after which you will be able to practice downloaded and uploading files.
+- More practice? TestVision also provides a [generic practice exam](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2)
+- Tilburg University also provides [additional resources about TestVision](https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision)
+
+## TestVision's Introduction Page
+
+Every exam begins with an “introduction” or “cover” page, which contains the official exam instructions. Below, you will find an example of the cover page used in previous years. Please note that the instructions for the actual exam may differ slightly, so it is important to read them carefully.
+
+The exact cover page for this year’s exam will be made available on Canvas in advance, so you will not need to spend time re-reading it when starting your exam. Be sure to review it thoroughly before exam day.
+
+![](dprep_part1.png)
+![](dprep_part2.png)
+
+
+## Technical Tips & Beyond
+
+* **Get familiar with the exam environment**: practice using Windows, opening RStudio, navigating with the command prompt, and setting working directories.
+* **Know how to zip and unzip files** so you can upload or submit repositories without issues.
+* **Use and prepare cheatsheets**:
+  * Official R, make, and Git cheatsheets will be provided (previous versions can be downloaded [here](https://tilburgsciencehub.com/cheatsheets)).
+  * Printed cheatsheets are not allowed.
+* **File and code management**:
+  * You must not use network drives to store your data. Please choose a local folder such as `C:\Users\<YOUR-U-NUMBER>\Downloads`.
+  * Organize downloaded files into separate folders (e.g., by question), to avoid confusion.
+  * Revise code before submission to ensure it runs cleanly from top to bottom.
+  * Do **not** include your name or student number anywhere in files, folders, or code (grading is anonymous).
+  * Be comfortable opening `.RData` files and exploring their contents (see [YaRrr guide](https://bookdown.org/ndphillips/YaRrr/rdata-files.html)).
+  * For Git repositories, always zip the **entire folder** before uploading.
+* **Setting working directories**:
+  * In R, save a new `.R` file in your data folder and set the working directory via `Session → Set Working Directory → To Source File Location` (preferred method).
+  * Be able to locate your working directory in all programs (R, Jupyter Notebook, VS Code, Explorer, Command Prompt, Git Bash).
+* **Local package installation**:
+  * Practice installing packages locally, since internet access will not be available.
+  * Test with [test-package-installation.zip](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/test-package-installation.zip): unzip and run `RScript install_packages.R` from the correct directory.
+* **Save time on exam day**: before the exam officially starts, open the required software (e.g., RStudio, Jupyter Notebook) and set working directories so you can begin immediately.
+

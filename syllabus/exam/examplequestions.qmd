@@ -1,0 +1,8 @@
+---
+title: "Example questions"
+format: html
+---
+
+::: {.callout}
+Example questions will be shared with students directly on Canvas.
+:::

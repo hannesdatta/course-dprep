@@ -1,12 +1,7 @@
 ---
-title: "Inspection"
-bookFlatSection: true
-bookHidden: false
-weight: 10
-draft: false
+title: "Exam Inspection"
+format: html
 ---
-
-# Exam Inspection
 
 After the exams have been graded, you will have the opportunity to attend the exam inspection. The goals of this inspection are for you to (a) understand how your exam has been graded (i.e., per question), (b) learn from viewing an answer key to a particular question, and (c) verify the answer key has been applied consistently.
 
@@ -24,7 +19,7 @@ The date of the exam inspection will be communicated via Canvas. The review typi
 
 First, we advise you to get a global understanding of how you performed on the exam by checking the "question overview."
 
-![](../inspection1.png)
+![](inspection1.png)
 
 We advise you to zoom in on the questions for which you did not obtain total points.
 
@@ -34,13 +29,13 @@ You can review the grading of each question by clicking on the question number.
 
 - Check the points you have obtained for the question.
 
-![](../points.png)
+![](points.png)
 
 - View the question and read your answer.
 
 - Check our feedback (mostly in writing) by clicking on 'Feedback'. You can view the correct answer by clicking on 'Response model'.
 
-![](../feedback.png)
+![](feedback.png)
 
 Note that written feedback may not be available for all questions. In that case, compare your answer to the response model/answer key.
 
@@ -54,6 +49,6 @@ Any unresolved questions? Then __file a request for review__.
 
 - Do so for each question by entering a comment in the designated comment box on TestVision, which is located below each question.
 
-![](../commentbox.png)
+![](commentbox.png)
 
 - When adding a request for review, please __briefly__ argue why you believe you deserve (more) points for the specific question. In your request, refer as much as possible to the answer key.

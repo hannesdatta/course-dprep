@@ -29,6 +29,9 @@ book:
     - part: "Exam"
       chapters:
       - exam/_index.qmd
+      - exam/preparation.qmd
+      - exam/inspection.qmd
+      - exam/examplequestions.qmd
   search: true
   sidebar:
     style: floating     # sticky sidebar with chapter list
