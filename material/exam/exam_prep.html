@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Hannes Datta">
-<meta name="dcterms.date" content="2025-09-26">
+<meta name="dcterms.date" content="2025-09-28">
 
 <title>Exam Preparation</title>
 <style>
@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 26, 2025</p>
+      <p class="date">September 28, 2025</p>
     </div>
   </div>
   
@@ -80,6 +80,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<p><em>originally published on 26 September; updated on 28 September, slightly rewriting questions in line with the actual exam &amp; adding the number of points per question)</em></p>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>The exam for this course is a <strong>120-minute on-campus computer exam</strong> (course code 328059-M-6), taken in <a href="https://TilburgU.testvision.nl/online/kandidaten">TestVision</a>. It is a <strong>closed-book exam with no internet access</strong>, though students may download selected cheat sheets from the exam’s introduction page.</p>
@@ -131,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 <td>1</td>
 <td>Use R to clean and transform data for analysis</td>
 <td>Synthesis</td>
-<td>20P on engineering tutorial</td>
+<td>20P (2Q) on engineering tutorial</td>
 <td>4P (1Q), ch.&nbsp;7</td>
 </tr>
 <tr class="even">
@@ -152,8 +153,8 @@ ul.task-list li input[type="checkbox"] {
 <td>4</td>
 <td>Use R for generating automatic reports</td>
 <td>Compreh. &amp; Appli.</td>
-<td>10P on Rmarkdown tutorial</td>
-<td>8P (2-3Q), ch.&nbsp;4</td>
+<td>12P on Rmarkdown tutorial</td>
+<td>6P (2Q), ch.&nbsp;4</td>
 </tr>
 <tr class="odd">
 <td>5</td>
@@ -184,7 +185,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Please download the <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip"><code>netflix_data</code></a> file, containing an <code>.RData</code> environment that itself contains R objects (datasets).</p>
+<p>Please download the <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip"><code>netflix_data</code></a> file, containing an <code>.RData</code> environment that itself contains R objects (datasets). To receive points on this question, please create and upload one R file (.R) that performs the task as requested.</p>
+<p>Important: - Load the data using: load(“name_of_the_file.RData”) # use the correct file name as per your download - Apply the Setup – Input – Transform – Output (S-I-T-O) principles used in class. - Submit your work as a clean .R script (NOT RMarkdown). Ensure the code runs top to bottom. - Do not include your name or student number anywhere in the code.</p>
 <p><strong><code>netflix_data</code>:</strong></p>
 <ul>
 <li><code>show_id</code>: content identifier</li>
@@ -199,9 +201,8 @@ ul.task-list li input[type="checkbox"] {
 <li><code>show_rating</code>: Average rating given to the content</li>
 <li><code>viewership_count</code>: Number of viewers for the content</li>
 </ul>
-<p>Please answer the following questions using this data.</p>
-<section id="q1.1-handing-missing-values" class="level4">
-<h4 class="anchored" data-anchor-id="q1.1-handing-missing-values">Q1.1: Handing missing values</h4>
+<section id="q1.1-10p" class="level4">
+<h4 class="anchored" data-anchor-id="q1.1-10p">Q1.1 (10P)</h4>
 <ol type="a">
 <li><p>Which columns in the dataset contain missing values, and how many missing values does each column have?</p></li>
 <li><p>Check for patterns in the missing values for the column <code>season_count</code> depending on show type. Do these missing values need to be imputed? Why or why not?</p></li>
@@ -253,18 +254,19 @@ netflix_data &lt;- netflix_data %&gt;%
   select(-was_na_show_rating, -was_na_viewership)  # Drop temp columns
 </code></pre>
 </section>
-<section id="q1.2-using-regular-expressions" class="level4">
-<h4 class="anchored" data-anchor-id="q1.2-using-regular-expressions">Q1.2: Using Regular Expressions</h4>
-<p>Some shows belong to multiple genres which are stored in the <code>genre</code> column as comma-separated string. Use regular expressions to create a new dummy column <code>is_action</code> that is <code>1</code> if the <code>genre</code> column contains “Action” genre and 0 otherwise.</p>
+<section id="q1.2-10p" class="level4">
+<h4 class="anchored" data-anchor-id="q1.2-10p">Q1.2 (10P)</h4>
+<ol type="a">
+<li>Some shows belong to multiple genres which are stored in the <code>genre</code> column as comma-separated string. Use regular expressions to create a new dummy column <code>is_action</code> that is <code>1</code> if the <code>genre</code> column contains “Action” genre and 0 otherwise.</li>
+</ol>
 <p><strong>Solution:</strong></p>
 <pre><code>netflix_data &lt;- netflix_data %&gt;%
   mutate(is_action = ifelse(grepl("Action", genres, ignore.case = TRUE), 1, 0))
 
 table(netflix_data$is_action)</code></pre>
-</section>
-<section id="q1.3-using-regular-expressions" class="level4">
-<h4 class="anchored" data-anchor-id="q1.3-using-regular-expressions">Q1.3: Using Regular Expressions</h4>
-<p>Let’s say we want to analyze how viewership for a specific show (SHOW_10) varies across different countries over time. Subset the viewership data for this show and convert the data to wide format.</p>
+<ol start="2" type="a">
+<li>Let’s say we want to analyze how viewership for a specific show (SHOW_10) varies across different countries over time. Subset the viewership data for this show and convert the data to wide format.</li>
+</ol>
 <p><strong>Solution:</strong></p>
 <pre><code>show_10_data &lt;- netflix_data %&gt;%
   filter(show_id == "SHOW_10") %&gt;%
@@ -278,11 +280,16 @@ show_10_wide &lt;- show_10_data %&gt;%
     names_prefix = "viewership_"
   )</code></pre>
 </section>
-<section id="q1.4-estimation-and-plotting-at-scale" class="level4">
-<h4 class="anchored" data-anchor-id="q1.4-estimation-and-plotting-at-scale">Q1.4: Estimation and Plotting at Scale</h4>
-<p>Please estimate a linear regression to examine the impact of a show being listed as “Action” genre on viewership for different viewership countries. Use a for loop to estimate at scale.</p>
+<section id="q1.3-10p" class="level4">
+<h4 class="anchored" data-anchor-id="q1.3-10p">Q1.3 (10P)</h4>
+<ol type="a">
+<li><p>For one country, estimate a regression of viewership_count on a dummy variable, set to 1 if the show is listed in the “Action” genre.</p></li>
+<li><p>Then, adapt the code to run this regression for all countries using a loop, saving the results (country name, coefficient for dummy variable, p-value) in a table.</p></li>
+<li><p>Save the combined results from (b) as regression_results.csv.</p></li>
+</ol>
 <p><strong>Solution:</strong></p>
-<pre><code>library(ggplot2)
+<pre><code>library(tidyve)
+library(ggplot2)
 
 countries &lt;- unique(netflix_data$viewership_country)
 
@@ -307,15 +314,8 @@ for (country in countries) {
   data.frame(viewership_country = country, estimate = beta_1))
 }
 
-# Plot the effect sizes
-ggplot(effect_sizes, aes(x = reorder(viewership_country, estimate), 
-y = estimate, fill = estimate)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  labs(title = "Effect of Action Genre on Viewership by Country",
-       x = "Country",
-       y = "Effect Size (Coefficient of is_action)") +
-  theme_minimal()</code></pre>
+write_csv(effect_sizes, 'regression_results.csv')</code></pre>
+<p><em>Note: you can also expect similar questions where you would have to plot at scale, or use wide –&gt; long, long –&gt; wide and imputation transformations (for details, see example questions in engineering tutorial).</em></p>
 </section>
 </section>
 <section id="exemplary-questions-based-on-book-4p-on-the-exam" class="level3">
@@ -330,8 +330,8 @@ y = estimate, fill = estimate)) +
 </div>
 </div>
 </div>
-<section id="q1.5" class="level4">
-<h4 class="anchored" data-anchor-id="q1.5">Q1.5</h4>
+<section id="q1.4-4p" class="level4">
+<h4 class="anchored" data-anchor-id="q1.4-4p">Q1.4 (4P)</h4>
 <p>You are tasked with building a dataset to study the <strong>effect of advertising on customer churn</strong>. Which of the following dataset designs would best synthesize the principles described in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>One row per ad impression with variables for user ID, timestamp, and product purchased</li>
@@ -348,8 +348,8 @@ y = estimate, fill = estimate)) +
 <li>D is incorrect because region–month aggregation ignores individual-level churn dynamics.</li>
 </ul>
 </section>
-<section id="q1.6" class="level4">
-<h4 class="anchored" data-anchor-id="q1.6">Q1.6</h4>
+<section id="q1.5-4p" class="level4">
+<h4 class="anchored" data-anchor-id="q1.5-4p">Q1.5 (4P)</h4>
 <p>You discover that your marketing dataset contains missing user IDs, duplicate transactions, and inconsistent date formats. Which <strong>sequence of operations</strong> reflects a sound data engineering workflow consistent with <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>Aggregate → Merge → Reshape → Clean</li>
@@ -366,8 +366,8 @@ y = estimate, fill = estimate)) +
 <li>D reshapes before cleaning, which contradicts the principle of first ensuring validity and consistency.</li>
 </ul>
 </section>
-<section id="q1.7" class="level4">
-<h4 class="anchored" data-anchor-id="q1.7">Q1.7</h4>
+<section id="q1.6-4p" class="level4">
+<h4 class="anchored" data-anchor-id="q1.6-4p">Q1.6 (4P)</h4>
 <p>Imagine you need the same dataset for both a <strong>regression model</strong> and a <strong>marketing dashboard</strong>. How should you structure and prepare the data to meet both needs?</p>
 <ol type="A">
 <li>Store everything in long format, since models and dashboards both require this</li>
@@ -384,8 +384,8 @@ y = estimate, fill = estimate)) +
 <li>D is inefficient and risks divergence across duplicated datasets, which the book warns against.</li>
 </ul>
 </section>
-<section id="q1.8" class="level4">
-<h4 class="anchored" data-anchor-id="q1.8">Q1.8</h4>
+<section id="q1.7-4p" class="level4">
+<h4 class="anchored" data-anchor-id="q1.7-4p">Q1.7 (4P)</h4>
 <p>You are asked to recommend a <strong>data platform strategy</strong> for a firm with diverse marketing data: structured transactions, semi-structured web logs, and terabytes of ad impression data. Which option best reflects the trade-offs described in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>Use only relational databases like PostgreSQL because they enforce structure and consistency for all data types</li>
@@ -419,8 +419,8 @@ y = estimate, fill = estimate)) +
 </div>
 </div>
 </div>
-<section id="q2.1-based-on-chapter-2" class="level4">
-<h4 class="anchored" data-anchor-id="q2.1-based-on-chapter-2">Q2.1 (based on chapter 2)</h4>
+<section id="q2.1-based-on-chapter-2-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q2.1-based-on-chapter-2-3p">Q2.1 (based on chapter 2) (3P)</h4>
 <p>A student argues that every project should include <strong>Docker, CI/CD pipelines, and a cloud warehouse</strong> because “more tools always make a project better.” Based on <em>Marketing Analytics: A Modern Toolkit</em>, how should you evaluate this claim?</p>
 <ol type="A">
 <li>Agree, because advanced tools always increase efficiency regardless of project size</li>
@@ -431,8 +431,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> emphasizes that “more is not always better.” Tools like Docker and CI/CD add learning costs and maintenance overhead. They are valuable for large, long-term projects but unnecessary for small, quick tasks. A is wrong because advanced tools may reduce efficiency in small projects. B is wrong because best practices must be adapted, not applied universally. D is wrong because small projects still benefit from basics like version control and folder structure.</p>
 </section>
-<section id="q2.2-based-on-chapter-2" class="level4">
-<h4 class="anchored" data-anchor-id="q2.2-based-on-chapter-2">Q2.2 (based on chapter 2)</h4>
+<section id="q2.2-based-on-chapter-2-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q2.2-based-on-chapter-2-3p">Q2.2 (based on chapter 2) (3P)</h4>
 <p>Two thesis students disagree on environment management. One says, <em>“We don’t need renv; if a package updates, we’ll just install the new version.”</em> The other says, <em>“renv is essential, because without it our results may change unpredictably.”</em> Which evaluation best aligns with <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>The first student is right, because updating packages ensures you always use the most recent, reliable code</li>
@@ -443,8 +443,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> explains that reproducibility requires code to run the same across time and machines. Tools like renv lock package versions, avoiding “it worked then, but not now” issues. A is wrong because constant updates can break old code. B is wrong because package management is not optional for reproducibility. D is wrong because package versions directly affect whether results can be replicated.</p>
 </section>
-<section id="q2.3-based-on-chapter-2" class="level4">
-<h4 class="anchored" data-anchor-id="q2.3-based-on-chapter-2">Q2.3 (based on chapter 2)</h4>
+<section id="q2.3-based-on-chapter-2-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q2.3-based-on-chapter-2-3p">Q2.3 (based on chapter 2) (3P)</h4>
 <p>Your marketing team is debating whether to store intermediate datasets as separate files (“raw,” “data-prep,” “analysis”) or overwrite data at each step to save storage. Based on <em>Marketing Analytics: A Modern Toolkit</em>, how should you evaluate these two approaches?</p>
 <ol type="A">
 <li>Overwriting is best, since it minimizes clutter and storage costs</li>
@@ -455,8 +455,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> B is correct because <em>Marketing Analytics: A Modern Toolkit</em> recommends staged data (“raw,” “data-prep,” “analysis”) to preserve the lineage of transformations. This ensures traceability, avoids confusion about which dataset is “correct,” and supports reproducibility. A is wrong because storage is cheap compared to the cost of lost reproducibility. C is wrong because traceability is more important than minor storage concerns. D is wrong because raw sources alone don’t provide cleaned, analysis-ready data.</p>
 </section>
-<section id="q2.4-based-on-chapter-2" class="level4">
-<h4 class="anchored" data-anchor-id="q2.4-based-on-chapter-2">Q2.4 (based on chapter 2)</h4>
+<section id="q2.4-based-on-chapter-2-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q2.4-based-on-chapter-2-3p">Q2.4 (based on chapter 2) (3P)</h4>
 <p>A mid-sized marketing team is considering whether to rely on <strong>local setups</strong> or fully migrate to the <strong>cloud</strong>. Which evaluation best reflects the guidance in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>Always choose local setups, because they are simpler and cheaper</li>
@@ -467,8 +467,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> describes trade-offs between local and cloud setups. Local is suitable for small projects or learning, while cloud is better for large-scale, collaborative, or computationally heavy projects. Many teams use hybrid solutions. A is wrong because local alone cannot handle scalability. B is wrong because cloud is not always necessary or cost-effective. D is wrong because hybrid approaches are practical and often optimal.</p>
 </section>
-<section id="q2.5-based-on-chapter-5" class="level4">
-<h4 class="anchored" data-anchor-id="q2.5-based-on-chapter-5">Q2.5 (based on chapter 5)</h4>
+<section id="q2.5-based-on-chapter-5-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q2.5-based-on-chapter-5-3p">Q2.5 (based on chapter 5) (3P)</h4>
 <p>A student team insists on adopting the <strong>full Scrum framework</strong> (Product Owner, Scrum Master, daily stand-ups, retrospectives) for their two-week class project. Based on <em>Marketing Analytics: A Modern Toolkit</em>, how should you evaluate this decision?</p>
 <ol type="A">
 <li>It is the best approach, since the full Scrum framework guarantees productivity in all projects</li>
@@ -479,8 +479,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> notes that smaller analytics teams should <strong>adapt Scrum</strong> by using boards, issues, and short cycles rather than implementing every role and ceremony. A is wrong because there is no “one size fits all.” B is wrong because boards and issues can function informally. D is wrong because Scrum principles apply beyond software, including analytics.</p>
 </section>
-<section id="q2.6-based-on-chapter-5" class="level4">
-<h4 class="anchored" data-anchor-id="q2.6-based-on-chapter-5">Q2.6 (based on chapter 5)</h4>
+<section id="q2.6-based-on-chapter-5-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q2.6-based-on-chapter-5-3p">Q2.6 (based on chapter 5) (3P)</h4>
 <p>A research group wants to manage their tasks using email and chat threads, arguing that “boards and issues are too much overhead.” How should this be evaluated according to <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>It is reasonable, since lightweight tools like email are more efficient than formal boards</li>
@@ -491,8 +491,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> C is correct because the book emphasizes <strong>centralizing communication in issues and boards</strong>, ensuring transparency, traceability, and shared understanding. A is wrong because email creates fragmentation. B is wrong because scattered folder notes lack integration. D misinterprets Agile — while conversation matters, artifacts like boards are essential for documentation and accountability.</p>
 </section>
-<section id="q2.7-based-on-chapter-5" class="level4">
-<h4 class="anchored" data-anchor-id="q2.7-based-on-chapter-5">Q2.7 (based on chapter 5)</h4>
+<section id="q2.7-based-on-chapter-5-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q2.7-based-on-chapter-5-3p">Q2.7 (based on chapter 5) (3P)</h4>
 <p>A manager argues that <strong>long, open-ended work phases</strong> are better than short cycles, since they allow deeper focus without interruptions. What evaluation does <em>Marketing Analytics: A Modern Toolkit</em> suggest?</p>
 <ol type="A">
 <li>Agree, because fewer check-ins mean less wasted time on meetings</li>
@@ -503,8 +503,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> B is correct because the book highlights that <strong>short, repeating cycles</strong> (with regular check-ins and increments) prevent last-minute rushes, improve visibility, and keep teams adaptable. A is wrong because fewer meetings can create blind spots. C is wrong because analytics projects are dynamic. D is wrong because retrospectives without short cycles delay improvements.</p>
 </section>
-<section id="q2.8-based-on-chapter-5" class="level4">
-<h4 class="anchored" data-anchor-id="q2.8-based-on-chapter-5">Q2.8 (based on chapter 5)</h4>
+<section id="q2.8-based-on-chapter-5-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q2.8-based-on-chapter-5-3p">Q2.8 (based on chapter 5) (3P)</h4>
 <p>A student team designs a <strong>project board with 12 columns, dozens of labels, and complex workflows</strong>, claiming this will maximize precision. How should their setup be evaluated in light of <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>It is optimal, since detailed boards ensure no task is ever forgotten</li>
@@ -541,8 +541,8 @@ y = estimate, fill = estimate)) +
 </div>
 </div>
 </div>
-<section id="q3.1" class="level4">
-<h4 class="anchored" data-anchor-id="q3.1">Q3.1</h4>
+<section id="q3.1-24p" class="level4">
+<h4 class="anchored" data-anchor-id="q3.1-24p">Q3.1 (24P)</h4>
 <p>Please download the <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_repository.zip"><code>git_repository.zip</code></a> file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here.</p>
 <blockquote class="blockquote">
 <p>Dear (name of student),</p>
@@ -578,8 +578,8 @@ y = estimate, fill = estimate)) +
 </div>
 </div>
 </div>
-<section id="q3.2" class="level4">
-<h4 class="anchored" data-anchor-id="q3.2">Q3.2</h4>
+<section id="q3.2-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q3.2-3p">Q3.2 (3P)</h4>
 <p>A student argues that using <strong>Git locally without GitHub</strong> is sufficient for team projects, since Git already tracks the full history of changes. Based on <em>Marketing Analytics: A Modern Toolkit</em>, how should this claim be evaluated?</p>
 <ol type="A">
 <li>It is correct, because Git alone provides all the functionality teams need</li>
@@ -590,8 +590,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> B is correct because Git can indeed track history locally, but <em>Marketing Analytics: A Modern Toolkit</em> emphasizes that platforms like GitHub add collaboration features (issues, pull requests, project boards, cloud sync) that make teamwork efficient and transparent. A is incomplete, since Git alone doesn’t scale well for collaboration. C is wrong, because Git tracks history even offline. D is wrong, because GitHub is not the only option (GitLab, Bitbucket also work).</p>
 </section>
-<section id="q3.3" class="level4">
-<h4 class="anchored" data-anchor-id="q3.3">Q3.3</h4>
+<section id="q3.3-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q3.3-3p">Q3.3 (3P)</h4>
 <p>A team frequently edits files directly on the <strong>main branch</strong> because they feel branching “slows things down.” How should this practice be evaluated?</p>
 <ol type="A">
 <li>It is acceptable, because small teams don’t need branching discipline</li>
@@ -602,8 +602,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> C is correct because <em>Marketing Analytics: A Modern Toolkit</em> stresses that <strong>main must remain clean and stable</strong>. Branching isolates new work, preventing broken or experimental code from contaminating the working version. A is wrong, since even small teams benefit from branching. B is wrong because short-term speed undermines long-term stability. D is wrong because conflicts can arise in any project, regardless of size.</p>
 </section>
-<section id="q3.4" class="level4">
-<h4 class="anchored" data-anchor-id="q3.4">Q3.4</h4>
+<section id="q3.4-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q3.4-3p">Q3.4 (3P)</h4>
 <p>One teammate prefers writing commit messages like “update” or “fixed stuff,” claiming that “the details are in the code anyway.” How should this be judged according to <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>It is fine, because code itself tells the full story of changes</li>
@@ -614,8 +614,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> C is correct because the book highlights that <strong>clear, descriptive commit messages</strong> are essential for making the project history understandable for teammates and your future self. A is wrong because code diffs alone are not always clear. B is wrong because even small commits should carry meaning. D is wrong because Git does not replace commit messages with diffs automatically.</p>
 </section>
-<section id="q3.5" class="level4">
-<h4 class="anchored" data-anchor-id="q3.5">Q3.5</h4>
+<section id="q3.5-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q3.5-3p">Q3.5 (3P)</h4>
 <p>During setup, a student decides to skip configuring <strong>.gitignore</strong>, reasoning that “more files in the repository means more transparency.” How should this decision be evaluated?</p>
 <ol type="A">
 <li>It is correct, because everything should be tracked for maximum reproducibility</li>
@@ -626,8 +626,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> B is correct because <em>Marketing Analytics: A Modern Toolkit</em> stresses that <strong>.gitignore keeps repositories clean</strong>, avoiding bloat, conflicts, and accidental sharing of irrelevant or sensitive files. A is wrong, because too much tracking reduces clarity. C is wrong, since .gitignore is critical for all project sizes. D is wrong, because GitHub does not automatically filter files.</p>
 </section>
-<section id="q3.6" class="level4">
-<h4 class="anchored" data-anchor-id="q3.6">Q3.6</h4>
+<section id="q3.6-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q3.6-3p">Q3.6 (3P)</h4>
 <p>A colleague suggests skipping <strong>pulling before starting work</strong>, saying it “only matters if two people edit the same file at the same time.” How should this suggestion be evaluated?</p>
 <ol type="A">
 <li>It is harmless, because conflicts can always be resolved later</li>
@@ -656,20 +656,20 @@ y = estimate, fill = estimate)) +
 </div>
 </div>
 </div>
-<section id="q4.1" class="level4">
-<h4 class="anchored" data-anchor-id="q4.1">Q4.1</h4>
+<section id="q4.1-12p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.1-12p">Q4.1 (12P)</h4>
 <p>Imagine you have just enrolled as a thesis student, and you receive the following email from your advisor. Submit your PDF document, and provide a conclusion on the suitability of the explored data for the research question.</p>
 <blockquote class="blockquote">
 <p>Dear (name of student),</p>
 <p>I really look forward to working with you on this exciting dataset, capturing the consumption of music on Spotify. I scraped it from spotifycharts.com a while ago. Please download this <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify_data.zip"><code>spotify_data.zip</code></a>, which contains the data in a CSV file.</p>
-<p>As a starting point, please explore the data set using RMarkdown. I’d love to learn more about the data myself (haven’t looked into it yet). Can you create a plot with <code>ggplot2</code> to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption (streams)?</p>
-<p>Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to explore and do some minor data preparations and create the plot) visible so I can learn from it (and grade it!)…!</p>
+<p>Can you create a plot with <code>ggplot2</code> to shed some light on how the start of the global pandemic (let’s assume that was March 2020) affected music consumption (streams)?</p>
+<p>Please render your RMarkdown as a PDF document. Please keep any code that you’re writing (e.g., to load the data, or to generate the plot – including some minor data preparations) visible so I can learn from it (and grade it!)…!</p>
 </blockquote>
 <p><strong>Solution:</strong> Available for <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.Rmd">download as <code>Rmd</code></a> and <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_rmarkdown/spotify-solution.pdf">rendered <code>.pdf</code> - recall, you will have to submit it as a rendered PDF document!</a>.</p>
 </section>
 </section>
-<section id="exemplary-question-based-on-book-8p-on-the-exam" class="level3">
-<h3 class="anchored" data-anchor-id="exemplary-question-based-on-book-8p-on-the-exam">Exemplary question based on book (8P on the exam)</h3>
+<section id="exemplary-question-based-on-book-6p-on-the-exam" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-question-based-on-book-6p-on-the-exam">Exemplary question based on book (6P on the exam)</h3>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -680,8 +680,8 @@ y = estimate, fill = estimate)) +
 </div>
 </div>
 </div>
-<section id="q4.1-comprehension" class="level4">
-<h4 class="anchored" data-anchor-id="q4.1-comprehension">Q4.1 (Comprehension)</h4>
+<section id="q4.1-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.1-3p">Q4.1 (3P)</h4>
 <p>Which of the following best captures the distinction between <strong>reproducibility</strong> and <strong>replicability</strong> as described in <em>Marketing Analytics: A Modern Toolkit</em>?</p>
 <ol type="A">
 <li>Reproducibility checks whether insights generalize across contexts; replicability checks whether conclusions hold under alternative methods</li>
@@ -692,8 +692,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> The book defines <strong>reproducibility</strong> as rerunning the same analysis on the same data and obtaining the same results, and <strong>replicability</strong> as achieving similar results when applying the same analysis to new data.</p>
 </section>
-<section id="q4.2-comprehension" class="level4">
-<h4 class="anchored" data-anchor-id="q4.2-comprehension">Q4.2 (Comprehension)</h4>
+<section id="q4.2-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.2-3p">Q4.2 (3P)</h4>
 <p>Why does the book emphasize <strong>keeping raw data raw</strong> in marketing analytics projects?</p>
 <ol type="A">
 <li>Because raw data files are smaller than processed ones</li>
@@ -704,8 +704,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> The principle is to <strong>never overwrite raw data</strong>. An untouched version acts as a “source of truth” that analysts can always return to, protecting credibility and avoiding irreversible mistakes.</p>
 </section>
-<section id="q4.3-comprehension" class="level4">
-<h4 class="anchored" data-anchor-id="q4.3-comprehension">Q4.3 (Comprehension)</h4>
+<section id="q4.3-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.3-3p">Q4.3 (3P)</h4>
 <p>According to <em>Marketing Analytics: A Modern Toolkit</em>, what is the main risk of writing <strong>clever but dense code</strong> instead of clear code?</p>
 <ol type="A">
 <li>Clever code usually runs more slowly</li>
@@ -716,8 +716,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: D</strong></p>
 <p><strong>Explanation:</strong> The book stresses that while clever code may be fun, clarity is more valuable. Code that is easy to read and understand supports collaboration, long-term maintenance, and reproducibility.</p>
 </section>
-<section id="q4.4-comprehension" class="level4">
-<h4 class="anchored" data-anchor-id="q4.4-comprehension">Q4.4 (Comprehension)</h4>
+<section id="q4.4-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.4-3p">Q4.4 (3P)</h4>
 <p>Why are <strong>scripts, R Markdown, and Quarto</strong> considered essential formats for saving code, not just results?</p>
 <ol type="A">
 <li>Because they automatically detect and remove coding errors</li>
@@ -728,8 +728,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> The book emphasizes that these formats allow analysts to <strong>regenerate results</strong> and update analyses with new data, ensuring that outputs are not isolated artifacts but linked to the underlying code and process.</p>
 </section>
-<section id="q4.5-application" class="level4">
-<h4 class="anchored" data-anchor-id="q4.5-application">Q4.5 (Application)</h4>
+<section id="q4.5-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.5-3p">Q4.5 (3P)</h4>
 <p>You are analyzing campaign response data and decide to immediately implement a <strong>complex deep learning model</strong>. The model takes days to tune and performs poorly. Based on the principles in <em>Marketing Analytics: A Modern Toolkit</em>, what should you have done first?</p>
 <ol type="A">
 <li>Used conditionals to automatically rerun the model until accuracy improved</li>
@@ -740,8 +740,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> The principle “<strong>Start simple, then improve</strong>” reminds analysts to begin with straightforward, interpretable solutions before experimenting with more complex methods. This ensures clarity, reliability, and efficiency.</p>
 </section>
-<section id="q4.6-application" class="level4">
-<h4 class="anchored" data-anchor-id="q4.6-application">Q4.6 (Application)</h4>
+<section id="q4.6-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.6-3p">Q4.6 (3P)</h4>
 <p>A student receives new customer transaction logs and edits them directly in Excel, overwriting the original file. Later, errors appear and no one can trace the source. How should the student have applied programming principles?</p>
 <ol type="A">
 <li>By saving results only in final plots and tables</li>
@@ -752,8 +752,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> The book’s principle “<strong>Keep raw data raw</strong>” means storing untouched source files and carrying out all cleaning programmatically, so the analysis can be reproduced and mistakes traced back.</p>
 </section>
-<section id="q4.7-application" class="level4">
-<h4 class="anchored" data-anchor-id="q4.7-application">Q4.7 (Application)</h4>
+<section id="q4.7-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.7-3p">Q4.7 (3P)</h4>
 <p>While building a churn model for five countries, a student copy-pastes the same block of code five times, changing only the country name. Which programming concept should they apply instead?</p>
 <ol type="A">
 <li>Data frames</li>
@@ -764,8 +764,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> The book explains that <strong>loops</strong> eliminate repetitive copy-paste coding by automating tasks across multiple elements (e.g., countries). This makes workflows scalable, clear, and less error-prone.</p>
 </section>
-<section id="q4.8-application" class="level4">
-<h4 class="anchored" data-anchor-id="q4.8-application">Q4.8 (Application)</h4>
+<section id="q4.8-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q4.8-3p">Q4.8 (3P)</h4>
 <p>Two analysts collaborate on a project. One uses filenames like <code>final2.csv</code> and <code>newfinal_last.csv</code>, while the other organizes files into <code>data/raw/</code>, <code>data/data-prep/</code>, and <code>data/analysis/</code>. According to the principles in <em>Marketing Analytics: A Modern Toolkit</em>, which approach is preferable and why?</p>
 <ol type="A">
 <li>The first, because ad-hoc naming saves time during analysis</li>
@@ -781,6 +781,8 @@ y = estimate, fill = estimate)) +
 <section id="learning-goal-5" class="level2">
 <h2 class="anchored" data-anchor-id="learning-goal-5">Learning Goal 5</h2>
 <p><em>Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines</em></p>
+<section id="exemplary-question-based-on-tutorial-24p" class="level3">
+<h3 class="anchored" data-anchor-id="exemplary-question-based-on-tutorial-24p">Exemplary question based on tutorial (24P)</h3>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -802,10 +804,8 @@ y = estimate, fill = estimate)) +
 </div>
 </div>
 </div>
-<section id="exemplary-question-based-on-tutorial-24p" class="level3">
-<h3 class="anchored" data-anchor-id="exemplary-question-based-on-tutorial-24p">Exemplary question based on tutorial (24P)</h3>
-<section id="q5.1" class="level4">
-<h4 class="anchored" data-anchor-id="q5.1">Q5.1</h4>
+<section id="q5.1-24p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.1-24p">Q5.1 (24P)</h4>
 <p>Please <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_make/practice_workflow.zip">download and unzip the research pipeline</a> of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading.</p>
 <p>Q5.1a) Please run make as is. Then, fix any errors that prevents make from knowing it is “up-to-date” (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).</p>
 <p>Q5.1b) The make pipeline is not properly configured (i.e., one call to all scripts, rather than subsequent “built recipes” that tie all source code files together). Please fix the makefile such that the entire project is being built and that all dependencies are correctly defined. (10P)</p>
@@ -855,8 +855,8 @@ y = estimate, fill = estimate)) +
 </div>
 </div>
 </div>
-<section id="q5.2-chapter-3" class="level4">
-<h4 class="anchored" data-anchor-id="q5.2-chapter-3">Q5.2 (chapter 3)</h4>
+<section id="q5.2-chapter-3-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.2-chapter-3-3p">Q5.2 (chapter 3) (3P)</h4>
 <p>A team insists on keeping <strong>every single version</strong> of their 500 GB dataset after each cleaning step. As an advisor, how should you evaluate this practice?</p>
 <ol type="A">
 <li>It is best practice because reproducibility requires storing every version of data</li>
@@ -867,8 +867,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> The book stresses that reproducibility does <strong>not</strong> require saving every intermediate dataset. Instead, storing <strong>raw data</strong> and <strong>source code</strong> is sufficient, since generated files can be recreated. This avoids massive storage waste while preserving reproducibility.</p>
 </section>
-<section id="q5.3-chapter-3" class="level4">
-<h4 class="anchored" data-anchor-id="q5.3-chapter-3">Q5.3 (chapter 3)</h4>
+<section id="q5.3-chapter-3-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.3-chapter-3-3p">Q5.3 (chapter 3) (3P)</h4>
 <p>Suppose a student pipeline skips the <strong>data exploration</strong> stage and goes straight into preparation and analysis. How would you evaluate the credibility of their results?</p>
 <ol type="A">
 <li>Strong, because skipping exploration accelerates analysis</li>
@@ -879,8 +879,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> According to the book, exploration is critical for credibility. Without it, analysts risk basing analyses on flawed assumptions (e.g., unnoticed outliers, missing values). Exploration builds trust in later steps.</p>
 </section>
-<section id="q5.4-chapter-3" class="level4">
-<h4 class="anchored" data-anchor-id="q5.4-chapter-3">Q5.4 (chapter 3)</h4>
+<section id="q5.4-chapter-3-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.4-chapter-3-3p">Q5.4 (chapter 3) (3P)</h4>
 <p>A firm decides to deploy its results <strong>only as static reports</strong> (e.g., PDFs) rather than dashboards or reusable code. How would you assess this decision from a pipeline perspective?</p>
 <ol type="A">
 <li>Adequate, since static reports are reproducible and require no extra infrastructure</li>
@@ -891,8 +891,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> The book notes that <strong>deployment is about impact</strong>. While reports may be fine in some contexts, limiting outputs to static formats prevents managers or collaborators from exploring or reusing results. Pipelines should deliver results in <strong>formats that maximize usefulness.</strong></p>
 </section>
-<section id="q5.5-chapter-3" class="level4">
-<h4 class="anchored" data-anchor-id="q5.5-chapter-3">Q5.5 (chapter 3)</h4>
+<section id="q5.5-chapter-3-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.5-chapter-3-3p">Q5.5 (chapter 3) (3P)</h4>
 <p>Two teams take different approaches:</p>
 <ul>
 <li>Team A treats <strong>generated files</strong> (clean datasets, figures) as permanent, storing all versions.</li>
@@ -908,8 +908,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> The book highlights that generated files are <strong>recreatable artifacts</strong>, so they do not need to be stored permanently. This separation of raw data, source code, and generated files keeps projects tidy and reproducible without unnecessary storage costs.</p>
 </section>
-<section id="q5.6-chapter-3" class="level4">
-<h4 class="anchored" data-anchor-id="q5.6-chapter-3">Q5.6 (chapter 3)</h4>
+<section id="q5.6-chapter-3-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.6-chapter-3-3p">Q5.6 (chapter 3) (3P)</h4>
 <p>When evaluating a marketing analytics pipeline, which of the following omissions would <strong>most seriously undermine transparency and auditing</strong>?</p>
 <ol type="A">
 <li>Failing to use .gitignore to filter out temporary files</li>
@@ -920,8 +920,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> While deployment and file management matter, the <strong>ability to audit and understand the code’s evolution</strong> depends critically on version control with meaningful commit messages. Without this, tracing errors or decisions becomes nearly impossible, undermining transparency.</p>
 </section>
-<section id="q5.7-chapter-8" class="level4">
-<h4 class="anchored" data-anchor-id="q5.7-chapter-8">Q5.7 (chapter 8)</h4>
+<section id="q5.7-chapter-8-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.7-chapter-8-3p">Q5.7 (chapter 8) (3P)</h4>
 <p>A student prefers to run each script manually in sequence instead of setting up automation rules. From an evaluation standpoint, what is the main drawback of this approach?</p>
 <ol type="A">
 <li>It is slower but equally reproducible as automation</li>
@@ -932,8 +932,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> Manual execution makes projects <strong>error-prone</strong> and <strong>inefficient</strong>, since people must remember the correct order of scripts. Automation formalizes dependencies and ensures only necessary steps are re-run, improving reproducibility and efficiency.</p>
 </section>
-<section id="q5.8-chapter-8" class="level4">
-<h4 class="anchored" data-anchor-id="q5.8-chapter-8">Q5.8 (chapter 8)</h4>
+<section id="q5.8-chapter-8-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.8-chapter-8-3p">Q5.8 (chapter 8) (3P)</h4>
 <p>A company maintains a monolithic script that cleans, merges, analyzes, and reports results all at once. How would you evaluate this practice in light of automation principles?</p>
 <ol type="A">
 <li>Positive, because fewer scripts mean fewer moving parts</li>
@@ -944,8 +944,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: C</strong></p>
 <p><strong>Explanation:</strong> The book recommends “<strong>one script, one transformation</strong>.” Monolithic scripts reduce transparency and make automation inefficient. Modular scripts, by contrast, enable pipelines to re-run only the parts that changed.</p>
 </section>
-<section id="q5.9-chapter-8" class="level4">
-<h4 class="anchored" data-anchor-id="q5.9-chapter-8">Q5.9 (chapter 8)</h4>
+<section id="q5.9-chapter-8-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.9-chapter-8-3p">Q5.9 (chapter 8) (3P)</h4>
 <p>Your team has limited server storage. One proposal is to store <strong>all generated files permanently</strong> to avoid rerunning code. How should you evaluate this?</p>
 <ol type="A">
 <li>Correct, since generated files are the most important artifacts</li>
@@ -956,8 +956,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> Generated files are <strong>outputs, not primary sources</strong>. The book stresses that reproducibility requires raw data + source code. Keeping every generated file wastes storage and undermines scalability.</p>
 </section>
-<section id="q5.10-chapter-8" class="level4">
-<h4 class="anchored" data-anchor-id="q5.10-chapter-8">Q5.10 (chapter 8)</h4>
+<section id="q5.10-chapter-8-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.10-chapter-8-3p">Q5.10 (chapter 8) (3P)</h4>
 <p>Two teams build pipelines differently:</p>
 <ul>
 <li>Team A uses absolute file paths (e.g., <code>C:/Users/Anna/data/file.csv</code>).</li>
@@ -973,8 +973,8 @@ y = estimate, fill = estimate)) +
 <p><strong>Correct Answer: B</strong></p>
 <p><strong>Explanation:</strong> Portability is key. Relative paths allow pipelines to run on different machines or servers without modification. Absolute paths lock the project to one setup, which undermines collaboration and reproducibility.</p>
 </section>
-<section id="q5.11-chapter-8" class="level4">
-<h4 class="anchored" data-anchor-id="q5.11-chapter-8">Q5.11 (chapter 8)</h4>
+<section id="q5.11-chapter-8-3p" class="level4">
+<h4 class="anchored" data-anchor-id="q5.11-chapter-8-3p">Q5.11 (chapter 8) (3P)</h4>
 <p>A marketing analytics team considers whether to adopt <strong>workflow managers, Docker, and CI/CD</strong>. Which of the following best evaluates the combined value of these tools?</p>
 <ol type="A">
 <li>They overlap in functionality, so using all three adds redundancy</li>
@@ -995,6 +995,14 @@ y = estimate, fill = estimate)) +
 <h2 class="anchored" data-anchor-id="cheatsheets">Cheatsheets</h2>
 <p>Students will have access to <strong>official cheatsheets</strong> during the exam. These cover the main tools used in this course—<strong>R</strong>, <strong>make</strong>, and <strong>Git</strong>—and are the same ones provided throughout the tutorials. Cheatsheets from previous years can already be downloaded <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.zip">here</a>. Ahead of the exam, there will be a short Q&amp;A session where you can suggest additional cheat sheet ideas to the instructor; the final set of official cheatsheets will then be compiled and published.</p>
 <p>In addition, the class will have the opportunity to prepare <strong>one collective cheatsheet</strong>. This is typically best drafted in Google Docs, so all students can contribute ideas. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.</p>
+<ul>
+<li><strong>Collective Cheatsheet Details</strong>:
+<ul>
+<li><a href="https://docs.google.com/document/d/1ufyP0bcndNBltN6efJ87HdI0nthpgMQVSS-Flyr-zpU/edit?usp=sharing">Link to the document</a></li>
+<li><strong>Deadline to make your changes</strong>: 10 October 2025, 1pm.</li>
+<li>The instructor will review the document, make changes where required, and add it to the Cheatsheets.</li>
+</ul></li>
+</ul>
 </section>
 <section id="ideas-for-developing-your-proficiency" class="level2">
 <h2 class="anchored" data-anchor-id="ideas-for-developing-your-proficiency">Ideas for developing your proficiency</h2>

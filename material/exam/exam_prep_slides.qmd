@@ -43,13 +43,13 @@ format:
 
 ## Overview of Questions
 
-| LG                          | QT          | Tutorial  | Book |
-|-----------------------------|-------------|--------|-------|
-| R for data cleaning     | Synthesis   | 20P          | 4P (1Q)  |
-| GitHub for project mgmt | Evaluation  | -            | 12P (4Q) |
-| Git/GitHub for versioning| Appl. & Eval.| 24P          | 12P (4Q) |
-| R for automatic reports | Comp. & Appl.| 12P          | 6P (2Q)|
-| Workflow Mgmt Tools      | Appl. & Eval.| 24P          | 6P (2Q)  |
+| LG                          | Tutorial  | Book |
+|-----------------------------|--------|-------|
+| Use R for data cleaning     | 2x 10P          | 4P (1Q), ch. 7  |
+| Use GitHub for project mgmt | -            | 12P (4Q), ch. 2, 5 |
+| Use Git/GitHub for versioning| 24P          | 12P (4Q), ch. 6 |
+| Use R for automatic reports | 12P          | 6P (2Q), ch. 4 |
+| Use Workflow Mgmt Tools      | 24P          | 6P (2Q), ch. 3, 8 |
 
 # Preparing for the Exam
 
@@ -112,8 +112,11 @@ see PDF file posted on Canvas
 
 Above all, see this exam preparation *not* just as exam study, but as a way to strengthen and share your skills.
 
+## Remaining questions?
+
 ## Next steps
 
+- Course evaluation
 - Closing lecture next week
 - Final coaching session (Roshini)
 <br>
