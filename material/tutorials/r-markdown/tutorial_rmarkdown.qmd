@@ -91,7 +91,9 @@ editor: visual
 
 ## What can you visualize with ggplot?
 
+<!--
 ![](ggplot_example.png)
+-->
 
 ## Why visualize?
 

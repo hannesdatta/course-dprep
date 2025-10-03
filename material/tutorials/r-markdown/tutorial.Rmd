@@ -1,6 +1,6 @@
 ---
 title: "Data exploration with RMarkdown and ggplot2 (dPrep)"
-date: "Last updated: 25 August 2025"
+date: "Last updated: 25 August 2025 (+ minor bug fixes, 3 October 2025)"
 output:  
   webexercises::webexercises_default:
     theme: flatly  # Use a modern Bootstrap theme (e.g., cosmo, yeti, flatly)
