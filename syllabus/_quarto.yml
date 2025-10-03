@@ -11,14 +11,14 @@ book:
     - chatbot.qmd
     - part: "Weekly modules"
       chapters:
-      - week0-prep.qmd
-      - week1-r.qmd
-      - week2.qmd
-      - week3.qmd
-      - week4.qmd
-      - week5.qmd
-      - week6.qmd
-      - week7.qmd
+      - weeks/week0.qmd
+      - weeks/week1.qmd
+      - weeks/week2.qmd
+      - weeks/week3.qmd
+      - weeks/week4.qmd
+      - weeks/week5.qmd
+      - weeks/week6.qmd
+      - weeks/week7.qmd
     - part: "Team project"
       chapters:
       - project/index.qmd

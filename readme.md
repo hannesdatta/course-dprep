@@ -8,23 +8,6 @@ This repository hosts all educational materials (e.g., syllabus, tutorials, acco
 
 ## Using this repository
 
-### Overview
-
 This repository hosts the source code of the website and all educational material (e.g., tutorials), which you are invited to contribute to.
 
 New to Git and Markdown? Then view https://tilburgsciencehub.com to learn how.
-
-### Contributing to the Course
-
-#### Getting Started
-
-- Please install Git
-- Please install Hugo
-- Please fork this site to your account, and clone it to your local disk
-- Start up the webserver by typing `hugo server`
-- Not sure what to contribute? Head over to the issues page on GitHub to see what are good issues to address. Of course, you're welcome to suggest your own changes.
-- Make your changes in new branches, and issue a PR.
-
-#### Development Roadmap
-
-To contribute to the development of this course, please [view our product roadmap here](https://github.com/hannesdatta/course-dprep/milestones?direction=asc&sort=title&state=open)

@@ -43,12 +43,12 @@ format:
     number-depth: 2
     #split-level: 2   # split TOC by heading depth
     code-fold: show
-  pdf:
-    toc: true
-    number-sections: true
-    toc-depth: 2
-    number-depth: 2
-    mermaid: false
+#  pdf:
+#    toc: true
+#    number-sections: true
+#    toc-depth: 2
+#    number-depth: 2
+#    mermaid: false
     
 bibliography: references.bib
 csl: apa.csl
