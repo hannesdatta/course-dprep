@@ -1,0 +1,251 @@
+---
+title: "Course Summary (week 7)"
+subtitle: "Data Preparation and Programming Skills (2025/2026)"
+author: "Hannes Datta"
+date: "last-modified"
+format: 
+    beamer:
+      theme: metropolis
+      colortheme: seahorse
+      linkcolor: blue
+
+---
+
+## Welcome to the final lecture in dPrep!
+
+- __Exam prep:__ If you haven't been present in the Q&A on Friday, please watch the recording and review the elaborate exam information shared last week (--> Canvas).
+- __Course evaluation:__ Now live at [https://app.evalytics.nl](https://app.evalytics.nl). Please voice your opinions!
+
+---
+
+## Agenda
+
+- Course summary
+- From here onwards
+  - During your studies
+  - After your studies
+- Course evaluation
+- Exam preparation
+- Remaining questions / Q&A
+
+---
+
+## Course framework
+
+![Course framework](dprep_framework.png)
+
+---
+
+## Positioning in the study program
+
+![Positioning](dprep_positioning.png)
+
+---
+
+## Lessons learnt #1: Versioning and Project Management with Git(Hub) (I)
+
+::: incremental
+- Scrum & the project board as a way to collaborate with one another
+  - Writing issues is hard (!)
+  - Seems to put a lot of structure on stuff, did it work out?
+  - Recall how to work together -- team <-> individual
+- Versioning can be powerful!
+  - `git log` to see recent commits
+  - Delete stuff that isn't needed ("housekeeping"), roll back when you want (`git checkout COMMITID -b branch`)
+  - Oh no, not authenticated! (browser authentication works best)
+  - Oh no! Can't push! (pull first!)
+  - Use GUIs (e.g., in R or VS Code), complemented with Git Bash
+:::
+
+---
+
+## Lessons learnt #1: Versioning and Project Management with Git(Hub) (II)
+
+::: incremental
+- Ready to use Git/versioning in a business setting
+  - Clone repositories, switch branches (`git switch BRANCHNAME` or `git checkout BRANCHNAME`)
+  - Know what to version, and what not
+  - Use `.gitignore` (and know what it CANNOT do)
+  - Work together using issues, feature branches & pull requests (PRs)/merge requests
+- Collaborate on open source projects
+  - You know what forks are!
+  - You may even actually contributed to public projects!
+:::
+
+---
+
+## Lessons learnt #2: Data Exploration
+
+::: incremental
+- RMarkdown! (mixing code with reporting)
+  - Ability to quickly produce clean documents to share!
+  - Uh... but how to run it with make? (tip: `R -e 'rmarkdown::render(input = "test_render.Rmd", output_file = "test_render.html")'`)
+  - __Verify you can render markdown documents to HTML and PDF!__
+- Doing data quality checks?
+  - Getting back to your data supplier if needed!
+  - Reporting summary statistics (`summary`, `table`, `dplyr` for summary stats by group)
+  - Plotting with `ggplot2`
+- Use RMarkdown when it is *useful* (i.e., to produce a doc, slides; NOT for data cleaning)
+:::
+
+---
+
+## Lessons learnt #3: Data Engineering
+
+::: incremental
+- Why do we actually *have* to clean up data?!
+  - Read in book or watch a summary: [https://youtu.be/z_Hh1jlL1Ac](https://youtu.be/z_Hh1jlL1Ac)
+- Data prep code can be complex
+  - So... use cheatsheets (also for the exam!)
+  - Know & apply common data operations (what are those?)
+- Make setup-ITO blocks
+  - Setup to load libraries, __then__ input, transformation, output!
+  - Super crucial for `make`, too! (know why?)
+- Modularize code, loop, and use functions
+:::
+
+---
+
+## Lessons learnt #4: Pipeline building and automation
+
+::: incremental
+- Clarity about *where* to store stuff
+  - Review! (components - `src`, `gen`, `data`; modules - e.g., `analysis`, `data-prep`, ...)
+- Run the work others have done
+  - My work, your work, somebody else's work
+- Discover mistakes in code
+  - E.g., packages that weren't loaded, order of cells/code
+- Save time!
+  - But, yeah, NOT at the beginning when you still learn
+- Continuously improve documentation & code
+:::
+
+---
+
+## Common mistakes with `make`
+
+- Wrong: One "all" rule with all targets as prerequisites (correct: final products/files to be built)
+- Wrong: Incomplete dependencies (correct: all input files + own source code per recipe)
+- Wrong: Multiple Rscript execution commands per recipe (correct: write separate rules)
+- Gradually build your makefile. __Go in baby steps!__
+- Happy to take a look at your repositories now - anyone?
+
+---
+
+## Any other questions about your projects?
+
+__We can address them now!__
+
+---
+
+## Reflection about the course
+
+- It's amazing to see you learn & grow!
+  - Responded very well to overhauled engineering tutorial :)
+  - Can talk to you as "members of my own development team"!
+  - Many started R from scratch; some could program but still were challenged with make and GitHub!
+- We've seen a lot: different projects, data sets, tools, "way of doing things", way of coding, videos, websites
+
+---
+
+## My recommendation
+
+__Take time to let it sink in.__ And trust in my choice of teaching you this. __Your hard work will pay off.__
+
+---
+
+## Looking ahead: During your studies (I)
+
+::: incremental
+- __Selectively__ implement across classes or projects
+  - E.g., some projects just benefit from better directory structure, while others may need "more"
+  - Risk of "losing" the skill (!)
+- Realize it takes time to learn (and debug!)
+  - It took me years to become proficient
+  - Onboard team members to "your" way of working
+:::
+
+---
+
+## Looking ahead: During your studies (II)
+
+::: incremental
+- Use for thesis!
+  - But, be aware your skills are *so* fresh, your professor likely has never heard about it! --> use, teach, show how productive you are!
+- Build your job market profile
+  - Have a compelling about page on GitHub
+  - "Pin" your best repositories (but don't call them `dprep-team-X`; remember)
+- Become part of the community at Tilburg, e.g., [tilburg.ai](https://tilburg.ai) or [Tilburg Science Hub](https://tilburgsciencehub.com)
+:::
+
+
+## Looking ahead: After your studies
+
+::: incremental
+- Automate stuff, save time for the things you love!
+- Write packages (e.g., recently seen internal AirBnB and Walmart packages)
+- Be confident - and keep on learning (e.g., [Tilburg Science Hub](https://tilburgsciencehub.com), [Datacamp](https://datacamp.com), [Data carpentry](https://datacarpentry.org), [software carpentry](https://softwarecarpentry.org), [The Turing Way](https://the-turing-way.netlify.app/welcome))
+:::
+
+---
+
+## Next steps: Submissions and preparing for the exam
+
+- Deadline for project coming up next week!
+  - Remember: __test it__ on different computers and operating systems
+  - __Do not use__ absolute paths!
+  - Verify data can be downloaded smoothly
+  - Test `make` thoroughly
+  - Avoid testing any statistical assumptions - this is about a running workflow, not about research methods!
+
+---
+
+## Exam 
+
+- Re-watch my recording from Friday (Q&A)
+- Work through example questions (posted on Canvas)
+- Work on shared cheat sheet
+
+---
+
+## Next steps: Official course evaluation
+
+- Course evaluation has been immensely important to this course
+  - This semester: wrote a book :-) (how did you like it?!)
+  - Last semester: overhauled all tutorials (e.g., `ggplot2` in week 2, advanced engineering in week 4)
+  - Previous years: switched order of sessions, revised GitHub tutorial/onboarding, new data sets, coaching sessions with breakout groups on campus and online
+
+- Course evaluation has been critical to my career
+  - Without my past evaluations, I wouldn't be teaching to you today
+  - I will look at all comments. Based on student feedback, we now have Q&A for setups & additional Q&As towards the end of the course.
+  - __Scores are most important to show importance of this course__
+
+---
+
+## Next steps: Self- and peer assessment
+
+- You will be invited via e-mail
+- To be filled in using Google Forms
+
+---
+
+## Informal feedback
+
+::: incremental
+- How was this course for beginners? 
+- How did you like the book? Helpful? Daunting?
+- Tutorials: easy/hard? pre-recorded vs. not?
+- Coaching sessions? Got your fair share of comments?
+- __What's are three things you'd like me to change in this course?__
+
+:::
+
+---
+
+## Stay in touch!
+
+- Stay in touch
+  - [LinkedIn](https://www.linkedin.com/in/hannes-datta/), [YouTube](https://www.youtube.com/c/hannesdatta)
+  - WhatsApp! +31 13 466 8938
+- Watch out for exiting (TikTok!) master thesis topics (contact Javier about it!).
+- And, finally... __show to the world how awesome your new skills are!__
