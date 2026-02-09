@@ -260,6 +260,7 @@ Open a terminal (Mac) or Git Bash (Windows).
 Navigate to the folder `version-control-exercises`.
 
 Use commands like:
+
 - `cd <folder>`
 - `cd ..`
 - `ls` (Mac/Linux) or `dir` (Windows)
