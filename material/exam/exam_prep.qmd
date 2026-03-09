@@ -2,7 +2,7 @@
 title: "Exam Preparation"
 subtitle: "Data Preparation & Programming Skills (328059-M-6)"
 author: "Hannes Datta"
-date: 2025-09-28
+date: 2026-03-09
 format:
   pdf:
     code-overflow: wrap   # or scroll (wrap works better in PDF)
@@ -18,18 +18,15 @@ format:
 
 # Introduction
 
-*originally published on 26 September; updated on 28 September, slightly rewriting questions in line with the actual exam & adding the number of points per question)*
 
 ## Overview
 
-The exam for this course is a **120-minute on-campus computer exam** (course code 328059-M-6), taken in [TestVision](https://TilburgU.testvision.nl/online/kandidaten). It is a __closed-book exam with no internet access__, though students may download selected cheat sheets from the exam’s introduction page. 
-
-Students taking the discontinued 3 ECTS version should prepare using the exam material from the previous semester.
+The exam for this course is a **120-minute on-campus computer exam** (course code 328059-M-6), taken in [TestVision](https://TilburgU.testvision.nl/online/kandidaten). It is a __closed-book exam without internet access__, though students may download selected cheat sheets from the exam’s introduction page. 
 
 Key points to keep in mind:
 
 * four exam dates are offered each academic year, of which students may take part in at most two.
-* only the official exam “cheatsheets” are permitted; no other resources or communication tools are allowed.
+* only the official exam cheatsheets are permitted; no other resources or communication tools are allowed.
 * communication with others about the exam is strictly forbidden.
 * do not include your name or student number in submitted files unless explicitly asked, to ensure anonymous grading.
 
@@ -79,10 +76,10 @@ This section provides example questions, organized by the learning goals of the 
 This question will always ask you to download data sets stored in a zipped `.RData` file, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments starting with #).
 :::
 
-Please download the [`netflix_data`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip) file, containing an `.RData` environment that itself contains R objects (datasets). 
-To receive points on this question, please create and upload one R file (.R) that performs the task as requested.
+Please download the [`netflix_data`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip) file, containing an `.RData` environment that itself contains R objects (datasets). To receive points on this question, please create and upload one R file (.R) that performs the task as requested.
 
 Important:
+
 - Load the data using: load("name_of_the_file.RData") # use the correct file name as per your download
 - Apply the Setup – Input – Transform – Output (S-I-T-O) principles used in class.
 - Submit your work as a clean .R script (NOT RMarkdown). Ensure the code runs top to bottom.
@@ -898,23 +895,32 @@ This section provides information that will help you prepare well for the exam.
 
 ## Cheatsheets
 
-Students will have access to **official cheatsheets** during the exam. These cover the main tools used in this course—**R**, **make**, and **Git**—and are the same ones provided throughout the tutorials. Cheatsheets from previous years can already be downloaded [here](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.zip). Ahead of the exam, there will be a short Q&A session where you can suggest additional cheat sheet ideas to the instructor; the final set of official cheatsheets will then be compiled and published.
+Students will have access to **cheatsheets** during the exam, consisting of official cheatsheets used throughout the course (e.g., on Base R, on ``ggplot`), and one collective cheatsheet created by students.
 
-In addition, the class will have the opportunity to prepare **one collective cheatsheet**. This is typically best drafted in Google Docs, so all students can contribute ideas. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.
+### Official cheatsheets used throughout the course
 
-- **Collective Cheatsheet Details**:
-  - [Link to the document](https://docs.google.com/document/d/1ufyP0bcndNBltN6efJ87HdI0nthpgMQVSS-Flyr-zpU/edit?usp=sharing)
-  - **Deadline to make your changes**: 10 October 2025, 1pm.
-  - The instructor will review the document, make changes where required, and add it to the Cheatsheets.
+The official cheatsheets used throughout the course cover the main tools -- **R**, **make**, and **Git**. Cheatsheets from previous years can already be downloaded [here](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.zip). Ahead of the exam, there will be a short Q&A session where you can suggest additional cheat sheet ideas to the instructor; the final set of official cheatsheets will then be compiled and published.
+
+### Collective cheatsheet
+
+Students are advised to prepare one **collective cheatsheet** in Google Docs. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.
+
+- [Link to Google Docs](https://docs.google.com/document/d/1nLEkypEmP3dTkljidmAiGmHptm0Bfe44LnwaYUnkdnU/edit?usp=sharing) (please use your Tilburg University email address to log in)
+- Page limit: 50 pages
+- Deadline to make your changes: 25 March 2026, 10am
+
+::: callout
+The instructor will review the document, make changes where required, and add it to the Cheatsheets.
+:::
 
 ## Ideas for developing your proficiency
 
--   Please work through the example questions and tutorials. While this has been difficult when you did it for the first time, can you do it on your own now?
--   Share with each other the (public) links to your teams' GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
-    - Can you run the workflows of others?
-    - If make does not work - try to fix the makefiles!
-    - Work on the project of others (e.g., by creating a new feature branch, improving code, committing to your fork, and making a PR) - "receiving teams": revise the work of others and integrate the PRs.
-    - Add "deployment" steps in your forks, e.g., by adding an app to somebody's regression, or adding a regression to somebody's app
+- Please work through the example questions and tutorials. While this has been difficult when you did it for the first time, can you do it on your own now?
+- Share with each other the (public) links to your teams' GitHub repositories. Fork them, clone them to your computers, and then try to run them using `make` (and reading the readme).
+  - Can you run the workflows of others?
+  - If make does not work - try to fix the makefiles!
+  - Work on the project of others (e.g., by creating a new feature branch, improving code, committing to your fork, and making a PR) - "receiving teams": revise the work of others and integrate the PRs.
+  - Add "deployment" steps in your forks, e.g., by adding an app to somebody's regression, or adding a regression to somebody's app
 -   Create your own, end-to-end GitHub workflow using the publicly available AirBnB data that teams could use for their projects. Fork that repository and collaboratively work on it with everyone!
 
 Above all, see this exam preparation *not* as a way to merely study for the exam, but as a way to further develop and make more accessible your existing skill set.

@@ -16,30 +16,27 @@ format:
 
 1. Exam setup
 2. Example questions
-3. Q&A
+3. Q&A & reflection
 
 ## Exam Setup
 
-- 120-minute on-campus computer exam (328059-M-6; 180 minutes for 328059-M-3)
+- 120-minute on-campus computer exam (328059-M-6; any students taking the resit for 328059-M-3, 180 minutes?)
+  - Mix of open and closed questions (e.g., multiple-choice, ranking (e.g., from low to high, high to low), matching items)
+  - 120 points total (~1 point per minute), 18 questions
 - Closed-book exam
   - no internet access
   - cheat sheets allowed (details will follow)
 - Four exam dates per academic year in block 1 & block 3 (max two attempts per academic year)
 
-## Exam Format
+## Cognitive skills assessed on the exam
 
-- **Mix of open and closed questions** (e.g., multiple-choice, ranking (e.g., from low to high, high to low), matching items)
-- **120 points total** (~1 point per minute), 18 questions
-- **Questions aligned with learning goals** (tutorials + [dPrep book](https://dprep-book.hannesdatta.com))
-- **Cognitive skills assessed**: Comprehension, Application, Analysis, Synthesis, Evaluation
-
-## Bloom’s Taxonomy of Learning Objectives
-
-- **Comprehension**: Recall key concepts and demonstrate understanding
-- **Application**: Use techniques to solve new problems
-- **Analysis**: Break down and solve complex tasks (e.g., using datasets, workflows)
-- **Evaluation**: Critically judge suitability of approaches or compare solutions
-- **Synthesis**: Combine elements (data, code, interpretation) into coherent results
+- Questions aligned with learning goals (tutorials + [dPrep book](https://dprep-book.hannesdatta.com))
+- Bloom’s Taxonomy of Learning Objectives
+  - Comprehension: Recall key concepts and demonstrate understanding
+  - Application: Use techniques to solve new problems
+  - Analysis: Break down and solve complex tasks (e.g., using datasets, workflows)
+  - Evaluation: Critically judge suitability of approaches or compare solutions
+  - Synthesis: Combine elements (data, code, interpretation) into coherent results
 
 ## Overview of Questions
 
@@ -53,46 +50,48 @@ format:
 
 # Preparing for the Exam
 
+## Technical Tips
+
+- **Be familiar with your exam environment**:
+  - Practice using **Windows**, RStudio, and the command prompt (__not__ PowerShell; ideally Anaconda Prompt, sometimes GitBash).
+- **Know how to manage files and directories**:
+  - Organize files by question in local folders (e.g., `C:\Users\<YOUR-U-NUMBER>\Downloads`).
+  - Know how to load `.RData` files (`load('downloaded_data.RData')`).
+  - Zip entire Git repositories before uploading.
+- **Make sure to know the basics of code management**:
+  - Set working directories in RStudio via `Session → Set Working Directory → To Source File Location`.
+  - Revise code for clean (top-down!) execution. No useless code.
+
 ## Familiarize yourself with TestVision
 
-- Take the **technical practice exam** (access via [https://tiu.nu/testvision](https://tiu.nu/testvision))
+- Know how to work with [TestVision](https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision)
   - learn how to upload & download files
   - understand how to unzip repositories, and rezip them for file submission
   - see how to fill in answers into text boxes and view the word count
   - get a general understanding of how TestVision works
-- Additional resources
-  - Explore [TestVision’s generic practice exam](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2).
-  - Review [Tilburg University’s TestVision resources](https://www.tilburguniversity.edu/students/studying/exams/e-assessment/testvision).
-
-## Technical Tips
-
-- **Exam environment**:
-  - Practice using **Windows**, RStudio, and the command prompt (__not__ PowerShell; ideally Anaconda Prompt, sometimes GitBash).
-- **File management**:
-  - Organize files by question in local folders (e.g., `C:\Users\<YOUR-U-NUMBER>\Downloads`).
-  - Know how to load `.RData` files (`load('downloaded_data.RData')`).
-  - Zip entire Git repositories before uploading.
-- **Code management**:
-  - Set working directories in RStudio via `Session → Set Working Directory → To Source File Location`.
-  - Revise code for clean (top-down!) execution. No useless code.
-
+  
+::: callout
+- Please take the **technical practice exam**, which you can access *once* via [https://tiu.nu/testvision](https://tiu.nu/testvision).
+- Please explore [TestVision’s generic practice exam](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2).
+:::
 
 ## Cheatsheets
 
 - **Official cheatsheets** for R, make, and Git will be provided during the exam (view [previous year's cheatsheets](https://github.
 com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.
 zip))
-- **Collective cheatsheet**
+- **One collective cheatsheet**
   - Drafted collaboratively in Google Docs, reviewed by the instructor, and shared as PDF.
-  - [Link to the document](https://docs.google.com/document/d/1ufyP0bcndNBltN6efJ87HdI0nthpgMQVSS-Flyr-zpU/edit?usp=sharing)
-  - Deadline to make your changes: 10 October 2025, 1pm.
-  - I will review the document, make changes where required, and add it to the Cheatsheets.
+  - [Link to the document](https://docs.google.com/document/d/1nLEkypEmP3dTkljidmAiGmHptm0Bfe44LnwaYUnkdnU/edit?usp=sharing)
+  - Deadline to make your changes: 25 March 2026, 10am.
+  - Page limit: 50 pages. Only one tab. 
+  - I will review the document, make changes where required, and add it to the cheatsheets.
 
 ## TestVision’s Introduction Page
 
 - Every exam begins with an **introduction/cover page** containing official instructions.
-- I will show you example cover pages now...
-- Review in advance: The cover page will be available on Canvas before the exam
+- I will show you example cover pages now (see also PDF)
+- Please review in advance: The cover page will be available on Canvas before the exam
 
 ## Questions so far?
 
@@ -116,8 +115,10 @@ Above all, see this exam preparation *not* just as exam study, but as a way to s
 
 ## Next steps
 
+- Reflection on tutorials
 - Course evaluation
 - Closing lecture next week
 - Final coaching session (Roshini)
+
 <br>
 Thanks!

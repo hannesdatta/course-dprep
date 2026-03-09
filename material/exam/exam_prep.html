@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Hannes Datta">
-<meta name="dcterms.date" content="2025-09-28">
+<meta name="dcterms.date" content="2026-03-09">
 
 <title>Exam Preparation</title>
 <style>
@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 28, 2025</p>
+      <p class="date">March 9, 2026</p>
     </div>
   </div>
   
@@ -80,15 +80,13 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p><em>originally published on 26 September; updated on 28 September, slightly rewriting questions in line with the actual exam &amp; adding the number of points per question)</em></p>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>The exam for this course is a <strong>120-minute on-campus computer exam</strong> (course code 328059-M-6), taken in <a href="https://TilburgU.testvision.nl/online/kandidaten">TestVision</a>. It is a <strong>closed-book exam with no internet access</strong>, though students may download selected cheat sheets from the exam’s introduction page.</p>
-<p>Students taking the discontinued 3 ECTS version should prepare using the exam material from the previous semester.</p>
+<p>The exam for this course is a <strong>120-minute on-campus computer exam</strong> (course code 328059-M-6), taken in <a href="https://TilburgU.testvision.nl/online/kandidaten">TestVision</a>. It is a <strong>closed-book exam without internet access</strong>, though students may download selected cheat sheets from the exam’s introduction page.</p>
 <p>Key points to keep in mind:</p>
 <ul>
 <li>four exam dates are offered each academic year, of which students may take part in at most two.</li>
-<li>only the official exam “cheatsheets” are permitted; no other resources or communication tools are allowed.</li>
+<li>only the official exam cheatsheets are permitted; no other resources or communication tools are allowed.</li>
 <li>communication with others about the exam is strictly forbidden.</li>
 <li>do not include your name or student number in submitted files unless explicitly asked, to ensure anonymous grading.</li>
 </ul>
@@ -186,7 +184,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>Please download the <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip"><code>netflix_data</code></a> file, containing an <code>.RData</code> environment that itself contains R objects (datasets). To receive points on this question, please create and upload one R file (.R) that performs the task as requested.</p>
-<p>Important: - Load the data using: load(“name_of_the_file.RData”) # use the correct file name as per your download - Apply the Setup – Input – Transform – Output (S-I-T-O) principles used in class. - Submit your work as a clean .R script (NOT RMarkdown). Ensure the code runs top to bottom. - Do not include your name or student number anywhere in the code.</p>
+<p>Important:</p>
+<ul>
+<li>Load the data using: load(“name_of_the_file.RData”) # use the correct file name as per your download</li>
+<li>Apply the Setup – Input – Transform – Output (S-I-T-O) principles used in class.</li>
+<li>Submit your work as a clean .R script (NOT RMarkdown). Ensure the code runs top to bottom.</li>
+<li>Do not include your name or student number anywhere in the code.</li>
+</ul>
 <p><strong><code>netflix_data</code>:</strong></p>
 <ul>
 <li><code>show_id</code>: content identifier</li>
@@ -993,16 +997,30 @@ write_csv(effect_sizes, 'regression_results.csv')</code></pre>
 <p>This section provides information that will help you prepare well for the exam.</p>
 <section id="cheatsheets" class="level2">
 <h2 class="anchored" data-anchor-id="cheatsheets">Cheatsheets</h2>
-<p>Students will have access to <strong>official cheatsheets</strong> during the exam. These cover the main tools used in this course—<strong>R</strong>, <strong>make</strong>, and <strong>Git</strong>—and are the same ones provided throughout the tutorials. Cheatsheets from previous years can already be downloaded <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.zip">here</a>. Ahead of the exam, there will be a short Q&amp;A session where you can suggest additional cheat sheet ideas to the instructor; the final set of official cheatsheets will then be compiled and published.</p>
-<p>In addition, the class will have the opportunity to prepare <strong>one collective cheatsheet</strong>. This is typically best drafted in Google Docs, so all students can contribute ideas. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.</p>
+<p>Students will have access to <strong>cheatsheets</strong> during the exam, consisting of official cheatsheets used throughout the course (e.g., on Base R, on `<code>ggplot</code>), and one collective cheatsheet created by students.</p>
+<section id="official-cheatsheets-used-throughout-the-course" class="level3">
+<h3 class="anchored" data-anchor-id="official-cheatsheets-used-throughout-the-course">Official cheatsheets used throughout the course</h3>
+<p>The official cheatsheets used throughout the course cover the main tools – <strong>R</strong>, <strong>make</strong>, and <strong>Git</strong>. Cheatsheets from previous years can already be downloaded <a href="https://github.com/hannesdatta/course-dprep/raw/main/material/exam/cheatsheets/cheatsheets-exam.zip">here</a>. Ahead of the exam, there will be a short Q&amp;A session where you can suggest additional cheat sheet ideas to the instructor; the final set of official cheatsheets will then be compiled and published.</p>
+</section>
+<section id="collective-cheatsheet" class="level3">
+<h3 class="anchored" data-anchor-id="collective-cheatsheet">Collective cheatsheet</h3>
+<p>Students are advised to prepare one <strong>collective cheatsheet</strong> in Google Docs. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.</p>
 <ul>
-<li><strong>Collective Cheatsheet Details</strong>:
-<ul>
-<li><a href="https://docs.google.com/document/d/1ufyP0bcndNBltN6efJ87HdI0nthpgMQVSS-Flyr-zpU/edit?usp=sharing">Link to the document</a></li>
-<li><strong>Deadline to make your changes</strong>: 10 October 2025, 1pm.</li>
-<li>The instructor will review the document, make changes where required, and add it to the Cheatsheets.</li>
-</ul></li>
+<li><a href="https://docs.google.com/document/d/1nLEkypEmP3dTkljidmAiGmHptm0Bfe44LnwaYUnkdnU/edit?usp=sharing">Link to Google Docs</a> (please use your Tilburg University email address to log in)</li>
+<li>Page limit: 50 pages</li>
+<li>Deadline to make your changes: 25 March 2026, 10am</li>
 </ul>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The instructor will review the document, make changes where required, and add it to the Cheatsheets.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="ideas-for-developing-your-proficiency" class="level2">
 <h2 class="anchored" data-anchor-id="ideas-for-developing-your-proficiency">Ideas for developing your proficiency</h2>
