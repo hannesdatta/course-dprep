@@ -13,7 +13,7 @@ format:
 
 ## Welcome to the final lecture in dPrep!
 
-- __Exam prep:__ If you haven't been present in the Q&A on Friday, please watch the recording and review the elaborate exam information shared last week (--> Canvas).
+- __Exam prep:__ If you haven't been present in the Q&A last week, please watch the recording and review the exam information + example questions shared last week (&rarr; Canvas).
 
 <!--
 - __Course evaluation:__ Now live at [https://app.evalytics.nl](https://app.evalytics.nl). Please voice your opinions!
@@ -64,8 +64,8 @@ format:
 
 ::: incremental
 - Ready to use Git/versioning in a business setting
-  - Clone repositories, switch branches (`git switch BRANCHNAME` or `git checkout BRANCHNAME`)
-  - Know what to version, and what not
+  - Clone repositories, switch branches (`git checkout BRANCHNAME` or `git switch BRANCHNAME`)
+  - Know which files/directories to version, and which ones not
   - Use `.gitignore` (and know what it CANNOT do)
   - Work together using issues, feature branches & pull requests (PRs)/merge requests
 - Collaborate on open source projects (know what forks are)
@@ -120,21 +120,23 @@ format:
 
 ## Common mistakes with `make`
 
-- Wrong: One "all" rule with all targets as prerequisites (correct: final products/files to be built)
-- Wrong: Incomplete dependencies (correct: all input files + own source code per recipe)
-- Wrong: Multiple Rscript execution commands per recipe (correct: write separate rules)
-- Gradually build your makefile. __Go in baby steps!__
-- Happy to take a look at your repositories now - anyone?
+- All wrong
+  - One "all" rule with all targets as prerequisites (correct: final products/files to be built)
+  - Incomplete dependencies (correct: all input files + own source code per recipe)
+  - Multiple Rscript execution commands per recipe (correct: write separate rules)
+
+
+__Gradually build your makefile. Go in baby steps!__
 
 ---
 
-## Any other questions about your projects?
+## Any question about your projects?
 
-__We can address them now!__
+__We can address your questions now!__
 
 ---
 
-## Looking ahead: During your studies (I)
+## Looking ahead: dPrep skills during your studies (I)
 
 ::: incremental
 - __Selectively__ implement across classes or projects
@@ -147,23 +149,24 @@ __We can address them now!__
 
 ---
 
-## Looking ahead: During your studies (II)
+## Looking ahead: dPrep skills during your studies (II)
 
 ::: incremental
-- Use for thesis!
-  - But, be aware your skills are fresh, your professor likely has never heard about it! --> use, teach, show how productive you are!
+- Use "workflow thinking" for thesis!
+  - But, be aware your skills are fresh, your thesis advisor likely has never heard about it! &rarr; use, teach, show how productive you are!
 - Build your job market profile
   - Have a compelling about page on GitHub
-  - "Pin" your best repositories (but don't call them `dprep-team-X`; remember)
+  - "Pin" your best repositories (but don't call them `dprep-team-X`)
 - Become part of the community at Tilburg, e.g., [tilburg.ai](https://tilburg.ai) or [Tilburg Science Hub](https://tilburgsciencehub.com)
 :::
 
 
-## Looking ahead: After your studies
+## Looking ahead: dPrep skills after your studies
 
 ::: incremental
 - On your job... automate stuff & save time for the things you love!
 - Invest into additional skills relevant for data engineering (e.g., SQL!, but also Docker)
+- Become a linking pin between data science/engineering teams and "the business" (i.e., the 'core' business functions like product development, customer acquisition, etc.)
 
 :::
 
@@ -172,7 +175,7 @@ __We can address them now!__
 ## Next steps: Submissions and preparing for the exam
 
 - Deadline for project coming up!
-  - Remember: __test project__ on different computers or operating systems
+  - Remember: __test project__ on different computers and operating systems
   - __Do not use__ absolute paths!
   - Verify data can be downloaded smoothly
   - Test `make` thoroughly
@@ -180,25 +183,41 @@ __We can address them now!__
 
 ---
 
-## Exam 
+## Exam: Overview of Questions
 
-- Re-watch my recording from Friday (Q&A)
-- Work through example questions (posted on Canvas)
-- Work on shared cheat sheet
+| LG                          | Tutorial  | Book |
+|-----------------------------|--------|-------|
+| Use R for data cleaning     | 2x 10P          | 4P (1Q), ch. 7  |
+| Use GitHub for project mgmt | -            | 12P (4Q), ch. 2, 5 |
+| Use Git/GitHub for versioning| 24P          | 12P (4Q), ch. 6 |
+| Use R for automatic reports | 12P          | 6P (2Q), ch. 4 |
+| Use Workflow Mgmt Tools      | 24P          | 6P (2Q), ch. 3, 8 |
+
+- Re-watch my recording from last week (Q&A) & work through example questions (posted on Canvas)
+
+## Exam
+
+- Complete [shared cheat sheet](https://docs.google.com/document/d/1nLEkypEmP3dTkljidmAiGmHptm0Bfe44LnwaYUnkdnU/edit?usp=sharing)
+  - Deadline to make your changes: 25 March 2026, 10am.
+  - Page limit: 50 pages. Only one tab. 
+- Check whether you can view the technical practice exam on TestVision
+- Practice on Windows computers
 
 ---
 
-## Next steps: Official course evaluation
+## Next steps: Official course evaluation (I)
 
 - Course evaluation has been immensely important to this course
-  - This semester: wrote a book :-) (how did you like it?!)
-  - Last semester: overhauled all tutorials (e.g., `ggplot2` in week 2, advanced engineering in week 4)
+  - This semester: edited tutorials 1-2; piloted setup to involve more lecturers
+  - Last semester: wrote a book, overhauled all tutorials (e.g., `ggplot2` in week 2, advanced engineering in week 4)
   - Previous years: switched order of sessions, revised GitHub tutorial/onboarding, new data sets, coaching sessions with breakout groups on campus and online
 
+## Next steps: Official course evaluation (II)
+
 - Course evaluation has been critical to my career
-  - Without my past evaluations, I wouldn't be teaching to you today
-  - I will look at all comments. Based on student feedback, we now have Q&A for setups & additional Q&As towards the end of the course.
-  - __Scores are most important to show importance of this course__
+- Without my past evaluations, I wouldn't be teaching to you today
+- I will look at all comments. Based on student feedback, we now have Q&A for setups & additional Q&As towards the end of the course.
+- __Scores are most important to show importance of this course__
 
 ---
 
@@ -212,10 +231,10 @@ __We can address them now!__
 ## Informal feedback
 
 ::: incremental
-- How was this course for beginners? 
-- How did you like the book? Helpful? Daunting?
+- How come not many of you attended the tutorials?
 - Tutorials: easy/hard? pre-recorded vs. not?
 - Coaching sessions? Got your fair share of comments?
+- How did you like the book? Helpful? Daunting?
 - __What's are three things you'd like me to change in this course?__
 
 :::

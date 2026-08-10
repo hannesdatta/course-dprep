@@ -18,6 +18,7 @@ format:
 
 # Introduction
 
+*updated 9 March 2026, 21:26 with revised order of the answer keys for MC questions*
 
 ## Overview
 
@@ -239,18 +240,18 @@ Questions based on book, chapter 7.
 
 You are tasked with building a dataset to study the **effect of advertising on customer churn**. Which of the following dataset designs would best synthesize the principles described in *Marketing Analytics: A Modern Toolkit*?
 
-A)  One row per ad impression with variables for user ID, timestamp, and product purchased
-B)  One row per customer per day with variables for total impressions, purchases, and weather in that region
-C)  One row per customer per week with aggregated ad exposure, total purchases, and churn status (flagged if no purchases in 90 days)\*
+A)  One row per customer per week with aggregated ad exposure, total purchases, and churn status (flagged if no purchases in 90 days)
+B)  One row per ad impression with variables for user ID, timestamp, and product purchased
+C)  One row per customer per day with variables for total impressions, purchases, and weather in that region
 D)  One row per region per month with variables for average basket size and average temperature
 
-**Correct Answer: C**
+**Correct Answer: A**
 
 **Explanation:**
 
--   **C is correct** because *Marketing Analytics: A Modern Toolkit* emphasizes aligning the dataset’s **unit of analysis** with the research question. Studying churn requires customer-level information, while churn is often defined over a fixed period (e.g., 90 days), making a weekly structure appropriate. It also reflects operationalization (defining churn as a flag) and aggregation (summing exposures and purchases).
--   A is incorrect because per-impression data is too granular and does not capture churn.
--   B is incorrect because daily customer-level data introduces unnecessary noise, and churn is not measured at the daily level.
+-   **A is correct** because *Marketing Analytics: A Modern Toolkit* emphasizes aligning the dataset’s **unit of analysis** with the research question. Studying churn requires customer-level information, while churn is often defined over a fixed period (e.g., 90 days), making a weekly structure appropriate. It also reflects operationalization (defining churn as a flag) and aggregation (summing exposures and purchases).
+-   B is incorrect because per-impression data is too granular and does not capture churn.
+-   C is incorrect because daily customer-level data introduces unnecessary noise, and churn is not measured at the daily level.
 -   D is incorrect because region–month aggregation ignores individual-level churn dynamics.
 
 #### Q1.5 (4P)
@@ -277,17 +278,17 @@ Imagine you need the same dataset for both a **regression model** and a **market
 
 A)  Store everything in long format, since models and dashboards both require this
 B)  Store everything in wide format, since models and dashboards both require this
-C)  Prepare a core dataset at the correct unit of analysis, and reshape into long or wide format depending on the task
-D)  Duplicate all sources: one version in long format and one in wide format, maintained separately
+C)  Duplicate all sources: one version in long format and one in wide format, maintained separately
+D)  Prepare a core dataset at the correct unit of analysis, and reshape into long or wide format depending on the task
 
-**Correct Answer: C**
+**Correct Answer: D**
 
 **Explanation:**
 
--   **C is correct** because *Marketing Analytics: A Modern Toolkit* highlights that the **same derived dataset** can serve multiple purposes if it is first harmonized at the right unit of analysis. Analysts can then pivot between **long format** (suitable for regressions) and **wide format** (suitable for dashboards).
+-   **D is correct** because *Marketing Analytics: A Modern Toolkit* highlights that the **same derived dataset** can serve multiple purposes if it is first harmonized at the right unit of analysis. Analysts can then pivot between **long format** (suitable for regressions) and **wide format** (suitable for dashboards).
 -   A is incorrect because dashboards typically need wide data, not long.
 -   B is incorrect because regressions usually expect long data.
--   D is inefficient and risks divergence across duplicated datasets, which the book warns against.
+-   C is inefficient and risks divergence across duplicated datasets, which the book warns against.
 
 #### Q1.7 (4P)
 
@@ -323,38 +324,38 @@ A student argues that every project should include **Docker, CI/CD pipelines, an
 
 A) Agree, because advanced tools always increase efficiency regardless of project size
 B) Agree, because cloud and automation are universally recommended best practices
-C) Disagree, because the book stresses that tools add complexity and should be matched to project scope and needs
-D) Disagree, because small projects should avoid all infrastructure beyond RStudio
+C) Disagree, because small projects should avoid all infrastructure beyond RStudio
+D) Disagree, because the book stresses that tools add complexity and should be matched to project scope and needs
 
-**Correct Answer: C**
+**Correct Answer: D**
 
-**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* emphasizes that “more is not always better.” Tools like Docker and CI/CD add learning costs and maintenance overhead. They are valuable for large, long-term projects but unnecessary for small, quick tasks. A is wrong because advanced tools may reduce efficiency in small projects. B is wrong because best practices must be adapted, not applied universally. D is wrong because small projects still benefit from basics like version control and folder structure.
+**Explanation:** D is correct because *Marketing Analytics: A Modern Toolkit* emphasizes that “more is not always better.” Tools like Docker and CI/CD add learning costs and maintenance overhead. They are valuable for large, long-term projects but unnecessary for small, quick tasks. A is wrong because advanced tools may reduce efficiency in small projects. B is wrong because best practices must be adapted, not applied universally. C is wrong because small projects still benefit from basics like version control and folder structure.
 
 #### Q2.2 (based on chapter 2) (3P)
 
 Two thesis students disagree on environment management. One says, *“We don’t need renv; if a package updates, we’ll just install the new version.”* The other says, *“renv is essential, because without it our results may change unpredictably.”* Which evaluation best aligns with *Marketing Analytics: A Modern Toolkit*?
 
 A) The first student is right, because updating packages ensures you always use the most recent, reliable code
-B) Both students are equally right, since package management is optional
-C) The second student is right, because the book stresses reproducibility depends on locking package versions
+B) The second student is right, because the book stresses reproducibility depends on locking package versions
+C) Both students are equally right, since package management is optional
 D) Neither is right, since reproducibility is not affected by package management
 
-**Correct Answer: C**
+**Correct Answer: B**
 
-**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* explains that reproducibility requires code to run the same across time and machines. Tools like renv lock package versions, avoiding “it worked then, but not now” issues. A is wrong because constant updates can break old code. B is wrong because package management is not optional for reproducibility. D is wrong because package versions directly affect whether results can be replicated.
+**Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* explains that reproducibility requires code to run the same across time and machines. Tools like renv lock package versions, avoiding “it worked then, but not now” issues. A is wrong because constant updates can break old code. C is wrong because package management is not optional for reproducibility. D is wrong because package versions directly affect whether results can be replicated.
 
 #### Q2.3 (based on chapter 2) (3P)
 
 Your marketing team is debating whether to store intermediate datasets as separate files (“raw,” “data-prep,” “analysis”) or overwrite data at each step to save storage. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate these two approaches?
 
-A) Overwriting is best, since it minimizes clutter and storage costs
-B) Keeping staged folders is better, because it preserves reproducibility and traceability of data transformations
+A) Keeping staged folders is better, because it preserves reproducibility and traceability of data transformations
+B) Overwriting is best, since it minimizes clutter and storage costs
 C) Both approaches are equally valid, since storage concerns outweigh reproducibility issues
 D) Neither approach is useful; data should always be pulled directly from the original source
 
-**Correct Answer: B**
+**Correct Answer: A**
 
-**Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* recommends staged data (“raw,” “data-prep,” “analysis”) to preserve the lineage of transformations. This ensures traceability, avoids confusion about which dataset is “correct,” and supports reproducibility. A is wrong because storage is cheap compared to the cost of lost reproducibility. C is wrong because traceability is more important than minor storage concerns. D is wrong because raw sources alone don’t provide cleaned, analysis-ready data.
+**Explanation:** A is correct because *Marketing Analytics: A Modern Toolkit* recommends staged data (“raw,” “data-prep,” “analysis”) to preserve the lineage of transformations. This ensures traceability, avoids confusion about which dataset is “correct,” and supports reproducibility. B is wrong because storage is cheap compared to the cost of lost reproducibility. C is wrong because traceability is more important than minor storage concerns. D is wrong because raw sources alone don’t provide cleaned, analysis-ready data.
 
 #### Q2.4 (based on chapter 2) (3P)
 
@@ -386,14 +387,14 @@ D) It is inappropriate, because Scrum principles are designed only for software 
 
 A research group wants to manage their tasks using email and chat threads, arguing that “boards and issues are too much overhead.” How should this be evaluated according to *Marketing Analytics: A Modern Toolkit*?
 
-A) It is reasonable, since lightweight tools like email are more efficient than formal boards
-B) It is acceptable, provided that team members document progress individually in shared folders
-C) It is problematic, because scattering communication across multiple channels reduces transparency and reproducibility
+A) It is problematic, because scattering communication across multiple channels reduces transparency and reproducibility
+B) It is reasonable, since lightweight tools like email are more efficient than formal boards
+C) It is acceptable, provided that team members document progress individually in shared folders
 D) It is effective, because agile teams rely more on conversation than on written artifacts
 
-**Correct Answer: C**
+**Correct Answer: A**
 
-**Explanation:** C is correct because the book emphasizes **centralizing communication in issues and boards**, ensuring transparency, traceability, and shared understanding. A is wrong because email creates fragmentation. B is wrong because scattered folder notes lack integration. D misinterprets Agile — while conversation matters, artifacts like boards are essential for documentation and accountability.
+**Explanation:** A is correct because the book emphasizes **centralizing communication in issues and boards**, ensuring transparency, traceability, and shared understanding. B is wrong because email creates fragmentation. C is wrong because scattered folder notes lack integration. D misinterprets Agile — while conversation matters, artifacts like boards are essential for documentation and accountability.
 
 #### Q2.7 (based on chapter 5) (3P)
 
@@ -503,12 +504,12 @@ One teammate prefers writing commit messages like “update” or “fixed stuff
 
 A) It is fine, because code itself tells the full story of changes
 B) It is acceptable for small commits but not for larger ones
-C) It is problematic, because vague commit messages harm the usefulness of Git’s history for collaboration and reproducibility
-D) It is required, since Git automatically adds details from diffs anyway
+C) It is required, since Git automatically adds details from diffs anyway
+D) It is problematic, because vague commit messages harm the usefulness of Git’s history for collaboration and reproducibility
 
-**Correct Answer: C**
+**Correct Answer: D**
 
-**Explanation:** C is correct because the book highlights that **clear, descriptive commit messages** are essential for making the project history understandable for teammates and your future self. A is wrong because code diffs alone are not always clear. B is wrong because even small commits should carry meaning. D is wrong because Git does not replace commit messages with diffs automatically.
+**Explanation:** D is correct because the book highlights that **clear, descriptive commit messages** are essential for making the project history understandable for teammates and your future self. A is wrong because code diffs alone are not always clear. B is wrong because even small commits should carry meaning. C is wrong because Git does not replace commit messages with diffs automatically.
 
 #### Q3.5 (3P)
 
@@ -639,12 +640,12 @@ D) Avoided reproducibility practices to focus on speed
 
 A student receives new customer transaction logs and edits them directly in Excel, overwriting the original file. Later, errors appear and no one can trace the source. How should the student have applied programming principles?
 
-A) By saving results only in final plots and tables
-B) By always keeping a raw, untouched dataset and performing cleaning steps in code
+A) By always keeping a raw, untouched dataset and performing cleaning steps in code
+B) By saving results only in final plots and tables
 C) By using more clever one-line commands in Excel
 D) By deleting intermediate files to reduce clutter
 
-**Correct Answer: B**
+**Correct Answer: A**
 
 **Explanation:** The book’s principle “**Keep raw data raw**” means storing untouched source files and carrying out all cleaning programmatically, so the analysis can be reproduced and mistakes traced back.
 
@@ -765,11 +766,11 @@ D) It is necessary for scaling pipelines to cloud servers
 Suppose a student pipeline skips the **data exploration** stage and goes straight into preparation and analysis. How would you evaluate the credibility of their results?
 
 A) Strong, because skipping exploration accelerates analysis
-B) Weak, because exploration provides necessary audits (e.g., missing values, outliers) to ensure the data makes sense
-C) Neutral, since exploration is optional when datasets come from reliable company sources
+B) Neutral, since exploration is optional when datasets come from reliable company sources
+C) Weak, because exploration provides necessary audits (e.g., missing values, outliers) to ensure the data makes sense
 D) Strong, because reproducibility depends only on source code and raw data
 
-**Correct Answer: B**
+**Correct Answer: C**
 
 **Explanation:** According to the book, exploration is critical for credibility. Without it, analysts risk basing analyses on flawed assumptions (e.g., unnoticed outliers, missing values). Exploration builds trust in later steps.
 
@@ -795,12 +796,12 @@ Two teams take different approaches:
 
 Which approach aligns more closely with the principles in *Marketing Analytics: A Modern Toolkit*?
 
-A) Team A, because generated files are the most valuable artifacts
-B) Team A, because reproducibility depends on storing every output
-C) Team B, because generated files can always be recreated, making pipelines leaner and more scalable
+A) Team B, because generated files can always be recreated, making pipelines leaner and more scalable
+B) Team A, because generated files are the most valuable artifacts
+C) Team A, because reproducibility depends on storing every output
 D) Team B, but only if they also delete raw data after outputs are created
 
-**Correct Answer: C**
+**Correct Answer: A**
 
 **Explanation:** The book highlights that generated files are **recreatable artifacts**, so they do not need to be stored permanently. This separation of raw data, source code, and generated files keeps projects tidy and reproducible without unnecessary storage costs.
 
@@ -848,11 +849,11 @@ D) Positive, since monolithic scripts reduce the need for workflow managers
 Your team has limited server storage. One proposal is to store **all generated files permanently** to avoid rerunning code. How should you evaluate this?
 
 A) Correct, since generated files are the most important artifacts
-B) Wasteful, since generated files can be recreated from raw data and source code, making permanent storage unnecessary
-C) Risky, since deleting generated files makes reproducibility impossible
-D) Efficient, since it prevents the need for automation
+B) Risky, since deleting generated files makes reproducibility impossible
+C) Efficient, since it prevents the need for automation
+D) Wasteful, since generated files can be recreated from raw data and source code, making permanent storage unnecessary
 
-**Correct Answer: B**
+**Correct Answer: D**
 
 **Explanation:** Generated files are **outputs, not primary sources**. The book stresses that reproducibility requires raw data + source code. Keeping every generated file wastes storage and undermines scalability.
 

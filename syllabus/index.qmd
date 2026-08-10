@@ -1,7 +1,7 @@
 ---
 title: "Syllabus"
 format: html
-date: "2025-08-15"
+date: "2026-01-05"
 editor: visual
 author: Hannes Datta
 ---
@@ -45,17 +45,17 @@ Students are recommended to follow this course before embarking on thesis projec
 ::: {.callout-note title="Enrollment Information for Students *Not* Part of the Marketing Analytics Program"}
 **Interested Research Master or PhD students** are encouraged to apply for a seat.
 
--   **Tilburg University students**: Enrollment is possible with the approval of the instructor and your program coordinator. Please notify the course coordinator by **15 August 2025**.\
--   **External students**: You are welcome to audit this course. For admission, email a **brief research statement**, your **motivation** for joining, and your **CV** by **15 August 2025**.
+-   **Tilburg University students**: Enrollment is possible with the approval of the instructor and your program coordinator. Please notify the course coordinator by **15 January 2026**.\
+-   **External students**: You are welcome to audit this course. For admission, email a **brief research statement**, your **motivation** for joining, and your **CV** by **15 January 2026**.
 
-**Notification:** Eligible candidates will be informed by **22 August 2025**.
+**Notification:** Eligible candidates will be informed by **22 January 2026**.
 :::
 
 ## Prerequisites
 
 -   The course is instructed to MSc students in the Marketing Analytics (TiSEM) program.
 -   Preparation material is available, and students need to have acquired working knowledge in R before the start of the course. Novices may further benefit from following other courses at Tilburg University in which R is used.
--   Students can use their own computer for the duration of this course (Windows, Mac, or Linux). Android/Chromebook/iOS devices are not supported. We recommend laptop with 16 GB+ of RAM as we work with larger data sets requiring preprocessing capacity. The exam is held on campus, using Windows computers. Mac and Linux users are advised to practice on the on-campus computers before the exam.
+-   Students can use their own computer for the duration of this course (Windows, Mac, or Linux). Android/Chromebook/iOS devices are not supported. We recommend laptop with 8+ GB of RAM as we work with larger data sets requiring preprocessing capacity. The exam is held on campus, using Windows computers. Mac and Linux users are advised to practice on the on-campus computers before the exam.
 
 ## Teaching format
 
@@ -64,18 +64,10 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ## Assessment
 
--   Team project (40%, out of which 8% are based on students' individual contribution, measured by self- and peer assessment. <!--](/docs/project/grading))-->
+-   Team project (40%, out of which 8% are based on students' individual contribution, measured by self- and peer assessment.
 -   Computer exam (60%, 120 minutes)
 
 <!--The specification matrix for this course can be [downloaded here](../specification_tables_dprep.pdf). This matrix gives an overview of all the learning goals and their weights in each graded component of the course (i.e., in the final exam, team project and Pulse). -->
-
-```{=html}
-<!--
-[^2]: Students use a web app to monitor their progress on the course's learning goals by "ticking off" items from a to-do list (e.g., "I have installed Python," "I have finished Tutorial X," etc.). The instructor can use the app to learn which topics to highlight during live streams. Students, in turn, can use the app to see how far others in the class have already proceeded, giving them direct feedback on their performance.
-
-[^3]: In particular, students regularly monitor their progress on the course's learning goals. At least one evaluation per course week is required to obtain points on this component of the course grade.
--->
-```
 
 ### Passing requirements
 
@@ -125,7 +117,7 @@ Each award of a bonus point is accompanied by an individualized argumentation (i
 This course is instructed by
 
 -   [dr. Hannes Datta](https://hannesdatta.com), Associate Professor at the Marketing Department of Tilburg University (**course coordinator & lectures**),
--   Javier Torralba Flores, PhD student at the Marketing Department of Tilburg University (**tutorials**), and
+-   [Javier Torralba Flores](https://www.javiertorralba.com), PhD student at the Marketing Department of Tilburg University (**tutorials**), and
 -   [Roshini Sudhaharan, MSc.](https://www.linkedin.com/in/roshinisudhaharan/), Junior Lecturer at the Marketing Department of Tilburg University (**team project and coaching sessions**).
 
 ::: {.callout-note title=""}

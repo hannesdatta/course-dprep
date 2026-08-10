@@ -18,7 +18,7 @@ We're about to start with the first lecture of this class.
 If you haven't done so, please check out the **Canvas page** for this course:
 
 - explore the *course syllabus*
-- complete the *software installation* (see "preparation before this class on Canvas)
+- complete the *software installation* (see "preparation before this class on Canvas")
 - check out my slides on the *modules* page
 
 <!--
@@ -33,13 +33,13 @@ If you haven't done so, please check out the **Canvas page** for this course:
 
 ## Agenda
 
-- Part 1 (12.45–13.45)
+- Part 1 (11.15–12.15)
   - Meeting each other
   - Motivation for the course
   - Course framework and learning goals
   - Agenda and practical arrangements
 - Break
-- Part 2 (14.00–15.30/15.45): R Bootcamp on your laptops
+- Part 2 (12.30–14.30): R Bootcamp on your laptops
 
 ---
 
@@ -53,7 +53,7 @@ If you haven't done so, please check out the **Canvas page** for this course:
 - About me
   - I record my lectures and post them on Canvas (remind me if I miss to post one--or forget to start the recording)
   - Consider me your coach, not your 'distant professor'
-  - Slow me down (yes, that’s needed!)
+  - Slow me down if needed
 - You will have to invest a lot of time and energy
 
 :::
@@ -213,9 +213,11 @@ Key responsibility: __Javier Torralba Flores__
   - Data: Yelp or IMDb
   - Teams: 4- (max!)-5 students (mix expertise), __register on Canvas__ by next week
 - Coaching sessions
-  - Teams meet on campus during *scheduled hours*
-  - Last 2 weeks of the course: *online* feedback in breakout rooms
-  - Coach: first 45m check-in with each team, then supports teams individually
+  - Teams meet online for 10-15 minutes with their coach
+  - Will be scheduled individually, around the time of the coaching sessions
+  - Some sessions can optionally take place on campus
+  <!--- Last 2 weeks of the course: *online* feedback in breakout rooms-->
+  <!--- Coach: first 45m check-in with each team, then supports teams individually-->
 - Evaluation:  
   - standardized evaluation rubric on Canvas
   - self- & peer assessment to up/downweigh grades, depending on individual contribution

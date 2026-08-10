@@ -3,38 +3,40 @@ title: "Schedule"
 format: html
 ---
 
-
 The course runs for a duration of seven weeks. Each week starts with self-study material (typically a recorded lecture, podcast, or reading), a tutorial with exercises/activities, and team coaching sessions. Gradually, you will develop your coding skills, enabling you to work productively on your team project.
-
 
 ::: {.callout-note title="Please bring your laptop to class."}
 Lectures and tutorials are not always scheduled in computer rooms, so please bring your computer & charger along with you.
 :::
 
-| Week  | Date         | Time           | Location   | Content                                      | Given by           |
-|-------|--------------|----------------|------------|----------------------------------------------| -------------------|
-| 0     |              |                |            | Preparation before the course starts
-| 1     | Mon 25 Aug   | 11:45–12:30    | Cube 217   | Q&A to help fix installation issues (optional) | Sudhaharan |             
-|       |              | 12:45–15:30    | Cube 217   | Opening lecture & R Bootcamp                 | Datta/Torralba-Flores |
-| 2     | Mon 01 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Exploring data with RMarkdown      | Datta/Torralba-Flores |
-|       |              | 14:45–16:30    | TZ 9       | Team coaching 1                              | Sudhaharan |
-| 3     | Mon 08 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Version control using GitHub       | Datta/Torralba-Flores |
-|       |              | 12:45–14:30    | Cube 217   | Team coaching 2                              | Sudhaharan |
-| 4     | Mon 15 Sep   | 10:45–12:30    | GZ 104     | Tutorial: Engineering Datasets               | Datta/Torralba-Flores |
-|       |              | 12:45–14:30    | TZ 9   | Team coaching 3                              | Sudhaharan |
-| 5     | Mon 22 Sep   | 08:45–10:30    | GZ 104     | Tutorial: Pipeline automation                | Datta/Torralba-Flores |
-|       |              | 12:45–14:30    | Cube 217   | Team coaching 4                              | Sudhaharan |
-| 6     | Mon 29 Sep   | 16:45–17:30    | Online     | Online Q&A on example questions              | Datta |
-|       | Wed 01 Oct   | 14:45–16:30    | Online     | Team coaching 5                              | Sudhaharan |
-| 6     | Mon 06 Oct   | 08:45–10:30    | Cube 216   | Closing lecture                              | Datta |
-|       | Wed 08 Oct   | 10:45–12:30    | Online     | Team coaching 6                              | Sudhaharan |
+| Week | Date | Time | Location | Content | Instructor |
+|----|----|----|----|----|----|
+| 0 |  |  |  | Preparation before the course starts |  |
+| 1 | Thu 29 Jan | 10:45–11:15 | CZ 6 | Q&A to help fix installation issues (optional) | Torralba-Flores |
+|  |  | 11:15–14:30 | CZ 6 | Opening lecture & R Bootcamp | Datta |
+| 2 | Thu 05 Feb | 12:45–14:30 | GZ 106 | Tutorial: Exploring data with RMarkdown | Torralba-Flores |
+|  |  | 14:45–16:30 | Online | Team coaching 1 | Sudhaharan |
+| 3 | Thu 12 Feb | 08:45–10:30 | Cube 241 | Tutorial: Version control using GitHub | Torralba-Flores |
+|  |  | 14:45–16:30 | Online | Team coaching 2 | Sudhaharan |
+| Break | Thu 17 Feb |  |  |  |  |
+| 4 | Thu 26 Feb | 08:45–10:30 | GZ 106 | Tutorial: Engineering Datasets | Torralba-Flores |
+|  |  | 10:45–12:30 | WZ 104 or online | Team coaching 3 | Sudhaharan |
+| 5 | Thu 5 Mar | 08:45–10:30 | Cube 219 | Tutorial: Pipeline automation | Torralba-Flores |
+|  |  | 14:45–16:30 | CZ 6 or online | Team coaching 4 | Sudhaharan |
+| 6 | Mon 9 Mar | 15:00–16:00 | Online | Online Q&A on example questions | Datta |
+|  | Thu 12 Mar | 16:45–18:30 | Online | Team coaching 5 (optional) | Sudhaharan |
+| 7 | Mon 16 Mar | 10:45–12:30 | CZ 6 | Closing lecture | Datta |
+|  | Thu 19 Mar | 10:45–12:30 | Online | Team coaching 6 (optional) | Sudhaharan |
+| Exams | Mon 30 Mar | tba |  | Main sit |  |
+|  | Mon 29 Jun | tba |  | Resit |  |
 
 <!--| |  | 10.45-12:30 | On-campus | Guest lecture: SQL & Big Query by [Springbok Agency](https://springbokagency.com)-->
 
 ::: {.callout-note title="Check official Tilburg's Scheduling Information regularly"}
-- The schedule above is subject to change. For updates, please check your official course schedule at MyTimetable (https://rooster.uvt.nl)
+-   The schedule above is subject to change. For updates, please check your official course schedule at [TimeEdit](https://rooster.uvt.nl).
 :::
 
+```{=html}
 <!--
 
 ::: {.callout-note title="Enrollment Information for Students *Not* Part of the Marketing Analytics Program"}
@@ -46,6 +48,9 @@ __Tips__
 - If code is shared, you will typically find it on [Hannes' GitHub Gists](https://gist.github.com/hannesdatta).
 :::
 -->
+```
+
+```{=html}
 <!--
 {{< hint info >}}
 __Links to recordings__
@@ -58,3 +63,4 @@ __Links to recordings__
 
 {{< /hint >}}
 -->
+```
