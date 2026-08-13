@@ -18,16 +18,21 @@
   function asFn(v, ...args){ return typeof v === 'function' ? v(...args) : v; }
   function esc(s){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
   function rank(xp){ if(xp>=800)return'Code Wizard'; if(xp>=550)return'Workflow Ranger'; if(xp>=300)return'Command Crafter'; if(xp>=120)return'Code Apprentice'; return'Code Curious'; }
+  function isReadingMission(m){ return m?.mode==='reading'; }
+  function readingXp(m){
+    const configured = Number(m?.readingXp ?? m?.xp);
+    return Number.isFinite(configured) && configured > 0 ? Math.floor(configured) : 40;
+  }
 
   function freshState(packId){
-    const s={packId,mission:0,xp:0,hints:{},unlocked:[],lastResult:null,complete:false,os:'mac',shellPath:[],shellRepos:false,shellCloned:false,env:{},git:{branch:'main',branches:['main'],staged:[],modified:['analysis.R'],commits:[],merged:false}};
+    const s={packId,mission:0,xp:0,hints:{},unlocked:[],readRewards:{},lastResult:null,complete:false,os:'mac',shellPath:[],shellRepos:false,shellCloned:false,env:{},git:{branch:'main',branches:['main'],staged:[],modified:['analysis.R'],commits:[],merged:false}};
     const p=packs[packId]; if(p.setup) p.setup(s, helpers); return s;
   }
 
   const helpers = { products: () => products.map(x=>({...x})) };
 
   function start(){
-    el=Object.fromEntries(['questName','missionNum','missionTotal','xp','rank','packSelect','packControls','packDescription','missionBadge','difficulty','missionTitle','missionIntro','taskBox','conceptBox','conceptText','hintBtn','solutionBtn','hintArea','workspaceTitle','workspaceSubtitle','consoleOutput','prompt','commandInput','runBtn','resultPanel','feedback','clearBtn','resetMissionBtn','nextBtn','stateTitle','stateSubtitle','statePanel','inventory','victory','victoryText','restartBtn','instructorView'].map(id=>[id,document.getElementById(id)]));
+    el=Object.fromEntries(['questName','missionNum','missionTotal','xp','rank','packSelect','packControls','packDescription','missionBadge','difficulty','missionTitle','missionIntro','taskBox','conceptBox','conceptText','readingBox','readingTitle','readingText','hintBtn','solutionBtn','hintArea','workspaceTitle','workspaceSubtitle','consoleOutput','prompt','commandInput','runBtn','resultPanel','feedback','clearBtn','resetMissionBtn','nextBtn','stateTitle','stateSubtitle','statePanel','inventory','victory','victoryText','restartBtn','instructorView'].map(id=>[id,document.getElementById(id)]));
     Object.values(packs).forEach(p=>{ const o=document.createElement('option'); o.value=p.id; o.textContent=p.title; el.packSelect.appendChild(o); });
     const first=Object.keys(packs)[0]; if(!first) throw new Error('No lesson packs registered.');
     state=freshState(first);
@@ -46,10 +51,25 @@
 
   function render(){
     const p=currentPack(),m=currentMission();
+    const reading=isReadingMission(m);
     el.packSelect.value=p.id; el.questName.textContent=p.title.replace(' Quest',''); el.missionNum.textContent=state.mission+1; el.missionTotal.textContent=p.missions.length; el.xp.textContent=state.xp; el.rank.textContent=rank(state.xp);
-    el.packDescription.textContent=p.description||''; el.missionBadge.textContent=`MISSION ${state.mission+1}`; el.difficulty.textContent=m.difficulty||''; el.missionTitle.textContent=m.title; el.missionIntro.textContent=m.intro||''; el.taskBox.innerHTML=`<strong>Your task:</strong> ${asFn(m.task,state,helpers)}`;
-    if(m.concept){el.conceptBox.classList.remove('hidden');el.conceptText.textContent=asFn(m.concept,state,helpers);} else el.conceptBox.classList.add('hidden');
-    el.hintArea.textContent=''; el.feedback.textContent=''; el.resultPanel.classList.add('hidden'); el.nextBtn.disabled=true; el.commandInput.disabled=false; el.runBtn.disabled=false; el.victory.classList.add('hidden');
+    el.packDescription.textContent=p.description||''; el.missionBadge.textContent=`MISSION ${state.mission+1}`; el.difficulty.textContent=m.difficulty||''; el.missionTitle.textContent=m.title; el.missionIntro.textContent=m.intro||'';
+    if(reading){
+      el.taskBox.classList.add('hidden');
+      el.conceptBox.classList.add('hidden');
+      el.readingBox.classList.remove('hidden');
+      el.readingTitle.textContent=asFn(m.readingTitle,state,helpers)||'Reading pane';
+      el.readingText.innerHTML=asFn(m.readingBody,state,helpers)||'';
+    } else {
+      el.taskBox.classList.remove('hidden');
+      el.taskBox.innerHTML=`<strong>Your task:</strong> ${asFn(m.task,state,helpers)}`;
+      el.readingBox.classList.add('hidden');
+      if(m.concept){el.conceptBox.classList.remove('hidden');el.conceptText.textContent=asFn(m.concept,state,helpers);} else el.conceptBox.classList.add('hidden');
+    }
+    el.hintArea.textContent=''; el.feedback.textContent=''; el.resultPanel.classList.add('hidden'); el.victory.classList.add('hidden');
+    el.hintBtn.classList.toggle('hidden', reading); el.solutionBtn.classList.toggle('hidden', reading); el.hintArea.classList.toggle('hidden', reading);
+    el.nextBtn.disabled=!reading; el.commandInput.disabled=reading; el.runBtn.disabled=reading;
+    if(reading){el.feedback.innerHTML=`<span class="small muted">Read this pane, then continue. You will earn +${readingXp(m)} XP when you click Next mission.</span>`;}
     setupPackControls(); configureWorkspace(); renderState(); renderInventory();
     if(!el.consoleOutput.textContent) el.consoleOutput.textContent=welcomeText();
   }
@@ -74,6 +94,7 @@
   function shellPrompt(){ return state.os==='mac'?`student@laptop ${shellPathText()} %`:`${shellPathText()}>`; }
 
   function run(){
+    if(isReadingMission(currentMission())) return;
     const code=el.commandInput.value.trim(); if(!code)return; let result;
     try{ result=execute(code); state.lastResult=result; appendConsole(code,result); }
     catch(e){ appendConsole(code,{error:e.message}); el.feedback.textContent='That produced an error. Read it carefully and try again.'; el.commandInput.value=''; renderState(); return; }
@@ -158,8 +179,32 @@
 
   function showHint(){const hs=asFn(currentMission().hints,state,helpers)||[];const n=state.hints[state.mission]||0;el.hintArea.innerHTML=`💡 ${hs[Math.min(n,hs.length-1)]}`;state.hints[state.mission]=n+1;}
   function showSolution(){state.hints[state.mission]=99;el.hintArea.innerHTML=`<strong>One solution:</strong><pre class="mono">${esc(asFn(currentMission().solution,state,helpers))}</pre>`;}
-  function nextMission(){if(state.mission===currentPack().missions.length-1){state.complete=true;el.victory.classList.remove('hidden');el.victoryText.textContent=`You completed ${currentPack().title} with ${state.xp} XP.`;return;}state.mission++;render();el.commandInput.focus();}
-  function resetMission(){el.commandInput.value='';el.feedback.textContent='';el.hintArea.textContent='';el.commandInput.disabled=false;el.runBtn.disabled=false;el.nextBtn.disabled=true;}
+  function grantReadingReward(){
+    const m=currentMission();
+    if(!isReadingMission(m) || state.readRewards[state.mission]) return;
+    const reward=readingXp(m);
+    state.xp+=reward;
+    (asFn(m.unlock,state,helpers)||[]).forEach(x=>{if(!state.unlocked.includes(x))state.unlocked.push(x);});
+    state.readRewards[state.mission]=reward;
+    el.xp.textContent=state.xp;
+    el.rank.textContent=rank(state.xp);
+    renderInventory();
+  }
+  function nextMission(){
+    grantReadingReward();
+    if(state.mission===currentPack().missions.length-1){state.complete=true;el.victory.classList.remove('hidden');el.victoryText.textContent=`You completed ${currentPack().title} with ${state.xp} XP.`;return;}
+    state.mission++;render();el.commandInput.focus();
+  }
+  function resetMission(){
+    const reading=isReadingMission(currentMission());
+    el.commandInput.value='';
+    el.feedback.textContent='';
+    el.hintArea.textContent='';
+    el.commandInput.disabled=reading;
+    el.runBtn.disabled=reading;
+    el.nextBtn.disabled=!reading;
+    if(reading){el.feedback.innerHTML=`<span class="small muted">Read this pane, then continue. You will earn +${readingXp(currentMission())} XP when you click Next mission.</span>`;}
+  }
   function switchPack(){state=freshState(el.packSelect.value);el.consoleOutput.textContent='';el.resultPanel.classList.add('hidden');render();}
   function restartPack(){const id=state.packId,os=state.os;state=freshState(id);state.os=os;el.consoleOutput.textContent='';render();}
 

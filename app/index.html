@@ -18,6 +18,7 @@
     .state{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}.state-row{padding:10px 12px;border-top:1px solid var(--border)}.state-row:first-child{border-top:0}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
     table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--border)}.result{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff;overflow:auto}.hidden{display:none!important}.ok{color:var(--ok)}
     pre{white-space:pre-wrap;overflow-wrap:anywhere}.inventory-item{border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:.88rem}.actions{display:flex;flex-wrap:wrap;gap:8px}
+    .reading-pane{line-height:1.45}.reading-pane p{margin:.45rem 0}.reading-pane ul{margin:.45rem 0 .45rem 1.1rem;padding:0}.reading-pane code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f4f6;padding:1px 5px;border-radius:6px}
     details{border-top:1px solid var(--border);padding-top:14px}summary{cursor:pointer;font-weight:650}
     @media(max-width:900px){.workspace{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:620px){main{padding:14px}.metrics,.toolbar{grid-template-columns:1fr}.console-in{flex-wrap:wrap}.console-in button{width:100%}}
@@ -43,6 +44,7 @@
       <div><span class="badge" id="missionBadge">MISSION 1</span> <span class="small muted" id="difficulty"></span><h2 id="missionTitle"></h2><p id="missionIntro"></p></div>
       <div class="callout" id="taskBox"></div>
       <div id="conceptBox" class="card hidden"><strong class="small">Concept</strong><div class="small" id="conceptText"></div></div>
+      <div id="readingBox" class="card hidden"><strong class="small" id="readingTitle">Reading pane</strong><div class="small reading-pane" id="readingText"></div></div>
       <button id="hintBtn">💡 Hint</button><button id="solutionBtn">👀 Show solution</button><div id="hintArea" class="small"></div>
     </aside>
 
@@ -75,6 +77,13 @@
   title: "My R Pack",
   description: "A custom lesson pack.",
   missions: [
+    {
+      mode: "reading",
+      title: "Reading: Objects",
+      readingTitle: "Why objects?",
+      readingBody: () => "&lt;p&gt;Objects let you store values and reuse them later.&lt;/p&gt;",
+      xp: 40
+    },
     {
       title: "Create x",
       task: () => "Create x containing 1, 2, 3.",

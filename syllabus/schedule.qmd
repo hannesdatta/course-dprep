@@ -12,23 +12,22 @@ Lectures and tutorials are not always scheduled in computer rooms, so please bri
 | Week | Date | Time | Location | Content | Instructor |
 |----|----|----|----|----|----|
 | 0 |  |  |  | Preparation before the course starts |  |
-| 1 | Thu 29 Jan | 10:45–11:15 | CZ 6 | Q&A to help fix installation issues (optional) | Torralba-Flores |
-|  |  | 11:15–14:30 | CZ 6 | Opening lecture & R Bootcamp | Datta |
-| 2 | Thu 05 Feb | 12:45–14:30 | GZ 106 | Tutorial: Exploring data with RMarkdown | Torralba-Flores |
-|  |  | 14:45–16:30 | Online | Team coaching 1 | Sudhaharan |
-| 3 | Thu 12 Feb | 08:45–10:30 | Cube 241 | Tutorial: Version control using GitHub | Torralba-Flores |
-|  |  | 14:45–16:30 | Online | Team coaching 2 | Sudhaharan |
-| Break | Thu 17 Feb |  |  |  |  |
-| 4 | Thu 26 Feb | 08:45–10:30 | GZ 106 | Tutorial: Engineering Datasets | Torralba-Flores |
-|  |  | 10:45–12:30 | WZ 104 or online | Team coaching 3 | Sudhaharan |
-| 5 | Thu 5 Mar | 08:45–10:30 | Cube 219 | Tutorial: Pipeline automation | Torralba-Flores |
-|  |  | 14:45–16:30 | CZ 6 or online | Team coaching 4 | Sudhaharan |
-| 6 | Mon 9 Mar | 15:00–16:00 | Online | Online Q&A on example questions | Datta |
-|  | Thu 12 Mar | 16:45–18:30 | Online | Team coaching 5 (optional) | Sudhaharan |
-| 7 | Mon 16 Mar | 10:45–12:30 | CZ 6 | Closing lecture | Datta |
-|  | Thu 19 Mar | 10:45–12:30 | Online | Team coaching 6 (optional) | Sudhaharan |
-| Exams | Mon 30 Mar | tba |  | Main sit |  |
-|  | Mon 29 Jun | tba |  | Resit |  |
+| 1 | Tue 25 Aug | 11:45–12:30 | CZ 6 | Q&A to help fix installation issues (optional) | Torralba-Flores |
+|  |  | 12:45–16:30 | CZ 6 | Opening lecture & R Bootcamp | Datta |
+| 2 | Mon 31 Aug | 12:45–14:30 | GZ 104 | Tutorial | Datta & Torralba-Flores |
+|  | Wed 2 Sep | 12:45–14:30 | Cube 222 | Team coaching 1 | Swolfs |
+| 3 | Mon 7 Sep | 12:45–14:30 | GZ 104 | Tutorial | Datta & Torralba-Flores |
+|  | Wed 9 Sep | 12:45–14:30 | Cube 222 | Team coaching 2 | Swolfs |
+| 4 | Mon 14 Sep | 12:45–14:30 | GZ 104 | Tutorial | Datta & Torralba-Flores |
+|  | Wed 16 Sep | 12:45–14:30 | Cube 222 | Team coaching 3 | Swolfs |
+| 5 | Mon 21 Sep | 12:45–14:30 | GZ 104 | Tutorial | Datta & Torralba-Flores |
+|  | Wed 23 Sep | 12:45–14:30 | Cube 222 | Team coaching 4 | Swolfs |
+| 6 | Mon 28 Sep | 15:45–16:30 | Online | Online Q&A on example questions | Datta |
+|  | Wed 30 Sep | 14:45–16:30 | Online | Team coaching 5 (optional) | Swolfs |
+| 7 | Mon 5 Oct | 12:45–14:30 | Cube 219 | Closing lecture | Datta |
+|  | Fri 9 Oct | 14:45–16:30 | Online | Team coaching 6 (optional) | Swolfs |
+| Exams | Mon 12 Oct | tba |  | Main sit |  |
+|  | Wed 13 Jan 2027 | tba |  | Resit |  |
 
 <!--| |  | 10.45-12:30 | On-campus | Guest lecture: SQL & Big Query by [Springbok Agency](https://springbokagency.com)-->
 

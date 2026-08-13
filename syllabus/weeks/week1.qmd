@@ -16,7 +16,7 @@ __Preparation before class__
 
 - Please complete the software installation (see &rarr; Preparation before the course starts)
 - Please read [chapters 1-2 of "Marketing Analytics: A Modern Toolkit"](https://dprep-book.hannesdatta.com/) (and optionally the Appendix: R - A Gentle Introduction)
-- Please complete the code quests for week 1 (Shell Quest and R Quest - Basics)
+- Please complete the [code quests](https://code-quest.hannesdatta.com) for week 1 (Shell Quest and R Quest - Basics)
 
 __Opening lecture and R bootcamp__
 

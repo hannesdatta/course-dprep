@@ -40,6 +40,25 @@ Normally, add or edit lessons only in `lessons/*.js`. Do not change `engine.js` 
 
 See `AGENTS.md` for detailed instructions for future work and coding agents.
 
+### Reading panes (concept-only missions)
+
+You can add a non-interactive mission for explanation before practice:
+
+```js
+{
+  mode: 'reading',
+  title: 'Reading: Vectors',
+  intro: 'Read this before coding.',
+  readingTitle: 'What is a vector?',
+  readingBody: () => '<p>A vector stores multiple values of one type.</p>',
+  xp: 40
+}
+```
+
+- Reading missions hide the command input and hints.
+- Learners click **Next mission** after reading.
+- XP is awarded when they continue (use a smaller value such as `30`-`50`).
+
 ## Architecture
 
 - `index.html` — shared interface
