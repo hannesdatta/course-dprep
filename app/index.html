@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Quest: Shell, R, Git & SQL</title>
+  <style>
+    :root{--bg:#f7f8fa;--card:#fff;--text:#1f2937;--muted:#6b7280;--border:#d1d5db;--accent:#2563eb;--accent-bg:#eff6ff;--ok:#166534}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+    main{max-width:1240px;margin:0 auto;padding:24px}.grid{display:grid;gap:14px}.metrics{grid-template-columns:repeat(4,1fr)}
+    .metric,.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}.metric strong{display:block;font-size:1.25rem;margin-top:3px}
+    .muted{color:var(--muted)} .small{font-size:.88rem}.badge{display:inline-block;border-radius:999px;padding:4px 8px;background:var(--accent-bg);color:var(--accent);font-size:.78rem;font-weight:700}
+    .toolbar{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.workspace{display:grid;grid-template-columns:.82fr 1.5fr .78fr;gap:16px;align-items:start}
+    .callout{border-left:4px solid var(--accent);background:var(--accent-bg);border-radius:10px;padding:12px 14px}.stack>*+*{margin-top:12px}
+    select,input,textarea,button{font:inherit}select,textarea{width:100%;border:1px solid var(--border);border-radius:10px;padding:9px;background:#fff}textarea{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
+    button{border:1px solid var(--border);border-radius:10px;padding:9px 12px;background:#fff;cursor:pointer}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}button:disabled{opacity:.45;cursor:not-allowed}
+    .console{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}.console-head{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--border);padding:9px 12px}.console-out{min-height:260px;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem}.console-in{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--border);padding:10px}.prompt{padding-top:9px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .state{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}.state-row{padding:10px 12px;border-top:1px solid var(--border)}.state-row:first-child{border-top:0}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--border)}.result{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff;overflow:auto}.hidden{display:none!important}.ok{color:var(--ok)}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere}.inventory-item{border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:.88rem}.actions{display:flex;flex-wrap:wrap;gap:8px}
+    details{border-top:1px solid var(--border);padding-top:14px}summary{cursor:pointer;font-weight:650}
+    @media(max-width:900px){.workspace{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){main{padding:14px}.metrics,.toolbar{grid-template-columns:1fr}.console-in{flex-wrap:wrap}.console-in button{width:100%}}
+  </style>
+</head>
+<body>
+<main class="stack">
+  <section class="grid metrics">
+    <div class="metric"><span class="small muted">Quest</span><strong id="questName">—</strong></div>
+    <div class="metric"><span class="small muted">Mission</span><strong><span id="missionNum">1</span>/<span id="missionTotal">1</span></strong></div>
+    <div class="metric"><span class="small muted">XP</span><strong id="xp">0</strong></div>
+    <div class="metric"><span class="small muted">Rank</span><strong id="rank">Code Curious</strong></div>
+  </section>
+
+  <section class="card toolbar">
+    <label><span class="small"><strong>Lesson pack</strong></span><select id="packSelect"></select></label>
+    <div id="packControls"></div>
+    <div style="grid-column:1/-1" class="small muted" id="packDescription"></div>
+  </section>
+
+  <section class="workspace">
+    <aside class="stack">
+      <div><span class="badge" id="missionBadge">MISSION 1</span> <span class="small muted" id="difficulty"></span><h2 id="missionTitle"></h2><p id="missionIntro"></p></div>
+      <div class="callout" id="taskBox"></div>
+      <div id="conceptBox" class="card hidden"><strong class="small">Concept</strong><div class="small" id="conceptText"></div></div>
+      <button id="hintBtn">💡 Hint</button><button id="solutionBtn">👀 Show solution</button><div id="hintArea" class="small"></div>
+    </aside>
+
+    <section class="stack">
+      <div class="console">
+        <div class="console-head"><strong id="workspaceTitle">Console</strong><span class="small muted" id="workspaceSubtitle"></span></div>
+        <div class="console-out" id="consoleOutput"></div>
+        <div class="console-in"><span class="prompt" id="prompt">&gt;</span><textarea id="commandInput" rows="2" spellcheck="false" placeholder="Type a command…"></textarea><button class="primary" id="runBtn">Run</button></div>
+      </div>
+      <div id="resultPanel" class="result hidden"></div><div id="feedback"></div>
+      <div class="actions"><button id="clearBtn">Clear console</button><button id="resetMissionBtn">Reset mission</button><button id="nextBtn" disabled>Next mission →</button></div>
+    </section>
+
+    <aside class="stack">
+      <section><div><strong id="stateTitle">State</strong> <span class="small muted" id="stateSubtitle"></span></div><div id="statePanel" class="state" style="margin-top:8px"></div></section>
+      <section><strong>Unlocked toolkit</strong><div class="stack" id="inventory" style="margin-top:8px"></div></section>
+    </aside>
+  </section>
+
+  <section id="victory" class="hidden"><div class="callout"><strong>🏆 Quest complete</strong><p id="victoryText"></p></div><button id="restartBtn" style="margin-top:10px">Restart this quest</button></section>
+
+  <section id="instructorView">
+    <details>
+      <summary>Instructor view — lesson authoring</summary>
+      <div class="card" style="margin-top:10px">
+        <p class="small muted">Lesson packs live in separate files under <code>lessons/</code>. Add or edit lessons there. The engine should remain unchanged unless a lesson genuinely requires new capabilities.</p>
+        <pre class="small mono">window.CODE_QUEST.registerPack({
+  id: "my-pack",
+  type: "r",
+  title: "My R Pack",
+  description: "A custom lesson pack.",
+  missions: [
+    {
+      title: "Create x",
+      task: () => "Create x containing 1, 2, 3.",
+      hints: () => ["Use c()."],
+      solution: () => "x <- c(1,2,3)",
+      check: state => JSON.stringify(state.env.x) === "[1,2,3]",
+      xp: 100
+    }
+  ]
+});</pre>
+      </div>
+    </details>
+  </section>
+</main>
+<script src="config.js"></script>
+<script src="engine.js"></script>
+<script src="lessons/shell.js"></script>
+<script src="lessons/r-basics.js"></script>
+<script src="lessons/r-data-plots.js"></script>
+<script src="lessons/git.js"></script>
+<script src="lessons/sql.js"></script>
+<script>window.CODE_QUEST.start();</script>
+</body>
+</html>

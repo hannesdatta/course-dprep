@@ -1,0 +1,13 @@
+window.CODE_QUEST.registerPack({
+  id:'sql', type:'sql', title:'Week 4: SQL Quest',
+  description:'Query a small products table using SELECT, WHERE, ORDER BY, aggregation, and GROUP BY.',
+  missions:[
+    {title:'See the table',difficulty:'Warm-up',intro:'SQL queries describe the result you want.',task:()=>`Select <strong>all columns</strong> from products.`,hints:()=>['Use <code>SELECT * FROM products;</code>.'],solution:()=> 'SELECT * FROM products;',check:(s,r)=>r.rows&&r.rows.length===6&&r.columns.length===4,xp:100,unlock:()=>['SELECT']},
+    {title:'Pick columns',difficulty:'Explorer',intro:'SELECT can return only the columns you need.',task:()=>`Return only <strong>product</strong> and <strong>price</strong>.`,hints:()=>['Separate column names with commas.'],solution:()=> 'SELECT product, price FROM products;',check:(s,r)=>r.columns&&r.columns.join(',')==='product,price',xp:100,unlock:()=>['column selection']},
+    {title:'Filter rows',difficulty:'Explorer',intro:'WHERE filters observations.',task:()=>`Return products where <strong>price &gt; 4</strong>.`,hints:()=>['Use a <code>WHERE price &gt; 4</code> clause.'],solution:()=> 'SELECT * FROM products WHERE price > 4;',check:(s,r)=>r.rows&&r.rows.length===3&&r.filter==='price>4',xp:100,unlock:()=>['WHERE']},
+    {title:'Sort results',difficulty:'Analyst',intro:'ORDER BY controls row order.',task:()=>`Return all products ordered by <strong>sales descending</strong>.`,hints:()=>['Use <code>ORDER BY sales DESC</code>.'],solution:()=> 'SELECT * FROM products ORDER BY sales DESC;',check:(s,r)=>r.rows&&r.rows[0]?.product==='Cookie',xp:100,unlock:()=>['ORDER BY']},
+    {title:'Count rows',difficulty:'Analyst',intro:'COUNT(*) is an aggregation.',task:()=>`Count the number of products.`,hints:()=>['Use <code>COUNT(*)</code>.'],solution:()=> 'SELECT COUNT(*) FROM products;',check:(s,r)=>r.aggregate==='count'&&r.value===6,xp:100,unlock:()=>['COUNT()']},
+    {title:'Average sales',difficulty:'Analyst',intro:'AVG() computes the arithmetic mean.',task:()=>`Calculate average <strong>sales</strong>.`,hints:()=>['Use <code>AVG(sales)</code>.'],solution:()=> 'SELECT AVG(sales) FROM products;',check:(s,r)=>r.aggregate==='avg'&&Math.abs(r.value-100)<.001,xp:100,unlock:()=>['AVG()']},
+    {title:'Group By Boss',difficulty:'Boss fight',intro:'GROUP BY calculates summaries for categories.',task:()=>`Return <strong>category</strong> and the <strong>average sales per category</strong>.`,hints:()=>['Use <code>AVG(sales)</code> and <code>GROUP BY category</code>.'],solution:()=> 'SELECT category, AVG(sales) FROM products GROUP BY category;',check:(s,r)=>r.grouped===true&&r.rows?.length===2,xp:140,unlock:()=>['GROUP BY']}
+  ]
+});

@@ -10,12 +10,13 @@ __Learning Goals__
 - Understand the added value of this course in your study program
 - Know what to prepare, and how to do it effectively
 - Understand the grading and assessment criteria for the course
-- Get familiar with the RStudio interface and basic data manipulation using dplyr
+- Get familiar with the RStudio interface and basic data manipulation using `dplyr`
 
 __Preparation before class__
 
 - Please complete the software installation (see &rarr; Preparation before the course starts)
 - Please read [chapters 1-2 of "Marketing Analytics: A Modern Toolkit"](https://dprep-book.hannesdatta.com/) (and optionally the Appendix: R - A Gentle Introduction)
+- Please complete the code quests for week 1 (Shell Quest and R Quest - Basics)
 
 __Opening lecture and R bootcamp__
 
@@ -25,6 +26,7 @@ __Opening lecture and R bootcamp__
 __After the lecture__
 
 - Exercises after class (please complete [chapters 1-4 in R for Social Scientists](https://datacarpentry.org/r-socialsci/) at your own pace; about 4-5 hours)
+
 <!--- Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
 -->
 <!--

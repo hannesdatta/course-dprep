@@ -1,0 +1,14 @@
+window.CODE_QUEST.registerPack({
+  id:'git', type:'git', title:'Week 2: Git Quest',
+  description:'Practice status, staging, commits, branches, switching, and merging.',
+  missions:[
+    {title:'Check repository status',difficulty:'Warm-up',intro:'git status tells you what Git currently sees.',task:()=>`Run <strong>git status</strong>.`,hints:()=>['Try <code>git status</code>.'],solution:()=> 'git status',check:(s,r)=>r.action==='status',xp:100,unlock:()=>['git status']},
+    {title:'Stage your work',difficulty:'Rookie',intro:'Files must be staged before they can be committed.',task:()=>`Stage <strong>analysis.R</strong>.`,hints:()=>['Use <code>git add analysis.R</code>.'],solution:()=> 'git add analysis.R',check:s=>s.git.staged.includes('analysis.R'),xp:100,unlock:()=>['git add']},
+    {title:'Make a commit',difficulty:'Rookie',intro:'A commit records a meaningful snapshot.',task:()=>`Commit the staged file with any non-empty message.`,hints:()=>['Use <code>git commit -m "message"</code>.'],solution:()=> 'git commit -m "Add analysis"',check:(s,r)=>r.action==='commit',xp:100,unlock:()=>['git commit']},
+    {title:'Create a feature branch',difficulty:'Brancher',intro:'Branches let you work without changing main.',task:()=>`Create a branch called <strong>feature-plot</strong>.`,hints:()=>['Use <code>git branch feature-plot</code>.'],solution:()=> 'git branch feature-plot',check:s=>s.git.branches.includes('feature-plot'),xp:100,unlock:()=>['git branch']},
+    {title:'Switch branches',difficulty:'Brancher',intro:'Move your working copy onto the new branch.',task:()=>`Switch to <strong>feature-plot</strong>.`,hints:()=>['Try <code>git switch feature-plot</code>.','Older syntax: <code>git checkout feature-plot</code>.'],solution:()=> 'git switch feature-plot',check:s=>s.git.branch==='feature-plot',xp:100,unlock:()=>['git switch']},
+    {title:'Commit the feature',difficulty:'Builder',intro:'Imagine plot.R has just been created.',task:()=>`Stage <strong>plot.R</strong> and then commit it. You may use two commands.`,hints:()=>['First <code>git add plot.R</code>.','Then <code>git commit -m "Add plot"</code>.'],solution:()=> 'git add plot.R\ngit commit -m "Add plot"',check:s=>s.git.commits.some(c=>c.branch==='feature-plot'),xp:120,unlock:()=>['feature commit']},
+    {title:'Return to main',difficulty:'Navigator',intro:'Merges are normally performed from the branch receiving the changes.',task:()=>`Switch back to <strong>main</strong>.`,hints:()=>['Use <code>git switch main</code>.'],solution:()=> 'git switch main',check:s=>s.git.branch==='main',xp:100},
+    {title:'Merge Boss',difficulty:'Boss fight',intro:'Merge feature-plot into main.',task:()=>`Run the appropriate <strong>git merge</strong> command.`,hints:()=>['Use <code>git merge feature-plot</code>.'],solution:()=> 'git merge feature-plot',check:s=>s.git.merged,xp:140,unlock:()=>['git merge']}
+  ]
+});
