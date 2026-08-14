@@ -15,6 +15,6 @@ __Lecture__
 - Course summary and exam preparation <!-- ([slides](slides.html))
 -->
 
-__Coaching session (online, optional)__
+__After the lecture__
 
-- Work on your team goals for this course week (see coaching #6 on your workplan).
+- Finalize exam preparation and remaining project submission tasks.

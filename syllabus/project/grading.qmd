@@ -4,60 +4,75 @@ format: html
 number-depth: 2
 ---
 
-## Assessment
+## Assessment structure
 
-The team project is submitted as a reproducible, end-to-end workflow on GitHub, featuring a well-structured and fully automated pipeline for data exploration & cleaning, analysis, and deployment.
+This TikTok-data project is graded as a **combination of team work and individual work**.
 
-Points can be obtained for three assessment criteria:
+- **Team work components (65% of project grade):**
+  - Week 2: 25%
+  - Week 4 (team part): 15%
+  - Week 5: 25%
+- **Individual work components (35% of project grade):**
+  - Week 3: 25%
+  - Week 4 (individual part): 10%
 
-1. GitHub repository (30% of the final grade)
-2. Data preparation and analysis (45% of the final grade)
-3. Quality of the source code and degree of automation (25% of the final grade)
+No self- or peer-assessment score adjustment is used.
 
-## Grading Rubric
+Deadlines are listed on Canvas. Also check out the weekly [workplan](workplan.qmd) for further guidance.
 
-__The grading rubric will be shared on Canvas__.
+## Grading rubric
 
-Weights for each component of the grading rubric are indicated in brackets (e.g., 5%). In calculating your final grade, percentages are converted to grade points on a ten-point scale (e.g., 5% make up 0.5 grade points on a 10-point scale), weighted by the following percentages:
+The rubric is organized per week. In each week rubric, rows represent the four core components (project management, coding, versioning, and automation).
 
-* *High proficiency* and/or exceeds expectations (grade points x 100%)
-* *Adequate proficiency* (grade points x 80%)
-* *Some proficiency* (grade points x 60%)
-* *Insufficient proficiency* (grade points x 30%)
-* *No proficiency* (grade points x 0%)
+Use the levels as follows:
+
+- **Sufficient:** Meets the minimum required standard.
+- **Good:** Meets all requirements clearly and consistently.
+- **Very good:** **Goes beyond** requirements with clear, verifiable added value (quality, robustness, and collaboration impact). This level is intentionally rare and should apply to approximately the top 10% of submissions.
+
+During coaching, the same rubric dimensions are used for formative feedback. Final grades are based on the full rubric criteria below.
+
+### Week 2 rubric (Team work, 25%)
+
+| Component | Fail | Sufficient | Good | Very good |
+|---|---|---|---|---|
+| Project management | Repository is not set up correctly; issues are mostly untouched; `README.md` is missing or unusable. | Template is forked; team members are added; basic `README.md` and issue progress are present. | Issues are handled with clear summaries and closures; `README.md` gives clear install/run steps. | Meets all `Good` criteria and **goes beyond** by maintaining highly transparent issue management (clear ownership, status, and closure rationale) and a `README.md` that enables smooth onboarding for a new teammate without extra help. |
+| Coding | No usable CSV summary output is produced. | A basic Quarto summary of one selected CSV is produced. | Summary output is clean, reproducible, and interpretable. | Meets all `Good` criteria and **goes beyond** by adding deeper checks/insights (e.g., extra diagnostics, clearer interpretation, or robustness checks) that materially improve the usefulness of the summary output. |
+| Versioning | Very few commits; Git workflow is incorrect or unclear. | More than 5 commits with mostly meaningful messages and basic Git workflow usage. | Frequent, meaningful commits with clean progression and correct pull/push workflow. | Meets all `Good` criteria and **goes beyond** with exceptionally clear commit history (atomic commits, strong messages, clean sequencing) that makes the full development path easy to audit. |
+| Automation | Scripts are ad hoc and do not follow a pipeline structure. | Scripts mostly follow setup-input-transformation-output logic. | Scripts consistently follow pipeline logic with clear, reusable structure. | Meets all `Good` criteria and **goes beyond** by improving robustness/reusability (e.g., clearer script interfaces, stronger dependency flow, and easier reruns by other team members). |
+
+### Week 3 rubric (Individual work, 25%)
+
+| Component | Fail | Sufficient | Good | Very good |
+|---|---|---|---|---|
+| Project management | Assigned issues are not properly handled; task boundaries are unclear. | Assigned issue is addressed with acceptable scope and updates. | Issue handling is focused, well documented, and clearly scoped. | Meets all `Good` criteria and **goes beyond** through proactive issue management (timely status updates, clear blockers, and explicit handoff notes for review). |
+| Coding | Required visual outputs are missing or not functional. | Required `ggplot2` outputs are produced at basic quality. | Visual outputs are correct, readable, and technically sound (`ggsave`, directories, chart types). | Meets all `Good` criteria and **goes beyond** by adding advanced, well-justified design/analysis choices that improve interpretability and insight quality. |
+| Versioning | Work is pushed directly to `main` or branch workflow is not followed. | Feature-branch workflow is used and PR is opened. | Branch, commit, push, and PR workflow is clean and consistent. | Meets all `Good` criteria and **goes beyond** with a highly professional PR (clear scope, evidence of testing, focused commits, and smooth reviewability). |
+| Automation | No usable `Makefile` for visualization task. | `Makefile` runs the visualization workflow at basic level. | `Makefile` is reliable and supports repeatable plot generation. | Meets all `Good` criteria and **goes beyond** by making automation easier for others to reuse (clear targets/dependencies and brief run instructions). |
+
+### Week 4 rubric 
+
+#### Individual work (10%)
+
+| Component | Fail | Sufficient | Good | Very good |
+|---|---|---|---|---|
+| Project management | Does not review peers' PRs and does not update `README.md`. | Reviews at least 1 peer PR and updates `README.md` with at least 1 concrete improvement. | Reviews at least 2 peer PRs with actionable comments and updates `README.md` with clear setup/run or workflow clarifications. | Meets all `Good` criteria and **goes beyond** by closing the feedback loop (tracks whether comments were addressed) and delivering a clearly improved `README.md` for first-time users. |
+| Coding | Adds no meaningful Week 4 code improvements from recent tutorials. | Implements at least 1 tutorial-based improvement (e.g., loop, regular expression, or interpolation) in working code. | Implements at least 2 tutorial-based improvements correctly (e.g., loops plus regex/interpolation) and documents where they are used. | Meets all `Good` criteria and **goes beyond** by integrating multiple advanced improvements with clear rationale and measurable gains in code clarity, maintainability, or data quality. |
+| Versioning | Does not check out another member's branch, or commits directly to `main`. | Checks out another member's branch and contributes at least 1 valid commit. | Checks out another member's branch, pushes useful changes, and updates the linked issue/PR with a clear change note. | Meets all `Good` criteria and **goes beyond** by providing exemplary traceability (clean commit structure, explicit issue links, and high-quality PR notes for reviewers). |
+
+#### Team work (15%)
+
+| Component | Fail | Sufficient | Good | Very good |
+|---|---|---|---|---|
+| Project management | Team does not hold integration meet-up; PRs remain open; unresolved conflicts block integration to `main`. | Team holds a meet-up, merges most PRs, resolves basic conflicts, and closes some issues. | Team meets, merges all relevant PRs, resolves conflicts jointly, merges a stable final version to `main`, and closes all related issues. | Meets all `Good` criteria and **goes beyond** by running a fully documented integration session (who merged what, how conflicts were solved, and why) with a clean, stable final state on `main`. |
+| Automation | Integrated `Makefile` fails and no fix/verification is provided. | Integrated `Makefile` runs after fixes, but with limited evidence of testing. | Integrated `Makefile` runs reliably; student records what command was run and what was fixed. | Meets all `Good` criteria and **goes beyond** by strengthening `Makefile` robustness (e.g., clearer dependencies/targets) and documenting rerun/validation steps teammates can follow immediately. |
 
 
+### Week 5 rubric (Team work, 25%)
 
-::: {.callout-note}
-
-***Example***
-
-*A student team has shown adequate proficiency in writing source code and automating the project. This part of the team project counts towards 25% of the team project’s final grade. In grade points, this equals 2.5 points on a 10-point scale. The points are weighted with 80% for adequate proficiency. The grade for this part of the data package equals 2.5 x 80% = 2.00.*
-
-:::
-
-
-::: {.callout-note}
-
-***Disclaimer:***
-The same grading rubric will be used to provide preliminary feedback during the coaching sessions. For these sessions, the sub-criteria are simplified to "Very good", "Sufficient", and "Needs improvement" serving as preliminary feedback to indicate whether the project is on track. The detailed sub-criteria outlined above, however, will be applied for the final grade calculation.
-
-:::
-
-## Tips for the project
-
-### Structure your `README.md`
-
-The readme is not a copy of your way of deployment (e.g., your report), but *links* to it. Therefore, only summarize the main results in your readme (e.g., in bullet point format), or include screenshots (e.g., to your app, to your "best" figure).
-
-More information on how a proper readme should look like can be found at [Tilburg Science Hub](https://tilburgsciencehub.com/write/readme).
-
-
-
-### Final "housekeeping" checks to conduct before the deadline
-
-Ever considered your project may work exclusively on your computer, but not on somebody else's? It could just be you forgot to tell your users to install a particular package!
-
-To avoid such common "replication traps", please check out your repository on somebody else's computer, go through the installation instructions, and try to run the entire project.
-
-More valuable tips and tricks for submitting a clean & working repository are [documented in our checklist for "housekeeping"](https://tilburgsciencehub.com/audit/workflow-checklist).
+| Component | Fail | Sufficient | Good | Very good |
+|---|---|---|---|---|
+| Project management | Issues are poorly assigned/reviewed; final `README.md` is incomplete. | Issues are assigned and reviewed at basic level; final `README.md` is acceptable. | Issue allocation/review is effective and `README.md` is clear and complete. | Meets all `Good` criteria and **goes beyond** by demonstrating exceptional coordination (balanced issue assignment, rigorous review follow-through) and a `README.md` that is immediately actionable for external users. |
+| Coding | Key Week 5 tasks (regression/modularization/output/database switch) are largely missing. | Core Week 5 tasks are implemented at minimum acceptable level. | Week 5 tasks are correctly implemented with good quality across modules. | Meets all `Good` criteria and **goes beyond** by delivering stronger analytical depth and technical quality across modules (well-structured model workflow, clear outputs, and robust database integration). |
+| Versioning | Branching/merging is inconsistent and difficult to audit. | Feature branches and merges are used with acceptable traceability. | Branching and merges are consistent, clean, and well documented. | Meets all `Good` criteria and **goes beyond** with exceptional auditability (clear branch strategy, high-signal commit messages, and well-documented merge decisions). |
+| Automation | No full pipeline automation; `make clean` or reproducibility steps are missing. | Full pipeline exists but is fragile or partially documented. | End-to-end `Makefile` runs reliably, including `make clean`, with reproducible package setup. | Meets all `Good` criteria and **goes beyond** by hardening reproducibility (clear environment pinning, reliable reruns on another machine, and concise run/cleanup validation notes). |

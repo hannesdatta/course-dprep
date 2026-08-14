@@ -4,65 +4,76 @@ format: html
 number-depth: 1
 ---
 
-You’ll start working on your project -- an *end-to-end, fully automated research workflow* -- in the first course week. The activities below help you to structure your project. Stick to the plan to ensure you can finish the project in time.
+You will build this TikTok-data project step by step during the course. This workplan describes what needs to be done each week. Also check out the [grading criteria](grading.qmd) for further guidance.
 
 ::: {.callout-note}
+Deliverables for Weeks 2-4 are due on the **day before the next coaching session**.
 
-**Deliverables** are submitted on Canvas. Please check Canvas for the due dates for each week. The course team will provide short feedback in line with the grading rubric at least a day before the next coaching session.
+- Week 2 deliverable -> due the day before Coaching #2
+- Week 3 deliverable -> due the day before Coaching #3
+- Week 4 deliverable -> due the day before Coaching #4
+
+For Week 5, there is no additional deliverable due before Coaching #5. Use Coaching #5 for feedback before final submission.
+
+Check Canvas for exact date/time cutoffs and final submission deadlines.
 :::
 
-## Week 1: Team Formation
+## Week 2 (Coaching #1) - Team work
 
-- Explore whom you would like to work with.
-- Register your team on Canvas.
+- Instructor will have provided a public template repository with starter code, assignment instructions, and initial GitHub issues.
+- Fork the template repository and add all team members as collaborators.
+- Update `README.md` with installation and run instructions.
+- Complete Week 2 issues, write short completion summaries, and close finished issues.
+- Download starter datasets and produce a clean Quarto summary for one selected CSV file.
+- Use Git frequently (more than 5 meaningful commits) with correct use of `git status`, `git add`, `git commit`, `git push`, and `git pull`.
+- Ensure scripts follow setup-input-transformation-output principles.
+- Deliverable due: day before Coaching #2.
 
-## Week 2: Data Exploration (Coaching #1)
-- **Coaching Support:**
-  - Discuss your research question and data set choice with your coach. Ensure the question is suitable and the data set is appropriate for the analysis.
-  - Begin exploring your data using RMarkdown to understand its structure and contents. 
-  - Address any installation or data access issues.
-- **Deliverables:**
-  - RMarkdown document (both `.md` and rendered as `.pdf`), with your research motivation and initial data exploration (see [grading rubric](dprep-project-rubric.pdf), 1.1 (Research Motivation) and 2.1 (Data Exploration)).
+## Week 3 (Coaching #2) - Individual work
 
-## Week 3: GitHub Setup and Data Preparation (Coaching #2)
-- **Progress on Project:**
-  - Set up your GitHub repository under the `course-dprep` organization. This should include initializing GitHub Issues, setting up a Project Board with columns for "backlog," "to do," "in progress," and "done," and committing your initial `readme.md` file with the research question.
-  - Continue data preparation by cleaning and transforming the dataset. Ensure that you document your process in RMarkdown.
-- **Coaching Support:**
-  - Review the setup of your GitHub repository with your coach. Ensure the repository structure aligns with your project needs and that you are effectively using GitHub for collaboration.
-  - Discuss your progress on data preparation. Ensure that the data is properly cleaned and ready for analysis.
-- **Deliverables:**
-  - Link to your GitHub team repository with (a) updated RMarkdown document reflecting the progress in data preparation, (b) a repository that's in a good shape (containing your initial `readme.md` file and the first version of your data exploration script to the GitHub repository).
-  - For more details, see [grading rubric](dprep-project-rubric.pdf), specifically 1.2 (Repository Structure) and 1.3 (Way of working using GitHub).
+- Instructor will have created and assigned new individual issues focused on data visualization.
+- Work only on your assigned issue(s) and keep task scope clearly separated.
+- Create visualization outputs with `ggplot2` and export `.png` files.
+- Use `dir.create`, `ggsave`, and a mix of chart types (e.g., histogram, bar chart, time series).
+- Work in a feature branch, push your branch, and open a pull request to `main`.
+- Do not merge unfinished individual work directly into `main`.
+- Add a `Makefile` for your visualization workflow.
+- Deliverable due: day before Coaching #3.
 
-## Week 4: Advanced Data Preparation and Initial Analysis (Coaching #3)
-- **Progress on Project:**
-    - Furhter refine the data preparation, ensuring that the dataset is fully ready for analysis. This should include handling missing data and any necessary feature engineering.
-  - Begin conducting initial analyses, documenting your process and findings in RMarkdown.
-  - Continue updating and refining your GitHub repository, ensuring all changes are committed and documented.
-- **Coaching Support:**
-  - Discuss any challenges in advanced data preparation with your coach, such as handling missing data, data transformations, and variable operationalization.
-  - Review your initial analysis plans. Ensure that your approach to data analysis is sufficient.
-  - Support with working with GitHub (it is very important that all team members contribute to the repository using the Git workflow discussed in class)
-- **Deliverables:**
-  - Updated GitHub repository, with an emphasis on 2.2 (Data Preparation) and 1.3 (Way of working using GitHub). For details, see [grading rubric](dprep-project-rubric.pdf).
+## Week 4 (Coaching #3) - Individual work and team work
 
-## Week 5: Automation and Refinement (Coaching #4)
-- **Progress on Project:**
-  - Implement automation in your data processing pipeline, ensuring it works without error.
-  - Continue refining your analysis, incorporating feedback and improving the robustness of your code.
-  - Ensure that your GitHub repository is up to date, with all automation scripts committed and properly documented.
-- **Coaching Support:**
-  - Review your automation strategy with your coach, focusing on debugging and efficiency.
-- **Deliverables:**
-  - Automated data processing pipeline scripts (`makefile`), committed and documented in your GitHub repository. 
-  - For details, see [grading rubric](dprep-project-rubric.pdf), with an emphasis on 3.1 and 3.2 (Source code quality and degree of automation).
+### Individual work
 
-## Weeks 6-7: Final Analysis (Coaching #5/#6), optional
-- **Progress on Project:**
-    - Debug automation of your project
-    - Conduct final housekeeping checks with your coach to ensure all deliverables are complete and all documentation is in order.
-  - Continue updating your GitHub repository, ensuring that all scripts, documentation, and final analysis are committed.
-- **Coaching Support:**
-  - Review the progress of your final analysis and discuss deployment strategies with your coach. Focus on the robustness of your analysis and the usability of your deployment plan. For details, see grading guidelines, section 2.3 (Analysis and Deployment).
-  - Get feedback on any remaining technical challenges and ensure that your code is well-documented and ready for final submission.
+- Instructor will have assigned reviewers for each issue/pull request.
+- Review peers' pull requests and provide actionable feedback.
+- Update `README.md` based on what was learned during review.
+- Improve your code using recent tutorial techniques (e.g., loops, regular expressions, interpolation).
+- Check out another team member's branch, make changes, push updates, and update the linked issue/pull request.
+- Confirm that the `Makefile` runs after your revisions.
+
+### Team work (collaboration and integration)
+
+- Hold an integration meet-up.
+- Merge all relevant pull requests.
+- Resolve merge conflicts jointly.
+- Merge one stable final integrated version to `main`.
+- Close all open issues related to this stage.
+- Deliverable due: day before Coaching #4.
+
+## Week 5 (Coaching #4) - Team work
+
+- Instructor will have created new issues on regression analysis, modular project structure, output/reporting, database input, and reproducible package versions.
+- Self-assign issues and review each other's work.
+- Finalize `README.md`.
+- Add regression analysis and implement modular folders: `data_prep`, `analysis`, `paper`.
+- Generate analysis output as PDF (or advanced option: interactive dashboard).
+- Replace CSV input with the provided database input.
+- Use feature branches per task with clean commits and merges.
+- Deliver a full end-to-end `Makefile`, include `make clean`, and ensure reproducible R package versioning.
+
+## Week 6 (Coaching #5, optional) - Team work
+
+- Bring your near-final project state for targeted feedback.
+- Verify end-to-end reproducibility on a clean machine/environment.
+- Resolve remaining integration or automation issues.
+- Prepare final submission according to Canvas instructions.

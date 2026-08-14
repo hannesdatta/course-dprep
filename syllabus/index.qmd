@@ -59,7 +59,7 @@ Students are recommended to follow this course before embarking on thesis projec
 
 ## Assessment
 
--   Team assignment (40%, out of which 20% are based on students' individual contributions, measured through their individual code contributions).
+-   Team assignment (40%; graded through a combination of team work and individual work contributions; see project grading guidelines).
 -   Computer exam (60%, 120 minutes)
 
 <!--The specification matrix for this course can be [downloaded here](../specification_tables_dprep.pdf). This matrix gives an overview of all the learning goals and their weights in each graded component of the course (i.e., in the final exam, team project and Pulse). -->
