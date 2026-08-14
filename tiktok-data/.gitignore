@@ -1,0 +1,7 @@
+*.sqlite
+*.csv
+**_files
+*.pdf
+*.png
+**descriptives
+**documentation
