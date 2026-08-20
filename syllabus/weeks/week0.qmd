@@ -3,15 +3,16 @@ title: "Preparation before the course starts"
 format: html
 ---
 
-It’s important to spend some time *before the first class* installing the required software and familiarizing yourself with R and RStudio.
+It’s important to spend some time *before the first class* installing the required software and familiarizing yourself with R and Positron.
 
 ## Essential setup before the first class
 
-**1) Install R and RStudio**
+**1) Install R and Positron**
 
 Throughout the course, we will use R — a powerful, open-source toolbox for handling and analyzing large datasets. One of R’s greatest strengths is its active community, which continuously develops and shares new packages to extend its functionality.
 
--   Follow these [setup instructions](https://tilburgsciencehub.com/topics/Computer-Setup/software-installation/RStudio/r/) to install R and RStudio.
+-   Install R from [CRAN](https://cran.r-project.org/).
+-   Install Positron from [https://positron.posit.co/download.html](https://positron.posit.co/download.html).
 
 **2) Install a code editor**
 

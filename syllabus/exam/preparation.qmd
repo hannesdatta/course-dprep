@@ -39,7 +39,7 @@ The exact cover page for this year’s exam will be made available on Canvas in 
 
 ## Technical Tips & Beyond
 
-* **Get familiar with the exam environment**: practice using Windows, opening RStudio, navigating with the command prompt, and setting working directories.
+* **Get familiar with the exam environment**: practice using Windows, opening Positron, navigating with the command prompt, and setting working directories.
 * **Know how to zip and unzip files** so you can upload or submit repositories without issues.
 * **Use and prepare cheatsheets**:
   * Official R, make, and Git cheatsheets will be provided (previous versions can be downloaded [here](https://tilburgsciencehub.com/cheatsheets)).
@@ -57,4 +57,4 @@ The exact cover page for this year’s exam will be made available on Canvas in 
 * **Local package installation**:
   * Practice installing packages locally, since internet access will not be available.
   * Test with [test-package-installation.zip](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/test-package-installation.zip): unzip and run `RScript install_packages.R` from the correct directory.
-* **Save time on exam day**: before the exam officially starts, open the required software (e.g., RStudio, Jupyter Notebook) and set working directories so you can begin immediately.
+* **Save time on exam day**: before the exam officially starts, open the required software (e.g., Positron, Jupyter Notebook) and set working directories so you can begin immediately.

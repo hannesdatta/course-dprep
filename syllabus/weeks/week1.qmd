@@ -10,7 +10,7 @@ __Learning Goals__
 - Understand the added value of this course in your study program
 - Know what to prepare, and how to do it effectively
 - Understand the grading and assessment criteria for the course
-- Get familiar with the RStudio interface and basic data manipulation using `dplyr`
+- Get familiar with the Positron interface and basic data manipulation using `dplyr`
 
 __Preparation before class__
 
@@ -75,4 +75,3 @@ Meetup
     - market research (e.g., pricewatch)
 
 -->
-
