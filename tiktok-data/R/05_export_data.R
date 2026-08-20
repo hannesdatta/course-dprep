@@ -39,6 +39,17 @@ write_sqlite <- function(sqlite_path, tables, index_sql = character(0), post_sql
   if (length(post_sql) > 0) invisible(lapply(post_sql, DBI::dbExecute, conn = con))
 }
 
+write_student_views_csv <- function(sqlite_path, output_dir, view_names = c("video_view", "user_view")) {
+  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+  con <- DBI::dbConnect(RSQLite::SQLite(), sqlite_path)
+  on.exit(DBI::dbDisconnect(con), add = TRUE)
+
+  purrr::walk(view_names, function(view_name) {
+    view_tbl <- DBI::dbReadTable(con, view_name)
+    readr::write_csv(view_tbl, file.path(output_dir, paste0(view_name, ".csv")))
+  })
+}
+
 make_data_dictionary <- function(tables) {
   purrr::imap_dfr(tables, function(tbl, nm) {
     tibble::tibble(
@@ -260,6 +271,7 @@ export_all <- function(cfg,
   write_sqlite(file.path(output_base, "tiktok_truth.sqlite"), truth_tables, index_sql = internal_index_sql)
   write_sqlite(file.path(output_base, "tiktok_observed.sqlite"), observed_tables, index_sql = internal_index_sql)
   write_sqlite(file.path(output_base, "tiktok_students.sqlite"), student_tables, index_sql = student_index_sql, post_sql = student_views_sql)
+  write_student_views_csv(file.path(output_base, "tiktok_students.sqlite"), output_base)
 
   data_dict <- make_data_dictionary(observed_tables)
   students_data_dict <- make_data_dictionary(student_tables)

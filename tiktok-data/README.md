@@ -33,6 +33,7 @@ For each profile (`output/prototype/` or `output/full/`):
 - `tiktok_observed.sqlite`: internal noisy pipeline layer
 - `tiktok_students.sqlite`: masked student-facing production-style layer
 - `truth/`, `observed/`: CSV exports of corresponding layers
+- `video_view.csv`, `user_view.csv`: CSV exports of student helper views
 - `descriptives/`: diagnostics and plots
 - `mission_evaluation/`: mission KPI pass/fail checks
 - `documentation/student_database_documentation.pdf`: formal student DB data documentation
