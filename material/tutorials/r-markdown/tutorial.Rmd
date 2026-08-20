@@ -119,7 +119,7 @@ __Troubleshooting__
 
 - If R doesn’t find your file: Click **Session → Set working directory → To source file location**. 
 - Avoid using `setwd()` — hardcoding directories can cause problems!
-- Don't manage to download the file directly from Google? You can also use an archived version on this course's GitHub's repository; just run the code below in RStudio: 
+- Don't manage to download the file directly from Google? You can also use an archived version on this course's GitHub's repository; just run the code below in Positron: 
 
 
 ```{r message=FALSE, warning=FALSE}
@@ -202,7 +202,7 @@ summary(mobility$retail_and_recreation_percent_change_from_baseline)
 
 It can be quite handy to include a good-looking summary table with descriptive statistics in a Markdown-based report. For this, you can first make use of the `describe` function from the `psych` package (install it first if you don't have it, using `install.packages('psych')`. Then, you can "pipe" it through `knitr`'s `kable` function to render it nicely in your document.
 
-We'll show you a starting code snippet here that you can extend. Run it in RStudio and see what it does!
+We'll show you a starting code snippet here that you can extend. Run it in Positron and see what it does!
 
 ```{r}
 

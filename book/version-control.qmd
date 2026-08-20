@@ -40,7 +40,7 @@ Commits are what make Git powerful. Instead of overwriting old versions of files
 ::: {.callout-note title="Saving vs. Committing"}
 It is easy to confuse *saving* with *committing*, but they are very different:  
 
-- **Saving**: writes changes to your local file (just like hitting “Save” in Word or RStudio). Nobody else sees it, and Git does not record it.  
+- **Saving**: writes changes to your local file (just like hitting “Save” in Word or Positron). Nobody else sees it, and Git does not record it.  
 
 - **Committing**: records a snapshot of the file in Git’s history. The commit becomes part of the permanent project timeline and can later be shared with others.  
 
@@ -231,14 +231,14 @@ Git is a **command-line tool** at heart. That means you interact with it by typi
 
 * **GitHub.com**. The web interface is where you browse repositories, open issues, create project boards, and review pull requests. You rarely edit code directly on GitHub (except small fixes) — most work happens locally, but GitHub is the hub for collaboration.
 
-* **Integrated tools**. Many editors (RStudio, VS Code, PyCharm) include Git panels. These let you click buttons for staging, committing, and pushing, while Git still runs under the hood.
+* **Integrated tools**. Many editors (Positron, VS Code, PyCharm) include Git panels. These let you click buttons for staging, committing, and pushing, while Git still runs under the hood.
 
 Different interfaces, same workflow: make changes locally, record them in Git, and sync them with GitHub so the whole team stays aligned.
 
 ::: {.callout-tip title="Don’t Like the Terminal? Use a GUI"}
 Git is a command-line tool at heart, but many editors and apps provide a graphical interface:  
 
-- **RStudio**: integrates Git into projects with buttons for staging, committing, and pushing.  
+- **Positron**: integrates Git into your workspace with buttons for staging, committing, and pushing.  
 - **Visual Studio Code**: has a built-in Git panel for all common tasks.  
 - **GitHub Desktop**: a standalone app that provides a simple, beginner-friendly interface.  
 

@@ -14,14 +14,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ---
 
 ### Prerequisites
-* [Installing R and R Studio](http://tilburgsciencehub.com/setup/r/)
+* Install R from [CRAN](https://cran.r-project.org/)
+* Install Positron from [https://positron.posit.co/download.html](https://positron.posit.co/download.html)
 * [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) (chapter 1, 2, 3, 4, 5)
 * [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2, 3)
 
 ---
 
 ### Learning Objectives
-* Setup R and R Studio
+* Set up R and Positron
 * Read text files into data frames
 * Create various data types (variable, vector, matrix, dataframe)
 * Manipulate data frames (create, drop, and rename columns)

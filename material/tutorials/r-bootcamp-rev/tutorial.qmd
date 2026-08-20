@@ -1,6 +1,6 @@
 ---
 title: "Tutorial (week 1) - R Bootcamp"
-subtitle: "Data Preparation and Programming Skills (2025/2026)"
+subtitle: "Data Preparation and Programming Skills (2026/2027)"
 author: "Hannes Datta"
 date: "last-modified"
 format: 
@@ -42,11 +42,11 @@ Based on [https://datacarpentry.org/r-socialsci/](https://datacarpentry.org/r-so
 
 ---
 
-## DO: Creating a new project
+## DO: Creating a new folder for your project
 
-- Under the *File menu*, click on *New project*, choose *New directory*, then *New project*
+- In the *Explorer pane*, click *Add a Folder*.
 - Enter a *name for this new folder* and choose a *convenient location* (e.g., `~/data-carpentry`)
-- Click on *Create project*
+- Click on *Create*
 - Create a *new file* where we will type our scripts: File > New File > R script → Save as *script.R*
 
 ---
@@ -54,14 +54,19 @@ Based on [https://datacarpentry.org/r-socialsci/](https://datacarpentry.org/r-so
 ## The Positron Interface
 
 ::: incremental
-- four panes: source code, console, environment/history, files
-- setting and checking working directories (`setwd()` and `getwd()`)
-- relative vs. absolute directories, use of `here()`
+- files/directories (left)
+- writing/editing source code (middle top) + output (middle bottom) 
+- variables & plots (right)
+- left menu bar: version control, extensions, ...
 :::
 
 ---
 
 ## DO: Organize working directory
+
+<!--- setting and checking working directories (`setwd()` and `getwd()`)
+- relative vs. absolute directories, use of `here()`
+-->
 
 - Directory structure (for tutorial; different structures used later)
 
@@ -79,7 +84,7 @@ dir.create("data") # continue w/ other directories
 
 :::incremental
 
-* Running code (ctrl + R, buttons, top-down)
+* Running code (ctrl/cmd + ENTER, buttons, top-down)
 * Installing additional packages (`install.packages()`)
 * DO: Let's verify package `tidyverse` is installed!
 
@@ -130,23 +135,23 @@ dir.create("data") # continue w/ other directories
 
 ```{r echo=TRUE, eval=TRUE}
 #| code-overflow: wrap
-filename = "https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/main/material/tutorials/r-bootcamp/streams.csv"
-download.file(filename, "streams.csv")
+filename = "https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/main/material/tutorials/r-bootcamp-rev/streams.csv"
+download.file(filename, "video-view.csv")
 ```
 
 ```{r echo=TRUE, eval=TRUE}
 library(tidyverse)
-streams <- read_csv('streams.csv', skip=1)
+videos <- read_csv('video-view.csv', skip=1)
 ```
 
 ---
 
 ```{r echo=TRUE, eval=FALSE}
-streams
-head(streams)
-view(streams)
-nrow(streams)
-summary(streams)
+videos
+head(videos)
+view(videos)
+nrow(videos)
+summary(videos)
 ```
 
 ---

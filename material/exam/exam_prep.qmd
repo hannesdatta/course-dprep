@@ -324,7 +324,7 @@ A student argues that every project should include **Docker, CI/CD pipelines, an
 
 A) Agree, because advanced tools always increase efficiency regardless of project size
 B) Agree, because cloud and automation are universally recommended best practices
-C) Disagree, because small projects should avoid all infrastructure beyond RStudio
+C) Disagree, because small projects should avoid all infrastructure beyond Positron
 D) Disagree, because the book stresses that tools add complexity and should be matched to project scope and needs
 
 **Correct Answer: D**
@@ -545,7 +545,7 @@ D) It is valid, because Git automatically merges any differences in the backgrou
 ### Exemplary questions based on tutorial (10P)
 
 ::: callout
-In this type of exam question, you will create an **RMarkdown document** in RStudio and submit it as a **rendered PDF** with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with `ggplot2`. 
+In this type of exam question, you will create an **RMarkdown document** in Positron and submit it as a **rendered PDF** with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with `ggplot2`. 
 
 The aim is to assess not only whether you can recall commands, but whether you can structure and document a small data workflow in a clear and reproducible way.
 :::
@@ -603,7 +603,7 @@ According to *Marketing Analytics: A Modern Toolkit*, what is the main risk of w
 
 A) Clever code usually runs more slowly
 B) Clever code makes debugging impossible in R
-C) Clever code cannot be executed outside RStudio
+C) Clever code cannot be executed outside Positron
 D) Clever code is harder for collaborators to understand, maintain, and extend
 
 **Correct Answer: D**
@@ -710,7 +710,7 @@ Q5.1c) You may recall the value of creating subdirectories to structure your pro
 
 - Recall make is always executing the "first" recipe it encounters.
 - If you need to create new directories from within R, you can use `dir.create('directory_name')`.
-- Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in RStudio, it may happen that some of the installed packages cannot be found.
+- Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in Positron, it may happen that some of the installed packages cannot be found.
 
 **Solutions:**
 
@@ -944,7 +944,7 @@ The exact cover page for this year’s exam will be made available on Canvas in 
 
 ## Technical Tips & Beyond
 
-* **Get familiar with the exam environment**: practice using Windows, opening RStudio, navigating with the command prompt, and setting working directories.
+* **Get familiar with the exam environment**: practice using Windows, opening Positron, navigating with the command prompt, and setting working directories.
 * **Know how to zip and unzip files** so you can upload or submit repositories without issues.
 * **Use and prepare cheatsheets**:
   * Official R, make, and Git cheatsheets will be provided (previous versions can be downloaded [here](https://tilburgsciencehub.com/cheatsheets)).
@@ -962,7 +962,7 @@ The exact cover page for this year’s exam will be made available on Canvas in 
 * **Local package installation**:
   * Practice installing packages locally, since internet access will not be available.
   * Test with [test-package-installation.zip](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/test-package-installation.zip): unzip and run `RScript install_packages.R` from the correct directory.
-* **Save time on exam day**: before the exam officially starts, open the required software (e.g., RStudio, Jupyter Notebook) and set working directories so you can begin immediately.
+* **Save time on exam day**: before the exam officially starts, open the required software (e.g., Positron, Jupyter Notebook) and set working directories so you can begin immediately.
 
 \newpage
 

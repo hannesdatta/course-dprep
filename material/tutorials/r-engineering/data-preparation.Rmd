@@ -118,7 +118,7 @@ Ready to start? Here's what we recommend you do before going through this tutori
 
 ## Create a new R project
 
-1. Open RStudio and create a new project by clicking on `File` -> `New Project` -> `New Directory` -> `New Project`.
+1. Open Positron and create a new project folder for this tutorial.
 2. Name your project `data-preparation` and save it in a location of your choice.
 3. Add a `data` folder:
 - Option 1 (code): Run `dir.create("data")

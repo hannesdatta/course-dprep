@@ -88,7 +88,7 @@ words.txt:
     Rscript -e 'download.file("https://svnweb.freebsd.org/base/head/share/dict/web2?view=co", destfile = "words.txt", quiet = TRUE)'
 ```
 
-* only `all` and `clean` (phony targets) can be accessed through RStudio
+* only `all` and `clean` (phony targets) can be accessed through Positron
 
 
 ### [Learn Make by Examples](https://the-turing-way.netlify.app/reproducible-research/make/make-examples.html?highlight=make)

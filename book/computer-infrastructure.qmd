@@ -98,17 +98,17 @@ Key tools here include **Quarto** (or R Markdown) for generating dynamic reports
 
 A **tool stack** is simply the set of tools you use to get your work done — from the software on your computer to the ways you store data, share files, and track changes (known as **version control**). Different projects call for different combinations of tools. A quick school assignment might only need a couple of basics, while a project that takes months and involves several people may need more advanced tools to keep everything organised, reproducible, and running smoothly.
 
-You can think of the tool stack like a menu: you don’t have to “order” everything — just pick what fits your project. For a small project, that might be as simple as using **RStudio** and keeping your files in clearly named folders. For a master’s thesis, you might add **environment management** tools like `renv` to “lock in” your software setup so it doesn’t change unexpectedly, or **automation** tools like `{targets}` so you don’t have to repeat steps by hand. For a large company project, you might go further, adding **Docker** to ensure the work runs the same on any computer, **CI/CD pipelines** (Continuous Integration/Continuous Deployment) to automatically test and update your work, and **cloud storage** to handle very large datasets securely. The goal is to choose tools that solve real problems for your project without adding unnecessary complexity.
+You can think of the tool stack like a menu: you don’t have to “order” everything — just pick what fits your project. For a small project, that might be as simple as using **Positron** and keeping your files in clearly named folders. For a master’s thesis, you might add **environment management** tools like `renv` to “lock in” your software setup so it doesn’t change unexpectedly, or **automation** tools like `{targets}` so you don’t have to repeat steps by hand. For a large company project, you might go further, adding **Docker** to ensure the work runs the same on any computer, **CI/CD pipelines** (Continuous Integration/Continuous Deployment) to automatically test and update your work, and **cloud storage** to handle very large datasets securely. The goal is to choose tools that solve real problems for your project without adding unnecessary complexity.
 
 | Project Type                 | Characteristics                                                                           | Suggested Tools & Practices                                                                                                                                                                                                                               |
 | ---------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Small / Short-Term**       | Solo work, short deadline, limited data size, low complexity                              | Clear folder structure (`data/raw`, `data/processed`), RStudio, basic Git version control, README file                                                                                                                                                    |
+| **Small / Short-Term**       | Solo work, short deadline, limited data size, low complexity                              | Clear folder structure (`data/raw`, `data/processed`), Positron, basic Git version control, README file                                                                                                                                                    |
 | **Medium / Thesis-Scale**    | Solo or small team, several months, multiple data sources, moderate complexity            | Git + GitHub (issues, project board), `renv` for environment management, `{targets}` for automation, staged data folders (raw/interim/final), Quarto for reporting                                                                                        |
 | **Large / Long-Term / Team** | Multi-person, multi-year, large datasets, high complexity, needs reproducibility at scale | All of the above **plus** Docker for consistent environments, CI/CD (e.g., GitHub Actions) for automated checks and builds, DVC or Git LFS for large file versioning, databases (DuckDB/SQLite/warehouse), advanced documentation (wiki, CONTRIBUTING.md) |
 
 The right setup is a balance between **coverage** and **simplicity**. Adding more tools can make your workflow more powerful, but also more complex to set up, maintain, and learn. That’s why your tool stack should match the **scope** and **demands** of your project.
 
-- For **small or short-term projects**, like a quick course assignment or exploratory analysis, a clear folder structure, RStudio, and basic Git version control may be enough. This keeps setup time low and avoids over-engineering.
+- For **small or short-term projects**, like a quick course assignment or exploratory analysis, a clear folder structure, Positron, and basic Git version control may be enough. This keeps setup time low and avoids over-engineering.
 
 - For **medium-scale projects** — such as a master’s thesis or a several-month consultancy project — it’s worth adding tools that improve reproducibility and save time. Using `renv` locks your package versions, `{targets}` automates your workflow, and staged data folders help keep raw and processed data clearly separated. GitHub’s issues and project boards make it easier to plan and track progress.
 
@@ -174,9 +174,9 @@ At this stage, our focus is purely on **getting the tools installed**. We’ll u
    Download: [https://cran.r-project.org/](https://cran.r-project.org/)
    *Why it matters:* R is a powerful language for data analysis, statistics, and visualization. It’s widely used in marketing analytics and has thousands of packages to handle everything from cleaning data to building predictive models.
 
-2. **RStudio** — An Integrated Development Environment (IDE) that makes working with R easier.
-   Download: [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
-   *Why it matters:* RStudio gives you a clean workspace, code editor, data viewer, and project management in one place. It’s where you’ll write and run most of your R code.
+2. **Positron** — An Integrated Development Environment (IDE) that makes working with R easier.
+   Download: [https://positron.posit.co/download.html](https://positron.posit.co/download.html)
+   *Why it matters:* Positron gives you a clean workspace, code editor, data viewer, and project management in one place. It’s where you’ll write and run most of your R code.
 
 3. **Git** — Tracks changes to your code and lets you revert or collaborate safely.
    Download: [https://git-scm.com/downloads](https://git-scm.com/downloads)
@@ -200,24 +200,24 @@ At this stage, our focus is purely on **getting the tools installed**. We’ll u
 
 8. **Visual Studio Code (VS Code)** — A flexible code editor that works with many languages.
    Download: [https://code.visualstudio.com/](https://code.visualstudio.com/)
-   *Why it matters:* While RStudio is great for R, VS Code is a versatile, modern editor for working with other languages (like Python, SQL, or JavaScript) and integrating different parts of a project. It’s especially useful if you work on mixed-technology projects.
+   *Why it matters:* While Positron is great for R, VS Code is a versatile, modern editor for working with other languages (like Python, SQL, or JavaScript) and integrating different parts of a project. It’s especially useful if you work on mixed-technology projects.
 
 ### How They Connect
 
 Once you’ve installed these tools, they form an ecosystem that works together to make your analytics projects smoother and more reproducible.
 
-You’ll write most of your R code in **RStudio**, which is powered by the R language you installed. **Git** runs in the background to track every change you make to your files, and **GitHub** acts as the online home for your projects, so you can share them or collaborate with others. The **GitHub Student Developer Pack** gives you free upgrades, including **GitHub Copilot**, an AI coding assistant that can suggest functions, help debug, and even scaffold your project setup.
+You’ll write most of your R code in **Positron**, which is powered by the R language you installed. **Git** runs in the background to track every change you make to your files, and **GitHub** acts as the online home for your projects, so you can share them or collaborate with others. The **GitHub Student Developer Pack** gives you free upgrades, including **GitHub Copilot**, an AI coding assistant that can suggest functions, help debug, and even scaffold your project setup.
 
 When you need to automate multi-step processes — like cleaning data, running analyses, and generating reports — **Make** ties everything together, only re-running what’s necessary. For projects that include more than R (e.g., Python scripts, SQL queries, or JavaScript for dashboards), **Visual Studio Code** becomes your all-purpose editor. You can add extensions in VS Code for R, Python, GitHub Copilot, Docker, and many other tools, so all parts of your workflow live in one place.
 
-Finally, making **R discoverable from your command line** means you can run R scripts directly from your terminal or from automation tools like Make — no need to open RStudio first. This small setup step makes your environment much more flexible and automation-friendly.
+Finally, making **R discoverable from your command line** means you can run R scripts directly from your terminal or from automation tools like Make — no need to open Positron first. This small setup step makes your environment much more flexible and automation-friendly.
 
 ### Setup Checklist
 
 ::: {.callout-tip title="📋 First-Time Setup To-Do List"}
 
 * **Install R** from [https://cran.r-project.org/](https://cran.r-project.org/).
-* **Install RStudio** from [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/).
+* **Install Positron** from [https://positron.posit.co/download.html](https://positron.posit.co/download.html).
 * **Install Git** from [https://git-scm.com/downloads](https://git-scm.com/downloads).
 * **Create a GitHub account** at [https://github.com/](https://github.com/).
 * **Apply for the GitHub Student Developer Pack** at [https://education.github.com/pack](https://education.github.com/pack).
@@ -256,6 +256,6 @@ Now that your basic setup is in place, it’s easy to fall into the trap of thin
 
 In small projects, those costs can outweigh the benefits. A quick campaign analysis for a client might only need a well-organized local project tracked with Git. In contrast, a multi-year **customer lifetime value** model for a global retailer might justify containerization with Docker, automated testing and deployment via CI/CD, and scalable compute in the cloud. The real skill in marketing analytics isn’t *owning* the most advanced stack — it’s knowing when to go **light** and when to go **heavy**.
 
-The tools you’ve just installed give you a solid foundation: R and RStudio for analysis, Git and GitHub for version control, Make for automation, VS Code for multi-language work, and GitHub Copilot for AI-assisted coding. As we move forward, you’ll learn how to extend them, connect them, and — equally important — when to resist the temptation to over-complicate. New trends like **low-code analytics platforms** (tools that let you build analyses with minimal coding), AI-assisted development, and the integration of **MLOps** (machine learning operations, applying DevOps principles to ML workflows) into marketing analytics will keep expanding what’s possible. But the best analysts will be those who make deliberate, thoughtful choices.
+The tools you’ve just installed give you a solid foundation: R and Positron for analysis, Git and GitHub for version control, Make for automation, VS Code for multi-language work, and GitHub Copilot for AI-assisted coding. As we move forward, you’ll learn how to extend them, connect them, and — equally important — when to resist the temptation to over-complicate. New trends like **low-code analytics platforms** (tools that let you build analyses with minimal coding), AI-assisted development, and the integration of **MLOps** (machine learning operations, applying DevOps principles to ML workflows) into marketing analytics will keep expanding what’s possible. But the best analysts will be those who make deliberate, thoughtful choices.
 
 Your goal isn’t to build the *biggest* stack — it’s to build the *right* one for the job at hand, and to use it to deliver clear, reliable, and timely insights.

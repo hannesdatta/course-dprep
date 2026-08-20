@@ -13,7 +13,7 @@ This chapter is work-in-progress.
 
 R is a programming language widely used in data science, statistics, and increasingly in marketing analytics. It is free, open source, and supported by a vibrant community of users. With R, you can analyze survey data, model churn in subscription businesses, scrape product reviews, and create high-quality visualizations.
 
-On its own, R looks like a command-line interface, but most people use it through **RStudio**. RStudio is an integrated development environment (IDE) that provides a script editor, a console for running code, a viewer for data objects, and a pane for plots and files. This makes RStudio the natural starting point for most analysts.  
+On its own, R looks like a command-line interface, but most people use it through **Positron**. Positron is an integrated development environment (IDE) from Posit that provides a script editor, a console for running code, a viewer for data objects, and tools for plots and files. This makes Positron the natural starting point for most analysts.  
 
 Why R for marketing analytics?  
 - It is **reproducible**: your analysis is saved in code and can be re-run.  
@@ -28,7 +28,7 @@ R may look intimidating at first, but with a few habits and the right packages (
 
 ### Projects
 
-In RStudio, it is best to organize your work as a **project**. A project is simply a folder that contains your data, scripts, and outputs. By creating a project, RStudio automatically sets the “working directory” to that folder, so your code can refer to files relative to it.  
+In Positron, it is best to organize your work as a **project**. A project is simply a folder that contains your data, scripts, and outputs. By opening your project folder in Positron, your code can refer to files relative to that location.  
 
 For example, instead of writing:  
 
@@ -77,7 +77,7 @@ The `%>%` symbol is the **pipe**: it passes data from one step to the next, maki
 
 ## Running and Saving Code
 
-You can type code directly into the console, but for real work you should save it in a script (`.R`). Scripts can be run line by line in RStudio, or all at once from the terminal:
+You can type code directly into the console, but for real work you should save it in a script (`.R`). Scripts can be run line by line in Positron, or all at once from the terminal:
 
 ```bash
 Rscript analysis.R

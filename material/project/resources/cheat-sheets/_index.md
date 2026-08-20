@@ -10,7 +10,7 @@ draft: false
 
 See below a collection of amazing cheat sheets that we recommend you to download and print out!
 
-## 1. R & RStudio
+## 1. R & Positron
 
 ### 1.1 Base R
 
@@ -18,7 +18,7 @@ See below a collection of amazing cheat sheets that we recommend you to download
 - [R for Data Science book](https://r4ds.had.co.nz/)
 
 ### 1.2 Intermediate R
-All sorts of cheatsheets for RStudio can be found [here!](https://rstudio.com/resources/cheatsheets/) Some good (other) examples are:
+All sorts of cheatsheets for R users can be found [here!](https://rstudio.com/resources/cheatsheets/) Some good (other) examples are:
 - __Data wrangling:__
   - [Data wrangling with dplyr and tidyr ](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
   - [Data transformation with dplyr](https://github.com/rstudio/cheatsheets/raw/main/data-transformation.pdf)

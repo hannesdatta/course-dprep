@@ -138,7 +138,7 @@ You need a **tool stack**: the __practices__, __tools__, and __habits__ that kee
 
 - **Small / Short-term projects**  
   - Solo work, low complexity  
-  - Tools: clear folder structure, RStudio, Git, README  
+  - Tools: clear folder structure, Positron, Git, README  
   - Setup: local (laptop only)  
 
 - **Medium / Thesis-scale projects**  

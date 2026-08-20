@@ -61,7 +61,8 @@ Together, these considerations can guide your decision making in terms of (a) co
 
 * *Programming Language & Environment*
   - [Install Python & Jupyter Notebook](https://tilburgsciencehub.com/building-blocks/configure-your-computer/statistics-and-computation/python/)
-  - [Install R and RStudio](https://tilburgsciencehub.com/building-blocks/configure-your-computer/statistics-and-computation/r/)
+  - Install R from [CRAN](https://cran.r-project.org/)
+  - Install Positron from [https://positron.posit.co/download.html](https://positron.posit.co/download.html)
 
 * *Version control*
   - [Install Git and Github](https://tilburgsciencehub.com/building-blocks/configure-your-computer/statistics-and-computation/git/)

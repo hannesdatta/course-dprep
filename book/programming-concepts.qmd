@@ -478,25 +478,25 @@ R programming can be done in several ways, and the choices you make affect how e
 
 At its core, R is a programming language and interpreter. If you install only R, you interact with it through a command-line console: type a command, press enter, and R executes it. This environment is minimal. It is sufficient for quick checks or very small tasks, but for real projects it quickly becomes cumbersome. Most analysts therefore rely on richer interfaces built on top of R.
 
-#### RStudio
+#### Positron
 
-RStudio (now called *Posit RStudio*) is the most widely used integrated development environment (IDE) for R. It combines a script editor, console, workspace viewer, and plot window in a single interface. It also provides project management, package installation tools, and integrated support for R Markdown and Quarto.
+Positron is Posit’s modern integrated development environment (IDE) for data work. It combines a script editor, console, workspace viewer, and plot window in a single interface. It also provides project management, package installation tools, and integrated support for R Markdown and Quarto.
 
-RStudio is the standard environment for learning R and remains the daily workhorse for many analysts and researchers. It makes R more approachable and productive, while still running the same R code that the plain interpreter would execute.
+Positron is the standard environment we use in this course for learning R. It makes R more approachable and productive, while still running the same R code that the plain interpreter would execute.
 
 #### Visual Studio Code (VS Code)
 
-Visual Studio Code is a general-purpose code editor developed by Microsoft. Unlike RStudio, it is not designed specifically for R, but it supports many languages (R, Python, Julia, SQL, and more) through extensions. With the **R extension for VS Code**, you can edit and run R scripts, view data frames, and use the integrated terminal.
+Visual Studio Code is a general-purpose code editor developed by Microsoft. Unlike Positron, it is not designed specifically for R, but it supports many languages (R, Python, Julia, SQL, and more) through extensions. With the **R extension for VS Code**, you can edit and run R scripts, view data frames, and use the integrated terminal.
 
 VS Code is particularly useful in settings where you work across multiple languages or need to integrate R into larger software development workflows. For example, if you are developing an automated marketing analytics pipeline that combines R (for modeling), Python (for scraping), and SQL (for databases), VS Code allows you to manage everything in one environment.
 
-RStudio remains the natural starting point for most students in marketing analytics. VS Code becomes relevant when projects grow in complexity or when you want to align your workflow with professional software development practices. Both rely on the same underlying R engine, so the code you write in one environment can be run in the other without modification.
+Positron remains the natural starting point for most students in marketing analytics. VS Code becomes relevant when projects grow in complexity or when you want to align your workflow with professional software development practices. Both rely on the same underlying R engine, so the code you write in one environment can be run in the other without modification.
 
 ### Formats
 
 #### R Scripts (`.R`)
 
-An R script is a plain text file that contains code only. Scripts are the basic building block for analyses: you can open them in RStudio, run them line by line while exploring, or execute them from start to finish. Scripts are also modular—you might have one script to clean data, another to run a model, and a third to produce plots.
+An R script is a plain text file that contains code only. Scripts are the basic building block for analyses: you can open them in Positron, run them line by line while exploring, or execute them from start to finish. Scripts are also modular—you might have one script to clean data, another to run a model, and a third to produce plots.
 
 ```r
 # analysis.R
@@ -555,7 +555,7 @@ summary(campaigns$response_rate)
 ````
 *Important: Note that in the code box above, `r` needs to be wrapped in `{}` &rarr; `{r}` to work properly.*
 
-Quarto is installed separately, but once set up, it integrates smoothly with RStudio. To render documents from the command line, use:  
+Quarto is installed separately, but once set up, it integrates smoothly with Positron. To render documents from the command line, use:  
 
 ```bash
 quarto render report.qmd
@@ -566,7 +566,7 @@ quarto render report.qmd
 
 You can run R in interactive mode or non-interactive mode.
 
-**Interactive (RStudio).** This is where most students begin. You can run lines one by one, immediately inspect results, and view plots. Interactive work is great for exploration, but it can also create hidden steps—you may forget which commands you executed, making it harder to reproduce later.
+**Interactive (Positron).** This is where most students begin. You can run lines one by one, immediately inspect results, and view plots. Interactive work is great for exploration, but it can also create hidden steps—you may forget which commands you executed, making it harder to reproduce later.
 
 **Non-interactive (command line).** From the terminal, you can execute R scripts from start to finish, ensuring that every step is run in the correct order. This is essential for automation.
 
@@ -602,11 +602,11 @@ You can run R in interactive mode or non-interactive mode.
 
 This approach makes scripts flexible and easy to reuse across datasets or projects.
 
-Together, these formats and environments give you different ways of working with R. Scripts provide the backbone, R Markdown and Quarto make results readable and shareable, RStudio gives you an interactive workspace, and the command line ensures automation and reproducibility.
+Together, these formats and environments give you different ways of working with R. Scripts provide the backbone, R Markdown and Quarto make results readable and shareable, Positron gives you an interactive workspace, and the command line ensures automation and reproducibility.
 
 ## Connecting Principles and Concepts: A Roadmap
 
-Principles and concepts are two sides of the same coin. Principles describe good habits—keep raw data raw, avoid repeating yourself, check results. Concepts provide the grammar of R—variables, loops, conditionals, functions, and libraries. Environments and formats (scripts, R Markdown, Quarto, RStudio, command line) are where these habits and tools come together.
+Principles and concepts are two sides of the same coin. Principles describe good habits—keep raw data raw, avoid repeating yourself, check results. Concepts provide the grammar of R—variables, loops, conditionals, functions, and libraries. Environments and formats (scripts, R Markdown, Quarto, Positron, command line) are where these habits and tools come together.
 
 The following Table illustrates how principles connect to programming concepts, with examples from marketing analytics. The mapping is not perfect—there are many ways to realize a principle in code—but it shows how habits and tools reinforce each other in practice.
 
@@ -623,7 +623,6 @@ The following Table illustrates how principles connect to programming concepts, 
 
 The table makes clear that principles are not only abstract advice: they become actionable through programming concepts. “Don’t repeat yourself” is realized when loops or functions replace copy-pasted code. “Keep raw data raw” is reinforced by separating raw and processed files and storing cleaned data in data frames. “Save code, not just results” finds its natural home in R scripts, R Markdown, and Quarto—formats that preserve not just outputs but the full chain of analysis.
 
-And let's not forget about environments and formats: Scripts are well suited for implementing small functions and loops; R Markdown and Quarto support clarity and transparency by weaving code with narrative. RStudio is an ideal place for exploring and checking results, while the command line strengthens reproducibility by running scripts from start to finish without hidden steps.
+And let's not forget about environments and formats: Scripts are well suited for implementing small functions and loops; R Markdown and Quarto support clarity and transparency by weaving code with narrative. Positron is an ideal place for exploring and checking results, while the command line strengthens reproducibility by running scripts from start to finish without hidden steps.
 
 The mapping is flexible, but the lesson is clear: good habits (principles), the grammar of R (concepts), and the right formats and environments work together to create analyses that are reproducible, transparent, and professional.
-

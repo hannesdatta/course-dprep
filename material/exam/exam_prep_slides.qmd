@@ -53,13 +53,13 @@ format:
 ## Technical Tips
 
 - **Be familiar with your exam environment**:
-  - Practice using **Windows**, RStudio, and the command prompt (__not__ PowerShell; ideally Anaconda Prompt, sometimes GitBash).
+  - Practice using **Windows**, Positron, and the command prompt (__not__ PowerShell; ideally Anaconda Prompt, sometimes GitBash).
 - **Know how to manage files and directories**:
   - Organize files by question in local folders (e.g., `C:\Users\<YOUR-U-NUMBER>\Downloads`).
   - Know how to load `.RData` files (`load('downloaded_data.RData')`).
   - Zip entire Git repositories before uploading.
 - **Make sure to know the basics of code management**:
-  - Set working directories in RStudio via `Session → Set Working Directory → To Source File Location`.
+  - Set working directories in Positron via `Session → Set Working Directory → To Source File Location`.
   - Revise code for clean (top-down!) execution. No useless code.
 
 ## Familiarize yourself with TestVision

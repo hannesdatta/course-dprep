@@ -64,10 +64,10 @@ In this tutorial, we're going to create a make file that downloads, loads, trans
 **Exercise 1**  
 As as starting point for this tutorial, we use [source code](https://github.com/hannesdatta/course-dprep/raw/main/material/tutorials/make-automation/run_antwerp.R) of an empirical project on the Airbnb housing market in Antwerp.
 
-1. Download the source code as `run_Antwerp.R`, open the file in RStudio, and run it. What output files does it return?
+1. Download the source code as `run_Antwerp.R`, open the file in Positron, and run it. What output files does it return?
 2. Makefiles trigger scripts (e.g., R files) from the terminal and therefore it is important to know how to do so. Open the terminal and navigate to the location where the R script is stored. Then, run `R --vanilla < run_Antwerp.R` to execute the same file but this time from the terminal (depending on your installation you may need to run `Rscript run_Antwerp.R` instead). 
 
-The lesson learned here is that we cannot only run R scripts from within RStudio but also from the terminal. We'll use this knowledge when creating our first make file. 
+The lesson learned here is that we cannot only run R scripts from within Positron but also from the terminal. We'll use this knowledge when creating our first make file. 
 
 \
 
@@ -150,7 +150,7 @@ The figure below shows how the `run_Antwerp` script is split into five modules, 
 Let's break this into smaller steps to make it easier!
 
 #### Step 1: Split the R script into modules
-- Open `run_Antwerp.R` in RStudio.
+- Open `run_Antwerp.R` in Positron.
 - Copy the code under `### DOWNLOAD DATA` into a new file called `download.R`.
 - Save `download.R` in the `src/data-preparation/` folder.
 
@@ -163,7 +163,7 @@ Repeat this process for the other sections:
 > **Tip**: Make sure each new file includes the necessary library imports at the top!
 
 #### Step 2: Check if the scripts run
-- Open each script in RStudio and run it to ensure there are no errors.
+- Open each script in Positron and run it to ensure there are no errors.
 
 #### Step 3: Define dependencies in the makefile
 Update your makefile to include the following rules:

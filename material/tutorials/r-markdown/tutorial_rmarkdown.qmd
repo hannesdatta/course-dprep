@@ -34,7 +34,7 @@ editor: visual
 ## Part 0: RMarkdown
 
 -   What is RMarkdown?
--   How is it different from RStudio, VSCode, R, Python?
+-   How is it different from Positron, VSCode, R, Python?
 
 ## ITO Principle
 

@@ -21,6 +21,6 @@ draft: true
 <!--
 ## Data Challenge
 - View the [Cloud Storage & Computation - Data Challenge](cloud-storage-computation.html)
-- Download the zip [file](intro-to-r-skeleton.zip). Then, open the skeleton file in RStudio, fill out your answers, and submit your work!
+- Download the zip [file](intro-to-r-skeleton.zip). Then, open the skeleton file in Positron, fill out your answers, and submit your work!
 
 -->
