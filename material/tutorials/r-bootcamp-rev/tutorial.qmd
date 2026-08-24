@@ -49,15 +49,14 @@ Use this loop every week:
 
 ## Workflow illustration
 
-```{mermaid}
-flowchart LR
-    A[video_view.csv] --> B[script.R]
-    B --> C[Checks + summary table]
-    C --> D[git add and git commit]
-    D --> E[git push]
-    E --> F[Rerun with Rscript script.R]
-    F --> C
-```
+Step flow:
+
+1. `video_view.csv` -> `script.R`
+2. `script.R` -> checks + summary table
+3. checks + summary table -> `git add` and `git commit`
+4. `git add` and `git commit` -> `git push`
+5. `git push` -> rerun with `Rscript script.R`
+6. rerun with `Rscript script.R` -> checks + summary table (repeat)
 
 ---
 
@@ -290,12 +289,12 @@ Tips:
 
 ## Pipe illustration
 
-```{mermaid}
-flowchart LR
-    A[videos] --> B[filter watch_rate > 0.7]
-    B --> C[summarize by creator_id]
-    C --> D[creator_stats]
-```
+Pipeline steps:
+
+1. `videos`
+2. `filter(watch_rate > 0.7)`
+3. `summarize(..., .by = creator_id)`
+4. `creator_stats`
 
 ---
 
@@ -396,15 +395,11 @@ creator_stats %>%
 
 ## Error-fix map
 
-```{mermaid}
-flowchart TB
-    A[Error: object not found] --> A1[Did you create the object first?]
-    A1 --> A2[Run videos <- read_csv ...]
-    B[Error: no package called tidyverse] --> B1[Run install.packages once]
-    B1 --> B2[Then run library tidyverse]
-    C[cannot open file video_view.csv] --> C1[Check getwd and list.files]
-    C1 --> C2[Fix folder or download file]
-```
+| Error | First check | Fix |
+|---|---|---|
+| `object not found` | Did you create the object first? | Run `videos <- read_csv(...)` |
+| `no package called 'tidyverse'` | Is tidyverse installed? | Run `install.packages("tidyverse")`, then `library(tidyverse)` |
+| `cannot open file 'video_view.csv'` | Do `getwd()` and `list.files()` show the file? | Switch to the right folder or download the file |
 
 ---
 
@@ -439,12 +434,12 @@ Git stores snapshots of your files so you can track, explain, and recover change
 
 ## Git snapshot illustration
 
-```{mermaid}
-flowchart LR
-    A[Working directory] -->|git add| B[Staging area]
-    B -->|git commit| C[Local commit history]
-    C -->|git push| D[Remote repository]
-```
+Git snapshot flow:
+
+1. Working directory
+2. `git add` -> staging area
+3. `git commit` -> local commit history
+4. `git push` -> remote repository
 
 ---
 
@@ -555,18 +550,10 @@ Put repetitive analysis in scripts, not manual console clicks.
 
 ## Reproducibility: manual vs scripted
 
-```{mermaid}
-flowchart LR
-    subgraph M[Manual workflow]
-      M1[Click in console] --> M2[Run partial steps]
-      M2 --> M3[Hard to reproduce]
-    end
-
-    subgraph S[Scripted workflow]
-      S1[Edit script.R] --> S2[Run Rscript script.R]
-      S2 --> S3[Same steps every time]
-    end
-```
+| Workflow type | Typical process | Result |
+|---|---|---|
+| Manual workflow | Click in console -> run partial steps | Hard to reproduce |
+| Scripted workflow | Edit `script.R` -> run `Rscript script.R` | Same steps every time |
 
 ---
 
