@@ -3,27 +3,39 @@ title: "Tutorial (week 1) - R Bootcamp"
 subtitle: "Data Preparation and Programming Skills (2026/2027)"
 author: "Hannes Datta"
 date: "last-modified"
-format: 
-    beamer:
-      theme: metropolis
-      colortheme: seahorse
-      code-overflow: wrap
-      code-font-size: 0.8em
+format:
+  beamer:
+    theme: metropolis
+    colortheme: seahorse
+    code-overflow: wrap
+    code-font-size: 1.1em
+    aspectratio: 169
+    fontsize: 11pt
+    highlight-style: tango
+---
+
+## Tutorial roadmap
+
+Today we practice one full workflow with `video_view.csv`.
+
+1. Coding (largest block): load, inspect, and summarize data
+2. Git/versioning: save your work with CLI + Positron UI
+3. Automation: rerun analysis and slides with one command
 
 ---
 
-## Structure of this tutorial
+## Learning goals
 
-Based on [https://datacarpentry.org/r-socialsci/](https://datacarpentry.org/r-socialsci/) (chapters 1-4)
+By the end of class, you can:
 
-- In-class part: Introduction to R and starting with data and data wrangling  
-  *This part features **selected** issues.*  
-
-- After class: please complete chapters 1-4 [at your own pace](https://datacarpentry.org/r-socialsci/).
+- load a CSV file in R
+- answer simple questions with `tidyverse`/`dplyr`
+- save work with Git (`status`, `add`, `commit`, `push`)
+- rerun scripts from the terminal
 
 ---
 
-## Introduction to R
+## Why R?
 
 ::: incremental
 - What is R? What is Positron?
@@ -42,210 +54,325 @@ Based on [https://datacarpentry.org/r-socialsci/](https://datacarpentry.org/r-so
 
 ---
 
-## DO: Creating a new folder for your project
-
-- In the *Explorer pane*, click *Add a Folder*.
-- Enter a *name for this new folder* and choose a *convenient location* (e.g., `~/data-carpentry`)
-- Click on *Create*
-- Create a *new file* where we will type our scripts: File > New File > R script → Save as *script.R*
-
----
-
 ## The Positron Interface
 
 ::: incremental
-- files/directories (left)
-- writing/editing source code (middle top) + output (middle bottom) 
-- variables & plots (right)
-- left menu bar: version control, extensions, ...
+- source code (writing code/editing code)
+- console (running code)
+- environment (list of created objects like data sets and variables)
+- history (history of executed commands)
+- file / directory structure (your project contains more files!)
+- plots
 :::
 
 ---
 
-## DO: Organize working directory
+## Section 1: Coding
 
-<!--- setting and checking working directories (`setwd()` and `getwd()`)
-- relative vs. absolute directories, use of `here()`
--->
+Start with data loading. We keep this section step-by-step.
 
-- Directory structure (for tutorial; different structures used later)
+---
 
-![](https://datacarpentry.org/r-socialsci/fig/rstudio_project_files.jpeg){width=50%}
+## Coding step 1: create your workspace
 
-```{r}
-dir.create("data") # continue w/ other directories
+- Create one folder for this tutorial (e.g., call it `dprep-tutorial`)
+- Put this file in it:
+  - `video_view.csv` ([download here](https://github.com/hannesdatta/course-dprep/blob/main/material/tutorials/r-bootcamp-rev/video_view.csv))
+- Create a new code file:
+  - `script.R` (create this empty file yourself)
+- Open that folder (e.g., `dprep-tutorial` in Positron/VS Code)
+
+---
+
+## Coding step 2: check where R is looking
+
+Run each line separately.
+
+```r
+getwd()
+list.files()
 ```
 
-* Can you come up with other ways to create a folder/directory structure?
+- You should see `video_view.csv` in the file list.
+- Running code (ctrl + R, buttons, top-down)
 
 ---
 
-## Interacting with R
+## If file is missing
 
-:::incremental
+Use this code snippet to download the video data.
 
-* Running code (ctrl/cmd + ENTER, buttons, top-down)
-* Installing additional packages (`install.packages()`)
-* DO: Let's verify package `tidyverse` is installed!
-
-:::
-
----
-
-## Using R
-
-:::incremental
-
-* as a calculator
-* variable assignment
-* calculating with variables
-* \= vs. ==
-* functions
-
-  * using functions (e.g., `round()`)
-  * getting help on functions
-  * what functions exist? → [cheat sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
-* vectors and data types (`c(1,2,3)`, `c("Berlin", "Barcelona")`, `NA`)
-* subsetting vectors
-
-:::
-
----
-
-## DO: A bit of practice
-
-1. Assign values to `rooms`: 1, 2, 1, 8
-2. Use `max()` to calculate the maximum
-3. Add `NA` → 1, 2, 1, 8, NA
-4. Recalculate max & check help with `?max`
-5. Return the 3rd value of `rooms`
-6. Count rooms ≥ 2 (hint: `length()` + subsetting)
-
----
-
-## Starting with data
-
-* Individual values vs. "holding data" (rows, columns)
-* Difference between Excel & R? Each column = same data type!
-* Here: music streaming data
-
----
-
-## DO: Download and open the dataset!
-
-```{r echo=TRUE, eval=TRUE}
-#| code-overflow: wrap
-filename = "https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/main/material/tutorials/r-bootcamp-rev/streams.csv"
-download.file(filename, "video-view.csv")
+```r
+data_url <- "https://raw.githubusercontent.com/hannesdatta/
+  course-dprep/refs/heads/main/material/tutorials/
+  r-bootcamp-rev/video_view.csv"
+download.file(data_url, "video_view.csv", mode = "wb")
+list.files()
 ```
 
-```{r echo=TRUE, eval=TRUE}
+---
+
+## Coding step 3: load packages
+
+```r
+install.packages("tidyverse") 
 library(tidyverse)
-videos <- read_csv('video-view.csv', skip=1)
 ```
+
+`install.packages()` is needed once per machine. `library()` is needed per session.
 
 ---
 
-```{r echo=TRUE, eval=FALSE}
-videos
+## Coding step 4: load the data
+
+```r
+videos <- read_csv("video_view.csv")
+```
+
+If this runs, you have already completed the most important step.
+
+
+---
+
+## Coding step 5: Ask for help
+
+- `?read_csv`
+- [https://chat.tilburg.ai](https://chat.tilburg.ai)
+- Ask for help to a LLM directly from within Positron/VS Code
+
+---
+
+## Coding step 6: first look at the data
+
+```r
 head(videos)
-view(videos)
 nrow(videos)
-summary(videos)
+names(videos)
+glimpse(videos)
+summary(videos$watch_rate)
+```
+
+Tips: 
+- `$` for accessing variables in datasets
+- make use of tab for auto-completion!
+
+
+---
+
+## Two ways of coding in R
+
+- Base R
+  - "onion-based coding": commands are wrapped inside functions, e.g.
+  - `videos$watch_rate` &rarr; `is.na(videos$watch_rate)` &rarr; `sum(is.na(videos$watch_rate))`
+- `dplyr`
+  - new set of functions (e.g., `filter` to search rows in a data)
+  - new way of stitching code together: `%>%` "piping operator"
+  - `videos$watch_rate %>% is.na() %>% sum()`
+- `dplyr`, as `data.table`, are "add ons" to R to help with data cleaning.
+
+## Introduction to dplyr
+
+- `dplyr` uses so-called "verbs" to perform data cleaning operations
+- Today, we focus on...
+  - `select()` - select columns from a larger set of colums
+  - `filter()` - filter for certain rows in the data
+  - `mutate()` - create new variables
+  - `rename()` - rename variables
+  - `summarize() - create (grouped) summaries
+
+## Coding step 7: first `dplyr` command
+
+Question: which columns matter for performance?
+
+```r
+videos %>%
+  select(video_id, creator_id, impressions_n, watched_n, watch_rate)
 ```
 
 ---
 
-## Working with data from a table
+## Coding step 8: filter rows
+
+Question: which videos have strong watch-through?
+
+```r
+videos %>%
+  filter(watch_rate > 0.7, impressions_n >= 20)
+```
+
+---
+
+## Coding step 9: summarize by creator
+
+Question: what are total impressions and average watch rate per creator?
+
+```r
+creator_stats <- videos %>%
+  summarize(
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    watch_rate_avg = mean(watch_rate, na.rm = TRUE),
+    .by = creator_id
+  )
+```
+
+---
+
+## Coding step 10: rank creators by impressions
+
+```r
+creator_stats %>%
+  arrange(desc(impressions_total))
+```
+
+---
+
+## Coding step 11: rank creators by watch rate
+
+```r
+creator_stats %>%
+  arrange(desc(watch_rate_avg))
+```
+
+---
+
+## Coding: common beginner mistakes
 
 ::: incremental
-
-* `$column_name` (e.g., `streams$Artist`)
-* Use tab completion
-* Convert variables with `as.factor()`
-* Preview: using dates!
-
+- `=` assigns values, `==` compares values
+- `watch_rate` is not the same as `watchrate` (typo)
+- if `video_view.csv` is not found, check `getwd()`
+- use `na.rm = TRUE` in `sum()`/`mean()` when needed
 :::
 
 
-## `dplyr` 101: select()
+---
 
-```{r echo=TRUE, eval=TRUE}
-streams %>% select(`Track Name`)
-```
+## Cheatsheets
+
+- Make use of the official cheatsheets!
+  - [Base R](https://stat33b.berkeley.edu/fall-2025/cheatsheets/base-r-cheatsheet.pdf)
+  - [`dplyr`](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
 
 ---
 
-## `dplyr` 101: filter()
+## Coding: mini practice
 
-```{r echo=TRUE, eval=TRUE}
-streams %>% filter(`Track Name` == "Pepas")
-```
-
----
-
-## `dplyr` 101: mutate()
-
-```{r echo=TRUE, eval=TRUE}
-streams <- streams %>% mutate(weekly_streams = Streams * 7)
-streams %>% select(`Track Name`, Streams, weekly_streams)
-```
+1. Count videos with `watch_rate >= 0.8`
+2. Show only `video_id`, `creator_id`, `watch_rate`
+3. Compute average `watch_rate` by `creator_id` with `summarize(..., .by = creator_id)`
+4. Sort creators by average `watch_rate` descending with `arrange()`
 
 ---
 
-## `dplyr` 101: group_by() + summarize()
+## Section 2: Git/versioning
 
-```{r echo=TRUE, eval=TRUE}
-streams %>% group_by(Artist) %>%
-  summarize(total_streams = sum(Streams))
-```
+Goal: keep a clean history of your work.
 
 ---
 
-## `dplyr` 101: arrange()
+## Git concept in one sentence
 
-```{r echo=TRUE, eval=TRUE}
-streams %>% group_by(Artist) %>%
-  summarize(total_streams = sum(Streams)) %>%
-  arrange(desc(total_streams))
-```
+Git stores snapshots of your files so you can track, explain, and recover changes.
 
 ---
 
-## `dplyr` 101: count()
-
-```{r echo=TRUE, eval=TRUE}
-streams %>% count(Streams > 1E6)
-```
-
----
-
-## DO: Let's practice!
-
-1. Show only Artist + Track Name (`select()`)
-2. Show all observations by Lil Nas X (`filter()`)
-3. Sum up streams by artist (`group_by()` + `summarize()`)
-4. Sort descending (`arrange()`)
-
-Tip: see the [dplyr cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-
----
-
-## Writing a code file
-
-* Prototype in Positron
-* For production: run via terminal
+## Git with CLI: minimum commands
 
 ```bash
-R --vanilla < filename.R
-Rscript filename.R
+git status
+git add script.R
+git commit -m "summary of what you did"
+git push
 ```
 
 ---
 
-## Next steps
+## What each command does
 
-* Complete tutorial at Data Carpentry (ch. 1–4)
-* Form and register teams (mix skills!)
-* Review Canvas material
-* Read chapters 1–2 of *Marketing Analytics: A Modern Toolkit*
+- `git status`: what changed?
+- `git add`: stage files for commit
+- `git commit -m "..."`: save a labeled snapshot
+- `git push`: send commits to remote repository
+
+---
+
+## Git with Positron UI
+
+Use the Source Control panel:
+
+1. Open *Source Control* in left sidebar
+2. Review changed files and diff
+3. Stage files with `+`
+4. Write commit message
+5. Click *Commit*, then *Push*
+
+---
+
+## Good commit messages
+
+Prefer: short, specific, action-based.
+
+- Good: `Add creator summary table in tutorial`
+- Good: `Fix data-loading path for video_view.csv`
+- Weak: `update files`
+
+---
+
+## Git mini practice
+
+1. Edit one line in `script.R`
+2. Run `git status`
+3. Commit via CLI
+4. Commit another tiny change via Positron UI
+
+---
+
+## Section 3: Automation
+
+Goal: rerun work quickly and reproducibly.
+
+---
+
+## Automation step 1: run an R script
+
+```bash
+Rscript script.R
+```
+
+Put repetitive analysis in scripts, not manual console clicks.
+
+---
+
+## Automation step 2: standard mini workflow
+
+1. Edit `script.R` or `tutorial.qmd`
+2. Run `Rscript script.R`
+3. Commit + push
+
+---
+
+## Final integrated exercise
+
+Do this end-to-end:
+
+1. Download `video_view.csv` in `script.R`
+2. Load required packages and open `video_view.csv` in `script.R`
+3. Create one creator summary table
+4. Test your workflow: `Rscript script.R` on the command line
+5. Commit via CLI or Positron UI
+
+---
+
+## Recap
+
+You now have one workflow that combines:
+
+- coding (`read_csv`, `tidyverse`)
+- versioning (Git CLI + Positron UI)
+- automation (`Rscript`)
+
+Next: 
+
+- work through additional exercises posted on Canvas.
+- form and register teams (mix skills!)
+- read chapters 1–2 of *Marketing Analytics: A Modern Toolkit*
