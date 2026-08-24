@@ -51,12 +51,17 @@ Use this loop every week:
 
 Step flow:
 
-1. `video_view.csv` -> `script.R`
-2. `script.R` -> checks + summary table
-3. checks + summary table -> `git add` and `git commit`
-4. `git add` and `git commit` -> `git push`
-5. `git push` -> rerun with `Rscript script.R`
-6. rerun with `Rscript script.R` -> checks + summary table (repeat)
+```{mermaid}
+%%| fig-width: 6.2
+%%| fig-align: center
+flowchart LR
+  A[video_view.csv] --> B[script.R]
+  B --> C[checks + summary table]
+  C --> D[git add + git commit]
+  D --> E[git push]
+  E --> F[rerun: Rscript script.R]
+  F --> C
+```
 
 ---
 
@@ -436,10 +441,17 @@ Git stores snapshots of your files so you can track, explain, and recover change
 
 Git snapshot flow:
 
-1. Working directory
-2. `git add` -> staging area
-3. `git commit` -> local commit history
-4. `git push` -> remote repository
+```{mermaid}
+%%| fig-width: 5.0
+%%| fig-align: center
+flowchart TD
+  A[Working directory] --> B[Staging area]
+  B --> C[Local commit history]
+  C --> D[Remote repository]
+  B1[git add] --> B
+  C1[git commit] --> C
+  D1[git push] --> D
+```
 
 ---
 
@@ -542,9 +554,13 @@ Put repetitive analysis in scripts, not manual console clicks.
 
 ## Automation step 2: standard mini workflow
 
-1. Edit `script.R` or `tutorial.qmd`
-2. Run `Rscript script.R`
-3. Commit + push
+```{mermaid}
+%%| fig-width: 5
+%%| fig-align: center
+flowchart LR
+  A[Edit script.R or tutorial.qmd] --> B[Run Rscript script.R]
+  B --> C[Commit + push]
+```
 
 ---
 
