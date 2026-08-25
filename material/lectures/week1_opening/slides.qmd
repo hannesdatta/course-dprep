@@ -17,8 +17,8 @@ We are about to start the first lecture of this class.
 
 If you haven't done so, please check out the **Canvas page** for this course:
 
-- explore the *course syllabus*
 - complete the *software installation* (see "preparation before this class on Canvas")
+- explore the *course syllabus* on Canvas
 - check the weekly modules and this week's checklist
 
 <!--
@@ -39,7 +39,7 @@ If you haven't done so, please check out the **Canvas page** for this course:
   - Course framework and learning goals
   - Team project flow and practical arrangements
 - Break
-- Part 2 (14.00–16.30): R Bootcamp on your laptops
+- Part 2 (14.00–16.30): R Bootcamp on your laptops or in the cloud
 
 ---
 
@@ -73,7 +73,7 @@ If you haven't done so, please check out the **Canvas page** for this course:
 
 ::: incremental
 - Ever wrangled with messy data? How did you clean it? Did you team up or go solo?
-- What programming languages do you know--if at all? Who’s ever used R?
+- What programming languages do you know--if at all? Who’s ever used R? SQL? Python?
 - Imagine your dream job — what’s it going to be?
 :::
 
@@ -169,16 +169,13 @@ You need a **tool stack**: the __practices__, __tools__, and __habits__ that kee
 
 ## Course framework
 
-![Course framework](dprep_framework.png)
+![Course framework](dprep_framework_new.png)
 
 ---
 
-## Weekly flow of this course
+## Tutorials: Content
 
-- Week 1: opening lecture + R bootcamp
-- Weeks 2-5: tutorials + team coaching
-- Week 6: exam Q&A + team coaching
-- Week 7: closing lecture 
+![Weekly flow of tutorials](week-by-week.png)
 
 All weeks combine self-study, hands-on coding, and team collaboration.
 
@@ -254,7 +251,8 @@ To pass the course:
 - **Hannes Datta**: lectures, course coordination, exam preparation
 - **Javier Torralba Flores**: tutorials and technical support during class
 - **Jeroen Swolfs**: team coaching and project guidance
-- We all support you in troubleshooting and making steady progress
+
+We all support you in troubleshooting and making steady progress
 
 
 ## Tips & tricks
@@ -281,7 +279,7 @@ To pass the course:
 ## Next steps
 
 - Find a group by week 2 (4–5 students, mix skills!)  
-- Complete software installation (includes premium Datacamp access, GitHub Education Pack)
+- Complete software installation
 - Please read chapters 1-2 of "Marketing Analytics: A Modern Toolkit"
 - Most up-to-date info: Canvas &rarr; (weekly) modules
 
