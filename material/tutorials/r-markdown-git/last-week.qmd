@@ -1,0 +1,583 @@
+---
+title: "Tutorial (week 1) - R Bootcamp"
+subtitle: "Data Preparation and Programming Skills (2026/2027)"
+author: "Hannes Datta"
+date: "last-modified"
+format:
+  beamer:
+    theme: metropolis
+    colortheme: seahorse
+    code-overflow: wrap
+    code-font-size: 1.1em
+    aspectratio: 169
+    fontsize: 11pt
+    highlight-style: tango
+---
+
+## Tutorial roadmap
+
+Today we practice one full workflow with `video_view.csv`.
+
+1. Coding (largest block): load, inspect, and summarize data
+2. Collaboration: save your work with Git (CLI + Positron UI)
+3. Automation: rerun analysis with one command
+
+---
+
+## Learning goals
+
+By the end of class, you can:
+
+- load a CSV file in R
+- answer simple "data questions" with `tidyverse`/`dplyr`
+- save work with Git (`status`, `add`, `commit`, `push`)
+- rerun scripts from the terminal
+
+---
+
+## One mental model for this course
+
+Use this loop every week:
+
+1. **Input** data (`read_csv`)
+2. **Transform** data (`select`, `filter`, `summarize`)
+3. **Output** results (tables, figures, files)
+4. **Version** work (Git commits)
+5. **Re-run** everything from script/terminal
+
+---
+
+## Workflow illustration
+
+Step flow:
+
+```{mermaid}
+%%| fig-width: 6.2
+%%| fig-align: center
+flowchart LR
+  A[video_view.csv] --> B[script.R]
+  B --> C[checks + summary table]
+  C --> D[git add + git commit]
+  D --> E[git push]
+  E --> F[rerun: Rscript script.R]
+  F --> C
+```
+
+---
+
+## Why R?
+
+::: incremental
+- What is R? What is Positron?
+- Why learn R?
+  - no point-and-clicking (good for scale)
+  - great for reproducibility
+  - interdisciplinary and extensible
+  - supports all common data formats
+  - can produce high-quality graphics
+  - large community support
+  - free, open-source, cross-platform
+  - works in the cloud
+- Caveat: many ways to do the same thing (for example `data.table` vs `dplyr`)
+:::
+
+---
+
+## The Positron interface
+
+::: incremental
+- source code (write and edit code)
+- console (run code in R or on the terminal)
+- environment (objects: data sets and variables)
+- history (executed commands)
+- files (project directory)
+- plots
+- source control (Git panel)
+:::
+
+---
+
+<!--
+## Positron screenshot (placeholder)
+
+**Screenshot placeholder:** `img/placeholder-positron-layout.png`
+
+Minimum labels to include in screenshot:
+
+- Editor
+- Console
+- Environment
+- Files
+- Source Control
+
+---
+-->
+
+## Section 1: Coding
+
+Start with data loading. We keep this section step-by-step.
+
+---
+
+## Coding step 1: create your workspace
+
+- Create one folder for this tutorial (for example `dprep-tutorial`)
+- Put this file in it:
+  - `video_view.csv` ([download here](https://github.com/hannesdatta/course-dprep/blob/main/material/tutorials/r-bootcamp-rev/video_view.csv))
+- Create a new code file:
+  - `script.R` (create this empty file yourself)
+- Open that folder in Positron/VS Code
+
+---
+
+## Coding step 2: check where R is looking
+
+**Goal:** verify that R points to your tutorial folder.
+
+```r
+getwd()
+list.files()
+```
+
+**Expected output:** file list contains `video_view.csv`.
+
+Tip: run line-by-line at first (for example Ctrl/Cmd + Enter).
+
+---
+
+## Step 2: what success looks like
+
+```text
+> getwd()
+[1] "/.../dprep-tutorial"
+
+> list.files()
+[1] "script.R" "video_view.csv"
+```
+
+---
+
+## If file is missing
+
+Use this code snippet to download the video data.
+
+```r
+data_url <- paste0(
+  "https://raw.githubusercontent.com/hannesdatta/",
+  "course-dprep/refs/heads/main/material/tutorials/r-bootcamp-rev/",
+  "video_view.csv"
+)
+
+download.file(data_url, "video_view.csv")
+list.files()
+```
+
+---
+
+## Coding step 3: load packages
+
+**Goal:** make `read_csv()` and `dplyr` functions available.
+
+```r
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+`install.packages()` is needed once per machine. `library()` is needed once per session.
+
+---
+
+## Coding step 4: load the data
+
+**Goal:** create an object called `videos`.
+
+```r
+videos <- read_csv("video_view.csv")
+```
+
+**Expected output:** `videos` appears in the Environment pane.
+
+If this runs, you completed the most important first step.
+
+---
+
+## Coding step 5: ask for help
+
+- `?read_csv`
+- [https://chat.tilburg.ai](https://chat.tilburg.ai)
+- Ask from Positron/VS Code AI panel if enabled
+
+Rule of thumb: copy the exact error message when asking for help.
+
+---
+
+## How to prompt an LLM for code feedback
+
+Use this structure:
+
+1. **Task context:** what you are trying to do
+2. **Code block:** the exact code you ran
+3. **Observed result:** error message or wrong output
+4. **Expected result:** what you wanted instead
+5. **Constraints:** beginner-friendly, keep tidyverse, no advanced shortcuts
+6. **Output request:** ask for corrected code plus explanation
+
+---
+
+## Prompt template you can copy
+
+- You are helping a beginner in R.
+- Context: I am analyzing video_view.csv in a first-week bootcamp.
+- My code: <paste code>
+- Observed output/error: <paste exact error>
+- What I expected: <describe expected result>
+
+Constraints: Use tidyverse style, keep the solution beginner-friendly, explain each change in 1 sentence
+
+Please return corrected code, short explanation, one extra tip to avoid this mistake next time
+
+---
+
+## Weak vs strong prompts
+
+- Weak: `fix my code`
+- Strong: includes context, exact code, exact error, expected output, and constraints
+
+Never paste secrets, private files, or personal data into public LLMs.
+
+Tip: Build your own Chatbot/Agent at https://chatbot.tilburg.ai
+
+---
+
+## Coding step 6: first look at the data
+
+**Goal:** understand rows, columns, and one core variable.
+
+```r
+head(videos)
+nrow(videos)
+names(videos)
+glimpse(videos)
+summary(videos$watch_rate)
+```
+
+Tips:
+
+- `$` accesses a variable in a data frame
+- use Tab for auto-completion
+
+---
+
+## Two ways of coding in R
+
+- Base R
+  - nested functions ("onion" style)
+  - example: `sum(is.na(videos$watch_rate))`
+- `dplyr`
+  - data manipulation verbs (`select`, `filter`, `mutate`, ...)
+  - chain operations with `%>%` (pipe)
+  - example: `videos$watch_rate %>% is.na() %>% sum()`
+
+---
+
+## Pipe illustration
+
+Pipeline steps:
+
+1. `videos`
+2. `filter(watch_rate > 0.7)`
+3. `summarize(..., .by = creator_id)`
+4. `creator_stats`
+
+---
+
+## Introduction to dplyr
+
+`dplyr` uses "verbs" for common operations:
+
+- `select()` - select columns
+- `filter()` - filter rows
+- `mutate()` - create new variables
+- `rename()` - rename variables
+- `summarize()` - create (grouped) summaries
+
+---
+
+## Coding step 7: first `dplyr` command
+
+**Question:** which columns matter for performance?
+
+```r
+videos %>%
+  select(video_id, creator_id, impressions_n, watched_n, watch_rate)
+```
+
+**Expected output:** table with 5 columns.
+
+---
+
+## Coding step 8: filter rows
+
+**Question:** which videos have strong watch-through?
+
+```r
+videos %>%
+  filter(watch_rate > 0.7, impressions_n >= 20)
+```
+
+**Expected output:** fewer rows than original data.
+
+---
+
+## Coding step 9: summarize by creator
+
+**Question:** what are total impressions and average watch rate per creator?
+
+```r
+creator_stats <- videos %>%
+  summarize(
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    watch_rate_avg = mean(watch_rate, na.rm = TRUE),
+    .by = creator_id
+  )
+```
+
+**Expected output:** one row per `creator_id`.
+
+---
+
+## Coding step 10: rank creators by impressions
+
+```r
+creator_stats %>%
+  arrange(desc(impressions_total))
+```
+
+---
+
+## Coding step 11: rank creators by watch rate
+
+```r
+creator_stats %>%
+  arrange(desc(watch_rate_avg))
+```
+
+---
+
+## Coding: common beginner mistakes
+
+::: incremental
+- `=` assigns values, `==` compares values
+- `watch_rate` is not the same as `watchrate`
+- if `video_view.csv` is not found, check `getwd()`
+- use `na.rm = TRUE` in `sum()`/`mean()` when needed
+:::
+
+---
+
+## Error clinic (for quick debugging)
+
+- `Error: object 'videos' not found`
+  - run data-loading step again (`videos <- read_csv(...)`)
+- `there is no package called 'tidyverse'`
+  - run `install.packages("tidyverse")` once, then `library(tidyverse)`
+- `cannot open file 'video_view.csv'`
+  - check `getwd()` and run `list.files()`
+
+---
+
+## Error-fix map
+
+| Error | First check | Fix |
+|---|---|---|
+| `object not found` | Did you create the object first? | Run `videos <- read_csv(...)` |
+| `no package called 'tidyverse'` | Is tidyverse installed? | Run `install.packages("tidyverse")`, then `library(tidyverse)` |
+| `cannot open file 'video_view.csv'` | Do `getwd()` and `list.files()` show the file? | Switch to the right folder or download the file |
+
+---
+
+## Cheatsheets
+
+- Official cheatsheets:
+  - [Base R](https://stat33b.berkeley.edu/fall-2025/cheatsheets/base-r-cheatsheet.pdf)
+  - [`dplyr`](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+
+---
+
+## Coding mini practice
+
+1. Count videos with `watch_rate >= 0.8`
+2. Show only `video_id`, `creator_id`, `watch_rate`
+3. Compute average `watch_rate` by `creator_id` with `summarize(..., .by = creator_id)`
+4. Sort creators by average `watch_rate` descending with `arrange()`
+
+---
+
+## Section 2: Git/versioning
+
+Goal: keep a clean history of your work.
+
+---
+
+## Git concept in one sentence
+
+Git stores snapshots of your files so you can track, explain, and recover changes.
+
+---
+
+## Git snapshot illustration
+
+Git snapshot flow:
+
+```{mermaid}
+%%| fig-width: 3.5
+%%| fig-align: center
+flowchart TD
+  A[Working directory] --> B[Staging area]
+  B --> C[Local commit history]
+  C --> D[Remote repository]
+  B1[git add] --> B
+  C1[git commit] --> C
+  D1[git push] --> D
+```
+
+
+<!--
+
+## Before first push: setup checks
+
+Run once (or when debugging Git setup):
+
+```bash
+git config --global user.name
+git config --global user.email
+git remote -v
+```
+
+If `git remote -v` is empty, connect your local repo to a remote before `git push`.
+
+-->
+
+
+## Git with CLI: minimum commands
+
+```bash
+git init # run once to create Git repository locally
+git status
+git add script.R
+git commit -m "Add initial analysis in script.R"
+git push # do not run now; only relevant for synching with cloud
+```
+
+---
+
+## What each command does
+
+- `git status`: what changed?
+- `git add`: stage files for commit
+- `git commit -m "..."`: save a labeled snapshot
+- `git push`: send commits to remote repository
+
+---
+
+## Git with Positron UI
+
+Use the Source Control panel:
+
+1. Open *Source Control* in left sidebar
+2. Review changed files and diff
+3. Stage files with `+`
+4. Write commit message
+5. Click *Commit* (eventually, we will push, but not this week)
+
+---
+
+## Good commit messages
+
+Prefer: short, specific, action-based.
+
+- Good: `Add creator summary table in tutorial`
+- Good: `Fix data-loading path for video_view.csv`
+- Weak: `update files`
+
+---
+
+## Git mini practice
+
+1. Edit one line in `script.R`
+2. Run `git status`
+3. Commit via CLI
+4. Commit another tiny change via Positron UI
+
+---
+
+## Section 3: Automation
+
+Goal: rerun work quickly and reproducibly.
+
+---
+
+## Why automation matters
+
+- Manual console clicking is easy to forget or mix up
+- Scripts are repeatable and auditable
+- Team members can run your workflow and get the same result
+
+---
+
+## Automation step 1: run an R script
+
+```bash
+Rscript script.R
+```
+
+Put repetitive analysis in scripts, not manual console clicks.
+
+---
+
+## Automation step 2: standard mini workflow
+
+```{mermaid}
+%%| fig-width: 5
+%%| fig-align: center
+flowchart LR
+  A[Edit script.R or tutorial.qmd] --> B[Run Rscript script.R]
+  B --> C[Commit + push]
+```
+
+---
+
+## Reproducibility: manual vs scripted
+
+| Workflow type | Typical process | Result |
+|---|---|---|
+| Manual workflow | Click in console -> run partial steps | Hard to reproduce |
+| Scripted workflow | Edit `script.R` -> run `Rscript script.R` | Same steps every time |
+
+---
+
+## Final integrated exercise
+
+Do this end-to-end:
+
+1. Download `video_view.csv` in `script.R`
+2. Load required packages and open `video_view.csv` in `script.R`
+3. Create one creator summary table
+4. Test your workflow: `Rscript script.R` on the command line
+5. Commit via CLI or Positron UI
+
+---
+
+## Recap
+
+You now have one workflow that combines:
+
+- coding (`read_csv`, `tidyverse`)
+- versioning (Git CLI + Positron UI)
+- automation (`Rscript`)
+
+Next:
+
+- work through additional exercises posted on Canvas
+- form and register teams (mix skills)
+- read chapters 1-2 of *Marketing Analytics: A Modern Toolkit*

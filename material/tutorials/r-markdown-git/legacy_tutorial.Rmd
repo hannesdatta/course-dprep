@@ -1,0 +1,546 @@
+---
+title: "Data exploration with RMarkdown and ggplot2 (dPrep)"
+date: "Last updated: 30 January 2026"
+output:  
+  webexercises::webexercises_default:
+    theme: flatly  # Use a modern Bootstrap theme (e.g., cosmo, yeti, flatly)
+    toc: true      # Adds a floating table of contents
+    toc_float: true
+    toc_depth: 2
+    highlight: tango
+---
+
+
+```{r setup, include=FALSE}
+#output: webexercises::webexercises_default
+show_solutions = TRUE
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyverse)
+library(webexercises)
+library(knitr)
+
+
+hide <- function (button_text = "Solution", visible=show_solutions) 
+{
+  if (visible==T) {  
+  rmd <- !is.null(getOption("knitr.in.progress"))
+    if (rmd) {
+        paste0("\n<div class='webex-solution'><button>", button_text, 
+            "</button>\n")
+    }
+    else {
+        paste0("\n::: {.callout-note collapse='true'}\n## ", 
+            button_text, "\n\n")
+    }
+}
+}
+
+unhide <- function (visible=show_solutions) 
+{
+    if (visible==T) {
+    rmd <- !is.null(getOption("knitr.in.progress"))
+    if (rmd) {
+        "\n</div>\n"
+    }
+    else {
+        "\n:::\n\n"
+    }
+    }
+}
+```
+
+# Getting Started
+
+In this tutorial, you’ll explore a data set and learn how to understand the context in which it was collected. By the end, you'll be able to generate plots with `ggplot2`, and create an **RMarkdown document** rendered as a **PDF or HTML file**--perfect for sharing insights or starting discussions!  
+
+## Learning Goals
+
+- **Data Handling & Cleaning**  
+  - Learn how to **load and inspect** data using `read_csv()`, `summary()`, and `head()`.  
+  - Use **filtering (`filter()`) and selecting (`select()`)** to focus on relevant data.  
+  - Manage **missing values**, replacing them with averages when necessary.  
+  - Create **new columns** (`mutate()`) to derive metrics like `avg_mobility`.  
+- **Writing Efficient & Reusable Code**  
+  - Use **functions** (like the one we have written - `inspect_data()`) to automate repetitive tasks.  
+  - Work with **tidy data principles**, including `pivot_longer()` for reshaping datasets.  
+- **Data Visualization with `ggplot2`**  
+  - Create **time-series plots** (`geom_line()`) to track changes over time.  
+  - Build **bar charts** (`geom_col()`) to compare mobility changes across locations.  
+  - Customize plots with **titles, labels, colors, and themes** for better readability.  
+
+## Data
+
+This tutorial makes use of the [Google’s COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/), a data set that helped governments and researchers understand how the pandemic affected daily life and the economy. The data shows *daily percentage changes* in visits to different places, compared to the same day of the week before COVID-19 (January 3 – February 6, 2020).  
+
+<img src="media/mobility_icons.png" width="50%">
+
+The data includes six place categories:  
+
+- **Retail & recreation** (e.g., malls, restaurants)  
+- **Grocery & pharmacy** (e.g., supermarkets, drugstores)  
+- **Parks**  
+- **Transit stations** (e.g., bus and train stations)  
+- **Workplaces**  
+- **Residences**  
+
+We will work with the __Dutch part__ of the data (tagged with `NL`).
+
+------
+
+# Part 1: Loading and Inspecting the Data
+
+## Let's Create a New R Project
+
+1. Create a new R project:  
+   - File → New Project → New Directory → New Project  
+   - Name it *data_exploration*  
+   - Choose a location and click Create  
+
+2. Add a `raw_data` folder:  
+   - Option 1 (Code): Run `dir.create("raw_data")`  
+   - Option 2 (Manual): Click *New Folder (📁)* in the Files pane  
+
+## Downloading and Loading the Data Set
+
+1. Download the [**Region CSVs archive**](https://www.google.com/covid19/mobility/) from Google.
+2. Unzip the file--it contains many country-specific datasets.  
+3. Move `2020_NL_Region_Mobility_Report.csv` into your `raw_data` folder.  
+4. Create a *new R script* in your project folder.  
+
+Now, load the data into R using `dplyr`'s `read_csv` function:
+
+```{r}
+library(dplyr)
+mobility <- read_csv("raw_data/2020_NL_Region_Mobility_Report.csv")
+```  
+
+__Troubleshooting__
+
+- If R doesn’t find your file: Click **Session → Set working directory → To source file location**. 
+- Avoid using `setwd()` — hardcoding directories can cause problems!
+- Don't manage to download the file directly from Google? You can also use an archived version on this course's GitHub's repository; just run the code below in Positron: 
+
+
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+mobility <- read_csv('https://github.com/hannesdatta/course-dprep/raw/main/material/tutorials/r-markdown/2020_NL_Region_Mobility_Report.csv')
+```
+
+## Exercise 1: Data Inspection
+
+Examine the `mobility` data frame and describe its *structure* in your own words. Consider the following:  
+
+- What are the column names?  
+- How are the variables/metrics defined?  
+- What is the unit of analysis (i.e., what uniquely identifies each row in the dataset)?  
+- Is the data sorted in any specific way?  
+- Are all values in each column complete and meaningful?  
+- Are text-based data ("strings") properly encoded, or do they contain unusual characters that make them hard to read?
+
+__Tips:__
+
+- Take a __look__ at the data using the function `head(mobility)`, or `View(mobility)`. If you'd like to view more rows with `head`, use `head(mobility, 100)` (for, e.g., the first 100 rows). (`tail()` gives you the last rows of the data).
+
+- The command `summary(mobility)` generates descriptive statistics for all variables in the data. You can also use this command on individual columns (e.g., `summary(mobility$retail_and_recreation_percent_change_from_baseline)`).
+
+- Character or factor columns are best inspected using the `table()` command. These will create frequency tables.
+
+\
+
+
+```{r, webex.hide = 'Solutions for Exercise 1',include=show_solutions}
+head(mobility)
+
+summary(mobility)
+
+table(mobility$sub_region_1)
+
+# The dataset shows the mobility changes at a national, regional, and city level in the Netherlands, for multiple categories of places. The records are sorted by date, and are grouped by location (starting with country stats).
+
+# Moreover, three of the columns (`metro_area`, `iso_3166_2_code`, `census_flips_code`) contain only empty data, and two other columns (`sub_region_1`, `sub_region_2`) are blank for a subset of the values. This also holds for the columns related to percentage changes in mobility scores which are missing in some cases (especially on a city-level).
+```
+
+## Exercise 2: Filtering
+
+Please create a new dataset, called `filtered_df`. Set the filter such that you only retain observations for The Netherlands as a whole (and not province-level data).
+
+__Tips:__
+
+- Make use of the `tidyverse` verbs (remember from the R Bootcamp) `filter`, and the piping character `%>%`
+- In your filter, choose observations where `sub_region_1` is NA (`is.na(sub_region_1)`) and `sub_region_2` is NA (`is.na(sub_region_2`))
+- Example: `filtered_df = mobility %>% <CONTINUE HERE>`
+
+
+```{r, echo = TRUE, webex.hide = 'Solutions to Exercise 2', include=show_solutions}
+# hint: when sub_region_1 and sub_region_2 are NA, 
+# the data pertains to the whole of The Netherlands.
+filtered_df <- mobility %>% filter(is.na(sub_region_1) & is.na(sub_region_2))
+summary(filtered_df)
+
+# The number of missing values on most variables has drastically decreased. That's good news! It seems like the data is most "complete" at the national level.
+
+```
+
+## Exercise 3: Summary statistics
+
+Let's now start zooming in on some of the metrics in the filtered data set to check what they really mean. Haven't solved Exercise 2? Make sure to run the code provided in the solutions to exercise 2 before continuing.
+
+The dataset reports percentage changes in visits compared to a **baseline** (median values from January 3 – February 6, 2020).  
+
+Are percentages expressed as **0 to 1** (e.g., `0.50` means +50%) or **0 to 100** (e.g., `50` means +50%)? Use `summary()` to check the range of values. What do you conclude?
+
+
+```{r, webex.hide = 'Solutions to Exercise 3', include=show_solutions}
+# Exploring the range
+summary(mobility$retail_and_recreation_percent_change_from_baseline)
+
+# --> the range seems to be measured on a scale on which 100 means 100%. As the reported stats indicate percentage-change relative to a baseline, the observed values are also valid (i.e., mobility can decrease by -97%, and increase by 199%).
+```
+
+## Exercise 4: Generating a table with descriptive statistics
+
+It can be quite handy to include a good-looking summary table with descriptive statistics in a Markdown-based report. For this, you can first make use of the `describe` function from the `psych` package (install it first if you don't have it, using `install.packages('psych')`. Then, you can "pipe" it through `knitr`'s `kable` function to render it nicely in your document.
+
+We'll show you a starting code snippet here that you can extend. Run it in Positron and see what it does!
+
+```{r}
+
+# generate table
+summary_table = psych::describe(
+  filtered_df %>% select(retail_and_recreation_percent_change_from_baseline),
+  skew= F
+  )
+
+# output in rmarkdown document
+summary_table %>% knitr::kable()
+
+```
+
+Now, please extend the code snippet so that it shows the descriptive statistics of all "change_from_baseline" variables in the data.
+
+__Tip__:
+
+- run `colnames(filtered_df)` to see which column names are available
+- insert them manually in the code snippet shown above.
+- set the arguments `digits` in the `kable()` function to `digits = 2` (so that the table rounds off all numbers to 2 digits - making the table look more compact)
+
+
+```{r, webex.hide = 'Solutions to Exercise 4', include=show_solutions}
+summary_table = psych::describe(
+  filtered_df %>% select(retail_and_recreation_percent_change_from_baseline,
+                         grocery_and_pharmacy_percent_change_from_baseline,
+                         parks_percent_change_from_baseline,
+                         transit_stations_percent_change_from_baseline,
+                         workplaces_percent_change_from_baseline,
+                         residential_percent_change_from_baseline),
+  skew= F
+  )
+
+# as an alternative to filtered_df %>% select(...), you could also use
+# filtered_df %>% select(ends_with('from_baseline')) - saving you the 
+# time to manually type variable names.
+
+# output in rmarkdown document
+summary_table %>% knitr::kable(digits = 2)
+```
+
+# Part 2: Data Cleaning & Transformation
+
+When working with a new dataset, you often need to filter and clean it. For example, raw data can contain:
+
+- Columns that are irrelevant or unnecessary for our analysis
+- Subsets of data that we don’t need or want to filter out
+
+In case you haven't fully completed part 1 of this tutorial, please run this code snippet which ensures that all of the packages and data sets are loaded that you will need to use.
+
+
+```{r, webex.hide = 'Load all necessary data and packages for part 2 of the tutorial', include=show_solutions}
+library(dplyr)
+library(psych)
+library(tidyverse)
+
+mobility <- read_csv('https://github.com/hannesdatta/course-dprep/raw/main/material/tutorials/r-markdown/2020_NL_Region_Mobility_Report.csv')
+filtered_df <- mobility %>% filter(is.na(sub_region_1) & is.na(sub_region_2))
+
+```
+
+## Exercise 5: Dropping columns
+
+To make the dataset easier to work with, we can select only the columns we need using `dplyr`'s `select()` function.
+
+```{r}
+mobility_updated = mobility %>% 
+  select(country_region_code,
+         transit_stations_percent_change_from_baseline)
+```
+
+There's also a way to delete columns: rather than selecting (`country_region_code`), you can add a `-` to the column name: `-country_region_code`. 
+
+Building on the snippet shown above, please delete the columns `country_region_code`, `metro_area`, `iso_3166_2_code` and `census_fips_code` from the data. How many columns do you end up with?
+
+```{r, echo = TRUE, webex.hide = 'Solutions to Exercise 5', message = FALSE, include=show_solutions}
+# Good solution
+# ------------- 
+
+# Define columns to remove
+cols_to_drop <- c("country_region_code", "metro_area", "iso_3166_2_code", "census_fips_code")
+
+# Drop the selected columns
+mobility_updated <- mobility %>% select(-all_of(cols_to_drop)) # note that we can use the - sign to "deselect" columns
+
+# Alternatively, you can specify columns directly:
+# mobility <- mobility %>% select(-country_region_code, -metro_area, -iso_3166_2_code, -census_fips_code)
+
+# Check the first few rows to confirm changes
+head(mobility_updated)
+
+# Count the remaining columns
+ncol(mobility_updated)
+
+# Note: never explicitly select columns by their indexes (e.g., index 2:4, index 8:15) - this code is likely to break as soon as Google updates this data and decides to add new columns to a position where you expect your data!
+```
+
+## Exercise 6: Renaming Columns
+
+Now that we have cleaned up the dataset, let's take a closer look at the remaining column names. Some of them are quite long or not very clear, which can make analysis harder. Renaming columns can help make the data easier to read and work with.
+
+We continue with our updated `mobility_updated` data frame (see solution for exercise 5). Take a look—do you think any column names could be shortened or made clearer? 🚀
+
+```{r}
+# show column names
+colnames(mobility_updated)
+```
+
+A good way to rename specific columns in a data frame is using `dplyr`'s `rename()` function:
+
+```r
+mobility <- mobility %>%
+  rename(
+    new_col_name_1 = old_col_name_1,
+    new_col_name_2 = old_col_name_2,
+    new_col_name_3 = old_col_name_3
+  )
+```
+
+In this exercise, please
+
+- Rename `sub_region_1` and `sub_region_2` by `province` and `city`, respectively. 
+- Change the very long column names (e.g., `retail_and_recreation_percent_change_from_baseline`) to `retail_and_recreation`. 
+
+```{r, webex.hide = 'Solution to Exercise 6', include=show_solutions}
+# First use the rename function to rename sub_region_1 & sub_region_2. 
+mobility_updated <- mobility_updated %>% rename(province = sub_region_1,
+                                city = sub_region_2,
+                                retail_and_recreation = retail_and_recreation_percent_change_from_baseline,
+                                grocery_and_pharmacy = grocery_and_pharmacy_percent_change_from_baseline,
+                                parks = parks_percent_change_from_baseline,
+                                transit_stations = transit_stations_percent_change_from_baseline,
+                                workplaces = workplaces_percent_change_from_baseline,
+                                residential = residential_percent_change_from_baseline)
+                                
+
+# Tip: See that you had to copy-paste a lot of variable names in constructing this solution?
+# A better way to rename all those _percent_change_from_baseline columns is this: do you understand
+# what exactly is happening here?
+
+mobility_updated2 <- mobility %>% rename(province = sub_region_1,
+                                city = sub_region_2) %>%
+                         rename_with(~str_remove(., '_percent_change_from_baseline'))
+```
+
+
+```{r, webex.hide = 'Bad solution', eval = FALSE, include = show_solutions}
+# This solution works but is really not optimal, as the *format* of the input data may change (and hence, render the renamed columns wrong).
+
+# Let's first take copy of our data so we don't run it on the "real one".
+
+mobility_tmp = mobility
+
+colnames(mobility_tmp) = c("country_region", 
+                      "province",
+                      "city", 
+                      "place_id",
+                      "date", 
+                      "retail_and_recreation",
+                      "grocery_and_pharmacy", 
+                      "parks", 
+                      "transit_stations", 
+                      "workplaces", 
+                      "residential")
+
+```
+
+\
+
+## Exercise 7: Date Conversion
+
+At first glance, dates in data sets might look like *regular* dates (e.g., `2020-02-15`). However, R sometimes treats them as **character strings** rather than actual date objects. You can check this by running:  
+
+```{r}
+class(mobility_updated$date)
+```
+
+In this particular case, R has properly recognized them as being in the `date` format. So all is good.
+
+__Why does this matter?__ Well, date conversion can sometimes be tricky, especially with different formats across geographic regions (e.g., MM/DD/YYYY vs. DD/MM/YYYY). Here’s how to safely convert a character-encoded date into a proper date format in R: `mobility_updated$date <- as.Date(mobility_updated$date)`.
+
+In this exercise, please inspect what the first and last date in our data frame is. Tip: you can use `min()` and `max()` now that the date column has been converted into date format! 
+
+`r hide("Solution to Exercise 7")`
+
+The data runs from February 15, 2020 (`min(mobility_updated$date)`) to December 31, 2020 (`max(mobility_updated$date)`).
+
+Observe above that you can not only use R code in code cells, but also in text by enclosing it in special characters: 
+```{r, echo=TRUE, eval=FALSE}
+`r min(mobility_updated$date)`
+```
+`r unhide()`
+
+## Exercise 8: Adding a New Column
+
+Raw data often contains useful information, but sometimes we need to **go beyond what’s given** to make meaningful comparisons. By creating **"derived metrics"**, we can summarize trends, spot patterns, and make analysis easier.  
+**Example: Measuring Overall Movement Trends**  
+
+Instead of looking at each mobility category separately, we can create a **single metric** to capture general movement patterns. Let’s define `avg_mobility`, which represents the **average movement** across different places (e.g., `retail_and_recreation`, `grocery_and_pharmacy`, etc.):
+
+In this exercise, please add a new column, called `avg_mobility`. Define it as the mean of **all** of the "place" columns (i.e., retail and recreation, parks, transit stations, etc.)
+
+Tip: use the snippet below to get started.
+
+```r
+columns = c('retail_and_recreation')
+mobility_updated %>% mutate(avg_mobility = rowMeans(select(., all_of(columns)), na.rm = TRUE))
+```
+
+```{r, webex.hide = 'Solution to Exercise 8', eval = FALSE, include= show_solutions}
+
+columns <- c('retail_and_recreation', 'grocery_and_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential')
+mobility_updated <- mobility_updated %>% mutate(avg_mobility = rowMeans(select(., all_of(columns)), na.rm =TRUE))
+
+```
+
+```{r, webex.hide = 'Incorrect solutions to Exercise 8', eval = FALSE, include = show_solutions}
+
+mobility_updated %>% mutate(avg_mobility_wrong = (retail_and_recreation + grocery_and_pharmacy + parks + transit_stations + workplaces + residential)/7)
+
+# While this looks easy to implement (a mean is the sum, divided by the number of data points) - it's incorrect! Sometimes, columns are NA, and hence "drop" out of the data set. Plus: even if these values were ignored, then the average wouldn't be an average of 7 columns, but of fewer!
+
+```
+
+## Exercise 9: Creating New (Filtered) Data Sets
+
+So far, we’ve seen that the data set contains information at three levels: **country, province, and city**. To make analysis easier, we’ll separate these into three distinct datasets:  
+
+- One for **provinces**  
+- One for **cities**  
+- One for **the Netherlands as a whole**  
+
+To do this, we need to **filter** the data and store each subset in a new data frame.  
+
+💡 **How are the levels structured?**  
+We can identify the different levels based on missing values in the `province` and `city` columns:  
+
+- **Country-level** data has empty values in both `province` and `city`.  
+- **Province-level** data has values in `province` but empty values in `city`.  
+- **City-level** data has values in both `province` and `city`.  
+
+This is summarized in the table below, where `X` indicates the presence of data in a column:  
+
+| Aggregation Level | country_region | province | city |  
+|------------------|---------------|---------|------|  
+| **Country**     | X             |         |      |  
+| **Province**    | X             | X       |      |  
+| **City**        | X             | X       | X    |  
+
+Now, let’s filter the data set accordingly!
+
+- Create three new datasets: `country`, `province`, and `city` from `mobility`, based on the descriptions above.  
+- To filter missing values (`NA`), use `is.na(column)`, which checks if a column is empty.  
+
+```{r, webex.hide = 'Solution to Exercise 9', include = show_solutions}
+country <- mobility_updated %>% filter(is.na(city) & is.na(province))
+province <- mobility_updated %>% filter(is.na(city) & !is.na(province))
+city <- mobility_updated %>% filter(!is.na(city))
+```
+
+\
+
+## Exercise 10: Missing Observations
+
+Missing values can impact analysis, so let’s first **identify how many are missing** before deciding how to handle them. Here's code that shows the percentage missings per variable mentioned in `columns`, for each of the three data sets. No worries - the code below is quite complex. Try to read it - but we don't expect you to write code like this at this moment!
+
+```{r}
+columns <- c('retail_and_recreation', 'grocery_and_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential')
+
+library(knitr)
+missing_summary <- bind_rows(
+  country %>% summarise(across(all_of(columns), ~ mean(is.na(.)) * 100)) %>% mutate(subset = "country"),
+  province %>% summarise(across(all_of(columns), ~ mean(is.na(.)) * 100)) %>% mutate(subset = "province"),
+  city %>% summarise(across(all_of(columns), ~ mean(is.na(.)) * 100)) %>% mutate(subset = "city")
+) %>% relocate(subset)
+
+missing_summary %>% kable(digits = 2)
+
+```
+
+After seeing the summary, you should realize that some datasets have a lot more missing values than others!
+
+In this exercise, let's assume that we want to replace missing values in the `province` and `city` data sets with their averages across the whole data set.
+
+Please implement this for all columns: `retail_and_recreation`, `grocery_and_pharmacy`, `parks`, `transit_stations`, `workplaces`, `residential`. Make sure to run the solutions of exercise 9 first so you can be sure to have all the necessary data sets in place.
+
+Code to get started:
+
+```{r}
+province <- province %>%
+  mutate(
+    retail_and_recreation = replace_na(retail_and_recreation, mean(retail_and_recreation, na.rm=T)))
+
+```
+
+```{r, webex.hide = 'Solution to Exercise 10', include = show_solutions}
+# Replace missing values in `province` dataset with column means
+province <- province %>%
+  mutate(
+    retail_and_recreation = replace_na(retail_and_recreation, mean(retail_and_recreation, na.rm = TRUE)),
+    grocery_and_pharmacy = replace_na(grocery_and_pharmacy, mean(grocery_and_pharmacy, na.rm = TRUE)),
+    parks = replace_na(parks, mean(parks, na.rm = TRUE)),
+    transit_stations = replace_na(transit_stations, mean(transit_stations, na.rm = TRUE)),
+    workplaces = replace_na(workplaces, mean(workplaces, na.rm = TRUE)),
+    residential = replace_na(residential, mean(residential, na.rm = TRUE))
+    )
+
+# Replace missing values in `city` dataset with column means
+city <- city %>%
+  mutate(
+    retail_and_recreation = replace_na(retail_and_recreation, mean(retail_and_recreation, na.rm = TRUE)),
+    grocery_and_pharmacy = replace_na(grocery_and_pharmacy, mean(grocery_and_pharmacy, na.rm = TRUE)),
+    parks = replace_na(parks, mean(parks, na.rm = TRUE)),
+    transit_stations = replace_na(transit_stations, mean(transit_stations, na.rm = TRUE)),
+    workplaces = replace_na(workplaces, mean(workplaces, na.rm = TRUE)),
+    residential = replace_na(residential, mean(residential, na.rm = TRUE))
+    )
+
+
+```
+
+
+```{r, webex.hide = 'Alternative (Efficient!) Solution to Exercise 10', include = show_solutions}
+# You could also use the following code - which has a lot of benefits as you don't have to write down all column names over and over again.
+# Can you read and understand this code?
+
+# Define the columns to update
+columns <- c("retail_and_recreation", "grocery_and_pharmacy", "parks", 
+             "transit_stations", "workplaces", "residential")
+
+# Replace missing values in `province` dataset with overall mean
+province <- province %>%
+  mutate(across(all_of(columns), ~ replace_na(., mean(., na.rm = TRUE))))
+
+# Replace missing values in `city` dataset with overall mean
+city <- city %>%
+  mutate(across(all_of(columns), ~ replace_na(., mean(., na.rm = TRUE))))
+```
+
+\

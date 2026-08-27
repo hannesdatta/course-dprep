@@ -1,0 +1,766 @@
+---
+title: "Tutorial (week 2) - Quarto, dplyr, Git, and automation"
+subtitle: "Data Preparation and Programming Skills (2026/2027)"
+author: "Javier Torralba Flores"
+date: "last-modified"
+execute:
+  eval: false
+  echo: true
+  warning: false
+  message: false
+format:
+  beamer:
+    theme: metropolis
+    colortheme: seahorse
+    code-overflow: wrap
+    code-font-size: 0.9em
+    aspectratio: 169
+    fontsize: 11pt
+    highlight-style: tango
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \newcommand{\workbg}{\setbeamercolor{background canvas}{bg=yellow!12}}
+        \newcommand{\normalbg}{\setbeamercolor{background canvas}{bg=white}}
+---
+
+## Tutorial roadmap (90 minutes)
+
+Today builds on last week with the same data file: `video_view.csv`.
+
+1. Quarto + Markdown basics (15 min)
+2. Coding with `dplyr` + aggregation (35 min)
+3. Git collaboration workflow (20 min)
+4. Automation with README + rerun commands (10 min)
+5. Wrap-up + next steps (10 min)
+
+You get dedicated work blocks with clear exercise numbers.
+
+---
+
+## Last week in 60 seconds
+
+You already practiced this loop:
+
+- Coding: `read_csv()`, inspect data, basic transformations
+- Collaboration: `git status` -> `git add` -> `git commit` -> `git push`
+- Automation: run scripts from terminal with `Rscript`
+
+Today we keep the same loop, but make it cleaner and more reproducible.
+
+---
+
+## Thinking prompt (1 minute)
+
+Discuss with your neighbor:
+
+1. What was easy last week?
+2. What was still confusing?
+3. If you open your files in 3 weeks, what will help you understand your own work?
+
+Some nudges: Markdown, readmes, dplyr, git, Rscript...
+
+---
+
+## Section 1: Quarto and Markdown
+
+Goal: understand what Markdown is and how Quarto turns it into output.
+
+---
+
+## What is Markdown?
+
+Markdown is plain text with lightweight formatting.
+
+- `# Heading 1`
+- `## Heading 2`
+- `- bullet list`
+- `[link text](https://example.com)`
+
+Why this is useful: simple, readable, and version-friendly.
+
+---
+
+## What is Quarto?
+
+Quarto is a rendering engine for `.qmd` files.
+
+- you write text + code in one file
+- you render it into HTML/PDF/slides
+- your analysis and explanation stay together
+
+Think: one source of truth for both code and communication.
+
+---
+
+## Minimal `.qmd` structure
+
+````markdown
+---
+title: "My first Quarto page"
+format: html
+---
+
+# Question
+
+What does `video_view.csv` look like?
+
+```{r}
+library(tidyverse)
+```
+````
+
+Three layers: YAML, narrative text, code chunks.
+
+---
+
+## Render command
+
+```bash
+quarto render report.qmd
+```
+
+Interactive check:
+
+- Before running: what output file do you expect?
+- After running: did that file appear in your folder?
+
+---
+
+## WORK TIME - Exercise 1 (8 minutes)
+
+```{=latex}
+\workbg
+```
+
+Create `report.qmd` that includes:
+
+1. a title in YAML
+2. one heading + two sentences in Markdown
+3. one R code chunk with `library(tidyverse)`
+4. one R code chunk with `getwd()` and `list.files()`
+5. render to HTML
+
+Expected output checklist:
+
+- `report.html` exists
+- HTML shows both your text and code output
+
+---
+
+## Section 2: Coding with `video_view.csv`
+
+```{=latex}
+\normalbg
+```
+
+Goal: practice core `dplyr` verbs and aggregation.
+
+No merges/joins yet.
+
+---
+
+## Load data and inspect
+
+```{r}
+library(tidyverse)
+
+if (!file.exists("video_view.csv")) {
+  data_url <- paste0(
+    "https://raw.githubusercontent.com/hannesdatta/",
+    "course-dprep/refs/heads/main/material/tutorials/r-bootcamp-rev/",
+    "video_view.csv"
+  )
+  download.file(data_url, "video_view.csv")
+}
+
+videos <- read_csv("video_view.csv")
+```
+
+Inspect:
+
+```{r}
+head(videos)
+names(videos)
+glimpse(videos)
+summary(videos$watch_rate)
+```
+
+---
+
+## Think before coding
+
+Look at the column names.
+
+Question to discuss:
+
+- Which columns seem useful for creator performance?
+- Which columns might help compare quality vs reach?
+
+Then test your ideas with code.
+
+---
+
+## Core `dplyr` verbs this week
+
+- `select()` keep columns
+- `filter()` keep rows
+- `mutate()` create new variables
+- `rename()` rename variables
+- `arrange()` sort rows
+- `group_by()` define groups
+- `summarise()` aggregate within groups
+
+---
+
+## Guided example 1: select + filter (question + plan)
+
+Question:
+
+- Which videos are both high quality and reasonably visible?
+
+Predict first:
+
+- If we require `watch_rate >= 0.7` and `impressions_n >= 20`, do we keep many or few rows?
+
+Plan:
+
+1. keep only needed columns (`select`)
+2. keep only rows that pass both conditions (`filter`)
+
+```{r}
+high_quality <- videos %>%
+  select(video_id, creator_id, impressions_n, watched_n, watch_rate) %>%
+  filter(watch_rate >= 0.7, impressions_n >= 20)
+```
+
+---
+
+## Guided example 1: line-by-line explanation
+
+```{r}
+high_quality <- videos %>%
+  select(video_id, creator_id, impressions_n, watched_n, watch_rate) %>%
+  filter(watch_rate >= 0.7, impressions_n >= 20)
+```
+
+What each line does:
+
+- `videos %>%` starts from the full table
+- `select(...)` keeps only 5 relevant variables
+- `filter(...)` keeps rows passing both rules
+
+Check your result:
+
+- run `nrow(high_quality)` and compare with `nrow(videos)`
+
+Common beginner mistake:
+
+- using `watch_rate = 0.7` instead of `watch_rate >= 0.7`
+
+---
+
+## Guided example 2: mutate + rename + arrange (question + plan)
+
+Question:
+
+- How can we create and rank a simple video performance score?
+
+Predict first:
+
+- Will `watched_n / impressions_n` likely be close to `watch_rate`?
+
+Plan:
+
+1. create new variable `watched_share`
+2. rename long variable names for readability
+3. sort descending to see top rows first
+
+```{r}
+video_scores <- videos %>%
+  mutate(
+    watched_share = watched_n / impressions_n
+  ) %>%
+  rename(
+    impressions = impressions_n,
+    watched = watched_n
+  ) %>%
+  arrange(desc(watched_share))
+```
+
+---
+
+## Guided example 2: line-by-line explanation
+
+```{r}
+video_scores <- videos %>%
+  mutate(
+    watched_share = watched_n / impressions_n
+  ) %>%
+  rename(
+    impressions = impressions_n,
+    watched = watched_n
+  ) %>%
+  arrange(desc(watched_share))
+```
+
+What each line does:
+
+- `mutate(...)` adds a new column without deleting old ones
+- `rename(...)` makes names shorter and easier to read
+- `arrange(desc(...))` puts largest values at the top
+
+Check your result:
+
+- run `video_scores %>% select(video_id, watched_share) %>% head()`
+
+Common beginner mistake:
+
+- forgetting `desc()` and accidentally sorting smallest-to-largest
+
+---
+
+## Guided example 3: aggregation without groups
+
+Question:
+
+- What are overall totals/averages in the full dataset?
+
+```{r}
+videos %>%
+  summarise(
+    total_impressions = sum(impressions_n, na.rm = TRUE),
+    avg_watch_rate = mean(watch_rate, na.rm = TRUE),
+    n_videos = n()
+  )
+```
+
+What this returns:
+
+- exactly one row with full-sample metrics
+
+Check:
+
+- confirm with `nrow(...)` that output has one row
+
+---
+
+## Guided example 4: group_by + summarise
+
+Question:
+
+- How do creator-level metrics differ across creators?
+
+```{r}
+creator_summary <- videos %>%
+  group_by(creator_id) %>%
+  summarise(
+    videos_n = n(),
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    watch_rate_avg = mean(watch_rate, na.rm = TRUE)
+  ) %>%
+  arrange(desc(impressions_total))
+```
+
+What this returns:
+
+- one row per `creator_id`
+
+Check:
+
+- `n_distinct(videos$creator_id)` should match `nrow(creator_summary)`
+
+Common beginner mistake:
+
+- forgetting `group_by(creator_id)` and getting only one summary row
+
+---
+
+## WORK TIME - Exercise 2 (10 minutes)
+
+```{=latex}
+\workbg
+```
+
+Create `creator_summary` from `videos` with:
+
+1. `group_by(creator_id)`
+2. `summarise(videos_n, impressions_total, watch_rate_avg)`
+3. sorted by `impressions_total` descending
+
+Then answer in one sentence:
+
+- Which creator has the most impressions?
+
+Starter code:
+
+```{r}
+creator_summary <- videos %>%
+  group_by(creator_id) %>%
+  summarise(
+    videos_n = ___,
+    impressions_total = ___,
+    watch_rate_avg = ___
+  ) %>%
+  arrange(desc(___))
+```
+
+---
+
+## WORK TIME - Exercise 3 (8 minutes)
+
+```{=latex}
+\workbg
+```
+
+Create object `top_watch` with:
+
+1. `select(video_id, creator_id, impressions_n, watch_rate)`
+2. `filter(impressions_n >= 50)`
+3. `arrange(desc(watch_rate))`
+
+Then answer:
+
+- Is the top-ranked video also high in impressions?
+
+Starter code:
+
+```{r}
+top_watch <- videos %>%
+  select(___) %>%
+  filter(___) %>%
+  arrange(___)
+```
+
+---
+
+## WORK TIME - Exercise 4 (8 minutes)
+
+```{=latex}
+\workbg
+```
+
+Add a new variable and summarize it:
+
+1. create `engagement = watched_n / impressions_n` using `mutate()`
+2. aggregate by `creator_id` using `group_by()` + `summarise()`
+3. compute mean engagement per creator
+4. sort descending
+
+Expected output: one row per creator with mean engagement.
+
+Starter code:
+
+```{r}
+creator_engagement <- videos %>%
+  mutate(engagement = ___ / ___) %>%
+  group_by(___) %>%
+  summarise(mean_engagement = mean(___, na.rm = TRUE)) %>%
+  arrange(desc(___))
+```
+
+---
+
+## Section 3: Collaboration with Git
+
+```{=latex}
+\normalbg
+```
+
+Goal: repeat the commit cycle and add clone/pull/fork practice.
+
+---
+
+## Collaboration workflow (beginner-safe)
+
+```bash
+git clone <repo-url>
+git pull origin main
+git status
+git add report.qmd
+git commit -m "Add creator summary exercises"
+git push origin main
+```
+
+Interactive prompt:
+
+- Which command tells you what changed locally?
+- Which command sends your local commits to GitHub?
+
+---
+
+## Fork workflow for class practice
+
+Practice sequence:
+
+1. Fork classmate repository on GitHub
+2. Clone your fork locally
+3. Pull before editing
+4. Make one small README improvement
+5. Run `status` -> `add` -> `commit` -> `push`
+
+No merge conflict handling yet.
+
+---
+
+## WORK TIME - Exercise 5 (10 minutes, pairs)
+
+```{=latex}
+\workbg
+```
+
+Pair task:
+
+1. Student A forks Student B repo
+2. Student A clones fork
+3. Student A updates one README line
+4. Student A commits and pushes
+5. Student B verifies update on GitHub
+
+Expected output checklist:
+
+- a new commit visible on Student A fork
+- Student B can see the change online
+
+---
+
+## Section 4: Automation for beginners
+
+```{=latex}
+\normalbg
+```
+
+Goal: make your project easy to rerun for yourself and others.
+
+---
+
+## Why README matters
+
+README is lightweight automation for humans.
+
+It should answer:
+
+1. What is this project?
+2. Which data file is needed?
+3. Which commands should I run, and in what order?
+4. What outputs should I expect?
+
+---
+
+## README template
+
+```markdown
+# Project title
+
+## Goal
+Short project objective.
+
+## Data
+- Main file: video_view.csv
+
+## Requirements
+- R
+- Packages: tidyverse
+- Quarto installed
+
+## Run steps
+1. `Rscript analysis.R`
+2. `quarto render report.qmd`
+
+## Expected output
+- report.html
+```
+
+---
+
+## WORK TIME - Exercise 6 (8 minutes)
+
+```{=latex}
+\workbg
+```
+
+Create or update `README.md` with:
+
+1. goal
+2. data (`video_view.csv`)
+3. requirements
+4. exact run commands
+5. expected output
+
+Then commit your README changes.
+
+---
+
+## Wrap-up and where to go next
+
+```{=latex}
+\normalbg
+```
+
+You now have a complete beginner workflow:
+
+- Quarto document with Markdown + code
+- `dplyr` verbs and aggregation with one dataset
+- Git sync and commit cycle
+- README-driven rerun instructions
+
+Next: deeper wrangling and then table-combining later (not yet).
+
+---
+
+## Appendix A: extra practice questions
+
+1. Count videos with `watch_rate >= 0.8`.
+2. Find the top 5 creators by average `watch_rate`.
+3. Find creators with at least 3 videos and sort by total impressions.
+4. Create a short interpretation paragraph (3 lines) for your `creator_summary`.
+5. Add a section to README called "Troubleshooting" with 3 common errors.
+6. Render your Quarto file again after one small text edit and verify output updates.
+
+---
+
+## Solutions section starts here
+
+All solutions are visible and matched by exercise number.
+
+---
+
+## Solution - Exercise 1
+
+Example `report.qmd`:
+
+````markdown
+---
+title: "Week 2 practice"
+format: html
+---
+
+# First report
+
+This is my first Quarto practice file.
+I combine Markdown text and R code.
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+getwd()
+list.files()
+```
+````
+
+Render command:
+
+```bash
+quarto render report.qmd
+```
+
+---
+
+## Solution - Exercise 2
+
+```{r}
+creator_summary <- videos %>%
+  group_by(creator_id) %>%
+  summarise(
+    videos_n = n(),
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    watch_rate_avg = mean(watch_rate, na.rm = TRUE)
+  ) %>%
+  arrange(desc(impressions_total))
+
+creator_summary
+```
+
+Interpretation example: "`creator_id` at the top has the highest total impressions in this dataset."
+
+---
+
+## Solution - Exercise 3
+
+```{r}
+top_watch <- videos %>%
+  select(video_id, creator_id, impressions_n, watch_rate) %>%
+  filter(impressions_n >= 50) %>%
+  arrange(desc(watch_rate))
+
+top_watch
+```
+
+Interpretation example: "The top watch-rate video may or may not have the most impressions; quality and reach can differ."
+
+---
+
+## Solution - Exercise 4
+
+```{r}
+creator_engagement <- videos %>%
+  mutate(engagement = watched_n / impressions_n) %>%
+  group_by(creator_id) %>%
+  summarise(mean_engagement = mean(engagement, na.rm = TRUE)) %>%
+  arrange(desc(mean_engagement))
+
+creator_engagement
+```
+
+Interpretation example: "This ranks creators by average engagement instead of raw reach."
+
+---
+
+## Solution - Exercise 5
+
+Commands used in the workflow:
+
+```bash
+git clone <fork-url>
+git pull origin main
+git status
+git add README.md
+git commit -m "Improve README instructions"
+git push origin main
+```
+
+Success check:
+
+- commit is visible on GitHub fork
+- changed README content appears online
+
+---
+
+## Solution - Exercise 6
+
+Example `README.md`:
+
+```markdown
+# Video analysis practice
+
+## Goal
+Practice Quarto, dplyr aggregation, and Git workflow.
+
+## Data
+- video_view.csv
+
+## Requirements
+- R
+- tidyverse package
+- Quarto
+
+## Run steps
+1. Rscript analysis.R
+2. quarto render report.qmd
+
+## Expected output
+- report.html
+
+## Troubleshooting
+- If file not found: run getwd() and list.files().
+- If tidyverse missing: install.packages("tidyverse").
+- If render fails: check Quarto installation.
+```
+
+---
+
+## End of tutorial
+
+If you finish early, continue with Appendix A extra practice.
