@@ -110,7 +110,17 @@ library(tidyverse)
 ```
 ````
 
-Three layers: YAML, narrative text, code chunks.
+---
+
+## Three layers of a `.qmd`
+
+A `.qmd` file combines three parts:
+
+- **YAML header** — metadata and rendering options (title, format, theme)
+- **Narrative text** — Markdown headings, prose, links, lists
+- **Code chunks** — fenced blocks that execute and show results
+
+One source of truth for both analysis and communication.
 
 ---
 
@@ -177,6 +187,8 @@ if (!file.exists("video_view.csv")) {
 videos <- read_csv("video_view.csv")
 ```
 
+---
+
 Inspect:
 
 ```{r}
@@ -228,12 +240,6 @@ Plan:
 1. keep only needed columns (`select`)
 2. keep only rows that pass both conditions (`filter`)
 
-```{r}
-high_quality <- videos %>%
-  select(video_id, creator_id, impressions_n, watched_n, watch_rate) %>%
-  filter(watch_rate >= 0.7, impressions_n >= 20)
-```
-
 ---
 
 ## Guided example 1: line-by-line explanation
@@ -276,18 +282,6 @@ Plan:
 2. rename long variable names for readability
 3. sort descending to see top rows first
 
-```{r}
-video_scores <- videos %>%
-  mutate(
-    watched_share = watched_n / impressions_n
-  ) %>%
-  rename(
-    impressions = impressions_n,
-    watched = watched_n
-  ) %>%
-  arrange(desc(watched_share))
-```
-
 ---
 
 ## Guided example 2: line-by-line explanation
@@ -310,14 +304,6 @@ What each line does:
 - `rename(...)` makes names shorter and easier to read
 - `arrange(desc(...))` puts largest values at the top
 
-Check your result:
-
-- run `video_scores %>% select(video_id, watched_share) %>% head()`
-
-Common beginner mistake:
-
-- forgetting `desc()` and accidentally sorting smallest-to-largest
-
 ---
 
 ## Guided example 3: aggregation without groups
@@ -339,10 +325,6 @@ What this returns:
 
 - exactly one row with full-sample metrics
 
-Check:
-
-- confirm with `nrow(...)` that output has one row
-
 ---
 
 ## Guided example 4: group_by + summarise
@@ -361,6 +343,8 @@ creator_summary <- videos %>%
   ) %>%
   arrange(desc(impressions_total))
 ```
+
+---
 
 What this returns:
 
@@ -391,6 +375,8 @@ Create `creator_summary` from `videos` with:
 Then answer in one sentence:
 
 - Which creator has the most impressions?
+
+---
 
 Starter code:
 
@@ -423,6 +409,8 @@ Then answer:
 
 - Is the top-ranked video also high in impressions?
 
+---
+
 Starter code:
 
 ```{r}
@@ -448,6 +436,8 @@ Add a new variable and summarize it:
 4. sort descending
 
 Expected output: one row per creator with mean engagement.
+
+---
 
 Starter code:
 
@@ -557,7 +547,13 @@ Short project objective.
 
 ## Data
 - Main file: video_view.csv
+```
 
+---
+
+## Continuation of REAME template
+
+```markdown
 ## Requirements
 - R
 - Packages: tidyverse
