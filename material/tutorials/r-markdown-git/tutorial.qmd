@@ -399,26 +399,8 @@ creator_summary <- videos %>%
 \workbg
 ```
 
-Create object `top_watch` with:
-
-1. `select(video_id, creator_id, impressions_n, watch_rate)`
-2. `filter(impressions_n >= 50)`
-3. `arrange(desc(watch_rate))`
-
-Then answer:
-
-- Is the top-ranked video also high in impressions?
-
----
-
-Starter code:
-
-```{r}
-top_watch <- videos %>%
-  select(___) %>%
-  filter(___) %>%
-  arrange(___)
-```
+Create object `top_watch`, that contains the following information: the video id, creator id, 
+watch rate, and at least 50 impressions per video. Arrange your answer by having watch rate, descending. 
 
 ---
 
@@ -436,18 +418,6 @@ Add a new variable and summarize it:
 4. sort descending
 
 Expected output: one row per creator with mean engagement.
-
----
-
-Starter code:
-
-```{r}
-creator_engagement <- videos %>%
-  mutate(engagement = ___ / ___) %>%
-  group_by(___) %>%
-  summarise(mean_engagement = mean(___, na.rm = TRUE)) %>%
-  arrange(desc(___))
-```
 
 ---
 
@@ -476,41 +446,6 @@ Interactive prompt:
 
 - Which command tells you what changed locally?
 - Which command sends your local commits to GitHub?
-
----
-
-## Fork workflow for class practice
-
-Practice sequence:
-
-1. Fork classmate repository on GitHub
-2. Clone your fork locally
-3. Pull before editing
-4. Make one small README improvement
-5. Run `status` -> `add` -> `commit` -> `push`
-
-No merge conflict handling yet.
-
----
-
-## WORK TIME - Exercise 5 (10 minutes, pairs)
-
-```{=latex}
-\workbg
-```
-
-Pair task:
-
-1. Student A forks Student B repo
-2. Student A clones fork
-3. Student A updates one README line
-4. Student A commits and pushes
-5. Student B verifies update on GitHub
-
-Expected output checklist:
-
-- a new commit visible on Student A fork
-- Student B can see the change online
 
 ---
 
@@ -569,21 +504,32 @@ Short project objective.
 
 ---
 
-## WORK TIME - Exercise 6 (8 minutes)
+## WORK TIME - Combining git and README (10 minutes)
 
 ```{=latex}
 \workbg
 ```
 
-Create or update `README.md` with:
+Practice the full fork workflow on the course repo:
 
-1. goal
-2. data (`video_view.csv`)
-3. requirements
-4. exact run commands
-5. expected output
+Repo: <https://github.com/jtorralbaflores/video-view-analysis-dprep>
 
-Then commit your README changes.
+1. Fork the instructor repo on GitHub (click **Fork**)
+2. Clone your fork locally: `git clone <your-fork-url>`
+3. Explore the repo: open the folders, inspect the data, skim the scripts
+4. Write a short summary (2-3 sentences): what does this project do?
+5. Rewrite `README.md` using the template from Section 4
+   (goal, data, requirements, run steps, expected output)
+6. `git status` -> `git add README.md` -> `git commit -m "..."` -> `git push origin main`
+7. Verify on GitHub: your commit and new README appear on your fork
+
+--- 
+
+Expected output checklist:
+
+- your fork exists under your GitHub account
+- `README.md` on your fork follows the full template
+- the commit is visible online
 
 ---
 
@@ -706,25 +652,30 @@ Interpretation example: "This ranks creators by average engagement instead of ra
 
 ## Solution - Exercise 5
 
-Commands used in the workflow:
+Workflow:
+
+1. Fork on GitHub (button top-right of the repo)
+2. Clone and edit locally:
 
 ```bash
-git clone <fork-url>
-git pull origin main
+git clone <your-fork-url>
+cd <repo>
+# explore: ls, open data/, skim src/
+# rewrite README.md using the template
 git status
 git add README.md
-git commit -m "Improve README instructions"
+git commit -m "Rewrite README following template"
 git push origin main
 ```
 
 Success check:
 
-- commit is visible on GitHub fork
-- changed README content appears online
+- fork exists under your account
+- new README and commit are visible on GitHub
 
 ---
 
-## Solution - Exercise 6
+## Solution - Exercise 5
 
 Example `README.md`:
 
