@@ -19,8 +19,8 @@ format:
 Today we practice one full workflow with `video_view.csv`.
 
 1. Coding (largest block): load, inspect, and summarize data
-2. Git/versioning: save your work with CLI + Positron UI
-3. Automation: rerun analysis and slides with one command
+2. Collaboration: save your work with Git (CLI + Positron UI)
+3. Automation: rerun analysis with one command
 
 ---
 
@@ -29,7 +29,7 @@ Today we practice one full workflow with `video_view.csv`.
 By the end of class, you can:
 
 - load a CSV file in R
-- answer simple questions with `tidyverse`/`dplyr`
+- answer simple "data questions" with `tidyverse`/`dplyr`
 - save work with Git (`status`, `add`, `commit`, `push`)
 - rerun scripts from the terminal
 
@@ -87,7 +87,7 @@ flowchart LR
 
 ::: incremental
 - source code (write and edit code)
-- console (run code)
+- console (run code in R or on the terminal)
 - environment (objects: data sets and variables)
 - history (executed commands)
 - files (project directory)
@@ -97,6 +97,7 @@ flowchart LR
 
 ---
 
+<!--
 ## Positron screenshot (placeholder)
 
 **Screenshot placeholder:** `img/placeholder-positron-layout.png`
@@ -110,6 +111,7 @@ Minimum labels to include in screenshot:
 - Source Control
 
 ---
+-->
 
 ## Section 1: Coding
 
@@ -166,7 +168,7 @@ data_url <- paste0(
   "video_view.csv"
 )
 
-download.file(data_url, "video_view.csv", mode = "wb")
+download.file(data_url, "video_view.csv")
 list.files()
 ```
 
@@ -224,31 +226,15 @@ Use this structure:
 
 ## Prompt template you can copy
 
-```text
-You are helping a beginner in R.
+- You are helping a beginner in R.
+- Context: I am analyzing video_view.csv in a first-week bootcamp.
+- My code: <paste code>
+- Observed output/error: <paste exact error>
+- What I expected: <describe expected result>
 
-Context:
-I am analyzing video_view.csv in a first-week bootcamp.
+Constraints: Use tidyverse style, keep the solution beginner-friendly, explain each change in 1 sentence
 
-My code:
-<paste code>
-
-Observed output/error:
-<paste exact error>
-
-What I expected:
-<describe expected result>
-
-Constraints:
-- Use tidyverse style
-- Keep the solution beginner-friendly
-- Explain each change in 1 sentence
-
-Please return:
-1) corrected code
-2) short explanation
-3) one extra tip to avoid this mistake next time
-```
+Please return corrected code, short explanation, one extra tip to avoid this mistake next time
 
 ---
 
@@ -258,6 +244,8 @@ Please return:
 - Strong: includes context, exact code, exact error, expected output, and constraints
 
 Never paste secrets, private files, or personal data into public LLMs.
+
+Tip: Build your own Chatbot/Agent at https://chatbot.tilburg.ai
 
 ---
 
@@ -442,7 +430,7 @@ Git stores snapshots of your files so you can track, explain, and recover change
 Git snapshot flow:
 
 ```{mermaid}
-%%| fig-width: 5.0
+%%| fig-width: 3.5
 %%| fig-align: center
 flowchart TD
   A[Working directory] --> B[Staging area]
@@ -453,7 +441,8 @@ flowchart TD
   D1[git push] --> D
 ```
 
----
+
+<!--
 
 ## Before first push: setup checks
 
@@ -467,15 +456,17 @@ git remote -v
 
 If `git remote -v` is empty, connect your local repo to a remote before `git push`.
 
----
+-->
+
 
 ## Git with CLI: minimum commands
 
 ```bash
+git init # run once to create Git repository locally
 git status
 git add script.R
 git commit -m "Add initial analysis in script.R"
-git push
+git push # do not run now; only relevant for synching with cloud
 ```
 
 ---
@@ -497,15 +488,7 @@ Use the Source Control panel:
 2. Review changed files and diff
 3. Stage files with `+`
 4. Write commit message
-5. Click *Commit*, then *Push*
-
----
-
-## Source control screenshot (placeholder)
-
-**Screenshot placeholder:** `img/placeholder-source-control.png`
-
-Positron Source Control panel with staged file and commit message.
+5. Click *Commit* (eventually, we will push, but not this week)
 
 ---
 
