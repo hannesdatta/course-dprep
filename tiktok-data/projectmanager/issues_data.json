@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Add a project README",
+    "body": "The repository has an incomplete README.\n\n**Tasks**\n- [ ] Describe the goal of the project\n- [ ] Explain how to set up the environment / install dependencies\n- [ ] Explain how to reproduce the analysis (which scripts to run, in which order)\n- [ ] List the group members and their contributions\n\nA clear README makes it much easier for others (like new team members) to understand and run the project.",
+    "labels": ["documentation"]
+  },
+  {
+    "title": "Set up project folder structure",
+    "body": "Agree on and create a consistent folder structure for the project, for example:\n\n```\n/data        raw and processed data (or scripts that generate/download it)\n/src         source code (scraping, cleaning, analysis)\n/output      figures, tables, and other generated results\n/docs        report, presentation, and other written deliverables\n```\n\n**Tasks**\n- [ ] Create the folders listed above (or an agreed alternative)\n- [ ] Move existing files into the right place\n- [ ] Add a short note in the README explaining the structure",
+    "labels": ["enhancement", "organization"]
+  },
+  {
+    "title": "Produce a clean Quarto summary for one selected CSV file",
+    "body": "The project requires a clean summary of one selected CSV file to be produced using Quarto.\n\n**Tasks**\n- [ ] Select one CSV file from the `/data/raw` (see issue \"Download the data from the provided URL and save it to the data folder\")\n- [ ] Create a Quarto document that reads the CSV file and produces a summary (e.g., descriptive statistics, visualizations)\n- [ ] Save the Quarto document in the correct folder\n- [ ] Ensure that the Quarto document can be rendered without errors",
+    "labels": ["data"]
+  },
+  {
+    "title": "Download the data from the provided URL and save it to the data folder",
+    "body": "The project requires a specific dataset to be downloaded from a provided URL.\n\n**Tasks**\n- [ ] Write a script that downloads the data from the given URL\n- [ ] Save the downloaded file to the `/data/raw` folder\n- [ ] Ensure that the script can be run multiple times without errors (e.g., check if the file already exists before downloading)",
+    "labels": ["testing"]
+  },
+  {
+    "title": "Create an AI.md file to document AI usage",
+    "body": "The project allowes and encourages the use of AI tools (e.g., ChatGPT) to assist with coding and writing. It's important to document how these tools were used.\n\n**Tasks**\n- [ ] Create a new file named `AI.md`.\n- [ ] List the AI tools used, including versions and settings\n- [ ] Describe how each tool was used (e.g., code generation, debugging, writing assistance)\n- [ ] Explain how the outputs from AI tools were reviewed and validated",
+    "labels": ["documentation", "report"]
+  }
+]
