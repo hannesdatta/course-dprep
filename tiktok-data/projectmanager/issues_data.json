@@ -6,17 +6,17 @@
   },
   {
     "title": "Set up project folder structure",
-    "body": "Agree on and create a consistent folder structure for the project, for example:\n\n```\n/data        raw and processed data (or scripts that generate/download it)\n/src         source code (scraping, cleaning, analysis)\n/output      figures, tables, and other generated results\n/docs        report, presentation, and other written deliverables\n```\n\n**Tasks**\n- [ ] Create the folders listed above (or an agreed alternative)\n- [ ] Move existing files into the right place\n- [ ] Add a short note in the README explaining the structure",
+    "body": "Agree on and create a consistent folder structure for the project, think about where to store data, documentation and code \n\n**Tasks**\n- [ ] Create the folders (note that Git does not track empty folders)\n- [ ] Move existing files into the right place\n- [ ] Add a short note in the README explaining the structure",
     "labels": ["enhancement", "organization"]
   },
   {
     "title": "Produce a clean Quarto summary for one selected CSV file",
-    "body": "The project requires a clean summary of one selected CSV file to be produced using Quarto.\n\n**Tasks**\n- [ ] Select one CSV file from the `/data/raw` (see issue \"Download the data from the provided URL and save it to the data folder\")\n- [ ] Create a Quarto document that reads the CSV file and produces a summary (e.g., descriptive statistics, visualizations)\n- [ ] Save the Quarto document in the correct folder\n- [ ] Ensure that the Quarto document can be rendered without errors",
+    "body": "The project requires a clean summary of one selected CSV file to be produced using Quarto.\n\n**Tasks**\n- [ ] Select the downloaded video_views file from the `/data/raw` (see issue \"Download the data from the provided URL and save it to the data folder\")\n- [ ] Create a Quarto document that reads the CSV file and produces a summary (for inspiration check to tutorial-2, but be creative!)\n- [ ] Save the Quarto document in the correct folder\n- [ ] Ensure that the Quarto document can be rendered without errors",
     "labels": ["data"]
   },
   {
     "title": "Download the data from the provided URL and save it to the data folder",
-    "body": "The project requires a specific dataset to be downloaded from a provided URL.\n\n**Tasks**\n- [ ] Write a script that downloads the data from the given URL\n- [ ] Save the downloaded file to the `/data/raw` folder\n- [ ] Ensure that the script can be run multiple times without errors (e.g., check if the file already exists before downloading)",
+    "body": "The project requires a specific dataset to be downloaded from the following url: [\"https://raw.githubusercontent.com/hannesdatta/course-dprep/refs/heads/main/material/project/video_view.csv\"].\n\n**Tasks**\n- [ ] Write a script that downloads the data from the given URL\n- [ ] Save the downloaded file to the `/data/raw` folder\n- [ ] Ensure that the script can be run multiple times without errors (e.g., check if the file already exists before downloading)",
     "labels": ["testing"]
   },
   {
