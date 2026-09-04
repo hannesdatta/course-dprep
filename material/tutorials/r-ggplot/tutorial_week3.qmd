@@ -165,6 +165,8 @@ Improve your plot for a non-technical reader:
 3. use a readable theme
 4. ask AI for one improvement idea
 
+---
+
 Use this prompt:
 
 ```text
@@ -442,7 +444,11 @@ videos_plot <- videos %>%
       TRUE ~ "High visibility"
     )
   )
+```
 
+
+---
+```{r}
 ggplot(videos_plot, aes(impressions_n, watch_rate, color = visibility_band)) +
   geom_point(alpha = 0.7, size = 2) +
   labs(
@@ -504,6 +510,8 @@ url <- paste0(
 if (!file.exists("video_view.csv")) download.file(url, "video_view.csv")
 
 videos <- read_csv("video_view.csv")
+
+---
 
 ggplot(videos, aes(impressions_n, watch_rate)) +
   geom_point(color = "steelblue", alpha = 0.7)
