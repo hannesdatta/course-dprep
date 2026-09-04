@@ -1,0 +1,768 @@
+---
+title: "Tutorial (week 3) - ggplot, GitHub branches & pull requests, and Makefiles"
+subtitle: "Data Preparation and Programming Skills (2026/2027)"
+author: "Javier Torralba Flores"
+date: "last-modified"
+execute:
+  eval: false
+  echo: true
+  warning: false
+  message: false
+format:
+  beamer:
+    theme: metropolis
+    colortheme: seahorse
+    code-overflow: wrap
+    code-font-size: 0.85em
+    aspectratio: 169
+    fontsize: 11pt
+    highlight-style: tango
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \newcommand{\workbg}{\setbeamercolor{background canvas}{bg=yellow!12}}
+        \newcommand{\normalbg}{\setbeamercolor{background canvas}{bg=white}}
+---
+
+## Tutorial roadmap (90 minutes)
+
+Today follows one project story with four blocks:
+
+1. Opening and orientation - 10 min
+2. Coding with `ggplot2` - 30 min
+3. Collaboration with Git and GitHub - 30 min
+4. Automation with Makefile + wrap-up - 20 min
+
+Total: 90 minutes.
+
+---
+
+## Opening story (10 minutes)
+
+Imagine this timeline:
+
+- Monday: you make a plot.
+- Tuesday: your teammate changes style and labels.
+- Wednesday: someone asks what changed.
+- Next week: data changes, but output does not update.
+
+Today we solve this with one clear workflow.
+
+---
+
+## Learning goals
+
+By the end, you can:
+
+- build and improve plots with `ggplot2`
+- use `git status`, `git add`, `git commit`, and `git push`
+- work with branches and pull requests
+- write one Makefile rule
+- explain why outputs can stay old
+
+---
+
+## Section 1: Coding with `ggplot2` (30 minutes)
+
+```{=latex}
+\normalbg
+```
+
+Question for this block:
+
+Which creators look strong in both reach and quality?
+
+---
+
+## Section 1 setup
+
+Run this code first:
+
+```{r}
+library(tidyverse)
+
+if (!file.exists("video_view.csv")) {
+  data_url <- paste0(
+    "https://raw.githubusercontent.com/hannesdatta/",
+    "course-dprep/refs/heads/main/material/tutorials/r-bootcamp-rev/",
+    "video_view.csv"
+  )
+  download.file(data_url, "video_view.csv")
+}
+
+videos <- read_csv("video_view.csv")
+```
+
+---
+
+## How `ggplot2` works
+
+`ggplot2` uses a simple recipe:
+
+1. pick data
+2. map variables to axes and colors (`aes`)
+3. pick chart type (`geom_*`)
+4. improve labels and style
+
+Template:
+
+```r
+ggplot(data = ..., aes(x = ..., y = ...)) +
+  geom_...()
+```
+
+---
+
+## One dataset, many chart types
+
+Same grammar, different `geom_*`:
+
+- `geom_point()` for relationships
+- `geom_histogram()` for distributions
+- `geom_col()` for category comparisons
+- `geom_line()` for trends over time
+
+This is why ggplot feels consistent.
+
+---
+
+## Mapping vs setting
+
+- Inside `aes(...)`: map data to visual properties
+  - Example: `aes(color = creator_id)`
+- Outside `aes(...)`: set fixed style
+  - Example: `color = "steelblue"`
+
+Mapped color gives a legend. Fixed color does not.
+
+---
+
+## WORK TIME - Exercise 1
+
+```{=latex}
+\workbg
+```
+
+Build a baseline scatter plot:
+
+1. data: `videos`
+2. x-axis: `impressions_n`
+3. y-axis: `watch_rate`
+4. chart type: `geom_point()`
+
+---
+
+## WORK TIME - Exercise 2 (improve plot + AI)
+
+```{=latex}
+\workbg
+```
+
+Improve your plot for a non-technical reader:
+
+1. add title and axis labels
+2. add color mapping
+3. use a readable theme
+4. ask AI for one improvement idea
+
+Use this prompt:
+
+```text
+I am a beginner in ggplot2.
+Please improve this plot for readability.
+Add better labels, colors, and legend.
+Explain each change in one sentence.
+```
+
+Deliverables:
+
+- improved plot
+- one AI suggestion you used
+- one AI suggestion you did not use
+
+---
+
+## Section 2: Collaboration with Git + GitHub (30 minutes)
+
+```{=latex}
+\normalbg
+```
+
+Goal: share changes clearly and safely.
+
+---
+
+## Save, commit, pull, pull request
+
+- save: update file on your machine
+- commit: save snapshot in Git history
+- `git pull`: receive updates from GitHub
+- pull request: propose your updates for merge
+
+---
+
+## Branching in simple words
+
+`main` is your stable version.
+
+- create a branch to work safely
+- change files on that branch
+- commit and push branch
+- open pull request
+- merge into `main` when ready
+
+Think: work in branch first, merge later.
+
+---
+
+## Section 2 setup
+
+Use any repo you can push to.
+
+If needed, use this practice repo:
+
+`https://github.com/jtorralbaflores/video-view-analysis-dprep`
+
+Edit only `README.md` in this block.
+
+---
+
+## WORK TIME - Exercise 3
+
+```{=latex}
+\workbg
+```
+
+Run one full branch cycle:
+
+```bash
+git pull origin main
+git switch -c feature-week3-readme
+# edit one line in README.md
+git status
+git add README.md
+git commit -m "Update README for week 3"
+git push -u origin feature-week3-readme
+```
+
+---
+
+## WORK TIME - Exercise 4
+
+```{=latex}
+\workbg
+```
+
+Create and merge a pull request on GitHub:
+
+1. open PR from `feature-week3-readme` to `main`
+2. check changed files and diff
+3. merge pull request
+4. delete branch on GitHub
+
+---
+
+## Section 3: Automation with Makefile (20 minutes)
+
+```{=latex}
+\normalbg
+```
+
+Goal: stop guessing what to rerun.
+
+---
+
+## How one Make rule works
+
+Each rule has three parts:
+
+- target: what to build
+- prerequisites: what it depends on
+- command: how to build it
+
+If a prerequisite changes, `make` rebuilds target.
+
+---
+
+## Why outputs can stay old
+
+If a prerequisite is missing, `make` cannot see the change.
+
+Then your script changed, but output may not rebuild.
+
+---
+
+## Section 3 setup
+
+Create a fresh folder and enter it.
+
+```bash
+mkdir week3_make_practice
+```
+
+In that folder, create `build_plot.R` and `makefile`.
+
+---
+
+## WORK TIME - Exercise 5
+
+```{=latex}
+\workbg
+```
+
+Create two files: `build_plot.R` and `makefile`.
+
+Step 1: write `build_plot.R`.
+
+---
+
+## Exercise 5 - build_plot.R
+
+```{=latex}
+\workbg
+```
+
+```r
+library(tidyverse)
+
+url <- paste0(
+  "https://raw.githubusercontent.com/hannesdatta/course-dprep/",
+  "refs/heads/main/material/tutorials/r-bootcamp-rev/video_view.csv"
+)
+if (!file.exists("video_view.csv")) download.file(url, "video_view.csv")
+
+videos <- read_csv("video_view.csv")
+
+ggplot(videos, aes(impressions_n, watch_rate)) +
+  geom_point(color = "steelblue", alpha = 0.7)
+
+ggsave("plot_week3.png", width = 7, height = 4)
+```
+
+---
+
+## Exercise 5 - makefile and run
+
+```{=latex}
+\workbg
+```
+
+Step 2: write `makefile` and run `make`.
+
+```make
+plot_week3.png: build_plot.R video_view.csv
+	Rscript build_plot.R
+```
+
+Run:
+
+```bash
+make -n
+make
+make
+```
+
+---
+
+## WORK TIME - Exercise 6
+
+```{=latex}
+\workbg
+```
+
+Part A: change one line in `build_plot.R` (for example point color), then run:
+
+```bash
+make -n
+make
+```
+
+Part B: now break the rule:
+
+```make
+plot_week3.png: video_view.csv
+	Rscript build_plot.R
+```
+
+Edit `build_plot.R` again and run `make`.
+
+What happened? Then fix the rule.
+
+---
+
+## Wrap-up
+
+```{=latex}
+\normalbg
+```
+
+You now practiced one complete workflow:
+
+- make and improve a plot
+- branch, commit, push, and open PR
+- automate output with Make
+- understand why outputs can stay old
+
+---
+
+## Exit checklist
+
+Before you leave, verify:
+
+1. one improved plot
+2. one merged pull request
+3. one working Makefile rule
+4. one explanation of the missing-prerequisite problem
+
+---
+
+## Solutions for core exercises
+
+Use only if blocked.
+
+---
+
+## Solution - Exercise 1
+
+```{r}
+ggplot(videos, aes(x = impressions_n, y = watch_rate)) +
+  geom_point()
+```
+
+---
+
+## Solution - Exercise 2
+
+```{r}
+videos_plot <- videos %>%
+  mutate(
+    visibility_band = case_when(
+      impressions_n < 20 ~ "Low visibility",
+      impressions_n < 60 ~ "Medium visibility",
+      TRUE ~ "High visibility"
+    )
+  )
+
+ggplot(videos_plot, aes(impressions_n, watch_rate, color = visibility_band)) +
+  geom_point(alpha = 0.7, size = 2) +
+  labs(
+    title = "Video quality vs reach",
+    x = "Impressions",
+    y = "Watch rate",
+    color = "Visibility"
+  ) +
+  theme_minimal()
+```
+
+---
+
+## Solution - Exercise 2 reflection example
+
+Possible reflection:
+
+- Used: clearer legend title
+- Not used: faceting by creator (too many panels)
+
+---
+
+## Solution - Exercise 3
+
+```bash
+git pull origin main
+git switch -c feature-week3-readme
+# edit one line in README.md
+git status
+git add README.md
+git commit -m "Update README for week 3"
+git push -u origin feature-week3-readme
+```
+
+---
+
+## Solution - Exercise 4
+
+On GitHub:
+
+1. Open pull request from `feature-week3-readme` to `main`
+2. Check files and diff
+3. Merge pull request
+4. Delete branch
+
+---
+
+## Solution - Exercise 5
+
+`build_plot.R` and `makefile`:
+
+```r
+library(tidyverse)
+
+url <- paste0(
+  "https://raw.githubusercontent.com/hannesdatta/course-dprep/",
+  "refs/heads/main/material/tutorials/r-bootcamp-rev/video_view.csv"
+)
+if (!file.exists("video_view.csv")) download.file(url, "video_view.csv")
+
+videos <- read_csv("video_view.csv")
+
+ggplot(videos, aes(impressions_n, watch_rate)) +
+  geom_point(color = "steelblue", alpha = 0.7)
+
+ggsave("plot_week3.png", width = 7, height = 4)
+```
+
+```make
+plot_week3.png: build_plot.R video_view.csv
+	Rscript build_plot.R
+```
+
+---
+
+## Solution - Exercise 6
+
+Correct rule:
+
+```make
+plot_week3.png: build_plot.R video_view.csv
+	Rscript build_plot.R
+```
+
+Wrong rule:
+
+```make
+plot_week3.png: video_view.csv
+	Rscript build_plot.R
+```
+
+Why wrong: edits in `build_plot.R` are ignored.
+
+---
+
+## Extra practice (optional)
+
+Choose extra exercises if you finish early.
+
+---
+
+## Extra plots - Exercise P1
+
+Create a histogram of `watch_rate`.
+
+Add:
+
+- clear title
+- x and y labels
+- `bins = 20`
+
+---
+
+## Extra plots - Exercise P2
+
+Create a bar chart with top 10 creators by average watch rate.
+
+Steps:
+
+1. `group_by(creator_id)`
+2. `summarise(avg_watch = mean(watch_rate, na.rm = TRUE))`
+3. sort descending and keep 10
+4. plot with `geom_col()`
+
+---
+
+## Extra plots - Exercise P3
+
+Create a line chart of number of videos by publication date.
+
+Hint:
+
+- convert `published_at` with `as.POSIXct(..., origin = "1970-01-01")`
+- create a date column
+- count videos per date
+- use `geom_line()`
+
+---
+
+## Solution - Extra plot P1
+
+```{r}
+ggplot(videos, aes(x = watch_rate)) +
+  geom_histogram(bins = 20, fill = "steelblue", color = "white") +
+  labs(
+    title = "Distribution of watch rate",
+    x = "Watch rate",
+    y = "Count"
+  )
+```
+
+---
+
+## Solution - Extra plot P2
+
+```{r}
+top_creators <- videos %>%
+  group_by(creator_id) %>%
+  summarise(avg_watch = mean(watch_rate, na.rm = TRUE)) %>%
+  arrange(desc(avg_watch)) %>%
+  slice_head(n = 10)
+
+ggplot(top_creators, aes(x = reorder(as.factor(creator_id), avg_watch), y = avg_watch)) +
+  geom_col(fill = "tomato") +
+  coord_flip() +
+  labs(
+    title = "Top 10 creators by average watch rate",
+    x = "Creator",
+    y = "Average watch rate"
+  )
+```
+
+---
+
+## Solution - Extra plot P3
+
+```{r}
+daily_counts <- videos %>%
+  mutate(pub_datetime = as.POSIXct(published_at, origin = "1970-01-01", tz = "UTC")) %>%
+  mutate(pub_date = as.Date(pub_datetime)) %>%
+  count(pub_date)
+
+ggplot(daily_counts, aes(x = pub_date, y = n)) +
+  geom_line(color = "darkgreen") +
+  labs(
+    title = "Videos published per day",
+    x = "Publication date",
+    y = "Number of videos"
+  )
+```
+
+---
+
+## Extra branching - Exercise B1
+
+Run a second branch cycle with another branch name.
+
+Use `README.md` again:
+
+1. create branch `feature-week3-b2`
+2. edit one line
+3. `status -> add -> commit -> push`
+4. open and merge PR
+
+---
+
+## Extra branching - Exercise B2
+
+Inspect branch history after merges:
+
+```bash
+git log --oneline --graph --decorate -10
+```
+
+Question:
+
+- Can you identify your merge commit?
+
+---
+
+## Solution - Extra branching B1
+
+```bash
+git switch main
+git pull origin main
+git switch -c feature-week3-b2
+# edit README.md
+git status
+git add README.md
+git commit -m "Add second branch exercise line"
+git push -u origin feature-week3-b2
+```
+
+Then open and merge PR on GitHub.
+
+---
+
+## Solution - Extra branching B2
+
+```bash
+git log --oneline --graph --decorate -10
+```
+
+Look for a commit message like `Merge pull request ...`.
+
+---
+
+## Extra Make - Exercise M1
+
+Add a second target that creates `summary_week3.csv`.
+
+Create `summary.R`:
+
+```r
+library(tidyverse)
+videos <- read_csv("video_view.csv")
+
+summary_tbl <- videos %>%
+  summarise(
+    n_videos = n(),
+    avg_watch = mean(watch_rate, na.rm = TRUE)
+  )
+
+write_csv(summary_tbl, "summary_week3.csv")
+```
+
+Then add this rule to your makefile:
+
+```make
+summary_week3.csv: summary.R video_view.csv
+	Rscript summary.R
+```
+
+---
+
+## Extra Make - Exercise M2
+
+Add two convenience targets:
+
+```make
+all: plot_week3.png summary_week3.csv
+
+wipe:
+	rm -f plot_week3.png summary_week3.csv
+```
+
+Run:
+
+```bash
+make -n
+make
+make wipe
+```
+
+---
+
+## Solutions - Extra Make
+
+M1 rule:
+
+```make
+summary_week3.csv: summary.R video_view.csv
+	Rscript summary.R
+```
+
+M2 rules:
+
+```make
+all: plot_week3.png summary_week3.csv
+
+wipe:
+	rm -f plot_week3.png summary_week3.csv
+```
+
+---
+
+## End of tutorial
+
+If you finish early, pick one extra exercise from each block:
+
+1. one extra plot exercise
+2. one extra branching exercise
+3. one extra Make exercise
