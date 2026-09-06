@@ -79,10 +79,12 @@ adds the new issues and leaves the round 1 ones untouched. Every flag from
 `--data-file` to point at yet another file). Edit `issues_data_coaching2.json`
 the same way as `issues_data.json`.
 
-`issues_data_coaching2.json` currently holds the same analysis assignment
-four times, titled `... (1/4)` through `... (4/4)` — one per group member.
-The numbering is deliberate: `populate.py` keys off the title to decide what
-already exists, so identical titles would collapse into a single issue.
+`issues_data_coaching2.json` currently holds four copies of the same
+"download → clean → visualise → makefile → PR" assignment, one per TikTok
+dataset (`users`, `sessions`, `impressions`, `watch_events`). The task list
+is identical in all four; only the intro paragraph and the download URL
+differ. Titles are dataset-specific so `populate.py`'s title-based dedupe
+treats them as four separate issues.
 
 ### Test run against a single fork
 
