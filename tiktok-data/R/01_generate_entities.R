@@ -64,11 +64,70 @@ make_creator_profile <- function(n) {
   list(display = display, handle = slugify_handle(handle_raw))
 }
 
+# Larger pool used only for user display names. Combined with an optional middle
+# name / initial and occasional double-barrelled surnames (see make_user_profile),
+# this yields millions of distinct "First [Middle] Last" strings, so at 100k users
+# almost every user_name is unique while each still reads like a real name.
+make_user_name_pool <- function() {
+  list(
+    first = c(
+      "Emma", "Noah", "Olivia", "Liam", "Ava", "Mason", "Sophia", "Lucas", "Mia", "Ethan",
+      "Isabella", "Logan", "Amelia", "James", "Harper", "Benjamin", "Evelyn", "Henry", "Charlotte", "Elijah",
+      "Alexander", "Michael", "Daniel", "Matthew", "Jackson", "Sebastian", "David", "Joseph", "Samuel", "John",
+      "Owen", "Wyatt", "Luke", "Julian", "Gabriel", "Anthony", "Dylan", "Levi", "Isaac", "Andrew",
+      "Joshua", "Christopher", "Nathan", "Ryan", "Adrian", "Aaron", "Thomas", "Charles", "Caleb", "Eli",
+      "Jonathan", "Connor", "Jeremiah", "Cameron", "Josiah", "Colton", "Nicholas", "Ezra", "Hunter", "Robert",
+      "Sofia", "Amara", "Aria", "Scarlett", "Grace", "Chloe", "Camila", "Penelope", "Riley", "Layla",
+      "Lillian", "Nora", "Zoey", "Mila", "Aubrey", "Hannah", "Lily", "Addison", "Eleanor", "Natalie",
+      "Luna", "Savannah", "Brooklyn", "Leah", "Zoe", "Stella", "Hazel", "Ellie", "Paisley", "Audrey",
+      "Skylar", "Violet", "Claire", "Bella", "Aurora", "Lucy", "Anna", "Samantha", "Caroline", "Naomi",
+      "Aaliyah", "Kennedy", "Allison", "Maya", "Sarah", "Madelyn", "Adeline", "Alexa", "Ariana", "Elena",
+      "Gianna", "Emilia", "Ivy", "Delilah", "Isla", "Eliana", "Quinn", "Julia", "Diego", "Mateo",
+      "Santiago", "Carlos", "Javier", "Omar", "Ibrahim", "Kai", "Ravi", "Arjun", "Priya", "Mei",
+      "Yuki", "Haruki", "Amir", "Layan", "Nadia", "Chen", "Sanjay", "Fatima", "Hugo", "Freya"
+    ),
+    last = c(
+      "Johnson", "Smith", "Garcia", "Davis", "Lopez", "Miller", "Wilson", "Anderson", "Brown", "Taylor",
+      "Thomas", "Moore", "Jackson", "Martin", "Lee", "Clark", "Walker", "Hall", "Allen", "Young",
+      "Hernandez", "King", "Wright", "Hill", "Scott", "Green", "Adams", "Baker", "Gonzalez", "Nelson",
+      "Carter", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards",
+      "Collins", "Stewart", "Sanchez", "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy",
+      "Bailey", "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward", "Torres", "Peterson", "Gray",
+      "Ramirez", "Watson", "Brooks", "Kelly", "Sanders", "Price", "Bennett", "Wood", "Barnes", "Ross",
+      "Henderson", "Coleman", "Jenkins", "Perry", "Powell", "Long", "Patterson", "Hughes", "Flores", "Washington",
+      "Butler", "Simmons", "Foster", "Bryant", "Russell", "Griffin", "Diaz", "Hayes", "Myers", "Ford",
+      "Hamilton", "Graham", "Sullivan", "Wallace", "Woods", "Cole", "West", "Jordan", "Owens", "Reynolds",
+      "Fisher", "Ellis", "Harrison", "Gibson", "McDonald", "Cruz", "Marshall", "Ortiz", "Gomez", "Murray",
+      "Freeman", "Wells", "Webb", "Simpson", "Stevens", "Tucker", "Porter", "Hunter", "Hicks", "Crawford",
+      "Boyd", "Mason", "Morales", "Kennedy", "Warren", "Dixon", "Ramos", "Reyes", "Burns", "Gordon",
+      "Shaw", "Holmes", "Rice", "Robertson", "Hunt", "Black", "Daniels", "Palmer", "Mills", "Nichols",
+      "Grant", "Knight", "Ferguson", "Rose", "Stone", "Hawkins", "Dunn", "Perkins", "Chen", "Wang",
+      "Nguyen", "Kim", "Patel", "Singh", "Khan", "Silva", "Santos", "Romano", "Muller", "Novak"
+    )
+  )
+}
+
 make_user_profile <- function(n) {
-  pool <- make_name_pool()
+  pool <- make_user_name_pool()
   first <- sample(pool$first, n, replace = TRUE)
   last <- sample(pool$last, n, replace = TRUE)
-  display <- paste(first, last)
+
+  # Middle segment: full middle name (~72%), single initial (~18%), or none (~10%);
+  # ~30% of full middle names get a second middle name ("Emma Grace Rose Miller").
+  mid_kind <- sample(c("full", "initial", "none"), n, replace = TRUE, prob = c(0.80, 0.15, 0.05))
+  mid_full <- sample(pool$first, n, replace = TRUE)
+  mid_second <- ifelse(runif(n) < 0.30, paste0(" ", sample(pool$first, n, replace = TRUE)), "")
+  mid_initial <- paste0(sample(LETTERS, n, replace = TRUE), ".")
+  middle <- ifelse(mid_kind == "full", paste0(mid_full, mid_second),
+                   ifelse(mid_kind == "initial", mid_initial, ""))
+
+  # ~15% double-barrelled surnames ("Garcia-Nelson").
+  hyphenate <- runif(n) < 0.15
+  second_last <- sample(pool$last, n, replace = TRUE)
+  last_display <- ifelse(hyphenate & second_last != last, paste0(last, "-", second_last), last)
+
+  display <- gsub("\\s+", " ", trimws(paste(first, middle, last_display)))
+
   handle_raw <- ifelse(
     runif(n) < 0.7,
     paste(first, last, sample(10:999, n, replace = TRUE), sep = ""),

@@ -61,6 +61,43 @@ A JSON array of issue definitions:
 
 Add, remove, or edit entries here to change what gets created.
 
+## Coaching round 2
+
+`populate_coaching2.py` seeds a second checklist for the next coaching
+session. It is a thin wrapper around `populate.py` (same fork scanning, same
+safety rules) that just defaults `--data-file` to
+`issues_data_coaching2.json`.
+
+```bash
+python populate_coaching2.py --dry-run   # preview the round 2 issues
+python populate_coaching2.py             # create them on every fork
+```
+
+Round 2 issue titles differ from round 1, so running it after round 1 only
+adds the new issues and leaves the round 1 ones untouched. Every flag from
+`populate.py` still applies (`--owner`, `--repo`, `--token`, and even
+`--data-file` to point at yet another file). Edit `issues_data_coaching2.json`
+the same way as `issues_data.json`.
+
+`issues_data_coaching2.json` currently holds the same analysis assignment
+four times, titled `... (1/4)` through `... (4/4)` — one per group member.
+The numbering is deliberate: `populate.py` keys off the title to decide what
+already exists, so identical titles would collapse into a single issue.
+
+### Test run against a single fork
+
+`populate_coaching2_test.py` runs the coaching round 2 checklist against
+**one fork only** — by default the fork owned by GitHub user `krolabola` —
+so you can sanity-check the issues before touching every fork. It filters
+the fork list to that user and calls the same creation logic; nothing else
+is read or modified.
+
+```bash
+python populate_coaching2_test.py --dry-run          # preview
+python populate_coaching2_test.py                     # create on krolabola's fork only
+python populate_coaching2_test.py --fork-user someone # aim at a different fork
+```
+
 ## Usage
 
 ```bash

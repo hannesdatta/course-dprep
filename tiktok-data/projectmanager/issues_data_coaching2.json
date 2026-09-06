@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Inspect and analyze the collected TikTok user data",
+    "body": "### Goal\nA lot of user data has been collected in the TikTok research. Now it is time to inspect and analyze this data.\n\n### **Setup**\n- [ ] Create a new branch in Git and give it an appropriate name, make sure to never merge it into main.\n- [ ] Create a new folder in the code source folder (src), this will be your directory from which you will run your analysis.\n- [ ] Add a readme in this new folder with short instructions on how to run your analysis\n\n### **Analysis**\n- [ ] Make a script that downloads the data into a separate data folder (use dir.create to automatically create a folder if needed). Download the data from [......]\n- [ ] Do basic cleaning of the data if needed.\n- [ ] Visualize the data with ggplot2 and ggsave as .png into a different folder\n- [ ] Create a makefile that runs the scripts based on the existence of the outputs\n\n### **Completion**\n- [ ] When everything runs correctly, create a Pull request on GitHub from your forked repository branch to your forked repository main branch (not to the main repository). Leave a small message to a reviewer introducing your feature and asking them to look at it closely. **Do not close the pull request** or merge the branch!",
+    "labels": [
+      "data"
+    ]
+  },
+  {
+    "title": "Inspect and analyze the collected TikTok watch event data",
+    "body": "### Goal\nA lot of user data has been collected in the TikTok research. Now it is time to inspect and analyze this data.\n\n### **Setup**\n- [ ] Create a new branch in Git and give it an appropriate name, make sure to never merge it into main.\n- [ ] Create a new folder in the code source folder (src), this will be your directory from which you will run your analysis.\n- [ ] Add a readme in this new folder with short instructions on how to run your analysis\n\n### **Analysis**\n- [ ] Make a script that downloads the data into a separate data folder (use dir.create to automatically create a folder if needed). Download the data from [......]\n- [ ] Do basic cleaning of the data if needed.\n- [ ] Visualize the data with ggplot2 and ggsave as .png into a different folder\n- [ ] Create a makefile that runs the scripts based on the existence of the outputs\n\n### **Completion**\n- [ ] When everything runs correctly, create a Pull request on GitHub from your forked repository branch to your forked repository main branch (not to the main repository). Leave a small message to a reviewer introducing your feature and asking them to look at it closely. **Do not close the pull request** or merge the branch!",
+    "labels": [
+      "data"
+    ]
+  },
+  {
+    "title": "Inspect and analyze the collected TikTok session data",
+    "body": "### Goal\nA lot of user data has been collected in the TikTok research. Now it is time to inspect and analyze this data.\n\n### **Setup**\n- [ ] Create a new branch in Git and give it an appropriate name, make sure to never merge it into main.\n- [ ] Create a new folder in the code source folder (src), this will be your directory from which you will run your analysis.\n- [ ] Add a readme in this new folder with short instructions on how to run your analysis\n\n### **Analysis**\n- [ ] Make a script that downloads the data into a separate data folder (use dir.create to automatically create a folder if needed). Download the data from [......]\n- [ ] Do basic cleaning of the data if needed.\n- [ ] Visualize the data with ggplot2 and ggsave as .png into a different folder\n- [ ] Create a makefile that runs the scripts based on the existence of the outputs\n\n### **Completion**\n- [ ] When everything runs correctly, create a Pull request on GitHub from your forked repository branch to your forked repository main branch (not to the main repository). Leave a small message to a reviewer introducing your feature and asking them to look at it closely. **Do not close the pull request** or merge the branch!",
+    "labels": [
+      "data"
+    ]
+  },
+  {
+    "title": "Inspect and analyze the collected TikTok impression data",
+    "body": "### Goal\nA lot of user data has been collected in the TikTok research. Now it is time to inspect and analyze this data.\n\n### **Setup**\n- [ ] Create a new branch in Git and give it an appropriate name, make sure to never merge it into main.\n- [ ] Create a new folder in the code source folder (src), this will be your directory from which you will run your analysis.\n- [ ] Add a readme in this new folder with short instructions on how to run your analysis\n\n### **Analysis**\n- [ ] Make a script that downloads the data into a separate data folder (use dir.create to automatically create a folder if needed). Download the data from [......]\n- [ ] Do basic cleaning of the data if needed.\n- [ ] Visualize the data with ggplot2 and ggsave as .png into a different folder\n- [ ] Create a makefile that runs the scripts based on the existence of the outputs\n\n### **Completion**\n- [ ] When everything runs correctly, create a Pull request on GitHub from your forked repository branch to your forked repository main branch (not to the main repository). Leave a small message to a reviewer introducing your feature and asking them to look at it closely. **Do not close the pull request** or merge the branch!",
+    "labels": [
+      "data"
+    ]
+  }
+]

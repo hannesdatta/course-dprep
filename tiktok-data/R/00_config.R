@@ -1,4 +1,5 @@
-get_tiktok_config <- function(profile = c("prototype", "full"),
+get_tiktok_config <- function(profile = c("prototype", "full",
+                                          "watch100k", "impr100k", "sess100k", "users100k"),
                               seed = 42,
                               output_dir = "output") {
   profile <- match.arg(profile)
@@ -39,7 +40,15 @@ get_tiktok_config <- function(profile = c("prototype", "full"),
       duplicate_impressions = 0.01,
       creator_alias_noise = 0.08,
       mixed_timestamp_formats = TRUE,
-      milliseconds_bug_fraction = 0.01
+      milliseconds_bug_fraction = 0.01,
+      # light sprinkle of missing values in the observed users table
+      # (fraction of rows blanked per eligible column; keys are never touched)
+      user_missing_fraction = 0.0002,
+      user_missing_columns = c(
+        "user_name", "baseline_login", "satiation_decay", "need_interaction",
+        "base_videos_watched_mean", "base_videos_watched_sd",
+        "pref_Comedy", "pref_Food", "pref_Gaming", "pref_Pets"
+      )
     ),
     output_dir = output_dir
   )
@@ -57,10 +66,61 @@ get_tiktok_config <- function(profile = c("prototype", "full"),
     ),
     full = list(
       profile = "full",
-      n_users = 10000,
-      n_creators = 1000,
-      n_videos = 100000,
+      n_users = 14000,
+      n_creators = 1400,
+      n_videos = 140000,
       active_missions = "all"
+    ),
+
+    # ------------------------------------------------------------------
+    # Single-target ~100k-row profiles.
+    #
+    # These reuse the prototype regime exactly: same 60-day window, same
+    # active missions, and the prototype creator/user (0.30) and video/user
+    # (6.0) ratios. Only n_users is scaled, using the empirical per-user-day
+    # row rates measured on the prototype output:
+    #   watch_events (observed) ~ 2.299 rows / user-day
+    #   impressions  (observed) ~ 2.322 rows / user-day
+    #   sessions               ~ 0.593 rows / user-day
+    #   users                  = n_users
+    # user-days = n_users * 60, so n_users = target / (60 * rate).
+    # Counts are stochastic; expect landing within a couple percent of 100k.
+    # ------------------------------------------------------------------
+    watch100k = list(
+      profile = "watch100k",
+      n_users = 725,      # 725 * 60 * 2.299 ~= 100.0k watch_events
+      n_creators = 218,
+      n_videos = 4350,
+      start_date = as.Date("2025-08-01"),
+      end_date = as.Date("2025-09-29"),
+      active_missions = c("M02", "M04", "M10")
+    ),
+    impr100k = list(
+      profile = "impr100k",
+      n_users = 718,      # 718 * 60 * 2.322 ~= 100.0k impressions
+      n_creators = 215,
+      n_videos = 4308,
+      start_date = as.Date("2025-08-01"),
+      end_date = as.Date("2025-09-29"),
+      active_missions = c("M02", "M04", "M10")
+    ),
+    sess100k = list(
+      profile = "sess100k",
+      n_users = 2813,     # 2813 * 60 * 0.593 ~= 100.0k sessions
+      n_creators = 844,
+      n_videos = 16878,
+      start_date = as.Date("2025-08-01"),
+      end_date = as.Date("2025-09-29"),
+      active_missions = c("M02", "M04", "M10")
+    ),
+    users100k = list(
+      profile = "users100k",
+      n_users = 100000,   # users table is exactly n_users rows
+      n_creators = 30000,
+      n_videos = 600000,
+      start_date = as.Date("2025-08-01"),
+      end_date = as.Date("2025-09-29"),
+      active_missions = c("M02", "M04", "M10")
     )
   )
 

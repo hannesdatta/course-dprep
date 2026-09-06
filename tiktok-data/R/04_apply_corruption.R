@@ -1,3 +1,24 @@
+# Light missing-value injection for the observed users table. Blanks a small
+# fraction of rows per eligible column; user_id / user_handle are never touched.
+# Self-seeded so the result is reproducible regardless of call order.
+corrupt_user_table <- function(cfg, users) {
+  frac <- cfg$corruption$user_missing_fraction
+  if (is.null(frac) || frac <= 0) return(users)
+
+  cols <- intersect(cfg$corruption$user_missing_columns, names(users))
+  cols <- setdiff(cols, c("user_id", "user_handle"))
+  if (length(cols) == 0) return(users)
+
+  set.seed(cfg$seed + 201)
+  n <- nrow(users)
+  for (cn in cols) {
+    k <- floor(n * frac)
+    if (k < 1) next
+    users[[cn]][sample.int(n, k)] <- NA
+  }
+  users
+}
+
 apply_corruption <- function(cfg, truth, creators, categories, videos, video_categories) {
   set.seed(cfg$seed + 200)
 

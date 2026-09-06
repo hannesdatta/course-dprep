@@ -149,9 +149,10 @@ export_all <- function(cfg,
                        truth_dynamic,
                        observed_dynamic,
                        mission_catalog,
-                       output_base) {
+                       output_base,
+                       static_tables_observed = static_tables) {
   truth_tables <- c(static_tables, truth_dynamic)
-  observed_tables <- c(static_tables, observed_dynamic)
+  observed_tables <- c(static_tables_observed, observed_dynamic)
   student_tables <- build_student_tables(observed_tables, mission_catalog, cfg)
 
   truth_dir <- file.path(output_base, "truth")

@@ -82,6 +82,10 @@ static_tables <- list(
   video_categories = vid_obj$video_categories
 )
 
+message("Injecting observed users-table missing values...")
+static_tables_observed <- static_tables
+static_tables_observed$users <- corrupt_user_table(cfg, users)
+
 message("Exporting CSV + SQLite...")
 exported <- export_all(
   cfg = cfg,
@@ -89,7 +93,8 @@ exported <- export_all(
   truth_dynamic = truth_dynamic,
   observed_dynamic = observed_dynamic,
   mission_catalog = cfg$mission_catalog,
-  output_base = output_base
+  output_base = output_base,
+  static_tables_observed = static_tables_observed
 )
 
 message("Creating descriptives and plots...")
