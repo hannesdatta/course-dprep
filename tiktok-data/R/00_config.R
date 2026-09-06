@@ -97,9 +97,9 @@ get_tiktok_config <- function(profile = c("prototype", "full",
     ),
     impr100k = list(
       profile = "impr100k",
-      n_users = 718,      # 718 * 60 * 2.322 ~= 100.0k impressions
-      n_creators = 215,
-      n_videos = 4308,
+      n_users = 750,      # 750 * 60 * 2.22 ~= 100.0k impressions
+      n_creators = 225,
+      n_videos = 4500,
       start_date = as.Date("2025-08-01"),
       end_date = as.Date("2025-09-29"),
       active_missions = c("M02", "M04", "M10")
