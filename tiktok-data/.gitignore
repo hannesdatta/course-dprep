@@ -5,3 +5,5 @@
 *.png
 **descriptives
 **documentation
+projectmanager/.env
+projectmanager/__pycache__/
