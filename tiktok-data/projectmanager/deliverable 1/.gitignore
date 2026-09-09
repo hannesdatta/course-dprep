@@ -1,0 +1,8 @@
+# Cloned student forks and generated grading output - never commit these.
+student_repos/
+grading/summary.json
+grading/summary.csv
+grading/dprep-deliverable-1-grading.xlsx
+grading/summary-*.csv
+grading/summary-*.json
+grading/dprep-deliverable-1-grading-*.xlsx

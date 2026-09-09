@@ -100,6 +100,59 @@ python populate_coaching2_test.py                     # create on krolabola's fo
 python populate_coaching2_test.py --fork-user someone # aim at a different fork
 ```
 
+## Per-deliverable populators
+
+`populate.py` is the shared base code and stays at the top level of this
+folder. Each deliverable has its own folder next to it:
+
+```
+projectmanager/
+  populate.py                     <- shared base code (imported, not run per deliverable)
+  deliverable 1/
+    populate_issues.py            <- wrapper: defaults --data-file to this folder's issues_data.json
+    populate_issues_test.py       <- same, but targets ONE fork only (default user: krolabola)
+    issues_data.json             <- issue templates for deliverable 1
+  deliverable 1/grading/
+    collect_grading_data.py      <- clones every fork (full history) + collects issue engagement
+    readme.md
+  deliverable 2/  (same three files)
+  deliverable 3/  (same three files)
+  deliverable 4/  (same three files)
+```
+
+`deliverable 1/grading/collect_grading_data.py` is the read-only grading
+collector: it clones every fork with full git history into
+`deliverable 1/student_repos/`, summarises each repo's commits (how many,
+by whom, what kind) and issue engagement (open/closed, comments,
+checkboxes, timeline events), and writes
+`dprep-deliverable-1-grading.xlsx` (an Overview sheet, a Grading rubric
+sheet, plus one sheet per repository), `summary.csv`, and `summary.json`.
+See `deliverable 1/grading/readme.md`. Its `--test` flag targets only
+`krolabola`, like the populators.
+
+`populate_issues.py` is a thin wrapper (like `populate_coaching2.py`) that
+adds the parent folder to `sys.path`, imports `populate`, and defaults
+`--data-file` to the deliverable's own `issues_data.json`. Every flag from
+`populate.py` still applies.
+
+`populate_issues_test.py` is the single-fork test run (like
+`populate_coaching2_test.py`): it filters the fork list down to one GitHub
+user (`--fork-user`, default `krolabola`) so you can sanity-check the
+issues before touching every fork.
+
+```bash
+cd "deliverable 1"
+python populate_issues_test.py --dry-run     # preview on krolabola's fork only
+python populate_issues_test.py               # create on krolabola's fork only
+python populate_issues.py --dry-run          # preview on every fork
+python populate_issues.py                    # create on every fork
+```
+
+Each `issues_data.json` currently holds a single placeholder issue — edit
+it with the real deliverable checklist (same schema as `issues_data.json`,
+described above). Titles must be unique across deliverables so
+`populate.py`'s title-based dedupe treats them as separate issues.
+
 ## Usage
 
 ```bash
