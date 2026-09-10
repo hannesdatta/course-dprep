@@ -114,13 +114,32 @@ Today’s coding questions:
 
 ---
 
+## Download the data if you don't have it yet 
+
+```{r}
+library(tidyverse)
+
+base_url <- paste0(
+  "https://raw.githubusercontent.com/hannesdatta/",
+  "course-dprep/refs/heads/main/material/project/"
+)
+
+files <- c("video_view.csv",
+           "coaching_2_data/impressions.csv",
+           "coaching_2_data/watch_events.csv")
+
+for (f in files) {
+  dest <- basename(f)
+  if (!file.exists(dest)) download.file(paste0(base_url, f), dest)}
+```
+
+---
+
 ## Data preview (video-level)
 
 Run a quick peek so the tasks feel concrete:
 
 ```{r}
-library(tidyverse)
-
 video_view <- read_csv("video_view.csv")
 
 video_view %>%
