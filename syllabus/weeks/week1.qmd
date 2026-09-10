@@ -1,5 +1,5 @@
 ---
-title: "Week 1) Getting started"
+title: "Week 1) Start coding in R, use the terminal, and make your first Git commit"
 format: html
 ---
 
@@ -7,10 +7,9 @@ format: html
 
 __Learning Goals__
 
-- Understand the added value of this course in your study program
-- Know what to prepare, and how to do it effectively
-- Understand the grading and assessment criteria for the course
-- Get familiar with the Positron interface and basic data manipulation using `dplyr`
+- Coding: use base R and the Setup-Input-Transform-Output (ITO) logic for simple data tasks.
+- Collaboration: use `git status`, `git add`, and `git commit` to create your first clear version history.
+- Automation: run scripts from the command line using terminal/command prompt and `Rscript`.
 
 __Preparation before class__
 
@@ -25,7 +24,12 @@ __Opening lecture and R bootcamp__
 
 __After the lecture__
 
-- Exercises after class (please complete [chapters 1-4 in R for Social Scientists](https://datacarpentry.org/r-socialsci/) at your own pace; about 4-5 hours)
+- Complete all exercises from the tutorial shared with students this week.
+
+__Optional practice__
+
+- Work through [R for Social Scientists](https://datacarpentry.org/r-socialsci/) chapters 1-4.
+
 
 <!--- Reading: [A Guide to Scrum for Researchers](https://tilburgsciencehub.com/learn/scrum)
 -->

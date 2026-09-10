@@ -1,5 +1,5 @@
 ---
-title: "Week 7) Project phase and final course week"
+title: "Week 7) Wrap-up and exam preparation"
 format: html
 ---
 
@@ -7,14 +7,16 @@ format: html
 
 __Learning Goals__
 
-- Complete your team projects
 - Know what to expect for the exam
 - Reflect upon learning goals of this course 
 
 __Lecture__
-- Course summary and exam preparation <!-- ([slides](slides.html))
+
+- Course summary and exam preparation 
+
+<!-- ([slides](slides.html))
 -->
 
 __After the lecture__
 
-- Finalize exam preparation and remaining project submission tasks.
+- Optional: finalize exam preparation and remaining project submission tasks.

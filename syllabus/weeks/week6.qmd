@@ -1,5 +1,5 @@
 ---
-title: "Week 6) Project phase"
+title: "Week 6) Project sprint: integrate coding, Git, and automation"
 format: html
 ---
 

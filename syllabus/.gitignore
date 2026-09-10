@@ -6,3 +6,5 @@
 _book/*
 .Rhistory
 *_files
+
+**/*.quarto_ipynb

@@ -1,46 +1,34 @@
 ---
-title: "Week 4) Engineering data sets"
+title: "Week 4) Build analysis-ready data, review pull requests, and automate with Make"
 format: html
 ---
 
-<!--__Obtain business and data understanding, and explore data in R__-->
-
 __Learning Goals__
 
-- Apply data wrangling techniques using the Tidyverse to clean, transform, and prepare datasets for analysis.
-- Structure R scripts into modular components (setup, input, transformation, output) to facilitate reproducibility and automation.
-- Implement common data operations (e.g., merging, aggregating, reshaping) and integrate basic programming concepts in R.
-- Develop new variables and features (feature engineering) to enhance the analysis and understanding of datasets.
+- Coding: engineer analysis-ready data with `mutate()`, `rank()`, `distinct()`, `group_by()`, `summarise()`, `left_join()`, `inner_join()`, timestamp conversion, and `lag()`.
+- Collaboration: work in two branches, commit in small steps, and complete pull request and pull request review workflows.
+- Automation: structure scripts with Setup-Input-Transform-Output and run a multi-step `make` workflow with a working `clean` rule.
 
 __Preparation before class__
 
-- Please read [chapter 7](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit"  (and optionally from the Appendix: "SQL")
-
+- Please read [chapter 7](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit" (and optionally from the Appendix: "SQL").
+- Complete the [code quests](https://code-quest.hannesdatta.com) for week 4. 
 
 __Tutorial__
 
-- Tutorial <!-- (view [slides](tutorial/tutorial.html), view [complete tutorial](tutorial/data-preparation.html))
--->
+- Tutorial: advanced data engineering + collaboration through PR1/PR2 + automation with `make` and `make clean`.
 
 __Coaching session__
 
 - Work on your team goals for this course week (see coaching #3 on your workplan).
 
-
 __After the lecture__
 
-- After-class exercises (to be shared on Canvas) <!-- ([View](tutorial/data-preparation.html), [Download; right click - download file as](tutorial/data-preparation.Rmd))-->
-<!--- [Reading: Data preparation process and challenges](https://www.topbots.com/data-preparation-for-machine-learning/)
--->
-- Optional (for students that need extra guidance in developing R skills):
-    - [DataCamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
-    - [DataCamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
-    - [DataCamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)
+- Complete all exercises from the tutorial shared with students this week.
 
-<!--
-{{% hint info %}}
-__Having a hard time with Datacamp, or seeking to practice more?__
+__Optional practice__
 
-Then check [this material on manipulating data using `dplyr` and `tidyr`](https://cengel.github.io/R-data-wrangling/)!
-{{% /hint %}}
--->
+- Re-run your workflow from scratch and verify your commit history tells a clear coding + automation story.
+- [DataCamp Introduction to Tidyverse](https://datacamp.com/courses/introduction-to-the-tidyverse/data-wrangling-1?ex=1) (chapter 1 and 3)
+- [DataCamp Cleaning Data in R](https://datacamp.com/courses/cleaning-data-in-r) (chapter 1 and 2)
+- [DataCamp Joining Data with dplyr](https://datacamp.com/courses/joining-data-with-dplyr/joining-tables-1) (chapter 1 and 2)

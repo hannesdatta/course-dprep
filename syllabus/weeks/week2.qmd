@@ -1,5 +1,5 @@
 ---
-title: "Week 2) Exploring data with RMarkdown and ggplot2"
+title: "Week 2) Summarize data with dplyr and write your first Quarto report"
 format: html
 ---
 
@@ -7,25 +7,28 @@ format: html
 
 __Learning Goals__
 
-- Explore, manipulate, and filter data sets in R, including reading data from text files and modifying data frames.
-- Create and manage various data types in R, such as vectors, matrices, and data frames.
-- Apply basic programming concepts, generate summary statistics, and create plots in R.
-- Assess data quality, perform calculations, and produce RMarkdown documents in HTML or PDF formats.
+- Coding: apply ITO and `dplyr` for filtering, aggregation, and `group_by()` summaries (without merges), and produce summary tables in Quarto.
+- Collaboration: practice `git clone`, `git pull`, `git push`, and forking workflows, and write a clear `README.md`.
+- Automation: render and rerun Quarto documents from the command line to make reporting reproducible.
 
 __Preparation before class__
 
 - Please read [chapters 3-4](https://dprep-book.hannesdatta.com/) of "Marketing Analytics: A Modern Toolkit" (and optionally the Appendix: Coding with AI tools, R - Markdown, R - ggplot2)
-- Please complete the code quests for week 2 (Git)
+- Please complete the [code quests](https://code-quest.hannesdatta.com) for week 2 (Git Quest and Markdown Quest)
 
 __Tutorial__
 
-- Exploring Data with RMarkdown <!--(view [slides](tutorial/tutorial.html), view [complete tutorial](tutorial/intro-to-r.html))-->
+- Tutorial: From raw data to summary tables and a Quarto report <!--(view [slides](tutorial/tutorial.html), view [complete tutorial](tutorial/intro-to-r.html))-->
 
 __Coaching session__
 
+- Work on your team goals for this course week (see coaching #1 on your workplan).
+
 __After the lecture__
 
+- Complete all exercises from the tutorial shared with students this week.
 
-- Please work through the RMarkdown part of the tutorial [R for Social Scientists](https://datacarpentry.org/r-socialsci/) (chapters 6-7: plotting with `ggplot2` and getting started with R Markdown)
-- Optional (for students needing more practice with R/Positron): 
-  - Develop your R skills by working on the [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3) course
+__Optional practice__
+
+- Work through [R for Social Scientists](https://datacarpentry.org/r-socialsci/) chapters 6-7 (plotting with `ggplot2` and getting started with R Markdown).
+- Develop your R skills with [Intermediate R on Datacamp](https://www.datacamp.com/courses/intermediate-r) (chapter 1, 2 and 3).
