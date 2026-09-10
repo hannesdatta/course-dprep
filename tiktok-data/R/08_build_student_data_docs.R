@@ -4,8 +4,22 @@ build_student_data_docs <- function(output_base,
   if (!file.exists(db_path)) {
     stop("Student database not found at ", db_path)
   }
-  if (!file.exists(dictionary_path)) {
-    stop("Dictionary file not found at ", dictionary_path)
+
+  dictionary_candidates <- unique(c(
+    dictionary_path,
+    file.path("docs", "student_field_dictionary.csv"),
+    file.path(dirname(output_base), "docs", "student_field_dictionary.csv"),
+    file.path(dirname(dirname(output_base)), "docs", "student_field_dictionary.csv"),
+    file.path("tiktok-data", "docs", "student_field_dictionary.csv")
+  ))
+  dictionary_exists <- file.exists(dictionary_candidates)
+  resolved_dictionary_path <- if (any(dictionary_exists)) dictionary_candidates[[which(dictionary_exists)[1]]] else NA_character_
+  if (is.na(resolved_dictionary_path)) {
+    warning(
+      "Dictionary file not found. Attempted paths:\n",
+      paste0("- ", dictionary_candidates, collapse = "\n"),
+      "\nProceeding with placeholder field definitions."
+    )
   }
 
   out_dir <- file.path(output_base, "documentation")
@@ -47,7 +61,17 @@ build_student_data_docs <- function(output_base,
       )
   })
 
-  dictionary <- readr::read_csv(dictionary_path, show_col_types = FALSE)
+  if (is.na(resolved_dictionary_path)) {
+    dictionary <- tibble::tibble(
+      object_name = character(0),
+      column_name = character(0),
+      business_definition = character(0),
+      unit = character(0),
+      student_use = character(0)
+    )
+  } else {
+    dictionary <- readr::read_csv(resolved_dictionary_path, show_col_types = FALSE)
+  }
 
   field_doc <- schema_inventory %>%
     dplyr::left_join(dictionary, by = c("object_name", "column_name")) %>%
@@ -116,24 +140,56 @@ build_student_data_docs <- function(output_base,
 
   writeLines(qmd_lines, qmd_path)
 
-  render_pdf <- suppressWarnings(
-    system2(
-      "quarto",
-      args = c("render", qmd_path, "--to", "pdf"),
-      stdout = TRUE,
-      stderr = TRUE
-    )
-  )
-
+  quarto_bin <- Sys.which("quarto")
   pdf_path <- file.path(out_dir, "student_database_documentation.pdf")
-  if (!file.exists(pdf_path)) {
-    msg <- paste(render_pdf, collapse = "\n")
-    stop("Failed to render student database PDF. Quarto output:\n", msg)
+  html_path <- file.path(out_dir, "student_database_documentation.html")
+  render_pdf <- character(0)
+  render_html <- character(0)
+
+  if (nchar(quarto_bin) == 0) {
+    warning(
+      "Quarto is not available on PATH. Skipping documentation rendering; ",
+      "CSV documentation outputs are still available in ", out_dir
+    )
+  } else {
+    render_pdf <- suppressWarnings(
+      system2(
+        quarto_bin,
+        args = c("render", qmd_path, "--to", "pdf"),
+        stdout = TRUE,
+        stderr = TRUE
+      )
+    )
+
+    if (!file.exists(pdf_path)) {
+      warning(
+        "Failed to render student database PDF. Trying HTML fallback. ",
+        "If you need PDF output, install TinyTeX via tinytex::install_tinytex()."
+      )
+      render_html <- suppressWarnings(
+        system2(
+          quarto_bin,
+          args = c("render", qmd_path, "--to", "html"),
+          stdout = TRUE,
+          stderr = TRUE
+        )
+      )
+      if (!file.exists(html_path)) {
+        warning(
+          "HTML fallback render also failed. Quarto output (PDF attempt):\n",
+          paste(render_pdf, collapse = "\n"),
+          "\nQuarto output (HTML attempt):\n",
+          paste(render_html, collapse = "\n")
+        )
+      }
+    }
   }
 
   invisible(list(
     object_catalog = object_catalog,
     field_documentation = field_doc,
-    pdf_path = pdf_path
+    pdf_path = if (file.exists(pdf_path)) pdf_path else NA_character_,
+    html_path = if (file.exists(html_path)) html_path else NA_character_,
+    dictionary_path = resolved_dictionary_path
   ))
 }

@@ -242,7 +242,15 @@ simulate_platform <- function(cfg, categories, creators, creator_categories, use
     chunk_size <- ceiling(length(indices) / n_chunks)
     split(indices, ceiling(seq_along(indices) / chunk_size))
   }
-  user_chunks <- make_chunks(seq_len(n_users), n_workers)
+  chunk_multiplier <- cfg$parallel$user_chunk_multiplier
+  if (is.null(chunk_multiplier) || !is.numeric(chunk_multiplier) || chunk_multiplier < 1) {
+    chunk_multiplier <- 4L
+  }
+  target_chunks <- as.integer(max(n_workers, ceiling(n_workers * chunk_multiplier)))
+  user_chunks <- make_chunks(seq_len(n_users), target_chunks)
+  n_chunks <- length(user_chunks)
+  users_per_chunk <- ceiling(n_users / n_chunks)
+  message(sprintf("User simulation split into %d chunks (~%d users/chunk).", n_chunks, users_per_chunk))
 
   simulate_user_chunk <- function(chunk_users) {
     n_local <- length(chunk_users)
@@ -511,10 +519,40 @@ simulate_platform <- function(cfg, categories, creators, creator_categories, use
   }
 
   run_users_started_at <- Sys.time()
+  chunk_results <- vector("list", n_chunks)
+  report_chunk_progress <- function(completed_chunks) {
+    elapsed_sec <- as.numeric(difftime(Sys.time(), run_users_started_at, units = "secs"))
+    eta_sec <- if (completed_chunks > 0) elapsed_sec * (n_chunks - completed_chunks) / completed_chunks else NA_real_
+    message(sprintf(
+      "simulate_users chunk %d/%d (%.1f%%) elapsed=%s eta=%s",
+      completed_chunks,
+      n_chunks,
+      100 * completed_chunks / n_chunks,
+      format_duration(elapsed_sec),
+      format_duration(eta_sec)
+    ))
+  }
+
   if (n_workers > 1L) {
-    chunk_results <- parallel::mclapply(user_chunks, simulate_user_chunk, mc.cores = n_workers, mc.preschedule = TRUE)
+    chunk_indices <- seq_len(n_chunks)
+    batches <- split(chunk_indices, ceiling(seq_along(chunk_indices) / n_workers))
+    completed_chunks <- 0L
+    for (batch_ids in batches) {
+      batch_results <- parallel::mclapply(
+        user_chunks[batch_ids],
+        simulate_user_chunk,
+        mc.cores = min(n_workers, length(batch_ids)),
+        mc.preschedule = TRUE
+      )
+      chunk_results[batch_ids] <- batch_results
+      completed_chunks <- completed_chunks + length(batch_ids)
+      if (progress_enabled) report_chunk_progress(completed_chunks)
+    }
   } else {
-    chunk_results <- lapply(user_chunks, simulate_user_chunk)
+    for (chunk_idx in seq_len(n_chunks)) {
+      chunk_results[[chunk_idx]] <- simulate_user_chunk(user_chunks[[chunk_idx]])
+      if (progress_enabled) report_chunk_progress(chunk_idx)
+    }
   }
   elapsed_users <- as.numeric(difftime(Sys.time(), run_users_started_at, units = "secs"))
   message(sprintf("User simulation finished in %s.", format_duration(elapsed_users)))

@@ -56,7 +56,8 @@ get_tiktok_config <- function(profile = c("prototype", "full",
     ),
     parallel = list(
       enabled = TRUE,
-      cpu_fraction = 0.8
+      cpu_fraction = 0.8,
+      user_chunk_multiplier = 4L
     ),
     output_dir = output_dir
   )
