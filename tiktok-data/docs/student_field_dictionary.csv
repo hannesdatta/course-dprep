@@ -1,0 +1,79 @@
+object_name,column_name,business_definition,unit,student_use
+dataset_meta,schema_version,Schema release version used for the student database,version string,QA and reproducibility checks
+dataset_meta,profile,Simulation profile used to generate this dataset,label,QA and reproducibility checks
+dataset_meta,seed,Random seed used to generate this dataset,integer,QA and reproducibility checks
+dataset_meta,window_start,Start date of simulation window,YYYY-MM-DD,Filtering and time-window sanity checks
+dataset_meta,window_end,End date of simulation window,YYYY-MM-DD,Filtering and time-window sanity checks
+dataset_meta,generated_at_utc,Database build timestamp in UTC,unix seconds,Reproducibility checks
+users,user_id,Unique user identifier,id,Join key
+users,user_name,Display name for the user,text,Regex and text normalization exercises
+users,user_handle,User handle-like identifier,text,Join/display usage
+creators,creator_id,Unique creator identifier,id,Join key
+creators,creator_name,Display name for the creator,text,Regex and text normalization exercises
+creators,creator_handle,Creator handle-like identifier,text,Join/display usage
+videos,video_id,Unique video identifier,id,Join key
+videos,creator_id,Creator who posted the video,id,Join key
+videos,video_length_sec,Video duration,seconds,Watch outcome derivation
+videos,published_at,Video publish timestamp in UTC,unix seconds,Recency features
+videos,video_url,Synthetic TikTok-style URL,text,Regex parsing exercises
+video_categories,video_id,Video identifier,id,Join key
+video_categories,category_id,Category identifier,id,Category-level rollups
+watch_logs,impression_id,Unique impression identifier,id,Join key and dedupe checks
+watch_logs,user_id,User receiving the impression,id,Join key
+watch_logs,video_id,Video shown in the feed,id,Join key
+watch_logs,creator_id,Creator of the shown video,id,Join key
+watch_logs,impression_at,Timestamp when impression was shown,unix seconds,Sessionization and timing
+watch_logs,source_bucket,Feed source bucket used by recommender,text,Feed mix analyses
+watch_logs,creator_display_name,Displayed creator string that may include alias noise,text,Regex cleanup exercises
+watch_logs,watch_event_id,Watch event identifier if a watch occurred,id,Event linkage
+watch_logs,watch_seconds,Seconds watched for this impression (0 for non-watched),seconds,Watch outcome derivation
+watch_logs,watch_start_at,Watch start timestamp when available,unix seconds,Sessionization and watch-latency analyses
+watch_logs,was_watched,Indicator whether watch_seconds is greater than zero,0/1,Quick filtering
+interactions,interaction_id,Unique interaction identifier,id,Join key
+interactions,user_id,User creating the interaction,id,Join key
+interactions,creator_id,Creator receiving the interaction,id,Join key
+interactions,video_id,Video associated with the interaction,id,Join key
+interactions,interaction_type,Interaction type (like/unlike/follow/unfollow),label,Behavioral analyses
+interactions,interaction_at,Timestamp of interaction creation,unix seconds,Temporal analyses
+mission_catalog,mission_id,Unique mission identifier,id,Mission tracking
+mission_catalog,title,Short mission title,text,Reporting
+mission_catalog,business_goal,Primary managerial objective,text,Case context
+mission_catalog,lever_type,Intervention class applied by mission,label,Mission segmentation
+mission_catalog,target_segment,User segment targeted by mission,label,Mission segmentation
+mission_catalog,start_day,Mission start day index from window start,day index,Period filtering
+mission_catalog,end_day,Mission end day index from window start,day index,Period filtering
+mission_catalog,target_category,Category focus when mission is category-specific,label,Category targeting
+mission_catalog,data_prep_hook,Embedded data-prep challenge tied to mission,text,Assignment design
+mission_catalog,difficulty,Difficulty label for the mission,label,Assignment design
+video_view,video_id,Video identifier,id,Join key
+video_view,creator_id,Creator identifier,id,Join key
+video_view,video_length_sec,Video duration,seconds,Content features
+video_view,published_at,Video publish timestamp in UTC,unix seconds,Recency features
+video_view,video_url,Synthetic TikTok-style URL,text,Reference field
+video_view,impressions_n,Number of impressions received,count,Performance KPI
+video_view,watched_n,Number of impressions with positive watch seconds,count,Performance KPI
+video_view,watch_rate,Share of impressions that were watched,ratio,Performance KPI
+video_view,avg_watch_seconds_when_watched,Mean watch seconds among watched impressions,seconds,Performance KPI
+video_view,total_watch_seconds,Total watch time accumulated by video,seconds,Performance KPI
+video_view,avg_watch_share,Average watch_seconds divided by video_length_sec,ratio,Performance KPI
+video_view,distinct_watchers_n,Distinct users with positive watch on the video,count,Reach KPI
+video_view,first_impression_at,First observed impression timestamp,unix seconds,Lifecycle analyses
+video_view,last_impression_at,Last observed impression timestamp,unix seconds,Lifecycle analyses
+video_view,first_watch_at,First observed watch timestamp,unix seconds,Lifecycle analyses
+video_view,last_watch_at,Last observed watch timestamp,unix seconds,Lifecycle analyses
+user_view,user_id,User identifier,id,Join key
+user_view,user_name,Display name for user,text,Reference field
+user_view,user_handle,User handle-like identifier,text,Reference field
+user_view,impressions_n,Total impressions served to user,count,Engagement KPI
+user_view,watched_n,Impressions watched by user,count,Engagement KPI
+user_view,watch_rate,Share of impressions watched by user,ratio,Engagement KPI
+user_view,total_watch_seconds,Total watch time by user,seconds,Engagement KPI
+user_view,avg_watch_seconds_when_watched,Mean watch seconds among watched impressions for user,seconds,Engagement KPI
+user_view,distinct_videos_watched_n,Distinct videos watched by user,count,Diversity KPI
+user_view,distinct_creators_seen_n,Distinct creators seen by user,count,Diversity KPI
+user_view,like_n,Total likes by user,count,Interaction KPI
+user_view,unlike_n,Total unlikes by user,count,Interaction KPI
+user_view,follow_n,Total follows by user,count,Interaction KPI
+user_view,unfollow_n,Total unfollows by user,count,Interaction KPI
+user_view,first_activity_at,First observed user activity timestamp,unix seconds,Cohorting and lifecycle
+user_view,last_activity_at,Last observed user activity timestamp,unix seconds,Cohorting and lifecycle
