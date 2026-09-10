@@ -1,0 +1,1247 @@
+---
+title: "Tutorial (week 4) - Data engineering, pull requests, and Make"
+subtitle: "Data Preparation and Programming Skills (2026/2027)"
+author: "Javier Torralba Flores"
+date: "last-modified"
+execute:
+  eval: false
+  echo: true
+  warning: false
+  message: false
+format:
+  beamer:
+    theme: metropolis
+    colortheme: seahorse
+    code-overflow: wrap
+    code-font-size: 0.85em
+    aspectratio: 169
+    fontsize: 11pt
+    highlight-style: tango
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \newcommand{\workbg}{\setbeamercolor{background canvas}{bg=yellow!12}}
+        \newcommand{\normalbg}{\setbeamercolor{background canvas}{bg=white}}
+---
+
+## Tutorial roadmap (90 minutes)
+
+Today follows one project story with four blocks:
+
+1. Opening and orientation - 10 min
+2. Coding and frequent commits in branch A - 50 min
+3. Automation and frequent commits in branch B - 20 min
+4. Pull requests: merge PR1 and PR2 - 10 min
+
+Total: 90 minutes.
+
+---
+
+## Opening story
+
+Imagine this week in your team:
+
+- Monday: you build creator and user metrics from raw CSV files.
+- Tuesday: you commit small coding changes in a feature branch.
+- Wednesday: a teammate builds Make automation in another branch.
+- Thursday: both branches are reviewed in pull requests.
+- Friday: both PRs are merged into `main` and outputs rebuild cleanly.
+
+Today you practice this exact flow.
+
+---
+
+## Today’s flow
+
+You will produce two pull requests:
+
+1. **PR1** = `feature/week4-data` -> `main` (coding outputs)
+2. **PR2** = `feature/week4-make` -> `main` (automation outputs)
+
+Each PR should contain multiple small commits, not one giant commit.
+
+---
+
+## Git + PR quick refresher
+
+- `git status`: what changed in your working tree?
+- `git add <file>`: stage file(s) for the next commit.
+- `git commit -m "..."`: save a labeled snapshot.
+- `git merge <branch>`: combine another branch into current branch.
+- Pull request (PR): GitHub proposal to merge one branch into another.
+
+In this class, merges happen through GitHub PRs.
+
+---
+
+## Pull vs pull request
+
+- `git pull` = receive updates from remote repository.
+- pull request = propose your updates for review and merge.
+
+Short memory trick:
+
+- pull = download
+- pull request = propose
+
+---
+
+## Learning goals
+
+By the end, you can:
+
+- create variables with `mutate()`, `rank()`, and `distinct()`
+- aggregate metrics with `group_by()` and `summarise()`
+- combine tables with `left_join()` and `inner_join()`
+- convert timestamps and build lagged metrics
+- work with two branches, frequent commits, and two pull requests
+- automate outputs with `make` and `make clean`
+
+---
+
+## Coding block
+
+```{=latex}
+\normalbg
+```
+
+Today’s coding questions:
+
+- Which creators have both high reach and high watch quality?
+- Which users show strong engagement?
+- How does creator exposure change day by day?
+- Can a teammate read your code and merge PR1 confidently?
+
+---
+
+## Data preview (video-level)
+
+Run a quick peek so the tasks feel concrete:
+
+```{r}
+library(tidyverse)
+
+video_view <- read_csv("video_view.csv")
+
+video_view %>%
+  select(video_id, creator_id, impressions_n, watched_n, watch_rate, avg_watch_share) %>%
+  head(6)
+```
+
+---
+
+## Data preview (event-level)
+
+```{r}
+impressions <- read_csv("impressions.csv")
+watch_events <- read_csv("watch_events.csv")
+
+impressions %>%
+  select(impression_id, session_id, user_id, video_id, creator_id, shown_at) %>%
+  head(6)
+```
+
+---
+
+## Start here
+
+1. Create/open your week 4 project.
+2. Put all provided CSV files in your project root.
+3. Create folders for scripts and generated outputs.
+
+Main script for this block:
+
+`src/data_engineering.R`
+
+Commit rule for today:
+
+- commit scripts and makefiles
+- do not commit generated CSV files from `temp/` or `output/`
+
+---
+
+## Create folders (three options)
+
+Pick one method:
+
+- Positron/VS Code file pane: create `src`, `temp`, `output` manually.
+- macOS/Linux terminal:
+
+```bash
+mkdir -p src temp output
+```
+
+- Windows PowerShell:
+
+```powershell
+mkdir src, temp, output
+```
+
+---
+
+## Why branch A first?
+
+`main` should stay stable.
+
+- Branch A is your safe space for data-engineering work.
+- You can make many commits without touching `main`.
+- PR1 is the place where others review your coding decisions.
+
+---
+
+## Start branch A (CLI)
+
+```bash
+git pull origin main
+git switch -c feature/week4-data
+git branch --show-current
+git status
+```
+
+If successful, you should see:
+
+- current branch: `feature/week4-data`
+- `On branch feature/week4-data` in status output
+
+---
+
+## Start branch A (Positron/VS Code)
+
+Use GUI if preferred:
+
+1. Open **Source Control** panel.
+2. Click branch name in status bar.
+3. Select **Create new branch** from `main`.
+4. Name it `feature/week4-data`.
+5. Confirm active branch in status bar.
+
+Still run `git status` in terminal to verify.
+
+---
+
+## Load data
+
+Add this at the top of `src/data_engineering.R`:
+
+```{r}
+library(tidyverse)
+
+video_view <- read_csv("video_view.csv")
+user_view <- read_csv("user_view.csv")
+videos <- read_csv("videos.csv")
+creators <- read_csv("creators.csv")
+users <- read_csv("users.csv")
+impressions <- read_csv("impressions.csv")
+watch_events <- read_csv("watch_events.csv")
+sessions <- read_csv("sessions.csv")
+```
+
+---
+
+## Function focus for this block
+
+In order:
+
+1. `mutate()`, `rank()`, `distinct()`
+2. `group_by()`, `summarise()`, `arrange()`
+3. `left_join()`, `inner_join()`
+4. `as.POSIXct()`, `as.Date()`, `lag()`
+5. `write_csv()` for clear output files (ITO)
+
+---
+
+## Example: start simple with rank
+
+```{r}
+video_simple <- video_view %>%
+  mutate(
+    watch_rate_rank = rank(-watch_rate),
+    high_quality = avg_watch_share >= 0.40
+  ) %>%
+  distinct(video_id, .keep_all = TRUE)
+```
+
+---
+
+## Optional rank settings (later)
+
+After the simple version works, you can refine ties and missing values:
+
+```{r}
+video_ranked <- video_view %>%
+  mutate(
+    watch_rate_rank = rank(-watch_rate, na.last = "keep", ties.method = "min")
+  )
+```
+
+Use this only after understanding the simple rank first.
+
+---
+
+## WORK TIME - Exercise 1
+
+```{=latex}
+\workbg
+```
+
+Story: you prepare the first PR1 output table.
+
+In `src/data_engineering.R`, build `video_features`:
+
+1. start from `video_view`
+2. create `watch_rate_rank = rank(-watch_rate)`
+3. create `reach_band` (`Low`, `Medium`, `High` from `impressions_n`)
+4. create `high_quality` (`avg_watch_share >= 0.40`)
+5. keep unique `video_id` rows with `distinct()`
+6. save output: `write_csv(video_features, "temp/video_features.csv")`
+
+Show top 10 rows sorted by `watch_rate_rank`.
+
+---
+
+## Git checkpoint A1
+
+```{=latex}
+\workbg
+```
+
+Run and commit:
+
+```bash
+git status
+git add src/data_engineering.R
+git commit -m "Add video features with mutate rank and distinct"
+git status
+```
+
+---
+
+## What is aggregation?
+
+Aggregation means:
+
+- go from many rows -> fewer summary rows
+- summarize by groups (for example by creator)
+
+Example idea:
+
+- 1200 video rows -> 60 creator rows
+
+This is one of the most common operations in analytics.
+
+---
+
+## Example: aggregation
+
+```{r}
+creator_example <- video_view %>%
+  group_by(creator_id) %>%
+  summarise(
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    avg_watch_rate = mean(watch_rate, na.rm = TRUE)
+  ) %>%
+  arrange(desc(impressions_total))
+```
+
+---
+
+## WORK TIME - Exercise 2
+
+```{=latex}
+\workbg
+```
+
+Create two aggregate tables from `video_features`:
+
+1. `creator_summary` with:
+   - `videos_n`
+   - `impressions_total`
+   - `watched_total`
+   - `avg_watch_rate`
+   - `median_watch_seconds`
+2. `engagement_by_band` with:
+   - number of videos
+   - average watch rate
+
+Sort `creator_summary` by `desc(impressions_total)`.
+
+---
+
+## Exercise 2 output (ITO)
+
+```{=latex}
+\workbg
+```
+
+Save both outputs:
+
+```r
+write_csv(creator_summary, "temp/creator_summary.csv")
+write_csv(engagement_by_band, "temp/engagement_by_band.csv")
+```
+
+---
+
+## Git checkpoint A2
+
+```{=latex}
+\workbg
+```
+
+```bash
+git status
+git add src/data_engineering.R
+git commit -m "Add creator and reach-band aggregations"
+git status
+```
+
+---
+
+## Join theory: why joins matter
+
+Our data is spread across files.
+
+- behavior: `video_view.csv`, `user_view.csv`, `watch_events.csv`
+- context: `creators.csv`, `videos.csv`, `users.csv`, `sessions.csv`
+
+Joins combine them into analysis-ready tables.
+
+---
+
+## Join theory: two core join types
+
+- `left_join(x, y, by = ...)`
+  - keep all rows from `x`
+  - add columns from `y` when keys match
+- `inner_join(x, y, by = ...)`
+  - keep only matched rows in both tables
+
+Default in data prep: start with `left_join()`.
+
+---
+
+## Join theory: keys and risks
+
+- A key is the variable used to match rows.
+- Single key example: `creator_id`
+- Composite key example: `video_id` + `creator_id`
+
+Risk:
+
+- repeated keys on both sides can duplicate rows.
+
+Always check row counts before and after big joins.
+
+---
+
+## Example: one left join and one inner join
+
+```{r}
+video_with_creators <- video_view %>%
+  left_join(creators, by = "creator_id")
+
+watched_only <- impressions %>%
+  inner_join(watch_events, by = "impression_id")
+```
+
+---
+
+## WORK TIME - Exercise 3
+
+```{=latex}
+\workbg
+```
+
+Build `video_enriched`:
+
+1. start from `video_features`
+2. `left_join(videos, by = c("video_id", "creator_id"))`
+3. `left_join(creators, by = "creator_id")`
+4. keep columns:
+   - `video_id`, `creator_id`, `creator_name`
+   - `impressions_n`, `watch_rate`, `watch_rate_rank`
+   - `quality`, `posting_rate`, `publish_time`
+
+---
+
+## WORK TIME - Exercise 3 (continued)
+
+```{=latex}
+\workbg
+```
+
+Build `user_enriched`:
+
+1. start from `user_view`
+2. `left_join(users, by = "user_id")`
+3. keep user watch KPIs and selected user profile columns
+4. save outputs:
+   - `temp/video_enriched.csv`
+   - `temp/user_enriched.csv`
+
+---
+
+## WORK TIME - Exercise 4
+
+```{=latex}
+\workbg
+```
+
+Build event-level `watch_log` in steps:
+
+1. start from `impressions`
+2. `left_join(watch_events, by = "impression_id")`
+3. `left_join(sessions, by = c("session_id", "user_id"))`
+4. `left_join(videos, by = c("video_id", "creator_id"))`
+5. `left_join(creators, by = "creator_id")`
+
+---
+
+## WORK TIME - Exercise 4 (continued)
+
+```{=latex}
+\workbg
+```
+
+From the same data, create:
+
+1. `watched_only <- impressions %>% inner_join(watch_events, by = "impression_id")`
+2. `creator_event_summary` with:
+   - impressions
+   - watched events
+   - total watch seconds
+
+Save `watch_log` and `creator_event_summary` in `temp/`.
+
+---
+
+## Git checkpoint A3
+
+```{=latex}
+\workbg
+```
+
+```bash
+git status
+git add src/data_engineering.R
+git commit -m "Add join workflows for view and event data"
+git status
+```
+
+---
+
+## Timestamp conversion first
+
+Focus on conversion only:
+
+- `shown_at` is text in ISO format (example: `2025-08-01T21:44:48Z`)
+- convert text -> datetime (`shown_ts`, class `POSIXct`)
+- convert datetime -> day (`shown_day`, class `Date`)
+
+Why this conversion?
+
+- datetime is needed for time-aware operations
+- day is needed for daily aggregation per creator
+
+```{r}
+watch_time_preview <- watch_log %>%
+  mutate(
+    shown_ts = as.POSIXct(shown_at, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
+    shown_day = as.Date(shown_ts)
+  ) %>%
+  select(impression_id, creator_id, shown_at, shown_ts, shown_day) %>%
+  head(8)
+```
+
+---
+
+## What the daily lag table creates
+
+Once timestamp conversion works:
+
+- one row per `creator_id` and `shown_day`
+- `impressions_n`: number of impressions on that day
+- `impressions_lag1`: previous day's impressions for that creator
+
+Then you can compute:
+
+- `impressions_change = impressions_n - impressions_lag1`
+
+```{r}
+creator_daily <- watch_log %>%
+  mutate(shown_ts = as.POSIXct(shown_at, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")) %>%
+  mutate(shown_day = as.Date(shown_ts)) %>%
+  count(creator_id, shown_day, name = "impressions_n") %>%
+  group_by(creator_id) %>%
+  arrange(shown_day) %>%
+  mutate(impressions_lag1 = lag(impressions_n))
+```
+
+---
+
+## WORK TIME - Exercise 5
+
+```{=latex}
+\workbg
+```
+
+From `watch_log`:
+
+1. convert `shown_at` into `shown_ts` and `shown_day`
+2. aggregate daily creator impressions
+3. add:
+   - `impressions_lag1 = lag(impressions_n)`
+   - `impressions_change = impressions_n - impressions_lag1`
+4. save `temp/creator_daily_week4.csv`
+
+---
+
+## Git checkpoint A4
+
+```{=latex}
+\workbg
+```
+
+```bash
+git status
+git add src/data_engineering.R
+git commit -m "Add timestamp conversion and lagged daily metrics"
+git status
+```
+
+---
+
+## Inspect your branch history
+
+Before switching to branch B, inspect what you built:
+
+```bash
+git status
+git log --oneline --graph -10
+git diff HEAD~1 HEAD
+```
+
+Questions:
+
+- Do your commit messages tell a clear story?
+- Can you see exactly what changed in the last commit?
+
+---
+
+## Push branch A
+
+```bash
+git push -u origin feature/week4-data
+```
+
+This branch will become **PR1** later.
+
+---
+
+## Automation block
+
+```{=latex}
+\normalbg
+```
+
+Now build a second branch for automation only.
+
+Goal: reproducible outputs and clean rebuilds.
+
+---
+
+## Why branch B?
+
+- Branch A holds data-engineering code for PR1.
+- Branch B isolates Make changes for PR2.
+- Separate PRs make review easier.
+
+This is common in team workflows.
+
+---
+
+## Start branch B
+
+```bash
+git switch main
+git pull origin main
+git switch -c feature/week4-make
+git branch --show-current
+git status
+```
+
+Expected branch: `feature/week4-make`.
+
+---
+
+## Switch branch in Positron/VS Code
+
+GUI route:
+
+1. Open **Source Control**.
+2. Click branch name in the bottom bar.
+3. Choose `main`, then create `feature/week4-make`.
+4. Confirm active branch in the bottom bar.
+
+Check with `git status` after switching.
+
+---
+
+## Make theory: why we need it
+
+Running scripts manually is easy to forget.
+
+`make` gives a recipe so the computer can:
+
+- run steps in the right order
+- rerun only what changed
+- rebuild from scratch when needed
+
+Think cookbook for code.
+
+---
+
+## Make theory: one rule
+
+A rule has three parts:
+
+```text
+target: prerequisites
+<TAB>command to build target
+```
+
+- target: file to create
+- prerequisites: files needed first
+- command: how to build
+
+Commands must start with a **tab**, not spaces.
+
+---
+
+## Make theory: dependencies and dry run
+
+- If a prerequisite changes, `make` rebuilds dependent targets.
+- `make -n` shows what would run, without running it.
+
+Useful workflow:
+
+1. `make -n`
+2. check output
+3. run `make`
+
+---
+
+## Make theory: all and clean
+
+- `all` is usually the first target and default entry point.
+- `clean` removes generated outputs.
+
+Common pattern:
+
+```text
+all: final_output
+clean:
+<TAB>remove generated files
+```
+
+---
+
+## Script structure for automation
+
+Use Setup-Input-Transform-Output in each script.
+
+Files for this block:
+
+- `src/build_temp.R`
+- `src/build_output.R`
+- `makefile`
+
+---
+
+## WORK TIME - Exercise 6
+
+```{=latex}
+\workbg
+```
+
+Create `src/build_temp.R`:
+
+1. input `video_view.csv` and `creators.csv`
+2. aggregate to creator level
+3. output `temp/creator_week4.csv`
+
+Create `src/build_output.R`:
+
+1. input `temp/creator_week4.csv`
+2. keep top 10 creators by impressions
+3. output `output/creator_top10_week4.csv`
+
+---
+
+## Git checkpoint B1
+
+```{=latex}
+\workbg
+```
+
+```bash
+git status
+git add src/build_temp.R src/build_output.R
+git commit -m "Add build scripts for temp and output tables"
+git status
+```
+
+---
+
+## WORK TIME - Exercise 7
+
+```{=latex}
+\workbg
+```
+
+Create this `makefile`:
+
+```make
+all: output/creator_top10_week4.csv
+
+temp/creator_week4.csv: src/build_temp.R video_view.csv creators.csv
+	Rscript src/build_temp.R
+
+output/creator_top10_week4.csv: src/build_output.R temp/creator_week4.csv
+	Rscript src/build_output.R
+
+clean:
+	rm -f temp/*.csv output/*.csv
+```
+
+---
+
+## Exercise 7 run commands
+
+```{=latex}
+\workbg
+```
+
+```bash
+make -n
+make
+make
+make clean
+make
+```
+
+What to observe:
+
+- first run builds files
+- second run should do almost nothing
+- `make clean` removes generated files
+- final `make` rebuilds all targets
+
+---
+
+## Git checkpoint B2
+
+```{=latex}
+\workbg
+```
+
+```bash
+git status
+git add makefile
+git commit -m "Add make workflow with clean target"
+git status
+git log --oneline --graph -10
+git diff HEAD~1 HEAD
+git push -u origin feature/week4-make
+```
+
+This branch will become **PR2** later.
+
+---
+
+## PR block
+
+```{=latex}
+\normalbg
+```
+
+Now merge both branches through GitHub pull requests.
+
+---
+
+## Where pull requests are created
+
+PRs are created on **GitHub.com**, not in local files.
+
+Path:
+
+1. Open your repository on GitHub.
+2. Click **Pull requests** tab.
+3. Click **New pull request**.
+4. Choose base `main` and compare branch.
+
+---
+
+## PR1 checklist
+
+PR1 uses coding branch:
+
+- compare: `feature/week4-data`
+- base: `main`
+- title example: `Week 4 data engineering outputs`
+- confirm commit list and changed files
+- request review (if working in team)
+
+Merge PR1 when ready.
+
+---
+
+## PR2 checklist
+
+PR2 uses automation branch:
+
+- compare: `feature/week4-make`
+- base: `main`
+- title example: `Week 4 make automation and clean target`
+- confirm commit list and changed files
+- request review
+
+Merge PR2 when ready.
+
+---
+
+## WORK TIME - Exercise 8
+
+```{=latex}
+\workbg
+```
+
+Do both PR merges on GitHub:
+
+1. open PR1 and merge
+2. open PR2 and merge
+3. delete both remote branches
+
+After merges, sync local repository.
+
+---
+
+## Local cleanup after PR merges
+
+```{=latex}
+\workbg
+```
+
+```bash
+git switch main
+git pull origin main
+git branch -d feature/week4-data
+git branch -d feature/week4-make
+git status
+```
+
+---
+
+## Wrap-up
+
+```{=latex}
+\normalbg
+```
+
+You practiced one complete workflow:
+
+- feature engineering and aggregation
+- table joins for analysis-ready data
+- timestamp conversion and lagging
+- frequent commits in two branches
+- make automation with clean rebuild
+- two pull requests merged into `main`
+
+---
+
+## Exit checklist
+
+Before you leave, verify:
+
+1. PR1 and PR2 are both merged
+2. `src/data_engineering.R` runs and writes outputs
+3. `make clean` and `make` both work
+4. your commit history tells a clear story
+
+---
+
+## Solutions for core exercises
+
+Use only if blocked.
+
+---
+
+## Solution - Exercise 1 (build features)
+
+```{r}
+video_features <- video_view %>%
+  mutate(
+    watch_rate_rank = rank(-watch_rate),
+    reach_band = case_when(
+      impressions_n < 20 ~ "Low",
+      impressions_n < 60 ~ "Medium",
+      TRUE ~ "High"
+    ),
+    high_quality = avg_watch_share >= 0.40
+  ) %>%
+  distinct(video_id, .keep_all = TRUE) %>%
+  arrange(watch_rate_rank)
+```
+
+---
+
+## Solution - Exercise 1 (output)
+
+```{r}
+write_csv(video_features, "temp/video_features.csv")
+
+video_features %>%
+  select(video_id, creator_id, impressions_n, watch_rate, watch_rate_rank, reach_band, high_quality) %>%
+  slice_head(n = 10)
+```
+
+---
+
+## Solution - Exercise 2 (creator summary)
+
+```{r}
+creator_summary <- video_features %>%
+  group_by(creator_id) %>%
+  summarise(
+    videos_n = n(),
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    watched_total = sum(watched_n, na.rm = TRUE),
+    avg_watch_rate = mean(watch_rate, na.rm = TRUE),
+    median_watch_seconds = median(total_watch_seconds, na.rm = TRUE)
+  ) %>%
+  arrange(desc(impressions_total))
+```
+
+---
+
+## Solution - Exercise 2 (band summary + save)
+
+```{r}
+engagement_by_band <- video_features %>%
+  group_by(reach_band) %>%
+  summarise(
+    videos_n = n(),
+    avg_watch_rate = mean(watch_rate, na.rm = TRUE)
+  )
+
+write_csv(creator_summary, "temp/creator_summary.csv")
+write_csv(engagement_by_band, "temp/engagement_by_band.csv")
+```
+
+---
+
+## Solution - Exercise 3 (video join)
+
+```{r}
+video_enriched <- video_features %>%
+  left_join(videos, by = c("video_id", "creator_id")) %>%
+  left_join(creators, by = "creator_id") %>%
+  select(
+    video_id, creator_id, creator_name,
+    impressions_n, watch_rate, watch_rate_rank,
+    quality, posting_rate, publish_time
+  )
+```
+
+---
+
+## Solution - Exercise 3 (user join + save)
+
+```{r}
+user_enriched <- user_view %>%
+  left_join(users, by = "user_id") %>%
+  select(
+    user_id, user_name, user_handle,
+    impressions_n, watched_n, watch_rate,
+    like_n, follow_n, baseline_login, satiation_decay
+  )
+
+write_csv(video_enriched, "temp/video_enriched.csv")
+write_csv(user_enriched, "temp/user_enriched.csv")
+```
+
+---
+
+## Solution - Exercise 4 (watch_log step 1)
+
+```{r}
+watch_log <- impressions %>%
+  left_join(watch_events, by = "impression_id") %>%
+  left_join(sessions, by = c("session_id", "user_id"))
+```
+
+---
+
+## Solution - Exercise 4 (watch_log step 2)
+
+```{r}
+watch_log <- watch_log %>%
+  left_join(videos, by = c("video_id", "creator_id")) %>%
+  left_join(creators, by = "creator_id")
+
+watched_only <- impressions %>%
+  inner_join(watch_events, by = "impression_id")
+```
+
+---
+
+## Solution - Exercise 4 (summary + save)
+
+```{r}
+creator_event_summary <- watch_log %>%
+  group_by(creator_id) %>%
+  summarise(
+    impressions_n = n(),
+    watched_events_n = sum(!is.na(action)),
+    watch_seconds_total = sum(watch_seconds, na.rm = TRUE)
+  )
+
+write_csv(watch_log, "temp/watch_log.csv")
+write_csv(creator_event_summary, "temp/creator_event_summary.csv")
+```
+
+---
+
+## Solution - Exercise 5 (timestamp conversion)
+
+```{r}
+creator_daily <- watch_log %>%
+  mutate(
+    shown_ts = as.POSIXct(shown_at, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
+    shown_day = as.Date(shown_ts)
+  ) %>%
+  count(creator_id, shown_day, name = "impressions_n")
+```
+
+---
+
+## Solution - Exercise 5 (lag + save)
+
+```{r}
+creator_daily <- creator_daily %>%
+  group_by(creator_id) %>%
+  arrange(shown_day) %>%
+  mutate(
+    impressions_lag1 = lag(impressions_n),
+    impressions_change = impressions_n - impressions_lag1
+  )
+
+write_csv(creator_daily, "temp/creator_daily_week4.csv")
+```
+
+---
+
+## Solution - Exercise 6 (`src/build_temp.R`)
+
+```r
+library(tidyverse)
+
+dir.create("temp", showWarnings = FALSE)
+
+video_view <- read_csv("video_view.csv")
+creators <- read_csv("creators.csv")
+
+creator_week4 <- video_view %>%
+  group_by(creator_id) %>%
+  summarise(
+    videos_n = n(),
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    watched_total = sum(watched_n, na.rm = TRUE),
+    avg_watch_rate = mean(watch_rate, na.rm = TRUE)
+  ) %>%
+  left_join(creators, by = "creator_id")
+```
+
+---
+
+## Solution - Exercise 6 (`src/build_temp.R` output)
+
+```r
+write_csv(creator_week4, "temp/creator_week4.csv")
+```
+
+---
+
+## Solution - Exercise 6 (`src/build_output.R`)
+
+```r
+library(tidyverse)
+
+dir.create("output", showWarnings = FALSE)
+
+creator_week4 <- read_csv("temp/creator_week4.csv")
+
+creator_top10_week4 <- creator_week4 %>%
+  arrange(desc(impressions_total)) %>%
+  slice_head(n = 10)
+
+write_csv(creator_top10_week4, "output/creator_top10_week4.csv")
+```
+
+---
+
+## Solution - Exercise 7 (`makefile`)
+
+```make
+all: output/creator_top10_week4.csv
+
+temp/creator_week4.csv: src/build_temp.R video_view.csv creators.csv
+	Rscript src/build_temp.R
+
+output/creator_top10_week4.csv: src/build_output.R temp/creator_week4.csv
+	Rscript src/build_output.R
+
+clean:
+	rm -f temp/*.csv output/*.csv
+```
+
+---
+
+## Solution - Exercise 7 (run)
+
+```bash
+make -n
+make
+make clean
+make
+```
+
+---
+
+## Solution - Exercise 8 (PRs)
+
+On GitHub:
+
+1. Open and merge PR1 from `feature/week4-data`.
+2. Open and merge PR2 from `feature/week4-make`.
+3. Delete both remote branches.
+
+Then locally:
+
+```bash
+git switch main
+git pull origin main
+git branch -d feature/week4-data
+git branch -d feature/week4-make
+git status
+```
+
+---
+
+## End of tutorial
+
+If you finish early:
+
+1. rerun `src/data_engineering.R` from top to bottom
+2. run `make clean` and `make` again
+3. inspect your Git story with `git log --oneline --graph -10`
