@@ -35,11 +35,54 @@ cfg <- get_tiktok_config(profile = profile, seed = seed, output_dir = "output")
 output_base <- file.path(cfg$output_dir, cfg$profile)
 dir.create(output_base, recursive = TRUE, showWarnings = FALSE)
 
+pipeline_progress_enabled <- isTRUE(cfg$progress$enabled)
+pipeline_use_txt_bar <- pipeline_progress_enabled && interactive()
+pipeline_total_steps <- 9L
+pipeline_step <- 0L
+pipeline_started_at <- Sys.time()
+pipeline_pb <- NULL
+
+format_duration <- function(seconds) {
+  seconds <- max(0, as.integer(round(seconds)))
+  h <- seconds %/% 3600
+  m <- (seconds %% 3600) %/% 60
+  s <- seconds %% 60
+  if (h > 0) {
+    sprintf("%02dh:%02dm:%02ds", h, m, s)
+  } else {
+    sprintf("%02dm:%02ds", m, s)
+  }
+}
+
+advance_pipeline <- function(label) {
+  if (!pipeline_progress_enabled) return(invisible(NULL))
+  pipeline_step <<- pipeline_step + 1L
+  elapsed_sec <- as.numeric(difftime(Sys.time(), pipeline_started_at, units = "secs"))
+  eta_sec <- elapsed_sec * (pipeline_total_steps - pipeline_step) / pipeline_step
+  if (pipeline_use_txt_bar) {
+    utils::setTxtProgressBar(pipeline_pb, pipeline_step)
+  }
+  message(sprintf(
+    "[pipeline %d/%d] %s | elapsed=%s eta=%s",
+    pipeline_step,
+    pipeline_total_steps,
+    label,
+    format_duration(elapsed_sec),
+    format_duration(eta_sec)
+  ))
+  invisible(NULL)
+}
+
+if (pipeline_use_txt_bar) {
+  pipeline_pb <- utils::txtProgressBar(min = 0, max = pipeline_total_steps, style = 3)
+}
+
 message("Generating static entities...")
 categories <- generate_categories(cfg)
 cre_obj <- generate_creators(cfg, categories)
 users <- generate_users(cfg, categories)
 follows_init <- generate_initial_follows(cfg, users, cre_obj$creators)
+advance_pipeline("Static entities generated")
 
 message("Generating videos...")
 vid_obj <- generate_videos(
@@ -49,6 +92,7 @@ vid_obj <- generate_videos(
   categories = categories,
   start_date = as.Date(cfg$start_date)
 )
+advance_pipeline("Videos generated")
 
 message("Running dynamic simulation (", cfg$profile, ")...")
 truth_dynamic <- simulate_platform(
@@ -61,6 +105,7 @@ truth_dynamic <- simulate_platform(
   videos = vid_obj$videos,
   video_categories = vid_obj$video_categories
 )
+advance_pipeline("Dynamic simulation complete")
 
 message("Applying observed-data corruption operators...")
 observed_dynamic <- apply_corruption(
@@ -71,6 +116,7 @@ observed_dynamic <- apply_corruption(
   videos = vid_obj$videos,
   video_categories = vid_obj$video_categories
 )
+advance_pipeline("Observed corruption complete")
 
 static_tables <- list(
   categories = categories,
@@ -96,15 +142,19 @@ exported <- export_all(
   output_base = output_base,
   static_tables_observed = static_tables_observed
 )
+advance_pipeline("Data export complete")
 
 message("Creating descriptives and plots...")
 create_descriptives(exported$observed_tables, output_base = output_base)
+advance_pipeline("Descriptives complete")
 
 message("Evaluating mission effects...")
 evaluate_missions(exported$observed_tables, cfg$mission_catalog, output_base)
+advance_pipeline("Mission evaluation complete")
 
 message("Building student database documentation...")
 build_student_data_docs(output_base = output_base)
+advance_pipeline("Student documentation complete")
 
 calibration_report <- tibble::tibble(
   metric = c("mean_sessions_per_user_day", "mean_watch_seconds_per_session", "share_watch_full", "share_explore_feed"),
@@ -130,5 +180,10 @@ run_metadata <- tibble::tibble(
   generated_at_utc = format(Sys.time(), tz = "UTC", usetz = TRUE)
 )
 readr::write_csv(run_metadata, file.path(output_base, "run_metadata.csv"))
+advance_pipeline("Calibration and run metadata written")
+
+if (!is.null(pipeline_pb)) {
+  close(pipeline_pb)
+}
 
 message("Done. Output written to: ", output_base)

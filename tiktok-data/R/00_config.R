@@ -50,6 +50,10 @@ get_tiktok_config <- function(profile = c("prototype", "full",
         "pref_Comedy", "pref_Food", "pref_Gaming", "pref_Pets"
       )
     ),
+    progress = list(
+      enabled = TRUE,
+      day_update_every = 1L
+    ),
     output_dir = output_dir
   )
 
@@ -69,7 +73,8 @@ get_tiktok_config <- function(profile = c("prototype", "full",
       n_users = 2000,
       n_creators = 500,
       n_videos = 50000,
-      active_missions = "all"
+      active_missions = "all",
+      progress = list(day_update_every = 5L)
     ),
 
     # ------------------------------------------------------------------

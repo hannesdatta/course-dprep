@@ -68,6 +68,18 @@ choose_video <- function(source,
 simulate_platform <- function(cfg, categories, creators, creator_categories, users, follows_init, videos, video_categories) {
   set.seed(cfg$seed + 100)
 
+  format_duration <- function(seconds) {
+    seconds <- max(0, as.integer(round(seconds)))
+    h <- seconds %/% 3600
+    m <- (seconds %% 3600) %/% 60
+    s <- seconds %% 60
+    if (h > 0) {
+      sprintf("%02dh:%02dm:%02ds", h, m, s)
+    } else {
+      sprintf("%02dm:%02ds", m, s)
+    }
+  }
+
   start_date <- as.Date(cfg$start_date)
   dates <- seq(start_date, by = "day", length.out = cfg$n_days)
 
@@ -122,6 +134,22 @@ simulate_platform <- function(cfg, categories, creators, creator_categories, use
   watch_id <- 0L
   session_id <- 0L
   interaction_id <- 0L
+
+  progress_enabled <- isTRUE(cfg$progress$enabled)
+  day_update_every <- cfg$progress$day_update_every
+  if (is.null(day_update_every) || !is.numeric(day_update_every) || day_update_every < 1) {
+    day_update_every <- 1L
+  }
+  day_update_every <- as.integer(day_update_every)
+  use_txt_bar <- progress_enabled && interactive()
+  progress_started_at <- Sys.time()
+  day_pb <- NULL
+
+  if (use_txt_bar) {
+    day_pb <- utils::txtProgressBar(min = 0, max = cfg$n_days, style = 3)
+  } else if (progress_enabled) {
+    message(sprintf("Simulating %d days...", cfg$n_days))
+  }
 
   for (d in seq_along(dates)) {
     day <- dates[d]
@@ -381,6 +409,27 @@ simulate_platform <- function(cfg, categories, creators, creator_categories, use
       follow_shift = mission_effect$follow_shift,
       like_shift = mission_effect$like_shift
     )
+
+    if (progress_enabled && (d %% day_update_every == 0L || d == cfg$n_days)) {
+      elapsed_sec <- as.numeric(difftime(Sys.time(), progress_started_at, units = "secs"))
+      eta_sec <- if (d > 0) elapsed_sec * (cfg$n_days - d) / d else NA_real_
+      if (use_txt_bar) {
+        utils::setTxtProgressBar(day_pb, d)
+      } else {
+        message(sprintf(
+          "simulate_platform day %d/%d (%.1f%%) elapsed=%s eta=%s",
+          d,
+          cfg$n_days,
+          100 * d / cfg$n_days,
+          format_duration(elapsed_sec),
+          format_duration(eta_sec)
+        ))
+      }
+    }
+  }
+
+  if (!is.null(day_pb)) {
+    close(day_pb)
   }
 
   follow_state <- which(follow_mat, arr.ind = TRUE)
