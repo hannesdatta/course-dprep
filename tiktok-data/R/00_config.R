@@ -66,9 +66,9 @@ get_tiktok_config <- function(profile = c("prototype", "full",
     ),
     full = list(
       profile = "full",
-      n_users = 14000,
-      n_creators = 1400,
-      n_videos = 140000,
+      n_users = 2000,
+      n_creators = 500,
+      n_videos = 50000,
       active_missions = "all"
     ),
 
