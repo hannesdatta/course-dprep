@@ -1239,7 +1239,7 @@ write_csv(creator_top10_week4, "output/creator_top10_week4.csv")
 ```make
 all: output/creator_top10_week4.csv
 
-temp/creator_week4.csv: src/build_temp.R video_view.csv creators.csv
+temp/creator_week4.csv: src/build_temp.R data/video_view.csv data/creators.csv
 	Rscript src/build_temp.R
 
 output/creator_top10_week4.csv: src/build_output.R temp/creator_week4.csv
