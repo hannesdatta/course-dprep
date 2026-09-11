@@ -114,7 +114,42 @@ Today’s coding questions:
 
 ---
 
-## Download the data if you don't have it yet 
+## Get your own copy of the repo
+
+Work alone, in your own repository.
+
+1. Open the template: `github.com/jtorralbaflores/dprep-week4-template`
+2. Click **Use this template** -> **Create a new repository**
+3. Name it `dprep-week4`, set it to **Public**, click Create
+4. Clone **your** new repo:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/dprep-week4.git
+cd dprep-week4
+```
+
+Do not fork. Do not clone the template URL.
+
+---
+
+## Start here
+
+1. Open the repository you just cloned.
+2. Run `download_data.R` to fill the `data/` folder.
+3. `src`, `temp` and `output` are already in the repo.
+
+Main script for this block:
+
+`src/data_engineering.R`
+
+Commit rule for today:
+
+- commit scripts and makefiles
+- do not commit generated CSV files from `temp/` or `output/`
+
+---
+
+## Download the data if you don't have it yet
 
 ```{r}
 library(tidyverse)
@@ -162,26 +197,10 @@ impressions %>%
 
 ---
 
-## Start here
-
-1. Create/open your week 4 project.
-2. Put all provided CSV files in your project root.
-3. Create folders for scripts and generated outputs.
-
-Main script for this block:
-
-`src/data_engineering.R`
-
-Commit rule for today:
-
-- commit scripts and makefiles
-- do not commit generated CSV files from `temp/` or `output/`
-
----
-
 ## Create folders (three options)
 
-Pick one method:
+The template repo already has these folders. For reference, if you ever
+start a project from scratch, pick one method:
 
 - Positron/VS Code file pane: create `src`, `temp`, `output` manually.
 - macOS/Linux terminal:
