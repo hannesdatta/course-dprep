@@ -289,8 +289,8 @@ After the simple version works, you can refine ties and missing values:
 ```{r}
 video_ranked <- video_view %>%
   mutate(
-    watch_rate_rank = rank(-watch_rate, na.last = "keep", ties.method = "min")
-  )
+    watch_rate_rank = rank(-watch_rate, na.last = "keep", 
+    ties.method = "min"))
 ```
 
 Use this only after understanding the simple rank first.
@@ -562,10 +562,14 @@ Why this conversion?
 - datetime is needed for time-aware operations
 - day is needed for daily aggregation per creator
 
+---
+
 ```{r}
 watch_time_preview <- watch_log %>%
   mutate(
-    shown_ts = as.POSIXct(shown_at, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
+    shown_ts = as.POSIXct(shown_at, 
+                          format = "%Y-%m-%dT%H:%M:%SZ", 
+                          tz = "UTC"),
     shown_day = as.Date(shown_ts)
   ) %>%
   select(impression_id, creator_id, shown_at, shown_ts, shown_day) %>%
@@ -585,6 +589,8 @@ Once timestamp conversion works:
 Then you can compute:
 
 - `impressions_change = impressions_n - impressions_lag1`
+
+---
 
 ```{r}
 creator_daily <- watch_log %>%
