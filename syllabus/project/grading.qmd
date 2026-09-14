@@ -64,7 +64,7 @@ During coaching, the same rubric dimensions are used for formative feedback. Fin
 
 | Component | Fail | Sufficient | Good | Very good |
 |---|---|---|---|---|
-| Project management | Team does not hold integration meet-up; PRs remain open; unresolved conflicts block integration to `main`. | Team holds a meet-up, merges most PRs, resolves basic conflicts, and closes some issues. | Team meets, merges all relevant PRs, resolves conflicts jointly, merges a stable final version to `main`, and closes all related issues. | Meets all `Good` criteria and **goes beyond** by running a fully documented integration session (who merged what, how conflicts were solved, and why) with a clean, stable final state on `main`. |
+| Project management | PRs remain open; unresolved conflicts block integration to `main`. | Team merges most PRs, resolves basic conflicts, and closes some issues. | Team meets, merges all relevant PRs, resolves conflicts jointly, merges a stable final version to `main`, and closes all related issues. | Meets all `Good` criteria and **goes beyond** by running a fully documented integration session (who merged what, how conflicts were solved, and why) with a clean, stable final state on `main`. |
 | Automation | Integrated `Makefile` fails and no fix/verification is provided. | Integrated `Makefile` runs after fixes, but with limited evidence of testing. | Integrated `Makefile` runs reliably; student records what command was run and what was fixed. | Meets all `Good` criteria and **goes beyond** by strengthening `Makefile` robustness (e.g., clearer dependencies/targets) and documenting rerun/validation steps teammates can follow immediately. |
 
 
