@@ -1,0 +1,8 @@
+# Cloned/checked-out student branches and generated grading output - never commit these.
+student_repos/
+grading/branches_summary.json
+grading/branches_summary.csv
+grading/dprep-deliverable-2-grading.xlsx
+grading/branches_summary-*.json
+grading/branches_summary-*.csv
+grading/dprep-deliverable-2-grading-*.xlsx
