@@ -13,6 +13,7 @@ book:
     - version-control.qmd
     - data-engineering.qmd
     - pipeline-building.qmd
+    - ai-tooling-for-research.qmd
     #- meet-r.qmd
     #- coding-with-ai.qmd
     - part: "Appendix"
