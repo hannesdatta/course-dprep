@@ -2,7 +2,7 @@
 title: "Exam Preparation"
 subtitle: "Data Preparation & Programming Skills (328059-M-6)"
 author: "Hannes Datta"
-date: 2026-03-09
+date: 2026-09-25
 format:
   pdf:
     code-overflow: wrap   # or scroll (wrap works better in PDF)
@@ -18,7 +18,7 @@ format:
 
 # Introduction
 
-*updated 9 March 2026, 21:26 with revised order of the answer keys for MC questions*
+*updated 25 Sept. 2026*
 
 ## Overview
 
@@ -27,8 +27,7 @@ The exam for this course is a **120-minute on-campus computer exam** (course cod
 Key points to keep in mind:
 
 * four exam dates are offered each academic year, of which students may take part in at most two.
-* only the official exam cheatsheets are permitted; no other resources or communication tools are allowed.
-* communication with others about the exam is strictly forbidden.
+* students will have the opportunity to work on a shared "exam cheatsheet"; no other resources or communication tools are allowed during the exam.
 * do not include your name or student number in submitted files unless explicitly asked, to ensure anonymous grading.
 
 ## Exam Format
@@ -53,13 +52,14 @@ Together, these levels ensure that the exam does not merely check whether you *r
 
 The table below outlines the types of questions you can expect, along with their sources for each learning goal of the course.
 
-| No. | Learning goal | Question type | Questions based on tutorials | Questions based on book |
+| No. | Learning goal | Question type | Questions based on tutorials/project | Questions based on book |
 |-------------|-------------|-------------|-------------|--------------------|
-| 1 | Use R to clean and transform data for analysis | Synthesis | 20P (2Q) on engineering tutorial | 4P (1Q), ch. 7 |
-| 2 | Use GitHub for managing empirical research projects | Eval. |  | 12P (4Q), ch. 2, 5 |
-| 3 | Use Git/GitHub for versioning files and collaboration | Appl. & Eval. | 24P on GitHub tutorial | 12P (4Q), ch. 6 |
-| 4 | Use R for generating automatic reports | Compreh. & Appli. | 12P on Rmarkdown tutorial | 6P (2Q), ch. 4 |
-| 5 | Use Workflow Management Tools | Appl. & Eval. | 24P on Make tutorial | 6P (2Q), ch. 3, 8 |
+| 1 | Use GitHub to manage empirical research projects | Eval. |  | 10P (3Q), ch. 2, 5 |
+| 2 | Use Git/GitHub for versioning files and collaboration | Appl. & Eval. | 24P (1Q) | 10P (3Q), ch. 6 |
+| 3 | Use R and SQL to clean and transform data for analysis | Synthesis | 20P (2Q) | 4P (1Q), ch. 7 |
+| 4 | Use R to generate automated reports | Compreh. & Appli. | 12P | 6P (2Q), ch. 4 |
+| 5 | Use Workflow Management Tools | Appl. & Eval. | 18P | 6P (2Q), ch. 3, 8 |
+| 6 | Critically assess and effectively use LLMs and software agents | Knowledge & Application | 6P (1Q) | 4P (2Q), ch. to be added
 
 \newpage
 
@@ -69,7 +69,237 @@ This section provides example questions, organized by the learning goals of the 
 
 ## Learning Goal 1
 
-*Use R to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, regular expressions)*
+*Use GitHub (or similar tools) to manage empirical research projects following Scrum-inspired project-management practices, including planning, organizing, and coordinating work performed by team members and software agents.*
+
+### Exemplary questions based on book (10P, 3Q on the exam)
+
+::: callout
+These questions will be based on chapters 2 and 5.
+:::
+
+#### Q1.1 (based on chapter 2) (3P)
+
+A student argues that every project should include **Docker, CI/CD pipelines, and a cloud warehouse** because “more tools always make a project better.” Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate this claim?
+
+A) Agree, because advanced tools always increase efficiency regardless of project size
+B) Agree, because cloud and automation are universally recommended best practices
+C) Disagree, because small projects should avoid all infrastructure beyond Positron
+D) Disagree, because the book stresses that tools add complexity and should be matched to project scope and needs
+
+**Correct Answer: D**
+
+**Explanation:** D is correct because *Marketing Analytics: A Modern Toolkit* emphasizes that “more is not always better.” Tools like Docker and CI/CD add learning costs and maintenance overhead. They are valuable for large, long-term projects but unnecessary for small, quick tasks. A is wrong because advanced tools may reduce efficiency in small projects. B is wrong because best practices must be adapted, not applied universally. C is wrong because small projects still benefit from basics like version control and folder structure.
+
+#### Q1.2 (based on chapter 2) (3P)
+
+Two thesis students disagree on environment management. One says, *“We don’t need renv; if a package updates, we’ll just install the new version.”* The other says, *“renv is essential, because without it our results may change unpredictably.”* Which evaluation best aligns with *Marketing Analytics: A Modern Toolkit*?
+
+A) The first student is right, because updating packages ensures you always use the most recent, reliable code
+B) The second student is right, because the book stresses reproducibility depends on locking package versions
+C) Both students are equally right, since package management is optional
+D) Neither is right, since reproducibility is not affected by package management
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* explains that reproducibility requires code to run the same across time and machines. Tools like renv lock package versions, avoiding “it worked then, but not now” issues. A is wrong because constant updates can break old code. C is wrong because package management is not optional for reproducibility. D is wrong because package versions directly affect whether results can be replicated.
+
+#### Q1.3 (based on chapter 2) (4P)
+
+Your marketing team is debating whether to store intermediate datasets as separate files (“raw,” “data-prep,” “analysis”) or overwrite data at each step to save storage. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate these two approaches?
+
+A) Keeping staged folders is better, because it preserves reproducibility and traceability of data transformations
+B) Overwriting is best, since it minimizes clutter and storage costs
+C) Both approaches are equally valid, since storage concerns outweigh reproducibility issues
+D) Neither approach is useful; data should always be pulled directly from the original source
+
+**Correct Answer: A**
+
+**Explanation:** A is correct because *Marketing Analytics: A Modern Toolkit* recommends staged data (“raw,” “data-prep,” “analysis”) to preserve the lineage of transformations. This ensures traceability, avoids confusion about which dataset is “correct,” and supports reproducibility. B is wrong because storage is cheap compared to the cost of lost reproducibility. C is wrong because traceability is more important than minor storage concerns. D is wrong because raw sources alone don’t provide cleaned, analysis-ready data.
+
+#### Q1.4 (based on chapter 2) (3P)
+
+A mid-sized marketing team is considering whether to rely on **local setups** or fully migrate to the **cloud**. Which evaluation best reflects the guidance in *Marketing Analytics: A Modern Toolkit*?
+
+A) Always choose local setups, because they are simpler and cheaper
+B) Always choose cloud setups, because they are modern and scalable
+C) Choose based on project demands: local for small projects and learning, cloud for scalability, collaboration, and large data
+D) Avoid mixing local and cloud, because hybrid approaches cause inconsistency
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* describes trade-offs between local and cloud setups. Local is suitable for small projects or learning, while cloud is better for large-scale, collaborative, or computationally heavy projects. Many teams use hybrid solutions. A is wrong because local alone cannot handle scalability. B is wrong because cloud is not always necessary or cost-effective. D is wrong because hybrid approaches are practical and often optimal.
+
+#### Q1.5 (based on chapter 5) (3P)
+
+A student team insists on adopting the **full Scrum framework** (Product Owner, Scrum Master, daily stand-ups, retrospectives) for their two-week class project. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate this decision?
+
+A) It is the best approach, since the full Scrum framework guarantees productivity in all projects
+B) It is necessary, because project boards and issues cannot function without formal roles
+C) It is excessive, because small analytics projects benefit more from lightweight adaptations of Scrum than from its full overhead
+D) It is inappropriate, because Scrum principles are designed only for software engineering, not analytics
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* notes that smaller analytics teams should **adapt Scrum** by using boards, issues, and short cycles rather than implementing every role and ceremony. A is wrong because there is no “one size fits all.” B is wrong because boards and issues can function informally. D is wrong because Scrum principles apply beyond software, including analytics.
+
+#### Q1.6 (based on chapter 5) (3P)
+
+A research group wants to manage their tasks using email and chat threads, arguing that “boards and issues are too much overhead.” How should this be evaluated according to *Marketing Analytics: A Modern Toolkit*?
+
+A) It is problematic, because scattering communication across multiple channels reduces transparency and reproducibility
+B) It is reasonable, since lightweight tools like email are more efficient than formal boards
+C) It is acceptable, provided that team members document progress individually in shared folders
+D) It is effective, because agile teams rely more on conversation than on written artifacts
+
+**Correct Answer: A**
+
+**Explanation:** A is correct because the book emphasizes **centralizing communication in issues and boards**, ensuring transparency, traceability, and shared understanding. B is wrong because email creates fragmentation. C is wrong because scattered folder notes lack integration. D misinterprets Agile — while conversation matters, artifacts like boards are essential for documentation and accountability.
+
+#### Q1.7 (based on chapter 5) (3P)
+
+A manager argues that **long, open-ended work phases** are better than short cycles, since they allow deeper focus without interruptions. What evaluation does *Marketing Analytics: A Modern Toolkit* suggest?
+
+A) Agree, because fewer check-ins mean less wasted time on meetings
+B) Disagree, because long cycles risk last-minute panic and reduced adaptability, whereas short cycles improve accountability and steady progress
+C) Agree, because analytics projects rarely change scope once started
+D) Disagree, because retrospectives alone are sufficient for adaptability, regardless of cycle length
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because the book highlights that **short, repeating cycles** (with regular check-ins and increments) prevent last-minute rushes, improve visibility, and keep teams adaptable. A is wrong because fewer meetings can create blind spots. C is wrong because analytics projects are dynamic. D is wrong because retrospectives without short cycles delay improvements.
+
+#### Q1.8 (based on chapter 5) (3P)
+
+A student team designs a **project board with 12 columns, dozens of labels, and complex workflows**, claiming this will maximize precision. How should their setup be evaluated in light of *Marketing Analytics: A Modern Toolkit*?
+
+A) It is optimal, since detailed boards ensure no task is ever forgotten
+B) It is risky, because over-engineering the board can make the system itself burdensome and reduce efficiency
+C) It is required, since project boards only function with highly granular categorization
+D) It is harmless, because complexity in the board does not affect collaboration outcomes
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because the book explicitly warns against **over-engineering boards**, noting that too much complexity makes them harder to use and can undermine the very efficiency they are meant to support. A is wrong because detail can overwhelm rather than help. C is wrong because simple four-column boards (backlog → to do → in progress → done) are often sufficient. D is wrong because board complexity directly influences team collaboration quality.
+
+
+## Learning Goal 2
+
+*Use Git/GitHub (or similar tools) for versioning files and collaborating on privately shared and publicly available open-source repositories.*
+
+### Exemplary question based on tutorials (24P on the exam)
+
+::: callout
+This type of question will always require you to download a Git repository to your computer. First, unzip the file and navigate to the directory using your preferred terminal (e.g., Git Bash). You will then answer questions related to the repository, either in text boxes or through multiple-choice questions directly in TestVision. Finally, you will be asked to re-zip the repository and upload it, so we can verify which commands you executed.
+
+As part of these tasks, you will need to perform a range of Git operations covered in the tutorials, such as:
+
+* Creating and switching between branches (`git branch`, `git checkout`, `git branch -l`)
+* Tracking and committing changes (`git add`, `git commit -m "commit message"`, `git status`)
+* Creating and using a `.gitignore` file
+* Rolling back changes
+* Viewing commit history (`git log`)
+* Merging branches (`git merge`)
+
+:::
+
+#### Q2.1 (24P)
+
+Please download the [`git_repository.zip`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_repository.zip) file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository by zipping the folder and uploading it here. 
+
+> Dear (name of student),
+>
+> Tilburg University is working toward publishing not only papers, but also the code that generated the results. This is a key step for open science, as it allows others to reproduce findings. In the attachment (download here), you will find a zipped Git repository of my empirical project. Admittedly, it is not very well structured (for instance, directory structures are missing), but it does include a common R file (`run.R`) that simulates demo data and ties the different parts of the project together.
+>
+> Starting from `run.R`, please apply your learnings from dPrep and submit a link to a new repository in which you:
+>
+> - Separate the workflow into individual files for the main steps of the project (e.g., simulate data, see `run.R` for ideas),  
+> - Separate source code from generated files by using dedicated folders,  
+> - Add a proper README in Markdown format (`.md` file),  
+> - Exclude files that should not be versioned by using `.gitignore`,  
+> - Remove `run.R` and replace it with a proper makefile for the project, and  
+> - Throughout the process, make frequent commits with clear commit messages.  
+>
+> I look forward to seeing your work, submitted as a clean, zipped Git repository, which you can upload below.
+
+
+**Solution:** Please [download the solution here](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_solution.zip).
+
+
+### Exemplary questions based on book (10P, 3Q on the exam)
+
+::: callout
+These questions will be based on chapter 6.
+:::
+
+#### Q2.2 (3P)
+
+A student argues that using **Git locally without GitHub** is sufficient for team projects, since Git already tracks the full history of changes. Based on *Marketing Analytics: A Modern Toolkit*, how should this claim be evaluated?
+
+A) It is correct, because Git alone provides all the functionality teams need
+B) It is partially correct, but without GitHub or similar platforms collaboration becomes cumbersome and less transparent
+C) It is wrong, because Git cannot track history without being connected to GitHub
+D) It is wrong, because GitHub is the only way to use version control effectively
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because Git can indeed track history locally, but *Marketing Analytics: A Modern Toolkit* emphasizes that platforms like GitHub add collaboration features (issues, pull requests, project boards, cloud sync) that make teamwork efficient and transparent. A is incomplete, since Git alone doesn’t scale well for collaboration. C is wrong, because Git tracks history even offline. D is wrong, because GitHub is not the only option (GitLab, Bitbucket also work).
+
+#### Q2.3 (3P)
+
+A team frequently edits files directly on the **main branch** because they feel branching “slows things down.” How should this practice be evaluated?
+
+A) It is acceptable, because small teams don’t need branching discipline
+B) It is efficient, because avoiding branches reduces unnecessary overhead
+C) It is risky, because main should remain stable while features are developed on branches
+D) It is unnecessary, because merge conflicts only happen in large projects
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* stresses that **main must remain clean and stable**. Branching isolates new work, preventing broken or experimental code from contaminating the working version. A is wrong, since even small teams benefit from branching. B is wrong because short-term speed undermines long-term stability. D is wrong because conflicts can arise in any project, regardless of size.
+
+#### Q2.4 (4P)
+
+One teammate prefers writing commit messages like “update” or “fixed stuff,” claiming that “the details are in the code anyway.” How should this be judged according to *Marketing Analytics: A Modern Toolkit*?
+
+A) It is fine, because code itself tells the full story of changes
+B) It is acceptable for small commits but not for larger ones
+C) It is required, since Git automatically adds details from diffs anyway
+D) It is problematic, because vague commit messages harm the usefulness of Git’s history for collaboration and reproducibility
+
+**Correct Answer: D**
+
+**Explanation:** D is correct because the book highlights that **clear, descriptive commit messages** are essential for making the project history understandable for teammates and your future self. A is wrong because code diffs alone are not always clear. B is wrong because even small commits should carry meaning. C is wrong because Git does not replace commit messages with diffs automatically.
+
+#### Q2.5 (3P)
+
+During setup, a student decides to skip configuring **.gitignore**, reasoning that “more files in the repository means more transparency.” How should this decision be evaluated?
+
+A) It is correct, because everything should be tracked for maximum reproducibility
+B) It is incorrect, because including temporary files, datasets, or machine-specific files clutters the repo and hinders collaboration
+C) It is acceptable, because .gitignore is only needed for very large software projects
+D) It is beneficial, because GitHub automatically filters out irrelevant files anyway
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* stresses that **.gitignore keeps repositories clean**, avoiding bloat, conflicts, and accidental sharing of irrelevant or sensitive files. A is wrong, because too much tracking reduces clarity. C is wrong, since .gitignore is critical for all project sizes. D is wrong, because GitHub does not automatically filter files.
+
+#### Q2.6 (3P)
+
+A colleague suggests skipping **pulling before starting work**, saying it “only matters if two people edit the same file at the same time.” How should this suggestion be evaluated?
+
+A) It is harmless, because conflicts can always be resolved later
+B) It is efficient, because it avoids unnecessary downloads from GitHub
+C) It is flawed, because failing to pull first risks working on outdated files and almost guarantees conflicts
+D) It is valid, because Git automatically merges any differences in the background
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because the book stresses **always pull first** to synchronize with the remote repository before starting work. This minimizes conflicts and ensures you are building on the latest version. A is wrong, since conflicts are harder to fix after the fact. B is wrong, because pulls are lightweight and prevent bigger problems. D is wrong, because Git requires manual resolution for conflicts.
+
+
+## Learning Goal 3
+
+*Use R and SQL to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, and regular expressions).*
 
 ### Exemplary question based on tutorials (20P on the exam)
 
@@ -100,7 +330,7 @@ __`netflix_data`:__
 -   `show_rating`: Average rating given to the content
 -   `viewership_count`: Number of viewers for the content
 
-#### Q1.1 (10P)
+#### Q3.1 (10P)
 
 a.  Which columns in the dataset contain missing values, and how many missing values does each column have? 
 
@@ -157,7 +387,7 @@ netflix_data <- netflix_data %>%
 
 ```
 
-#### Q1.2 (10P)
+#### Q3.2 (10P)
 
 a) Some shows belong to multiple genres which are stored in the `genre` column as comma-separated string. Use regular expressions to create a new dummy column `is_action` that is `1` if the `genre` column contains "Action" genre and 0 otherwise.
 
@@ -188,7 +418,7 @@ show_10_wide <- show_10_data %>%
   )
 ```
 
-#### Q1.3 (10P)
+#### Q3.3 (10P)
 
 a) For one country, estimate a regression of viewership_count on a dummy variable, set to 1 if the show is listed in the "Action" genre.
 
@@ -199,7 +429,7 @@ c) Save the combined results from (b) as regression_results.csv.
 **Solution:**
 
 ```         
-library(tidyve)
+library(tidyverse)
 library(ggplot2)
 
 countries <- unique(netflix_data$viewership_country)
@@ -236,7 +466,7 @@ write_csv(effect_sizes, 'regression_results.csv')
 Questions based on book, chapter 7.
 :::
 
-#### Q1.4 (4P)
+#### Q3.4 (4P)
 
 You are tasked with building a dataset to study the **effect of advertising on customer churn**. Which of the following dataset designs would best synthesize the principles described in *Marketing Analytics: A Modern Toolkit*?
 
@@ -254,7 +484,7 @@ D)  One row per region per month with variables for average basket size and aver
 -   C is incorrect because daily customer-level data introduces unnecessary noise, and churn is not measured at the daily level.
 -   D is incorrect because region–month aggregation ignores individual-level churn dynamics.
 
-#### Q1.5 (4P)
+#### Q3.5 (4P)
 
 You discover that your marketing dataset contains missing user IDs, duplicate transactions, and inconsistent date formats. Which **sequence of operations** reflects a sound data engineering workflow consistent with *Marketing Analytics: A Modern Toolkit*?
 
@@ -272,7 +502,7 @@ D)  Reshape → Clean → Aggregate → Merge
 -   C merges too early, propagating inconsistencies.
 -   D reshapes before cleaning, which contradicts the principle of first ensuring validity and consistency.
 
-#### Q1.6 (4P)
+#### Q3.6 (4P)
 
 Imagine you need the same dataset for both a **regression model** and a **marketing dashboard**. How should you structure and prepare the data to meet both needs?
 
@@ -290,7 +520,7 @@ D)  Prepare a core dataset at the correct unit of analysis, and reshape into lon
 -   B is incorrect because regressions usually expect long data.
 -   C is inefficient and risks divergence across duplicated datasets, which the book warns against.
 
-#### Q1.7 (4P)
+#### Q3.7 (4P)
 
 You are asked to recommend a **data platform strategy** for a firm with diverse marketing data: structured transactions, semi-structured web logs, and terabytes of ad impression data. Which option best reflects the trade-offs described in *Marketing Analytics: A Modern Toolkit*?
 
@@ -308,241 +538,14 @@ D)  Use relational databases for structured data, NoSQL systems for semi-structu
 -   B is too broad, as NoSQL sacrifices consistency and standardization.
 -   C ignores the book’s caution about matching platforms to context, not just scale.
 
-## Learning Goal 2
-
-*Use GitHub for managing empirical research projects (e.g., GitHub Issues and Project Boards)*
-
-### Exemplary question based on book (12P on the exam)
-
-::: callout
-These questions will be based on chapters 2 and 5.
-:::
-
-#### Q2.1 (based on chapter 2) (3P)
-
-A student argues that every project should include **Docker, CI/CD pipelines, and a cloud warehouse** because “more tools always make a project better.” Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate this claim?
-
-A) Agree, because advanced tools always increase efficiency regardless of project size
-B) Agree, because cloud and automation are universally recommended best practices
-C) Disagree, because small projects should avoid all infrastructure beyond Positron
-D) Disagree, because the book stresses that tools add complexity and should be matched to project scope and needs
-
-**Correct Answer: D**
-
-**Explanation:** D is correct because *Marketing Analytics: A Modern Toolkit* emphasizes that “more is not always better.” Tools like Docker and CI/CD add learning costs and maintenance overhead. They are valuable for large, long-term projects but unnecessary for small, quick tasks. A is wrong because advanced tools may reduce efficiency in small projects. B is wrong because best practices must be adapted, not applied universally. C is wrong because small projects still benefit from basics like version control and folder structure.
-
-#### Q2.2 (based on chapter 2) (3P)
-
-Two thesis students disagree on environment management. One says, *“We don’t need renv; if a package updates, we’ll just install the new version.”* The other says, *“renv is essential, because without it our results may change unpredictably.”* Which evaluation best aligns with *Marketing Analytics: A Modern Toolkit*?
-
-A) The first student is right, because updating packages ensures you always use the most recent, reliable code
-B) The second student is right, because the book stresses reproducibility depends on locking package versions
-C) Both students are equally right, since package management is optional
-D) Neither is right, since reproducibility is not affected by package management
-
-**Correct Answer: B**
-
-**Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* explains that reproducibility requires code to run the same across time and machines. Tools like renv lock package versions, avoiding “it worked then, but not now” issues. A is wrong because constant updates can break old code. C is wrong because package management is not optional for reproducibility. D is wrong because package versions directly affect whether results can be replicated.
-
-#### Q2.3 (based on chapter 2) (3P)
-
-Your marketing team is debating whether to store intermediate datasets as separate files (“raw,” “data-prep,” “analysis”) or overwrite data at each step to save storage. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate these two approaches?
-
-A) Keeping staged folders is better, because it preserves reproducibility and traceability of data transformations
-B) Overwriting is best, since it minimizes clutter and storage costs
-C) Both approaches are equally valid, since storage concerns outweigh reproducibility issues
-D) Neither approach is useful; data should always be pulled directly from the original source
-
-**Correct Answer: A**
-
-**Explanation:** A is correct because *Marketing Analytics: A Modern Toolkit* recommends staged data (“raw,” “data-prep,” “analysis”) to preserve the lineage of transformations. This ensures traceability, avoids confusion about which dataset is “correct,” and supports reproducibility. B is wrong because storage is cheap compared to the cost of lost reproducibility. C is wrong because traceability is more important than minor storage concerns. D is wrong because raw sources alone don’t provide cleaned, analysis-ready data.
-
-#### Q2.4 (based on chapter 2) (3P)
-
-A mid-sized marketing team is considering whether to rely on **local setups** or fully migrate to the **cloud**. Which evaluation best reflects the guidance in *Marketing Analytics: A Modern Toolkit*?
-
-A) Always choose local setups, because they are simpler and cheaper
-B) Always choose cloud setups, because they are modern and scalable
-C) Choose based on project demands: local for small projects and learning, cloud for scalability, collaboration, and large data
-D) Avoid mixing local and cloud, because hybrid approaches cause inconsistency
-
-**Correct Answer: C**
-
-**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* describes trade-offs between local and cloud setups. Local is suitable for small projects or learning, while cloud is better for large-scale, collaborative, or computationally heavy projects. Many teams use hybrid solutions. A is wrong because local alone cannot handle scalability. B is wrong because cloud is not always necessary or cost-effective. D is wrong because hybrid approaches are practical and often optimal.
-
-#### Q2.5 (based on chapter 5) (3P)
-
-A student team insists on adopting the **full Scrum framework** (Product Owner, Scrum Master, daily stand-ups, retrospectives) for their two-week class project. Based on *Marketing Analytics: A Modern Toolkit*, how should you evaluate this decision?
-
-A) It is the best approach, since the full Scrum framework guarantees productivity in all projects
-B) It is necessary, because project boards and issues cannot function without formal roles
-C) It is excessive, because small analytics projects benefit more from lightweight adaptations of Scrum than from its full overhead
-D) It is inappropriate, because Scrum principles are designed only for software engineering, not analytics
-
-**Correct Answer: C**
-
-**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* notes that smaller analytics teams should **adapt Scrum** by using boards, issues, and short cycles rather than implementing every role and ceremony. A is wrong because there is no “one size fits all.” B is wrong because boards and issues can function informally. D is wrong because Scrum principles apply beyond software, including analytics.
-
-#### Q2.6 (based on chapter 5) (3P)
-
-A research group wants to manage their tasks using email and chat threads, arguing that “boards and issues are too much overhead.” How should this be evaluated according to *Marketing Analytics: A Modern Toolkit*?
-
-A) It is problematic, because scattering communication across multiple channels reduces transparency and reproducibility
-B) It is reasonable, since lightweight tools like email are more efficient than formal boards
-C) It is acceptable, provided that team members document progress individually in shared folders
-D) It is effective, because agile teams rely more on conversation than on written artifacts
-
-**Correct Answer: A**
-
-**Explanation:** A is correct because the book emphasizes **centralizing communication in issues and boards**, ensuring transparency, traceability, and shared understanding. B is wrong because email creates fragmentation. C is wrong because scattered folder notes lack integration. D misinterprets Agile — while conversation matters, artifacts like boards are essential for documentation and accountability.
-
-#### Q2.7 (based on chapter 5) (3P)
-
-A manager argues that **long, open-ended work phases** are better than short cycles, since they allow deeper focus without interruptions. What evaluation does *Marketing Analytics: A Modern Toolkit* suggest?
-
-A) Agree, because fewer check-ins mean less wasted time on meetings
-B) Disagree, because long cycles risk last-minute panic and reduced adaptability, whereas short cycles improve accountability and steady progress
-C) Agree, because analytics projects rarely change scope once started
-D) Disagree, because retrospectives alone are sufficient for adaptability, regardless of cycle length
-
-**Correct Answer: B**
-
-**Explanation:** B is correct because the book highlights that **short, repeating cycles** (with regular check-ins and increments) prevent last-minute rushes, improve visibility, and keep teams adaptable. A is wrong because fewer meetings can create blind spots. C is wrong because analytics projects are dynamic. D is wrong because retrospectives without short cycles delay improvements.
-
-#### Q2.8 (based on chapter 5) (3P)
-
-A student team designs a **project board with 12 columns, dozens of labels, and complex workflows**, claiming this will maximize precision. How should their setup be evaluated in light of *Marketing Analytics: A Modern Toolkit*?
-
-A) It is optimal, since detailed boards ensure no task is ever forgotten
-B) It is risky, because over-engineering the board can make the system itself burdensome and reduce efficiency
-C) It is required, since project boards only function with highly granular categorization
-D) It is harmless, because complexity in the board does not affect collaboration outcomes
-
-**Correct Answer: B**
-
-**Explanation:** B is correct because the book explicitly warns against **over-engineering boards**, noting that too much complexity makes them harder to use and can undermine the very efficiency they are meant to support. A is wrong because detail can overwhelm rather than help. C is wrong because simple four-column boards (backlog → to do → in progress → done) are often sufficient. D is wrong because board complexity directly influences team collaboration quality.
-
-
-## Learning Goal 3
-
-*Use Git/GitHub for versioning files and collaborating on privately-shared and publicly-available (open science) GitHub repositories*
-
-### Exemplary question based on tutorials (24P on the exam)
-
-::: callout
-This type of question will always require you to download a Git repository to your computer. First, unzip the file and navigate to the directory using your preferred terminal (e.g., Git Bash). You will then answer questions related to the repository, either in text boxes or through multiple-choice questions directly in TestVision. Finally, you will be asked to re-zip the repository and upload it, so we can verify which commands you executed.
-
-As part of these tasks, you will need to perform a range of Git operations covered in the tutorials, such as:
-
-* Creating and switching between branches (`git branch`, `git checkout`, `git branch -l`)
-* Tracking and committing changes (`git add`, `git commit -m "commit message"`, `git status`)
-* Creating and using a `.gitignore` file
-* Rolling back changes
-* Viewing commit history (`git log`)
-* Merging branches (`git merge`)
-
-:::
-
-#### Q3.1 (24P)
-
-Please download the [`git_repository.zip`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_repository.zip) file from the exam cover page and unzip it to a folder on this computer. Open this folder using Git Bash. Imagine you are a research assistant at Tilburg University, and you receive the following email from your project supervisor. Please submit your Git repository, by zipping the folder and uploading it here. 
-
-> Dear (name of student),
->
-> Tilburg University is working toward publishing not only papers, but also the code that generated the results. This is a key step for open science, as it allows others to reproduce findings. In the attachment (download here), you will find a zipped Git repository of my empirical project. Admittedly, it is not very well structured (for instance, directory structures are missing), but it does include a common R file (`run.R`) that simulates demo data and ties the different parts of the project together.
->
-> Starting from `run.R`, please apply your learnings from dPrep and submit a link to a new repository in which you:
->
-> - Separate the workflow into individual files for the main steps of the project (e.g., simulate data, see `run.R` for ideas),  
-> - Separate source code from generated files by using dedicated folders,  
-> - Add a proper README in Markdown format (`.md` file),  
-> - Exclude files that should not be versioned by using `.gitignore`,  
-> - Remove `run.R` and replace it with a proper makefile for the project, and  
-> - Throughout the process, make frequent commits with clear commit messages.  
->
-> I look forward to seeing your work, submitted as a clean, zipped Git repository, which you can upload below.
-
-
-**Solution:** Please [download the solution here](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_git/git_solution.zip).
-
-
-### Exemplary question based on book (12P on the exam)
-
-::: callout
-These questions will be based on chapter 6.
-:::
-
-#### Q3.2 (3P)
-
-A student argues that using **Git locally without GitHub** is sufficient for team projects, since Git already tracks the full history of changes. Based on *Marketing Analytics: A Modern Toolkit*, how should this claim be evaluated?
-
-A) It is correct, because Git alone provides all the functionality teams need
-B) It is partially correct, but without GitHub or similar platforms collaboration becomes cumbersome and less transparent
-C) It is wrong, because Git cannot track history without being connected to GitHub
-D) It is wrong, because GitHub is the only way to use version control effectively
-
-**Correct Answer: B**
-
-**Explanation:** B is correct because Git can indeed track history locally, but *Marketing Analytics: A Modern Toolkit* emphasizes that platforms like GitHub add collaboration features (issues, pull requests, project boards, cloud sync) that make teamwork efficient and transparent. A is incomplete, since Git alone doesn’t scale well for collaboration. C is wrong, because Git tracks history even offline. D is wrong, because GitHub is not the only option (GitLab, Bitbucket also work).
-
-#### Q3.3 (3P)
-
-A team frequently edits files directly on the **main branch** because they feel branching “slows things down.” How should this practice be evaluated?
-
-A) It is acceptable, because small teams don’t need branching discipline
-B) It is efficient, because avoiding branches reduces unnecessary overhead
-C) It is risky, because main should remain stable while features are developed on branches
-D) It is unnecessary, because merge conflicts only happen in large projects
-
-**Correct Answer: C**
-
-**Explanation:** C is correct because *Marketing Analytics: A Modern Toolkit* stresses that **main must remain clean and stable**. Branching isolates new work, preventing broken or experimental code from contaminating the working version. A is wrong, since even small teams benefit from branching. B is wrong because short-term speed undermines long-term stability. D is wrong because conflicts can arise in any project, regardless of size.
-
-#### Q3.4 (3P)
-
-One teammate prefers writing commit messages like “update” or “fixed stuff,” claiming that “the details are in the code anyway.” How should this be judged according to *Marketing Analytics: A Modern Toolkit*?
-
-A) It is fine, because code itself tells the full story of changes
-B) It is acceptable for small commits but not for larger ones
-C) It is required, since Git automatically adds details from diffs anyway
-D) It is problematic, because vague commit messages harm the usefulness of Git’s history for collaboration and reproducibility
-
-**Correct Answer: D**
-
-**Explanation:** D is correct because the book highlights that **clear, descriptive commit messages** are essential for making the project history understandable for teammates and your future self. A is wrong because code diffs alone are not always clear. B is wrong because even small commits should carry meaning. C is wrong because Git does not replace commit messages with diffs automatically.
-
-#### Q3.5 (3P)
-
-During setup, a student decides to skip configuring **.gitignore**, reasoning that “more files in the repository means more transparency.” How should this decision be evaluated?
-
-A) It is correct, because everything should be tracked for maximum reproducibility
-B) It is incorrect, because including temporary files, datasets, or machine-specific files clutters the repo and hinders collaboration
-C) It is acceptable, because .gitignore is only needed for very large software projects
-D) It is beneficial, because GitHub automatically filters out irrelevant files anyway
-
-**Correct Answer: B**
-
-**Explanation:** B is correct because *Marketing Analytics: A Modern Toolkit* stresses that **.gitignore keeps repositories clean**, avoiding bloat, conflicts, and accidental sharing of irrelevant or sensitive files. A is wrong, because too much tracking reduces clarity. C is wrong, since .gitignore is critical for all project sizes. D is wrong, because GitHub does not automatically filter files.
-
-#### Q3.6 (3P)
-
-A colleague suggests skipping **pulling before starting work**, saying it “only matters if two people edit the same file at the same time.” How should this suggestion be evaluated?
-
-A) It is harmless, because conflicts can always be resolved later
-B) It is efficient, because it avoids unnecessary downloads from GitHub
-C) It is flawed, because failing to pull first risks working on outdated files and almost guarantees conflicts
-D) It is valid, because Git automatically merges any differences in the background
-
-**Correct Answer: C**
-
-**Explanation:** C is correct because the book stresses **always pull first** to synchronize with the remote repository before starting work. This minimizes conflicts and ensures you are building on the latest version. A is wrong, since conflicts are harder to fix after the fact. B is wrong, because pulls are lightweight and prevent bigger problems. D is wrong, because Git requires manual resolution for conflicts.
 
 
 ## Learning Goal 4
 
-*Use R for generating automatic reports (e.g., to assess data quality, to report research findings in a paper) and deploying research findings in novel ways (e.g., apps)*
+*Use R to generate automated reports and dynamic dashboards (e.g., for assessing data quality or reporting research findings).*
 
-### Exemplary questions based on tutorial (10P)
+
+### Exemplary questions based on tutorial (12P)
 
 ::: callout
 In this type of exam question, you will create an **RMarkdown document** in Positron and submit it as a **rendered PDF** with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with `ggplot2`. 
@@ -677,9 +680,9 @@ D) Neither, because reproducibility depends only on statistical modeling
 
 ## Learning Goal 5
 
-*Use Workflow Management Tools to create and run portable, automated, and reproducible research pipelines*
+*Use workflow-management tools to create and run portable, automated, and reproducible data pipelines.*
 
-### Exemplary question based on tutorial (24P)
+### Exemplary question based on tutorials/project (18P)
 
 ::: callout
 In this type of question, you will work with **automation using `make`**, based on the `make` tutorial in the course. Typical tasks include:
@@ -696,15 +699,15 @@ Recall to use `make` and `make -n` to run (or preview) workflows.
 
 :::
 
-#### Q5.1 (24P)
+#### Q5.1 (18P)
 
 Please [download and unzip the research pipeline](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_make/practice_workflow.zip) of an empirical project and answer the following questions. To receive points on this question, you need to zip and upload the updated research pipeline for grading. 
 
-Q5.1a) Please run make as is. Then, fix any errors that prevents make from knowing it is "up-to-date" (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (5P).
+Q5.1a) Please run make as is. Then, fix any errors that prevents make from knowing it is "up-to-date" (i.e., make may have built the entire project, but continues to re-execute the workflow even if run successfully) (4P).
 
 Q5.1b) The make pipeline is not properly configured (i.e., one call to all scripts, rather than subsequent "built recipes" that tie all source code files together). Please fix the makefile such that the entire project is being built and that all dependencies are correctly defined. (10P)
 
-Q5.1c) You may recall the value of creating subdirectories to structure your project. Create the necessary subdirectories and update your makefile so that it works on this new directory structure. (5P)
+Q5.1c) You may recall the value of creating subdirectories to structure your project. Create the necessary subdirectories and update your makefile so that it works on this new directory structure. (4P)
 
 **Requirements/tips:**
 
@@ -888,6 +891,30 @@ D) They make pipelines less reproducible by adding unnecessary complexity
 
 **Explanation:** The book highlights how these tools **complement each other**: workflow managers for structure and visualization, Docker for portability, and CI/CD for automatic execution and deployment. Together, they professionalize pipelines and scale them across teams.
 
+## Learning Goal 6
+
+*Critically assess when the use of large language models and software agents is appropriate, and use them effectively and responsibly through clear prompting, task specification, and verification of outputs.*
+
+### Exemplary question based on tutorials/project (X)
+
+#### Q6.1 (chapter X) (2P)
+
+tbd
+
+#### Q6.2 (chapter X) (2P)
+
+tbd
+
+### Exemplary questions based on book (XP on the exam)
+
+#### Q6.3 (chapter X) (2P)
+
+tbd
+
+#### Q6.4 (chapter X) (2P)
+
+tbd
+
 \newpage
 
 # Preparing for the exam
@@ -908,7 +935,7 @@ Students are advised to prepare one **collective cheatsheet** in Google Docs. On
 
 - [Link to Google Docs](https://docs.google.com/document/d/1nLEkypEmP3dTkljidmAiGmHptm0Bfe44LnwaYUnkdnU/edit?usp=sharing) (please use your Tilburg University email address to log in)
 - Page limit: 50 pages
-- Deadline to make your changes: 25 March 2026, 10am
+- Deadline to make your changes: XXXX <!--25 March 2026, 10am-->
 
 ::: callout
 The instructor will review the document, make changes where required, and add it to the Cheatsheets.
