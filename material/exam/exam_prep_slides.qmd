@@ -1,6 +1,6 @@
 ---
 title: "Exam preparation (week 6)"
-subtitle: "Data Preparation and Programming Skills (2025/2026)"
+subtitle: "Data Preparation and Programming Skills (2026/2027)"
 author: "Hannes Datta"
 date: "last-modified"
 format: 
@@ -20,19 +20,21 @@ format:
 
 ## Exam Setup
 
-- 120-minute on-campus computer exam (328059-M-6; any students taking the resit for 328059-M-3, 180 minutes?)
+- 120-minute on-campus computer exam (course code 328059-M-6)
   - Mix of open and closed questions (e.g., multiple-choice, ranking (e.g., from low to high, high to low), matching items)
-  - 120 points total (~1 point per minute), 18 questions
+  - 120 points total (~1 point per minute)
 - Closed-book exam
   - no internet access
-  - cheat sheets allowed (details will follow)
-- Four exam dates per academic year in block 1 & block 3 (max two attempts per academic year)
+  - selected cheat sheets will be available from the exam introduction page
+  - no other resources or communication tools are allowed
+- Do not include your name or student number in submitted files unless explicitly asked (anonymous grading)
+- Four exam dates per academic year (maximum two attempts per academic year)
 
 ## Cognitive skills assessed on the exam
 
 - Questions aligned with learning goals (tutorials + [dPrep book](https://dprep-book.hannesdatta.com))
 - Bloom’s Taxonomy of Learning Objectives
-  - Comprehension: Recall key concepts and demonstrate understanding
+  - Knowledge & Comprehension: Recall key concepts and demonstrate understanding
   - Application: Use techniques to solve new problems
   - Analysis: Break down and solve complex tasks (e.g., using datasets, workflows)
   - Evaluation: Critically judge suitability of approaches or compare solutions
@@ -40,27 +42,35 @@ format:
 
 ## Overview of Questions
 
-| LG                          | Tutorial  | Book |
-|-----------------------------|--------|-------|
-| Use R for data cleaning     | 2x 10P          | 4P (1Q), ch. 7  |
-| Use GitHub for project mgmt | -            | 12P (4Q), ch. 2, 5 |
-| Use Git/GitHub for versioning| 24P          | 12P (4Q), ch. 6 |
-| Use R for automatic reports | 12P          | 6P (2Q), ch. 4 |
-| Use Workflow Mgmt Tools      | 24P          | 6P (2Q), ch. 3, 8 |
+| LG | Learning goal | Tutorials/project | Book |
+|----|---------------|-------------------|------|
+| 1 | GitHub for empirical project management | — | 10P (3Q), ch. 2, 5 |
+| 2 | Git/GitHub versioning and collaboration | 24P (1Q) | 10P (3Q), ch. 6 |
+| 3 | R and SQL for data cleaning and transformation | 20P (2Q) | 4P (1Q), ch. 7 |
+| 4 | R for automated reports | 12P | 6P (2Q), ch. 4 |
+| 5 | Workflow-management tools | 18P | 6P (2Q), ch. 3, 8 |
+| 6 | LLMs and software agents | 6P (1Q) | 4P (2Q), ch. 9 |
 
 # Preparing for the Exam
 
 ## Technical Tips
 
 - **Be familiar with your exam environment**:
-  - Practice using **Windows**, Positron, and the command prompt (__not__ PowerShell; ideally Anaconda Prompt, sometimes GitBash).
+  - Practice using **Windows**, RStudio, and the command prompt.
 - **Know how to manage files and directories**:
-  - Organize files by question in local folders (e.g., `C:\Users\<YOUR-U-NUMBER>\Downloads`).
+  - Store data locally (not on a network drive) and organize files by question (e.g., in `C:\Users\<YOUR-U-NUMBER>\Downloads`).
   - Know how to load `.RData` files (`load('downloaded_data.RData')`).
   - Zip entire Git repositories before uploading.
+
+## Technical Tips (continued)
+
 - **Make sure to know the basics of code management**:
-  - Set working directories in Positron via `Session → Set Working Directory → To Source File Location`.
-  - Revise code for clean (top-down!) execution. No useless code.
+  - Set working directories in RStudio via `Session → Set Working Directory → To Source File Location`.
+  - Revise code so it runs cleanly from top to bottom.
+  - Do not include your name or student number in files, folders, or code.
+- **Prepare for offline work**:
+  - Practice installing packages locally; internet access will not be available during the exam.
+  - Open required software and set working directories before the exam begins.
 
 ## Familiarize yourself with TestVision
 
@@ -71,7 +81,7 @@ format:
   - get a general understanding of how TestVision works
   
 ::: callout
-- Please take the **technical practice exam**, which you can access *once* via [https://tiu.nu/testvision](https://tiu.nu/testvision).
+- Please take the **technical practice exam**; a link will be shared on Canvas.
 - Please explore [TestVision’s generic practice exam](https://oefentoetsen.testvision.nl/online/fe/login_ot.htm?campagne=tlb_demo_eng&taal=2).
 :::
 
@@ -83,8 +93,8 @@ zip))
 - **One collective cheatsheet**
   - Drafted collaboratively in Google Docs, reviewed by the instructor, and shared as PDF.
   - [Link to the document](https://docs.google.com/document/d/1nLEkypEmP3dTkljidmAiGmHptm0Bfe44LnwaYUnkdnU/edit?usp=sharing)
-  - Deadline to make your changes: 25 March 2026, 10am.
-  - Page limit: 50 pages. Only one tab. 
+  - Deadline to make your changes: 8 October 2026.
+  - Page limit: 50 pages.
   - I will review the document, make changes where required, and add it to the cheatsheets.
 
 ## TestVision’s Introduction Page

@@ -83,7 +83,7 @@ A student argues that every project should include **Docker, CI/CD pipelines, an
 
 A) Agree, because advanced tools always increase efficiency regardless of project size
 B) Agree, because cloud and automation are universally recommended best practices
-C) Disagree, because small projects should avoid all infrastructure beyond Positron
+C) Disagree, because small projects should avoid all infrastructure beyond RStudio
 D) Disagree, because the book stresses that tools add complexity and should be matched to project scope and needs
 
 **Correct Answer: D**
@@ -550,7 +550,7 @@ D)  Use relational databases for structured data, NoSQL systems for semi-structu
 ### Exemplary questions based on tutorials/project (12P)
 
 ::: callout
-In this type of exam question, you will create an **RMarkdown document** in Positron and submit it as a **rendered PDF** with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with `ggplot2`. 
+In this type of exam question, you will create an **RMarkdown document** in RStudio and submit it as a **rendered PDF** with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with `ggplot2`. 
 
 The aim is to assess not only whether you can recall commands, but whether you can structure and document a small data workflow in a clear and reproducible way.
 :::
@@ -608,7 +608,7 @@ According to *Marketing Analytics: A Modern Toolkit*, what is the main risk of w
 
 A) Clever code usually runs more slowly
 B) Clever code makes debugging impossible in R
-C) Clever code cannot be executed outside Positron
+C) Clever code cannot be executed outside RStudio
 D) Clever code is harder for collaborators to understand, maintain, and extend
 
 **Correct Answer: D**
@@ -715,7 +715,7 @@ Q5.1c) You may recall the value of creating subdirectories to structure your pro
 
 - Recall make is always executing the "first" recipe it encounters.
 - If you need to create new directories from within R, you can use `dir.create('directory_name')`.
-- Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in Positron, it may happen that some of the installed packages cannot be found.
+- Please use the Windows Command Prompt or Anaconda Prompt to run R or make from the command prompt. When using the command prompt through the terminal in RStudio, it may happen that some of the installed packages cannot be found.
 
 **Solutions:**
 
@@ -897,7 +897,7 @@ D) They make pipelines less reproducible by adding unnecessary complexity
 
 *Critically assess when the use of large language models and software agents is appropriate, and use them effectively and responsibly through clear prompting, task specification, and verification of outputs.*
 
-### Exemplary question based on tutorials/project (X)
+### Exemplary question based on tutorials/project (4P)
 
 #### Q6.1 (chapter X) (2P)
 
@@ -985,7 +985,7 @@ Students are advised to prepare one **collective cheatsheet** in Google Docs. On
 
 - [Link to Google Docs](https://docs.google.com/document/d/1nLEkypEmP3dTkljidmAiGmHptm0Bfe44LnwaYUnkdnU/edit?usp=sharing) (please use your Tilburg University email address to log in)
 - Page limit: 50 pages
-- Deadline to make your changes: XXXX <!--25 March 2026, 10am-->
+- Deadline to make your changes: 8 October 2026
 
 ::: callout
 The instructor will review the document, make changes where required, and add it to the Cheatsheets.
@@ -1021,7 +1021,7 @@ The exact cover page for this year’s exam will be made available on Canvas in 
 
 ## Technical Tips & Beyond
 
-* **Get familiar with the exam environment**: practice using Windows, opening Positron, navigating with the command prompt, and setting working directories.
+* **Get familiar with the exam environment**: practice using Windows, opening RStudio, navigating with the command prompt, and setting working directories.
 * **Know how to zip and unzip files** so you can upload or submit repositories without issues.
 * **Use and prepare cheatsheets**:
   * Official R, make, and Git cheatsheets will be provided (previous versions can be downloaded [here](https://tilburgsciencehub.com/cheatsheets)).
@@ -1039,7 +1039,7 @@ The exact cover page for this year’s exam will be made available on Canvas in 
 * **Local package installation**:
   * Practice installing packages locally, since internet access will not be available.
   * Test with [test-package-installation.zip](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/test-package-installation.zip): unzip and run `RScript install_packages.R` from the correct directory.
-* **Save time on exam day**: before the exam officially starts, open the required software (e.g., Positron, Jupyter Notebook) and set working directories so you can begin immediately.
+* **Save time on exam day**: before the exam officially starts, open the required software (e.g., RStudio, Jupyter Notebook) and set working directories so you can begin immediately.
 
 \newpage
 
