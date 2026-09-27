@@ -897,15 +897,51 @@ D) They make pipelines less reproducible by adding unnecessary complexity
 
 *Critically assess when the use of large language models and software agents is appropriate, and use them effectively and responsibly through clear prompting, task specification, and verification of outputs.*
 
-### Exemplary question based on tutorials/project (4P)
+### Exemplary questions based on tutorials/project (6P on the exam)
 
-#### Q6.1 (chapter X) (2P)
+::: callout
+The exam includes one 6P question based on tutorials/project. Q6.1 and Q6.2 are illustrative alternatives; each is a 6P question.
+:::
 
-tbd
+#### Q6.1 (6P)
 
-#### Q6.2 (chapter X) (2P)
+You are using Tilly to create a plot from `sample_video_view.csv`. Each row represents one video; the file contains `video_id`, `creator_id`, `impressions_n`, and `watch_rate`. Your first prompt is: *“Make a useful plot from this video data.”* Tilly returns code that refers to a column named `views`, which is not in the file, and does not say how it handles missing `watch_rate` values.
 
-tbd
+Rewrite the prompt you would send to Tilly. Specify the intended plot and audience, use the available data correctly, state how missing values should be handled, and request at least one check of the result.
+
+**Model answer:**
+
+> I am exploring video reach and engagement for a general audience. Each row in `sample_video_view.csv` is one video. Use the existing columns `impressions_n` and `watch_rate` to create a `ggplot2` scatterplot, with impressions on the x-axis and watch rate on the y-axis. Add a clear title and axis labels. Do not invent variables or make causal claims. Do not impute missing watch rates; report how many rows have missing `watch_rate` and how the plot handles them. Return runnable R code and a short explanation. Include a check that confirms the code uses the specified columns and reports the number of rows omitted from the plot.
+
+**Scoring guide (6P):**
+
+- **1P:** States the unit of analysis (one row per video) and uses the actual columns.
+- **1P:** Specifies the intended comparison and plot type.
+- **1P:** Identifies an appropriate audience and requests clear labels.
+- **1P:** Tells Tilly not to invent variables or make unsupported causal claims.
+- **1P:** Gives an explicit rule for handling missing `watch_rate` values.
+- **1P:** Requests runnable output and a concrete check of the result.
+
+#### Q6.2 (6P)
+
+You ask a coding agent to automate an existing project. Its stages are: `src/export_table.R` exports two CSV files from the SQLite database; `src/build_creator_summary.R` combines them into a summary; and `report.qmd` uses that summary to create `output/report.html`. Before editing any files, the agent proposes adding Docker and CI, reorganizing the scripts, and replacing the report with a new framework.
+
+What is the best next action? Write a concise follow-up instruction to the agent that brings the task back within scope, and state how you would verify the resulting Makefile before accepting it.
+
+**Model answer:**
+
+> Do not implement the current plan. Create a small Makefile in the project root using the existing scripts and report. Define `all` to build `output/report.html`, with dependencies connecting the two CSV exports to the creator summary and then to the report. Add a `clean` target that removes generated CSVs and the rendered report, but never the SQLite database or source files. Do not add Docker, CI, packages, scripts, or other targets. First explain each target, prerequisite, and command in plain language and wait for my approval before editing. Edit only the Makefile, then explain the resulting rules.
+
+> Before accepting it, run `make -n` and check the planned dependency order; run `make` and confirm the expected outputs are created; run `make` again and confirm no unnecessary rebuild occurs; then run `make clean` and verify that only generated outputs are removed.
+
+**Scoring guide (6P):**
+
+- **1P:** Does not approve or execute the overbroad plan as written.
+- **1P:** Limits changes to the Makefile and preserves the existing scripts and report.
+- **1P:** Specifies the correct export → summary → report dependency chain.
+- **1P:** Defines a bounded `clean` target that preserves source files and the database.
+- **1P:** Requires the agent to explain its proposed or completed rules in understandable terms.
+- **1P:** Gives an independent verification sequence, including `make -n`, a build, and a clean/rebuild check.
 
 ### Exemplary questions based on book (4P on the exam)
 
