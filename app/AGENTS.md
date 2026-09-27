@@ -43,7 +43,16 @@ code-quest/
 └── lessons/
     ├── shell.js               # macOS + Windows shell lesson pack
     ├── r-basics.js            # basic R lesson pack
+    ├── r-file-setup.js        # working-directory practice
+    ├── r-csv-inspection.js    # CSV loading and inspection
     ├── r-data-plots.js        # R data + plotting lesson pack
+    ├── r-ggplot.js            # ggplot introduction
+    ├── r-joins.js             # table joins
+    ├── make-week3.js          # introductory Make rule
+    ├── make-week5.js          # multiple targets and dependencies
+    ├── r-week5-wrangling.js   # text and reshape previews
+    ├── sql-week5.js          # SQL retrieval preview
+    ├── week6-ai.js           # prompting and agent MC review
     ├── git.js                 # Git workflow/branching lesson pack
     └── sql.js                 # SQL lesson pack
 ```
@@ -98,6 +107,10 @@ Typical mission fields:
 
 Prefer **outcome-based checkers** over exact string matching. If two different commands correctly solve the task, both should normally pass.
 
+Lesson packs may set optional `workspace` labels (`title`, `subtitle`, `prompt`, `stateTitle`, `stateSubtitle`, `placeholder`, and `documentLabel`) to reuse the Markdown text editor for short written responses.
+
+Choice missions use `mode: 'choice'`, a `question`, and `choices` with `text`, optional `correct: true`, and learner-facing `feedback`. Choice options are clickable, incorrect answers can be retried, and a correct answer awards XP and unlocks the next mission.
+
 ## Infrastructure changes
 
 Infrastructure changes are appropriate only when required by lesson functionality. Examples:
@@ -106,6 +119,8 @@ Infrastructure changes are appropriate only when required by lesson functionalit
 - implementing a new SQL feature such as `JOIN`
 - implementing Git conflicts, rebasing, remotes, or tags
 - supporting a new plot type
+- supporting a new R command such as `getwd()`, `read_csv()`, `left_join()`, or `pivot_wider()`
+- simulating basic Makefile dependency graphs and `make -n`
 - moving from the mock R interpreter to webR
 - adding persistence or LMS integration
 
@@ -116,6 +131,8 @@ When infrastructure must change:
 3. Put lesson-specific content in `lessons/`, not in `engine.js`.
 4. Test all existing lesson packs after the change.
 5. Document any new mission fields or engine capabilities here and in `README.md`.
+
+The current mock workspace simulates a small project directory and CSV for Week 1 file/data-loading practice, supports a limited set of joins and reshaping for later R quests, and simulates Make dependency planning without executing recipe commands. Make recipes accept a tab or three spaces as indentation in the simulator. SQL workspaces may provide small in-memory tables per lesson pack; they do not connect to SQLite files.
 
 ## Instructor-view flag
 

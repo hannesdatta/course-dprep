@@ -19,6 +19,7 @@
     table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--border)}.result{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff;overflow:auto}.hidden{display:none!important}.ok{color:var(--ok)}
     pre{white-space:pre-wrap;overflow-wrap:anywhere}.inventory-item{border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:.88rem}.actions{display:flex;flex-wrap:wrap;gap:8px}
     .reading-pane{line-height:1.45}.reading-pane p{margin:.45rem 0}.reading-pane ul{margin:.45rem 0 .45rem 1.1rem;padding:0}.reading-pane code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f4f6;padding:1px 5px;border-radius:6px}
+    .choice-scenario{background:#f3f4f6;border-radius:8px;padding:10px;margin:10px 0}.choice-list{display:grid;gap:8px;margin-top:12px}.choice-option{display:flex;align-items:flex-start;gap:10px;width:100%;padding:12px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:10px;line-height:1.4}.choice-option:hover:not(:disabled){border-color:var(--accent);background:var(--accent-bg)}.choice-option:focus-visible{outline:3px solid #93c5fd;outline-offset:2px}.choice-option:disabled{cursor:default;opacity:1}.choice-indicator{flex:0 0 18px;height:18px;border:2px solid #9ca3af;border-radius:50%;margin-top:1px}.choice-option.is-selected .choice-indicator{border:5px solid var(--accent)}.choice-option.is-correct{border-color:#16a34a;background:#f0fdf4}.choice-option.is-correct .choice-indicator{border-color:#16a34a;background:#16a34a}.choice-option.is-incorrect{border-color:#dc2626;background:#fef2f2}.choice-option.is-incorrect .choice-indicator{border-color:#dc2626;background:#dc2626}.choice-feedback{margin-top:10px;padding:10px 12px;border-radius:8px;background:#f3f4f6}.choice-feedback.correct{background:#f0fdf4;color:#166534}.choice-feedback.try-again{background:#fff7ed;color:#9a3412}
     details{border-top:1px solid var(--border);padding-top:14px}summary{cursor:pointer;font-weight:650}
     @media(max-width:900px){.workspace{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:620px){main{padding:14px}.metrics,.toolbar{grid-template-columns:1fr}.console-in{flex-wrap:wrap}.console-in button{width:100%}}
@@ -52,9 +53,9 @@
       <div class="console">
         <div class="console-head"><strong id="workspaceTitle">Console</strong><span class="small muted" id="workspaceSubtitle"></span></div>
         <div class="console-out" id="consoleOutput"></div>
-        <div class="console-in"><span class="prompt" id="prompt">&gt;</span><textarea id="commandInput" rows="2" spellcheck="false" placeholder="Type a command…"></textarea><button class="primary" id="runBtn">Run</button></div>
+        <div class="console-in" id="consoleInput"><span class="prompt" id="prompt">&gt;</span><textarea id="commandInput" rows="2" spellcheck="false" placeholder="Type a command…"></textarea><button class="primary" id="runBtn">Run</button></div>
       </div>
-      <div id="resultPanel" class="result hidden"></div><div id="feedback"></div>
+      <div id="resultPanel" class="result hidden"></div><div id="feedback" aria-live="polite"></div>
       <div class="actions"><button id="clearBtn">Clear console</button><button id="resetMissionBtn">Reset mission</button><button id="nextBtn" disabled>Next mission →</button></div>
     </section>
 
@@ -102,11 +103,20 @@
 <script src="engine.js"></script>
 <script src="lessons/shell.js"></script>
 <script src="lessons/r-basics.js"></script>
+<script src="lessons/r-file-setup.js"></script>
+<script src="lessons/r-csv-inspection.js"></script>
 <script src="lessons/markdown.js"></script>
 <script src="lessons/git.js"></script>
 <script src="lessons/r-dplyr.js"></script>
 <script src="lessons/r-data-plots.js"></script>
+<script src="lessons/r-ggplot.js"></script>
+<script src="lessons/make-week3.js"></script>
+<script src="lessons/r-joins.js"></script>
+<script src="lessons/r-week5-wrangling.js"></script>
 <script src="lessons/sql.js"></script>
+<script src="lessons/sql-week5.js"></script>
+<script src="lessons/make-week5.js"></script>
+<script src="lessons/week6-ai.js"></script>
 <script>window.CODE_QUEST.start();</script>
 </body>
 </html>
