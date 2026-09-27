@@ -3,8 +3,100 @@ title: "R - Data Wrangling"
 format: html
 ---
 
-::: {.callout-note"}
+## From Raw Rows to a Useful Summary
 
-This chapter is work-in-progress.
+Data wrangling is the work of selecting, changing, combining, and summarising data. This reference uses two small, self-contained tables: one row per customer in `customers` and one row per order in `transactions`. They have different **units of observation**, a distinction that matters when we combine them.
 
+Load `dplyr` (install it once with `install.packages("dplyr")`) and create the examples:
+
+```r
+library(dplyr)
+
+customers <- data.frame(
+  customer_id = c(101, 102, 103),
+  segment = c("New", "Loyal", "New")
+)
+
+transactions <- data.frame(
+  order_id = c("A", "B", "C", "D", "E"),
+  customer_id = c(101, 102, 102, 103, 104),
+  revenue = c(20, 75, 30, 45, 50)
+)
+```
+
+Customer 104 has an order but does not appear in `customers`. We will keep that observation visible rather than quietly discard it.
+
+### Select, filter, and create variables
+
+```r
+select(transactions, order_id, revenue)    # Keep two columns
+filter(transactions, revenue >= 40)         # Keep matching rows
+mutate(transactions, large_order = revenue >= 50)
+```
+
+`filter()` changes which **rows** you keep; `select()` changes which **columns** you keep; `mutate()` adds or changes a variable. You can chain these steps with `%>%`:
+
+```r
+large_orders <- transactions %>%
+  filter(revenue >= 40) %>%
+  select(order_id, customer_id, revenue)
+large_orders
+```
+
+This derived table does not replace the original transactions. If you later change the threshold, rerun the code instead of editing a file by hand.
+
+### Group and summarise
+
+To get one row per customer, group the orders by `customer_id`:
+
+```r
+spend_by_customer <- transactions %>%
+  group_by(customer_id) %>%
+  summarise(
+    n_orders = n(),
+    total_revenue = sum(revenue),
+    .groups = "drop"
+  )
+spend_by_customer
+```
+
+Customer 102 should have two orders and total revenue of 105. If revenue might be missing in your real data, first count the missing values and decide how to handle them; adding `na.rm = TRUE` without investigating can hide a data-quality problem.
+
+### Check keys before joining
+
+A **key** identifies rows. `order_id` should identify individual orders; `customer_id` should identify rows in `customers`, but is expected to repeat in `transactions` because customers can place more than one order.
+
+```r
+anyDuplicated(transactions$order_id)  # 0 means unique
+anyDuplicated(customers$customer_id)  # 0 means unique
+
+unmatched <- anti_join(transactions, customers, by = "customer_id")
+unmatched                           # The order for customer 104
+```
+
+Now use a **left join** to attach each customer's segment to their orders. The left table determines which orders remain:
+
+```r
+orders_with_segments <- left_join(transactions, customers,
+                                  by = "customer_id")
+
+nrow(orders_with_segments) == nrow(transactions)
+orders_with_segments
+```
+
+The result has five rows, still one per order. The unmatched order remains, with `NA` as its segment. If `customers` accidentally contained customer 102 twice, joining would multiply their orders; **check key uniqueness before trusting the row-count comparison**. In a real project, investigate the missing segment before deciding whether to exclude that order or use an explicit "Unknown" category.
+
+::: {.callout-warning title="A Successful Join Can Still Be Wrong"}
+Code can run without errors while producing extra rows, dropping observations, or attaching information at the wrong level. Before and after a join, check keys, row counts, unmatched records, and relevant totals. See the *Data Engineering & Databases* chapter for the broader reasoning behind these checks.
 :::
+
+Finally, we can summarise revenue by segment **while leaving the unmatched group visible**:
+
+```r
+orders_with_segments %>%
+  group_by(segment) %>%
+  summarise(total_revenue = sum(revenue),
+            n_orders = n(), .groups = "drop")
+```
+
+Compare the sum of the resulting segment totals with `sum(transactions$revenue)`. If they differ, trace the missing or duplicated rows before using the derived dataset in an analysis.

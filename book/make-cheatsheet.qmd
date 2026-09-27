@@ -3,8 +3,46 @@ title: "Make - Cheatsheet"
 format: html
 ---
 
-::: {.callout-note"}
+**Make** runs a command when its output is missing or older than one of its inputs. It is useful when a data pipeline has several steps that must run in the right order. The *Pipelines, Automation, and CI/CD* chapter explains why this matters; use this page when you need to write or run a small makefile.
 
-This chapter is work-in-progress.
+## Anatomy of a Rule
 
+```make
+target: prerequisite1 prerequisite2
+	command-that-builds-target
+```
+
+The **target** is the file you want to create, the **prerequisites** are the files it depends on, and the indented **recipe** is the command that creates it. The recipe line begins with a **tab**, not spaces (unless you deliberately configure Make otherwise). Make compares file modification times; it does not inspect whether an R script's *contents* are semantically different.
+
+For example, put the following in a file named `Makefile` in a small standalone project. Assume `report.qmd` and `data/clean.csv` already exist:
+
+```make
+all: report.html
+
+report.html: report.qmd data/clean.csv
+	quarto render report.qmd
+
+.PHONY: all clean
+clean:
+	rm -f report.html
+```
+
+The first target, `all`, is the default. If the report does not exist, or `report.qmd` or `data/clean.csv` is newer, Make runs Quarto to regenerate `report.html`. Including *both* inputs matters: if you omit `data/clean.csv`, Make has no reason to rebuild the report when that data file changes. `.PHONY` tells Make that `all` and `clean` are command names rather than output files.
+
+This example assumes rendering `report.qmd` produces `report.html` in the working directory. Check the actual output path if your Quarto project uses an output directory. In a full pipeline, you would add a rule to build `data/clean.csv` from a raw dataset and an R script, keeping the raw file untouched.
+
+## Commands at a Glance
+
+| Goal | Command |
+| --- | --- |
+| Build the default target | `make` |
+| Build only a named target | `make report.html` |
+| Preview commands without running them | `make -n` |
+| Rebuild regardless of timestamps | `make -B` |
+| Run the `clean` recipe above | `make clean` |
+
+`make -n` is useful before an expensive rebuild. The `clean` recipe above deletes only the **generated HTML report**, not the input data or source file; inspect a project's own `clean` or `wipe` rule before running it. To test reproducibility, clean generated outputs and rebuild them from the raw inputs and code—after confirming the pipeline contains every dependency.
+
+::: {.callout-tip title="When Make Seems to Do Nothing"}
+If Make says the target is up to date when it should change, check that the rule names the actual output file and lists *every* input, including scripts and templates. If a recipe runs but no target appears, Make will run it again next time; make sure the command produces the file named on the left of the colon.
 :::

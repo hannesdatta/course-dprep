@@ -3,84 +3,88 @@ title: "R - A Gentle Introduction"
 format: html
 ---
 
-::: {.callout-note}
+## Why R?
 
-This chapter is work-in-progress.
+R is a free, open-source language for working with data. In a marketing analytics project, you might use it to inspect customer records, calculate campaign summaries, fit a model, and produce a plot. The advantage of writing these steps as code is that you can rerun them when new data arrive—and show a colleague exactly how you obtained a result.
 
-:::
+You can run R directly in a console, but an editor such as **Positron** makes it easier to write scripts, inspect objects, and view plots. This appendix gives you a first, self-contained session. You can type each example into the R console or save all the code in a file ending in `.R`.
 
-## What is R and Why Use It?
+## Your First Data Session
 
-R is a programming language widely used in data science, statistics, and increasingly in marketing analytics. It is free, open source, and supported by a vibrant community of users. With R, you can analyze survey data, model churn in subscription businesses, scrape product reviews, and create high-quality visualizations.
+### Objects and data frames
 
-On its own, R looks like a command-line interface, but most people use it through **Positron**. Positron is an integrated development environment (IDE) from Posit that provides a script editor, a console for running code, a viewer for data objects, and tools for plots and files. This makes Positron the natural starting point for most analysts.  
-
-Why R for marketing analytics?  
-- It is **reproducible**: your analysis is saved in code and can be re-run.  
-- It is **powerful**: thousands of packages extend R to nearly every analytics task.  
-- It is **visual**: `ggplot2` and related packages produce professional plots.  
-- It is **community-driven**: most questions you encounter already have answers online.  
-
-R may look intimidating at first, but with a few habits and the right packages (especially the tidyverse), it becomes a manageable and even enjoyable tool.  
-
-
-## Getting Started  
-
-### Projects
-
-In Positron, it is best to organize your work as a **project**. A project is simply a folder that contains your data, scripts, and outputs. By opening your project folder in Positron, your code can refer to files relative to that location.  
-
-For example, instead of writing:  
+An **object** is a named value that you can use again. We assign a value with `<-`:
 
 ```r
-customers <- read_csv("/Users/YourName/Desktop/data/customers.csv")
-````
-
-you can place the file in your project’s `data/` folder and write:
-
-```r
-customers <- read_csv("data/customers.csv")
+campaign_name <- "Spring promotion"
+budget <- 1200
+budget / 4
 ```
 
-This makes your scripts portable and easier to share.
+Real datasets have many observations. A **data frame** is a table in which each row represents an observation and each column represents a variable. Let's create a tiny customer dataset, so every example below works without a download:
 
-### Working with Data
+```r
+customers <- data.frame(
+  id = c(101, 102, 103, 104, 105),
+  segment = c("New", "Loyal", "New", "Loyal", "New"),
+  purchases = c(1, 5, 0, 3, 2),
+  churned = c(FALSE, FALSE, TRUE, FALSE, TRUE)
+)
+```
 
-Most marketing analytics projects revolve around manipulating data frames: customer records, transaction logs, or campaign responses.
+Here `churned` is a **logical** variable: each value is either `TRUE` or `FALSE`. Before you analyse an unfamiliar data frame, look at its contents and structure:
 
-The **dplyr** package (part of the tidyverse) makes data wrangling readable and consistent. After installing it once with `install.packages("tidyverse")`, load it in each session:
+```r
+customers
+nrow(customers)        # Number of rows
+names(customers)       # Column names
+str(customers)         # Column types and sample values
+summary(customers$purchases)
+```
+
+The `$` in `customers$purchases` selects a column. Because the `purchases` column is numeric, we can calculate its average with `mean(customers$purchases)`. The average of a logical column is the share of `TRUE` values, so `mean(customers$churned)` is the churn rate *in this illustrative dataset*. In a real project you would first specify when a customer counts as churned and who belongs in the denominator.
+
+### Transforming data with `dplyr`
+
+R's `dplyr` package provides verbs for common data operations. Install it once with `install.packages("dplyr")`, then load it at the beginning of each new R session:
 
 ```r
 library(dplyr)
+
+filter(customers, purchases > 0)              # Keep rows
+select(customers, id, segment, churned)        # Choose columns
+mutate(customers, frequent = purchases >= 3)  # Create a column
 ```
 
-Now you can:
+The **pipe** `%>%` passes the result of one step into the next. For example, we can summarise customer behaviour by segment:
 
 ```r
-# Filter rows
-filter(customers, purchases > 3)
+segment_summary <- customers %>%
+  group_by(segment) %>%
+  summarise(
+    n_customers = n(),
+    churn_rate = mean(churned),
+    avg_purchases = mean(purchases),
+    .groups = "drop"
+  )
 
-# Select columns
-select(customers, id, churned)
-
-# Create a new variable
-mutate(customers, log_purchases = log(purchases))
-
-# Summarise by group
-customers %>%
-  group_by(churned) %>%
-  summarise(avg_purchases = mean(purchases))
+segment_summary
 ```
 
-The `%>%` symbol is the **pipe**: it passes data from one step to the next, making code easier to read than deeply nested function calls.
+Read the code from top to bottom: start with the customers, group by segment, and calculate three statistics for each group. `n()` counts rows; `.groups = "drop"` makes the result an ordinary, ungrouped data frame. Check the output: do the group sizes add up to five, and do the means make sense given the original rows?
 
+::: {.callout-tip title="Try One Change"}
+Change the `purchases` value for customer 103 and rerun the summary. Which numbers change? Then try `filter(customers, segment == "New")`. The point is to connect each command to a visible change in the data.
+:::
 
-## Running and Saving Code
+## From an Interactive Session to a Project
 
-You can type code directly into the console, but for real work you should save it in a script (`.R`). Scripts can be run line by line in Positron, or all at once from the terminal:
+Code typed only into the console is easy to lose. Save the commands that create your dataset and summary in `analysis.R`. If your project folder contains that file, run it from the terminal in the project folder with:
 
 ```bash
 Rscript analysis.R
 ```
 
-For reports that mix code and explanation, use R Markdown (`.Rmd`) or Quarto (`.qmd`). These formats weave text, code, and results together—ideal for homework, project reports, or professional deliverables.
+When your data come from a file, prefer a **relative path** within the project, such as `data/customers.csv`, to a path that only works on your computer. Base R can read a CSV with `read.csv("data/customers.csv")`. If you prefer `read_csv("data/customers.csv")`, load the separate `readr` package (or `tidyverse`) first. Neither file exists in this self-contained example: create or obtain your own data before running either import command.
+
+Once your steps run reliably as a script, you can combine code, explanations, and results in a [Quarto report](quarto.qmd). For more on variables, loops, functions, and reliable coding habits, return to the *Programming Principles* chapter.

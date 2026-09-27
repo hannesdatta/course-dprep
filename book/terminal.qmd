@@ -5,7 +5,7 @@ format: html
 
 The terminal is the most direct way to communicate with your computer. Instead of clicking through folders or menus, you type commands that the system executes immediately. For analysts, this matters because many of the tools we use — Git, reproducible pipelines, cloud servers — run most naturally from the command line. The terminal complements graphical interfaces: you don’t stop using GUIs, but the terminal opens possibilities that point-and-click tools cannot match.
 
-Linux-style commands are the universal standard. They work on macOS and Linux out of the box, and they are the same commands you’ll encounter on servers or cloud platforms. On Windows, the built-in Command Prompt and PowerShell use different commands (e.g., `dir` instead of `ls`). To avoid confusion, we recommend installing **Git Bash** or using **Windows Subsystem for Linux (WSL)**. This gives you the same environment as macOS and Linux, ensuring that examples in this book will work on your system.
+Many of the commands in this appendix work on macOS and Linux and are common on servers or cloud platforms. On Windows, Command Prompt, PowerShell, Git Bash, and Windows Subsystem for Linux (WSL) provide different command-line environments. If you want to follow the Unix-style examples here, use **Git Bash** or **WSL**; check paths and installed tools for your particular setup.
 
 
 ## Getting Started
@@ -30,7 +30,6 @@ ls
 
 This lists all files and folders. Add `-l` for details (permissions, size, timestamps) or `-a` to show hidden files (like `.gitignore`).
 
-s
 ::: {.callout-note title="What Is a Working Directory?"}
 The **working directory** is the folder your terminal is currently “looking at.”  
 - All commands you run apply to this location.  
@@ -41,7 +40,7 @@ You can always check your current working directory with:
 
 ```bash
 pwd
-````
+```
 
 Think of it as the terminal’s “point of view” on your file system.
 :::
@@ -81,7 +80,7 @@ cd /Users/alex/projects/analytics
 cd ../analytics
 ```
 
-Relative paths are handy for quick navigation; absolute paths are unambiguous and reliable.
+Relative paths are handy within a project, but their meaning depends on your current directory; absolute paths identify a location on a particular machine.
 
 ### Creating and Managing Folders
 
@@ -183,4 +182,4 @@ Most Git commands (`git add`, `git commit`, `git push`, `git pull`) are run in t
 
 The terminal is powerful, but also unforgiving. A command like `rm -rf` can delete entire directories instantly. Use tab completion and the arrow keys to save time and reduce typos. When you find yourself repeating the same steps, write them into a script so you can rerun them reliably.
 
-The terminal is the **lingua franca** of computing. Once you know the basic commands, you can work on any system: your laptop, a remote server, or a cloud environment. The same skills scale from small projects to massive data pipelines. Learning the terminal is not about memorizing every command — it is about becoming fluent in the common language that underlies modern analytics workflows.
+The terminal is the **lingua franca** of computing. Once you know the basic commands, you can more easily work on your laptop, a remote server, or a cloud environment, adapting paths and tools where needed. The same skills scale from small projects to massive data pipelines. Learning the terminal is not about memorizing every command — it is about becoming fluent in the common language that underlies modern analytics workflows.

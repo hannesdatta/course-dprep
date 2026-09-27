@@ -281,17 +281,22 @@ The key takeaway is that the **concepts are the same**: grouping, aggregating, m
 
 If pandas and dplyr are the tools analysts use on their laptops, **SQL** (Structured Query Language) is the language of data inside organizations. Most companies store their marketing data in relational databases: customer tables, transaction tables, product catalogs, and campaign logs all live in these systems. To access them, analysts must speak SQL.
 
-SQL has a reputation for being old-fashioned, but its core commands are timeless. `SELECT` chooses columns, `WHERE` filters rows, `GROUP BY` aggregates, and `JOIN` merges. These are the very same operations we have discussed in this chapter. The difference is that SQL operates directly on the database, often holding billions of rows, rather than in memory on your machine.
+**SQL is a language, not a particular database product.** Microsoft SQL Server, MySQL, PostgreSQL, SQLite, and DuckDB are examples of systems that understand SQL. They share a substantial core but also have their own *dialects*: details such as date functions and the syntax for limiting the number of returned rows can differ. Learning the common language first makes it easier to move between systems; when a query does not transfer directly, check the documentation for the system you are using.
+
+SQL has a reputation for being old-fashioned, but its core operations are timeless. `SELECT` chooses columns, `WHERE` filters rows, `GROUP BY` summarizes observations, and `ORDER BY` sorts results. These are the very same operations we have discussed in this chapter. Unlike a data frame already loaded into R, a SQL query is sent to a database system that can do much of the work before returning the result to you. When information is spread across tables, a `JOIN` can combine them using a key—we will treat this as a next step after basic queries.
 
 For example, imagine a marketing database with two tables: one containing customer transactions and another containing campaign impressions. With SQL, you can:
 
-* Summarize transactions by customer and month (`GROUP BY customer_id, month`).
-* Join them with impressions to compute conversion rates (`JOIN ON customer_id`).
 * Filter to only include active customers (`WHERE last_purchase_date > '2025-01-01'`).
+* Summarize transactions by customer and month (`GROUP BY customer_id, month`).
+* Sort the resulting customer summaries (`ORDER BY total_sales DESC`).
+* Later, combine transaction summaries with impressions using matching keys.
 
 Many firms expect analysts to have at least a working knowledge of SQL, because it is the gateway to the data warehouse. Even if the actual modeling is done later in R or Python, the first steps—extracting, filtering, and aggregating—are usually written as SQL queries.
 
 SQL also has the advantage of **reproducibility**: queries can be saved and rerun at any time, ensuring that the same subset of data can be regenerated. For collaborative environments, this makes SQL indispensable.
+
+Reading is not the only reason to use SQL. People who manage an organization's data can also **insert** new rows, **update** existing records, or **delete** records. These operations change what is stored; your ability to use them depends on the permissions granted to you. As an analyst, you will often begin with read-only access, which lets you retrieve and summarize data without changing the source. The [SQL cheatsheet](sql-cheatsheet.qmd) concentrates on that first skill: writing `SELECT` queries.
 
 
 
@@ -301,7 +306,7 @@ Not all marketing data lives neatly in a spreadsheet-sized table. As organizatio
 
 #### Relational Databases (SQL)
 
-Most corporate data still resides in **relational databases**, systems built around the familiar logic of tables, rows, and columns. Tools such as MySQL, PostgreSQL, or Microsoft SQL Server are workhorses in this space. Their strength lies in enforcing structure: every table has a schema, every row follows the same rules, and relationships across tables are defined by keys. For analysts, the advantage is clear—data is consistent and queries are predictable. The trade-off is that relational databases can struggle when data becomes highly unstructured (e.g., free text, images) or when scale grows beyond what a single machine can handle.
+Most corporate data still resides in **relational databases**, systems built around the familiar logic of tables, rows, and columns. Systems such as MySQL, PostgreSQL, and Microsoft SQL Server are workhorses in this space; SQLite offers a lightweight file-based option, while DuckDB is designed for analytical queries. Their implementations and SQL dialects differ, but the basic ideas of tables, keys, and queries transfer between them. Their strength lies in enforcing structure: tables have schemas, rows follow defined rules, and keys help relate records. For analysts, the advantage is clear—data is organized and queries can be saved and repeated. The trade-off is that the choice of system and schema has to fit the size and type of data at hand.
 
 #### NoSQL Databases
 
@@ -353,6 +358,5 @@ Perhaps the most important message is this: **analysis-ready datasets are not di
 In practice, this work is often given to junior analysts. Yet those who master it gain an outsized advantage: they become the people others trust, because their results are reliable. Over time, this skill builds credibility.
 
 In the next chapter, we move one step further. Once you know how to engineer a dataset, the question becomes: how do you make this process repeatable, scalable, and reliable over time? Here, concepts like pipelines, automation, and continuous integration come into play. We will explore how to move from one-off data preparation to systematic workflows that can be shared, scheduled, and reproduced—so that good data engineering becomes not just a task, but a habit.
-
 
 

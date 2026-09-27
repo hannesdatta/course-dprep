@@ -1,0 +1,78 @@
+---
+title: "Quarto - Reproducible Reports"
+format: html
+---
+
+## From a Script to a Report
+
+An R script records what your code does. A report must also explain *why* you did it and *what the results mean*. Quarto combines Markdown text, executable code, and generated output in a `.qmd` file. You are reading a Quarto book right now; the same format can produce a single HTML report for a thesis or a marketing team.
+
+Quarto is a separate program that renders your document. For R code chunks it also needs a working R installation and the `knitr` and `rmarkdown` packages. A `.qmd` file is plain text, so you can write one in Positron or another editor and keep it in Git with the rest of your project.
+
+## Build Your First Report
+
+Create a file called `report.qmd` in a project folder and give it the following contents. The `{r}` boxes are executable code chunks **in your own report**:
+
+<pre><code class="language-markdown">
+&#45;&#45;&#45;
+title: "Campaign Performance"
+format: html
+&#45;&#45;&#45;
+
+## Overview
+
+This report compares three marketing channels.
+
+&#96;&#96;&#96;{r}
+#| label: campaign-data
+campaigns &lt;- data.frame(
+  channel = c("Email", "Search", "Social"),
+  spend = c(200, 500, 300),
+  sales = c(620, 1100, 560)
+)
+campaigns
+&#96;&#96;&#96;
+
+Together these channels generated `r sum(campaigns$sales)` in sales.
+Search had the highest sales in this small example.
+
+&#96;&#96;&#96;{r}
+#| label: sales-plot
+barplot(campaigns$sales, names.arg = campaigns$channel,
+        ylab = "Sales", main = "Sales by channel")
+&#96;&#96;&#96;
+</code></pre>
+
+The lines between `---` form the **YAML header**: `title` names the document and `format: html` selects its output. `## Overview` is a Markdown heading. The `{r}` chunks run in order; the second chunk can use `campaigns` because the first chunk created it. The inline expression `` `r sum(campaigns$sales)` `` inserts a computed value in the sentence, rather than a number copied by hand. If the data change, the sentence and plot update when you render again.
+
+From the folder containing `report.qmd`, run:
+
+```bash
+quarto render report.qmd
+```
+
+The output is `report.html`. You can also render from an editor with Quarto support. This example uses a small dataset created in the report, so it does not depend on any downloaded files.
+
+### Control what readers see
+
+Chunk options are comments starting with `#|` immediately after the opening chunk fence. For example, `#| echo: false` runs code and shows its result without printing the code in the rendered report. Use that for routine setup, but keep your source `.qmd` available so collaborators can still inspect the work. You can set an option for the whole report in its YAML header:
+
+````markdown
+---
+title: "Campaign Performance"
+format: html
+execute:
+  echo: true
+  warning: false
+---
+````
+
+Suppressing a warning in the finished report does not resolve the underlying issue. Inspect the output during development and explain any consequential warnings rather than hiding them.
+
+## Render Reproducibly
+
+A report that works only after you have run various commands manually in the console is fragile. When Quarto renders an R document, its code runs in a rendering session; objects you created earlier in your interactive session are not automatically part of the report. If you see `object 'campaigns' not found`, check that a previous chunk creates it and that the chunks run in the right order. If a file cannot be found, check the path relative to the project in which you render the report.
+
+For a larger project, let your data-preparation script produce a derived dataset, and let the Quarto report read that dataset. Record the dependency in your pipeline so the report is rebuilt when the inputs change. Keep raw data untouched, and do not manually replace an output value in the HTML file: change the source code or data and render again.
+
+Quarto can also create presentations, websites, and books. Output formats beyond HTML may require extra software—for example, PDF output commonly requires a LaTeX installation. Start with a small HTML report that you can rebuild reliably; the same ideas scale to longer research documents.

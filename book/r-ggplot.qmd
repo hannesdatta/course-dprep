@@ -3,8 +3,72 @@ title: "R - ggplot2"
 format: html
 ---
 
-::: {.callout-note"}
+## Make a Plot You Can Explain
 
-This chapter is work-in-progress.
+The `ggplot2` package builds charts in **layers**. You start with a dataset, map variables to visual properties (such as the x-axis or colour), and add a geometric object—a *geom*—to say what should be drawn. This makes it easy to revise a plot without starting from scratch.
 
+Install the package once with `install.packages("ggplot2")` and load it in each new R session:
+
+```r
+library(ggplot2)
+
+campaigns <- data.frame(
+  week = rep(1:3, times = 2),
+  channel = rep(c("Email", "Search"), each = 3),
+  spend = c(100, 130, 150, 200, 240, 260),
+  sales = c(330, 390, 440, 460, 510, 570)
+)
+campaigns
+```
+
+Each row represents **one channel in one week**. That matters for interpretation: a point in the plot below is not a customer or an individual order.
+
+### Start with points
+
+```r
+ggplot(campaigns, aes(x = spend, y = sales)) +
+  geom_point()
+```
+
+`ggplot(campaigns, ...)` chooses the dataset. Inside `aes()`, `spend` is mapped to horizontal position and `sales` to vertical position. `geom_point()` draws one point for each row. The result shows an association in six illustrative observations; it does **not** establish that spending caused sales to rise.
+
+To distinguish channels, map colour to a variable:
+
+```r
+ggplot(campaigns, aes(x = spend, y = sales, colour = channel)) +
+  geom_point(size = 3) +
+  labs(x = "Campaign spend", y = "Weekly sales",
+       colour = "Channel", title = "Spend and sales by channel")
+```
+
+Because `colour = channel` is **inside** `aes()`, each channel receives a colour and a legend. `size = 3` is **outside** `aes()` because every point should have the same size. Try moving it inside `aes()` and compare the results: the distinction between mapping and setting is one of the most common sources of confusing plots.
+
+### Choose a geom that fits the question
+
+To see how sales change *over time*, use a line for each channel:
+
+```r
+ggplot(campaigns, aes(x = week, y = sales, colour = channel)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  scale_x_continuous(breaks = 1:3) +
+  labs(x = "Week", y = "Sales", title = "Weekly sales by channel")
+```
+
+Mapping `colour` to `channel` also tells `geom_line()` which observations belong to the same line. If you had only one observation per channel, a line would not be meaningful. For comparisons of **totals** across channels, calculate those totals first and then draw columns:
+
+```r
+channel_totals <- aggregate(sales ~ channel, data = campaigns, FUN = sum)
+
+ggplot(channel_totals, aes(x = channel, y = sales)) +
+  geom_col(fill = "steelblue") +
+  labs(x = "Channel", y = "Total sales across three weeks")
+```
+
+`geom_col()` uses the already calculated values in `channel_totals`. `geom_bar()` has a different default: it counts rows. Choosing the wrong geom could turn a plot of sales into a plot of how many rows each channel has.
+
+::: {.callout-tip title="Check the Data Behind the Plot"}
+Before interpreting a graphic, check what a row represents, whether missing values were omitted, and whether the displayed measure is a count, average, or total. A polished plot cannot correct a join that duplicated observations upstream.
 :::
+
+You can add layers such as `facet_wrap(~ channel)` when separate panels make comparisons clearer. Start with a simple graph that answers one question, label it for its intended reader, and keep the R code so you can rebuild it when data change.

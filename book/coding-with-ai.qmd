@@ -3,7 +3,7 @@ title: "Coding with AI tools"
 format: html
 ---
 
-This appendix is a compact quick reference. For the full treatment (LLM basics, agentic workflows, API keys, and reproducibility), see **Chapter 9: AI Tooling for Research: LLMs and Agentic Workflows**.
+This appendix is a compact quick reference. For the full treatment (LLM basics, agentic workflows, API keys, and reproducibility), see [AI Tooling for Research: LLMs and Agentic Workflows](ai-tooling-for-research.qmd).
 
 ## Quick Workflow
 
@@ -22,6 +22,14 @@ Constraints:
 Output format:
 Validation checks:
 ```
+
+For an agent that can use tools, also specify **which files it may read**, **which actions it may take**, what result to return, and **when to stop and ask you**. For example: *"Inspect the campaign join; read the two preparation scripts and run diagnostics, but propose edits before changing files. Report the row counts before and after the join."*
+
+## Chat or Agent?
+
+* **Chat**: explain an error message, compare methods, or suggest a short R snippet.
+* **Agent**: inspect several files, run a diagnostic, and revise code based on what it finds.
+* **Existing script or Make rule**: repeat a well-defined, already-tested process. No agent needs to rediscover the steps each time.
 
 ## High-Value Uses
 
@@ -50,5 +58,5 @@ Validation checks:
 
 * Never paste API keys or sensitive data into prompts.
 * Keep credentials in environment variables.
-* Use private repositories for confidential projects.
+* Check whether project data may be sent to the AI provider; a private repository alone does not settle that question.
 * Revoke and rotate exposed keys immediately.

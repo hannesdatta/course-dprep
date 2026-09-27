@@ -3,8 +3,50 @@ title: "Git - Cheatsheet"
 format: html
 ---
 
-::: {.callout-note"}
+Git records changes in your project; GitHub is one place to share a Git repository. This quick reference assumes that you are **inside a repository** and have already configured Git. For the concepts behind these commands, see the *Version Control* chapter.
 
-This chapter is work-in-progress.
+## Inspect Before You Change Anything
 
-:::
+| Task | Command | What to look for |
+| --- | --- | --- |
+| See current branch and file state | `git status` | Changed, staged, and untracked files |
+| Inspect unstaged edits | `git diff` | The lines you have changed |
+| Inspect staged edits | `git diff --staged` | What the next commit would include |
+| See recent history | `git log --oneline -5` | Recent commits and messages |
+
+Saving a file in your editor does not commit it. A commit records a snapshot of the **staged** changes, so inspect both the working-tree diff and the staged diff before you commit.
+
+## Make and Share a Change
+
+```bash
+git switch -c audit-campaign-data   # Create and enter a new branch
+# Edit and save files in your editor
+git status
+git diff
+git add src/prepare_data.R          # Stage only the intended file
+git diff --staged
+git commit -m "Check campaign join keys"
+git push -u origin audit-campaign-data
+```
+
+Use a descriptive branch and commit message. The first push with `-u` sets the branch's upstream; future pushes from that branch can usually use `git push`. Open a pull request on GitHub if your team reviews changes before merging.
+
+To bring remote changes into your current branch, check where you are first:
+
+```bash
+git status
+git branch --show-current
+git pull
+```
+
+`git pull` updates the **current branch** from its configured upstream. If Git reports a conflict, inspect the affected files, decide which content to retain, and check the resulting diff before completing the merge or rebase. Do not assume that a successful pull validates your analysis.
+
+## Correct a Local Mistake
+
+| Situation | Command | Effect |
+| --- | --- | --- |
+| Staged a file too early | `git restore --staged path/to/file` | Removes it from staging; keeps your edits |
+| Want to see where a file changed | `git diff -- path/to/file` | Shows unstaged changes to that file |
+| Want to discard *unstaged* edits to one file | `git restore path/to/file` | Replaces its working copy with the staged version—inspect first |
+
+Git normally tracks code and documentation; generated files and private credentials should not be added accidentally. Inspect `git status` and keep an appropriate `.gitignore`. If a credential was committed, revoke it: deleting the latest copy does not erase the earlier commit.

@@ -1,0 +1,134 @@
+---
+title: "SQL - SELECT Cheatsheet"
+format: html
+---
+
+Use this page when you need to **read** and summarise data from a database. For the difference between the SQL language and database systems such as SQL Server or MySQL—and for SQL's ability to change stored data—see the *Data Engineering & Databases* chapter. This reference focuses on `SELECT` queries; joins appear only at the end as a next step.
+
+The examples assume a table called `transactions`:
+
+| order_id | customer_id | order_date | revenue |
+| --- | --- | --- | ---: |
+| A | 101 | 2025-01-03 | 20 |
+| B | 102 | 2025-01-04 | 75 |
+| C | 102 | 2025-01-05 | 30 |
+| D | 103 | 2025-02-01 | 45 |
+
+Each row is an order. `order_id` is unique; `customer_id` may repeat. Treat the examples as queries you can adapt to a table with the same columns, not as commands you can run without connecting to a database that contains that table.
+
+## Start with SELECT
+
+```sql
+SELECT order_id, revenue
+FROM transactions;
+```
+
+`SELECT` names the columns returned, and `FROM` names the table. End the statement with `;`. Use `SELECT *` to inspect all columns briefly, but name the columns you actually need in a saved analysis query so its output stays clear as the table evolves.
+
+You can give a result column a readable **alias**:
+
+```sql
+SELECT order_id, revenue AS order_revenue
+FROM transactions;
+```
+
+To return each customer ID only once, use `DISTINCT`:
+
+```sql
+SELECT DISTINCT customer_id
+FROM transactions;
+```
+
+`DISTINCT` removes duplicate *combinations of selected values*, not duplicate source rows or repeated orders. `SELECT DISTINCT customer_id, order_date` could therefore return the same customer on several dates.
+
+## Filter Rows with WHERE
+
+```sql
+SELECT order_id, customer_id, revenue
+FROM transactions
+WHERE revenue >= 40;
+```
+
+`WHERE` filters rows before you summarise them. Combine conditions with `AND` or `OR`; use parentheses when combining both so your intended logic is unambiguous:
+
+```sql
+SELECT order_id, revenue
+FROM transactions
+WHERE order_date >= '2025-01-01'
+  AND order_date < '2025-02-01'
+  AND revenue >= 40;
+```
+
+This selects January orders of at least 40, assuming `order_date` is stored as a date (or a consistently formatted ISO date string). An exclusive upper bound is especially useful if the actual column includes times. Check the column's data type and your database's date rules before adapting this example.
+
+A missing SQL value is `NULL`. To find it, write `IS NULL` (or `IS NOT NULL`), **not** `= NULL`:
+
+```sql
+SELECT order_id
+FROM transactions
+WHERE customer_id IS NULL;
+```
+
+## Summarise with GROUP BY
+
+Aggregate functions turn several rows into a summary. `COUNT(*)` counts rows, `SUM(revenue)` totals values, and `AVG(revenue)` calculates a mean:
+
+```sql
+SELECT COUNT(*) AS n_orders,
+       SUM(revenue) AS total_revenue,
+       AVG(revenue) AS avg_revenue
+FROM transactions;
+```
+
+To obtain **one row per customer**, group by `customer_id`:
+
+```sql
+SELECT customer_id,
+       COUNT(*) AS n_orders,
+       SUM(revenue) AS total_revenue
+FROM transactions
+GROUP BY customer_id;
+```
+
+Customer 102 should have two orders and total revenue of 105. Every selected column that is not aggregated must be grouped (or otherwise handled under the rules of your database system). `COUNT(revenue)` counts non-`NULL` revenue values, while `COUNT(*)` counts rows; `SUM` and `AVG` also ignore `NULL` values. Check missingness before trusting an average.
+
+Use `WHERE` to restrict source rows **before** grouping; use `HAVING` to restrict the resulting groups:
+
+```sql
+SELECT customer_id, COUNT(*) AS n_orders
+FROM transactions
+GROUP BY customer_id
+HAVING COUNT(*) >= 2;
+```
+
+This returns customer 102. Putting `COUNT(*) >= 2` in `WHERE` would not work because the count does not exist until the rows have been grouped.
+
+## Sort the Result with ORDER BY
+
+```sql
+SELECT customer_id,
+       SUM(revenue) AS total_revenue
+FROM transactions
+GROUP BY customer_id
+ORDER BY total_revenue DESC, customer_id ASC;
+```
+
+`DESC` sorts largest first; `ASC` sorts smallest first. Specifying `customer_id` as a second sort key makes ties in revenue predictable. Without `ORDER BY`, the database does not promise any particular output order. If you need only a few rows, note that the syntax varies by implementation: MySQL, PostgreSQL, and SQLite commonly use `LIMIT 5` after `ORDER BY`, while SQL Server supports `SELECT TOP (5)` near the start of the query. Do not mix those forms without checking your database's documentation.
+
+::: {.callout-note title="SELECT Clause Order"}
+Write a basic query as `SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ...`. You can omit clauses you do not need. `WHERE` filters the input rows, `HAVING` filters groups, and `ORDER BY` sorts the final result.
+:::
+
+## Next Step: A LEFT JOIN
+
+Once you can query a single table, you may need a variable from another one. Suppose `customers` has one row per `customer_id` and a `segment` column. A **left join** keeps every row of `transactions` (the left table) and attaches the matching segment if there is one:
+
+```sql
+SELECT t.order_id, t.revenue, c.segment
+FROM transactions AS t
+LEFT JOIN customers AS c
+  ON t.customer_id = c.customer_id
+ORDER BY t.order_id;
+```
+
+If an order has no matching customer, its `segment` is `NULL`; the order is still present. If `customers` has the same `customer_id` more than once, a transaction can appear more than once in the result. Check the keys and row counts before using the joined data. `LEFT JOIN` belongs after `FROM` and before `WHERE` in a longer query. For the underlying decisions about units of analysis and merging, return to the *Data Engineering & Databases* chapter.

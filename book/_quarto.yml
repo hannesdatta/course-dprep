@@ -20,13 +20,13 @@ book:
       chapters:
       - coding-with-ai.qmd
       - r-introduction.qmd
-      - r-markdown.qmd
+      - quarto.qmd
       - r-ggplot.qmd
       - r-data-wrangling.qmd
       - git-cheatsheet.qmd
       - make-cheatsheet.qmd
       - terminal.qmd
-      - databases.qmd
+      - sql-cheatsheet.qmd
 ##    - theory.qmd
 #    - practicals.qmd
 #  chapters:
