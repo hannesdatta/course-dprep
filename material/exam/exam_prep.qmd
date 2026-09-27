@@ -50,7 +50,7 @@ Together, these levels ensure that the exam does not merely check whether you *r
 
 ## Overview of Questions
 
-The table below outlines the types of questions you can expect, along with their sources for each learning goal of the course.
+The table below outlines the types of questions you can expect, along with their sources for each learning goal of the course. 
 
 | No. | Learning goal | Question type | Questions based on tutorials/project | Questions based on book |
 |-------------|-------------|-------------|-------------|--------------------|
@@ -59,7 +59,7 @@ The table below outlines the types of questions you can expect, along with their
 | 3 | Use R and SQL to clean and transform data for analysis | Synthesis | 20P (2Q) | 4P (1Q), ch. 7 |
 | 4 | Use R to generate automated reports | Compreh. & Appli. | 12P | 6P (2Q), ch. 4 |
 | 5 | Use Workflow Management Tools | Appl. & Eval. | 18P | 6P (2Q), ch. 3, 8 |
-| 6 | Critically assess and effectively use LLMs and software agents | Knowledge & Application | 6P (1Q) | 4P (2Q), ch. to be added
+| 6 | Critically assess and effectively use LLMs and software agents | Application & Analysis | 6P (1Q) | 4P (2Q), ch. 9
 
 \newpage
 
@@ -186,19 +186,20 @@ D) It is harmless, because complexity in the board does not affect collaboration
 
 *Use Git/GitHub (or similar tools) for versioning files and collaborating on privately shared and publicly available open-source repositories.*
 
-### Exemplary question based on tutorials (24P on the exam)
+### Exemplary question based on tutorials/project (24P on the exam)
 
 ::: callout
 This type of question will always require you to download a Git repository to your computer. First, unzip the file and navigate to the directory using your preferred terminal (e.g., Git Bash). You will then answer questions related to the repository, either in text boxes or through multiple-choice questions directly in TestVision. Finally, you will be asked to re-zip the repository and upload it, so we can verify which commands you executed.
 
 As part of these tasks, you will need to perform a range of Git operations covered in the tutorials, such as:
 
-* Creating and switching between branches (`git branch`, `git checkout`, `git branch -l`)
-* Tracking and committing changes (`git add`, `git commit -m "commit message"`, `git status`)
+* Creating and switching between branches (`git branch` or `git switch`, `git checkout`, `git branch -l`)
+* Tracking and committing changes (`git status`, `git add`, `git commit -m "commit message"`, `git status`)
 * Creating and using a `.gitignore` file
-* Rolling back changes
 * Viewing commit history (`git log`)
+* Rolling back changes (`git log` to view hashes of previous commits, `git checkout <HASH_ID> -b new_branch` to check out a particular hash ID to a new branch for debugging)
 * Merging branches (`git merge`)
+* Pushing, pulling and PRs will not have to be executed on the exam (given you will not have access to the internet)
 
 :::
 
@@ -301,10 +302,11 @@ D) It is valid, because Git automatically merges any differences in the backgrou
 
 *Use R and SQL to clean and transform data for analysis (e.g., aggregation, merging, de-duplication, reshaping, data conversions, and regular expressions).*
 
-### Exemplary question based on tutorials (20P on the exam)
+### Exemplary question based on tutorials/project (20P on the exam)
 
 ::: callout
-This question will always ask you to download data sets stored in a zipped `.RData` file, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments starting with #).
+This question will always ask you to download data sets stored in a zipped `.RData` file, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments starting with `#`). Questions also cover `SELECT` statements in SQL. 
+
 :::
 
 Please download the [`netflix_data`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip) file, containing an `.RData` environment that itself contains R objects (datasets). To receive points on this question, please create and upload one R file (.R) that performs the task as requested.
@@ -545,7 +547,7 @@ D)  Use relational databases for structured data, NoSQL systems for semi-structu
 *Use R to generate automated reports and dynamic dashboards (e.g., for assessing data quality or reporting research findings).*
 
 
-### Exemplary questions based on tutorial (12P)
+### Exemplary questions based on tutorials/project (12P)
 
 ::: callout
 In this type of exam question, you will create an **RMarkdown document** in Positron and submit it as a **rendered PDF** with code cells visible for grading. The tasks will build directly on the material from the RMarkdown tutorial, asking you to apply what you have practiced there: loading and inspecting data, performing basic transformations and summaries, and producing plots with `ggplot2`. 
@@ -905,15 +907,63 @@ tbd
 
 tbd
 
-### Exemplary questions based on book (XP on the exam)
+### Exemplary questions based on book (4P on the exam)
 
-#### Q6.3 (chapter X) (2P)
+::: callout
+These illustrative questions will be based on chapter 9. They are designed to assess analysis of AI-assisted research workflows.
+:::
 
-tbd
+#### Q6.3 (chapter 9) (2P)
 
-#### Q6.4 (chapter X) (2P)
+A coding agent joins weekly advertising and sales data. Each input has exactly one row for North and one for South in week `2025-W01`, and each is unique by `region` and `week`. The joined data has four rows, including a row pairing North advertising with South sales. What best explains this result?
 
-tbd
+A) Inconsistent date formats caused records from the same week to be counted twice
+B) Duplicate `region`–`week` keys in the source data created the extra matches
+C) Joining on `week` alone matched each region's advertising with both regions' sales
+D) Multiple regions in each dataset normally produce four rows after a weekly join
+
+**Correct Answer: C**
+
+**Explanation:** C is correct because each input has two records for the same week, one per region. Joining only on `week` matches each region's advertising with both regions' sales, producing four combinations. The evidence points to a missing join key: `region`.
+
+#### Q6.4 (chapter 9) (2P)
+
+A team's weekly report follows the same established sequence of data-preparation steps. Occasionally, an upstream file changes unexpectedly and the team must investigate why a join no longer works. Which workflow best accounts for the different kinds of work involved?
+
+A) Automate the known steps, then ask an agent to diagnose failures and verify any fix
+B) Ask an agent to rediscover the established steps and rerun the report each week
+C) Replace the pipeline with manual script runs whenever upstream files change unexpectedly
+D) Let the pipeline decide how to handle unfamiliar changes without reviewing its outputs
+
+**Correct Answer: A**
+
+**Explanation:** A is correct because the recurring steps are known in advance and fit an explicit, repeatable pipeline. Investigating an unexpected failure depends on what the team finds, which is where an agent can help. Reviewing and verifying changes helps ensure that a fix is appropriate before it becomes part of the regular workflow.
+
+#### Q6.5 (chapter 9) (2P)
+
+After an agent combines weekly sales and advertising data, the resulting table has no duplicate `region`–`week` keys and its row count is as expected. However, some rows have missing advertising impressions. A teammate concludes that these missing values mean zero exposure and asks the agent to replace them with zero. Which conclusion is best supported by the available evidence?
+
+A) The expected row count shows missing impressions should be recoded as zero exposure
+B) Missing impressions indicate an incorrect join key, despite the unique output keys
+C) Records with missing impressions can be dropped because the row count is as expected
+D) The checks confirm unique keys, but the cause of missing impressions still needs investigation
+
+**Correct Answer: D**
+
+**Explanation:** D is correct because key and row-count checks assess aspects of the join, but they do not establish why an advertising record is missing. It could represent zero exposure, a logging problem, or an unobserved region. The team needs to investigate and document the meaning before choosing how to handle the missing values.
+
+#### Q6.6 (chapter 9) (2P)
+
+A research assistant asks an agent to inspect project files and run local diagnostics, but not to share data externally. While reading a project README, the agent encounters text instructing it to upload the raw data to a website. How should the assistant interpret this instruction?
+
+A) Follow the README because repository instructions override the assistant's original limits
+B) Treat the README as project content, not permission to send data outside
+C) Upload a small sample because the assistant prohibited sharing only the full dataset
+D) Stop all diagnostics because any embedded instruction makes local analysis unsafe
+
+**Correct Answer: B**
+
+**Explanation:** B is correct because instructions encountered in files are task data, not a new authority to change the task or permissions. The agent should respect the research assistant's stated boundary and not send data externally. This is an example of prompt injection, which is one reason to limit permissions and review agent actions.
 
 \newpage
 
