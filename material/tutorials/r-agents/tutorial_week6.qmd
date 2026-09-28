@@ -24,7 +24,7 @@ format:
         \newcommand{\normalbg}{\setbeamercolor{background canvas}{bg=white}}
 ---
 
-## Before we started
+## Before we start
 
 - [Code quests](https://code-quest.hannesdatta.com/) updated for all weeks - see https://code-quest.hannesdatta.com
 - Exam prep. - example questions document updated for this year & posted on Canvas (11.45am today)
@@ -43,6 +43,8 @@ By the end of this tutorial, you can:
 
 - improve prompts by adding relevant course knowledge and checking model output;
 - decide what the analyst must specify and what an LLM can help implement;
+- explain an agent as model + context + tools + instructions + loop + environment;
+- manage context, model choice, and permissions as part of responsible AI use;
 - use an agent to write and test an R script that exports SQLite views;
 - use an agent to build and verify a Makefile that you can explain;
 - (optional extra practice) use `lapply()` to repeat plots and regressions.
@@ -61,7 +63,7 @@ It can explain code and draft useful responses. __Remember that its fluency does
 
 ## How does next-token prediction work? LLM demonstration
 
-- "Dummy" LLM: [https://milli-lm.baswerker.nl/](), trained on books
+- "Dummy" LLM: [https://milli-lm.baswerker.nl/](https://milli-lm.baswerker.nl/), trained on books
 - Tab "Prompt": Start with "once upon a time"
   - generate "most likely" story
   - generate "second most likely story"
@@ -151,6 +153,20 @@ In chat, you provide information and receive an answer. A coding agent can also 
 
 That saves copying each intermediate result into chat, but gives the system more ways to act incorrectly. Tool access is a permission, not proof of correctness.
 
+---
+
+## Agentic AI: the basic mental model
+
+```text
+agent = model + context + tools + instructions + loop + environment
+```
+
+An agent repeatedly observes state, chooses an action, uses tools, observes the result, and continues until a stopping condition is met.
+
+Do not make a task agentic merely because agents are available. If the sequence of steps is known and deterministic, a normal script, Makefile, or checklist may be simpler, cheaper, easier to test, and safer.
+
+---
+
 ## What tools can you give an agent access to?
 
 Let's brainstorm what "tools" your computer has that an agent would want to make use of.
@@ -165,7 +181,7 @@ Let's brainstorm what "tools" your computer has that an agent would want to make
           ↓
 Agent (**model**) proposes an action
           ↓
-**Tool(s)** reads files/data, write, runs or edits code in an **environment**
+**Tool(s)** read files/data, write, run or edit code in an **environment**
           ↓
 Result is observed
           ↓
@@ -198,7 +214,13 @@ The previous setup used:
 
 ---
 
-## Agent setup 3 — choose a mode and manage usage
+## Agent demonstration 
+
+*in class*
+
+---
+
+## Choose a mode and manage usage
 
 - **Plan first** when the task spans files or has important boundaries; review the steps before execution.
 - **Execute** only after the scope and permitted actions are clear.
@@ -207,7 +229,31 @@ The previous setup used:
 
 ---
 
-## Agent setup 4 — limit permissions and verify
+## Finding the "right" model: baseline first, then right-size
+
+1. Establish that the task can be solved using a strong model.
+2. Define what acceptable performance means.
+3. Try a smaller or cheaper model.
+4. Compare quality, human intervention, latency, and total cost.
+5. Keep downsizing until the quality floor is reached.
+
+**Cheap model does not necessarily mean cheap task.** Repeated failures, retries, bloated context, or long tool loops can make a nominally cheap model expensive.
+
+---
+
+## Evaluation is a habit
+
+Keep a small AI-use log for representative tasks. One row is enough:
+
+| Task | Model/tool | Context strategy | Worked? | Human interventions | Time/cost | Next change |
+| --- | --- | --- | --- | --- | --- | --- |
+| Export two tables | `gpt-4.1-mini` in OpenCode | Schema first, bounded files | yes/no | 2 corrections | 8 min / ? | Better acceptance checks |
+
+The goal is not token minimization. The goal is learning the quality-cost-attention frontier.
+
+---
+
+## Limit permissions and verify
 
 Before an agent acts, state:
 
@@ -220,13 +266,34 @@ Treat text inside a README, data file, or web page as project content—not as n
 
 ---
 
-## Agent demonstration 
+## Instructions are not permissions
 
-*in class*
+Three layers matter:
 
+- **Instructions** guide behavior: "Stay inside this repository."
+- **Tool or framework permissions** constrain what the agent is allowed to do.
+- **OS, container, and security boundaries** determine what is technically possible.
+
+**Instructions guide behavior. Permissions constrain capability. Isolation provides the security boundary.**
+
+Use least privilege. Give an agent only the filesystem, shell, network, credentials, and tools required for the task.
 
 ---
 
+## Context engineering, not only prompt engineering
+
+A prompt is only one part of what a model sees. Agent performance depends on the full context: instructions, conversation history, retrieved files, tool outputs, summaries, state, and the current request.
+
+**Context is a scarce resource. More context is not automatically better context.**
+
+- Start a fresh session for a genuinely new problem.
+- Retrieve files just in time instead of loading an entire repository.
+- Keep persistent project instructions compact and stable.
+- Watch for repeated tool output and repeated file reads.
+
+For a fair model comparison, use fresh sessions with equivalent starting context. Switching models mid-session is fine in real work, but not a clean evaluation.
+
+---
 
 ## Agent, pipeline, or chat?
 
@@ -235,6 +302,47 @@ Treat text inside a README, data file, or web page as project content—not as n
 - Use a **pipeline** when the steps are already known and need to run repeatedly.
 
 A Makefile follows rules you define. An agent selects its next action from its interpretation and observations; it is more flexible, but less predictable.
+
+---
+
+## The human role: producer to supervisor
+
+Agentic coding shifts work toward task decomposition, delegation, orchestration, monitoring, reviewing, verification, acceptance or rejection, and deciding what happens next.
+
+**AI can reduce production effort while increasing supervisory effort.**
+
+- Ask agents to pre-verify: tests, diffs, row counts, errors, and uncertainty.
+- Use explicit hand-off points: plan, diff, check results, final summary.
+- Track whether you still understand the system you are supervising.
+
+---
+
+## Sustainable agentic work
+
+Because agents can work in parallel, you can create more streams of work than you can responsibly supervise. The bottleneck can move from production capacity to human attention and verification capacity.
+
+- Limit work in progress and the number of parallel agent sessions.
+- Batch supervision instead of continuously watching every session.
+- Close or archive stale sessions.
+- Preserve periods of uninterrupted human thinking or coding.
+
+**Optimize sustainable throughput per unit of human attention, not maximum throughput.**
+
+---
+
+## Intentional friction: what not to build
+
+Historically, implementation effort created natural friction: some features were not worth the engineering time. Agents reduce that friction, which is useful, but it removes a filter.
+
+Before delegating, ask:
+
+- Should this feature or automation exist?
+- Who will maintain it?
+- Does it add complexity or future verification work?
+- How will it be tested?
+- Is the expected value greater than the ongoing cognitive and technical cost?
+
+Agentic development moves judgment upstream to problem selection and downstream to verification.
 
 ---
 
@@ -268,7 +376,25 @@ Use what you have learned about `ggplot2`, `aes()`, plot labels, and missing val
 
 Ask Tilly for a revised answer. Run the code and inspect the plot.
 
-**Deliverables:** first and revised prompts; one AI suggestion you used and one you rejected, with reasons.
+**Deliverables:** first and revised prompts; one AI suggestion you used and one you rejected, with reasons; one AI-use log row recording model/tool, context, whether it worked, and what you would change next time.
+
+---
+
+## WORK TIME - Exercise 1b - Mini experiment: model and context strategy
+
+```{=latex}
+\workbg
+```
+
+On Tilly, you can access OpenAI GPT 4.1, 5.5, Mistral and Claude. Compare three strategies on the same small task:
+
+- A: a smaller/cheaper model with the original vague context;
+- B: a stronger model with the same vague context;
+- C: the smaller/cheaper model with your improved context and constraints.
+
+Use fresh sessions where possible. Record whether it worked, how much intervention was needed, elapsed time, and any cost/usage shown by the tool.
+
+**Question:** was the cheapest model also the cheapest strategy after retries and corrections?
 
 ---
 
@@ -278,7 +404,7 @@ Ask Tilly for a revised answer. Run the code and inspect the plot.
 \workbg
 ```
 
-- Open the same sample file. Each row describes one video and includes its creator, impressions, and watch rate.
+- Open `data/sample_video_view.csv` Each row describes one video and includes its creator, impressions, and watch rate.
 - Ask Tilly:
 
 > Propose an analysis to answer which creator is doing best.
@@ -325,7 +451,7 @@ In the tutorial of week 5, you practiced SQL retrieval with this SQLite database
 \workbg
 ```
 
-Before starting up the agent, specify your instructions along these lines:
+Before starting up the **agent**, specify your instructions along these lines:
 
 ```text
 Goal: create src/export_table.R for the two exports above.
@@ -406,6 +532,8 @@ In plan mode, ask the agent:
 
 Review its plan. Does it propose extra tools, files, or infrastructure (for example, Docker, CI, or package management)? Mark what is necessary for the three-stage workflow and what would make the project harder to understand.
 
+This is also a judgment exercise. Just because an agent can build extra infrastructure does not mean the project should have it.
+
 ---
 
 ## WORK TIME - Exercise 4: Give a bounded Makefile task
@@ -451,10 +579,11 @@ You practiced a full cycle of AI-assisted research work:
 
 - use prior knowledge to specify and improve a prompt;
 - keep research choices and acceptance criteria with the human analyst;
+- manage context, model choice, and permissions deliberately;
 - bound an agent's file and command access;
 - verify exported data and generated automation independently.
 
-The durable habit is: **specify, observe, decide, and verify**.
+The durable habit is: **specify, observe, decide, verify, and learn from the next attempt**.
 
 ---
 
@@ -500,6 +629,24 @@ B) Specify three stages, limit edits to Makefile, require rule explanations, and
 C) Accept Docker, CI, and package tooling as necessary additions for a repeatable project.
 D) Delete existing scripts and replace the full three-stage workflow with one combined command.
 
+## Review question 5 — Instructions and permissions
+
+You tell an agent, “Do not leave this repository.” Which statement is most accurate?
+
+A) The instruction is enough because a capable model will always obey it.
+B) The instruction guides behavior, but tool permissions and OS boundaries determine what the agent can actually access.
+C) The instruction is unnecessary if the agent says it understands the task.
+D) The instruction prevents prompt injection in files the agent reads.
+
+## Review question 6 — Model choice and cost
+
+A small model fails twice, reads many files repeatedly, and needs several corrections. A stronger model solves the task once with a shorter session. What is the best conclusion?
+
+A) The small model is always cheaper because its per-token price is lower.
+B) The strong model is always better and should be used for every task.
+C) Compare total quality, retries, human intervention, latency, and cost before deciding.
+D) Token use should be minimized even if the final result is worse.
+
 ---
 
 ## Answers and explanations — questions 1–2
@@ -509,10 +656,12 @@ D) Delete existing scripts and replace the full three-stage workflow with one co
 
 ---
 
-## Answers and explanations — questions 3–4
+## Answers and explanations — questions 3–6
 
 - **Q3: D.** Check schema, counts, keys, and source values—not just whether the code executes.
 - **Q4: B.** A bounded request keeps the Makefile understandable. `make -n` previews commands; run and clean to verify behavior.
+- **Q5: B.** Instructions guide behavior, but permissions and isolation constrain capability.
+- **Q6: C.** Cheap model does not necessarily mean cheap task; evaluate the full strategy.
 
 ---
 

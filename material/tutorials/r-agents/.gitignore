@@ -1,5 +1,7 @@
 /.quarto/
 **/*.quarto_ipynb
+opencode.json
+**.mysql
 
 # Upload this large student bundle to Canvas rather than Git.
 /starter_repo.zip
