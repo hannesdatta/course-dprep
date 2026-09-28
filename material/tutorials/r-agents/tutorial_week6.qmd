@@ -1,0 +1,706 @@
+---
+title: "Tutorial (week 6) - LLMs, prompting, and AI agents"
+subtitle: "Data Preparation and Programming Skills (2026/2027)"
+author: "Hannes Datta"
+date: "last-modified"
+execute:
+  eval: false
+  echo: true
+  warning: false
+  message: false
+format:
+  beamer:
+    theme: metropolis
+    colortheme: seahorse
+    code-overflow: wrap
+    code-font-size: 0.85em
+    aspectratio: 169
+    fontsize: 11pt
+    highlight-style: tango
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \newcommand{\workbg}{\setbeamercolor{background canvas}{bg=yellow!12}}
+        \newcommand{\normalbg}{\setbeamercolor{background canvas}{bg=white}}
+---
+
+## Before we started
+
+- [Code quests](https://code-quest.hannesdatta.com/) updated for all weeks - see https://code-quest.hannesdatta.com
+- Exam prep. - example questions document updated for this year & posted on Canvas (11.45am today)
+- Added [chapter 9](https://dprep-book.hannesdatta.com/ai-tooling-for-research) to the dPrep book at https://dprep-book.hannesdatta.com ("AI Tooling for Research: LLMs and Agentic Workflows")
+- Set up for today[^1]
+  - Download and unzip the **Week 6 starter project** from Canvas. The bundle includes the starter project and `data/tiktok_students.sqlite`.
+  - Open the extracted `starter_repo` folder in RStudio or your preferred editor. Remember to set your working directories.
+
+[^1]: Check the following files exist: `data/tiktok_students.sqlite`, `data/sample_video_view.csv`, `src/export_table.R`, `src/build_creator_summary.R`, `report.qmd`.
+
+---
+
+## Today's learning goals
+
+By the end of this tutorial, you can:
+
+- improve prompts by adding relevant course knowledge and checking model output;
+- decide what the analyst must specify and what an LLM can help implement;
+- use an agent to write and test an R script that exports SQLite views;
+- use an agent to build and verify a Makefile that you can explain;
+- (optional extra practice) use `lapply()` to repeat plots and regressions.
+
+---
+
+## LLMs: how a response is generated
+
+- An LLM processes text as **tokens** and generates a response one token at a time.
+- Its answer draws on patterns learned during training and the context provided now.
+- It does not automatically know the contents of your files or the meaning of your variables.
+
+It can explain code and draft useful responses. __Remember that its fluency does not guarantee that an answer is correct for your task.__
+
+---
+
+## How does next-token prediction work? LLM demonstration
+
+- "Dummy" LLM: [https://milli-lm.baswerker.nl/](), trained on books
+- Tab "Prompt": Start with "once upon a time"
+  - generate "most likely" story
+  - generate "second most likely story"
+  - change "temperature": observe what happens to word choice probabilities
+- Change prompt to something with dplyr: e.g., `df %>% mutate() %>%`
+  - generate "most likely" response
+  - reflect!
+
+---
+
+## Why a plausible answer can still be wrong
+
+- It may invent a variable or reference that *sounds* plausible.
+- It may use a valid operation with the wrong key or unit of analysis.
+- It may describe an association as a causal effect.
+- A repeated or confident answer is not independent evidence (recall temperature setting!)
+
+**Use LLM output as a draft or explanation; check it against your data, definitions, research question and also course content.**
+
+---
+
+## Context: what can the model see?
+
+The **context window** is the working space for the current interaction. It can include your prompt, previous messages, supplied files or excerpts, and tool results.
+
+- A model cannot inspect your local files unless the application or an agent gives it access.
+- Too little context can leave important definitions unstated.
+- Unrelated material can distract or crowd out the details the task needs.
+- Do not include secrets or sensitive data unless use of the service is authorized.
+
+---
+
+## Prompting: write a task specification
+
+Give the model a brief that makes your intention checkable:
+
+- **Task:** what do you want done?
+- **Context:** what data, code, and unit of analysis matter?
+- **Constraints:** what must it preserve or avoid?
+- **Output:** what should it return?
+- (**Check:** what evidence will show whether it worked?)
+
+---
+
+## Prompting: improve the next response
+
+When an answer misses the mark:
+
+1. inspect its assumptions and code;
+2. provide the actual output, error, or a relevant data example;
+3. add the missing definition or constraint;
+4. ask for a targeted revision;
+5. run and check the revised result yourself.
+
+Asking the model to review itself is not an independent audit.
+
+---
+
+## Instructor demonstration 1 — a vague prompt in Tilly
+
+- Open [Tilly](https://chatbot.tilburg.ai) 
+- Paste the first few rows of `data/sample_video_view.csv`. 
+- Ask: `Make a useful plot from this video data.`
+
+<!--As a group, note what the answer assumes about the variables, the comparison, and what “useful” means. If Tilly asks for more information, that is useful evidence too: the prompt did not yet specify enough.-->
+
+---
+
+## Instructor demonstration 2 — add course knowledge
+
+- Use what you know about the sample data and `ggplot2` to make the request precise.[^2] 
+- For example, specify that each row is a video, name `impressions_n` and `watch_rate`, request a scatterplot in ggplot without extensive styling, and say how missing rates should be handled.
+- Ask Tilly for R code and a short explanation. Run the code and compare the plot with the first response. 
+- Discuss which details in the prompt changed the result.
+
+[^2]: This builds on your tutorial in week 3 and its practice of using one AI suggestion while explaining one you reject.
+
+---
+
+## From chat to an agent: what changes?
+
+In chat, you provide information and receive an answer. A coding agent can also be given tools to:
+
+- inspect files in a project;
+- run R, SQL, or shell commands;
+- edit files and react to the results.
+
+That saves copying each intermediate result into chat, but gives the system more ways to act incorrectly. Tool access is a permission, not proof of correctness.
+
+## What tools can you give an agent access to?
+
+Let's brainstorm what "tools" your computer has that an agent would want to make use of.
+
+
+---
+
+## An agent works in an action–observation loop
+
+```text
+**Task instruction** and **project context**
+          ↓
+Agent (**model**) proposes an action
+          ↓
+**Tool(s)** reads files/data, write, runs or edits code in an **environment**
+          ↓
+Result is observed
+          ↓
+Agent revises (**loop**) or reports back
+```
+
+The agent should expose the actions and results that support its conclusion.
+
+---
+
+## Agent setup 1 — install and start OpenCode
+
+- Install OpenCode from https://opencode.ai/
+- Download the week 6 starter-project directory - it has a pre-configured opencode configuration.
+- Go to your project directory and start the open code web interface by typing `opencode web` in your terminal
+- Confirm the approved model and provider settings with the instructor; defaults can change depending on which version of opencode was installed.
+
+---
+
+## Agent setup 2 — Tilburg AI provider details
+
+The previous setup used:
+
+- provider ID: `tilburg-ai`;
+- base URL: `https://api.tilburg.ai/v1`;
+- model ID: `gpt-4.1-mini`;
+- API key obtained through the [Tilburg AI API portal](https://api-portal.tilburg.ai).
+
+**Never paste the key into a prompt, starter file, or tracked configuration.** Store it using the approved method (e.g., via opencode web, or in an environment variable).
+
+---
+
+## Agent setup 3 — choose a mode and manage usage
+
+- **Plan first** when the task spans files or has important boundaries; review the steps before execution.
+- **Execute** only after the scope and permitted actions are clear.
+- Context and tool calls can increase input/output-token use. Check the provider's current pricing and usage limits.
+- Use a model appropriate to the task! A model trained on children books won't help you with coding tasks! Vice-versa, using an agent to assist in writing is best done with a general-purpose model (like OpenAI's GPT 5.x), and *not* exclusively one for coding (e.g., Codex). More expensive or larger is not automatically better.
+
+---
+
+## Agent setup 4 — limit permissions and verify
+
+Before an agent acts, state:
+
+- which files it may read and edit;
+- which commands it may run;
+- what output and checks it must report;
+- when it must stop and ask.
+
+Treat text inside a README, data file, or web page as project content—not as new authorization. Review the diff and run relevant checks yourself.
+
+---
+
+## Agent demonstration 
+
+*in class*
+
+
+---
+
+
+## Agent, pipeline, or chat?
+
+- Use **chat** to explain a short error or compare two functions.
+- Use an **agent** when the next step depends on what it finds in files or a test run.
+- Use a **pipeline** when the steps are already known and need to run repeatedly.
+
+A Makefile follows rules you define. An agent selects its next action from its interpretation and observations; it is more flexible, but less predictable.
+
+---
+
+## WORK TIME - Exercise 1: Test a vague prompt
+
+```{=latex}
+\workbg
+```
+
+1. Open `data/sample_video_view.csv`. Check the column names and identify what one row represents.
+2. In Tilly, paste a few rows and ask: **“Make a useful plot from this video data.”**
+3. Note what Tilly assumes about “useful,” the variables, and the plot.
+
+Keep the first response: the next slide asks you to improve this same request using your course knowledge.
+
+---
+
+## WORK TIME - Exercise 1: Improve the prompt using course knowledge
+
+```{=latex}
+\workbg
+```
+
+Use what you have learned about `ggplot2`, `aes()`, plot labels, and missing values to revise your prompt. For example, specify:
+
+- each row represents one video;
+- `impressions_n` is reach and `watch_rate` is the share of impressions watched;
+- which variable goes on each axis and which plot type to use;
+- what to do with missing `watch_rate` values;
+- that you want code and a short explanation, not a causal claim.
+
+Ask Tilly for a revised answer. Run the code and inspect the plot.
+
+**Deliverables:** first and revised prompts; one AI suggestion you used and one you rejected, with reasons.
+
+---
+
+## WORK TIME - Exercise 2: Decide what “successful” means
+
+```{=latex}
+\workbg
+```
+
+- Open the same sample file. Each row describes one video and includes its creator, impressions, and watch rate.
+- Ask Tilly:
+
+> Propose an analysis to answer which creator is doing best.
+
+- Notice whether it chooses a measure—such as total impressions or average watch rate—without asking what “best” means.
+
+---
+
+## WORK TIME - Exercise 2: You define the criterion
+
+```{=latex}
+\workbg
+```
+
+Choose the goal before asking Tilly for code:
+
+- **Reach:** rank creators by total impressions across their videos.
+- **Engagement:** rank creators by a watch-rate summary you define; decide how to handle missing values and low-impression videos.
+
+Write a second prompt that states your chosen definition, the intended output, and any data-handling rule. Ask Tilly to implement that definition—not to choose a different one. Run and inspect its code.
+
+**Deliverables:** your definition of “best”; revised prompt; one sentence explaining why the metric fits the goal. The analyst retains authority over the operationalization; the LLM helps implement it.
+
+---
+
+## WORK TIME - Exercise 3: Specify the SQL exports
+
+```{=latex}
+\workbg
+```
+
+In the tutorial of week 5, you practiced SQL retrieval with this SQLite database. Using the starter repository for week 6 (download on Canvas), ask a coding agent to make an R script that exports these specified views/tables from `data/tiktok_students.sqlite`:
+
+| SQLite view/table | Columns | CSV output |
+| --- | --- | --- |
+| `video_view` | `video_id`, `creator_id`, `impressions_n`, `watch_rate` | `data/exports/video_view.csv` |
+| `creators` | `creator_id`, `creator_name` | `data/exports/creators.csv` |
+
+---
+
+## WORK TIME - Exercise 3: Specify permissions and expected output
+
+```{=latex}
+\workbg
+```
+
+Before starting up the agent, specify your instructions along these lines:
+
+```text
+Goal: create src/export_table.R for the two exports above.
+Database: SQLite file at data/tiktok_students.sqlite.
+Allowed: inspect the schema; create/edit only src/export_table.R;
+         run Rscript src/export_table.R <table>.
+Required: accept only video_view or creators; use SELECT;
+          write the requested CSV and report columns and row count.
+First: inspect the schema and propose a plan; wait for approval to edit.
+Do not: modify the database, install packages, or access unrelated files.
+Stop and ask: if a table or requested column is missing.
+```
+
+---
+
+## WORK TIME - Exercise 3: Implement and test
+
+```{=latex}
+\workbg
+```
+
+- Review the agent's plan. If it matches the task, approve the edit and inspect the diff. 
+- The script should accept one table name as an argument and use `DBI` and `RSQLite` to export it. 
+- Then run the scripts:
+
+```bash
+Rscript src/export_table.R video_view
+Rscript src/export_table.R creators
+```
+
+---
+
+## WORK TIME - Exercise 3: Verify the exports
+
+```{=latex}
+\workbg
+```
+
+Check that:
+
+- both CSVs exist in the specified directory;
+- the column names match the specification;
+- `video_view.csv` has 50,000 rows and `creators.csv` has 500 rows;
+- `video_id` and `creator_id` are unique in their respective exports;
+- the R script runs from the starter-project root and reports any errors clearly.
+
+If a check fails, give the agent the actual result and ask for a targeted correction. Do not treat “the script ran” as proof that it exported the right data.
+
+---
+
+## WORK TIME - Exercise 4: Map the project stages
+
+```{=latex}
+\workbg
+```
+
+There is no Makefile in the starter project of week 6 (download on Canvas). This exercise extends the targets, prerequisites, recipes, dry runs, and cleanup from the tutorial in week 4.
+
+Trace the inputs and outputs before asking the agent to automate anything:
+
+1. `data/tiktok_students.sqlite` + `src/export_table.R` → two CSV exports;
+2. two CSV exports + `src/build_creator_summary.R` → `data/analysis/creator_summary.csv`;
+3. summary CSV + `report.qmd` → `output/report.html`.
+
+The goal is a small, readable Makefile for these three stages. The source scripts and report already exist; do not replace them.
+
+---
+
+## WORK TIME - Exercise 4: Observe over-scoping
+
+```{=latex}
+\workbg
+```
+
+In plan mode, ask the agent:
+
+> Make this project production-ready and fully automated.
+
+Review its plan. Does it propose extra tools, files, or infrastructure (for example, Docker, CI, or package management)? Mark what is necessary for the three-stage workflow and what would make the project harder to understand.
+
+---
+
+## WORK TIME - Exercise 4: Give a bounded Makefile task
+
+Ask the agent to:
+
+- create a Makefile with `all`, rules for the required outputs, and `clean`;
+- use the existing scripts and relative paths;
+- make dependencies reflect the three stages above;
+- add no Docker, CI, packages, scripts, or unrequested targets;
+- first explain the targets, prerequisites, and commands in plain language;
+- edit only `Makefile`, then explain each rule.
+
+Review the proposed Makefile. You should be able to explain what each target creates and why each prerequisite is listed.
+
+---
+
+## WORK TIME - Exercise 4: Run and verify
+
+```{=latex}
+\workbg
+```
+
+```bash
+make -n
+make
+make
+make clean
+make
+```
+
+Compare `make -n` with the intended dependency order. The second `make` should have nothing new to build. Confirm that `make clean` removes generated outputs but leaves source files and the SQLite database untouched.
+
+---
+
+## Wrap-up
+
+```{=latex}
+\normalbg
+```
+
+You practiced a full cycle of AI-assisted research work:
+
+- use prior knowledge to specify and improve a prompt;
+- keep research choices and acceptance criteria with the human analyst;
+- bound an agent's file and command access;
+- verify exported data and generated automation independently.
+
+The durable habit is: **specify, observe, decide, and verify**.
+
+---
+
+## Review questions
+
+```{=latex}
+\normalbg
+```
+
+## Review question 1 — Improving a prompt
+
+You ask an LLM to plot “video performance.” It uses a column that is not in the data and does not say what one row represents. Which revision best uses your course knowledge?
+
+A) Ask the model to repeat the original request at a lower temperature to reduce variation.
+B) Ask for clearer labels and a longer caption, while leaving the prompt's missing context unchanged.
+C) State what one row represents, name valid columns and comparison, then run and inspect the code.
+D) Ask the model to check whether its invented column exists in the supplied data before plotting.
+
+## Review question 2 — Define the success metric
+
+Tilly ranks creators by total impressions after you ask which creator is “best.” Your goal is to identify creators with strong engagement. What is the best next step?
+
+A) Define an engagement measure and relevant data rules, then ask Tilly to implement that specification.
+B) Accept total impressions because the model chose it from the available variables.
+C) Ask Tilly to choose a more suitable metric without giving it the goal.
+D) Ask Tilly to return a list of creator IDs without explaining its ranking.
+
+## Review question 3 — Verifying an agent's SQL export
+
+An agent's R script runs and creates `video_view.csv`. What provides the strongest evidence that the requested export is correct?
+
+A) Trust the agent's report that it exported the requested source view with the specified columns.
+B) Open the CSV and confirm it displays correctly and contains the expected columns.
+C) Rerun the script and accept its results if the command exits without an error.
+D) Compare requested columns and row count with the source, then check identifier uniqueness.
+
+## Review question 4 — Keeping a Makefile understandable
+
+An agent proposes Docker, CI, package management, and a complex Makefile for a project with three known stages. What is the best response?
+
+A) Ask the agent to explain and implement its full proposal, including Docker, CI, and new tooling.
+B) Specify three stages, limit edits to Makefile, require rule explanations, and verify dry run and build.
+C) Accept Docker, CI, and package tooling as necessary additions for a repeatable project.
+D) Delete existing scripts and replace the full three-stage workflow with one combined command.
+
+---
+
+## Answers and explanations — questions 1–2
+
+- **Q1: C.** A good prompt supplies relevant context and uses known data structure and plotting concepts; run and inspect generated code.
+- **Q2: A.** “Best” is ambiguous. The analyst defines the goal and operational measure; Tilly helps implement and check it.
+
+---
+
+## Answers and explanations — questions 3–4
+
+- **Q3: D.** Check schema, counts, keys, and source values—not just whether the code executes.
+- **Q4: B.** A bounded request keeps the Makefile understandable. `make -n` previews commands; run and clean to verify behavior.
+
+---
+
+## Solutions for core exercises 
+
+## Example solution — `src/export_table.R`
+
+```{r}
+main <- function() {
+  queries <- c(
+    video_view = "SELECT video_id, creator_id, impressions_n, watch_rate FROM video_view",
+    creators = "SELECT creator_id, creator_name FROM creators"
+  )
+  args <- commandArgs(trailingOnly = TRUE)
+
+  if (length(args) != 1L || !args[[1]] %in% names(queries)) {
+    stop("Choose one supported table: video_view or creators.")
+  }
+
+  db_path <- "data/tiktok_students.sqlite"
+  if (!file.exists(db_path)) {
+    stop("Database not found. Open the Canvas starter bundle and run this script from its project root.")
+  }
+
+  dir.create("data/exports", recursive = TRUE, showWarnings = FALSE)
+  con <- DBI::dbConnect(RSQLite::SQLite(), dbname = db_path)
+  on.exit(DBI::dbDisconnect(con), add = TRUE)
+
+  table_name <- args[[1]]
+  result <- DBI::dbGetQuery(con, queries[[table_name]])
+  output_path <- file.path("data/exports", paste0(table_name, ".csv"))
+  readr::write_csv(result, output_path)
+
+  message("Wrote ", nrow(result), " rows and ", ncol(result),
+          " columns to ", output_path)
+}
+
+main()
+```
+
+## Example solution — `Makefile`
+
+```make
+.PHONY: all clean
+
+all: output/report.html
+
+data/exports/video_view.csv: src/export_table.R data/tiktok_students.sqlite
+	Rscript src/export_table.R video_view
+
+data/exports/creators.csv: src/export_table.R data/tiktok_students.sqlite
+	Rscript src/export_table.R creators
+
+data/analysis/creator_summary.csv: src/build_creator_summary.R data/exports/video_view.csv data/exports/creators.csv
+	Rscript src/build_creator_summary.R
+
+output/report.html: report.qmd data/analysis/creator_summary.csv
+	mkdir -p output
+	quarto render report.qmd --to html --output-dir output
+
+clean:
+	rm -f data/exports/video_view.csv data/exports/creators.csv data/analysis/creator_summary.csv output/report.html
+```
+
+The Makefile uses only the files and stages in this starter project. It does not install software, change the database, or introduce extra infrastructure.
+
+---
+
+## Extra practice — repeated analyses with `lapply()`
+
+Earlier tutorials introduced repeated plots and per-group regressions using loops. This optional extension revisits those ideas in an agentic workflow: you supply a small, explicit analysis task, ask an agent to implement it, then check the outputs yourself.
+
+The example below creates a deterministic toy dataset with one row per creator-week. Save the code as `src/creator_analysis.R` in a practice project, or run it from the project root after creating the `src/` folder. It uses synthetic data; the association is illustrative and must not be interpreted as causal.
+
+```{r}
+set.seed(27)
+creator_weekly <- expand.grid(
+  creator_id = c("C1", "C2", "C3"),
+  week = 1:8,
+  KEEP.OUT.ATTRS = FALSE,
+  stringsAsFactors = FALSE
+)
+```
+
+---
+
+## Optional extra practice — repeated analyses with `lapply()` (II)
+
+```{r}
+creator_weekly$impressions_n <- 20 +
+  3 * creator_weekly$week +
+  7 * match(creator_weekly$creator_id, c("C1", "C2", "C3"))
+creator_weekly$streams <- 50 +
+  5 * creator_weekly$impressions_n +
+  12 * creator_weekly$week +
+  rnorm(nrow(creator_weekly), mean = 0, sd = 10)
+
+head(creator_weekly)
+```
+
+Split the rows by creator, then use `lapply()` to make one plot per group. Each function call receives one creator's data and returns a `ggplot` object. The explicit `ggsave()` call writes one PNG per creator.
+
+---
+
+
+```{r}
+library(ggplot2)
+
+creator_groups <- split(creator_weekly, creator_weekly$creator_id)
+dir.create("output", showWarnings = FALSE)
+
+creator_plots <- lapply(names(creator_groups), function(id) {
+  creator_data <- creator_groups[[id]]
+
+  p <- ggplot(creator_data, aes(x = impressions_n, y = streams)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+      title = paste("Creator", id),
+      x = "Weekly impressions",
+      y = "Weekly streams"
+    ) +
+    theme_minimal()
+
+  ggsave(
+    filename = file.path("output", paste0("plot_", id, ".png")),
+    plot = p,
+    width = 6,
+    height = 4
+  )
+  p
+})
+
+names(creator_plots) <- names(creator_groups)
+names(creator_plots)
+creator_plots[["C1"]]
+```
+
+Next fit the same simple linear model separately for each creator. The result table collects the intercept, impression slope, and slope p-value from each model.
+
+```{r}
+creator_models <- lapply(
+  creator_groups,
+  function(creator_data) lm(streams ~ impressions_n, data = creator_data)
+)
+
+creator_model_results <- do.call(rbind, lapply(names(creator_models), function(id) {
+  coefficient_table <- summary(creator_models[[id]])$coefficients
+  data.frame(
+    creator_id = id,
+    intercept = unname(coefficient_table["(Intercept)", "Estimate"]),
+    impressions_slope = unname(coefficient_table["impressions_n", "Estimate"]),
+    slope_p_value = unname(coefficient_table["impressions_n", "Pr(>|t|)"]),
+    row.names = NULL
+  )
+}))
+
+creator_model_results
+write.csv(creator_model_results, "output/creator_model_results.csv", row.names = FALSE)
+```
+
+### Agent task: implement and verify the repeated analysis
+
+Create the `src/` folder, then save the synthetic-data setup and the repeated-analysis code above together in `src/creator_analysis.R`. In plan mode, ask the agent to inspect that script and propose a plan before editing. Use a bounded task specification such as:
+
+```text
+Goal: complete src/creator_analysis.R so it creates one plot and one
+      regression result per creator from the synthetic creator_weekly data.
+Allowed: read and edit only src/creator_analysis.R; create output files
+         only under output/; run Rscript src/creator_analysis.R.
+Required: use split() and lapply(); save three PNG plots and
+          output/creator_model_results.csv; explain the grouping and
+          model code in plain language.
+Checks: report the output paths, confirm there are three plots and
+        three model-summary rows, and list the summary columns.
+Do not: install packages, change other files, or describe associations
+       in this synthetic example as causal effects.
+First: propose a plan and wait for approval before editing.
+```
+
+Review the plan and diff, then run the script and inspect its outputs. Ask for a targeted correction if a check fails.
+
+Before accepting the result, check that:
+
+- the script runs from the project root with `Rscript src/creator_analysis.R`;
+- `output/` contains `plot_C1.png`, `plot_C2.png`, `plot_C3.png`, and `creator_model_results.csv`;
+- the model-summary CSV has three rows and the expected columns;
+- the models use only each creator's rows;
+- the interpretation describes associations in synthetic data, not causal effects.
+
+If the agent's output differs, provide the actual check result and request a targeted correction. This practice extends the course's repeated-plot and per-creator regression exercises while reinforcing Week 6's specify–observe–verify workflow.
