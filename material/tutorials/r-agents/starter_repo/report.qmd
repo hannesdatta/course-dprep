@@ -1,0 +1,40 @@
+---
+title: "Creator video summary"
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+creator_summary <- read_csv(
+  "data/analysis/creator_summary.csv",
+  show_col_types = FALSE
+)
+
+top_creators <- creator_summary %>%
+  slice_max(impressions_total, n = 10, with_ties = FALSE)
+```
+
+## Top creators by impressions
+
+```{r}
+top_creators
+```
+
+```{r}
+ggplot(top_creators, aes(x = reorder(creator_name, impressions_total),
+                         y = impressions_total)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(
+    title = "Top creators by total impressions",
+    x = "Creator",
+    y = "Total impressions"
+  ) +
+  theme_minimal()
+```

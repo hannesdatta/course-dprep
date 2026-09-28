@@ -1,0 +1,5 @@
+/.quarto/
+**/*.quarto_ipynb
+
+# Upload this large student bundle to Canvas rather than Git.
+/starter_repo.zip

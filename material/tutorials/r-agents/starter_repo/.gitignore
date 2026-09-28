@@ -1,0 +1,17 @@
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+.Renviron
+.env
+.env.*
+!.env.example
+
+!data/sample_video_view.csv
+data/tiktok_students.sqlite
+data/exports/*.csv
+data/analysis/*.csv
+output/*
+!data/exports/.gitkeep
+!data/analysis/.gitkeep
+!output/.gitkeep
