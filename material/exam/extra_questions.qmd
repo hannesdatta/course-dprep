@@ -1,0 +1,753 @@
+---
+title: "Extra Tutorial Questions"
+subtitle: "Data Preparation and Programming Skills (2026/2027)"
+author: "Hannes Datta"
+date: "last-modified"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+execute:
+  eval: false
+  echo: true
+  warning: false
+  message: false
+---
+
+This question bank gathers data-focused examples and practice tasks from the current and earlier tutorials. Tutorial source files remain unchanged. The examples below use small data created in R or SQL, so they do not require Canvas downloads, course databases, or network access.
+
+## Before you begin
+
+Most R questions use functions from `dplyr`, `tidyr`, and `ggplot2`. The time-series questions also use `lubridate`, `ISOweek`, and `zoo`; the JSON question uses `jsonlite`; and the R-to-SQLite example uses `DBI` and `RSQLite`. Install a package once with `install.packages("package_name")`, then load it in each new R session with `library(package_name)`. The SQL block can be run in SQLite Browser or another SQLite client.
+
+All R chunks are shown but not evaluated during rendering. Copy them in order into an R script or console after installing the listed packages. The solutions are included for checking after attempting each question.
+
+## Week 1 — R foundations and first data questions
+
+### Objects, vectors, types, and missing values
+
+**Questions**
+
+1. Create a vector of room counts, calculate its maximum and median, and return its third value.
+2. Add a missing value. Count how many values are missing, then calculate the mean while excluding missing values.
+3. Create a logical vector identifying values of at least three rooms. Explain why `==` compares values while `<-` assigns one.
+4. Convert a text variable of ordered customer tiers into an ordered factor.
+
+```{r}
+rooms <- c(1, 2, 1, 8, NA, 3)
+max(rooms, na.rm = TRUE)
+median(rooms, na.rm = TRUE)
+rooms[3]
+sum(is.na(rooms))
+mean(rooms, na.rm = TRUE)
+rooms >= 3
+
+tier <- factor(
+  c("Bronze", "Silver", "Gold", "Silver"),
+  levels = c("Bronze", "Silver", "Gold"),
+  ordered = TRUE
+)
+summary(tier)
+```
+
+### Inspect and summarize video data
+
+The following small table is used throughout the questions. Each row is one video. `watch_rate` is missing when the video has zero impressions or the rate was not recorded.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+videos <- tibble::tibble(
+  video_id = sprintf("V%02d", 1:12),
+  creator_id = rep(c("C1", "C2", "C3"), each = 4),
+  impressions_n = c(40, 80, 25, 60, 30, 55, 90, 0, 45, 75, 35, 50),
+  watched_n = c(24, 52, 10, 39, 15, 33, 63, 0, 27, 45, 14, 31),
+  published_at = as.Date("2025-01-01") + c(0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3)
+) %>%
+  mutate(watch_rate = if_else(impressions_n > 0, watched_n / impressions_n, NA_real_)) %>%
+  mutate(watch_rate = replace(watch_rate, video_id == "V05", NA_real_))
+
+videos
+```
+
+To practice importing as well as creating a data frame, write this local toy table to a temporary CSV and read it back. The temporary file is removed when the R session ends.
+
+```{r}
+video_csv <- tempfile(fileext = ".csv")
+write.csv(videos, video_csv, row.names = FALSE)
+videos_imported <- read.csv(video_csv)
+str(videos_imported)
+unlink(video_csv)
+```
+
+**Questions**
+
+1. Report the number of rows and columns, names, and variable types. What does one row represent?
+2. Keep `video_id`, `creator_id`, and `watch_rate`, then find videos with `watch_rate >= 0.70` and at least 30 impressions.
+3. Create a creator summary containing video count, total impressions, and mean watch rate. Sort by total impressions.
+4. Count the missing watch rates. Explain why the zero-impression video should not be assigned a watch rate of zero without a definition supporting that choice.
+
+```{r}
+nrow(videos)
+ncol(videos)
+names(videos)
+glimpse(videos)
+
+high_watch <- videos %>%
+  select(video_id, creator_id, impressions_n, watch_rate) %>%
+  filter(watch_rate >= 0.70, impressions_n >= 30)
+high_watch
+
+creator_summary <- videos %>%
+  group_by(creator_id) %>%
+  summarise(
+    videos_n = n(),
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    watch_rate_avg = mean(watch_rate, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(impressions_total))
+creator_summary
+
+sum(is.na(videos$watch_rate))
+
+videos %>%
+  summarise(
+    watch_rate_sd = sd(watch_rate, na.rm = TRUE),
+    creators_n = n_distinct(creator_id)
+  )
+unique(videos$creator_id)
+count(videos, creator_id)
+```
+
+## Week 2 — Data inspection, cleaning, and reports
+
+### Audit location-level mobility data
+
+This miniature mobility dataset has country-, province-, and city-level rows. An empty `province` and `city` indicate the country-level row. `NA` measurements represent unavailable observations.
+
+```{r}
+mobility <- tibble::tribble(
+  ~date,         ~country, ~province,       ~city,        ~retail, ~parks, ~workplaces, ~residential,
+  "2025-01-01",  "NL",    NA_character_,   NA_character_,  2,       5,      -3,           1,
+  "2025-01-02",  "NL",    NA_character_,   NA_character_,  1,       NA,     -4,           2,
+  "2025-01-01",  "NL",    "Noord-Brabant", NA_character_,  4,       8,      -2,           0,
+  "2025-01-02",  "NL",    "Noord-Brabant", NA_character_,  3,       6,      -3,           1,
+  "2025-01-01",  "NL",    "Zeeland",       NA_character_,  0,       4,      -5,           3,
+  "2025-01-02",  "NL",    "Zeeland",       NA_character_,  1,       3,      -4,           2,
+  "2025-01-01",  "NL",    "Noord-Brabant", "Eindhoven",   5,       9,      -1,           0,
+  "2025-01-02",  "NL",    "Noord-Brabant", "Eindhoven",   NA,      7,      -2,           1
+) %>%
+  mutate(date = as.Date(date))
+```
+
+**Questions**
+
+1. State the unit of observation and key for the table. Why is `date` alone not a unique key?
+2. Create separate country, province, and city subsets using `is.na()`.
+3. Calculate missing counts for the four mobility measures. Create `avg_mobility` using a row mean that ignores missing component values.
+4. Write one sentence describing a risk of filling every missing value with a global average.
+
+```{r}
+country_data <- mobility %>%
+  filter(is.na(province), is.na(city))
+province_data <- mobility %>%
+  filter(!is.na(province), is.na(city))
+city_data <- mobility %>%
+  filter(!is.na(city))
+
+mobility %>%
+  summarise(across(c(retail, parks, workplaces, residential), ~ sum(is.na(.x))))
+
+country_data <- country_data %>%
+  mutate(parks_filled = if_else(is.na(parks), mean(parks, na.rm = TRUE), parks))
+
+mobility <- mobility %>%
+  mutate(avg_mobility = rowMeans(
+    select(., retail, parks, workplaces, residential),
+    na.rm = TRUE
+  ))
+mobility
+```
+
+### Report structure: Markdown, R Markdown, and Quarto
+
+**Questions**
+
+1. Name the three basic parts of a Quarto `.qmd` file.
+2. Write a minimal YAML header for an HTML report, a heading, and an R code chunk that loads `dplyr` and inspects `videos`.
+3. Explain the difference between rendering a document and running a line interactively in the console.
+
+````markdown
+---
+title: "Video Data Check"
+format: html
+---
+
+## Inspect the videos
+
+```{r}
+library(dplyr)
+videos_report <- data.frame(
+  video_id = c("V1", "V2", "V3"),
+  creator_id = c("C1", "C1", "C2"),
+  impressions_n = c(40, 70, 55)
+)
+glimpse(videos_report)
+```
+````
+
+For a formatted summary table in a report, `knitr::kable()` can render a data frame:
+
+```{r}
+creator_summary %>%
+  knitr::kable(digits = 2, caption = "Video metrics by creator")
+```
+
+From a terminal in the directory containing `report.qmd`, render it with:
+
+```bash
+quarto render report.qmd
+```
+
+## Week 3 — Visualization and Git collaboration
+
+### Build and interpret plots
+
+**Questions**
+
+1. Plot impressions against watch rate. Map creator to colour and add reader-friendly labels.
+2. Create a histogram of watch rate and a bar chart of total impressions by creator.
+3. Explain the difference between mapping an aesthetic inside `aes()` and setting a fixed style outside it.
+4. Which plot type would show a time trend? What additional variable must be used to define the line groups?
+
+```{r}
+video_scatter <- ggplot(videos, aes(x = impressions_n, y = watch_rate, colour = creator_id)) +
+  geom_point(size = 2) +
+  labs(
+    title = "Video reach and watch rate",
+    x = "Impressions",
+    y = "Watch rate",
+    colour = "Creator"
+  ) +
+  theme_minimal()
+video_scatter
+
+ggplot(videos, aes(x = watch_rate)) +
+  geom_histogram(bins = 8, fill = "steelblue", na.rm = TRUE) +
+  labs(x = "Watch rate", y = "Number of videos")
+
+ggplot(creator_summary, aes(x = creator_id, y = impressions_total)) +
+  geom_col(fill = "steelblue") +
+  labs(x = "Creator", y = "Total impressions")
+
+ggsave(filename = tempfile(fileext = ".png"), plot = video_scatter, width = 6, height = 4)
+
+ggplot(videos, aes(x = creator_id, y = watch_rate)) +
+  geom_boxplot(na.rm = TRUE) +
+  geom_jitter(width = 0.15, alpha = 0.6, na.rm = TRUE) +
+  labs(x = "Creator", y = "Watch rate")
+
+ggplot(videos, aes(x = creator_id, y = watch_rate)) +
+  geom_violin(na.rm = TRUE) +
+  facet_wrap(~ creator_id) +
+  labs(x = "Creator", y = "Watch rate")
+
+mobility_long <- mobility %>%
+  filter(is.na(city), is.na(province)) %>%
+  select(date, retail, parks, workplaces, residential) %>%
+  pivot_longer(-date, names_to = "place_category", values_to = "change")
+
+ggplot(mobility_long, aes(x = date, y = change, colour = place_category)) +
+  geom_line() +
+  labs(x = "Date", y = "Change from baseline", colour = "Place") +
+  theme_minimal()
+```
+
+### Git workflow questions
+
+1. Put these actions in a safe order: edit, inspect with `git status`/`git diff`, stage with `git add`, commit, push, open a PR, review and merge.
+2. Explain the difference between a branch, a pull, and a pull request.
+3. What information do red and green lines in a PR diff represent? What should a reviewer check besides whether the code runs?
+4. Explain why a team should keep generated files and credentials out of Git history.
+
+```bash
+git status
+git switch -c feature/video-summary
+# edit and save a source file
+git diff
+git add src/analysis.R
+git diff --staged
+git commit -m "Add creator video summary"
+git push -u origin feature/video-summary
+```
+
+On GitHub, open a pull request from `feature/video-summary` to `main`, inspect the commits and diff, review, and merge when ready. If a conflict occurs, edit the conflict markers deliberately, then inspect and test the result before committing.
+
+## Week 4 — Data engineering and joins
+
+### Keys, distinct records, and joins
+
+```{r}
+creators <- tibble::tibble(
+  creator_id = c("C1", "C2", "C3"),
+  creator_name = c("Ari", "Bo", "Cleo")
+)
+
+video_with_creator <- videos %>%
+  left_join(creators, by = "creator_id")
+
+anyDuplicated(videos$video_id)
+anyDuplicated(creators$creator_id)
+nrow(videos)
+nrow(video_with_creator)
+
+unmatched_creators <- anti_join(videos, creators, by = "creator_id")
+unmatched_creators
+
+impressions <- tibble::tibble(
+  impression_id = 1:4,
+  video_id = c("V01", "V02", "V03", "V04"),
+  user_id = c(101, 102, 103, 101)
+)
+watch_events <- tibble::tibble(
+  impression_id = c(1, 3, 4),
+  watch_seconds = c(12, 8, 20)
+)
+watched_only <- inner_join(impressions, watch_events, by = "impression_id")
+watched_only
+nrow(impressions)
+nrow(watched_only)
+```
+
+**Questions**
+
+1. Which columns form the key for `videos`? Which form the key for `creators`?
+2. Why can a join increase the row count even if no error is reported?
+3. Change one creator key in a copy of `creators`, then use `anti_join()` to identify the unmatched video rows.
+4. Use `distinct(video_id, .keep_all = TRUE)` only after deciding how duplicate videos should be handled. Why is silently dropping duplicates risky?
+
+### Date features and aggregation
+
+```{r}
+library(lubridate)
+
+video_by_day <- videos %>%
+  mutate(
+    published_day = as.Date(published_at),
+    published_year = lubridate::year(published_day),
+    published_month = lubridate::month(published_day),
+    iso_week = ISOweek::ISOweek(published_day)
+  ) %>%
+  group_by(creator_id, iso_week) %>%
+  summarise(
+    videos_n = n(),
+    impressions_total = sum(impressions_n, na.rm = TRUE),
+    watch_rate_avg = mean(watch_rate, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(creator_id, iso_week)
+video_by_day
+```
+
+For timestamp strings, first parse a datetime with the format and time zone stated, then derive a calendar date:
+
+```{r}
+shown_at <- c("2025-01-01T21:44:48Z", "2025-01-02T08:10:00Z")
+shown_ts <- as.POSIXct(shown_at, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
+as.Date(shown_ts)
+```
+
+`ISOweek::ISOweek()` is supplied by the `ISOweek` package; install it once with `install.packages("ISOweek")`. If that package is unavailable, use `format(date, "%Y-%U")` for a simple year/week label, noting that it is not the ISO week convention.
+
+**Questions**
+
+1. Add `watch_rate_rank = rank(-watch_rate)` and a reach band based on `impressions_n`.
+2. Explain how aggregation changes the unit of analysis from video to creator-week.
+3. Which should be used to summarize watch rate: mean, median, or a ratio of summed watched counts to summed impressions? State the interpretation of your choice.
+
+```{r}
+video_features <- videos %>%
+  mutate(
+    watch_rate_rank = rank(-watch_rate, na.last = "keep"),
+    reach_band = case_when(
+      impressions_n < 30 ~ "Low",
+      impressions_n < 60 ~ "Medium",
+      TRUE ~ "High"
+    ),
+    high_quality = watch_rate >= 0.70
+  ) %>%
+  distinct(video_id, .keep_all = TRUE)
+video_features
+
+top_creators <- creator_summary %>%
+  arrange(desc(impressions_total)) %>%
+  slice_head(n = 2)
+top_creators
+```
+
+Use multiple columns when they jointly identify a row. Before joining event tables, check key uniqueness at the intended grain. A join on an incomplete key can multiply rows even if the command runs without error.
+
+## Week 5 — Advanced data preparation and SQL
+
+### Regular expressions, pivots, and event logs
+
+```{r}
+creators_text <- tibble::tibble(
+  creator_id = c("C1", "C2", "C3"),
+  creator_name = c("Live Ari", "Bo 22", "Cleo Studio")
+)
+
+creators_text %>%
+  filter(grepl("live", creator_name, ignore.case = TRUE))
+
+creators_text %>%
+  mutate(name_no_digits = gsub("[0-9]", "", creator_name))
+```
+
+**Questions**
+
+1. Use `grepl("^C", creator_id)` to identify IDs beginning with C. What do `^` and `$` mean in a regular expression?
+2. Convert `video_by_day` from long to wide with one column per creator, then pivot it back to long.
+3. Why is a comma-separated list of genres in one cell inconvenient for grouping? Show how `separate_longer_delim()` can create one row per genre.
+
+```{r}
+library(tidyr)
+
+video_by_day_wide <- video_by_day %>%
+  select(iso_week, creator_id, impressions_total) %>%
+  pivot_wider(names_from = creator_id, values_from = impressions_total)
+video_by_day_wide
+
+video_by_day_wide %>%
+  pivot_longer(-iso_week, names_to = "creator_id", values_to = "impressions_total")
+
+shows <- tibble::tibble(
+  show_id = c("S1", "S2"),
+  genres = c("Action;Drama", "Comedy;Drama")
+)
+shows %>%
+  separate_longer_delim(genres, delim = ";")
+```
+
+To create one boolean column per listed item, mark each observed item and pivot its name into a column. Missing item indicators are filled with `FALSE` because, in this toy example, the list records all items each respondent owns.
+
+```{r}
+survey_items <- tibble::tibble(
+  respondent_id = c(1, 2, 3),
+  items_owned = c("bicycle;radio", "radio", "television;bicycle")
+)
+
+survey_items_wide <- survey_items %>%
+  separate_longer_delim(items_owned, delim = ";") %>%
+  mutate(owns_item = TRUE) %>%
+  pivot_wider(
+    names_from = items_owned,
+    values_from = owns_item,
+    values_fill = FALSE
+  )
+survey_items_wide
+```
+
+### Complete grids, lags, and missing values
+
+An event log can omit creator-days with no events. In the toy example below, absence from the event log is defined as zero events; do not assume this meaning for a real dataset without checking its data-generating process.
+
+```{r}
+daily_observed <- tibble::tribble(
+  ~creator_id, ~shown_day,     ~impressions_n,
+  "C1",        as.Date("2025-01-01"), 5L,
+  "C1",        as.Date("2025-01-03"), 7L,
+  "C2",        as.Date("2025-01-02"), 4L
+)
+
+all_creators <- tibble::tibble(creator_id = c("C1", "C2"))
+all_days <- tibble::tibble(shown_day = seq(as.Date("2025-01-01"), as.Date("2025-01-03"), by = "day"))
+
+complete_daily <- tidyr::expand_grid(all_creators, all_days) %>%
+  left_join(daily_observed, by = c("creator_id", "shown_day")) %>%
+  mutate(missing_before_fill = is.na(impressions_n)) %>%
+  mutate(impressions_n = replace_na(impressions_n, 0L)) %>%
+  group_by(creator_id) %>%
+  arrange(shown_day, .by_group = TRUE) %>%
+  mutate(
+    trend_n = row_number(),
+    impressions_lag1 = lag(impressions_n),
+    impressions_lead1 = lead(impressions_n),
+    impressions_change = impressions_n - impressions_lag1
+  ) %>%
+  ungroup()
+complete_daily
+sum(complete_daily$missing_before_fill)
+```
+
+**Questions**
+
+1. Count how many creator-days were absent before replacing missing counts with zero.
+2. Explain the direction of `lag()` and `lead()` and why rows must be sorted within creator first.
+3. For a stable attribute, try `zoo::na.locf(x, na.rm = FALSE)`. For a smooth numeric series, try `zoo::na.approx(x, na.rm = FALSE)`. State the assumption behind each method.
+4. Create an ISO-week summary from the daily data and explain which date defines the week.
+
+```{r}
+imputation_example <- tibble::tibble(
+  creator_id = c("C1", "C1", "C1", "C2", "C2", "C2"),
+  day = rep(as.Date("2025-01-01") + 0:2, 2),
+  rank_value = c(2, NA, 4, 5, NA, 6)
+) %>%
+  group_by(creator_id) %>%
+  arrange(day, .by_group = TRUE) %>%
+  mutate(
+    rank_locf = zoo::na.locf(rank_value, na.rm = FALSE),
+    rank_interpolated = zoo::na.approx(rank_value, na.rm = FALSE)
+  ) %>%
+  ungroup()
+imputation_example
+```
+
+### SQL and SQLite queries
+
+SQL is a language; SQLite is a database system that stores a database in a file. The statements below are a complete small SQLite example: run them in SQLite Browser or another SQLite client.
+
+```sql
+DROP TABLE IF EXISTS watch_logs;
+CREATE TABLE watch_logs (
+  impression_id INTEGER PRIMARY KEY,
+  creator_id TEXT NOT NULL,
+  user_id INTEGER NOT NULL,
+  watch_seconds REAL
+);
+
+INSERT INTO watch_logs VALUES
+  (1, 'C1', 101, 12.5),
+  (2, 'C1', 102,  8.0),
+  (3, 'C2', 103, 15.0),
+  (4, 'C2', 101, NULL);
+
+SELECT * FROM watch_logs;
+
+SELECT creator_id,
+       COUNT(*) AS impressions_n,
+       AVG(watch_seconds) AS watch_seconds_avg
+FROM watch_logs
+WHERE user_id <> 103
+GROUP BY creator_id
+ORDER BY impressions_n DESC;
+```
+
+**Questions**
+
+1. Select all rows for `user_id = 101`.
+2. Count rows and non-missing `watch_seconds` separately. Why can `COUNT(*)` differ from `COUNT(watch_seconds)`?
+3. Add a `creators` table and write a `LEFT JOIN` that retains every watch-log row.
+4. In what ways do `SELECT`, `WHERE`, `GROUP BY`, and `ORDER BY` correspond to `dplyr` operations?
+
+Optional R connection (requires `DBI` and `RSQLite` installed):
+
+```r
+con <- DBI::dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+DBI::dbExecute(con, "CREATE TABLE watch_logs (creator_id TEXT, watch_seconds REAL)")
+DBI::dbExecute(con, "INSERT INTO watch_logs VALUES ('C1', 12.5), ('C1', 8.0), ('C2', 15.0)")
+result <- DBI::dbGetQuery(con, "SELECT creator_id, AVG(watch_seconds) AS avg_seconds FROM watch_logs GROUP BY creator_id")
+result
+csv_path <- tempfile(fileext = ".csv")
+write.csv(result, csv_path, row.names = FALSE)
+read.csv(csv_path)
+unlink(csv_path)
+DBI::dbDisconnect(con)
+```
+
+### Optional: JSON and nested records
+
+JSON is commonly used by web APIs. Unlike CSV, it can contain nested objects, arrays, and records with different fields. Inspect the structure before flattening it; converting nested records to CSV can lose information.
+
+```{r}
+library(jsonlite)
+
+json_text <- '[
+  {"creator_id":"C1", "name":"Ari", "platforms":["Video", "Live"]},
+  {"creator_id":"C2", "name":"Bo", "platforms":["Video"]}
+]'
+
+creator_records <- fromJSON(json_text, simplifyVector = TRUE)
+str(creator_records)
+creator_records$creator_id
+creator_records$platforms
+```
+
+**Questions**
+
+1. Which fields are scalar values and which are nested or repeated?
+2. How would you create one row per creator-platform pair without losing the creator ID?
+3. Why might you keep the original JSON alongside a flattened analysis table?
+
+## Week 6 — Repeated analysis, agents, and verification
+
+### Repeat plots and regressions across creators with `lapply()`
+
+Earlier engineering exercises introduced repeated plots and per-artist regressions. Week 6 revisits this with a self-contained dataset and connects it to an agent's action–observation loop. The data are synthetic; the regressions describe associations only.
+
+```{r}
+set.seed(27)
+creator_weekly <- expand.grid(
+  creator_id = c("C1", "C2", "C3"),
+  week = 1:8,
+  KEEP.OUT.ATTRS = FALSE,
+  stringsAsFactors = FALSE
+)
+creator_weekly$impressions_n <- 20 +
+  3 * creator_weekly$week +
+  7 * match(creator_weekly$creator_id, c("C1", "C2", "C3"))
+creator_weekly$streams <- 50 +
+  5 * creator_weekly$impressions_n +
+  12 * creator_weekly$week +
+  rnorm(nrow(creator_weekly), mean = 0, sd = 10)
+
+creator_groups <- split(creator_weekly, creator_weekly$creator_id)
+```
+
+**Questions**
+
+1. Use `lapply()` to fit one model of `streams ~ impressions_n` per creator. Extract each model's coefficients.
+2. Use `lapply()` to create one scatterplot per creator and save the plots with `ggsave()`.
+3. Compare this with a `for` loop. What makes `lapply()` useful, and what does it return?
+4. Ask an agent to create a script for the tasks. Specify which file it may edit, what output files to create, and what checks it must report. Review its plan and diff, run the script, and verify that there are three models and three plots.
+5. Explain why a successful script run is not, by itself, evidence that the model specification is appropriate.
+
+```{r}
+library(ggplot2)
+
+creator_models <- lapply(
+  creator_groups,
+  function(creator_data) lm(streams ~ impressions_n, data = creator_data)
+)
+lapply(creator_models, coef)
+
+creator_plots <- lapply(names(creator_groups), function(id) {
+  creator_data <- creator_groups[[id]]
+  p <- ggplot(creator_data, aes(x = impressions_n, y = streams)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(title = paste("Creator", id), x = "Weekly impressions", y = "Weekly streams") +
+    theme_minimal()
+  ggsave(filename = tempfile(pattern = paste0("plot_", id, "_"), fileext = ".png"),
+         plot = p, width = 6, height = 4)
+  p
+})
+names(creator_plots) <- names(creator_groups)
+length(creator_models)
+length(creator_plots)
+```
+
+The corresponding `for` loop is also useful when each repetition has multiple side effects. For example, a loop can build, save, and report each plot in turn. `lapply()` returns a list of results; base `sapply()` may simplify results, while `lapply()` consistently returns a list.
+
+### AI and agent verification questions
+
+1. Why is “Which creator is doing best?” underspecified? Write two prompts: one defining reach, one defining engagement.
+2. A script runs successfully but exports the wrong columns. What independent checks would you perform?
+3. Explain the difference between a chat assistant, an agent that can read/write/run tools, and a Makefile.
+4. Why should an agent treat instructions found inside project data or a README as content rather than authorization?
+5. What should a bounded agent task specify about context, allowed files/actions, expected outputs, checks, and when to stop and ask?
+
+## README and Make practice
+
+### README checklist
+
+Write a README for a small analysis project that states:
+
+1. the project's purpose;
+2. required input data and where it belongs;
+3. software and packages required;
+4. commands and order for running the project;
+5. expected outputs and one troubleshooting tip.
+
+### Makefile exercise
+
+Save the following R code as `src/summarize.R`, after creating the `src/`, `data/`, and `output/` folders and saving a CSV named `data/video_view.csv` with `creator_id` and `impressions_n` columns. Then save the Make rules as `Makefile` in the project root. The folders and CSV can be created from the `videos` data frame earlier on this page:
+
+```r
+dir.create("src", showWarnings = FALSE)
+dir.create("data", showWarnings = FALSE)
+dir.create("output", showWarnings = FALSE)
+write.csv(videos[, c("creator_id", "impressions_n")],
+          "data/video_view.csv", row.names = FALSE)
+```
+
+```r
+videos <- read.csv("data/video_view.csv")
+creator_summary <- aggregate(impressions_n ~ creator_id, data = videos, FUN = sum)
+dir.create("output", showWarnings = FALSE)
+write.csv(creator_summary, "output/creator_summary.csv", row.names = FALSE)
+```
+
+```make
+.PHONY: all clean
+
+all: output/creator_summary.csv
+
+output/creator_summary.csv: src/summarize.R data/video_view.csv
+	Rscript src/summarize.R
+
+clean:
+	rm -f output/creator_summary.csv
+```
+
+Run `make -n`, `make`, `make` again, `make clean`, and `make` again. Explain the expected behavior at each step. The recipe assumes the R script creates the target file and that the CSV already exists. The prerequisite list includes both the script and data, so a change to either can trigger a rebuild.
+
+Long paths can be stored in Make variables:
+
+```make
+OUT = output
+SRC = src
+DATA = data
+
+.PHONY: all clean
+all: $(OUT)/creator_summary.csv
+
+$(OUT)/creator_summary.csv: $(SRC)/summarize.R $(DATA)/video_view.csv
+	Rscript $(SRC)/summarize.R
+
+clean:
+	rm -f $(OUT)/creator_summary.csv
+```
+
+For a larger project, a root Makefile can delegate to stage-specific Makefiles with `make -C path/to/stage`. Each stage still needs rules whose targets, prerequisites, and recipes describe its own inputs and outputs.
+
+**Extension questions**
+
+1. Define a Make variable for the output folder and use it in the target path.
+2. If preparation and analysis each have their own Makefile, how could a root Makefile call them in order with `make -C`?
+3. Why should `all` and `clean` be declared under `.PHONY`?
+
+### Git history and recovery practice
+
+Start in a disposable local repository with a README, at least one commit, and Git identity configured. Make two commits on a feature branch, inspect the history and diff, and restore an earlier version of the README into a separate file. Do not use recovery commands on work you want to keep until you understand their effects.
+
+```bash
+git status
+git switch -c practice-restore
+# edit and save README.md
+git add README.md
+git commit -m "Add practice README"
+# edit and save README.md again
+git add README.md
+git commit -m "Clarify practice instructions"
+git log --oneline --graph --decorate -5
+git diff HEAD~1 HEAD -- README.md
+git show HEAD~1:README.md
+git show HEAD~1:README.md > README-old.md
+```
+
+The `git show` command prints the earlier file version without replacing the working copy. Redirecting it to `README-old.md` saves a separate copy. To restore an older committed file into the working tree, run `git restore --source=COMMIT_HASH -- README.md` with the actual commit hash, inspect the diff, and commit the restoration if it is the change you intend.
+
+**Questions**
+
+1. What is recorded in a commit, and how is that different from saving a file?
+2. How do branches isolate work? What information does a pull request add to a merge?
+3. What do `git log`, `git diff`, and `git show` each help you inspect?
+4. How do `.gitignore`, a branch, and a fork serve different purposes?
+
+## Additional topics represented
+
+Questions also practice R fundamentals, R Markdown, mobility-data audits, JSON, Git history and recovery, Make variables and nested Makefiles, and repeated plotting/modeling. The examples use local synthetic data instead of tutorial downloads or online services.

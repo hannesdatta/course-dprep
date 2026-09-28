@@ -18,7 +18,7 @@ format:
 
 # Introduction
 
-*updated 25 Sept. 2026*
+*updated 28 Sept. 2026*
 
 ## Overview
 
@@ -48,13 +48,15 @@ Together, these levels ensure that the exam does not merely check whether you *r
 
 [^2]: https://dprep-book.hannesdatta.com/
 
+For additional practice, see the [week-by-week course structure](course_structure.qmd) and [extra tutorial questions](extra_questions.qmd).
+
 ## Overview of Questions
 
 The table below outlines the types of questions you can expect, along with their sources for each learning goal of the course. 
 
 | No. | Learning goal | Question type | Questions based on tutorials/project | Questions based on book |
 |-------------|-------------|-------------|-------------|--------------------|
-| 1 | Use GitHub to manage empirical research projects | Eval. |  | 10P (3Q), ch. 2, 5 |
+| 1 | Use GitHub to manage empirical research projects | Eval. | Project-management tasks only: defining issues, prioritizing work, and tracking progress on a board | 10P (3Q), ch. 2, 5 |
 | 2 | Use Git/GitHub for versioning files and collaboration | Appl. & Eval. | 24P (1Q) | 10P (3Q), ch. 6 |
 | 3 | Use R and SQL to clean and transform data for analysis | Synthesis | 20P (2Q) | 4P (1Q), ch. 7 |
 | 4 | Use R to generate automated reports | Compreh. & Appli. | 12P | 6P (2Q), ch. 4 |
@@ -181,6 +183,17 @@ D) It is harmless, because complexity in the board does not affect collaboration
 
 **Explanation:** B is correct because the book explicitly warns against **over-engineering boards**, noting that too much complexity makes them harder to use and can undermine the very efficiency they are meant to support. A is wrong because detail can overwhelm rather than help. C is wrong because simple four-column boards (backlog → to do → in progress → done) are often sufficient. D is wrong because board complexity directly influences team collaboration quality.
 
+#### Practice item — planning project work (project management only)
+
+A team must organize initial setup tasks (README, folder structure, data access, `.gitignore`, and an AI-use record), four dataset analyses, and a final integrated report. Which plan best uses issues and a project board without turning the board into a complicated workflow?
+
+A) Create one issue called “Finish the project,” assign it to everyone, and keep progress updates in private messages.
+B) Create discrete issues with clear deliverables and assignees, place them on a simple board, and prioritize setup and data-inspection work before integration.
+C) Create a separate board for every script and require a full Scrum role for every team member.
+D) Wait until all work is complete, then create issues to document what happened.
+
+**Suggested answer: B.** The task units are small enough to assign and track; the board makes status and priorities visible. The team can coordinate dependencies and adjust priorities as it learns more. This item assesses project planning only, not implementation of the data tasks.
+
 
 ## Learning Goal 2
 
@@ -305,9 +318,32 @@ D) It is valid, because Git automatically merges any differences in the backgrou
 ### Exemplary question based on tutorials/project (20P on the exam)
 
 ::: callout
-This question will always ask you to download data sets stored in a zipped `.RData` file, and write `.R` code to answer questions related to the "data engineering" tutorial. You will submit your (clean!) `.R` code, providing the solutions (mostly code, but could also be text that you can put in comments starting with `#`). Questions also cover `SELECT` statements in SQL. 
+These questions may supply data as a zipped `.RData` environment or as a SQLite database. You will write clean `.R` code to inspect and transform the data; some questions may ask you to use SQL `SELECT` statements directly or to query SQLite from R with `DBI` and `RSQLite`. The question will specify the available data and required outputs.
 
 :::
+
+#### Working with an SQLite source
+
+When the exam supplies a SQLite database, first inspect its tables, then query only the columns needed for the task. For example:
+
+```r
+library(DBI)
+library(RSQLite)
+
+con <- dbConnect(SQLite(), "data/tiktok_students.sqlite")
+dbListTables(con)
+
+video_view <- dbGetQuery(
+  con,
+  "SELECT video_id, creator_id, impressions_n, watched_n, watch_rate
+   FROM video_view"
+)
+dbDisconnect(con)
+
+str(video_view)
+```
+
+You may alternatively export a requested query result with `write.csv()` or `readr::write_csv()`. Check the returned column names, row count, keys, and missing values before continuing the analysis.
 
 Please download the [`netflix_data`](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_engineering/netflix_data.zip) file, containing an `.RData` environment that itself contains R objects (datasets). To receive points on this question, please create and upload one R file (.R) that performs the task as requested.
 
@@ -746,6 +782,49 @@ Q5.1b) See below.
       
 Q5.1c) Temporary files (i.e., `processed_email_data.csv`) need to be stored in `temp`. All source code needs to be stored in `src`, and the final output files need to be put into `output`. [See here for all modified source files](https://github.com/hannesdatta/course-dprep/raw/main/material/exam/example_make/practice_workflow_solution.zip) (which includes the `.R` scripts - see file directories and commands to create new directories!).
 
+#### Integrated practice: SQLite to regression report
+
+This project-style task combines the database work, regression, reporting, and Make automation from the later tutorials. Assume the exam bundle provides `data/tiktok_students.sqlite` with `video_view` and `creators` tables. Work locally; no remote push or pull is required.
+
+**Tasks**
+
+1. Inspect the database tables and export the required columns from `video_view` and `creators` to `data/exports/` using `DBI` and `RSQLite`.
+2. Build `data/analysis/creator_summary.csv` with one row per creator, including video count, total impressions, and average watch rate. Check the keys, row counts, and missing rates.
+3. Fit a regression of video watch rate on impressions, controlling for creator with `factor(creator_id)`. Save the coefficient table to `data/analysis/model_coefficients.csv`. Interpret the impressions coefficient as an association, not a causal effect.
+4. Create `report.qmd` to present the data checks, creator summary, regression output, and a short conclusion with caveats. Render it to `output/report.pdf`.
+5. Update `README.md` with required packages, inputs, build command, and expected outputs. Add a Makefile that builds the report from the supplied SQLite database through the export, summary, and regression stages.
+
+**Example dependency structure**
+
+```make
+.PHONY: all clean
+
+all: output/report.pdf
+
+data/exports/video_view.csv: src/export_table.R data/tiktok_students.sqlite
+	Rscript src/export_table.R video_view
+
+data/exports/creators.csv: src/export_table.R data/tiktok_students.sqlite
+	Rscript src/export_table.R creators
+
+data/analysis/creator_summary.csv: src/build_creator_summary.R data/exports/video_view.csv data/exports/creators.csv
+	Rscript src/build_creator_summary.R
+
+data/analysis/model_coefficients.csv: src/fit_creator_model.R data/exports/video_view.csv
+	Rscript src/fit_creator_model.R
+
+output/report.pdf: report.qmd data/analysis/creator_summary.csv data/analysis/model_coefficients.csv
+	mkdir -p output
+	quarto render report.qmd --to pdf --output-dir output
+
+clean:
+	rm -f data/exports/video_view.csv data/exports/creators.csv \
+	      data/analysis/creator_summary.csv data/analysis/model_coefficients.csv \
+	      output/report.pdf
+```
+
+The SQLite database and source files are inputs, not clean targets. Preview the dependency order with `make -n`, build with `make`, run `make` again to confirm targets are up to date, then run `make clean` and rebuild. Check that the report includes the requested analyses and that the database remains untouched.
+
 ### Exemplary questions based on book (6P on the exam)
 
 ::: callout
@@ -1007,6 +1086,128 @@ D) Stop all diagnostics because any embedded instruction makes local analysis un
 
 This section provides information that will help you prepare well for the exam.
 
+## Key terms and concepts
+
+This glossary summarizes the main concepts covered in the tutorials and course materials. It is organized by the three recurring components of the course: coding, collaboration, and automation.
+
+### Coding: R, SQL, data preparation, and reporting
+
+- **R and RStudio/Positron**: R is the programming language used to run analyses; Positron is an integrated development environment for writing code, inspecting objects, and running scripts.
+- **Projects and paths**: Keep related files together in a project folder and use project-relative paths so work can move across computers without rewriting file locations.
+- **Objects and vectors**: Store values in named objects; vectors hold values of the same basic type and are building blocks for data work in R.
+- **Data frames**: Use data frames to store rectangular datasets with rows as observations and columns as variables. Ideally stored in `tidyverse`/`dplyr` (or `data.table`)
+- **Data types**: Distinguish numeric, character, logical, factor, and date/time variables because each type supports different operations.
+- **Logical values and conditions**: Use `TRUE`/`FALSE` expressions to filter rows, create indicators, and check whether data meet specific criteria.
+- **Missing values**: Recognize `NA` values, count them, inspect their patterns, and decide whether to leave, drop, impute, or otherwise handle them.
+- **Importing data**: Read files such as CSVs into R and immediately inspect whether rows, columns, and variable types match expectations.
+- **Inspecting data**: Use structure, summaries, row counts, column names, and basic checks to understand a dataset before transforming it.
+- **`dplyr` workflows**: Use verbs such as `select()`, `filter()`, `mutate()`, `group_by()`, `summarise()`, `arrange()`, and `count()` to transform data in readable steps.
+- **Pipes**: Use pipes to chain data-transformation steps in the order an analyst reads and reasons about them.
+- **Quarto and Markdown**: Combine narrative text, code, and output in documents that can be rendered into reports.
+- **YAML headers**: Use YAML to define document metadata and rendering options such as title, author, format, table of contents, and code-display behavior.
+- **Code chunks**: Place R code in executable document chunks so analyses run in document order and results update when rendered.
+- **Data audits**: Identify the unit of observation, inspect missingness, check for impossible values, and assess whether the dataset is suitable for the research question.
+- **Cleaning data**: Filter irrelevant records, rename unclear variables, correct formats, and standardize values before analysis.
+- **Derived variables**: Create new variables from existing information, such as indicators, ratios, grouped totals, ranks, or date-based measures.
+- **Dates and times**: Parse date/time variables correctly, aggregate them to useful periods, and use them to study changes over time.
+- **Factors**: Use factors for categorical variables when ordering, grouping, plotting, or modeling categories matters.
+- **Grammar of ggplot2 graphics**: Build plots by specifying data, mapping variables in `aes()`, and adding geometries that define how observations are drawn.
+- **Choosing plots**: Use scatterplots for relationships, line plots for ordered trends, bar charts for category comparisons, and histograms for distributions.
+- **Improving figures**: Add clear labels, readable themes, facets, colors, transparency, and saved output files with `ggsave()`.
+- **Feature engineering**: Use functions such as `mutate()`, `rank()`, `case_when()`, and `distinct()` to create, classify, and audit variables.
+- **Grouped summaries**: Change the unit of analysis by counting records or calculating totals, means, medians, or other statistics per group.
+- **Keys**: Identify variables that uniquely or partly identify records and can be used to match observations across datasets.
+- **Joins**: Combine datasets using shared keys and an appropriate join type; inspect whether unmatched or repeated keys affect the result.
+- **Repeated keys and row multiplication**: Recognize that non-unique keys can create more rows than expected when datasets are joined.
+- **Regular expressions**: Use pattern matching with functions such as `grepl()` to detect text and `gsub()` to replace text.
+- **Text cleaning**: Standardize inconsistent strings, detect keywords, and create indicators from text variables.
+- **Reshaping data**: Use `pivot_longer()` to gather columns into rows and `pivot_wider()` to spread values into columns.
+- **Long and wide formats**: Choose long format for many analyses and plots, and wide format when separate variables or output tables are needed.
+- **Time series preparation**: Work with ISO weeks, complete expected key-date grids, create trends, and compare periods with `lag()` or `lead()`.
+- **LOCF imputation**: Use last observation carried forward when it is plausible that the last observed value remains valid until updated.
+- **Interpolation**: Use interpolation when it is plausible that a missing numeric value changes smoothly between observed values.
+- **SQL and SQLite**: Query relational data using `SELECT`, `WHERE`, `GROUP BY`, joins, and `ORDER BY`; connect to SQLite databases from R when needed.
+- **Database inspection**: List tables, inspect columns, query only required data, and check returned row counts and keys.
+- **Structured data formats**: Recognize that formats such as JSON can contain nested records that should be inspected before flattening.
+- **Prompting for coding help**: Specify the task, context, constraints, desired output, and checks when asking an LLM or agent for code.
+- **Agent-assisted coding**: Use an agent to inspect files, run local diagnostics, and propose code changes while keeping the analyst responsible for the research decisions.
+- **Repeated analysis**: Use tools such as `split()` and `lapply()` to run similar plots, summaries, or regressions across groups.
+- **Interpreting associations**: Avoid causal claims when the analysis only supports descriptive or associational conclusions.
+- **Verifying exports**: Check output files, columns, row counts, key uniqueness, and missing values instead of only checking whether a script ran.
+
+### Collaboration: Git, GitHub, project management, and review
+
+- **Git**: Track project history locally by recording snapshots of changes over time.
+- **GitHub**: Host repositories online and support collaboration through issues, boards, pull requests, reviews, and remote synchronization.
+- **Repositories**: Store tracked project files, history, branches, and configuration in one version-controlled folder.
+- **Tracked and untracked files**: Distinguish files Git already monitors from files that must be added before they become part of version history.
+- **Staging changes**: Use `git add` to choose which changes should be included in the next commit.
+- **Commits**: Record named snapshots of staged changes with messages that explain what changed and why.
+- **Basic Git workflow**: Use `git status`, `git add`, `git commit`, and `git push` to inspect, record, and share work.
+- **Local and remote repositories**: Understand that the local repository lives on your computer while the remote repository is the shared hosted copy.
+- **Cloning**: Download an existing repository to your computer so you can work with its full files and history.
+- **Forking**: Create your own GitHub copy of another repository, often to experiment or propose changes without editing the original directly.
+- **Pulling**: Retrieve and integrate remote changes before continuing work so your local copy is up to date.
+- **Pushing**: Send local commits to the remote repository so collaborators can see or review them.
+- **Issues**: Define tasks, bugs, questions, or project decisions in a visible and trackable way.
+- **Project boards**: Organize work using lightweight columns such as backlog, to do, in progress, and done.
+- **Scrum-inspired planning**: Break work into manageable tasks, prioritize them, assign responsibilities, and update progress regularly without over-engineering the workflow.
+- **`.gitignore`**: Prevent generated, private, temporary, or machine-specific files from being tracked by Git.
+- **Branches**: Create separate lines of work so new changes can be developed without destabilizing `main`.
+- **Stable `main` branch**: Keep the main branch clean and working so it remains a reliable project baseline.
+- **Pull requests**: Propose changes from a branch, explain the work, and make it available for review before merging.
+- **Diffs**: Inspect red/green changes to understand exactly what was removed, added, or modified.
+- **Code review**: Check whether proposed changes are correct, focused, understandable, and consistent with the project goals.
+- **Merging**: Integrate an approved branch into another branch, usually `main`.
+- **Branch cleanup**: Delete finished feature branches after their work has been merged.
+- **Commit history**: Use logs to understand how the project evolved and to trace decisions or errors.
+- **Recovery and debugging with history**: Inspect or check out earlier commits on a new branch to understand when a problem appeared.
+- **Merge conflicts**: Resolve conflicts deliberately by deciding which version of overlapping changes should remain.
+- **Small commits**: Make focused commits that are easier to review, understand, and, if necessary, undo.
+- **Clear commit messages**: Write messages that describe the purpose of the change rather than vague labels such as "update" or "fix".
+- **Separate branches for separate work**: Isolate data preparation, reporting, automation, or documentation changes when this makes review clearer.
+- **Multiple pull requests**: Use separate PRs for separate features or fixes so reviewers can evaluate work in manageable pieces.
+- **Reviewing agent-generated work**: Inspect an agent's plan, actions, file diff, and verification results before accepting changes.
+- **Bounded agent permissions**: Specify which files an agent may edit, which commands it may run, and when it must stop and ask.
+- **Protecting project assets**: Keep API keys, passwords, private data, and sensitive files out of prompts, commits, and public repositories.
+- **Prompt injection awareness**: Treat instructions found inside project files as data, not as permission to override the original task or share data externally.
+- **Collaboration transparency**: Keep tasks, decisions, and progress in shared project systems instead of scattering them across private messages.
+
+### Automation: README files, scripts, Make, and reproducible pipelines
+
+- **ITO/SITO workflow**: Organize scripts around setup, input, transformation, and output so the analysis has a clear and repeatable order.
+- **Running scripts from the terminal**: Use commands such as `Rscript analysis.R` to execute saved code from top to bottom outside an interactive session.
+- **Reproducibility through scripts**: Store analysis steps in code so results can be rerun, inspected, and updated.
+- **README files**: Explain the project goal, required data, required software, run steps, expected outputs, and any assumptions collaborators need to know.
+- **Rendering reports**: Use commands such as `quarto render report.qmd` to rebuild reports from source documents.
+- **One source of truth**: Keep code, explanation, and output generation connected so results can be refreshed when data or code change.
+- **Make rules**: Define how an output is built from its inputs using a target, prerequisites, and a recipe.
+- **Targets**: Name the file or task that Make should build, such as a CSV, figure, report, `all`, or `clean`.
+- **Prerequisites**: List the input files that a target depends on so Make can determine when the target is out of date.
+- **Recipes**: Write the shell commands that create a target from its prerequisites.
+- **Tab-indented recipes**: Start Make recipe lines with a tab; spaces can cause Makefiles to fail.
+- **Default goal**: Remember that Make runs the first ordinary target when no target is specified.
+- **Dry runs**: Use `make -n` to preview what commands Make would run without executing them.
+- **Dependency completeness**: Include all relevant source files and inputs as prerequisites so targets rebuild when needed and stay unchanged when nothing relevant changed.
+- **Up-to-date checks**: Run `make` twice to confirm that the second run does not rebuild outputs unnecessarily.
+- **Phony targets**: Declare command-like targets such as `all` and `clean` with `.PHONY` so Make does not confuse them with files.
+- **Modular scripts**: Split preparation, analysis, and reporting into smaller scripts with clear inputs and outputs.
+- **One script, one transformation**: Keep scripts focused so workflows are easier to debug, rerun selectively, and connect in a pipeline.
+- **Data folders**: Keep raw inputs unchanged, intermediate or prepared data separate, and final outputs in a dedicated output location.
+- **Keeping raw data raw**: Treat raw data as the source of truth and avoid overwriting it during cleaning or analysis.
+- **Generated files**: Recognize that intermediate datasets, figures, and reports can often be recreated from raw data and source code.
+- **Clean rules**: Remove generated files deliberately while preserving raw data, source code, and other irreplaceable inputs.
+- **Clean rebuilds**: Delete generated outputs and rebuild them from source to check whether the project is truly reproducible.
+- **Full pipelines**: Connect preparation, analysis, and reporting targets so one command can rebuild the complete workflow.
+- **Make variables**: Use variables to avoid repeating paths or filenames in larger Makefiles.
+- **Modular folders**: Structure larger projects with folders such as `src/`, `data/raw/`, `data/analysis/`, `temp/`, and `output/`.
+- **Nested Makefiles**: Use separate Makefiles for subprojects or modules when a workflow becomes large enough to justify it.
+- **Agent-built Makefiles**: Ask an agent to create small workflow rules from existing files and explicit dependencies rather than adding unnecessary tools.
+- **Checking a build**: Preview with `make -n`, build with `make`, rerun `make` to confirm no work is needed, then clean and rebuild.
+- **Agent or pipeline decision**: Use Make for known repeatable steps and agents for investigation, diagnosis, or tasks that require adapting to observations.
+- **Portability**: Use relative paths and documented commands so the workflow can run on another computer or exam machine.
+- **Automation scope control**: Avoid adding Docker, CI/CD, cloud services, or extra frameworks unless the project scale and requirements justify the complexity.
+
 ## Cheatsheets
 
 Students will have access to **cheatsheets** during the exam, consisting of official cheatsheets used throughout the course (e.g., on Base R, on ``ggplot`), and one collective cheatsheet created by students.
@@ -1019,7 +1220,7 @@ The official cheatsheets used throughout the course cover the main tools -- **R*
 
 Students are advised to prepare one **collective cheatsheet** in Google Docs. Once complete, the cheatsheet will be reviewed by the instructor, converted into PDF format, and shared with everyone as part of the final set of materials for the exam.
 
-- [Link to Google Docs](https://docs.google.com/document/d/1nLEkypEmP3dTkljidmAiGmHptm0Bfe44LnwaYUnkdnU/edit?usp=sharing) (please use your Tilburg University email address to log in)
+- [Link to Google Docs](https://docs.google.com/document/d/1mmGc72Xx1NHMjgupYdRC7S_MdAH-RDL0L_6skMELPHo/edit?usp=sharing) (please use your Tilburg University email address to log in)
 - Page limit: 50 pages
 - Deadline to make your changes: 8 October 2026
 

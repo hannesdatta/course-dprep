@@ -53,6 +53,16 @@ format:
 
 # Preparing for the Exam
 
+## Key terms and concepts to revise
+
+The exam preparation document now includes a detailed glossary organized around the three course components:
+
+- **Coding**: R, SQL, data inspection, cleaning, reshaping, joins, visualization, reporting, repeated analysis, and verification.
+- **Collaboration**: Git, GitHub, issues, boards, branches, commits, pull requests, reviews, and responsible agent use.
+- **Automation**: README files, scripts, Make, dependencies, clean rebuilds, reproducible pipelines, and when to use agents versus pipelines.
+
+Use the glossary in the exam preparation document as a checklist while revising the tutorials and example questions.
+
 ## Technical Tips
 
 - **Be familiar with your exam environment**:
@@ -114,21 +124,27 @@ see PDF file posted on Canvas
 ## Ideas for Developing Your Proficiency
 
 - Work through the example questions and tutorials.
-- Download data and create own "engineering" questions using common data operations from tutorial #3.
+- Download data and create your own engineering questions using the data operations from the Week 4–5 tutorials.
 - Share (public) links to your teams’ GitHub repositories & fork and clone them.
   - `make`: run workflows with `make` (using the README); does it run? if not, can you fix the `makefile`?
   - Git/GitHub: work on someone else’s project (new feature branch, improve code, commit to your fork, and make a PR); *receiving teams*: review contributions and integrate PRs.
 
 Above all, see this exam preparation *not* just as exam study, but as a way to strengthen and share your skills.
 
+## Project deliverables as exam practice
+
+- **Plan the work (LG1)** — Use issues for setup tasks such as README, folder structure, data access, `.gitignore`, and AI-use documentation; give each task an owner and track priorities on a simple board. This is project planning, not a coding task.
+- **Analyze individual datasets (LG2–LG5)** — Create a branch, inspect and clean one TikTok dataset, visualize results, document run steps, automate the workflow, and submit a PR for review. The per-dataset PRs stay open; final integration PR is merged into fork's `main` branch.
+- **Integrate the project (LG3–LG5)** — Replace separate CSV imports with SQLite queries, fit and interpret a regression, combine the checks and findings in a Quarto/R Markdown PDF, and automate the path from database to report with Make.
+- **Exam constraint** — The project uses GitHub PRs online; the closed-book exam is offline, so practice the local Git operations and workflow reasoning that can be done without a remote connection.
+
 ## Remaining questions?
 
 ## Next steps
 
-- Reflection on tutorials
-- Course evaluation
+- Coaching session this week
 - Closing lecture next week
-- Final coaching session (Roshini)
+- Q&A week 7 (instead of coaching)
 
 <br>
 Thanks!
