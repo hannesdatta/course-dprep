@@ -72,3 +72,15 @@ Before interpreting a graphic, check what a row represents, whether missing valu
 :::
 
 You can add layers such as `facet_wrap(~ channel)` when separate panels make comparisons clearer. Start with a simple graph that answers one question, label it for its intended reader, and keep the R code so you can rebuild it when data change.
+
+### Match the geometry to the question
+
+| Question | Common geometry | What it shows |
+| --- | --- | --- |
+| How are two numeric variables related? | `geom_point()` | One point per observation; inspect overplotting and missing values. |
+| How does a value change over ordered time? | `geom_line()` | Connects observations in time order; map a grouping variable if there are several lines. |
+| How do precomputed totals or averages compare across categories? | `geom_col()` | Uses the supplied y-values as bar heights. |
+| How are observations distributed? | `geom_histogram()` | Groups a numeric variable into bins; bin width affects the display. |
+| How does a numeric distribution vary by category? | `geom_boxplot()` or `geom_violin()` | Summarizes distribution shape; overlay points when sample size or individual observations matter. |
+
+`geom_bar()` differs from `geom_col()`: `geom_bar()` counts rows by default, while `geom_col()` uses a y-value already calculated in the data. A boxplot emphasizes median and spread; a violin plot emphasizes the distribution's shape. Neither plot identifies the data unit or establishes a causal effect—those require separate reasoning.

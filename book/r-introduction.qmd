@@ -9,6 +9,14 @@ R is a free, open-source language for working with data. In a marketing analytic
 
 You can run R directly in a console, but an editor such as **Positron** makes it easier to write scripts, inspect objects, and view plots. This appendix gives you a first, self-contained session. You can type each example into the R console or save all the code in a file ending in `.R`.
 
+### R, Positron, and the project workspace
+
+R is the language and software that evaluates R code. **Positron** is an integrated development environment (IDE): it provides a code editor, R console, environment/object viewer, file browser, plot pane, and source-control tools around the R installation. RStudio and Visual Studio Code are other environments; switching editors does not change the R language or the meaning of your code.
+
+Keep related scripts, data, and reports in a project folder. The **working directory** is the folder R uses as the starting point for relative file paths. Check it with `getwd()` and inspect its contents with `list.files()`. Prefer project-relative paths such as `data/customers.csv` over a path tied to one person's computer. An RStudio/Positron project helps reopen the same project context; avoid relying on a hidden sequence of console commands or an absolute `setwd()` path.
+
+The editor and console serve different purposes. The console is useful for a quick check; code saved in an `.R` script records steps so they can be rerun. Run a complete script from the project directory with `Rscript analysis.R`.
+
 ## Your First Data Session
 
 ### Objects and data frames
@@ -20,6 +28,8 @@ campaign_name <- "Spring promotion"
 budget <- 1200
 budget / 4
 ```
+
+`<-` assigns a value; `==` tests whether two values are equal. For example, `budget <- 1200` stores a value, while `budget == 1200` returns `TRUE` or `FALSE`. A single `=` is also used to name function arguments, such as `mean(x, na.rm = TRUE)`.
 
 Real datasets have many observations. A **data frame** is a table in which each row represents an observation and each column represents a variable. Let's create a tiny customer dataset, so every example below works without a download:
 
@@ -43,6 +53,26 @@ summary(customers$purchases)
 ```
 
 The `$` in `customers$purchases` selects a column. Because the `purchases` column is numeric, we can calculate its average with `mean(customers$purchases)`. The average of a logical column is the share of `TRUE` values, so `mean(customers$churned)` is the churn rate *in this illustrative dataset*. In a real project you would first specify when a customer counts as churned and who belongs in the denominator.
+
+R also uses **character** values for text, **numeric** values for measurements, **integer** values for whole numbers, and **logical** values for true/false conditions. A **vector** stores values of one basic type; `c(1, 2, 3)` creates a numeric vector. If types are mixed in a vector, R coerces them to a common type. A **factor** represents a categorical variable with an explicit set of levels, which can be ordered when the categories have a meaningful order (for example, low, medium, high). A data frame combines equal-length columns into a table; a tibble is the tidyverse's data-frame variant.
+
+Functions package reusable operations: call a function with parentheses, pass it **arguments**, and consult help with `?mean` or `?read_csv`. Install a package once with `install.packages("package")`; load it for each session with `library(package)`. These are different steps. For example, `install.packages("dplyr")` installs `dplyr`, while `library(dplyr)` makes its functions available in the current session.
+
+### Reuse work with functions and repetition
+
+A **function** gives a name to a reusable operation. A `for` loop repeats steps for each item; `lapply()` applies a function to each element and returns a list. These tools replace copy-pasted code when an analysis must be repeated for several creators, countries, or files. Choose clear inputs and outputs, then inspect the returned objects.
+
+```r
+mean_or_na <- function(x) {
+  if (all(is.na(x))) return(NA_real_)
+  mean(x, na.rm = TRUE)
+}
+
+values_by_creator <- list(C1 = c(0.6, 0.7), C2 = c(0.4, NA))
+lapply(values_by_creator, mean_or_na)
+```
+
+An `if` condition selects a path based on a `TRUE`/`FALSE` result. In data transformations, `case_when()` is often convenient for assigning categories from several conditions. The *Programming Principles* chapter develops these ideas further; the examples here make the concepts available in the appendix too.
 
 ### Transforming data with `dplyr`
 

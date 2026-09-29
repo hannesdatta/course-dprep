@@ -5,6 +5,14 @@ format: html
 
 Git records changes in your project; GitHub is one place to share a Git repository. This quick reference assumes that you are **inside a repository** and have already configured Git. For the concepts behind these commands, see the *Version Control* chapter.
 
+## The Git Collaboration Model
+
+A **repository** is a project folder whose history Git records locally. Saving a file changes the working copy; `git add` stages selected changes for the next snapshot; `git commit` records that snapshot in local history. **GitHub** hosts a remote copy and adds collaboration tools such as pull requests, issues, and project boards. `git push` sends commits to the remote; `git pull` brings remote changes into the current local branch.
+
+A **branch** is a separate line of project history for developing a feature or fix while keeping `main` stable. A **pull request (PR)** proposes merging a branch into another branch and provides a place to inspect changes and discuss them. A merge conflict occurs when Git cannot combine edits automatically; resolve it by reviewing both versions and editing the file deliberately. A **fork** is your GitHub copy of somebody else's repository, often used when you do not have permission to push branches to the original.
+
+Issues record discrete tasks or questions; project boards help a team prioritize and track them. These are planning tools that complement Git's record of code changes. `.gitignore` lists files Git should not track, such as generated outputs or machine-specific files; it does not remove files that were already committed.
+
 ## Inspect Before You Change Anything
 
 | Task | Command | What to look for |

@@ -86,6 +86,8 @@ orders_with_segments
 
 The result has five rows, still one per order. The unmatched order remains, with `NA` as its segment. If `customers` accidentally contained customer 102 twice, joining would multiply their orders; **check key uniqueness before trusting the row-count comparison**. In a real project, investigate the missing segment before deciding whether to exclude that order or use an explicit "Unknown" category.
 
+An **inner join** retains only keys matched in both tables; a **full join** retains every key from both tables and fills unmatched columns with `NA`. A **right join** keeps every row from the right table; it can usually be expressed as a left join with the tables swapped. Choose based on which observations the analysis must retain, then inspect unmatched rows and row counts. Join type alone does not protect against repeated keys that create many-to-many row multiplication.
+
 ::: {.callout-warning title="A Successful Join Can Still Be Wrong"}
 Code can run without errors while producing extra rows, dropping observations, or attaching information at the wrong level. Before and after a join, check keys, row counts, unmatched records, and relevant totals. See the *Data Engineering & Databases* chapter for the broader reasoning behind these checks.
 :::
@@ -100,3 +102,25 @@ orders_with_segments %>%
 ```
 
 Compare the sum of the resulting segment totals with `sum(transactions$revenue)`. If they differ, trace the missing or duplicated rows before using the derived dataset in an analysis.
+
+## Concepts for Designing a Data Workflow
+
+### Unit of analysis, tidy data, and reshaping
+
+Before choosing an operation, state what one row represents: a customer, transaction, event, video, or customer-week. This is the **unit of analysis**. A useful tidy-data starting point is one variable per column, one observation per row, and one value per cell. In **long** data, values of a category or time period usually occupy rows; in **wide** data, some categories or periods become separate columns. `pivot_longer()` and `pivot_wider()` change the representation, not the underlying observations. Choose the shape that suits the next task, and retain the key that identifies rows.
+
+### Missingness and time series
+
+`NA` means a value is unavailable; it does not automatically mean zero. First determine whether a value is structurally absent (for example, a movie has no season count), unrecorded, or genuinely zero. Only then choose whether to retain, exclude, flag, or impute it. For ordered time series, last observation carried forward (`zoo::na.locf()`) assumes a value remains stable until updated; linear interpolation (`zoo::na.approx()`) assumes it changes smoothly between observed points. These assumptions are not interchangeable, and time-series operations must be grouped by the entity whose history is being followed.
+
+Dates and timestamps should be converted to date/time types before sorting, grouping, or extracting weeks and months. Calendar week definitions differ: ISO weeks include a year and start on Monday. Align time units and week definitions before joining data sources.
+
+### Text and semi-structured data
+
+Text cleaning helps standardize names and identify patterns. A **regular expression** describes a pattern; in R, `grepl()` detects a match and `gsub()` replaces matching text. Use matching rules that fit the actual values, and inspect the results before using cleaned text as a join key.
+
+CSV stores a rectangular table. **JSON** can represent nested records and records with different structures, which is useful for APIs but may require unpacking nested lists before analysis. Flattening nested data to CSV can lose structure; retain the original JSON when that structure may be needed again.
+
+### Aggregation and complete data grids
+
+Aggregation changes the unit of analysis: many event-level rows might become one row per creator-day. Decide the target unit first, then count, sum, average, or otherwise summarize the inputs. A **complete grid** explicitly enumerates every expected combination of keys (for example, creator × day) before observed values are joined back. This makes absent combinations visible; it does not by itself determine what their missing values mean.

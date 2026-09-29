@@ -9,6 +9,8 @@ An R script records what your code does. A report must also explain *why* you di
 
 Quarto is a separate program that renders your document. For R code chunks it also needs a working R installation and the `knitr` and `rmarkdown` packages. A `.qmd` file is plain text, so you can write one in Positron or another editor and keep it in Git with the rest of your project.
 
+Quarto continues the reproducible-document approach used by **R Markdown** (`.Rmd`): both combine Markdown prose, executable R chunks, and their output. Quarto uses `.qmd` files and supports a broader set of outputs, including books, presentations, and websites. A YAML header stores document metadata and output settings; chunk options control whether code runs and whether code, messages, warnings, or results appear in the rendered document. Rendering runs chunks in document order in a fresh execution session, so each required object should be created by the report itself.
+
 ## Build Your First Report
 
 Create a file called `report.qmd` in a project folder and give it the following contents. The `{r}` boxes are executable code chunks **in your own report**:

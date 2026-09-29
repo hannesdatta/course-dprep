@@ -5,6 +5,8 @@ format: html
 
 Use this page when you need to **read** and summarise data from a database. For the difference between the SQL language and database systems such as SQL Server or MySQL—and for SQL's ability to change stored data—see the *Data Engineering & Databases* chapter. This reference focuses on `SELECT` queries; joins appear only at the end as a next step.
 
+SQL is a language for asking questions of a database; SQLite, PostgreSQL, MySQL, and SQL Server are database systems that implement SQL dialects. **SQLite** stores a relational database in a single file, so it is convenient for teaching and local projects. A database can contain tables (stored rows and columns) and views (saved queries). A query using `SELECT` reads and returns results; it does not change the stored records. In R, packages such as `DBI` and `RSQLite` provide a connection and send SQL queries to an SQLite database. Use a database browser or the database's documentation to inspect its schema before querying unfamiliar tables.
+
 The examples assume a table called `transactions`:
 
 | order_id | customer_id | order_date | revenue |

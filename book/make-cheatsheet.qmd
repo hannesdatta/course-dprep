@@ -31,6 +31,23 @@ The first target, `all`, is the default. If the report does not exist, or `repor
 
 This example assumes rendering `report.qmd` produces `report.html` in the working directory. Check the actual output path if your Quarto project uses an output directory. In a full pipeline, you would add a rule to build `data/clean.csv` from a raw dataset and an R script, keeping the raw file untouched.
 
+## File Targets and Phony Targets
+
+A **file target** names an output file that Make can check by its existence and modification time, such as `report.html`. A **phony target** is a command name that does not represent a file. Common examples are `all`, which requests the full build, and `clean`, which removes generated outputs. Declare them with `.PHONY` so that an unrelated file named `clean` or `all` cannot make Make incorrectly treat the command as already complete:
+
+```make
+.PHONY: all clean
+
+all: report.html
+
+clean:
+	rm -f report.html
+```
+
+By default, Make runs the first target. Putting `all` first gives a clear default entry point. A Makefile is different from an agent: its rules state dependencies and commands explicitly, so the same known workflow can be rerun predictably.
+
+For data projects, keep **raw inputs** unchanged, put intermediate outputs in a designated temporary or processed-data location, and place final deliverables in an output location. Each rule should list all files required to build its target, including the scripts that perform the work. This is how Make knows which downstream products may need rebuilding.
+
 ## Commands at a Glance
 
 | Goal | Command |
@@ -46,3 +63,7 @@ This example assumes rendering `report.qmd` produces `report.html` in the workin
 ::: {.callout-tip title="When Make Seems to Do Nothing"}
 If Make says the target is up to date when it should change, check that the rule names the actual output file and lists *every* input, including scripts and templates. If a recipe runs but no target appears, Make will run it again next time; make sure the command produces the file named on the left of the colon.
 :::
+
+## README: Instructions for People
+
+A README complements a Makefile. The README explains the project to a person: its purpose, required inputs and software, how to run it, and what files to expect. The Makefile records machine-executable targets, dependencies, and commands. Keep both current so a collaborator can understand the project and reproduce its outputs.
